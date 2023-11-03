@@ -1,0 +1,485 @@
+<apex:page showHeader="false">    
+    <style>
+        /* Special classes for small devices */
+        @media only screen and (max-width: 560px) {
+        	.map {height: 400px !important; width: 100%}
+        	.menta {height: 550px !important; width: 100%}
+        }
+        
+        /* Special classes for big devices */
+        @media only screen and (min-width: 560px) {
+           	.map {height: 400px !important; width: 100%}
+        	.menta {height: 400px !important; width: 100%}
+        }    	
+    </style>
+    
+    <html>
+        <head>
+            <link rel="stylesheet" href="//developers.google.com/maps/documentation/javascript/demos/demos.css"/>
+		</head>
+        <body>
+            <div id="map" class="map"></div>
+            <script>
+            var intZoom = 17;
+            var boolLoaded = false;
+            var objCoordinate = null;
+            var arrCoordinate = null;            
+            var divMap = null;
+            var lexHost = '{!$CurrentPage.parameters.lexHost}';
+            var centerLngOffSet = '{!$CurrentPage.parameters.centerLngOffSet}';
+            var zoomControl = '{!$CurrentPage.parameters.zoomControl}' == 'true';
+            var requestPage = '{!$CurrentPage.parameters.requestPage}';
+            var centerLatOffSet = '{!$CurrentPage.parameters.centerLatOffSet}';
+            var arrBounds = null;
+            var intIndexMarkers = 0;
+            var vfHost = "{!LEFT($CurrentPage.URL,FIND('/',$CurrentPage.URL,9))}";
+
+            if(requestPage == 'menta') {
+                document.getElementById('map').classList.remove('map');
+                document.getElementById('map').classList.add('menta');
+            }
+            
+            sendToLC( { 'state':'LOADED', 'vfHost': vfHost} );
+            
+            function initMap() {                               
+                boolLoaded = true;
+                
+                addMarkers();
+                centerMapWithAddress();
+            }
+            
+            function sendToLC(objMessage) {
+                if(typeof(lexHost) !== 'undefined'){
+	                parent.postMessage(objMessage, lexHost);
+                }
+            }
+            
+            window.addEventListener("message", function(objEvent) {
+                if (lexHost.indexOf(objEvent.origin) >= 0 ) {
+                    objCoordinate = JSON.parse(objEvent.data);
+                                       
+                    if(Array.isArray(objCoordinate)) {
+                        arrCoordinate = JSON.parse(objEvent.data);
+                        objCoordinate = null;
+
+                        addMarkers();
+                    } else {
+                        centerMapWithAddress();
+                    }
+                } else {
+                	console.log('Blocked intrusion attempt');
+                }
+            }, false);            
+
+            function addMarkers() {
+                var objGeocoder = null;
+                var objMapSettings = null;
+                var objCoordinate = null;
+                var divMap = null;
+                var intZoom = 4;
+                var strAddress = null;
+
+                if(arrCoordinate !== null && arrCoordinate !== null && arrCoordinate.length > 0 && boolLoaded && Array.isArray(arrCoordinate)) {
+                    objCoordinate = arrCoordinate[0];
+                    objCoordinate.Google = {};
+                    objCoordinate.Google.lat = objCoordinate.Latitude;
+                    objCoordinate.Google.lng = objCoordinate.Longitude;
+                    objCoordinate.Google.center = {};
+                    objCoordinate.Google.center.lat = objCoordinate.Latitude + centerLatOffSet*1;
+                    objCoordinate.Google.center.lng = objCoordinate.Longitude + centerLngOffSet*1;
+                    
+                    objMapSettings = retrieveMapSettings(objCoordinate, intZoom);
+                    divMap = new google.maps.Map(document.getElementById('map'), objMapSettings);
+                   
+                    intIndexMarkers = 0;
+                    for(var intIndex = 0; intIndex < arrCoordinate.length; intIndex ++) {                        
+                        objCoordinate = arrCoordinate[intIndex];
+                        console.log('iterando coordenadas : ' + objCoordinate);
+                        if(objCoordinate !== undefined && objCoordinate !== null && boolLoaded) {  
+                            if(objCoordinate.Address !== undefined && objCoordinate.Address !== null) {
+                                if( Array.isArray(objCoordinate.Address)) {
+                                    strAddress = objCoordinate.Address.join(',').replace(',,',',');
+                                } else {
+                                    strAddress = objCoordinate.Address;
+                                }
+                                objGeocoder = new google.maps.Geocoder();
+                                objGeocoder.geocode({
+                                    'address': strAddress
+                                }, getcodeCallback(divMap, intIndex) 
+                                ); 
+                            } 
+                        }
+                    }
+                }
+            }
+
+            function getcodeCallback(divMap, intIndex) {
+                var objCoordinate = null;
+
+                var geocodeCallBack = function(arrResults, objStatus) {
+                    //PODRIA VALIDAR TAMBIEN QUE LAT Y LNG NO SEAN NULOS.
+                    if (objStatus == google.maps.GeocoderStatus.OK && arrResults.length > 0) {
+                        objCoordinate = arrCoordinate[intIndex];
+                        objCoordinate.Latitude = arrResults[0].geometry.location.lat();
+                        objCoordinate.Longitude = arrResults[0].geometry.location.lng();
+                        objCoordinate.Google = {};
+                        objCoordinate.Google.lat = objCoordinate.Latitude;
+                        objCoordinate.Google.lng = objCoordinate.Longitude;
+                        objCoordinate.Google.center = {};
+                        objCoordinate.Google.center.lat = objCoordinate.Latitude + centerLatOffSet*1;
+                        objCoordinate.Google.center.lng = objCoordinate.Longitude + centerLngOffSet*1;
+                        
+                        // divMap.center = objCoordinate.Google.center;
+                        addMarker(divMap, objCoordinate.Google, objCoordinate.Icon);  
+                        intIndexMarkers++;
+
+                        if(intIndexMarkers === arrCoordinate.length) {
+                            divMap.fitBounds(arrBounds); 
+                            divMap.panToBounds(arrBounds);
+                        }
+                    } 
+                }
+
+                return geocodeCallBack;                
+            }
+/*
+            function() {
+                                    
+                                }*/
+            function addMarker(divMap, objCoordinate, strIcon) {
+                var strDomain = null;
+                var objIcon = null;
+                var objMapMarker = null;
+                var objLatLng = null;
+                var strContent = null;
+                var objInfoWindow = null;
+
+                strDomain = '{! URLFOR($Resource.PRM)}';
+
+                if(strIcon !== undefined && strIcon !== null && strIcon.length > 0) {
+                    objIcon = {
+                        url: strDomain + strIcon, // url
+                        scaledSize: new google.maps.Size(48, 48), // scaled size
+                        origin: new google.maps.Point(0,0), // origin
+                        anchor: new google.maps.Point(16,16) // anchor
+                    };
+
+                    objMapMarker = new google.maps.Marker({
+                        position: objCoordinate,
+                        icon : objIcon,                  
+                        map: divMap
+                    });
+                } else {
+                    objMapMarker = new google.maps.Marker({
+                        position: objCoordinate,                 
+                        map: divMap
+                    });
+                }
+
+                objLatLng = new google.maps.LatLng(objMapMarker.position.lat(), objMapMarker.position.lng());
+                if(arrBounds === undefined || arrBounds === null) {
+                    arrBounds  = new google.maps.LatLngBounds();
+                }
+                arrBounds.extend(objLatLng);
+            }                              
+
+            function fitBounds(divMap, arrCoordinate) {
+                var bounds = new google.maps.LatLngBounds();
+                for (var intIndex = 0; intIndex < arrCoordinate.length; intIndex++) {
+                    if(arrCoordinate[intIndex].Google !== undefined && arrCoordinate[intIndex].Google !== null) {
+                        bounds.extend(arrCoordinate[intIndex].Google);
+                    }
+                }
+
+                divMap.fitBounds(bounds);
+            }
+
+
+            function centerMapWithAddress() {
+                var objGeocoder = null;
+                var objMapSettings = null;
+                
+                if(objCoordinate !== undefined && objCoordinate !== null && boolLoaded) {  
+                    objGeocoder = new google.maps.Geocoder();
+                    objGeocoder.geocode({
+                        'address': objCoordinate.Address.join(',').replace(',,',','),
+                        'componentRestrictions' : {
+                            'country' : 'Argentina'
+                        }
+                    }, function(arrResults, objStatus) {
+                        //PODRIA VALIDAR TAMBIEN QUE LAT Y LNG NO SEAN NULOS.
+                        if (objStatus == google.maps.GeocoderStatus.OK && arrResults.length > 0) {
+                            if(arrResults[0].geometry.location_type == 'APPROXIMATE') {
+                                intZoom -= 4; //voy alejando el zoom a medida que no voy encontrando la locacion
+                            }
+                            objCoordinate.Latitude = arrResults[0].geometry.location.lat();
+                            objCoordinate.Longitude = arrResults[0].geometry.location.lng();
+                            objCoordinate.Google = {};
+                            objCoordinate.Google.lat = objCoordinate.Latitude;
+                            objCoordinate.Google.lng = objCoordinate.Longitude;
+                            objCoordinate.Google.center = {};
+                            objCoordinate.Google.center.lat = objCoordinate.Latitude + centerLatOffSet*1;
+                            objCoordinate.Google.center.lng = objCoordinate.Longitude + centerLngOffSet*1;
+                            
+                            
+                            objMapSettings = retrieveMapSettings(objCoordinate, intZoom);
+                            divMap = new google.maps.Map(document.getElementById('map'), objMapSettings);
+                        
+                            addMarker(divMap, objCoordinate.Google, objCoordinate.Icon);  
+                            //centerMapWithCoordinate();                              
+                        } else {
+                            //si no devolvio la direccion, vuelvo a llamar a la funcion buscando por un nivel superior-
+                            //si no lo encuentro a la primera, debo ocultar el street view
+                            //objThat.hideStreetView(objComponent);
+                            intZoom -= 4; //voy alejando el zoom a medida que no voy encontrando la locacion
+                            objCoordinate.Address.shift();
+                            centerMapWithAddress();
+                            //addMarker(divMap, objCoordinate.Google, objCoordinate.Icon);  
+                        }
+                    }); 
+                }
+            }
+            
+            function centerMapWithCoordinate() {
+                var objMapSettings = null;
+                var objMapMarker = null;
+                var boolViewExactLocation = null;
+                var strDomain = null;
+                var objIcon = null;
+
+
+                objMapSettings = retrieveMapSettings(objCoordinate, intZoom);
+                //divMap.setOptions( objMapSettings);
+                divMap = new google.maps.Map(document.getElementById('map'), objMapSettings);
+
+                        
+            }
+  
+            function retrieveMapSettings(objCoordinate, intZoom) {
+                var objMapFeatures = null;
+                
+                objMapFeatures = {};
+                objMapFeatures.zoom = (intZoom !== undefined && intZoom !== null && intZoom > 0 && intZoom < 18)?intZoom:14;
+                objMapFeatures.center = (objCoordinate.Google !== undefined && objCoordinate.Google !== null)?objCoordinate.Google.center:null;
+                objMapFeatures.zoomControl = zoomControl;
+                objMapFeatures.mapTypeControl = false;
+                objMapFeatures.scaleControl = false;
+                objMapFeatures.streetViewControl = false;
+                objMapFeatures.rotateControl = false;
+                objMapFeatures.scrollwheel = false;
+                objMapFeatures.fullscreenControl = false;
+                objMapFeatures.styles = retrieveStyles();
+                
+                return objMapFeatures;
+            }
+            
+            function retrieveStyles() {
+                return [
+                    {
+                        "featureType": "all",
+                        "elementType": "labels",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "administrative",
+                        "elementType": "all",
+                        "stylers": [
+                            {
+                                "visibility": "simplified"
+                            },
+                            {
+                                "color": "#5b6571"
+                            },
+                            {
+                                "lightness": "35"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "administrative.neighborhood",
+                        "elementType": "all",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "landscape",
+                        "elementType": "all",
+                        "stylers": [
+                            {
+                                "visibility": "on"
+                            },
+                            {
+                                "color": "#f3f4f4"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "landscape.man_made",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "weight": 0.9
+                            },
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "poi.park",
+                        "elementType": "geometry.fill",
+                        "stylers": [
+                            {
+                                "visibility": "on"
+                            },
+                            {
+                                "color": "#83cead"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road",
+                        "elementType": "all",
+                        "stylers": [
+                            {
+                                "visibility": "on"
+                            },
+                            {
+                                "color": "#ffffff"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road",
+                        "elementType": "labels",
+                        "stylers": [
+                            {
+                                "visibility": "on"
+                            },
+                            {
+                                "lightness": "-21"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road",
+                        "elementType": "labels.text",
+                        "stylers": [
+                            {
+                                "color": "#7a7676"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road",
+                        "elementType": "labels.text.stroke",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.highway",
+                        "elementType": "all",
+                        "stylers": [
+                            {
+                                "visibility": "on"
+                            },
+                            {
+                                "color": "#fee379"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.highway",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "visibility": "on"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.highway",
+                        "elementType": "labels",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.highway",
+                        "elementType": "labels.icon",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.highway.controlled_access",
+                        "elementType": "labels.icon",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.arterial",
+                        "elementType": "all",
+                        "stylers": [
+                            {
+                                "visibility": "simplified"
+                            },
+                            {
+                                "color": "#ffffff"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.arterial",
+                        "elementType": "labels",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.arterial",
+                        "elementType": "labels.icon",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "water",
+                        "elementType": "all",
+                        "stylers": [
+                            {
+                                "visibility": "on"
+                            },
+                            {
+                                "color": "#badbec"
+                            }
+                        ]
+                    }
+                ];
+            }            
+            </script>
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBEqode5kv6zDevz-uin7EreqXtxGl3g4E&callback=initMap" async="async" defer="defer"></script>     
+        </body>
+    </html>
+</apex:page>

@@ -1,0 +1,27 @@
+<template>
+    <div class="card slds-m-top_x-large">
+        <div class="c-container slds-grid slds-wrap">
+            <h3 class="header slds-size_1-of-1">
+                <!-- <img src={iconIncome} class="icon" /> -->
+                <span class="title">Relación de dependencia</span>
+            </h3>
+
+            <div class="slds-size_1-of-1 slds-grid slds-wrap">
+
+                <div class="slds-size_1-of-1">
+                    <template for:each={employers} for:item="employer">
+                        <c-newcom_contact-employer key={employer.cuit} employer={employer.name} cuit={employer.cuit} income={employer.income} ></c-newcom_contact-employer>
+                    </template>
+                </div>
+<!-- 
+                <div class="slds-size_1-of-1 slds-text-align_right">
+                    <span class="label" style="padding-right: 30px;">{label.TotalIncome}: </span>
+                </div>
+                <div class="slds-size_1-of-1 slds-text-align_right">
+                    <span class="value blue">{totalIncome}&nbsp;{label.Currency}</span>
+                </div> -->
+
+            </div>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,5 @@
+<aura:event type="APPLICATION" description="Event template">
+    <aura:attribute name="email" 		type="String" />
+    <aura:attribute name="mobile" 	type="String" />
+    <aura:attribute name="fijo" 	type="String" />
+</aura:event>

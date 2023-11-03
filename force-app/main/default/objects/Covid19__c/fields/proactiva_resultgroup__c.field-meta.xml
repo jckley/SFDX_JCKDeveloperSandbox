@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>proactiva_resultgroup__c</fullName>
+    <externalId>false</externalId>
+    <label>Triage Grupo Autoevaluación</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>alto</fullName>
+                <default>false</default>
+                <label>alto</label>
+            </value>
+            <value>
+                <fullName>bajo</fullName>
+                <default>false</default>
+                <label>bajo</label>
+            </value>
+            <value>
+                <fullName>medio</fullName>
+                <default>false</default>
+                <label>medio</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AdminCiudadano</fullName>
+    <fields>Name</fields>
+    <fields>Document_Number__c</fields>
+    <fields>Age_f_x__c</fields>
+    <fields>Birthdate</fields>
+    <fields>Administrative_Level_1__c</fields>
+    <fields>Administrative_Level_2__c</fields>
+    <fields>guid__c</fields>
+    <label>AdminCiudadano</label>
+</CompactLayout>

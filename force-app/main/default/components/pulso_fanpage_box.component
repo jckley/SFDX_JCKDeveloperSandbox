@@ -1,0 +1,42 @@
+<apex:component >
+
+    <apex:attribute name="encuesta" type="datos_encuesta" required="true" description="Survey General Info"/>
+    <apex:attribute name="callCounter" type="integer" required="true" description="Loop counter"/>
+    <apex:attribute name="PersonasEncuestadas" type="integer" required="true" description="Cantidad de Personas Encuestadas"/>
+
+	<apex:outputPanel rendered="{!callCounter==0}">
+        <head>
+            <style>
+                .fanbox:hover *.row, .fanbox:hover *.col {
+                	background-color: #FBFBFB;
+                }
+           </style>
+        </head>
+    </apex:outputPanel>    
+
+    
+    <div class="row py-3" style="align-items: center!important">
+        <div class="col-1">
+            <h4 class="text-weight-bolder text-right text-nowrap" style="color:#40B599;"><b>{!encuesta.nro_pregunta}</b><i class="fas fa-long-arrow-alt-right"></i></h4>
+        </div>
+
+        <div class="col rounded shadow-sm fanbox">
+            <div class="row" style="align-items: center!important">
+                <div class="col-3">
+                    <img src="{!urlfor($resource.messiLogo)}" class="rounded-circle img-fluid m-y align-middle"/>
+                </div>
+                <div class="col">
+                    <div class="d-flex mb-2">
+                        <h4 class="font-weight-bolder pt-3" style="color:#254A91" id="">BOCA</h4>
+                        <button class="bg-secondary border-0 rounded ml-auto mt-1 mb-2" type="button" data-target="">
+                            <span class="text-white font-weight-bolder">Ver fanpage <i class="fas fa-caret-right bg-secondary"></i></span>
+                        </button>
+                    </div>
+                    <h6 class="font-weight-lighter">A 8.4 mill. les gusta esto - Equipo Deportivo</h6>
+                    <h6 class="font-weight-lighter pb-3"><small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis velit vel nibh dignissim molestie sed sit amet nulla.</small></h6>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</apex:component>

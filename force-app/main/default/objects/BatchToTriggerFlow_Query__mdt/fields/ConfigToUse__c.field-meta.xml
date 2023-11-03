@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ConfigToUse__c</fullName>
+    <caseSensitive>false</caseSensitive>
+    <description>El campo define que configuracion va a usar el batch cuando se ejectue. Puede tener 3 valores:
+ - TEST: para poder realizar los test. NO BORRAR NI MODIFICAR EL REGISTRO MARCADO COMO TEST. Solo puede existir un registro marcado como TEST.
+ - ACTIVO: la configuracion con la cual se ejecutar el batch. Solo puede existir un registro marcado como ACTIVO.
+ - Si valor: las configuraciones que no se esten usando se pueden dejar &quot;apagadas&quot; borrando el valor del campo.</description>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>Valores permitidos:
+ - TEST
+ - ACTIVO
+ - en blanco</inlineHelpText>
+    <label>ConfigToUse</label>
+    <length>255</length>
+    <required>false</required>
+    <type>Text</type>
+    <unique>true</unique>
+</CustomField>

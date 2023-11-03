@@ -1,0 +1,14 @@
+<aura:component access="global" implements="forceCommunity:availableForAllPageTypes,force:appHostable,flexipage:availableForAllPageTypes" >
+    
+    <aura:attribute name="lexHost" 			type="String" default="" />
+    <aura:attribute name="vfHost" 			type="String" default="" />
+    <aura:attribute name="user" 			type="String" default="" />
+        
+    <aura:handler name="init" value="{!this}" action="{!c.initializeComponent}" />
+   
+    <div>
+        <iframe aura:id="vfFrame" src="{! v.vfHost + 'TwitterTimeline?lexHost=' + v.lexHost + 
+                                       '&amp;' + 'user=' + v.user}" frameBorder="0"
+                scrolling="yes"/>
+    </div>
+</aura:component>

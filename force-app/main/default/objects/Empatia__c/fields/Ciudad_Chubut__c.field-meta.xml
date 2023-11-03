@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Ciudad_Chubut__c</fullName>
+    <externalId>false</externalId>
+    <label>Ciudad Chubut</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Alto Río Senguer</fullName>
+                <default>false</default>
+                <label>Alto Río Senguer</label>
+            </value>
+            <value>
+                <fullName>Camarones</fullName>
+                <default>false</default>
+                <label>Camarones</label>
+            </value>
+            <value>
+                <fullName>Cholila</fullName>
+                <default>false</default>
+                <label>Cholila</label>
+            </value>
+            <value>
+                <fullName>Comodoro Rivadavia</fullName>
+                <default>false</default>
+                <label>Comodoro Rivadavia</label>
+            </value>
+            <value>
+                <fullName>Corvocado</fullName>
+                <default>false</default>
+                <label>Corvocado</label>
+            </value>
+            <value>
+                <fullName>Dolavon</fullName>
+                <default>false</default>
+                <label>Dolavon</label>
+            </value>
+            <value>
+                <fullName>El Hoyo</fullName>
+                <default>false</default>
+                <label>El Hoyo</label>
+            </value>
+            <value>
+                <fullName>El Maitén</fullName>
+                <default>false</default>
+                <label>El Maitén</label>
+            </value>
+            <value>
+                <fullName>Epuyén</fullName>
+                <default>false</default>
+                <label>Epuyén</label>
+            </value>
+            <value>
+                <fullName>Esquel</fullName>
+                <default>false</default>
+                <label>Esquel</label>
+            </value>
+            <value>
+                <fullName>Gaiman</fullName>
+                <default>false</default>
+                <label>Gaiman</label>
+            </value>
+            <value>
+                <fullName>Gobernador Costa</fullName>
+                <default>false</default>
+                <label>Gobernador Costa</label>
+            </value>
+            <value>
+                <fullName>Gualjaina</fullName>
+                <default>false</default>
+                <label>Gualjaina</label>
+            </value>
+            <value>
+                <fullName>José de San Martín</fullName>
+                <default>false</default>
+                <label>José de San Martín</label>
+            </value>
+            <value>
+                <fullName>Lago Puelo</fullName>
+                <default>false</default>
+                <label>Lago Puelo</label>
+            </value>
+            <value>
+                <fullName>Paso de los Indios</fullName>
+                <default>false</default>
+                <label>Paso de los Indios</label>
+            </value>
+            <value>
+                <fullName>Puerto Madryn</fullName>
+                <default>false</default>
+                <label>Puerto Madryn</label>
+            </value>
+            <value>
+                <fullName>Puerto Pirámides</fullName>
+                <default>false</default>
+                <label>Puerto Pirámides</label>
+            </value>
+            <value>
+                <fullName>Rada Tilly</fullName>
+                <default>false</default>
+                <label>Rada Tilly</label>
+            </value>
+            <value>
+                <fullName>Rawson</fullName>
+                <default>false</default>
+                <label>Rawson</label>
+            </value>
+            <value>
+                <fullName>Río Mayo</fullName>
+                <default>false</default>
+                <label>Río Mayo</label>
+            </value>
+            <value>
+                <fullName>Río Pico</fullName>
+                <default>false</default>
+                <label>Río Pico</label>
+            </value>
+            <value>
+                <fullName>Sarmiento</fullName>
+                <default>false</default>
+                <label>Sarmiento</label>
+            </value>
+            <value>
+                <fullName>Tecka</fullName>
+                <default>false</default>
+                <label>Tecka</label>
+            </value>
+            <value>
+                <fullName>Trelew</fullName>
+                <default>false</default>
+                <label>Trelew</label>
+            </value>
+            <value>
+                <fullName>Trevelin</fullName>
+                <default>false</default>
+                <label>Trevelin</label>
+            </value>
+            <value>
+                <fullName>Veintiocho de Julio</fullName>
+                <default>false</default>
+                <label>Veintiocho de Julio</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

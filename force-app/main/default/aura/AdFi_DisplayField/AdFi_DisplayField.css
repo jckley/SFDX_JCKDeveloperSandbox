@@ -1,0 +1,48 @@
+.THIS {
+
+}
+
+.THIS .uppercase {
+    text-transform: uppercase;
+}
+
+.THIS .label {
+    color: #999999;
+    font-size: 10pt;
+    font-weight: bold;
+}
+
+.THIS .value {
+    color: #999999;
+    font-family : 'Heebo';
+    font-weight: 300;
+}
+
+.THIS .gray {
+    color: #999999 !important;
+}
+
+.THIS .blue {
+    color: #229fda !important;
+}
+
+.THIS .link {
+    text-decoration:none;    
+}
+
+.THIS .link:hover {
+    text-decoration:underline;
+    cursor:pointer;
+}
+
+.THIS .font17 {
+    font-size: 16pt;
+}
+
+.THIS .font13 {
+    font-size: 12pt;
+}
+
+.THIS .font11 {
+    font-size: 10pt;
+}

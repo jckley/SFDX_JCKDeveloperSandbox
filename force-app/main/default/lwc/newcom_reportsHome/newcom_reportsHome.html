@@ -1,0 +1,222 @@
+<template>
+    <!-- HEADER -->
+    <div class="slds-page-header">
+        <article class="slds-card card-header">
+            <div class="slds-card__header slds-grid">
+                <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                    <div class="slds-media__figure">
+                        <span class="slds-icon_container slds-icon-standard-opportunity" title="inicio" style="background-color: rgb(245, 115, 118);">
+                            <img src="https://argentina--DEV.my.salesforce.com/img/icon/t4v35/custom/custom61_120.png" width="30">
+                        </span>
+                    </div>
+                    <div class="slds-media__body">
+                        <h2 class="slds-card__header-title">
+                            <span>Inicio</span>
+                        </h2>
+                    </div>
+                </header>
+            </div>
+        </article>
+    </div>
+
+    <!-- ACÁ VAN LOS REPORTS ETC -->
+    <div class="slds-page-body slds-p-horizontal_medium">
+        <div class="slds-grid slds-gutters">
+            <div class="slds-col slds-size_7-of-12">
+                <article class="slds-card">
+                    <div class="slds-card__header slds-grid">
+                        <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                            <div class="slds-media__body">
+                                <h2 class="slds-card__header-title">
+                                    <span><b>Habitantes x Territorio</b></span>
+                                </h2>
+                            </div>
+                        </header>
+                    </div>
+
+                    <!-- Acá va el canvas -->
+                    <div class="slds-card__body slds-card__body_inner">
+                        <canvas id="chart-0"
+                            class="chartjs-render-monitor" 
+                            style="display: block;">
+                        </canvas>
+                    </div>
+
+                    <footer class="slds-card__footer">
+                        <a class="slds-card__footer-action" href="javascript:void(0);">
+                            View Report
+                            <span class="slds-assistive-text">View Report</span>
+                        </a>
+                    </footer>
+                </article>
+            </div>
+
+
+            <div class="slds-col slds-size_5-of-12">
+                <div class="slds-row">
+                    <div class="slds-form-element">
+                        <label class="slds-form-element__label" for="select-01">País</label>
+                        <div class="slds-form-element__control">
+                            <div class="slds-select_container">
+                                <select class="slds-select" id="select-01">
+                                    <option>Argentina</option>
+                                    <option>Ecuador</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- tarjeta de contactos vistos recientemente -->
+                <div class="slds-row slds-p-top_medium">
+                    <article class="slds-card">
+                        <div class="slds-card__header slds-grid">
+                            <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                                <div class="slds-media__body">
+                                    <h2 class="slds-card__header-title">
+                                        <a href="javascript:void(0);" class="slds-card__header-link slds-truncate" title="Contacts (3)">
+                                            <span><b>Recently Viewed Citizens</b></span>
+                                        </a>
+                                    </h2>
+                                </div>
+                            </header>
+                        </div>
+
+                        <div class="slds-card__body slds-card__body_inner">
+                            <article class="slds-card slds-card_boundary card-header">
+                                <div class="slds-card__header slds-grid">
+                                    <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                                        <div class="slds-media__figure">
+                                            <span class="slds-icon_container slds-icon-standard-opportunity" title="inicio" style="background-color: #A094ED;">
+                                                <img src="https://argentina--dev.my.salesforce.com/img/icon/t4v35/standard/contact_120.png" width="30">
+                                            </span>
+                                        </div>
+                                        <div class="slds-media__body">
+                                            <h2 class="slds-card__header-title">
+                                                <span><b>Recently Viewed Citizens</b></span>
+                                            </h2>
+                                        </div>
+                                    </header>
+                                </div>
+                            </article>
+
+                        <ul class="slds-grid slds-wrap slds-grid_pull-padded">
+                        <li class="slds-p-horizontal_small slds-size_1-of-1 slds-medium-size_1-of-3">
+                        <article class="slds-tile slds-media slds-card__tile slds-hint-parent">
+                        <div class="slds-media__figure">
+                        <span class="slds-icon_container slds-icon-standard-contact" title="Description of icon when needed">
+                        <svg class="slds-icon slds-icon_small" aria-hidden="true">
+                        <use xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#contact"></use>
+                        </svg>
+                        <span class="slds-assistive-text">Contact</span>
+                        </span>
+                        </div>
+                        <div class="slds-media__body">
+                        <div class="slds-grid slds-grid_align-spread slds-has-flexi-truncate">
+                        <h3 class="slds-tile__title slds-truncate" title="Related Record Title 1">
+                        <a href="javascript:void(0);">Related Record Title 1</a>
+                        </h3>
+                        <div class="slds-shrink-none">
+                        <button class="slds-button slds-button_icon slds-button_icon-border-filled slds-button_icon-x-small" aria-haspopup="true" title="More options">
+                        <svg class="slds-button__icon slds-button__icon_hint" aria-hidden="true">
+                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+                        </svg>
+                        <span class="slds-assistive-text">More options</span>
+                        </button>
+                        </div>
+                        </div>
+                        <div class="slds-tile__detail">
+                        <dl class="slds-list_horizontal slds-wrap">
+                        <dt class="slds-item_label slds-text-color_weak slds-truncate" title="First Label">First Label:</dt>
+                        <dd class="slds-item_detail slds-truncate" title="Description for first label">Description for first label</dd>
+                        <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Second Label">Second Label:</dt>
+                        <dd class="slds-item_detail slds-truncate" title="Description for second label">Description for second label</dd>
+                        </dl>
+                        </div>
+                        </div>
+                        </article>
+                        </li>
+                        <li class="slds-p-horizontal_small slds-size_1-of-1 slds-medium-size_1-of-3">
+                        <article class="slds-tile slds-media slds-card__tile slds-hint-parent">
+                        <div class="slds-media__figure">
+                        <span class="slds-icon_container slds-icon-standard-contact" title="Description of icon when needed">
+                        <svg class="slds-icon slds-icon_small" aria-hidden="true">
+                        <use xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#contact"></use>
+                        </svg>
+                        <span class="slds-assistive-text">Contact</span>
+                        </span>
+                        </div>
+                        <div class="slds-media__body">
+                        <div class="slds-grid slds-grid_align-spread slds-has-flexi-truncate">
+                        <h3 class="slds-tile__title slds-truncate" title="Related Record Title 1">
+                        <a href="javascript:void(0);">Related Record Title 1</a>
+                        </h3>
+                        <div class="slds-shrink-none">
+                        <button class="slds-button slds-button_icon slds-button_icon-border-filled slds-button_icon-x-small" aria-haspopup="true" title="More options">
+                        <svg class="slds-button__icon slds-button__icon_hint" aria-hidden="true">
+                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+                        </svg>
+                        <span class="slds-assistive-text">More options</span>
+                        </button>
+                        </div>
+                        </div>
+                        <div class="slds-tile__detail">
+                        <dl class="slds-list_horizontal slds-wrap">
+                        <dt class="slds-item_label slds-text-color_weak slds-truncate" title="First Label">First Label:</dt>
+                        <dd class="slds-item_detail slds-truncate" title="Description for first label">Description for first label</dd>
+                        <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Second Label">Second Label:</dt>
+                        <dd class="slds-item_detail slds-truncate" title="Description for second label">Description for second label</dd>
+                        </dl>
+                        </div>
+                        </div>
+                        </article>
+                        </li>
+                        <li class="slds-p-horizontal_small slds-size_1-of-1 slds-medium-size_1-of-3">
+                        <article class="slds-tile slds-media slds-card__tile slds-hint-parent">
+                        <div class="slds-media__figure">
+                        <span class="slds-icon_container slds-icon-standard-contact" title="Description of icon when needed">
+                        <svg class="slds-icon slds-icon_small" aria-hidden="true">
+                        <use xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#contact"></use>
+                        </svg>
+                        <span class="slds-assistive-text">Contact</span>
+                        </span>
+                        </div>
+                        <div class="slds-media__body">
+                        <div class="slds-grid slds-grid_align-spread slds-has-flexi-truncate">
+                        <h3 class="slds-tile__title slds-truncate" title="Related Record Title 1">
+                        <a href="javascript:void(0);">Related Record Title 1</a>
+                        </h3>
+                        <div class="slds-shrink-none">
+                        <button class="slds-button slds-button_icon slds-button_icon-border-filled slds-button_icon-x-small" aria-haspopup="true" title="More options">
+                        <svg class="slds-button__icon slds-button__icon_hint" aria-hidden="true">
+                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+                        </svg>
+                        <span class="slds-assistive-text">More options</span>
+                        </button>
+                        </div>
+                        </div>
+                        <div class="slds-tile__detail">
+                        <dl class="slds-list_horizontal slds-wrap">
+                        <dt class="slds-item_label slds-text-color_weak slds-truncate" title="First Label">First Label:</dt>
+                        <dd class="slds-item_detail slds-truncate" title="Description for first label">Description for first label</dd>
+                        <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Second Label">Second Label:</dt>
+                        <dd class="slds-item_detail slds-truncate" title="Description for second label">Description for second label</dd>
+                        </dl>
+                        </div>
+                        </div>
+                        </article>
+                        </li>
+                        </ul>
+                        </div>
+                        <footer class="slds-card__footer">
+                            <a class="slds-card__footer-action" href="javascript:void(0);">View All
+                                <span class="slds-assistive-text">Contacts</span>
+                            </a>
+                        </footer>
+                    </article>
+                </div>
+            </div>
+
+        </div>
+    </div>
+  </template>

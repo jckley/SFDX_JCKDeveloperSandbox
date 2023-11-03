@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Total_Number_of_25_39_year_olds__c</fullName>
+    <description>Total de Ciudadanos de entre 25 y 39 años x Territorio</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Total de Ciudadanos de entre 25 y 39 años x Territorio</inlineHelpText>
+    <label>Número de CIudadanos entre 25 y 39 años</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

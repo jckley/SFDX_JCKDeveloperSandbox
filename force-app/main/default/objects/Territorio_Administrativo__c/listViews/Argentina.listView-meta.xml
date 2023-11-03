@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Argentina</fullName>
+    <columns>NAME</columns>
+    <columns>Level0Name__c</columns>
+    <columns>Level1Name__c</columns>
+    <columns>Level2Name__c</columns>
+    <columns>Level3Name__c</columns>
+    <columns>Level4Name__c</columns>
+    <columns>Nivel_Administrativo__c</columns>
+    <columns>OWNER.ALIAS</columns>
+    <columns>Total_Ciudadanos__c</columns>
+    <columns>Location_UUID__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Location_UUID__c</field>
+        <operation>startsWith</operation>
+        <value>ARG</value>
+    </filters>
+    <label>Argentina</label>
+</ListView>

@@ -1,0 +1,32 @@
+<apex:component >
+	<apex:attribute name="citizenwrapper" 	type="CitizenWrapper" 	required="true" 					description="Contact General Info" />  
+
+    <div class="row contact-data">
+        <div class="card card-left-border green">
+            <div class="row card-cont" style="margin-top: 10px;">
+                <div class="col-12 col-md-4 mb-3" style="display: {!IF($ObjectType.Contact.Fields.Education_Level__c.updateable,'','none')}">
+                    <c:ContactEditField rendered="{!$ObjectType.Contact.Fields.Education_Level__c.updateable}" label="{!$ObjectType.Contact.Fields.Education_Level__c.Label}" value="{!citizenwrapper.citizen.Education_Level__c}" classLabel="label uppercase"/>
+                </div>
+                <div class="col-12 col-md-4 mb-3" style="display: {!IF($ObjectType.Contact.Fields.Profession__c.updateable,'','none')}">
+                    <c:ContactEditField rendered="{!$ObjectType.Contact.Fields.Profession__c.updateable}" label="{!$ObjectType.Contact.Fields.Profession__c.Label}" value="{!citizenwrapper.citizen.Profession__c}" classLabel="label uppercase"/>
+                </div>
+                <div class="col-12 col-md-4 mb-3" style="display: {!IF($ObjectType.Contact.Fields.Ingreso__c.updateable,'','none')}">
+                    <c:ContactEditField inputType="select" label="{!$ObjectType.Contact.Fields.Ingreso__c.Label}" classlabel="label uppercase" options="{! citizenwrapper.attributes.incometype.items }" selectedOption="{!citizenwrapper.citizen.Ingreso__c }" />                    
+                </div>
+                <div class="col-12 col-md-4" style="display: {!IF($ObjectType.Contact.Fields.Movilidad__c.updateable,'','none')}">
+                    <c:ContactEditField inputType="multiselect" label="{!$ObjectType.Contact.Fields.Movilidad__c.Label}" classlabel="label uppercase" options="{! citizenwrapper.attributes.mobility.items }" values="{! citizenwrapper.attributes.mobility.itemsSelected }" />                    
+                </div>
+                <div class="col-12 col-md-4" style="display: {!IF($ObjectType.Contact.Fields.condicion_de_ingreso__c.updateable,'','none')}">
+                    <c:ContactEditField inputType="multiselect" label="{!$ObjectType.Contact.Fields.condicion_de_ingreso__c.Label}" classlabel="label uppercase" options="{! citizenwrapper.attributes.workcondition.items }" values="{! citizenwrapper.attributes.workcondition.itemsSelected }" />                    
+                </div> 
+                <div class="col-12 col-md-4" style="display: {!IF($ObjectType.Contact.Fields.Beneficios_Sociales__c.updateable,'','none')}">
+                    <c:ContactEditField inputType="multiselect" label="{!$ObjectType.Contact.Fields.Beneficios_Sociales__c.Label}" classlabel="label uppercase" options="{! citizenwrapper.attributes.socialBenefits.items }" values="{! citizenwrapper.attributes.socialBenefits.itemsSelected  }" />                    
+                </div>
+                   
+                <div class="col-12 col-md-4" style="display: {!IF($ObjectType.Contact.Fields.Beneficios_Sociales_CBA__c.updateable,'','none')}">
+                    <c:ContactEditField inputType="multiselect" label="{!$ObjectType.Contact.Fields.Beneficios_Sociales_CBA__c.Label}" classlabel="label uppercase" options="{! citizenwrapper.attributes.socialBenefitsCBA.items }" values="{! citizenwrapper.attributes.socialBenefitsCBA.itemsSelected }" />                    
+                </div>
+            </div>
+        </div>
+    </div>
+</apex:component>

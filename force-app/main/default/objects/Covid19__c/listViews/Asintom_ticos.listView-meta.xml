@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Asintom_ticos</fullName>
+    <columns>proactiva_id__c</columns>
+    <columns>Name_with_Link__c</columns>
+    <columns>Document_Number__c</columns>
+    <columns>Edad__c</columns>
+    <columns>proactiva_date__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Cuidarnos_Comunidad_Status__c</field>
+        <operation>equals</operation>
+        <value>Asintomático,Asintómatico</value>
+    </filters>
+    <filters>
+        <field>cuidarnos_customer__c</field>
+        <operation>equals</operation>
+        <value>Pilar</value>
+    </filters>
+    <label>Asintomáticos</label>
+    <sharedTo>
+        <group>Communities_Argentina</group>
+        <group>Cuidarnos_Pilar</group>
+    </sharedTo>
+</ListView>

@@ -1,0 +1,29 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes,force:appHostable,flexipage:availableForAllPageTypes,force:hasRecordId" access="global" controller="TerritoryDetailController">
+    <aura:attribute name="recordId" 		type="Id" />    
+    <aura:attribute name="territoryWrapper" 	type="TerritoryWrapper2" />
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler name="mainHeaderClickEvent" event="c:mainHeaderClick" action="{!c.navigateTohierarchyView}" />
+    
+    <div class="slds-grid slds-wrap" style="max-width: 1140px; margin: auto; padding: 0 15px;">
+        <div class="slds-col slds-size_1-of-1 slds-p-around_large">
+            <c:AdFi_PageHeader mainlabel="{!v.territoryWrapper.territoryName}" secundarylabel="{!v.territoryWrapper.territoryNameDetail }" secundarylabelunderlined="{!v.territoryWrapper.partentTerritoryName}" linkToRecordId="{!v.territoryWrapper.parentId}"/>
+        </div>
+        
+        <div class="card slds-size_1-of-1 slds-grid slds-wrap" style="margin-top: 25px;">
+            <div class="slds-size_1-of-1 slds-grid slds-wrap">
+                <c:AdFi_TerritoryContactSummary terrw="{!v.territoryWrapper}"/>
+            </div>
+            <div class="slds-size_1-of-1 slds-grid slds-wrap">
+                <c:AdFi_TerritorySocialSummary totalprofiles="{!v.territoryWrapper.totalSocialFormated}" 
+                                               totalfacebook="{!v.territoryWrapper.totalFacebookFormated}" 
+                                               totalinstagram="{!v.territoryWrapper.totalInstagramFormated}"
+                                               totaltwitter="{!v.territoryWrapper.totalTwitterFormated}"
+                                               totallinkedin="{!v.territoryWrapper.totalLinkedinFormated}"/>
+            </div>
+            <div class="slds-size_1-of-1 slds-grid slds-wrap">
+                <c:AdFi_TerritoryAgeChart terrw="{!v.territoryWrapper}" recordId="{!v.recordId}"/>
+            </div>
+        </div>
+    </div>    
+</aura:component>

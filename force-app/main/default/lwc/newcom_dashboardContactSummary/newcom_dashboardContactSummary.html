@@ -1,0 +1,35 @@
+<template>
+    <div class="container slds-grid slds-wrap">
+        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-4">
+            <div class="card espacio-r">
+                <div class="slds-m-top_x-large summary-value">
+                    {total_ciudadanos_formated}
+                </div>
+                <div class="slds-m-bottom_x-large summary-title">CIUDADANOS</div>
+            </div>
+        </div>
+
+        <div class="slds-col slds-size_1-of-1 slds-medium-size_3-of-4">
+            <div class="card espacio-l slds-grid slds-wrap">
+                <div class="slds-size_1-of-1 slds-medium-size_1-of-3">
+                    <div class="slds-m-top_x-large summary-value">
+                        {total_emails_formated}
+                    </div>
+                    <div class="slds-m-bottom_x-large summary-title">MAILS</div>
+                </div>
+                <div class="slds-size_1-of-1 slds-medium-size_1-of-3 separation-border">
+                    <div class="slds-m-top_x-large summary-value">
+                        {total_mobiles_formated}
+                    </div>
+                    <div class="slds-m-bottom_x-large summary-title">TELÉFONOS CELULARES</div>
+                </div>
+                <div class="slds-size_1-of-1 slds-medium-size_1-of-3 separation-border">
+                    <div class="slds-m-top_x-large summary-value">
+                        {total_landing_formated}
+                    </div>
+                    <div class="slds-m-bottom_x-large summary-title">TELÉFONOS FIJOS</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

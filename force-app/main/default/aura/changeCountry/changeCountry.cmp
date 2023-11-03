@@ -1,0 +1,31 @@
+<aura:component implements="force:lightningQuickAction" controller="ChangeCountryController">
+    <aura:attribute name="arrCountries" 	type="Object[]" 	/>
+    <aura:attribute name="hasCountries" 	type="Boolean" 	/>
+
+    <aura:handler name="init" action="{!c.initializeComponent}" value="{!this}" />
+
+    <fieldset class="slds-form-element">
+        <legend class="slds-form-element__legend slds-form-element__label">Seleccionar un pais</legend>
+        <div class="{! v.hasCountries ? 'slds-form-element__control':'slds-hide'}">
+            <aura:iteration items="{! v.arrCountries }" var="objCountry">
+                <div class="slds-visual-picker slds-visual-picker_small">
+                    <label for="{! objCountry.country }">
+                        <span class="slds-visual-picker__figure slds-visual-picker__icon slds-align_absolute-center">
+                            <span class="slds-is-not-selected">
+                                <span class="slds-icon_container">
+                                    <img src="{! $Resource.Banderas + '/' + objCountry.flag }" alternativeText="{! objCountry.country }" title="{! objCountry.country }" onclick="{! c.handleChangeCountry }" data-group="{! objCountry.public_group }" />
+                                </span>
+                            </span>
+                        </span>
+                        <span class="slds-visual-picker__body">
+                            <span class="slds-text-title">{! objCountry.country }</span>
+                        </span>
+                    </label>
+                </div>
+            </aura:iteration>
+        </div>
+        <div class="{! v.hasCountries ? 'slds-hide':'slds-form-element__control'}">
+            No hay paises disponibles para seleccionar
+        </div>
+    </fieldset>
+</aura:component>

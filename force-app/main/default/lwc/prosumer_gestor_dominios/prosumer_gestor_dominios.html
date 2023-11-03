@@ -1,0 +1,20 @@
+<template>
+    <div class="bodyWrapper">
+        <div class="headerSection">
+            <lightning-input class="inputCmp" type="text" label="Nuevo dominio" onchange={handleNuevoDominioValueChange}></lightning-input>
+            <lightning-button 
+                label="Solicitar Nuevo dominio"
+                title="Solicitar Nuevo dominio"
+                onclick={handleNuevoDominio}>
+            </lightning-button>
+        </div>
+        <div class="listSection">
+            <span>Lista de dominios:</span>
+            <template for:each={listDominios} for:item="thisDominio">
+                <div key={thisDominio.Id}>
+                  <span>{thisDominio.Name} / {thisDominio.estadoDominio}</span>
+                </div>
+            </template>
+        </div>
+    </div>
+</template>

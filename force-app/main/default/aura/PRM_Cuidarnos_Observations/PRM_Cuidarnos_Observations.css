@@ -1,0 +1,180 @@
+.THIS {
+    font-family: 'Montserrat';
+    padding : 0px;
+    padding-top: 30px;
+}
+.THIS textarea {
+    min-height: 150px;
+}
+.THIS .tag {
+    /*
+    min-height: 55px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8f9fc;
+    margin-top: 15px;
+    margin-right: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
+    white-space: nowrap;
+    border-radius: .25rem !important;    
+    border: 1px solid #dee2e6 !important;
+*/
+    min-height: 25px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f1f5;
+    margin-top: 10px;
+    margin-right: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    white-space: nowrap;
+    border-radius: .25rem!important;
+    text-transform: uppercase;
+}
+
+.THIS .tag .value-gray {
+    font-family : 'Montserrat Regular';
+    color: #3e4145;
+    font-weight: 300;
+    margin-left: 5px;
+    margin-right: 5px;
+    font-size: 10pt;
+    white-space: nowrap;
+    font-weight: bold;
+
+}
+
+.THIS.Cuidarnos .label {
+    color: #999999;
+    font-family : 'Montserrat';
+    font-weight: 300;
+}
+.THIS .uppercase {
+    text-transform: uppercase;
+}
+
+.THIS {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+}
+
+.THIS .title {
+    font-size: 29pt;
+    color: #3e4954;
+}
+
+.THIS .main-label:hover{
+    cursor: pointer;
+    text-decoration : underline;
+}
+
+.THIS .subtitle,
+.THIS .subtitle a,
+.THIS .subtitle a:visited,
+.THIS .subtitle a:link,
+.THIS .subtitle a:hover {
+    font-size: 10pt;
+    line-height: 1.5;
+    color: #3e4954;
+    cursor: pointer;
+}
+.THIS .subtitle {
+    font-weight: 400;    
+}
+.THIS .subtitle A {
+    font-weight: 	bold; 
+    text-decoration : underline;
+}
+.THIS .subtitle A:hover { 
+    text-decoration : underline;
+    color : #0069AB;
+}
+
+.THIS .floatright {
+    float: right;
+}
+.THIS .citizenseparator {
+    border-bottom: solid 1px #d8dbdd;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.THIS .saveobservation img { 
+    width: 15px; 
+    height: 15px;
+}
+
+.THIS .saveobservationcontainer {
+    height: 100%;
+   font-weight:bold;
+}
+
+.THIS .saveobservation {
+    width: 100px;
+    height: 40px;
+    border-radius: 6px;
+    display: inline-block;
+    font-family: 'Montserrat';
+    font-weight: 400;
+    font-size: 11pt;
+    cursor: pointer;
+    color: #757d86;
+    border: solid 1px #757d86;
+}
+
+.THIS .saveobservation:hover {
+    cursor: pointer;
+    color: #757d86;
+    border: solid 1px #757d86;
+}
+
+
+.THIS .saveobservation .white {
+    display: inline-block;
+}
+
+.THIS .saveobservation.gray{ 
+    display: inline-block;
+}
+
+.THIS .guid {
+    font-size: 10pt;
+    line-height: 1.5;
+    color: #3e4954;
+    font-weight: bold;
+}
+
+.THIS .saveobservation.unmarked {
+    background-color: #dedee0;
+}
+
+.THIS .saveobservation.unmarked:hover {
+    color: white;
+    background-color: #0069AB;
+}
+
+.THIS .confirmtitle {
+    font-size: 24pt;
+    color: #3e4954;
+    font-weight: 800;
+}
+
+.THIS .confirmwarning {
+    font-size: 16pt;
+    color: #3e4954;
+    border: solid 1px #999999;
+    padding: 4px 4px  4px 4px;
+    border-radius: 5px;
+}
+
+.THIS .cancelbutton {
+    background-color: #dedee0;
+}
+
+.THIS .confirmbutton {
+    color: white;
+    background-color: #0069AB;
+}

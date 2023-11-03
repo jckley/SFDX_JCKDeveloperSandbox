@@ -1,0 +1,278 @@
+.THIS #tracing_header {
+    margin-bottom : 15px;
+    font-family: 'Montserrat';
+    max-width: 1140px; 
+    margin: auto;
+}
+
+.THIS.l-content {
+    width: 90%;
+    /*max-width: 1140px;*/
+    margin: auto;
+    position: relative;
+}
+
+.THIS iframe {
+    overflow:hidden;
+}
+
+.THIS.header {
+    background-color: #F7F6F2;
+    height: 60px;
+    padding: 20px 30px 30px 30px;
+    border-bottom: solid 1px #ebebeb;
+}
+.THIS.header .title {
+    font-family: 'Heebo';
+    color: #646466;
+    font-size: 17px;
+}
+
+
+.THIS #tracing_header .related,
+.THIS #tracing_header .related a,
+.THIS #tracing_header .related a:visited,
+.THIS #tracing_header .related a:link,
+.THIS #tracing_header .related a:hover {
+    font-size: 10pt;
+    line-height: 1.5;
+    color: #3e4954;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: underline;
+
+}
+.THIS #tracing_header .related:hover {
+    color: #1cdcbb;
+    text-decoration: underline;
+}
+
+.THIS #tracing_header .pad-left-10 {
+    padding-left: 10px;
+}
+
+.THIS #tracing_header .pad-right-10 {
+    padding-right: 10px;    
+}
+
+.THIS #tracing_header .pad-top-10 {
+    padding-top: 10px;
+}
+
+.THIS #tracing_header .pad-bottom-10 {
+    padding-bottom: 10px;
+}
+
+.THIS #tracing_header .pad-left-20 {
+    padding-left: 20px;
+}
+
+.THIS #tracing_header .pad-right-20 {
+    padding-right: 20px;    
+}
+
+.THIS #tracing_header .pad-top-20 {
+    padding-top: 20px;
+}
+
+.THIS #tracing_header .pad-bottom-20 {
+    padding-bottom: 20px;
+}
+
+.THIS #tracing_header .pad-left-30 {
+    padding-left: 30px;
+}
+
+.THIS #tracing_header .pad-right-30 {
+    padding-right: 30px;    
+}
+
+.THIS #tracing_header .pad-top-30 {
+    padding-top: 30px;
+}
+
+.THIS #tracing_header .pad-bottom-30 {
+    padding-bottom: 30px;
+}
+
+.THIS #tracing_header .pad-left-70 {
+    padding-left: 70px;
+}
+
+.THIS #tracing_header .pad-right-70 {
+    padding-right: 70px;    
+}
+
+.THIS #tracing_header .pad-top-70 {
+    padding-top: 70px;
+}
+
+.THIS #tracing_header .pad-bottom-70 {
+    padding-bottom: 70px;
+}
+
+.THIS .card {
+    background-color: #ffffff;
+    will-change: transform;
+    overflow:  hidden;
+    box-shadow: 2px 2px 3px 3px #EBEBEB;
+    min-height: 100px;
+    vertical-align: middle;
+    border-radius: 6px;
+    border: solid 1px #FFFFFF;
+}
+
+/* Special classes for small devices */
+@media only screen and (max-width: 768px) {
+    .THIS #tracing_header {
+        padding: 0 15px
+    }
+    .THIS.l-content {top: 30px !important;}
+    .THIS.x-padding-left {
+        padding-left: 0rem;
+    }
+}
+
+
+
+/* Special classes for big devices */
+@media only screen and (min-width: 768px) {
+    .THIS #tracing_header {}
+    .THIS.l-content {top: -95px !important;}
+    .THIS.x-padding-left {
+        padding-left: 2.5rem;
+    }
+    .THIS #tracing_header .pad-desktop-left-10 {
+        padding-left: 10px;
+    }
+    
+    .THIS #tracing_header .pad-desktop-right-10 {
+        padding-right: 10px;    
+    }
+    
+    .THIS #tracing_header .pad-desktop-top-10 {
+        padding-top: 10px;
+    }
+    
+    .THIS #tracing_header .pad-desktop-bottom-10 {
+        padding-bottom: 10px;
+    }
+    
+    .THIS #tracing_header .pad-desktop-left-20 {
+        padding-left: 20px;
+    }
+    
+    .THIS #tracing_header .pad-desktop-right-20 {
+        padding-right: 20px;    
+    }
+    
+    .THIS #tracing_header .pad-desktop-top-20 {
+        padding-top: 20px;
+    }
+    
+    .THIS #tracing_header .pad-desktop-bottom-20 {
+        padding-bottom: 20px;
+    }
+    
+    .THIS #tracing_header .pad-desktop-left-30 {
+        padding-left: 30px;
+    }
+    
+    .THIS #tracing_header .pad-desktop-right-30 {
+        padding-right: 30px;    
+    }
+    
+    .THIS #tracing_header .pad-desktop-top-30 {
+        padding-top: 30px;
+    }
+    
+    .THIS #tracing_header .pad-desktop-bottom-30 {
+        padding-bottom: 30px;
+    }
+    
+    .THIS #tracing_header .pad-desktop-left-70 {
+        padding-left: 70px;
+    }
+    
+    .THIS #tracing_header .pad-desktop-right-70 {
+        padding-right: 70px;    
+    }
+    
+    .THIS #tracing_header .pad-desktop-top-70 {
+        padding-top: 70px;
+    }
+    
+    .THIS #tracing_header .pad-desktop-bottom-70 {
+        padding-bottom: 70px;
+    }
+}
+
+
+
+
+
+.THIS {
+    margin-top : 20px;
+    padding : 0px;
+}
+
+.THIS .header {
+    background-color: #F7F6F2;
+    height: 60px;
+    padding: 20px 30px 30px 30px;
+    border-bottom: solid 1px #ebebeb;
+}
+
+.THIS .header .title {
+    font-family: 'Heebo';
+    color: #646466;
+    font-size: 17px;
+}
+
+.THIS .separator {
+    border : solid 1px #CCCCCC;
+}
+
+.THIS .icon {
+    max-width: 20px;
+    max-height: 20px;
+    vertical-align: middle;
+    float: right;
+    border-style: none;
+    /* margin-bottom: 7px; */
+    background-color: #EEECE9;
+    z-index: 100;
+}
+
+/* .THIS .icon-container {
+    max-width: 30px;
+    max-height: 30px;
+    vertical-align: middle;
+    float: right;
+    border-style: none;
+    margin-bottom: 7px;
+    background-color: #EEECE9;
+    z-index: 99;
+} */
+
+.THIS .label {
+    font-weight: bold;
+    font-size : 10pt;
+    color: #999999 !important;
+}
+
+.THIS .value {
+    font-family: 'Heebo';
+    font-weight: 300;
+    font-size : 12pt;
+    color: #999999 !important;
+}
+
+.THIS .value.blue {
+    color: #229fda !important;
+}
+
+.THIS .subattribute-border {
+    border-bottom: solid 1px #ededed;
+    margin: 0 25px 20px 0;
+}

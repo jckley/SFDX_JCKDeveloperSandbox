@@ -1,0 +1,190 @@
+<apex:component controller="Pulso_Contact_Modal_Controller">
+    <section id="form">
+        <div class="wpForm">
+            <h2 class="anima hideme">
+               {! $Label.Pulso_Contact_Title }
+            </h2>
+            <p class="anima hideme">
+                {! $Label.Pulso_Contact_Description }
+            </p> 
+            <form class="formulario anima hideme" id="formRegister" method="post">
+                <div class="input">
+                    <label for="txtFormFirstName">{! $Label.Pulso_Contact_FirstName }:</label>
+                    <input type="text" id="txtFormFirstName" name="txtFormFirstName" required="required" />
+                </div>
+                <div class="input">
+                    <label for="txtFormLastName">{! $Label.Pulso_Contact_LastName }:</label>
+                    <input type="text" id="txtFormLastName" name="txtFormLastName" required="required" />
+                </div>
+                <div class="input">
+                    <label for="txtFormEmail">{! $Label.Pulso_Contact_Email }:</label>
+                    <input type="email" id="txtFormEmail" name="txtFormEmail" required="required" />
+                </div>
+                <div class="input">
+                    <label for="txtFormMobile">{! $Label.Pulso_Contact_Mobile }:</label>
+                    <input type="number" id="txtFormMobile" name="txtFormMobile" required="required" />
+                </div>
+                <div class="input select prov">	
+                    <label for="cboState">{! $Label.Pulso_Contact_State}:</label>
+                    <select id="cboState" name="cboState" required="required" class="sel_prov" >
+                        <option value=""></option>
+                    </select>
+                </div>
+                <div class="input select loc">	
+                    <label for="cboCounty">{! $Label.Pulso_Contact_County}:</label>
+                    <select id="cboCounty" name="" required="required" class="sel_city">
+                    </select>
+                </div>
+                <div class="input select city">				
+                    <label for="txtCity">{! $Label.Pulso_Form_City }:</label>
+                    <input type="text" id="txtCity" name="txtCity" required="required" />
+                </div>
+                
+                <button class="btn submitlandingform">{! $Label.Pulso_Form_Register }</button>
+                
+                <div class="landingmessagecontainer">
+                    <span></span>
+                </div>
+            </form>
+        </div>
+    </section>
+    
+    <script type="text/javascript">
+        var boolSending = false;
+        var MESSAGE_TYPE_SUCCESS = 'SUCCESS';
+        var MESSAGE_TYPE_ERROR = 'ERROR';
+    
+        $(document).ready(function() {
+            retrieveStates();
+        });
+    
+        $('#cboState').on('change',function(objEvent) {            
+            var cboCounty = null;
+            var intLevel = null;
+            var strParentId = null;
+            
+            intLevel = 2;
+            strParentId = $('#cboState option:selected').val();
+            cboCounty = $('#cboCounty');
+            
+            retrieveTerritory(intLevel, strParentId, cboCounty );                       
+        });
+    
+    
+        $('.submitlandingform').on('click', function(objEvent) {
+            var boolIsValidForm = true;
+            var objForm = null;
+            var objRequest = null;
+            
+            objEvent.preventDefault();
+            
+            if(!boolSending)  {
+                objForm = $('.formulario');
+                boolSending = true;
+                boolIsValidForm = validateLandingForm(objForm);
+                
+                if(boolIsValidForm === true) {  
+                    objRequest = createLandingRequest();
+                                               
+                    Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.Pulso_Contact_Modal_Controller.saveContact}',JSON.stringify(objRequest),
+                        function(objResult, objEvent){
+                            if (objEvent.status) {
+                                showLandingMessage(objForm, '{! $Label.Pulso_Contact_Success }', MESSAGE_TYPE_SUCCESS);               
+                                resetLadingForm(objForm);
+                            } else {
+                                showLandingMessage(objForm, '{! $Label.Pulso_Contact_Error }', MESSAGE_TYPE_ERROR) 
+                            }
+                            boolSending = false;
+    
+                        } , {
+                            buffer: true, 
+                            escape: true, 
+                            timeout: 120000
+                        }
+                    );
+                             
+                } else {
+                    boolSending = false;
+    
+                    showLandingMessage(objForm, '{! $Label.Pulso_Contact_Error }', MESSAGE_TYPE_ERROR) 
+                }      
+            }
+        });
+    
+        function showLandingMessage(objForm, strMessage, objMessageType ) {         
+            if(strMessage !== undefined && strMessage !== null && strMessage.length > 0) { 
+                objForm.find('.landingmessagecontainer span').html(strMessage);
+                
+                if(objMessageType === 'SUCCESS') {
+                    objForm.find('.landingmessagecontainer').fadeIn(300).delay(3000).fadeOut(300);            
+                } else {                        
+                    objForm.find('.landingmessagecontainer').fadeIn(300);            
+                }
+            }
+        }
+
+        function validateLandingForm(objForm) {
+            var boolIsValidForm = true;
+            
+            objForm.find('input:not([type="hidden"]), textarea').each(function(){
+                if($(this).val().trim() == '') {
+                    $(this).focus();
+                    $(this).addClass('error');
+                    
+                    boolIsValidForm = false;
+                    
+                    return boolIsValidForm;
+                }
+            });
+            
+            return boolIsValidForm;
+        }
+    
+        function resetLandingForm(objForm) {     
+            objForm.find('input:not([type="hidden"]), textarea').each(function(){
+                $(this).val('');
+            });
+        }
+    
+        function createLandingRequest() {
+            var objRequest = null;
+            
+            objRequest = {};
+            objRequest.FirstName = $('#txtFormFirstName').val();
+            objRequest.LastName = $('#txtFormLastName').val();
+            objRequest.Email = $('#txtFormEmail').val();
+            objRequest.Mobile = $('#txtFormMobile').val();
+            objRequest.TerritoryId = $( "#cboCounty option:selected" ).val();
+            objRequest.City = $('#txtCity').val();
+            
+            return objRequest;
+        }
+    
+        function retrieveStates() {
+            var cboState = null;
+            var intLevel = null;
+            var strParentId = null;
+            
+            intLevel = 1;
+            cboState = $('#cboState');
+            retrieveTerritory(intLevel, strParentId, cboState );
+        }    
+    
+    	function retrieveTerritory(intLevel, strParentId, cboCombo) {
+            cboCombo.find('option').remove().end();
+            
+            Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.Pulso_Contact_Modal_Controller.retrieveTerritories}',intLevel,strParentId,
+				function(arrResult, objEvent){
+                    cboCombo.append('<option />');
+                    $.each(arrResult, function(intIndex,objTerritory) {
+                        cboCombo.append('<option value="' + objTerritory.Id + '">' + objTerritory.Name + '</option>');
+                    });
+                } , {
+                    buffer: true, 
+                    escape: true, 
+                    timeout: 120000
+                }
+			); 
+        }
+    </script>
+</apex:component>

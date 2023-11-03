@@ -1,0 +1,35 @@
+<apex:page standardStylesheets="false" showHeader="false" standardController="Contact" extensions="ContactDetailController" docType="html-5.0">
+    <!-- SOLO SE MUESTRA ContactDetailLeaderShip 
+		Los demas quedan como prueba de como visualizar una pagina u 
+		otra dependiendo el pais del contact o el rol del que lo visualiza
+	-->
+    <apex:actionRegion rendered="{! !permissions.ContactViewStandardPage && citizen.citizen.RecordType.DeveloperName == 'Argentino' }">
+        <apex:form >
+            <c:ContactDetailLeaderShip rendered="true"  citizenwrapper="{! citizen }" />
+        </apex:form>
+    </apex:actionRegion>
+    
+    <apex:actionRegion rendered="{! !permissions.ContactViewStandardPage && citizen.citizen.RecordType.DeveloperName == 'Ecuatoriano' }">
+        <apex:form >
+           <c:ContactDetailEcuador rendered="true" citizenwrapper="{! citizen }" />
+        </apex:form>
+    </apex:actionRegion>
+
+    
+    <apex:actionRegion rendered="{! permissions.ContactViewStandardPage }">
+        <!--
+            CONTACTO MEXICANO
+            <c:ContactDetailCommon rendered="{! false && ($UserRole.DeveloperName != 'Leadership' )}" />
+            <c:ContactDetailLeaderShip rendered="{! ($UserRole.DeveloperName == 'Leadership' )}" contact="{! contact}" dateString="{! dateString}" gender="{! gender}" dateFormated="{! dateFormated}" />
+            <c:ContactDetailCommon rendered="{! ($UserRole.DeveloperName != 'Leadership' )}" />
+        -->
+
+        <script>
+        redirectTo('/{! contact.id }?nooverride=1');
+        function redirectTo(strUrl) {
+            //checkear si esta en classic o lightning
+            location.href = strUrl;
+        }
+        </script>
+    </apex:actionRegion>        
+</apex:page>

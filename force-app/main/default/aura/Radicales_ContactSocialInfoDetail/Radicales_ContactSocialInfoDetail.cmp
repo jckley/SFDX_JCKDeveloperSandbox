@@ -1,0 +1,33 @@
+<aura:component >
+    <aura:attribute name="icon" 		type="String"  	required="true" />
+    <aura:attribute name="name" 		type="String"  	required="true" />
+    <aura:attribute name="sociallink" 	type="String" 	required="true" />
+    <aura:attribute name="socialuser" 	type="String" 	required="true" />
+    <aura:attribute name="showDetails" 	type="Boolean" 	required="true" />
+    
+	<div class="slds-grid slds-wrap" style="margin: auto 0;">
+        
+        <div class="slds-size_1-of-2 slds-large-size_2-of-8" style="margin-top: 10px; max-width: 40px;">
+        </div>
+        
+        <div class="slds-size_1-of-2 slds-large-size_6-of-8">
+            <div class="socialname">
+                <img src="{! $Resource.Radicales + '/img/' + v.icon }" class="icon_min" style="max-width: 25px;"/>
+                {!v.name}
+            </div>
+            <div class="socialvalue">
+                <div class="{! (v.showDetails)?'':'slds-hide'}">
+                    <a target="_blank" href="{!v.sociallink}" class="{!and(v.sociallink!=null,v.socialuser!=null)?'slds-truncate':'slds-hide'}">{!v.socialuser}</a>
+                    <a target="_blank" href="{!v.sociallink}" class="{!and(v.sociallink!=null,v.socialuser==null)?'slds-truncate':'slds-hide'}">{!v.sociallink}</a>
+                    <div class="{!and(v.sociallink==null,v.socialuser!=null)?'slds-truncate':'slds-hide'}">{!v.socialuser}</div>
+                    <div class="{! and(v.sociallink == null, v.socialuser == null)?'slds-truncate':'slds-hide'}">{! $Label.c.No}</div>
+                </div>
+                <div class="{! (v.showDetails == false)?'':'slds-hide'}">
+                    <div class="{! or(v.socialuser != null, v.sociallink != null)?'slds-truncate':'slds-hide'}">{! $Label.c.Yes}</div>
+                    <div class="{! and(v.sociallink == null, v.socialuser == null)?'slds-truncate':'slds-hide'}">{! $Label.c.No}</div>
+                </div>
+            </div>
+        </div>
+
+    </div>    
+</aura:component>

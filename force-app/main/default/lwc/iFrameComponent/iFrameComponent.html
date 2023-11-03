@@ -1,0 +1,12 @@
+<template>
+    <template if:true={iframeReady}>
+        <div class="iframe-wrapper">
+            <iframe id="inlineFrameExample"
+                    width={width}
+                    height={height}
+                    title={title}
+                    src={srcToRender}>
+            </iframe>
+        </div>
+    </template>
+</template>

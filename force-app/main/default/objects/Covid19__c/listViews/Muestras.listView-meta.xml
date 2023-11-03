@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Muestras</fullName>
+    <columns>Name_with_Link__c</columns>
+    <columns>Document_Number__c</columns>
+    <columns>Edad__c</columns>
+    <columns>Riesgo__c</columns>
+    <columns>label_place__c</columns>
+    <columns>label_date__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Cuidarnos_Comunidad_Status__c</field>
+        <operation>equals</operation>
+        <value>Muestra</value>
+    </filters>
+    <filters>
+        <field>cuidarnos_customer__c</field>
+        <operation>equals</operation>
+        <value>Pilar</value>
+    </filters>
+    <label>Muestras</label>
+    <sharedTo>
+        <group>Communities_Argentina</group>
+        <group>Cuidarnos_Pilar</group>
+    </sharedTo>
+</ListView>

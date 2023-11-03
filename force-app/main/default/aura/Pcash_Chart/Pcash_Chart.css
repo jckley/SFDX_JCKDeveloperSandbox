@@ -1,0 +1,45 @@
+.THIS .donnut-legend {
+    text-align: center;
+}
+
+.THIS .donnut-legend-title {
+    font-family: 'Heebo';
+    font-size: 20pt;
+    margin-top: 20px;
+}
+
+.THIS .donnut-legend-value {
+    font-family: 'Roboto Condensed';
+    font-size: 9pt;
+    font-weight: bold;
+    color: #808285;
+}
+
+.THIS .donnut-legend-title.positioned {
+    position: relative;
+    margin-top: 0px;
+    color: #3e4145;
+}
+
+/* Special classes for small devices */
+@media only screen and (max-width: 768px) {
+    .THIS {padding: 15px 15px}
+    .THIS .donnuts > div {height: 150px;}
+    .THIS .donnuts > div:first-child {padding-right: 7px;}
+    .THIS .donnuts > div:nth-child(2) {padding-left: 7px;}
+    .THIS .donnut-legend-title.positioned {top: -165px;}
+    .THIS > div:nth-child(2) {margin-top: 90px}
+}
+
+/* Special classes for big devices */
+@media only screen and (min-width: 768px) {
+    .THIS {
+        background-color : #FFFFFF;
+        padding-top: 50px;
+        padding-bottom: 50px;
+        padding-right: 30px;
+    }
+    .THIS .l-ml-min15 {margin-left: -15px}
+    .THIS .donnuts > div {height: 195px;}
+    .THIS .donnut-legend-title.positioned {top: -190px;}
+}

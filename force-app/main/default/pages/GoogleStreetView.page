@@ -1,0 +1,147 @@
+<apex:page showHeader="false">
+    
+    <style>
+        /* Special classes for small devices */
+        @media only screen and (max-width: 560px) {
+        	.street-view {height: 400px !important; width: 100%}
+        	.street-view.desktop {height: 400px !important; width: 100%}
+        }
+        
+        /* Special classes for big devices */
+        @media only screen and (min-width: 560px) {
+           .street-view {height: 400px !important; width: 100%}
+        }
+    	
+    </style>
+    
+    <html>
+        <head>
+            <link rel="stylesheet" href="//developers.google.com/maps/documentation/javascript/demos/demos.css"/>
+		</head>
+        <body>
+            <div id="divStreetView" class="street-view"></div>
+            <script>
+            var intZoom = 17;
+            var boolLoaded = false;
+            var objCoordinate = null;            
+            var divMap = null;
+            var lexHost = '{!$CurrentPage.parameters.lexHost}';
+            var zoomControl = '{!$CurrentPage.parameters.zoomControl}';
+            var requestPage = '{!$CurrentPage.parameters.requestPage}';
+            if(requestPage == 'DESKTOP') {
+                document.getElementById('divStreetView').classList.add('desktop');
+            }
+            var vfHost = "{!LEFT($CurrentPage.URL,FIND('/',$CurrentPage.URL,9))}";
+            
+            sendToLC( { 'state':'LOADED', 'vfHost': vfHost} );
+            
+            function initMap() {                               
+                boolLoaded = true;
+                showStreetViewPOV();
+            }
+            
+            function sendToLC(objMessage) {
+                if(typeof(lexHost) !== 'undefined'){
+	                parent.postMessage(objMessage, lexHost);
+                }
+            }
+            
+            window.addEventListener("message", function(objEvent) {
+                if (lexHost.indexOf(objEvent.origin) >= 0 ) {
+                    console.log('Data recieved : ', objEvent.data);
+                    objCoordinate = JSON.parse(objEvent.data);
+                                        
+                    showStreetViewPOV();
+                } else {
+                	console.log('Blocked intrusion attempt');
+                }
+                // Handle message
+                
+                
+            }, false);
+            
+            function showStreetViewPOV() {
+                var objGeocoder = null;
+                
+                if(objCoordinate !== undefined && objCoordinate !== null && boolLoaded) {  
+                    objGeocoder = new google.maps.Geocoder();
+                    objGeocoder.geocode({
+                        'address': objCoordinate.Address.join(',').replace(',,',','),
+                        'componentRestrictions' : {
+                            'country' : 'Argentina'
+                        }
+                    }, function(arrResults, objStatus) {
+                        //PODRIA VALIDAR TAMBIEN QUE LAT Y LNG NO SEAN NULOS.
+                        if (objStatus == google.maps.GeocoderStatus.OK && arrResults.length > 0 && arrResults[0].geometry.location_type != 'APPROXIMATE') {
+                            objCoordinate.Latitude = arrResults[0].geometry.location.lat();
+                            objCoordinate.Longitude = arrResults[0].geometry.location.lng();
+                            objCoordinate.Google = {};
+                            objCoordinate.Google.lat = objCoordinate.Latitude;
+                            objCoordinate.Google.lng = objCoordinate.Longitude;
+                            objCoordinate.Google.center = {};
+                            objCoordinate.Google.center.lat = objCoordinate.Latitude + 0.0017;
+                            objCoordinate.Google.center.lng = objCoordinate.Longitude;
+                            
+                            if(objCoordinate.Latitude != null && objCoordinate.Longitude != null ) {
+                                showStreetView(objCoordinate);    
+                            } else {
+                                hideStreetView();  
+                            }
+                        } else {
+                            hideStreetView();             
+                        }
+                    });  
+                }
+            }
+            
+            function showStreetView (objCoordinate) {
+                var objStreetViewService = null;
+                var objStreetViewSettings = null;
+                
+                objStreetViewSettings = retrieveStreetViewSetting();
+                objStreetView = new google.maps.StreetViewPanorama(document.getElementById('divStreetView'), objStreetViewSettings);
+                
+                objStreetViewService = new google.maps.StreetViewService();
+                objStreetViewService.getPanorama(
+                    {
+                        location: objCoordinate.Google, 
+                        radius: 50,
+                        preference: google.maps.StreetViewPreference.NEAREST,
+                        source: google.maps.StreetViewSource.OUTDOOR
+                    }, function(objData, strStatus) {
+                    if  (strStatus === 'OK') {  
+                        objStreetView.setPano(objData.location.pano);
+                        
+                        informStreetViewLoaded();
+                    } else {
+                        hideStreeView(objComponent);
+                    }
+                });
+            }
+            
+            function informStreetViewLoaded() {
+                sendToLC( { 'state':'OK', 'vfHost': vfHost} );
+            }
+            
+            function hideStreetView() {
+                sendToLC( { 'state':'FAILED', 'vfHost': vfHost} );
+            }
+            
+            function retrieveStreetViewSetting() {
+                return {
+                    pov : { heading: 0, pitch: 0},
+                    zoom : 1,
+                    linksControl : false,
+                    panControl : false,
+                    fullScreenControl : false,
+                    enableCloseButton : false,
+                    motionTrackingControl : false,
+                    scrollwheel : false,
+                    zoomControl : zoomControl == 'true'
+                };
+            }
+            </script>
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBEqode5kv6zDevz-uin7EreqXtxGl3g4E&callback=initMap" async="async" defer="defer"></script>     
+        </body>
+    </html>
+</apex:page>

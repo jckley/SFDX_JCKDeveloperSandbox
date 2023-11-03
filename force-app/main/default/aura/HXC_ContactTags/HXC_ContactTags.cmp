@@ -1,0 +1,17 @@
+<aura:component >	
+    <aura:attribute name="contw" 	type="ContactWrapper" required="true" />
+    <aura:attribute name="rendered" 	type="Boolean" default="true" />
+    
+    <div class="slds-size-1-of-1 contact-data" style="{!'margin-top: 25px; ' + ( and(v.rendered, or(or(v.contw.contact.match_js__c,v.contw.tagsCommunity.length gt 0), v.contw.contact.prj_filter_HacemosPorCordoba__c))? '':'display: none')}">
+        <div class="card" style="padding: 15px 30px 30px 30px">
+            <div class="slds-grid slds-wrap card-cont">
+                <aura:iteration items="{!v.contw.tagsForCommunity }" var="strTag">
+                    <c:HXC_TagComponent label="" value="{! '#' + strTag }" valueCSS="value-gray" rendered="true"/>                
+                </aura:iteration>   
+                
+                <c:HXC_TagComponent label="" value="#HacemosPorCórdoba" valueCSS="value-gray" rendered="{! v.contw.contact.prj_filter_HacemosPorCordoba__c }"/>                
+            </div>
+        </div>
+    </div>
+    
+</aura:component>

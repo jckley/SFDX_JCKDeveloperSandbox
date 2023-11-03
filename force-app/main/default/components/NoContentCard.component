@@ -1,0 +1,33 @@
+<apex:component >
+    
+    <apex:attribute name="levelnumber" type="Integer" required="true" description="Level Number" />
+    
+    <style>
+    	.big-icon{max-width: 75px; max-height: 75px; margin-left: 10px}
+        
+        .empty-card-content{text-align: center; height: 100%; align-items: center; margin-bottom: 20px;}
+        .empty-card-text{color: gray; font-size: 11pt; margin: 10px 60px 0 60px}
+    </style>
+    
+    <div id="{!levelnumber}no-content-card" class="card tree-card" style="margin-right: 60px;">
+        <div class="card-cont subattribute-header">
+            <div class="subattribute-title">
+                <span>{!$Label.AdministrativeLevel} {!levelnumber}</span> 
+            </div>
+        </div>
+        <div class="row empty-card-content">
+            <div>
+                <div>
+                    <img class="big-icon" src="{!URLFOR($Resource.IconsPack1, 'arrowps.svg')}" style="margin: 0 75px 10px 0"/>
+                </div>
+                <div>
+                    <img class="big-icon" src="{!URLFOR($Resource.IconsPack1, 'niveladminsitrativops.svg')}"/>
+                </div>
+                <div class="empty-card-text">
+                    Seleccione un nivel administrativo {!(levelnumber - 1)} para ver su composición
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</apex:component>

@@ -1,0 +1,25 @@
+<apex:component >
+    <div id="badges">
+        
+    </div>
+    
+    <script>    
+    $(document).on('fanpage_filtered', function(objEvent, arrItems) {  
+        var strHTML = null;
+        
+        if(arrItems !== undefined && arrItems !== null && arrItems.length > 0) {
+            strHTML = '';
+            $.each(arrItems, function (intIndex, objItem) {
+                strHTML += '&nbsp;<span class="badge badge-info">' + objItem.name + '</span>'; 
+            });
+            
+            $('#badges').html(strHTML);
+
+            strHtml += '<button class="border-0 rounded p-2 ml-auto" style="background:#40B599;" type="button" data-toggle="modal" data-target="#filterModalFanPage">';
+            strHtml += '    <span class="text-white px-2 font-weight-bolder"><i class="fas fa-sliders-h"></i>   QUITAR FILTRO</span>';
+            strHtml += '</button>';
+        }
+        
+    });    	
+    </script>
+</apex:component>

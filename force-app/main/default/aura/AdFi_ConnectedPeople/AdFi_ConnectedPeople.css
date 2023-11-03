@@ -1,0 +1,68 @@
+.THIS {
+    background-color : #FFFFFF;
+    color : #000000;	
+}
+
+.THIS .title-container{
+    border-bottom: solid 1px #ededed;
+    padding-left: 30px;
+    margin-top: 20px;
+    padding-bottom: 10px;
+}
+
+.THIS .title {
+    font-family : 'Heebo';
+    font-size: 15pt;
+    font-weight: 300;
+    color: #3e4145;
+}
+
+.THIS .showMore {
+    font-family : 'Heebo';
+    font-size: 14pt;
+    font-weight: 300;
+    color: #83c9ea;
+    text-decoration: underline;
+}
+
+.THIS .item-container {border-bottom: solid 1px #ededed;height: 70px; padding-left: 30px; padding-right: 30px;}
+.THIS .item-container:hover {background-color: #f8f9fc; cursor: pointer;}
+.THIS .item-container:hover .name {text-decoration: underline;}
+
+.THIS .name {
+    color: #424d5d;
+    font-family: 'Heebo';
+    font-weight: bold;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.THIS .name:hover {
+}
+
+.THIS .label {
+    font-family: 'Roboto Condensed';
+    color: #999999;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.THIS .value {
+    font-family: 'Heebo';
+    font-weight: 300;
+    color: #999999;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+/* Special classes for small devices */
+@media only screen and (max-width: 768px) {
+    .THIS .item-container {height: auto;}
+    .THIS .separator {margin-top: 10px;}
+}
+
+/* Special classes for big devices */
+@media only screen and (min-width: 768px) {
+    .THIS .separator {padding-left: 10px;}
+}

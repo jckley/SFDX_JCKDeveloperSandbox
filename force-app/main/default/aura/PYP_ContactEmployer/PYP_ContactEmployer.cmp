@@ -1,0 +1,24 @@
+<aura:component>
+    <aura:attribute name="employer" 	type="String" 	description="Employer" />
+    <aura:attribute name="cuit" 		type="String" 	description="CUIT" />
+    <aura:attribute name="activity" 	type="String" 	description="Activity" />
+    <aura:attribute name="income" 		type="String" 	description="Income" />
+    <aura:attribute name="rendered" 	type="Boolean" 	description="Rendered" required="true" default="true" />
+    
+    <div class="{! (v.rendered)?'slds-grid slds-wrap slds-col slds-size_1-of-1':'slds-hide'}">
+        <div class="slds-col slds-size_1-of-1  slds-large-size_1-of-3" style="margin-bottom: 35px;">
+            <c:PYP_DisplayField label="Empleador" value="{! v.employer}" showDetail="true" emptyValue="{! v.cuit}" labelCSS="label uppercase" valueCSS="value blue font13"/>         
+        </div>
+        <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3" style="margin-bottom: 35px;">
+            <c:PYP_DisplayField label="CUIT" value="{! v.cuit}"  showDetail="true" emptyvalue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value gray uppercase font11"/>         
+        </div>
+        
+        <!-- <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-4" style="margin-bottom: 35px;">
+            <c:PYP_DisplayField label="Actividad" value="{! v.activity}" showDetail="true" emptyvalue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value gray uppercase font11"/>         
+        </div> -->
+        
+        <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3" style="margin-bottom: 35px;">
+            <c:PYP_DisplayField label="Sueldo" value="{! v.income}" showDetail="true" emptyvalue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value gray uppercase font11"/>         
+        </div>
+    </div>
+</aura:component>

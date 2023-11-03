@@ -1,0 +1,206 @@
+:host {
+    height:  450px;
+}
+
+:host .territorybox {
+    padding: 1rem;
+    width: 21rem;
+}
+
+.slds-box {
+    border: none !important;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.09), 0 6px 6px rgba(0,0,0,0.03);
+}
+
+:host .territorybox h1 {
+    color: darkgrey;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+
+:host .territorybox .slds-box{
+    background-color: white;
+}
+
+:host .territorybox.selected .slds-box{
+    background-color: #F8595B;
+}
+
+.crazy-button {
+    height: 60px;
+    margin-top: 50px;
+    background-color: #F8595B;
+    color: white;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 15px;
+}
+
+:host .territorybox input {
+    border: none;
+}
+
+:host .territorybox input:focus {
+    outline: none;
+}
+
+
+:host .territorybox img {
+    width: 25px;
+    height: 25px;
+    margin: 0px 5px 0px 5px;
+    padding: 1px 2px 1px 2px;
+}
+
+
+:host .territorybox.hidden {
+    display: none;
+}
+
+:host .territorybox .searchinput {
+    width: 100%;
+    font-size: 1.2rem;
+}
+
+:host .territorybox.selected .searchinput {
+    display: none;
+}
+
+
+
+
+:host .territorybox .territory-name {
+    display: none;
+} 
+
+:host .territorybox .territory-name * {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+}
+
+:host .territorybox.selected .territory-name {
+    display: flex;
+}
+
+:host .territorybox.selected .territory-name .close:hover,
+:host .territorybox.selected .territory-name .name:hover {
+    cursor: pointer;
+}
+
+:host .childterritories .levelItem {
+    height: 42px; 
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
+    margin-right: 15px;
+
+    font-size: 1rem;
+    font-weight: normal;
+}
+
+:host .childterritories .levelItem:hover {
+    background-color: #F7F7F7;
+    border-radius: 10px; 
+    cursor: pointer;
+}
+
+:host .childterritories .levelItem .container {
+    margin-left: 15px; 
+    width: 100%;
+}
+
+:host .childterritories .levelItem .showmeonhover  {
+    display: none;
+    float:right; 
+    margin: 5px 15px 0 0; 
+    font-weight: bold; 
+    font-size: 9pt;
+    color: #58595b;
+}
+
+:host .childterritories .levelItem .showmeonhover img { 
+    max-width: 15px; 
+    max-height: 15px; 
+    margin-left: 10px;
+    padding-bottom: 5px;
+}
+
+:host .childterritories .levelItem:hover .showmeonhover {
+    display: inline-block;
+}
+
+:host .childterritories .levelItem .childterritoryname {
+    display: inline-block;
+    color: grey;
+    font-size: 1rem;
+    position:relative;
+}
+
+:host .icon-right {
+    float: right !important;
+}
+
+/* Special classes for big devices */
+@media only screen and (min-width: 768px) {
+    :host .territories {
+        background-color: #F7F7F7;
+        padding: 2rem 5rem 0 5rem;
+    }
+
+    :host .childterritories {
+        background-color: white;
+        padding: 4rem 5rem 4rem 5rem;
+        margin-top: -40px;
+    }
+
+    :host .close {
+        position: relative;
+        bottom: 28px;
+        left: 20px;
+    }
+    
+}
+
+/* Special classes for small devices */
+@media only screen and (max-width: 768px) {
+    :host .territories {
+        background-color: #F7F7F7;
+        padding: 2rem 0;
+    }
+
+    :host .childterritories {
+        background-color: white;
+        padding: 4rem 4rem 4rem 4rem;
+        margin-top: -70px;
+    }
+
+    :host .childterritories .levelItem {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+
+    :host .childterritories .levelItem .container {
+        margin-left: 0px; 
+        width: 100%;
+    }
+
+    :host .close {
+        position: relative;
+        bottom: 28px;
+        left: 20px;
+    }
+
+    :host .territoryboss {
+        margin: auto;
+    }
+
+    :host .cb-container {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+    
+}

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>situacion_del_asalariado__c</fullName>
+    <externalId>false</externalId>
+    <label>Situación del Asalariado</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Disminución poder adquisitivo</fullName>
+                <default>false</default>
+                <label>Disminución poder adquisitivo</label>
+            </value>
+            <value>
+                <fullName>Cambio de trabajo últimos 12 meses</fullName>
+                <default>false</default>
+                <label>Cambio de trabajo últimos 12 meses</label>
+            </value>
+            <value>
+                <fullName>Reducción personal 50%</fullName>
+                <default>false</default>
+                <label>Reducción personal 50%</label>
+            </value>
+            <value>
+                <fullName>Despedido en los últimos 12 meses</fullName>
+                <default>false</default>
+                <label>Despedido en los últimos 12 meses</label>
+            </value>
+            <value>
+                <fullName>PYME 10</fullName>
+                <default>false</default>
+                <label>PYME 10</label>
+            </value>
+            <value>
+                <fullName>PYME 20</fullName>
+                <default>false</default>
+                <label>PYME 20</label>
+            </value>
+            <value>
+                <fullName>PYME 50</fullName>
+                <default>false</default>
+                <label>PYME 50</label>
+            </value>
+            <value>
+                <fullName>PYME 500</fullName>
+                <default>false</default>
+                <label>PYME 500</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

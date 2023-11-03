@@ -1,0 +1,120 @@
+:host  {
+    font-family: 'Roboto', 'sans-serif';
+}
+
+:host .cardsector {
+    will-change: transform;
+    border-radius: 0px;
+    background-color: #FFFFFF;
+    overflow:  hidden;
+    transition: all 400ms cubic-bezier(0.165, 0.840, 0.440, 1.000); 
+    box-shadow: 0 2px 2px 0 #DDDDDD, 0 2px 2px 0 #DDDDDD;
+}
+
+:host .cardsector .icon,
+:host .cardsector .inhabitants {
+    height: 150px;
+}
+
+:host .cardsector .icon img {
+    height:64px;
+}
+
+:host .cardsector .inhabitants {
+    color: #58595B; 
+    font-size: 56px; 
+}
+
+:host .cardsector .incomerange h1,
+:host .cardsector .occupationtype h1,
+:host .cardsector .educationlevel h1 {
+    font-size: 16px;
+    font-weight: bold;
+    color :#999999;
+    height: 25px;
+}
+
+
+:host .cardsector .incomerange,
+:host .cardsector .occupationtype,
+:host .cardsector .educationlevel {
+    height: 500px;
+}
+
+:host .cardsector .inhabitants span.nro {
+    font-weight: bold;
+}
+
+:host .cardsector .generations div.gender div.women,
+:host .cardsector .generations div.gender div.men {
+    height: 150px;
+    border-right: dotted 1px #DDDDDD;
+}
+
+:host .cardsector .generations div.gender div.women {
+    border-bottom: dotted 1px #DDDDDD;
+}
+
+:host .cardsector .generations div.gender div.women div.container,
+:host .cardsector .generations div.gender div.men div.container {
+    height: 100%;
+}
+
+:host .cardsector .generations div.gender div.women div.container div.title,
+:host .cardsector .generations div.gender div.men div.container div.title {
+    color: #58595b; 
+    font-size: 24px; 
+}
+
+:host .cardsector .generations div.gender div.women div.container div.total,
+:host .cardsector .generations div.gender div.men div.container div.total {
+    color: #58595b; 
+    font-weight: bold;
+    font-size: 36px; 
+}
+
+
+:host .cardsector .generations div.gender div.women div.container div.total,
+:host .cardsector .generations div.gender div.men div.container div.total {
+    color: #58595b; 
+    font-weight: bold;
+    font-size: 36px; 
+}
+
+:host .cardsector .geographic_distribution header,
+:host .cardsector .economicactivities header {
+    color : #58595b;
+    font-weight: bold;
+    font-size: 14px;
+    background-color: #F8F9FC;
+    height: 60px;
+}
+
+
+:host .Prosumia .cardsector .icon {
+    background-color:#EF3E48;
+}
+
+:host .Prosumia .cardsector .geographic_distribution header,
+:host .Prosumia .cardsector .economicactivities header {
+    border-left: solid 2px #EF3E48;
+}
+
+
+:host .AdFi .cardsector .icon {
+    background-color:green;
+}
+
+:host .AdFi .cardsector .geographic_distribution header,
+:host .AdFi .cardsector .economicactivities header {
+    border-left: solid 2px green;
+}
+
+:host .HxC .cardsector .icon {
+    background-color:#01AEF3;
+}
+
+:host .HxC .cardsector .geographic_distribution header,
+:host .HxC .cardsector .economicactivities header {
+    border-left: solid 2px #01AEF3;
+}

@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed|Montserrat:300,400');
+.THIS {
+    margin-bottom : 15px;
+    font-family: 'Roboto Condensed','sans-serif';
+}
+
+.THIS .card{
+    background-color: #ffffff;
+    border-radius: 6px;
+    overflow:  hidden;
+    display: flex;
+    vertical-align: middle;
+    box-shadow: 0px 1px 29px 0px rgba(0, 0, 0, 0.07);
+}
+
+.THIS .rollup-content{
+    margin-top: 15px;
+    margin-bottom: 25px;
+    font-weight: bold;
+    color: #666666;
+    display: flex;
+    vertical-align: middle;
+    justify-content: center;
+}
+
+.THIS .rollup-content.giant{font-size: 29pt;}

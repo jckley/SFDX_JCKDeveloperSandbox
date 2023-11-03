@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Todas_las_Actividades_Trelew</fullName>
+    <columns>Nombre__c</columns>
+    <columns>Citizen_SFID__c</columns>
+    <columns>Fecha__c</columns>
+    <columns>Afinidad__c</columns>
+    <columns>Medio__c</columns>
+    <columns>Necesita_Logistica__c</columns>
+    <columns>Direccion_de_Recogida__c</columns>
+    <columns>Comentario__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>Todas las Actividades Trelew</label>
+    <sharedTo>
+        <group>TrelewJxC2023</group>
+    </sharedTo>
+</ListView>

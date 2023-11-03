@@ -1,0 +1,49 @@
+<aura:component >
+    <aura:attribute name="search" 			type="Aura.Component[]"/>
+    <aura:attribute name="profileMenu" 		type="Aura.Component[]"/>
+    <aura:attribute name="navigationBar" 	type="Aura.Component[]"/>
+    
+    <div class="slds-grid slds-wrap slds-col slds-size_1-of-1 header background">
+        <div class="slds-large-size_2-of-12" style="margin-top: 25px; padding-left: 25px;">
+            <a href="/s/">
+                <img src="{!$Resource.LogosPack + ($Browser.formFactor == 'DESKTOP'?'/AdFiLogo.png':'/logoadfi@2x.png')}" style="margin-bottom: 7px; max-width: 50px;"/>
+                <span style="color: white; font-size: 14pt; padding-left: 10px; font-family: 'Heebo'; font-weight: 300;">/CRM</span>
+            </a>
+        </div>
+        
+        <div class="slds-col slds-size_8-of-12 search-bar slds-show_large">
+            <div style="width: 600px;">
+                <c:AdFi_SearchBar/>
+            </div>
+        </div>
+        
+        <div class="slds-col slds-size_2-of-12 slds-show_large" style="margin-top: 25px; padding-right: 25px; text-align: right;">
+            <div class="exit" onclick="{!c.logout}">
+                <div class="slds-align_absolute-center" style="height: 100%">
+                    <img id="icon-white" class="img white" src="{! $Resource.IconsPack1 + '/adfiexitwhite.svg'}" />
+                    <img id="icon-gray" class="img gray" src="{! $Resource.IconsPack1 + '/adfiexit.svg'}" />
+                    <span style="margin-left: 10px;">{! $Label.c.Exit }</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="navigation slds-show_large" style="margin-left: 85px; padding-right: 85px;">
+            <c:AdFiNavigation/>
+        </div>
+        <!---<div class="navigationBar slds-hide_large">
+            {! v.navigationBar}
+        </div>-->
+        <div class="navigation-bar slds-hide_large">
+            <c:AdFi_NavigationMobile/>
+        </div>
+    </div>
+    
+   <div class="slds-grid slds-wrap slds-col slds-size_1-of-1 header background slds-hide_large">
+        
+        <div class="slds-col search-bar">
+            <c:AdFi_SearchBar/>
+        </div>
+        
+    </div>
+	
+</aura:component>

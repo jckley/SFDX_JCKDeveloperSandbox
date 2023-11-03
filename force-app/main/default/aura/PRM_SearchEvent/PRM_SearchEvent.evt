@@ -1,0 +1,5 @@
+<aura:event type="APPLICATION" description="Evento que se dispara cuando se realiza una busqueda">
+    
+    <aura:attribute name="searchType" type="String" />
+    
+</aura:event>

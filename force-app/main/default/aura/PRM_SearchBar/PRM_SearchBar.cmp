@@ -1,0 +1,49 @@
+<aura:component implements="forceCommunity:searchInterface" controller="AdFi_HeaderHandler">    
+    <aura:attribute name="community"             type="String" default="Prosumia"/>
+    <aura:attribute name="searchText" 	type="String" />
+    <aura:attribute name="filterBy" 	type="String" default="Citizens"/>
+    <aura:attribute name="results" 		type="RemotingMessageHelper.SearchResults" />
+    <aura:attribute name="rendered" 	type="Boolean" default="true" />
+
+    <aura:registerEvent name="searchEvent" type="c:SearchEvent"/>
+    <aura:handler name="init" value="{! this}" action="{! c.initializeComponent }" />
+    <aura:handler event="forceCommunity:routeChange" action="{!c.initializeComponent}"/>
+
+    <div class="{! (v.rendered)?'slds-form-element':'slds-hide'}">
+        <div class="slds-form-element__control">
+            <div class="slds-combobox-group">
+                <div class="slds-combobox_container slds-combobox-addon_end">
+                    <div class="{! ( and(v.results != null , v.results.results.length > 0))?'slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open':'slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click'}" aria-expanded="false" aria-haspopup="listbox" id="primary-search-combobox-id-2" role="combobox">
+                        <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_left slds-global-search__form-element" role="none">                                    
+                            <div class="search-bar-container">
+                                <div class="input-container slds-grid slds-wrap">
+                                    <input aura:id="enter-search" name="enter-search" class="slds-size_11-of-12 slds-large-size_8-of-12" type="text"  placeholder="Buscar" value="{! v.searchText}" onfocus="{!c.onFocus}"  onkeyup="{! c.searchText }" onblur="{!c.onBlur}" onsubmit="{!c.onSubmit}"/>
+                                    <div aura:id="guide" class="guide slds-hidden slds-size_3-of-12 slds-show_large">ENTER PARA BUSCAR</div>
+                                    <img aura:id="search-icon" class="search-icon slds-size_1-of-12" src="{!$Resource.IconsPack1 + '/searchps.svg'}"/>
+                                    <img aura:id="close-icon" class="search-icon slds-hide slds-size_1-of-12" src="{!$Resource.IconsPack1 + '/cleanps.svg'}" onclick="{!c.clearText}"/>
+                                </div>
+                            </div>
+                            <div id="search-results" class="slds-dropdown slds-dropdown_fluid" role="listbox">
+                                <ul class="slds-listbox slds-listbox_vertical" role="group">
+                                    <aura:iteration items="{! v.results.results }" var="resultSobject">                                        
+                                        <aura:iteration items="{! resultSobject.record }" var="record">                                            
+                                            <li role="presentation" class="slds-listbox__item" data-type="{!resultSobject.type}" data-id="{! record.Id }" onclick="{! c.redirectTo }">
+                                                <div id="option1" class="slds-grid slds-wrap slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta" role="option">
+                                                    <div >
+                                                        <img src="{!$Resource.IconsPack1 + (  ( resultSobject.type == 'Ciudadano' || resultSobject.type == 'Citizen' ) ?'/adfiresultpersonas.png':(resultSobject.type == 'Territorio' || resultSobject.type == 'Territory' )?'/adfiterritorysearch.png':'')}" alt="" style="{! (resultSobject.type == 'Ciudadano' || resultSobject.type == 'Citizen' )?'':'visibility:hidden;'}" />
+                                                    </div>
+                                                    <div class="slds-col result-value">{! record.Name }</div>
+                                                    <div class="result-type">{! resultSobject.type }</div>
+                                                </div>
+                                            </li>
+                                        </aura:iteration>  
+                                    </aura:iteration>                                                                       
+                                </ul>
+                            </div>
+                        </div>                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</aura:component>

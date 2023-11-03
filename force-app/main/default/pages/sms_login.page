@@ -1,0 +1,103 @@
+<apex:page docType="html-5.0" standardStylesheets="false" lightningStylesheets="false" title="SMS" showHeader="false" sidebar="false" controller="MensajesController">
+    <html lang="en">        
+        <head>
+            <title>SMS</title>
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            
+            <apex:stylesheet value="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+            <apex:stylesheet value="https://use.fontawesome.com/releases/v5.8.1/css/all.css"/>
+            <apex:stylesheet value="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap"/>
+            <apex:stylesheet value="{! URLFOR($Resource.sms_utils, '/css/sms.css')}"/>
+        </head>
+            
+        <body>
+            <section class="container justify-content-center pb-3" style="padding-top:200px !important;" align="center">
+                <div class="row d-flex justify-content-center">
+                    <!-- LOGO -->
+                    <div class="row">
+                        <div class="col">
+                            <img style="height:26px !important;" src="{! URLFOR($Resource.sms_utils, '/img/sms_logo.png')}" alt="logo Prosumia" />
+                        	<span style="font-size:1.1em !important; vertical-align:middle; color:#848281;"> / SMS</span>
+                        </div>
+                    </div>
+                </div>
+                    
+                <div class="row d-flex justify-content-center pt-5">
+                    <div class="row">
+                        <div class="col">
+                            <article class="card border-0 shadow-sm cardsurvey_sm px-5" style="width:400px;">
+                                
+                                <!-- LEYENDA -->
+                                <div class="p-4" style="font-size:1em; color:#3E4145;">Ingrese a su cuenta</div>
+                                    
+                                <form action="/apex/sms_index" method="post">
+                                    
+                                    <!-- USUARIO -->
+                                    <div class="form-group">
+                                        <input type="email" id="msj_username" placeholder="Usuario" class="form-control" 
+                                               style="height:50px; font-size:1em;" autofocus="autofocus" required="required" />
+                                    </div>
+                                    
+                                    <!-- PASSWORD -->
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <input class="form-control  border-right-0" id="msj_userpass" type="text" placeholder="Contraseña" 
+                                                   style="height:50px; font-size:1em;" required="required" />
+                                            <span class="input-group-append">
+                                                <button class="btn border border-left-0" type="button" id="btnToggle" style="border-color:#CED4DA !important;">
+                                                    <div id="eyeIcon"></div>
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="py-4">
+                                        <!-- ENVIAR -->
+                                        <button class="btn" 
+                                                style="background-color:#F3BB49; color:white; width:150px !important; height:45px !important;" type="submit">
+                                            <b style="font-size:0.9em;">Ingresar</b>
+                                        </button>
+                                    </div>
+                                </form>
+                                
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+            
+            <script>
+                let passwordInput = $('#msj_userpass')[0],
+                    toggle = $('#btnToggle')[0];
+                
+                function togglePassword() {
+                    if (passwordInput.type === 'password') {
+                        passwordInput.type = 'text';
+                        $('#eyeIcon').html('<i class="fa fa-eye-slash fa-xs secondarytext" aria-hidden="true"></i>');
+                    } else {
+                        passwordInput.type = 'password';
+                        $('#eyeIcon').html('<i class="fas fa-eye fa-xs secondarytext" aria-hidden="true"></i>');
+                    }
+                }
+                
+                function checkInput() {
+                  //if (passwordInput.value === '') {
+                  //toggle.style.display = 'none';
+                  //toggle.innerHTML = 'show';
+                  //  passwordInput.type = 'password';
+                  //} else {
+                  //  toggle.style.display = 'block';
+                  //}
+                }
+                
+                toggle.addEventListener('click', togglePassword, false);
+                passwordInput.addEventListener('keyup', checkInput, false);
+            	togglePassword();
+            </script>
+            
+        </body>
+	</html>
+</apex:page>

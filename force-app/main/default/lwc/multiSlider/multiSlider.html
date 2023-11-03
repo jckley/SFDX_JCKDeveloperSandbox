@@ -1,0 +1,21 @@
+<template>
+    <div class="slds-form-element" onmouseup={onMouseUp}>
+      <label class="slds-form-element__label slds-grid" for="input">
+              <span class="slds-col">Rango horario total: {rangeValue} horas</span>
+              <span class="slds-slider-label__range slds-col_bump-left">{min}0 - {max} Hs.</span>
+          </label>
+      <div class="slds-form-element__control">
+        <div class="slds-slider">
+          <section class="range-slider">
+            <div id="slider" class="slider" onmousemove={onMouseMove} ontouchmove={onMouseMove}
+              onmousedown={handleMouseDown}>
+              <div class="range" data-name="range"></div>
+              <div class="thumb start" data-name="start" ontouchstart={handleMouseDown} ontouchend={onMouseUp}></div>
+              <div class="thumb end" data-name="end" ontouchstart={handleMouseDown} ontouchend={onMouseUp}></div>
+            </div>
+            <span class="slds-slider__value" aria-hidden="true">De {start} a {end} Hs.</span>
+          </section>
+        </div>
+      </div>
+    </div>
+  </template>

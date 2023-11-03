@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Poppins:300');
+.THIS {
+    position: relative;
+    top: -145px;
+    margin-bottom : 15px;
+}
+
+.THIS .card{
+    background-color: #ffffff;
+    overflow:  hidden;
+    vertical-align: middle;
+    width: 100%;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+/* Special classes for small devices */
+@media only screen and (max-width: 768px) {
+    .THIS > div:nth-child(2) {padding-left: 15px; padding-right: 15px}
+}
+
+/* Special classes for big devices */
+@media only screen and (min-width: 768px) {
+    .THIS .card-separator {padding-left: 15px;}
+}

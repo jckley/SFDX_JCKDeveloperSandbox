@@ -1,0 +1,41 @@
+:host article img {
+    height: 120px;
+    display: block;
+    margin: 0 auto;
+}
+
+:host article .generationvalue span {
+    color: #58595b; 
+    font-size: 20px; 
+    font-weight: bold;
+}
+
+:host article .generationname {
+    height: 25px;
+}
+:host article .generationname span {
+    font-size: 12px; 
+    font-weight: bold;
+    text-transform: uppercase;
+}
+:host article hr {
+    border-top: dotted 1px #CCCCCC;
+    margin: 20px 0 5px 0;
+}
+
+:host article .generationdescription span {
+    color: #999999; 
+    font-size: 12px; 
+}
+
+:host .Prosumia article .generationname span {
+    color: #EF3E48; 
+}
+
+:host .AdFi article .generationname span {
+    color: green; 
+}
+
+:host .HxC article .generationname span {
+    color: #01AEF3; 
+}

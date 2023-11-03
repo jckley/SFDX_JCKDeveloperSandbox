@@ -1,0 +1,45 @@
+<aura:component controller="AdFi_ConnectedPeopleController">
+    <aura:attribute name="peopleCount" type="Integer" default="4" />
+    <aura:attribute name="connectedPeople" type="RemotingMessageHelper.Citizen[]" />
+    <aura:handler name="init" value="{! this}" action="{! c.initializeComponent}" />
+                  
+    <div class="card">
+        <div class="slds-grid slds-wrap title-container">
+            <div class="slds-col slds-size_5-of-6 title">
+                {! $Label.c.Connected_People }                   
+            </div>
+            <div class="slds-col slds-size_1-of-6 showMore" style="display:none" onclick="{!c.navigateToList}">
+                {! $Label.c.ViewMore }                   
+            </div>
+        </div>
+
+        <aura:iteration items="{! v.connectedPeople }" var="objPeople">
+            <div class="slds-grid slds-wrap slds-p-vertical_medium item-container m-item-container" onclick="{!c.navigateToContact}" data-contactid="{!objPeople.Id}">
+                <div class="slds-size_1-of-6 slds-large-size_1-of-12">
+                    <span class="slds-avatar slds-avatar_circle">
+                        <img class="{! (objPeople.ProfilePicture == '')?'slds-hide':''}" alt="{! objPeople.FirstName + ' ' +  objPeople.LastName }" src="{! objPeople.ProfilePicture }" title="{! objPeople.FirstName + ' ' +  objPeople.LastName }" />
+                        
+                        <lightning:icon class="{! (objPeople.ProfilePicture == '')?'':'slds-hide'}"   size="small" iconName="utility:smiley_and_people" alternativeText="Utility image" />
+                    </span>
+                </div>
+                
+                <div class="slds-size_5-of-6 slds-large-size_4-of-12 name" style="margin-top: 5px;">
+                    {! objPeople.FirstName + ' ' +  objPeople.LastName }
+                </div>
+                
+                <div class="slds-size_1-of-6 slds-hide_medium"></div>
+                <div class="slds-size_5-of-6 slds-large-size_4-of-12" style="{! and(objPeople.Email != '', objPeople.Email != NULL) ? '' : 'display:none' }">
+                    <div class="label">{! $Label.c.Email } :</div>
+                    <div class="value">{! objPeople.Email }</div>
+                </div>
+                
+                <div class="slds-size_1-of-6 slds-hide_medium"></div>
+                <div class="slds-size_5-of-6 slds-large-size_3-of-12 separator" style="{! and(objPeople.MobilePhone != '', objPeople.MobilePhone != NULL) ? '' : 'display:none' }">
+                    <div class="label">{! $Label.c.Mobile }  :</div>
+                    <div class="value">{! objPeople.MobilePhone }</div>
+                </div>
+            </div>
+        </aura:iteration>
+
+    </div>
+</aura:component>

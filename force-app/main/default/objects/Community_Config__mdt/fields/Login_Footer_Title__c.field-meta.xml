@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Login_Footer_Title__c</fullName>
+    <description>Titulo del footer de la pagina de login. El texto que aparece al lado de la bandera.</description>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>Titulo del footer de la pagina de login. El texto que aparece al lado de la bandera.</inlineHelpText>
+    <label>Login Footer Title</label>
+    <length>255</length>
+    <required>false</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

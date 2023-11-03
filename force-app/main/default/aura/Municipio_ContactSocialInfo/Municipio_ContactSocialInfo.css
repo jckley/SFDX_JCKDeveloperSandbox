@@ -1,0 +1,25 @@
+.THIS {
+    margin-top : 25px;
+    height: 100%;
+}
+
+@media only screen and (max-device-width: 576px) { 
+   .THIS .social-border-bottom {
+        border-bottom: solid 1px #3FA948;
+        margin-bottom: 15px;
+    }
+}
+
+@media only screen and (min-device-width: 768px) {
+   .THIS .social-border-left {
+        border-left: solid 1px #3FA948;
+        height: 75px;
+    }
+}
+
+.THIS .icon {
+    max-width: 25px;
+    max-height: 25px;
+    vertical-align: middle;
+    border-style: none;
+}

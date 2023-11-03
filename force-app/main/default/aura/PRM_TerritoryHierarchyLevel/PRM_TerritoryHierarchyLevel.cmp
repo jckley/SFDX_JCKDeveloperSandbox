@@ -1,0 +1,73 @@
+<aura:component>
+    <aura:attribute name="level" 				type="Integer" />
+    <aura:attribute name="currentSelectedLevel" type="Integer" />
+    <aura:attribute name="showingLevel" 		type="Boolean" />
+    <!-- Indica si hay un territorio seleccionado -->
+    <aura:attribute name="territorySelected" 		type="Boolean" default="false"/>
+    
+    <aura:attribute name="territories" 			type="RemotingMessageHelper.Territory[]" />
+    <aura:attribute name="filteredTerritories" 	type="RemotingMessageHelper.Territory[]" />
+    
+    <aura:handler event="c:PRM_TerritoryHierarchyRetrievedEvent" 			action="{! c.loadRetrievedTerritories}"  />    
+    <aura:handler event="c:PRM_TerritoryHierarchyUnselectTerritoryEvent" 	action="{! c.refreshCurrentSelectedLevel}"  />
+    <aura:handler event="c:PRM_TerritoryHierarchySelectEvent" 				action="{! c.updateSelectedTerritory }" />
+
+    <div id="{! 'divLevel' + v.level }" class="{! ( or( 
+                                            and($Browser.formFactor == 'DESKTOP',  v.level le (v.currentSelectedLevel +1)), 
+                                            and($Browser.formFactor != 'DESKTOP',  v.level le (v.currentSelectedLevel + 1)  )
+                                        ) 
+                                    )?and(v.territories != null , v.territories.length > 0)?'card':'slds-hide':'slds-hide' }">
+    	<div class="header slds-p-around_medium">
+        	<span style="text-transform: uppercase;">{! $Label.c.Level + ' ' + v.level }</span>
+        </div>
+
+        <div class="{!'searchBox slds-p-around_large ' + (and($Browser.formFactor != 'DESKTOP',v.territorySelected)?'slds-hide':'')}" style="padding-top: 20px; padding-bottom: 20px;">           
+            <!-- OCULTO LA BUSQUEDA SI VISTA ES MOBILE Y HAY UN ELEMENTO SELECCIONADO -->
+            <div class="{! and(and(v.territories != null , v.territories.length > 0), or($Browser.formFactor == 'DESKTOP', v.territory == null))?'slds-form-element search':'slds-hide'}">
+                <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
+                    <lightning:icon iconName="utility:search" size="x-small" alternativeText="{!$Label.c.SearchTerritory}" class="slds-icon slds-input__icon slds-input__icon_left slds-icon-text-default" />
+                    
+                    <input type="text" id="{!'txtSearch' + v.level}" aura:id="txtSearch" class="slds-input" placeholder="{!$Label.c.SearchTerritory}" onkeyup="{! c.filterEntries }"  />
+                    <img id="{!'close-icon-territory' + v.level}" class="search-icon slds-hide slds-size_1-of-12" src="{!$Resource.PRM + '/img/cleanps.svg'}" onclick="{!c.clearText}"/>
+                </div>
+            </div>
+        </div>
+        
+        <!-- SI HAY, MUESTRO LOS TERRITORIOS -->
+        <div class="{! and(v.territories != null , v.territories.length > 0)?'':'slds-hide'}">
+            <ul class="slds-scrollable_y results territories">
+                <aura:iteration items="{! v.filteredTerritories }" var="objTerritory">
+                	<li>
+                        <c:PRM_TerritoryHierarchyItem territory="{! objTerritory }" anyTerritorySelected="{!v.territorySelected}"/>
+                    </li>    
+                </aura:iteration>
+                <li>
+                    <c:PRM_TerritoryHierarchyItem territory="NULL" anyTerritorySelected="{!v.territorySelected}"/>
+                </li>
+            </ul>
+        </div>
+        <div class="{!and($Browser.formFactor != 'DESKTOP',v.hasItemSeleted)?'slds-hide':'test'}"></div>
+    </div>
+    
+    <div id="{! 'divEmptyLevel' + v.level }" class="{! ( or( 
+                                               and($Browser.formFactor == 'DESKTOP',  v.level le (v.currentSelectedLevel +2)), 
+                                               and($Browser.formFactor != 'DESKTOP',  v.level le (v.currentSelectedLevel)  )
+                                               ) 
+                                               )?'':'slds-hide' }">
+        <!-- SI NO HAY TERRITORIOS, MUESTRO UN MENSAJE GENERICO -->
+        <div class="{!  and(v.territories != null , v.territories.length > 0)?'slds-hide':'results'}">
+            <div class="territories empty">
+                <div style="margin-top: 50%; margin-right: 70px;">
+                    <img src="{! $Resource.PRM + '/img/arrow-celeste.png'}" class="big-icon" alt=""/>
+                </div>
+                <div>
+                    <img src="{! $Resource.PRM + '/img/icon-mundo.png'}" class="big-icon" alt="" />                
+                </div>
+                <div class="empty-card-text">
+                    <br />
+                    Seleccione un nivel administrativo {!( v.level - 1)} <br/> para ver su composición                    
+                </div>
+            </div>
+        </div>
+    </div>
+</aura:component>

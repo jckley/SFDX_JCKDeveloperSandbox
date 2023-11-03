@@ -1,0 +1,32 @@
+<template>
+  <div class="box">
+    <div class="header">
+      <img src={territorioicon}/><span class="title">Distribución territorial</span>
+    </div>
+    <div class="body">
+      <!--<div class="filtersList">
+          <template for:each={filtersAplied} for:item="thisItem" for:index="intIndex">
+            <div class= "filterItem" key={thisItem.filterString} onclick={handleRemoveFilter} 
+                            data-filterstring={thisItem.filterString}
+                            data-filterlevel={thisItem.territoryLevel}>
+              <span class= "value">{thisItem.label}</span>
+            </div>
+          </template>
+      </div>-->
+      <div class="itemlist">
+        <template for:each={geographicDistribution} for:item="thisItem" for:index="intIndex">
+          <div class="item" 
+                key={thisItem.id} 
+                onclick={handleItemClick} 
+                data-filtervalue={thisItem.filterValue} 
+                data-filterlabel={thisItem.name}
+                data-territorylevel={thisItem.territoryLevel}>
+            <img class="iconMarker" src={iconMarker} />
+            <span>{thisItem.name}</span>
+            <strong>{thisItem.value}</strong>
+          </div>
+        </template>
+      </div>
+    </div>
+  </div>
+</template>

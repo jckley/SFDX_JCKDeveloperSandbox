@@ -1,0 +1,26 @@
+<aura:component>
+    <aura:attribute name="citizenWrapper" 	type="ContactWrapper" 	required="true" />
+    <aura:attribute name="rendered" 		type="Boolean" 			required="true" default="true" />
+    
+    <div class="{! (v.rendered)?'card slds-grid slds-wrap slds-p-around_medium':'slds-hide'}" style="border-left: solid 5px #f04b61;">
+        <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-12">
+            <img src="{! $Resource.IconsPack1 + '/locationps.svg'}" class="icon" />
+        </div>
+        
+        <div class="slds-col slds-size_1-of-1 slds-large-size_3-of-12" onclick="{!c.viewTerritory}" id="{!v.citizenWrapper.contact.Level1ID__c}">
+            <c:ContactDisplayField label="Nivel 1" value="{! v.citizenWrapper.contact.Level1Name__c}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13 link"/>                                                                                        
+        </div>
+        
+        <div class="slds-col slds-size_1-of-1 slds-large-size_3-of-12" onclick="{!c.viewTerritory}" id="{!v.citizenWrapper.contact.Level2ID__c}">
+            <c:ContactDisplayField label="Nivel 2" value="{! v.citizenWrapper.contact.Level2Name__c}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13 link"/>                                                                                                    
+        </div>
+        
+        <div class="slds-col slds-size_1-of-1 slds-large-size_3-of-12" onclick="{!c.viewTerritory}" id="{!v.citizenWrapper.contact.Level3ID__c}">
+            <c:ContactDisplayField label="Nivel 3" value="{! v.citizenWrapper.contact.Level3Name__c}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13 link"/>                                                                                                    
+        </div>
+        
+        <div class="slds-col slds-size_1-of-1 slds-large-size_2-of-12" onclick="{!c.viewTerritory}" id="{!v.citizenWrapper.contact.Level4ID__c}">
+            <c:ContactDisplayField label="Nivel 4" value="{! v.citizenWrapper.contact.Level4Name__c}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13 link"/>                                                                                        
+        </div>
+    </div>
+</aura:component>

@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Ciudad_Entre_Rios__c</fullName>
+    <externalId>false</externalId>
+    <label>Ciudad Entre Rios</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Aldea Brasilera</fullName>
+                <default>false</default>
+                <label>Aldea Brasilera</label>
+            </value>
+            <value>
+                <fullName>Aldea María Luisa</fullName>
+                <default>false</default>
+                <label>Aldea María Luisa</label>
+            </value>
+            <value>
+                <fullName>Aldea San Antonio</fullName>
+                <default>false</default>
+                <label>Aldea San Antonio</label>
+            </value>
+            <value>
+                <fullName>Aranguren</fullName>
+                <default>false</default>
+                <label>Aranguren</label>
+            </value>
+            <value>
+                <fullName>Basavilbaso</fullName>
+                <default>false</default>
+                <label>Basavilbaso</label>
+            </value>
+            <value>
+                <fullName>Bovril</fullName>
+                <default>false</default>
+                <label>Bovril</label>
+            </value>
+            <value>
+                <fullName>Caseros</fullName>
+                <default>false</default>
+                <label>Caseros</label>
+            </value>
+            <value>
+                <fullName>Ceibas</fullName>
+                <default>false</default>
+                <label>Ceibas</label>
+            </value>
+            <value>
+                <fullName>Cerrito</fullName>
+                <default>false</default>
+                <label>Cerrito</label>
+            </value>
+            <value>
+                <fullName>Chajarí</fullName>
+                <default>false</default>
+                <label>Chajarí</label>
+            </value>
+            <value>
+                <fullName>Colonia Avellaneda</fullName>
+                <default>false</default>
+                <label>Colonia Avellaneda</label>
+            </value>
+            <value>
+                <fullName>Colonia Ayuí</fullName>
+                <default>false</default>
+                <label>Colonia Ayuí</label>
+            </value>
+            <value>
+                <fullName>Colonia Elía</fullName>
+                <default>false</default>
+                <label>Colonia Elía</label>
+            </value>
+            <value>
+                <fullName>Colón</fullName>
+                <default>false</default>
+                <label>Colón</label>
+            </value>
+            <value>
+                <fullName>Concepción del Uruguay</fullName>
+                <default>false</default>
+                <label>Concepción del Uruguay</label>
+            </value>
+            <value>
+                <fullName>Concordia</fullName>
+                <default>false</default>
+                <label>Concordia</label>
+            </value>
+            <value>
+                <fullName>Conscripto Bernardi</fullName>
+                <default>false</default>
+                <label>Conscripto Bernardi</label>
+            </value>
+            <value>
+                <fullName>Crespo</fullName>
+                <default>false</default>
+                <label>Crespo</label>
+            </value>
+            <value>
+                <fullName>Diamante</fullName>
+                <default>false</default>
+                <label>Diamante</label>
+            </value>
+            <value>
+                <fullName>El Pingo</fullName>
+                <default>false</default>
+                <label>El Pingo</label>
+            </value>
+            <value>
+                <fullName>Enrique Carbó</fullName>
+                <default>false</default>
+                <label>Enrique Carbó</label>
+            </value>
+            <value>
+                <fullName>Estancia Grande</fullName>
+                <default>false</default>
+                <label>Estancia Grande</label>
+            </value>
+            <value>
+                <fullName>Federación</fullName>
+                <default>false</default>
+                <label>Federación</label>
+            </value>
+            <value>
+                <fullName>Federal</fullName>
+                <default>false</default>
+                <label>Federal</label>
+            </value>
+            <value>
+                <fullName>General Campos</fullName>
+                <default>false</default>
+                <label>General Campos</label>
+            </value>
+            <value>
+                <fullName>General Galarza</fullName>
+                <default>false</default>
+                <label>General Galarza</label>
+            </value>
+            <value>
+                <fullName>General Ramírez</fullName>
+                <default>false</default>
+                <label>General Ramírez</label>
+            </value>
+            <value>
+                <fullName>Gilbert</fullName>
+                <default>false</default>
+                <label>Gilbert</label>
+            </value>
+            <value>
+                <fullName>Gobernador Maciá</fullName>
+                <default>false</default>
+                <label>Gobernador Maciá</label>
+            </value>
+            <value>
+                <fullName>Gobernador Mansilla</fullName>
+                <default>false</default>
+                <label>Gobernador Mansilla</label>
+            </value>
+            <value>
+                <fullName>Gualeguay</fullName>
+                <default>false</default>
+                <label>Gualeguay</label>
+            </value>
+            <value>
+                <fullName>Gualeguaychú</fullName>
+                <default>false</default>
+                <label>Gualeguaychú</label>
+            </value>
+            <value>
+                <fullName>Hasenkamp</fullName>
+                <default>false</default>
+                <label>Hasenkamp</label>
+            </value>
+            <value>
+                <fullName>Hernández</fullName>
+                <default>false</default>
+                <label>Hernández</label>
+            </value>
+            <value>
+                <fullName>Herrera</fullName>
+                <default>false</default>
+                <label>Herrera</label>
+            </value>
+            <value>
+                <fullName>Ibicuy</fullName>
+                <default>false</default>
+                <label>Ibicuy</label>
+            </value>
+            <value>
+                <fullName>La Criolla</fullName>
+                <default>false</default>
+                <label>La Criolla</label>
+            </value>
+            <value>
+                <fullName>La Paz</fullName>
+                <default>false</default>
+                <label>La Paz</label>
+            </value>
+            <value>
+                <fullName>Larroque</fullName>
+                <default>false</default>
+                <label>Larroque</label>
+            </value>
+            <value>
+                <fullName>Libertador San Martín</fullName>
+                <default>false</default>
+                <label>Libertador San Martín</label>
+            </value>
+            <value>
+                <fullName>Los Charrúas</fullName>
+                <default>false</default>
+                <label>Los Charrúas</label>
+            </value>
+            <value>
+                <fullName>Los Conquistadores</fullName>
+                <default>false</default>
+                <label>Los Conquistadores</label>
+            </value>
+            <value>
+                <fullName>Lucas González</fullName>
+                <default>false</default>
+                <label>Lucas González</label>
+            </value>
+            <value>
+                <fullName>María Grande</fullName>
+                <default>false</default>
+                <label>María Grande</label>
+            </value>
+            <value>
+                <fullName>Nogoyá</fullName>
+                <default>false</default>
+                <label>Nogoyá</label>
+            </value>
+            <value>
+                <fullName>Oro Verde</fullName>
+                <default>false</default>
+                <label>Oro Verde</label>
+            </value>
+            <value>
+                <fullName>Paraná</fullName>
+                <default>false</default>
+                <label>Paraná</label>
+            </value>
+            <value>
+                <fullName>Piedras Blancas</fullName>
+                <default>false</default>
+                <label>Piedras Blancas</label>
+            </value>
+            <value>
+                <fullName>1 de Mayo</fullName>
+                <default>false</default>
+                <label>1 de Mayo</label>
+            </value>
+            <value>
+                <fullName>Pronunciamiento</fullName>
+                <default>false</default>
+                <label>Pronunciamiento</label>
+            </value>
+            <value>
+                <fullName>Pueblo Brugo</fullName>
+                <default>false</default>
+                <label>Pueblo Brugo</label>
+            </value>
+            <value>
+                <fullName>Pueblo General Belgrano</fullName>
+                <default>false</default>
+                <label>Pueblo General Belgrano</label>
+            </value>
+            <value>
+                <fullName>Pueblo Liebig</fullName>
+                <default>false</default>
+                <label>Pueblo Liebig</label>
+            </value>
+            <value>
+                <fullName>Puerto Yeruá</fullName>
+                <default>false</default>
+                <label>Puerto Yeruá</label>
+            </value>
+            <value>
+                <fullName>Rosario del Tala</fullName>
+                <default>false</default>
+                <label>Rosario del Tala</label>
+            </value>
+            <value>
+                <fullName>San Benito</fullName>
+                <default>false</default>
+                <label>San Benito</label>
+            </value>
+            <value>
+                <fullName>San Gustavo</fullName>
+                <default>false</default>
+                <label>San Gustavo</label>
+            </value>
+            <value>
+                <fullName>San Jaime de la Frontera</fullName>
+                <default>false</default>
+                <label>San Jaime de la Frontera</label>
+            </value>
+            <value>
+                <fullName>San José</fullName>
+                <default>false</default>
+                <label>San José</label>
+            </value>
+            <value>
+                <fullName>San José de Feliciano</fullName>
+                <default>false</default>
+                <label>San José de Feliciano</label>
+            </value>
+            <value>
+                <fullName>San Justo</fullName>
+                <default>false</default>
+                <label>San Justo</label>
+            </value>
+            <value>
+                <fullName>San Salvador</fullName>
+                <default>false</default>
+                <label>San Salvador</label>
+            </value>
+            <value>
+                <fullName>Santa Ana</fullName>
+                <default>false</default>
+                <label>Santa Ana</label>
+            </value>
+            <value>
+                <fullName>Santa Anita</fullName>
+                <default>false</default>
+                <label>Santa Anita</label>
+            </value>
+            <value>
+                <fullName>Santa Elena</fullName>
+                <default>false</default>
+                <label>Santa Elena</label>
+            </value>
+            <value>
+                <fullName>Sauce de Luna</fullName>
+                <default>false</default>
+                <label>Sauce de Luna</label>
+            </value>
+            <value>
+                <fullName>Seguí</fullName>
+                <default>false</default>
+                <label>Seguí</label>
+            </value>
+            <value>
+                <fullName>Tabossi</fullName>
+                <default>false</default>
+                <label>Tabossi</label>
+            </value>
+            <value>
+                <fullName>Ubajay</fullName>
+                <default>false</default>
+                <label>Ubajay</label>
+            </value>
+            <value>
+                <fullName>Urdinarrain</fullName>
+                <default>false</default>
+                <label>Urdinarrain</label>
+            </value>
+            <value>
+                <fullName>Valle María</fullName>
+                <default>false</default>
+                <label>Valle María</label>
+            </value>
+            <value>
+                <fullName>Viale</fullName>
+                <default>false</default>
+                <label>Viale</label>
+            </value>
+            <value>
+                <fullName>Victoria</fullName>
+                <default>false</default>
+                <label>Victoria</label>
+            </value>
+            <value>
+                <fullName>Villa Alcaraz</fullName>
+                <default>false</default>
+                <label>Villa Alcaraz</label>
+            </value>
+            <value>
+                <fullName>Villa Clara</fullName>
+                <default>false</default>
+                <label>Villa Clara</label>
+            </value>
+            <value>
+                <fullName>Villa del Rosario</fullName>
+                <default>false</default>
+                <label>Villa del Rosario</label>
+            </value>
+            <value>
+                <fullName>Villa Domínguez</fullName>
+                <default>false</default>
+                <label>Villa Domínguez</label>
+            </value>
+            <value>
+                <fullName>Villa Elisa</fullName>
+                <default>false</default>
+                <label>Villa Elisa</label>
+            </value>
+            <value>
+                <fullName>Villa Hernandarias</fullName>
+                <default>false</default>
+                <label>Villa Hernandarias</label>
+            </value>
+            <value>
+                <fullName>Villa Mantero</fullName>
+                <default>false</default>
+                <label>Villa Mantero</label>
+            </value>
+            <value>
+                <fullName>Villa Paranacito</fullName>
+                <default>false</default>
+                <label>Villa Paranacito</label>
+            </value>
+            <value>
+                <fullName>Villa Urquiza</fullName>
+                <default>false</default>
+                <label>Villa Urquiza</label>
+            </value>
+            <value>
+                <fullName>Villaguay</fullName>
+                <default>false</default>
+                <label>Villaguay</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

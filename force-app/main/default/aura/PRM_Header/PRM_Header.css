@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed|Montserrat:100,300,400');
+.THIS {
+    color: white;
+
+}
+
+.THIS a {
+    text-decoration: none;
+}
+
+.THIS.background {
+    background-color: #f8f9fc;
+}
+
+.THIS .headerbackground {
+    background-color: #FFFFFF;   
+    border-bottom : solid 1px #D8DBDD;
+    height: 90px;
+}
+
+.THIS.Cuidarnos .headerbackground {
+    background-color:#f8f9fc;   
+    border-bottom : solid 1px #D8DBDD;
+}
+
+.THIS.Cuidarnos .logo {
+    margin-top: 15px; 
+    padding-left: 25px;
+    max-height: 35px;
+    border: solid 1px red;
+}
+
+.THIS.Cuidarnos .logocommunity {
+    position: relative;
+    height: 30px;
+    display:inline-block;
+    margin: auto;
+}
+
+.THIS.Cuidarnos .logocommunity img {
+    max-height: 27px;
+    min-height: 27px;
+    height: 27px;
+    width: 100%;
+}
+
+.THIS .logo a span {
+    color: white; 
+    font-size: 14pt; 
+    padding-left: 3px;
+}
+
+
+.THIS .navigation {
+    width: 100%;
+    margin: 0 auto;
+    display: block;
+}
+
+.THIS .navigationBar {
+    margin-top: 25px;
+}
+
+.THIS .search-bar{
+    margin: auto;
+    margin-top: 19px;
+    margin-bottom: 17px;
+    justify-content: center;
+    display: flex;
+}
+
+.THIS .logoutcontainer {
+    margin-top: 25px; 
+    padding-right: 25px; 
+    text-align: right;
+}
+.THIS .logout {
+     height: 100%;
+    font-weight:bold;
+}
+
+.THIS .exit {
+    width: 90px;
+    height: 40px;
+    border-radius: 6px;
+    display: inline-block;
+    font-family: 'Montserrat';
+    font-weight: 400;
+    font-size: 11pt;
+    cursor: pointer;
+    color: #757d86;
+    border: solid 1px #757d86;
+}
+
+.THIS .exit:hover {
+    cursor: pointer;
+    color: #757d86;
+    border: solid 1px #757d86;
+}
+
+.THIS .gray { 
+    display: none 
+}
+.THIS .img {
+    width: 15px; 
+    height: 15px;
+}
+.THIS .exit:hover .white {
+    display: none;
+}
+
+.THIS .exit:hover .gray{ 
+    display: inline-block;
+}
+
+.THIS .exit .white {
+    display: inline-block;
+}
+
+.THIS .exit.gray{ 
+    display: inline-block;
+}
+
+/* Special classes for small devices */
+@media only screen and (max-width: 768px) {
+    .THIS {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .THIS .search-bar {
+        margin: auto;
+        margin-top: 19px;
+        margin-bottom: 17px;
+        justify-content: center;
+        display: flex;
+        padding: 0 15px;
+    }
+    
+    .THIS > div:first-child {
+        width: calc(100% - 70px);
+    }
+    
+    .THIS .navigation-bar {
+        position: absolute; 
+        left: 50%;
+    }
+    
+    .THIS .logomunicipio {
+       height : 100%;
+       vertical-align:middle;
+    }
+    
+    .THIS .navigationBar {
+        margin-top : 0px;
+        height : 105px;
+        background-color: #FFFFFF !important;
+        border-bottom: solid 1px #d8dbdd;
+        vertical-align:middle;
+
+    }
+}
+
+/* Special classes for big devices */
+@media only screen and (min-width: 768px) {
+    .THIS {}
+}

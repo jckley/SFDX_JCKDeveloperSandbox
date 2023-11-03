@@ -1,0 +1,60 @@
+<aura:component>
+    <aura:attribute name="citizenWrapper" 	type="ContactWrapper" 	required="true" />
+    <aura:attribute name="rendered" 		type="Boolean" 		 	required="true" default="true" />
+    <aura:attribute name="ismobile" 		type="Boolean" 		 	default="{! ( $Browser.formFactor == 'PHONE' ) }" />
+    <aura:attribute name="hasPicture" 		type="Boolean" 			default="{! (v.citizenWrapper.contact.PhotoUrl_legacy__c != null) }" />
+    <aura:attribute name="canEdit" 	type="Boolean" 	required="true" default="false" />
+
+    <div class="slds-grid slds-wrap card">
+        <div class="{! v.hasPicture?'slds-size_1-of-1 slds-large-size_3-of-12 picture-container':'slds-hide'}">
+            <img class="citizenPicture" src="{! v.citizenWrapper.contact.PhotoUrl_legacy__c }" alt="{! v.citizenWrapper.contact.FirstName + ' ' + v.citizenWrapper.contact.MiddleName + ' ' + v.citizenWrapper.contact.Lastname }" />
+        </div>
+        
+        <div class="{! v.hasPicture?'slds-size_1-of-1 slds-large-size_9-of-12 slds-grid slds-wrap infocontainer':'slds-col slds-size_1-of-1 slds-grid slds-wrap infocontainer'}">
+            <div class="slds-size_1-of-1 slds-grid slds-wrap cardIndicator red">
+                <div class="slds-size_1-of-1 slds-large-size_1-of-3 separator">
+                    <c:HXC_DisplayField label="Nombre" value="{! v.citizenWrapper.contact.FirstName + ' ' + v.citizenWrapper.contact.MiddleName}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font17"/>
+                </div>
+                
+                <div class="slds-size_1-of-1 slds-large-size_1-of-3">
+                    <c:HXC_DisplayField label="Apellido" value="{! v.citizenWrapper.contact.LastName}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font17"/>
+                </div>
+                
+                <div class="slds-col slds-size_1-of-2 slds-large-size_1-of-3 slds-show_large" style="{!'text-align: right; display: ' + (v.canEdit?'':'none')}">
+                    <div class="rounded-container" onclick="{!c.redirectToEditPage}">
+                        <img src="{! $Resource.IconsPack1 + '/adfiedit.svg'}" class="icon"/>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-size_1-of-1 slds-grid slds-wrap cardIndicator gray" style="margin-top: 25px;">
+                <div class="{! v.hasPicture?' slds-size_1-of-2 slds-large-size_1-of-3 slds-p-bottom_medium':'slds-size_1-of-2 slds-large-size_1-of-6'}">
+                    <c:HXC_DisplayField label="Sexo" value="{! v.citizenWrapper.gender}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font11"/>
+                </div>
+                
+                <div class="slds-size_1-of-2 slds-hide_medium">
+                    <c:HXC_DisplayField label="Nacionalidad" value="{! v.citizenWrapper.contact.Nacionalidad__c}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font11"/>
+                </div>
+                
+                <div class="{!'slds-size_1-of-2 ' + (v.hasPicture?'slds-large-size_1-of-3 slds-p-bottom_medium':'slds-large-size_1-of-6')}">
+                    <c:HXC_DisplayField label="Edad" value="{!(v.citizenWrapper.contact.Age_f_x__c) + ' años'}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font11"/>
+                </div>
+                
+                <div class="{!'slds-size_1-of-2 ' + (v.hasPicture?'slds-large-size_1-of-3 slds-p-bottom_medium':'slds-large-size_1-of-6')}">
+                    <c:HXC_DisplayField label="Fecha de Nacimiento" value="{! v.citizenWrapper.dateFormated}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font11"/>
+                </div>
+                
+                <div class="{!'slds-show_medium ' + (v.hasPicture?'slds-large-size_1-of-3 slds-p-bottom_medium':'slds-large-size_1-of-6')}">
+                    <c:HXC_DisplayField label="Nacionalidad" value="{! v.citizenWrapper.contact.Nacionalidad__c}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font11"/>
+                </div>
+                
+                <div class="{!'slds-size_1-of-2 ' + (v.hasPicture?'slds-large-size_1-of-3 slds-p-bottom_medium':'slds-large-size_1-of-6')}">
+                    <c:HXC_DisplayField label="Documento" value="{! v.citizenWrapper.documentFormated}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font11"/>
+                </div>
+                
+                <div class="{!'slds-size_1-of-2 ' + (v.hasPicture?'slds-large-size_1-of-3 slds-p-bottom_medium':'slds-large-size_1-of-6')}">
+                    <c:HXC_DisplayField label="CUIT / CUIL" value="{! v.citizenWrapper.cuitFormated}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font11"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</aura:component>

@@ -1,0 +1,68 @@
+.THIS {
+    font-family : 'Montserrat';
+
+    width : 100%;
+}
+
+.THIS .icon_min {
+    max-width: 32px;
+    max-height: 32px;
+    vertical-align: middle;
+    border-style: none;
+}
+
+.THIS .socialname {
+    margin-left: 15px;
+    color: #999999;
+    font-size: 10pt;
+    text-transform: uppercase;
+}
+.THIS .socialname span { 
+	padding-left : 10px;
+}
+.THIS.Prosumia .socialvalue {
+	font-family: 'Montserrat';
+    font-weight: 300;
+    font-size: 12pt;
+    color: #EF3E48;
+    padding-right: 15px;
+}
+
+.THIS.Prosumia .socialvalue a { 
+    display: inline-block;
+    color: #EF3E48;
+}
+
+.THIS.Argentina .socialvalue {
+	font-family: 'Montserrat';
+    font-weight: 300;
+    font-size: 12pt;
+    color: #EF3E48;
+    padding-right: 15px;
+}
+
+.THIS.Argentina .socialvalue a { 
+    display: inline-block;
+    color: #EF3E48;
+}
+
+.THIS.Cuidarnos .socialvalue {
+	font-family: 'Montserrat';
+    font-weight: 300;
+    font-size: 12pt;
+    color: #333333;
+    padding-right: 15px;
+    font-weight: bold;
+
+}
+
+.THIS.Cuidarnos .socialvalue a { 
+    display: inline-block;
+    color: #333333;
+    font-weight: bold;
+    text-decoration: underline;    
+}
+
+.THIS.Cuidarnos .socialvalue a:hover { 
+    color: #0069AB;
+}

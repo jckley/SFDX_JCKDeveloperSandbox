@@ -1,0 +1,336 @@
+<apex:page standardController="Campaign" extensions="Typeform_pushpull" title="EMAIL BLASTS" id="mypage" standardStylesheets="false" docType="html-5.0">
+<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" />
+<style >
+
+    
+    .header{
+        padding-top:10px;
+        font-size:16px !important;
+        font-weight:bold;
+        font-family: 'Lato', sans-serif !important;
+    }
+    
+.styled-Button {
+   height: 29px;
+   overflow: hidden;
+   width: 180px;
+   font-family: 'Lato', sans-serif !important;
+   font-size:13px !important;
+   font-weight:bold !important;
+   padding-left: 10px !important;
+   padding-right: 10px !important;
+}
+
+
+.styled-select {
+   background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 96% 0;
+   height: 29px;
+   overflow: hidden;
+   width: 350px;
+   font-family: 'Lato', sans-serif !important;
+}
+
+.styled-select select {
+   background: transparent;
+   border: none;
+   height: 29px;
+   padding: 5px; /* If you add too much padding here, the options won't show in IE */
+   width: 378px;
+   font-family: 'Lato', sans-serif !important;
+}
+
+.semi-square {
+   -webkit-border-radius: 5px;
+   -moz-border-radius: 5px;
+   border-radius: 5px;
+}
+.generalfont {
+    font-family: 'Lato', sans-serif !important;
+    font-size:13px !important;
+}
+
+/* -------------------- Colors: Background */
+.bluebutton    { 
+    background : none !important; 
+    background-color: RGB(52,152,219) !important ;
+    color:#fff !important;
+    font-family: 'Lato', sans-serif !important;
+    font-size:13px;
+}
+
+
+
+/* -------------------- Colors: Background */
+.blue    { 
+    background-color: RGB(26,188,156);
+    font-family: 'Lato', sans-serif !important;
+}
+
+/* -------------------- Colors: Text */
+.blue select    { background:transparent; color: #000; }
+
+input[type=text]:focus {
+    box-shadow: 0 0 5px rgba(26, 188, 156, 1);
+    border: 1px solid rgba(26, 188, 156, 1);
+}
+
+.styled-Button:disabled { 
+    background-color : darkGray !important;
+}​
+
+</style>
+   <apex:form id="myfrm">
+       <apex:actionFunction name="changeEmailTemplateFolder" action="{!changeEmailTemplateFolder}" rerender="seltemplate" status="myStatus" />
+       <apex:actionFunction name="changeReportFolder" action="{!changeReportFolder}" rerender="selreport" status="myStatus0" />
+       <apex:actionFunction name="changeEmailFrom" action="{!changeEmailFromName}" rerender="FromEmail" />
+       
+       <p/>
+      <div style="color:red" class="generalfont"> {!errAuthInit} </div>
+      <div class="generalfont"> {!waitMessage} </div>
+       
+        <div style="width:100%; text-align:center">
+            <apex:commandButton value="Push Email" action="{!pushdata}" styleClass="styled-Button semi-square bluebutton" disabled="{!IF(thiscamp.Email_Blast_sent__c == true, 'true', 'false')}"/>
+            &nbsp; &nbsp;
+        </div>
+        <p/>
+
+        <!-- SELECT REPORT TEMPLATE START -->        
+        <apex:outputPanel id="selreport">
+            <apex:outputLabel styleClass="header"> Select Report Template</apex:outputLabel>
+            <hr/>
+            <table style="width:90%; padding-top:10px" >
+                <tr>
+                    <td style="width:200px; padding-bottom:20px; vertical-align:top">
+                        <apex:outputLabel styleClass="generalfont">Campaign</apex:outputLabel>
+                    </td>
+                    <td>
+                        <apex:outputLink value="/{!thiscamp}" target="_blank" id="campaignlink" styleClass="generalfont">{!thiscamp.Name}</apex:outputLink>
+                    </td>                
+                </tr>
+                <tr>
+                    <td style="width:200px;padding-bottom:20px;">
+                        <apex:outputLabel for="templateFolder" styleClass="generalfont">Folder</apex:outputLabel>
+                    </td>
+                    <td>
+                        <div class="styled-select blue semi-square">
+                            <apex:selectList value="{!selReportFolder}" multiselect="false" size="1" onchange="changeReportFolder()">
+                                <apex:selectOptions value="{!reportFolders}"/>
+                            </apex:selectList>                        
+                        </div>
+                    </td>      
+
+                </tr>
+                <tr>
+                    <td style="width:200px;padding-bottom:20px;">
+                        <apex:outputLabel styleClass="generalfont">Report</apex:outputLabel>
+                    </td>
+                    <td>
+                        <div class="styled-select blue semi-square">
+                            <apex:actionStatus startText="loading..." id="myStatus0">
+                                <apex:facet name="stop">
+                                    <apex:selectList value="{!selReport}" multiselect="false" size="1">
+                                        <apex:selectOptions value="{!reportInFolder}"/>
+                                    </apex:selectList>                        
+                                </apex:facet>
+                            </apex:actionStatus>        
+                        </div>
+                    </td>                
+                </tr>
+                <tr>
+                    <td style="width:200px;padding-bottom:20px;">
+                        <apex:outputLabel styleClass="generalfont">Record Count </apex:outputLabel>
+                        <apex:actionStatus startText=" (running report...)" stopText="" id="rptStatus" />
+                    </td>
+                    <td>
+                    <apex:outputPanel id="recCount" styleClass="generalfont">{!repRecCount}</apex:outputPanel>
+                    </td>                
+                </tr>
+                <tr>
+                    <td style="width:200px;padding-bottom:20px;">
+                    </td>
+                    <td>
+                        
+                        <apex:commandlink value="Get Report Record Count" action="{!getReportRecCount}" status="rptStatus" reRender="recCount"  styleClass="generalfont"/><p/>
+                    </td>                
+                </tr>
+                <tr>
+                    <td style="width:200px;padding-bottom:20px;">
+                        <apex:outputLabel styleClass="generalfont">Additional Ids <br/>(all ids in separate line)</apex:outputLabel>
+                    </td>
+                    <td>
+                        <apex:inputTextarea value="{!addtlids}" cols="25" rows="10" styleClass="generalfont" />
+                    </td>                
+                </tr>
+
+            </table>     
+       </apex:outputPanel>
+       <p/>
+       <!-- SELECT REPORT TEMPLATE END -->
+       
+       <!-- SELECT EMAIL TEMPLATE START -->        
+        <apex:outputPanel id="seltemplate">
+            <table style="width:90%; padding-top:10px" >
+                <tr>
+                    <td style="width:200px;padding-bottom:20px;">
+                        <apex:outputLabel styleClass="header"> Select Email Template</apex:outputLabel>
+                    </td>
+                    <td>
+                        <apex:commandButton value="Preview Email Template" action="{!test}" reRender="textversion1,htmlversion" styleClass="styled-Button semi-square bluebutton"/>
+                    </td>      
+
+                </tr>
+            
+            </table>
+             
+            
+            <hr/>
+            <table style="width:90%; padding-top:10px" >
+                <!-- <tr>
+                    <td style="width:200px; padding-bottom:20px; vertical-align:top">
+                        <apex:outputLabel for="campaignlink" styleClass="generalfont">Campaign</apex:outputLabel>
+                    </td>
+                    <td>
+                        <apex:outputLink value="/{!thiscamp}" target="_blank" id="campaignlink" styleClass="generalfont" >{!thiscamp.Name}</apex:outputLink>
+                    </td>                
+                </tr> -->
+                <tr>
+                    <td style="width:200px;padding-bottom:20px;">
+                        <apex:outputLabel for="templateFolder" styleClass="generalfont">Folder</apex:outputLabel>
+                    </td>
+                    <td>
+                        <div class="styled-select blue semi-square">
+                            <apex:selectList value="{!selEmailTemplateFolder}" multiselect="false" size="1" onchange="changeEmailTemplateFolder()">
+                                <apex:selectOptions value="{!templateFolders}"/>
+                            </apex:selectList>                        
+                        </div>
+                    </td>      
+
+                </tr>
+                <tr>
+                    <td style="width:200px;padding-bottom:20px;">
+                        <apex:outputLabel for="templateFolder" styleClass="generalfont">Template</apex:outputLabel>
+                    </td>
+                    <td>
+                        <div class="styled-select blue semi-square">
+                            <apex:actionStatus startText="loading..." id="myStatus">
+                                <apex:facet name="stop">
+                                    <apex:selectList value="{!selEmailTemplate}" multiselect="false" size="1">
+                                        <apex:selectOptions value="{!emailTemplateInFolder}"/>
+                                    </apex:selectList>                        
+                                </apex:facet>
+                            </apex:actionStatus>        
+                        </div>
+                    </td>                
+                </tr>
+
+            </table>     
+       </apex:outputPanel>
+       <apex:outputPanel id="FromEmail">
+         <table>
+                <tr>
+                    <td style="width:200px;padding-bottom:20px;">
+                        <apex:outputLabel styleClass="generalfont">From (Email)</apex:outputLabel>
+                    </td>
+                    <td>
+                        <div class="styled-select blue semi-square">
+                            <apex:selectList value="{!fromemailaddr}" multiselect="false" size="1" onchange="changeEmailFrom()">
+                                <apex:selectOptions value="{!fromEmails}"/>
+                            </apex:selectList>                        
+                        </div>
+                    </td>      
+
+                </tr>
+                <tr>
+                    <td style="width:200px;padding-bottom:20px;">
+                        <apex:outputLabel styleClass="generalfont">From</apex:outputLabel>
+                    </td>
+                    <td>
+                        <span class="generalfont">{!fromemailname}</span>
+                    </td>      
+
+                </tr>
+                <tr>
+                    <td style="width:200px;padding-bottom:20px;">
+                        <apex:inputText value="{!strSendPreviewEmailTo}" style="height:25px" styleClass="generalfont"/>
+                    </td>
+                    <td>
+                        <apex:commandButton value="Send Email Preview" action="{!sendEmailPreview}" styleClass="styled-Button semi-square bluebutton"/>
+                    </td>      
+
+                </tr>
+                
+            </table>
+       </apex:outputPanel>
+       <p/>
+       <!-- SELECT EMAIL TEMPLATE END -->
+       
+       <!-- HTML VERSION START -->
+       <apex:outputPanel id="htmlversion">
+            <apex:outputLabel styleClass="header"> HTML Version</apex:outputLabel>
+            <hr/>    
+            <apex:outputText value="{!renderEmailTemplate}" escape="false" />   
+            
+       
+       <p/>
+       <!-- HTML VERSION END -->       
+
+
+       <!-- TEXT VERSION START -->
+       
+            <apex:outputLabel styleClass="header"> Text Version</apex:outputLabel>
+            <hr/>       
+            <apex:outputText value="{!renderEmailText}" escape="false"/>
+       </apex:outputPanel>  
+       <p/>
+       <!-- TEXT VERSION END -->       
+       
+              
+       <!-- SCHEDULING START -->
+       <apex:outputPanel id="scheduling">
+            <apex:outputLabel styleClass="header"> Scheduling</apex:outputLabel>
+            <hr/>       
+            <apex:selectRadio value="{!selScheduleOption}" layout="pageDirection" onchange="changeScheduling(this)" id="scheduleopt" styleClass="generalfont">
+                <apex:selectOptions value="{!schedulingOptions}"/>
+            </apex:selectRadio>
+            
+            <apex:outputPanel id="schDT_panel"  style="display:none">
+                <apex:inputField value="{!thiscamp.BatchUpdateDateTime__c}" id="schDT" styleClass="generalfont"/>
+            </apex:outputPanel>
+            
+       </apex:outputPanel>
+       <p/>
+       <!-- SCHEDULING END -->       
+       
+       <!-- Authorize START -->
+       <apex:outputPanel id="authorize">
+            <apex:outputLabel styleClass="header"> Authorize</apex:outputLabel>
+            <hr/>       
+       
+           <apex:inputText value="{!authInitial}" required="required" styleClass="generalfont"/> <span class="generalfont">*I certify that the email push has been approved by me and cannot be undone!</span>
+       </apex:outputPanel>
+       <p/>
+       <!-- {!CSVContent} -->  
+     
+      
+      
+       
+       <div style="width:100%; text-align:center">
+            <apex:commandButton value="Push Email" action="{!pushdata}" styleClass="styled-Button semi-square bluebutton" disabled="{!IF(thiscamp.Email_Blast_sent__c == true, 'true', 'false')}"/>
+            &nbsp; &nbsp;
+        </div>
+       <p/>
+       
+      
+   </apex:form>
+   <script type="text/javascript">
+    function changeScheduling(x){
+        if(x.id == 'mypage:myfrm:scheduleopt:0'){
+            document.getElementById('mypage:myfrm:schDT_panel').style.display='none';
+        }
+        if(x.id == 'mypage:myfrm:scheduleopt:1'){
+            document.getElementById('mypage:myfrm:schDT_panel').style.display='block';
+        }
+        
+    }
+   </script>
+</apex:page>

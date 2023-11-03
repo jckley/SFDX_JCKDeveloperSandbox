@@ -1,0 +1,23 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes,force:appHostable,flexipage:availableForAllPageTypes" controller="Municipio_HomeController">	    
+    <aura:attribute name="territoryWrapper" type="TerritoryWrapper2" />
+     
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <div class="slds-grid slds-wrap" style="max-width: 1140px; margin: auto; padding: 0 15px;">
+        <div class="card slds-size_1-of-1 slds-grid slds-wrap" style="margin-top: 25px;">
+            <div class="slds-size_1-of-1 slds-grid slds-wrap">
+                <c:Pcash_TerritoryContactSummary terrw="{!v.territoryWrapper}"/>
+            </div>
+            <div class="slds-size_1-of-1 slds-grid slds-wrap">
+                <c:Pcash_TerritorySocialSummary totalprofiles="{!v.territoryWrapper.totalSocialFormated}" 
+                                                totalfacebook="{!v.territoryWrapper.totalFacebookFormated}" 
+                                                totalinstagram="{!v.territoryWrapper.totalInstagramFormated}"
+                                                totaltwitter="{!v.territoryWrapper.totalTwitterFormated}"
+                                                totallinkedin="{!v.territoryWrapper.totalLinkedinFormated}"/>
+            </div>
+            <div class="slds-size_1-of-1 slds-grid slds-wrap">
+                <c:Municipio_TerritoryAgeChart terrw="{!v.territoryWrapper}" recordId="{!v.territoryWrapper.territory.Id}"/>
+            </div>
+        </div>
+    </div>
+</aura:component>

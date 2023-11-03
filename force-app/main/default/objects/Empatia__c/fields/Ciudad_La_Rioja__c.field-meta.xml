@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Ciudad_La_Rioja__c</fullName>
+    <externalId>false</externalId>
+    <label>Ciudad La Rioja</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Aimogasta / Arauco</fullName>
+                <default>false</default>
+                <label>Aimogasta / Arauco</label>
+            </value>
+            <value>
+                <fullName>Aminga / Castro Barros</fullName>
+                <default>false</default>
+                <label>Aminga / Castro Barros</label>
+            </value>
+            <value>
+                <fullName>Chamical</fullName>
+                <default>false</default>
+                <label>Chamical</label>
+            </value>
+            <value>
+                <fullName>Chepes / R. Vera Peñaloza</fullName>
+                <default>false</default>
+                <label>Chepes / R. Vera Peñaloza</label>
+            </value>
+            <value>
+                <fullName>Chilecito</fullName>
+                <default>false</default>
+                <label>Chilecito</label>
+            </value>
+            <value>
+                <fullName>Famatina</fullName>
+                <default>false</default>
+                <label>Famatina</label>
+            </value>
+            <value>
+                <fullName>La Rioja</fullName>
+                <default>false</default>
+                <label>La Rioja</label>
+            </value>
+            <value>
+                <fullName>Los Sauces / San Blas</fullName>
+                <default>false</default>
+                <label>Los Sauces / San Blas</label>
+            </value>
+            <value>
+                <fullName>Malanzán / Gral. J. F. Quiroga</fullName>
+                <default>false</default>
+                <label>Malanzán / Gral. J. F. Quiroga</label>
+            </value>
+            <value>
+                <fullName>Olta / Gral. Belgrano</fullName>
+                <default>false</default>
+                <label>Olta / Gral. Belgrano</label>
+            </value>
+            <value>
+                <fullName>Patquía / Independencia</fullName>
+                <default>false</default>
+                <label>Patquía / Independencia</label>
+            </value>
+            <value>
+                <fullName>Tama / Gral. Peñaloza</fullName>
+                <default>false</default>
+                <label>Tama / Gral. Peñaloza</label>
+            </value>
+            <value>
+                <fullName>Ulapes / San Martín</fullName>
+                <default>false</default>
+                <label>Ulapes / San Martín</label>
+            </value>
+            <value>
+                <fullName>Villa Castelli</fullName>
+                <default>false</default>
+                <label>Villa Castelli</label>
+            </value>
+            <value>
+                <fullName>Villa San José de Vinchina</fullName>
+                <default>false</default>
+                <label>Villa San José de Vinchina</label>
+            </value>
+            <value>
+                <fullName>Villa Sanagasta</fullName>
+                <default>false</default>
+                <label>Villa Sanagasta</label>
+            </value>
+            <value>
+                <fullName>Villa Santa Rita de Catuna / Gral. Ocampo</fullName>
+                <default>false</default>
+                <label>Villa Santa Rita de Catuna / Gral. Ocampo</label>
+            </value>
+            <value>
+                <fullName>Villa Unión / Cnel. F. Varela</fullName>
+                <default>false</default>
+                <label>Villa Unión / Cnel. F. Varela</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

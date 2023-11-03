@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Audiencia_Politica__c</fullName>
+    <externalId>false</externalId>
+    <label>Audiencia Politica</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>VOLUNTARIO CAMBIEMOS</fullName>
+                <default>false</default>
+                <label>VOLUNTARIO CAMBIEMOS</label>
+            </value>
+            <value>
+                <fullName>EQUIPO CAMBIEMOS</fullName>
+                <default>false</default>
+                <label>EQUIPO CAMBIEMOS</label>
+            </value>
+            <value>
+                <fullName>MILEI</fullName>
+                <default>false</default>
+                <label>MILEI</label>
+            </value>
+            <value>
+                <fullName>Alianza: UNION POR LA PATRIA</fullName>
+                <default>false</default>
+                <label>Alianza: UNION POR LA PATRIA</label>
+            </value>
+            <value>
+                <fullName>Alianza: LA LIBERTAD AVANZA</fullName>
+                <default>false</default>
+                <label>Alianza: LA LIBERTAD AVANZA</label>
+            </value>
+            <value>
+                <fullName>Alianza: JUNTOS POR EL CAMBIO</fullName>
+                <default>false</default>
+                <label>Alianza: JUNTOS POR EL CAMBIO</label>
+            </value>
+            <value>
+                <fullName>Alianza: HACEMOS POR NUESTRO PAIS</fullName>
+                <default>false</default>
+                <label>Alianza: HACEMOS POR NUESTRO PAIS</label>
+            </value>
+            <value>
+                <fullName>Alianza: JUNTOS POR EL CAMBIO (MISIONES)</fullName>
+                <default>false</default>
+                <label>Alianza: JUNTOS POR EL CAMBIO (MISIONES)</label>
+            </value>
+            <value>
+                <fullName>Alianza: FRENTE UNION POR LA PATRIA</fullName>
+                <default>false</default>
+                <label>Alianza: FRENTE UNION POR LA PATRIA</label>
+            </value>
+            <value>
+                <fullName>Alianza: JUNTOS POR ENTRE RIOS</fullName>
+                <default>false</default>
+                <label>Alianza: JUNTOS POR ENTRE RIOS</label>
+            </value>
+            <value>
+                <fullName>Alianza: FRENTE JUNTOS POR EL CAMBIO</fullName>
+                <default>false</default>
+                <label>Alianza: FRENTE JUNTOS POR EL CAMBIO</label>
+            </value>
+            <value>
+                <fullName>VOLUNTARIO MILEI</fullName>
+                <default>false</default>
+                <label>VOLUNTARIO MILEI</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

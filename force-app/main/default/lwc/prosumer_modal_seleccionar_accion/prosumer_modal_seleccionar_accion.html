@@ -1,0 +1,120 @@
+<template>
+  <div class="box">
+    <template lwc:if={loading}>
+      <lightning-spinner alternative-text="Loading" size="medium" style="height: 500px; margin: auto"></lightning-spinner>
+    </template>
+    <template lwc:else>
+      <div class="slds-container main-container">
+        <div class="slds-text-heading_medium title">Elegir una acción para ejecutar</div>
+
+        <div class="slds-box slds-box_small header">
+          <div class="slds-text-align_center header">
+            <span class="slds-text-heading_medium">{formatedValues.number_of_people}</span>
+            <span> PERSONAS</span>
+          </div>
+        </div>
+
+        <div class="slds-grid slds-grid_pull-padded-medium">
+          <div class="slds-col slds-p-horizontal_medium">
+            <div class="slds-grid slds-grid_vertical">
+              <div class="slds-col slds-box slds-box_small columnHead">
+                <div class="slds-text-align_center slds-text-heading_medium">{formatedValues.number_of_mobiles}</div>
+                <div class="slds-text-align_center">Teléfonos celulares</div>
+              </div>
+              <div class="slds-col slds-box slds-box_small seccion">
+                <div class="slds-text-align_center slds-text-heading_medium dos">Envío de SMS</div>
+                <div class="imgbox">
+                  <img if:true={has_sms_credits} src={sms}/>
+                  <img if:false={has_sms_credits} src={nosms}/>
+                </div>
+                <div class="slds-text-align_center">
+                  <span>Costo: </span>
+                  <span class="costo"> <img class="logo" src={logo} /> {formatedValues.sms_campaing_cost}</span>
+                </div>
+                <div class="slds-align_absolute-center">
+                  <button if:true={has_sms_credits} class="slds-button slds-button_brand" onclick={sms_action_selected}>Seleccionar</button>
+                  <button if:false={has_sms_credits} class="slds-button slds-button_brand" disabled>Créditos insuficientes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="slds-col slds-p-horizontal_medium">
+            <div class="slds-grid slds-grid_vertical">
+              <!-- <div class="slds-col slds-box slds-box_small columnHead">
+                <div class="slds-text-align_center slds-text-heading_medium">{formatedValues.number_of_phones}</div>
+                <div class="slds-text-align_center">Teléfonos fijos</div>
+              </div> -->
+              <div class="slds-col slds-box slds-box_small columnHead">
+
+                <fieldset class="slds-form-element">
+                  <div class="slds-form-element__control">
+                    <span class="slds-radio">
+                      <input type="radio" id="radio-175" onchange={handleTelefonoFijo} name="required"/>
+                      <label class="slds-radio__label" for="radio-175">
+                        <span class="slds-radio_faux"></span>
+                        <span class="slds-form-element__label">{formatedValues.number_of_phones} Telefonos fijos</span>
+                      </label>
+                    </span>
+                    <span class="slds-radio">
+                      <input type="radio" id="radio-176" onchange={handleTelefonoCelular} name="required"/>
+                      <label class="slds-radio__label" for="radio-176">
+                        <span class="slds-radio_faux"></span>
+                        <span class="slds-form-element__label">{formatedValues.number_of_mobiles} Teléfonos celulares</span>
+                      </label>
+                    </span>
+                  </div>
+                </fieldset>
+
+              </div>
+              <div class="slds-col slds-box slds-box_small seccion">
+                <div class="slds-text-align_center slds-text-heading_medium dos">Llamada IVR</div>
+                <div class="imgbox">
+                  <img if:true={has_ivr_credits} src={call}/>
+                  <img if:false={has_ivr_credits} src={nocall}/>
+                </div>
+                <div class="slds-text-align_center">
+
+                  <!-- <span class="nodisponible"> Acción no disponible </span> -->
+                  
+                  <span>Costo: </span>
+                  <span class="costo"> <img class="logo" src={logo} /> {formatedValues.ivr_campaing_cost}</span>
+                </div>
+                <div if:true={type_of_phone_selected} class="slds-align_absolute-center">
+                  <button if:true={has_ivr_credits} class="slds-button slds-button_brand" onclick={ivr_action_selected}>Seleccionar</button>
+                  <button if:false={has_ivr_credits} class="slds-button slds-button_brand" disabled>Créditos insuficientes</button>
+                </div>
+                <div if:false={type_of_phone_selected} class="slds-align_absolute-center">
+                  <button class="slds-button slds-button_brand" disabled>Seleccionar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="slds-col slds-p-horizontal_medium">
+            <div class="slds-grid slds-grid_vertical">
+              <div class="slds-col slds-box slds-box_small columnHead">
+                <div class="slds-text-align_center slds-text-heading_medium">{formatedValues.number_of_emails}</div>
+                <div class="slds-text-align_center">E-mails</div>
+              </div>
+              <div class="slds-col slds-box slds-box_small seccion">
+                <div class="slds-text-align_center slds-text-heading_medium dos">Envio de E-mail</div>
+                <div class="imgbox">
+                  <img if:true={has_email_credits} src={email}/>
+                  <img if:false={has_email_credits} src={noemail}/>
+                </div>
+                <div class="slds-text-align_center">
+                  <span>Costo: </span>
+                  <span class="costo"> <img class="logo" src={logo} /> {formatedValues.email_campaing_cost}</span>
+                </div>
+                <div class="slds-align_absolute-center">
+                  <button if:true={has_email_credits} class="slds-button slds-button_brand" onclick={email_action_selected}>Seleccionar</button>
+                  <button if:false={has_email_credits} class="slds-button slds-button_brand" disabled>Créditos insuficientes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="slds-text-heading_small slds-text-align_center footer">Para recargar créditos contactar al ejecutivo de cuenta.</div>
+      </div>
+    </template>
+  </div>
+</template>

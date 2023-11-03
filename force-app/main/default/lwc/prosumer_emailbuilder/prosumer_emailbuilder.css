@@ -1,0 +1,94 @@
+.prTabSet {
+    background-color: white;
+    padding-bottom: 25px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.prEmailBuilderTabWrapper {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: minmax(auto, auto);
+    position: relative;
+}
+
+.prEmailBuilderTabWrapper .prSection{
+    border: 1px solid rgb(201, 201, 201);
+    border-radius: 5px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.10);
+    background-color: white;
+    min-height: 100%;
+}
+
+
+.prEmailBuilderTabWrapper .prTemplateSelector {
+    grid-column: 1 / 2;
+    grid-row: 1;
+    margin-bottom:15px;
+    margin-top:15px;
+}
+
+.prEmailBuilderTabWrapper .prPlaceholders {
+    grid-column: 2 / 5;
+    grid-row: 1;
+    margin-bottom:15px;
+    margin-top:15px;
+}
+
+.prEmailBuilderTabWrapper .prProperties {
+    grid-column: 5 / 6;
+    grid-row: 1;
+    margin-bottom:15px;
+    margin-top:15px;
+}
+
+.prEmailBuilderTabWrapper .prNav {
+    grid-column: 1 / 6;
+    grid-row: 2;
+    margin-bottom:15px;
+    margin-top:15px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.prEmailBuilderTabWrapper .prPruebaEmail {
+    grid-column: 1 / 6;
+    grid-row: 3;
+    margin-bottom:15px;
+    margin-top:15px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.prEmailBuilderTabWrapper .prPruebaEmail .prInputsList {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 15px;
+}
+
+.prEmailBuilderTabWrapper .prPruebaEmail .prInputsList * {
+    width: 45%;
+}
+
+.prPreviewTabWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgb(201, 201, 201);
+    border-radius: 5px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.10);
+    background-color: rgb(180, 180, 180);
+}
+
+.prPreviewTabWrapper .prPreview {
+    width: 425px;
+    background-color: white;
+}

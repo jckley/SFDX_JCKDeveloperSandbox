@@ -1,0 +1,125 @@
+<template>
+
+ <!-- (Notificación) - Mensaje de prueba enviado -->
+ <div class="notificacion">
+    <div>
+    <img src={notificacion}/>
+    <p>Preparando campaña</p>
+    </div>
+    <span>Esta acción demorará unos minutos, cuando inicie la ejecución recibirás una notificación en tu correo.</span>
+</div>
+
+    <div class="box">
+
+        <div class="boxheader">
+            <img class="atras" src={atrasimg} onclick={handleAtras}/>
+
+            <h1><span>SMS</span>{formatedValues.titulo}</h1>
+           <!-- <a>Duplicar Campaña</a>-->
+        </div>
+
+        <div class="trescolumnas">
+
+            <div>
+                <span>
+                    Fecha inicio:
+                </span>
+                <span>
+                    {formatedValues.Desde}
+                </span>
+            </div>
+                
+            <div>
+                <span>
+                    Estado: <strong>{formatedValues.porcentaje}%</strong>
+                </span>
+                <span>
+                    {formatedValues.estado} <!--<strong>{formatedValues.porcentaje}%</strong>-->
+                </span>
+            </div>
+
+            <div>
+                 <span>
+                    Costo:
+                </span>
+                <span>
+                    {formatedValues.costo_campania} CRÉDITOS
+                </span>
+            </div>
+
+        </div>
+
+        <div class="mensaje">
+            <h3>
+                Mensaje
+            </h3>
+            <span>
+                {formatedValues.Prosumer_Mensaje_SMS__c}
+            </span>
+        </div>
+
+        
+        <!--
+        <div class="headerdos"> 
+            <div>
+                <img src={entregado}/>
+                <p>
+                        <span>{formatedValues.entregados}</span>
+                    <span>Entregados</span>
+                </p>
+            </div>
+
+            <div>
+                <img src={noentregado}/>
+                <p>
+                        <span>{formatedValues.noentregados}</span>
+                    <span>No entregados</span>
+                </p>
+            </div>
+        </div>
+        -->
+
+
+
+        <div class="audiencia">
+            <div class="audienciaheader">
+                <h3>Audiencia</h3>
+                <div>
+                <!--<a>Ver audiencia</a>
+                <a>Repetir audiencia</a>-->
+                </div>
+            </div>
+
+
+            <div class="headerbox"> <!--Audienciabody-->
+                <div>
+                    <span>{formatedValues.number_of_people}</span>
+                    <span> PERSONAS</span>
+                </div>
+
+                <div>
+                    <img src={celular}/>
+                    <p>
+                            <span>{formatedValues.number_of_phones}</span>
+                        <span>Teléfonos celulares</span>
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="audience-composition">
+              
+                <div class="slds-grid slds-wrap">
+                    <template for:each={audience_list} for:item="audience">
+                        <div key={audience}>
+                            <span class="slds-badge slds-badge_inverse audiencias">{audience}</span>
+                        </div>
+                    </template>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</template>

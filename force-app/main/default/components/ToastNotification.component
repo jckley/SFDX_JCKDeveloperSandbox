@@ -1,0 +1,77 @@
+<apex:component >
+    <div id="divToastMessage" class="slds-notify_container" style="display: none;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <div id="toastContainer" class="slds-notify slds-notify--toast" role="alert">
+            <span id="toastTitle" class="slds-assistive-text"></span>
+
+            <button class="slds-button slds-notify__close slds-button--icon-inverse">
+                <svg aria-hidden="true" class="slds-button__icon slds-button__icon--large">
+                    <use xlink:href="{!URLFOR($Asset.SLDS, '/assets/icons/utility-sprite/svg/symbols.svg#close')}"></use>
+                </svg>
+                <span class="slds-assistive-text">Cerrar</span>
+            </button>
+
+            <div class="slds-notify__content slds-grid">
+                <svg aria-hidden="true" class="slds-icon slds-icon--small slds-m-right--small slds-col slds-no-flex">
+                    <use xlink:href="{!URLFOR($Asset.SLDS, '/assets/icons/utility-sprite/svg/symbols.svg#warning')}"></use>
+                </svg>
+                <div class="slds-col slds-align-middle">
+                    <h2 id="toastMessage" class="slds-text-heading--small"></h2>
+                    <p id="toastDetail"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">        	
+     	var TOAST_TYPE_SUCCESS = 1;
+    	var TOAST_TYPE_ERROR = 2;
+
+	 	function showMessage(intType, arrMessages) {
+	        var strHTML = null;
+	        var strTitle = null;
+	        var strClass = null;
+
+	        switch(intType) {
+	            case TOAST_TYPE_SUCCESS:
+	                strTitle = 'Información';
+	                strClass = 'slds-theme--success';
+
+	                $('#toastContainer').removeClass('slds-theme--error');
+	            break;
+
+	            case TOAST_TYPE_ERROR:
+	                strTitle = 'Error';
+	                strClass = 'slds-theme--error';
+
+	                $('#toastContainer').removeClass('slds-theme--success');                
+	            break;
+	        }
+
+	        if(arrMessages != null && arrMessages.length > 0) {
+	        	strHTML = '';
+	            $.each(arrMessages, function( intIndex, strMessage ) { 
+	            	strHTML  += strMessage + '<br />';
+	            });
+
+	            $('#toastContainer').addClass(strClass);                
+	            $('#toastTitle').html(strTitle);
+	            $('#toastMessage').html(strHTML);
+	            $('#divToastMessage').fadeIn(400).delay(3000).fadeOut(400); 
+	        }
+	    }
+
+        function handleError(objEvent) {
+	        var strErrorMessage = '';
+
+	        if(objEvent != null && objEvent.message != null) {
+	            strErrorMessage += objEvent.message;
+
+	            if(objEvent.type === 'exception') {
+	                strErrorMessage += objEvent.where;
+	            }
+
+	            showMessage(TOAST_TYPE_ERROR, [strErrorMessage]);
+	        }
+	    }
+    </script>
+</apex:component>

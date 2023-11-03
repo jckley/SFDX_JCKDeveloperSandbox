@@ -1,0 +1,32 @@
+<template>
+
+    <div class="card slds-m-top_x-large">
+
+        
+        <div class="c-container slds-grid slds-wrap">
+            <div slot="title" class="header slds-size_1-of-6 slds-large-size_1-of-12 slds-align_absolute-center">
+                <img src={pinURL} class="icon" />
+            </div>
+            <div class="slds-size_5-of-6 slds-large-size_11-of-12 slds-grid slds-wrap">
+                <div class="slds-size_1-of-1 slds-large-size_1-of-4">
+                    <c-newcom_display-field label={label.Level1} value={level1} label-css="label uppercase" value-css="value font13 link"></c-newcom_display-field>
+                </div>
+
+                <div class="slds-size_1-of-1 slds-large-size_1-of-4">
+                    <c-newcom_display-field label={label.Level2} value={level2} label-css="label uppercase" value-css="value font13 link"></c-newcom_display-field>
+                </div>
+
+                <div class="slds-size_1-of-1 slds-large-size_1-of-4">
+                    <c-newcom_display-field label={label.Level3} value={level3} label-css="label uppercase" value-css="value font13 link"></c-newcom_display-field>
+                </div>
+
+                <div class="slds-size_1-of-1 slds-large-size_1-of-4">
+                    <c-newcom_display-field label={label.Level4} value={level4} label-css="label uppercase" value-css="value font13 link"></c-newcom_display-field>
+                </div>
+
+            </div>
+        </div>
+        
+    </div>
+    
+</template>

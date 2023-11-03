@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>FILTERED_By_CATEGORIA</fullName>
+    <columns>NAME</columns>
+    <columns>OBJECT_ID</columns>
+    <columns>riverid_citizen__c</columns>
+    <columns>nro_socio__c</columns>
+    <columns>voto_2009__c</columns>
+    <columns>voto_2013__c</columns>
+    <columns>voto_2017__c</columns>
+    <columns>voto_2021__c</columns>
+    <columns>fecha_socio__c</columns>
+    <columns>cat_socio__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>cat_socio__c</field>
+        <operation>contains</operation>
+        <value>INFANTIL</value>
+    </filters>
+    <label>FILTERED By CATEGORIA</label>
+</ListView>

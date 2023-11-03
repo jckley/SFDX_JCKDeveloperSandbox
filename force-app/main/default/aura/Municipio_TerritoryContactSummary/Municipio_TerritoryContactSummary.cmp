@@ -1,0 +1,20 @@
+<aura:component >    
+    <aura:attribute name="terrw" required="true" type="TerritoryWrapper" />
+    
+    <div class="slds-p-horizontal_large slds-size_1-of-1 slds-large-size_1-of-4">
+    	<div class="slds-m-top_large summary-title">{!$Label.c.People}</div>
+        <div class="slds-m-bottom_large summary-value">{!v.terrw.totalCiudadanosFormated}</div>
+    </div>
+    <div class="slds-p-horizontal_large slds-size_1-of-1 slds-large-size_1-of-4 left-border top-border">
+    	<div class="slds-m-top_large summary-title">{!$Label.c.Emails}</div>
+        <div class="slds-m-bottom_large summary-value">{!v.terrw.totalemailsFormated}</div>
+    </div>
+    <div class="slds-p-horizontal_large slds-size_1-of-1 slds-large-size_1-of-4 left-border top-border">
+    	<div class="slds-m-top_large summary-title">{!$Label.c.Mobiles}</div>
+        <div class="slds-m-bottom_large summary-value">{!v.terrw.totalMobilesFormated}</div>
+    </div>
+    <div class="slds-p-horizontal_large slds-size_1-of-1 slds-large-size_1-of-4 left-border top-border">
+    	<div class="slds-m-top_large summary-title">{!$Label.c.Landlines}</div>
+        <div class="slds-m-bottom_large summary-value">{!v.terrw.totalLandingFormated}</div>
+    </div>
+</aura:component>

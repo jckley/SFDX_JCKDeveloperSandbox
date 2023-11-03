@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>proactiva_history__c</fullName>
+    <externalId>false</externalId>
+    <label>Triage Antecedentes</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Problemas cardíacos</fullName>
+                <default>false</default>
+                <label>Problemas cardíacos</label>
+            </value>
+            <value>
+                <fullName>Mayor de 60 años</fullName>
+                <default>false</default>
+                <label>Mayor de 60 años</label>
+            </value>
+            <value>
+                <fullName>Enfermedad cardiológica</fullName>
+                <default>false</default>
+                <label>Enfermedad cardiológica</label>
+            </value>
+            <value>
+                <fullName>Cáncer</fullName>
+                <default>false</default>
+                <label>Cáncer</label>
+            </value>
+            <value>
+                <fullName>Enfermedad renal crónica</fullName>
+                <default>false</default>
+                <label>Enfermedad renal crónica</label>
+            </value>
+            <value>
+                <fullName>Estoy embarazada</fullName>
+                <default>false</default>
+                <label>Estoy embarazada</label>
+            </value>
+            <value>
+                <fullName>Enfermedad hepática</fullName>
+                <default>false</default>
+                <label>Enfermedad hepática</label>
+            </value>
+            <value>
+                <fullName>Enfermermedad cardiológica</fullName>
+                <default>false</default>
+                <label>Enfermermedad cardiológica</label>
+            </value>
+            <value>
+                <fullName>Enfermedad renal</fullName>
+                <default>false</default>
+                <label>Enfermedad renal</label>
+            </value>
+            <value>
+                <fullName>Enfermedad respiratoria</fullName>
+                <default>false</default>
+                <label>Enfermedad respiratoria</label>
+            </value>
+            <value>
+                <fullName>Diabetes</fullName>
+                <default>false</default>
+                <label>Diabetes</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

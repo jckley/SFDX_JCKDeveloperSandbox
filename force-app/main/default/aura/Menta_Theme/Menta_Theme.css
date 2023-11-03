@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Poppins:300,200');
+.THIS {
+}
+
+.THIS .forceBreadCrumbItem.uiOutputText{display: none;}
+.THIS .forceCommunityActionsContainerMobile {display: none;}
+.THIS .forceCommunityAnalyticsObjectHome .folderNavigator,
+.THIS .forceCommunityRecordListDesktop.forceListViewManager {
+    max-width: 1200px;
+    width: 100%;
+    margin : 0 auto;
+    position: absolute;
+    top: 90px;
+    left: 50%;
+    transform: translate(-50%);
+    box-shadow: 0px 2px 15px 0px rgba(0, 0, 0, 0.2);
+    max-height:77.67vh;
+    overflow: hidden;
+    padding: 0 15px;
+}
+.THIS .forceCommunityAnalyticsObjectHome .folderNavigator {padding: 0;}
+.THIS .forceCommunityRecordListDesktop {background-color : #FFFFFF;}
+.THIS .folderNavigator .bodyContainer {
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+.THIS .forceCommunityAnalyticsObjectHome .folderNavigator .slds-page-header {background-color : #FFFFFF;}
+.THIS .forceListViewPicker {color : #000000;}
+.THIS .listViewContent {color : #000000;}
+.THIS .slds-dropdown__item > a {color : #000000;}
+.THIS .body {min-height: 80vh; background-color: #f1f2f3;}
+.THIS .forceCommunitySearch {background-color: #FFFFFF;}
+.THIS .siteforceContentArea > div {padding-left: 0; padding-right: 0;}
+.THIS .innerStacking {background-color: #ffffff;}
+.THIS .forceCommunitySearch {
+    position: relative;
+    top: -115px;
+    max-width: 1200px;
+    margin: auto;
+    box-shadow: 0px 2px 15px 0px rgba(0, 0, 0, 0.2);
+}
+
+.THIS .forceCommunityGlobalNavigation .slds-list_vertical > li:first-child {display: none;}
+.THIS .forceCommunityGlobalNavigation .slds-list_vertical > li > a > span{font-family: 'Open Sans';}

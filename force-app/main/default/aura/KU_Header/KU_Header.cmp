@@ -1,0 +1,36 @@
+<aura:component >
+    <aura:attribute name="search" 			type="Aura.Component[]"/>
+    <aura:attribute name="profileMenu" 		type="Aura.Component[]"/>
+    <aura:attribute name="navigationBar" 	type="Aura.Component[]"/>
+    
+    <div class="slds-grid slds-wrap slds-col slds-size_1-of-1 header">
+        <a class="logo-container" href="/s/">
+            <img src="{! $Resource.LogosPack + '/KULogo.png'}"/>
+        </a>
+        
+        <div class="navigation slds-show_large">
+            <c:KU_Navigation/>
+        </div>
+        
+        <div class="navigationBar slds-hide_large">
+            {! v.navigationBar}
+        </div>
+        
+        <div id="search-super-d" class="slds-col search slds-show_large">
+            <c:KU_SearchBar/>
+        </div>
+        
+        <div class="exit slds-show_large" onclick="{!c.logout}">
+            <img class="icon-reposo" src="{! $Resource.IconsPack1 + '/KUexitreposo.png'}"/>
+            <img class="icon-hover" src="{! $Resource.IconsPack1 + '/KUexithover.png'}"/>
+        </div>
+    </div>
+    <div class="slds-grid slds-wrap slds-col slds-size_1-of-1 header slds-hide_large">
+        <div id="search-super-m" class="slds-col search slds-hide_large">
+            <c:KU_SearchBar/>
+        </div>
+    </div>
+    <div class="header-extension">
+    </div>
+	
+</aura:component>

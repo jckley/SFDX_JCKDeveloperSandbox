@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Argentinos</fullName>
+    <columns>CONTACT.RECORDTYPE</columns>
+    <columns>FULL_NAME</columns>
+    <columns>Movilidad__c</columns>
+    <columns>CONTACT.PHONE1</columns>
+    <columns>CONTACT.EMAIL</columns>
+    <columns>CORE.USERS.ALIAS</columns>
+    <columns>Document_Number__c</columns>
+    <columns>Edad__c</columns>
+    <columns>Gender__c</columns>
+    <columns>guid__c</columns>
+    <columns>Level1Name__c</columns>
+    <columns>Level2Name__c</columns>
+    <columns>Level3Name__c</columns>
+    <columns>Education_Level__c</columns>
+    <columns>CONTACT.LAST_UPDATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>CONTACT.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Contact.Argentino</value>
+    </filters>
+    <filters>
+        <field>Administrative_Level_3__c</field>
+        <operation>equals</operation>
+        <value>Juan E. Barra</value>
+    </filters>
+    <label>Argentinos</label>
+    <sharedTo>
+        <group>Argentina</group>
+    </sharedTo>
+</ListView>

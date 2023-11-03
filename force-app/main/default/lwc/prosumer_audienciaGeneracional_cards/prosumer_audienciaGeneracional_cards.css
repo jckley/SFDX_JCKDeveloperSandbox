@@ -1,0 +1,112 @@
+.box {
+    border-radius:7px;
+    background: #FFF;
+    padding: 0;
+    border-radius: 4px;
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+
+
+.box .header { 
+    height: 70px;
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    border: navajowhite; 
+    padding: 0 30px; 
+    font-size: calc(14px + 2px); 
+    color: #58595b;
+}
+
+.box .body {
+    padding-top: 0px;
+    padding-bottom: 30px; 
+    padding-left: 30px; 
+    padding-right: 30px; 
+}
+
+.box .body .itemList {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.box .body .itemList .item {
+    background-color: #f5f5f5;
+    width: 129px;
+    height: 216px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 23px;
+    margin: 3px;
+    border-radius: 7px;
+}
+
+.box .body .itemList .item.notSelected {
+    opacity: 50%;
+}
+
+.box .body .itemList .item:hover {
+    cursor: pointer;
+}
+
+.box .body .itemList .item .iconHolder {
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box .body .itemList .item .iconHolder .icon {
+    width: 82px;
+    height: 82px;
+    max-width: none !important;
+}
+
+.box .body .itemList .item .descriptionHolder {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+
+.box .body .itemList .item .descriptionHolder .name {
+    color: #505050;
+    font-size: 14px;
+
+}
+
+
+
+
+.descriptionHolder p{
+    color: #969696;
+    font-size: 12px;
+}
+
+.descriptionHolder .value{
+    font-weight: 600;
+    margin: 14px;
+    font-size: 17px;
+}
+
+
+
+
+.item:hover{
+    background-color:#e4e4e4a1 !important;
+}
+
+.title{
+    margin-left: 22px;
+    font-size: 18px;
+}

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>OnlySYSADMINcanEditLastName</fullName>
+    <active>false</active>
+    <description>Evitar la edicion de los campos de nombre de contacto</description>
+    <errorConditionFormula>AND(
+
+ $Profile.Name !=&quot;System Administrator&quot;,
+ISCHANGED(  LastName  ))</errorConditionFormula>
+    <errorDisplayField>LastName</errorDisplayField>
+    <errorMessage>No se pueden editar  los campos del nombre del contacto</errorMessage>
+</ValidationRule>

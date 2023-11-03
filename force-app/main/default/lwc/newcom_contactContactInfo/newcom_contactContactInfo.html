@@ -1,0 +1,35 @@
+<template>
+
+    <div class="c-container slds-grid slds-wrap slds-m-top_x-large">
+        <div class="slds-size_1-of-1 slds-large-size_1-of-2">
+            <div class="card">
+                <ul class="slds-list_horizontal" style="padding: 30px 20px;">
+                    <li style="margin-right:1rem;">
+                        <img class="icon" src={emailIcon} />
+                    </li>
+                    <li>
+                        <c-newcom_display-field label={label.Email} value={email} label-css="label uppercase" value-css="value yellow font13"></c-newcom_display-field>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="slds-size_1-of-1 slds-large-size_1-of-2 mobile-info-column">
+            <div class="card">
+                <ul class="slds-list_horizontal" style="padding: 30px 20px;">
+                    <li style="margin-right:1rem;">
+                        <img src={cellphoneIcon} class="icon" />
+                    </li>
+                    <li>
+                        <c-newcom_display-field label={label.Cellphone} value={cellphone} label-css="label uppercase" value-css="value yellow font13"></c-newcom_display-field>
+                    </li>
+                    <li>
+                        <c-newcom_display-field label="WhatsApp" value={cellphone} label-css="label" value-css="value yellow underline font13"></c-newcom_display-field>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+
+</template>

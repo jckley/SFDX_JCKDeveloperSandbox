@@ -1,0 +1,62 @@
+.box {
+    border-radius:7px;
+    background: #FFF;
+    padding: 0;
+    border-radius: 4px;
+    position: relative;
+    height: 100%;
+}
+
+.header img{
+    width: 43px;
+}
+
+.title{
+    font-size:18px;
+    margin-left: 20px;
+}
+
+.box .header { 
+    display: flex;
+    flex-direction: row;
+    padding: 30px 30px;
+    color: #58595b;
+    align-items: center;
+}
+
+.box .body .itemlist { 
+    display: flex; 
+    flex-wrap: wrap; 
+    padding: 0 30px 15px 30px;
+}
+
+.box .body .itemlist .item { 
+    flex: 0 1 33%;
+    display: flex;
+    gap: 15px;
+ 
+    align-items: center;
+    font-size: 15px;
+    color: #666666;
+    margin: 5px 0px 0px 0px;
+    padding: 6px 20px 6px 17px;
+    border-radius: 7px;
+    
+}
+
+.box .body .itemlist .item.notSelected { 
+    opacity: 50%;
+}
+
+.box .body .itemlist .item:hover { 
+    cursor: pointer;
+    background-color: rgb(240 240 240);
+}
+
+.box .body .itemlist .item .itemIcon {
+    width: 18px;
+}
+
+.box .body .itemlist .item strong {
+    margin: 0 0 0 auto; color: #4a484d;
+}

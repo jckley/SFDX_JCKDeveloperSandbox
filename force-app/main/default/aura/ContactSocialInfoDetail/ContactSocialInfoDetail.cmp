@@ -1,0 +1,32 @@
+<aura:component >
+    <aura:attribute name="icon" 		type="String"  	required="true" />
+    <aura:attribute name="name" 		type="String"  	required="true" />
+    <aura:attribute name="sociallink" 	type="String" 	required="true" />
+    <aura:attribute name="socialuser" 	type="String" 	required="true" />
+    <aura:attribute name="showDetails" 	type="Boolean" 	required="true" />
+    
+	<div class="slds-grid slds-wrap" style="margin: auto 0">
+        <div class="slds-col slds-size_2-of-6">
+        	<img src="{! $Resource.IconsPack1 + '/' + v.icon }" class="icon" />
+        </div>
+        
+        <div class="slds-col slds-size_4-of-6 socialname">
+            <span>{!v.name}</span>
+        </div>
+
+        <div class="slds-col slds-size_2-of-6">
+        </div>
+        
+        <div class="slds-col slds-size_4-of-6 socialvalue">
+            <div class="{! (v.showDetails)?'':'slds-hide'}">
+            	<div class="{! (v.socialuser != null)?'':'slds-hide'}">{! v.socialuser}</div>
+                <div class="{! and(v.sociallink != null, v.socialuser == null)?'':'slds-hide'}">{! v.sociallink}</div>
+                <div class="{! and(v.sociallink == null, v.socialuser == null)?'':'slds-hide'}">{! $Label.c.No}</div>
+            </div>
+            <div class="{! (v.showDetails == false)?'':'slds-hide'}">
+                <div class="{! or(v.socialuser != null, v.sociallink != null)?'':'slds-hide'}">{! $Label.c.Yes}</div>
+                <div class="{! and(v.sociallink == null, v.socialuser == null)?'':'slds-hide'}">{! $Label.c.No}</div>
+            </div>
+        </div>
+    </div>    
+</aura:component>

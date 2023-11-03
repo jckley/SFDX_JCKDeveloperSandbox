@@ -1,0 +1,169 @@
+<template>
+  <div class="audienciaPageBody">
+    <template lwc:if={loadingScreenOn}>
+      <div class="spinner-container">
+        <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+      </div>
+    </template>
+    <template lwc:else>
+      <section class="slds-container main-container">
+        <div class="row d-flex justify-content-center">
+          <div class="col-11">
+            <article class="card border-0 shadow-sm cardsurvey_sm">
+              <div class="row pt-4 px-4">
+                <div class="col-12">
+                  <!-- FORMULARIO -->
+                  <!--<form action="" method="post" data-toggle="validator" role="form">-->
+
+                  <div class="slds-container slds-box slds-m-top_large message-container">
+                    <div class="slds-border_bottom slds-m-bottom_medium header">
+                      <img class="atras" src={atrasimg} onclick={handleCancelar}/>
+                      <h3 class="slds-m-bottom_small">Enviar mensaje SMS</h3>
+                      <p>
+                        Costo: <span class="costo"><img class="logo" src={logo} />{formatedValues.sms_campaing_cost}</span>
+                      </p>
+                    </div>
+
+                    <div class="slds-grid">
+                      <div class="slds-col">
+                        <div class="headerbox">
+                          <div>
+                            <span>{formatedValues.number_of_people}</span>
+                            <span> PERSONAS</span>
+                          </div>
+
+                          <div>
+                            <img src={celular} />
+                            <p>
+                              <span>{formatedValues.number_of_mobiles}</span>
+                              <span>Teléfonos celulares</span>
+                            </p>
+                          </div>
+                        </div>
+
+                        <!-- Composición de la Audiencie -->
+                        <div class="audience-composition">
+                          <h3>Composición de Audiencia</h3>
+                          <div class="slds-grid slds-wrap">
+                            <template for:each={valuesFromAudiencePage.filters} for:item="audience">
+                              <div key={audience}>
+                                <span class="slds-badge slds-badge_inverse audiencias">{audience}</span>
+                              </div>
+                            </template>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+               
+                
+                  <!-- Numero de Prueba -->
+                  <div class="slds-container slds-box slds-m-top_small send-test-message-container">
+                    <div class="slds-grid">
+                      <div class="slds-form-element slds-col">
+
+
+
+
+                        <!-- MENSAJE -->
+
+                        <div class="slds-form-element slds-m-top_small">
+                          <div class="row">
+                            <label class="slds-form-element__label" for="textarea-id-01"> <abbr class="slds-required" title="required">* </abbr>Mensaje</label>
+                            <div class={counterClassTA}>{counterTextTA}</div>
+                          </div>
+                          <div class="slds-form-element__control">
+                            <textarea
+                              id="textarea-id-sms-mensaje"
+                              required=""
+                              aria-describedby="error-01"
+                              placeholder="Escriba aquí su Mensaje."
+                              class="slds-textarea"
+                              onchange={handleMessageChange}
+                              oninput={updateTextArea}
+                              onclick={hideConfirmation}
+                            ></textarea>
+                          </div>
+                          <div class="slds-form-element__help" id="error-01">Recuerde no usar caracteres especiales ni la ñ, y no colocar tildes.</div>
+                        </div>
+
+
+
+
+
+                        <!-- Nombre de la Campaña -->
+
+                        <div class="slds-form-element slds-m-top_medium nombreCampaña">
+                          <div class="row">
+                            <label class="slds-form-element__label" for="text-input-id-campaign-name"> <abbr class="slds-required" title="required">* </abbr>Nombre de la campaña</label>
+                            <div class={counterClassI}>{counterTextI}</div>
+                          </div>
+                          <div class="slds-form-element__control">
+                            <input type="text" id="text-input-id-campaign-name" placeholder="Ej: Campaña vial" required="" class="slds-input title" oninput={updateInputTitulo} onclick={hideConfirmation}/>
+                          </div>
+                          <div class="slds-form-element__help" id="error-message-id-campaign-name">Este nombre solo se mostrará de manera interna.</div>
+                        </div>
+
+
+
+
+
+
+
+                        <!-- Prueba SMS -->
+
+                        <label class="slds-form-element__label" for="text-input-id-46"> <abbr class="slds-required" title="required">* </abbr>Enviar SMS de prueba al número:</label>
+                        <div class="slds-form-element__control">
+                          <input type="number" id="text-input-id-test-mobile-number" placeholder="Ej. 54 11 5402 1355" required="" class="slds-input numberToTest" onchange={handleMobileChange} oninput={updateInputPrueba} onclick={hideConfirmation}/>
+                        </div>
+                        <!--<div class="slds-form-element__help" id="error-message-id-test-mobile-number">Enter a value.</div>-->
+                        <button class="slds-button slds-button_neutral enviarPrueba" onclick={sendTestMessage} disabled>Enviar prueba ({formatedValues.sms_cost} créditos)</button>
+                      </div>
+
+                      <div class="slds-col slds-align_absolute-center previewDiv">
+
+
+                        <p>{currentTime24}</p>
+                        <p>{currentDay}, {currentTime12}</p>
+
+                        <div class="previewParent">
+                        <div class="previewBox"></div>
+
+                        <img src={corner}/>
+                        </div>
+
+                        <img class="preview" src={preview} />
+
+                      </div>
+                    </div>
+                  </div>
+
+
+
+
+
+
+                     <!-- (Notificación) - Mensaje de prueba enviado -->
+                
+                     <div class="confirmado">
+                      <img src={confirmado} />
+                      <p>Mensaje de prueba enviado al {testedNumber}</p>
+                    </div>
+
+                  <div class="slds-container slds-box slds-m-top_small send-cancel-container footer">
+                    <button type="button" class="slds-button slds-button_neutral cancelarButton" onclick={handleCancelar}>Cancelar</button>
+
+                    <button id="send-button" class="slds-button slds-button_neutral enviarConfirmar" onclick={handleEnviar} disabled>Enviar mensaje ({formatedValues.sms_campaing_cost} créditos)</button>
+                  </div>
+
+                  <!--</form>-->
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </template>
+  </div>
+</template>

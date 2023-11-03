@@ -1,0 +1,15 @@
+.item { 
+    flex: 0 1 50%; 
+    display: flex; 
+    gap: 15px; 
+    height: 35px; 
+    align-items: center; 
+    font-size: 11.5px; 
+    color: #999999; 
+    padding-left: 15px; 
+    padding-right: 15px;}
+.item:hover {
+    cursor: pointer;
+} 
+.item strong { margin: 0 0 0 auto; color: #4a484d; }
+.item .icon { width: 10px; }

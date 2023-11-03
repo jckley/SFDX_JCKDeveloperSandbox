@@ -1,0 +1,124 @@
+<apex:component >
+    
+    <apex:attribute name="pyramidvalues" type="String" required="true" description="Pyramid Values" />
+    
+    <apex:stylesheet value="https://fonts.googleapis.com/css?family=Roboto:regular,bold,medium" />
+    <style>
+    	.emptybar {background-color : #f6f6f6; height: 15px; float:left; width: 100%}
+        .emptybar.left{border-top-left-radius: 25px; border-bottom-left-radius: 25px;}
+        .emptybar.right{border-top-right-radius: 25px; border-bottom-right-radius: 25px;}
+        
+        .fillbar{float:left; height: 15px;}
+        .fillbar.left {border-top-left-radius: 25px; border-bottom-left-radius: 25px; background-color: #f7b8b8}        
+        .fillbar.right {border-top-right-radius: 25px; border-bottom-right-radius: 25px; background-color : #94c4dc;}
+        
+        .fillbar.left:hover{background-color: #f96d6f}
+        .fillbar.right:hover{background-color: #007ab5}
+        
+        .row-bar { 
+        	margin-top : 5px;
+        	margin-left : 25px;
+        	margin-right : 25px;
+        }
+        
+        .fillbar .tooltiptext {
+            visibility: hidden;
+            width: 120px;
+            background-color: #555;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+            position: relative;
+            z-index: 1;
+            bottom: 40px;
+            margin-left: -60px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            display: inline-block;
+        }
+        
+        .fillbar.left .tooltiptext {
+        	left: 100%;
+        }
+        
+        .fillbar .tooltiptext::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: #555 transparent transparent transparent;
+        }
+        
+        .fillbar:hover .tooltiptext {
+        visibility: visible;
+        opacity: 1;
+        }
+        
+        #population{margin-bottom: 25px;}
+        
+    </style>
+    <div id="population"></div>
+    
+    <script type="text/javascript">
+        $(document).ready(function() {   
+            retrievePopulationValues();
+        });
+        
+        function retrievePopulationValues() {
+            var pyramidValues = '{!pyramidvalues}';
+           
+            var strHTML = null;
+            var arrMax = null;
+            var intRight = null;
+            var intLeft = null;
+            
+            if(pyramidValues !== undefined && pyramidValues !== null && pyramidValues.length > 0) {
+                pyramidValues = JSON.parse(pyramidValues);
+                
+                arrMax = retrieveMaxValue(pyramidValues);
+                console.log(arrMax);
+                //obtengo el maximo valor, derecha o izq y ese es el 100%
+                strHTML = '<div class="display:inline-block;width:400px;">';
+                $.each(pyramidValues, function( intIndex, objRecord ) {
+                    intRight =  objRecord.Right / arrMax[1] * 100;
+                    intLeft = objRecord.Left / arrMax[0] * 100;
+                    
+                    strHTML += '<div class="row row-bar">';
+                    strHTML += '	<div class="col float-left">';
+                    strHTML += '		<div class="emptybar left">';
+                    strHTML += '			<div class="fillbar left float-right" style="width:' + (intLeft) + '%;"><span class="tooltiptext">' + intLeft.toFixed(2) + '%</span></div>';
+                    strHTML += '		</div>';
+                    strHTML += '	</div>';
+                    strHTML += '	<div class="col-2 col-md-1 chart-legend">' + objRecord.Label +'</div>';
+                    strHTML += '	<div class="col float-left">';
+                    strHTML += '		<div class="emptybar right">';
+                    strHTML += '			<div class="fillbar right" style="width:' + (intRight) + '%"><span class="tooltiptext">' + intRight.toFixed(2) + '%</span></div>';
+                    strHTML += '		</div>';
+                    strHTML += '	</div>';
+                    strHTML += '</div>';
+                });
+                strHTML += '</div>'
+                
+                $('#population').html(strHTML);
+            }
+        }
+        
+        function retrieveMaxValue(arrResult) {
+            var maxBySide = [0,0];
+            var valueRight = 0;
+            var valueLeft = 0;
+            
+            $.each(arrResult, function( intIndex, objValue ) {
+                valueRight += objValue.Right;
+                valueLeft += objValue.Left;
+            });
+            
+            maxBySide = [valueLeft, valueRight];
+            return maxBySide;
+        }
+    </script>
+</apex:component>

@@ -1,0 +1,34 @@
+.THIS {
+    width : 100%;
+}
+
+.THIS .icon_min {
+    max-width: 32px;
+    max-height: 32px;
+    vertical-align: middle;
+    border-style: none;
+}
+
+.THIS .socialname {
+    font-family: 'Poppins';
+    color: #999999;
+    font-size: 10pt;
+    text-transform: uppercase;
+    font-weight: 200;
+}
+.THIS .socialname span { 
+	padding-left : 10px;
+}
+.THIS .socialvalue {
+	font-family: 'Open Sans';
+    font-weight: bold;
+    font-size: 12pt;
+    color: #676666;
+}
+.THIS .socialvalue a { 
+    display: inline-block;
+    color: #676666;
+}
+.THIS .socialvalue div { 
+    
+}

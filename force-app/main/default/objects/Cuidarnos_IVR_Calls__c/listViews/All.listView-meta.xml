@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>NAME</columns>
+    <columns>Contact__c</columns>
+    <columns>Covid19__c</columns>
+    <columns>Request__c</columns>
+    <columns>Response__c</columns>
+    <columns>Status__c</columns>
+    <columns>User__c</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>LAST_UPDATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>LAST_UPDATE</field>
+        <operation>lessOrEqual</operation>
+        <value>12/31/2021 12:00 AM</value>
+    </filters>
+    <label>All</label>
+</ListView>

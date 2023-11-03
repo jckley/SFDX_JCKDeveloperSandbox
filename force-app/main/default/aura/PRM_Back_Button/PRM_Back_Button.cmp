@@ -1,0 +1,5 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes,force:appHostable,flexipage:availableForAllPageTypes,force:hasRecordId">
+    <div class="slds-grid slds-grid_align-end">
+        <a class="slds-button slds-button_brand" title="Regresar Pantalla Anterior" onclick="{!c.back}" style="color: white">Regresar Pantalla Anterior</a>
+    </div>
+</aura:component>

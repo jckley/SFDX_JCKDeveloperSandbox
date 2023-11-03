@@ -1,0 +1,32 @@
+<aura:component >
+    <aura:attribute name="community"        type="String" default="Prosumia"/>
+    <aura:attribute name="citizenWrapper" 	type="CitizenWrapper" 	required="true" />
+    <aura:attribute name="rendered" 		type="Boolean" 			required="true" default="true" />
+    
+    <div class="{! (v.rendered)?'card slds-grid slds-wrap ' + v.community :'slds-hide'}">        
+        <div class="slds-col slds-size_2-of-12 slds-p-left_x-small " onclick="{!c.viewTerritory}" id="{!v.citizenWrapper.citizen.Level1ID__c}">
+            <img src="{! $Resource.PRM + '/' + v.community + '/img/adfilocation.svg'}" class="icon" />
+        </div>
+
+        <div class="slds-col slds-size_10-of-12 slds-grid slds-wrap fixmargindesktop">
+            <div class="slds-size_1-of-1 slds-grid slds-wrap" >
+                <div class="slds-col slds-size_1-of-2 slds-large-size_1-of-4 separator slds-wrap slds-grid">
+                    <c:PRM_DisplayField community="{! v.community}" label="Nivel 1" value="{! v.citizenWrapper.citizen.Level1Name__c}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13"/>                                                                                        
+                </div>
+
+                <div class="slds-col slds-size_1-of-2 slds-large-size_1-of-4 separator slds-wrap slds-grid">
+                    <c:PRM_DisplayField community="{! v.community}" label="Nivel 2" value="{! v.citizenWrapper.citizen.Level2Name__c}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13"/>                                                                                                    
+                </div>
+                
+
+                <div class="slds-col slds-size_1-of-2 slds-large-size_1-of-4 separator slds-wrap slds-grid">
+                    <c:PRM_DisplayField community="{! v.community}" label="Nivel 3" value="{! v.citizenWrapper.citizen.Level3Name__c}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13"/>                                                                                                    
+                </div>
+                
+                <div class="slds-col slds-size_1-of-2 slds-large-size_1-of-4 s slds-grid">
+                    <c:PRM_DisplayField community="{! v.community}" label="Nivel 4" value="{! v.citizenWrapper.citizen.Level4Name__c}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13"/>                                                                                        
+                </div>
+            </div>
+        </div>            
+    </div>
+</aura:component>

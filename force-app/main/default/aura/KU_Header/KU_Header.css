@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed|Heebo:100,300,400');
+
+.THIS.header {
+    background-color: #2f75bb;
+    height: 60px;
+    border-bottom: solid 1px #4483c2;
+}
+
+.THIS .logo-container {
+    border-right: solid 1px #4483c2;
+    height: 100%;
+    padding: 15px 20px 12px 20px;
+}
+
+.THIS .navigation {
+    border-right: solid 1px #4483c2;
+    height: 100%;
+    padding: 20px 20px 20px 40px;
+}
+
+.THIS .search {}
+
+.THIS .exit{padding: 15px 20px 15px 30px; height: 100%;}
+.THIS .icon-hover {display: none;}
+.THIS .exit:hover {cursor: pointer;}
+.THIS .exit:hover .icon-reposo {display: none;}
+.THIS .exit:hover .icon-hover {display: inline-block;}
+
+.THIS.header-extension {height: 125px;}
+.THIS .search-focus {background-color: #48739f;}
+
+.THIS .navigationBar {
+    background-color: #2f75bb;
+    display: flex;
+    justify-content: right;
+    position: absolute;
+    left: 81%;
+    margin-top: 15px;
+}
+
+/* Special classes for small devices */
+@media only screen and (max-width: 768px) {
+    .THIS .logo-container {border-right: none}
+    .THIS .comm-navigation.forceCommunityGlobalNavigation {background-color: #2f75bb}
+    .THIS .forceCommunityGlobalNavigation .slds-list_vertical {
+        background-color: #48739f !important;
+    }
+    .THIS #search-super-m {background-color: #ffffff}
+    .THIS.header-extension {background-color: #ecf5fd;}
+    .THIS #search-super-m {margin: 10px 15px; border-radius: 6px;}
+}
+
+/* Special classes for big devices */
+@media only screen and (min-width: 768px) {
+    .THIS.header-extension {background-color: #2f75bb; box-shadow: 0px 2px 10px 0px rgba(101, 111, 119, 0.25); position: relative}
+    .THIS .search {border-right: solid 1px #4483c2; height: 100%;}
+}

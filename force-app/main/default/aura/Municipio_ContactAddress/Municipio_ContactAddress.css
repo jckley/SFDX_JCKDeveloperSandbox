@@ -1,0 +1,22 @@
+.THIS .icon {
+    max-width: 35px;
+    max-height: 35px;
+    vertical-align: middle;
+    border-style: none;
+    margin-top: 8px;
+}
+
+/* Special classes for small devices */
+@media only screen and (max-width: 768px) {
+    .THIS .s-pb-10{padding-bottom: 10px;}
+    .THIS {padding: 30px 35px;}
+    .THIS.card{border-radius: 0 0 6px 6px !important;}
+}
+
+/* Special classes for big devices */
+@media only screen and (min-width: 768px) {
+    .THIS .l-pl-15{padding-left: 15px;}
+    .THIS .l-pl-35{padding-left: 35px;}
+    .THIS {margin-top : 25px; padding: 30px 35px;}
+    .THIS.card{border-radius: 6px 6px 0 0 !important;}
+}

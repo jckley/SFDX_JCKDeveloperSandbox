@@ -1,0 +1,28 @@
+<template>
+
+    <div class="card slds-m-top_x-large">
+        <div class="c-container slds-grid slds-wrap">
+
+            <div slot="title" class="header slds-size_1-of-6 slds-large-size_1-of-12 slds-align_absolute-center">
+                <img src={iconAddress} class="icon" />
+            </div>
+
+            <div class="slds-size_5-of-6 slds-large-size_11-of-12 slds-grid slds-wrap">
+                <div class="slds-size_1-of-1 slds-large-size_1-of-3 slds-m-vertical_small slds-large-m-vertical_large">
+                    <c-newcom_display-field label={label.Address} value={address} label-css="label uppercase" value-css="value yellow underline font13"></c-newcom_display-field>
+                </div>
+
+                <div class="slds-size_1-of-1 slds-large-size_1-of-3 slds-m-vertical_small slds-large-m-vertical_large">
+                    <c-newcom_display-field label={label.PostalCode} value={postalCode} label-css="label uppercase" value-css="value yellow font13"></c-newcom_display-field>
+                </div>
+
+                <div class="slds-size_1-of-1 slds-large-size_1-of-3 slds-m-vertical_small slds-large-m-vertical_large">
+                    <c-newcom_display-field label={label.HomePhone} value={homePhone} label-css="label uppercase" value-css="value yellow font13"></c-newcom_display-field>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    
+</template>

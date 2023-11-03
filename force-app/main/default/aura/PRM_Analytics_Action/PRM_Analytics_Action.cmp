@@ -1,0 +1,8 @@
+<aura:component access="GLOBAL" implements="force:lightningQuickAction,lightning:actionOverride,forceCommunity:availableForAllPageTypes,force:appHostable,flexipage:availableForAllPageTypes">	    
+    <aura:attribute name="recordId" 		type="Id"  />      
+
+    <aura:handler name="init" action="{!c.initializeComponent}" value="{!this}" />
+
+    Este es el conenido del componente
+
+</aura:component>

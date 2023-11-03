@@ -1,0 +1,20 @@
+<aura:component>
+    <aura:attribute name="citizenWrapper" 	type="CitizenWrapper" required="true" />
+    <aura:attribute name="rendered" 		type="Boolean" 		  required="true" default="true" />
+     
+    <div class="{! (v.rendered)?'card slds-grid slds-wrap':'slds-hide'}">
+    	<div class="slds-grid slds-wrap slds-col slds-size_1-of-1 header" >
+            <div class="slds-col slds-size_1-of-1">
+                <img src="{! $Resource.Misiones + '/img/movilidad.svg'}" class="icon" />
+                <span class="title">Movilidad</span>
+            </div>           
+        </div>
+            
+        <div class="slds-col slds-size_1-of-1 slds-grid slds-wrap" style="padding: 10px 30px;">
+            <aura:iteration items="{! v.citizenWrapper.movilidadInfo.movilidades}" var="objMovilidad">
+                <c:Misiones_ContactAttributesMovilidadVehiculo clase="{! objMovilidad.clase}" descripcion="{! objMovilidad.descripcion}" patente="{! objMovilidad.patente}" rendered="{! objMovilidad.clase != NULL}" />
+            </aura:iteration>
+        </div>
+                
+    </div>
+</aura:component>

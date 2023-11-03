@@ -1,0 +1,101 @@
+<apex:component >
+    <apex:attribute name="citizenwrapper" 	type="CitizenWrapper" 	required="true" description="Contact General Info" />  
+
+    <apex:attribute name="editionMode" type="Boolean" 	required="false" default="false" description="Flag for component edition"/>
+    
+    <style>
+        .subattribute-content-normal {color: #3e4145; font-size: 13pt;}
+        .subattribute-content-bold {color: #3e4145; font-size: 13pt; font-weight: bold;}
+        .subattribute-content-green {color: #3db28b; font-weight: bold; font-size: 13pt;}
+        .subattribute-border > div {margin-bottom: 25px;}
+    </style>
+    
+    <div class="row contact-data">
+        <div class="card card-left-border green">
+            <div class="row card-cont subattribute-header">
+                <div class="col-12 subattribute-title">
+                    <apex:image styleClass="icon-test-small" value="{!URLFOR($Resource.IconsPack1, 'electoralps.svg')}"/>
+                    <span class="subattribute-title">{!$Label.Electoral}</span> 
+                </div>
+            </div>
+            <div class="row card-cont subattribute-border">
+                <div class="col-12 pl-0 col-md-4 col-lg">
+                    <c:ContactDisplayField rendered="{!(!editionMode) || (!$ObjectType.Contact.Fields.Electoral_District_name__c.updateable)}" label="{!$ObjectType.Contact.Fields.Electoral_District_name__c.Label}:" value="{! citizenwrapper.citizen.Electoral_District_name__c }" nullvalue="{!$Label.NoInformation}" classLabel="label " classValue="uppercase subattribute-content-normal"/>
+                      
+                    <c:ContactEditField rendered="{!editionMode && $ObjectType.Contact.Fields.Electoral_District_name__c.updateable}" label="{!$ObjectType.Contact.Fields.Electoral_District_name__c.Label}" value="{! citizenwrapper.citizen.Electoral_District_name__c}" classLabel="label uppercase"/>
+                </div>
+                <div class="col-4 pl-0 col-md-4 col-lg">
+                    <c:ContactDisplayField rendered="{!(!editionMode) || (!$ObjectType.Contact.Fields.Electoral_Section_name__c.updateable)}" label="{!$ObjectType.Contact.Fields.Electoral_Section_name__c.Label}:" value="{! citizenwrapper.citizen.Electoral_Section_name__c}" nullvalue="{!$Label.NoInformation}" classLabel="label" classValue="uppercase subattribute-content-normal"/>
+                    <c:ContactEditField rendered="{!editionMode && $ObjectType.Contact.Fields.Electoral_Section_name__c.updateable}" label="{!$ObjectType.Contact.Fields.Electoral_Section_name__c.Label}" value="{! citizenwrapper.citizen.Electoral_Section_name__c}" classLabel="label uppercase" />
+                </div>
+                <div class="col-4 pl-0 col-md-4 col-lg">
+                    <c:ContactDisplayField rendered="{!(!editionMode) || (!$ObjectType.Contact.Fields.Electoral_Circuit__c.updateable)}" label="{!$ObjectType.Contact.Fields.Electoral_Circuit__c.Label}:" 	value="{!citizenwrapper.citizen.Electoral_Circuit__c}" nullvalue="{!$Label.NoInformation}" classLabel="label" classValue="uppercase subattribute-content-normal"/>
+                    <c:ContactEditField rendered="{!editionMode && $ObjectType.Contact.Fields.Electoral_Circuit__c.updateable}" label="{!$ObjectType.Contact.Fields.Electoral_Circuit__c.Label}" value="{!citizenwrapper.citizen.Electoral_Circuit__c}" classLabel="label uppercase"/>
+                </div>	
+                <div class="col-4 pl-0 d-md-none">
+                    <c:ContactDisplayField rendered="{!(!editionMode) || (!$ObjectType.Contact.Fields.Electoral_Booth__c.updateable)}" label="{!$ObjectType.Contact.Fields.Electoral_Booth__c.Label}:" value="{!citizenwrapper.citizen.Electoral_Booth__c}" nullvalue="{!$Label.NoInformation}" classLabel="label" classValue="uppercase subattribute-content-normal"/>
+                    <c:ContactEditField rendered="{!editionMode && $ObjectType.Contact.Fields.Electoral_Booth__c.updateable}" label="{!$ObjectType.Contact.Fields.Electoral_Booth__c.Label}" valueNumber="{!citizenwrapper.citizen.Electoral_Booth__c}" classLabel="label uppercase" inputType="number"/>
+                </div>
+                <div class="col-4 pl-0 col-md-4 col-lg">
+                    <c:ContactDisplayField rendered="{!(!editionMode) || (!$ObjectType.Contact.Fields.Escuela_Electoral__c.updateable)}" label="{!$ObjectType.Contact.Fields.Escuela_Electoral__c.Label}:" value="{!citizenwrapper.citizen.Escuela_Electoral__c}" nullvalue="{!$Label.NoInformation}" classLabel="label" classValue="uppercase subattribute-content-normal"/>
+                    <c:ContactEditField rendered="{!editionMode && $ObjectType.Contact.Fields.Escuela_Electoral__c.updateable}" label="{!$ObjectType.Contact.Fields.Escuela_Electoral__c.Label}" value="{!citizenwrapper.citizen.Escuela_Electoral__c}" classLabel="label uppercase"/>
+                </div>
+                <div class="pl-0 d-none d-md-block col-md-4 col-lg">
+                    <c:ContactDisplayField rendered="{!(!editionMode) || (!$ObjectType.Contact.Fields.Electoral_Booth__c.updateable)}" label="{!$ObjectType.Contact.Fields.Electoral_Booth__c.Label}:" value="{!citizenwrapper.citizen.Electoral_Booth__c}" nullvalue="{!$Label.NoInformation}" classLabel="label" classValue="uppercase subattribute-content-normal"/>
+                    <c:ContactEditField rendered="{!editionMode && $ObjectType.Contact.Fields.Electoral_Booth__c.updateable}" label="{!$ObjectType.Contact.Fields.Electoral_Booth__c.Label}" valueNumber="{!citizenwrapper.citizen.Electoral_Booth__c}" classLabel="label uppercase" inputType="number"/>
+                </div>
+                <div class="col-12 pl-0 col-md-6 col-lg-12">
+                    <c:ContactDisplayField rendered="{!(!editionMode) || (!$ObjectType.Contact.Fields.party_affiliation__c.updateable)}" label="{!$ObjectType.Contact.Fields.party_affiliation__c.Label}:" value="{!citizenwrapper.citizen.party_affiliation__c}" nullvalue="{!$Label.NoInformation}" classLabel="label " classValue="uppercase subattribute-content-normal"/>
+                    <c:ContactEditField rendered="{!editionMode && $ObjectType.Contact.Fields.party_affiliation__c.updateable}" label="{!$ObjectType.Contact.Fields.party_affiliation__c.Label}" value="{!citizenwrapper.citizen.party_affiliation__c}" classLabel="label uppercase"/>
+                </div>
+            </div>
+            
+            <!-- ACA EMPIEZA -->
+            <div class="row card-cont subattribute-border"  style="{! IF(citizenwrapper.electoralInfo.showElectoralDetails,'', 'border-bottom:solid 0px transparent')} ">
+                <div class="col-6 pl-0 col-md-4 col-lg">
+                    <c:ContactDisplayField rendered="{!(!editionMode) || (!$ObjectType.Contact.Fields.voting_P2015__c.updateable)}" label="{!$ObjectType.Contact.Fields.voting_P2015__c.Label}:" value="{! citizenwrapper.electoralInfo.election2015.PASO }" nullvalue="{!$Label.NoInformation}" classLabel="label" classValue="{!IF(citizenwrapper.electoralInfo.election2015.PASOValue == 'EMITIDO','uppercase subattribute-content-green', 'uppercase subattribute-content-bold')}"/>
+                    <c:ContactEditField rendered="{!editionMode && $ObjectType.Contact.Fields.voting_P2015__c.updateable}" 		 label="{!$ObjectType.Contact.Fields.voting_P2015__c.Label}" options="{! citizenwrapper.electoralInfo.election2015.PASOOptions }" selectedOption="{! citizenwrapper.citizen.voting_P2015__c}" classLabel="label uppercase" inputType="select"/>
+                </div>
+                <div class="col-6 pl-0 pr-0 pr-md-3 col-md-4 col-lg">
+                    <c:ContactDisplayField rendered="{!(!editionMode) || (!$ObjectType.Contact.Fields.voting_G2015__c.updateable)}" label="{!$ObjectType.Contact.Fields.voting_G2015__c.Label}:" value="{! citizenwrapper.electoralInfo.election2015.General }" nullvalue="{!$Label.NoInformation}" classLabel="label" classValue="{!IF(citizenwrapper.electoralInfo.election2015.GeneralValue == 'EMITIDO','uppercase subattribute-content-green', 'uppercase subattribute-content-bold')}"/>
+                    <c:ContactEditField rendered="{!editionMode && $ObjectType.Contact.Fields.voting_G2015__c.updateable}" 		 label="{!$ObjectType.Contact.Fields.voting_G2015__c.Label}" options="{!citizenwrapper.electoralInfo.election2015.GeneralOptions}" selectedOption="{! citizenwrapper.citizen.voting_G2015__c }" classLabel="label uppercase" inputType="select"/>
+                </div>
+                <div class="col-12 pl-0 col-md-4 col-lg">
+                    <c:ContactDisplayField rendered="{!(!editionMode) || (!$ObjectType.Contact.Fields.voting_B2015__c.updateable)}" label="{!$ObjectType.Contact.Fields.voting_B2015__c.Label}:" value="{! citizenwrapper.electoralInfo.election2015.Ballotage }" nullvalue="{!$Label.NoInformation}" classLabel="label" classValue="{!IF(citizenwrapper.electoralInfo.election2015.BallotageValue == 'EMITIDO','uppercase subattribute-content-green', 'uppercase subattribute-content-bold')}"/>
+                    <c:ContactEditField rendered="{!editionMode && $ObjectType.Contact.Fields.voting_B2015__c.updateable}" 			label="{!$ObjectType.Contact.Fields.voting_B2015__c.Label}" options="{!citizenwrapper.electoralInfo.election2015.BallotageOptions}" selectedOption="{! citizenwrapper.citizen.voting_B2015__c }" classLabel="label uppercase" inputType="select"/>
+                </div>
+                <div class="col-6 pl-0 col-md-4 col-lg">
+                    <c:ContactDisplayField rendered="{!(!editionMode) || (!$ObjectType.Contact.Fields.voting_P2017__c.updateable)}" label="{!$ObjectType.Contact.Fields.voting_P2017__c.Label}:" value="{! citizenwrapper.electoralInfo.election2017.PASO }" nullvalue="{!$Label.NoInformation}" classLabel="label" classValue="{!IF(citizenwrapper.electoralInfo.election2017.PASOValue == 'EMITIDO','uppercase subattribute-content-green', 'uppercase subattribute-content-bold')}"/>
+                    <c:ContactEditField rendered="{!editionMode && $ObjectType.Contact.Fields.voting_P2017__c.updateable}" 			label="{!$ObjectType.Contact.Fields.voting_P2017__c.Label}" options="{! citizenwrapper.electoralInfo.election2017.PASOOptions }" selectedOption="{! citizenwrapper.citizen.voting_P2017__c }" classLabel="label uppercase" inputType="select"/>
+                </div>
+                <div class="col-6 pl-0 pr-0 pr-md-3 col-md-4 col-lg">
+                    <c:ContactDisplayField rendered="{!(!editionMode) || (!$ObjectType.Contact.Fields.voting_G2017__c.updateable)}" label="{!$ObjectType.Contact.Fields.voting_G2017__c.Label}:" value="{! citizenwrapper.electoralInfo.election2017.General }" nullvalue="{!$Label.NoInformation}" classLabel="label" classValue="{!IF(citizenwrapper.electoralInfo.election2017.GeneralValue == 'EMITIDO','uppercase subattribute-content-green', 'uppercase subattribute-content-bold')}"/>
+                    <c:ContactEditField rendered="{!editionMode && $ObjectType.Contact.Fields.voting_G2017__c.updateable}" label="{!$ObjectType.Contact.Fields.voting_G2017__c.Label}" options="{! citizenwrapper.electoralInfo.election2017.GeneralOptions }" selectedOption="{!citizenwrapper.citizen.voting_G2017__c}" classLabel="label uppercase" inputType="select"/>
+                </div> 
+                
+                <div class="col-6 pl-0 col-md-4 col-lg">
+                <!-- <div class="col-12 pl-0 pr-0 pr-md-12 col-md-12 col-lg"> -->
+                    <c:ContactDisplayField rendered="{!(!editionMode) || (!$ObjectType.Contact.Fields.voting_P2019__c.updateable)}" label="{!$ObjectType.Contact.Fields.voting_P2019__c.Label}:" value="{! citizenwrapper.electoralInfo.election2019.PASO }" nullvalue="{!$Label.NoInformation}" classLabel="label" classValue="{!IF(citizenwrapper.electoralInfo.election2019.PASOValue == 'EMITIDO','uppercase subattribute-content-green', 'uppercase subattribute-content-bold')}"/>
+                    <c:ContactEditField rendered="{!editionMode && $ObjectType.Contact.Fields.voting_P2019__c.updateable}" label="{!$ObjectType.Contact.Fields.voting_P2019__c.Label}" options="{! citizenwrapper.electoralInfo.election2019.PASOOptions }" selectedOption="{!citizenwrapper.citizen.voting_P2019__c}" classLabel="label uppercase" inputType="select"/>
+                </div>
+                
+                <div class="col-6 pl-0 pr-0 pr-md-3 col-md-4 col-lg">
+                    <c:ContactDisplayField rendered="{!(!editionMode) || (!$ObjectType.Contact.Fields.voting_G2019__c.updateable)}" label="{!$ObjectType.Contact.Fields.voting_G2019__c.Label}:" value="{! citizenwrapper.electoralInfo.election2019.General }" nullvalue="{!$Label.NoInformation}" classLabel="label" classValue="{!IF(citizenwrapper.electoralInfo.election2019.GeneralValue == 'EMITIDO','uppercase subattribute-content-green', 'uppercase subattribute-content-bold')}"/>
+                    <c:ContactEditField rendered="{!editionMode && $ObjectType.Contact.Fields.voting_G2019__c.updateable}" label="{!$ObjectType.Contact.Fields.voting_G2019__c.Label}" options="{! citizenwrapper.electoralInfo.election2019.GeneralOptions }" selectedOption="{!citizenwrapper.citizen.voting_G2019__c}" classLabel="label uppercase" inputType="select"/>
+                </div> 
+
+                <div class="col-6 pl-0 col-md-4 col-lg">
+                    <c:ContactDisplayField rendered="{!(!editionMode) || (!$ObjectType.Contact.Fields.voting_P2021__c.updateable)}" label="{!$ObjectType.Contact.Fields.voting_P2021__c.Label}:" value="{! citizenwrapper.electoralInfo.election2021.PASO }" nullvalue="{!$Label.NoInformation}" classLabel="label" classValue="{!IF(citizenwrapper.electoralInfo.election2021.PASOValue == 'EMITIDO','uppercase subattribute-content-green', 'uppercase subattribute-content-bold')}"/>
+                    <c:ContactEditField rendered="{!editionMode && $ObjectType.Contact.Fields.voting_P2021__c.updateable}" label="{!$ObjectType.Contact.Fields.voting_P2021__c.Label}" options="{! citizenwrapper.electoralInfo.election2021.PASOOptions }" selectedOption="{!citizenwrapper.citizen.voting_P2021__c}" classLabel="label uppercase" inputType="select"/>
+                </div>
+                    
+            </div> 
+            <div class="row card-cont subattribute-border"  style="{! IF($Permission.Contact_View_Electoral_Details,'', 'display:none')} ">
+                <div class="col-12 pl-0 col-md-6 col-lg-12">
+                    <c:ContactDisplayField rendered="{!(!editionMode) || (!$ObjectType.Contact.Fields.party_affiliation__c.updateable)}" label="{!$ObjectType.Contact.Fields.party_affiliation__c.Label}:" value="{!citizenwrapper.citizen.party_affiliation__c}" nullvalue="{!$Label.NoInformation}" classLabel="label " classValue="uppercase subattribute-content-normal"/>
+                    <c:ContactEditField rendered="{!editionMode && $ObjectType.Contact.Fields.party_affiliation__c.updateable}" label="{!$ObjectType.Contact.Fields.party_affiliation__c.Label}" value="{!citizenwrapper.citizen.party_affiliation__c}" classLabel="label uppercase"/>
+                </div>
+            </div>            
+        </div>
+    </div>
+</apex:component>

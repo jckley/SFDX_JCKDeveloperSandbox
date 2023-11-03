@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Ciudad_Santa_Cruz__c</fullName>
+    <externalId>false</externalId>
+    <label>Ciudad Santa Cruz</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>28 de Noviembre</fullName>
+                <default>false</default>
+                <label>28 de Noviembre</label>
+            </value>
+            <value>
+                <fullName>Caleta Olivia</fullName>
+                <default>false</default>
+                <label>Caleta Olivia</label>
+            </value>
+            <value>
+                <fullName>Comandante Luis Piedrabuena</fullName>
+                <default>false</default>
+                <label>Comandante Luis Piedrabuena</label>
+            </value>
+            <value>
+                <fullName>El Calafate</fullName>
+                <default>false</default>
+                <label>El Calafate</label>
+            </value>
+            <value>
+                <fullName>El Chaltén</fullName>
+                <default>false</default>
+                <label>El Chaltén</label>
+            </value>
+            <value>
+                <fullName>Gobernador Gregores</fullName>
+                <default>false</default>
+                <label>Gobernador Gregores</label>
+            </value>
+            <value>
+                <fullName>Las Heras</fullName>
+                <default>false</default>
+                <label>Las Heras</label>
+            </value>
+            <value>
+                <fullName>Los Antiguos</fullName>
+                <default>false</default>
+                <label>Los Antiguos</label>
+            </value>
+            <value>
+                <fullName>Perito Moreno</fullName>
+                <default>false</default>
+                <label>Perito Moreno</label>
+            </value>
+            <value>
+                <fullName>Pico Truncado</fullName>
+                <default>false</default>
+                <label>Pico Truncado</label>
+            </value>
+            <value>
+                <fullName>Puerto Deseado</fullName>
+                <default>false</default>
+                <label>Puerto Deseado</label>
+            </value>
+            <value>
+                <fullName>Puerto San Julián</fullName>
+                <default>false</default>
+                <label>Puerto San Julián</label>
+            </value>
+            <value>
+                <fullName>Puerto Santa Cruz</fullName>
+                <default>false</default>
+                <label>Puerto Santa Cruz</label>
+            </value>
+            <value>
+                <fullName>Río Gallegos</fullName>
+                <default>false</default>
+                <label>Río Gallegos</label>
+            </value>
+            <value>
+                <fullName>Río Turbio</fullName>
+                <default>false</default>
+                <label>Río Turbio</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

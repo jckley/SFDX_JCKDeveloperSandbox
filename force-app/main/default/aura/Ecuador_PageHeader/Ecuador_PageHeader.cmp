@@ -1,0 +1,90 @@
+<aura:component controller="ContactDetailController">
+    <aura:attribute name="citizenWrapper" 	        type="CitizenWrapper" />
+    <aura:attribute name="mainlabel" 				type="String" description="Main Label" required="true" />
+    <aura:attribute name="secundarylabel" 			type="String" description="Secundary Label" />
+    <aura:attribute name="secundarylabelunderlined" type="String" description="Secundary Label content underlined" />
+    <aura:attribute name="linkToRecordId" 			type="String" description="Link to record id" default="#" />
+    <aura:attribute name="hasHierarchy" 	        type="Boolean" description="Has hierarchy view" default="false" />
+    
+    <aura:attribute name="email" 	    type="String" 			required="false" default="" />
+    <aura:attribute name="mobile" 	    type="String" 			required="false" default="" />
+    <aura:attribute name="fijo" 	    type="String" 			required="false" default="" />
+
+    <aura:registerEvent name="mainHeaderClickEvent" type="c:mainHeaderClick"/>
+    <aura:registerEvent name="PRM_Cuidarnos_Edit_Completed" 			type="c:PRM_Cuidarnos_Edit_Completed" />  
+
+    <div class="">
+        <div class="title">
+            <div class="{! v.hasHierarchy?'main-label':''}" onclick="{!v.hasHierarchy?'c.fireHierarchyEvent':''}">{! v.mainlabel}</div>
+        </div>
+        
+        <div class="subtitle">
+            {!v.secundarylabel}
+            <a class="searchAddress"  onclick="{! c.goToRelated}" href="javascript:void();" data-search="{! v.citizenWrapper.citizen.grouphash_coh__c}">
+                {!v.secundarylabelunderlined}
+            </a>
+            <span class="{! v.citizenWrapper.permissions.ViewEdition?'':'slds-hide'}">
+                &nbsp;&nbsp;-&nbsp;&nbsp; 
+                <a href="javascript:void();" data-action="edit" onclick="{!c.proccesAction}">
+                    Editar
+                </a>
+            </span>
+
+            <!-- <span class="">
+                &nbsp;&nbsp;-&nbsp;&nbsp; 
+                <a href="{! '/s/ecuador-contact-tracing/?id=' + v.citizenWrapper.citizen.Id }">
+                    Contact Tracing
+                </a>
+            </span> -->
+
+        </div>
+    </div>
+
+    <section aura:id="divModalEdit" role="dialog" tabindex="-1" class="slds-modal slds-modal_small" aria-labelledby="mdlMarkCitizenTitle" aria-modal="true" aria-describedby="mdlMarkCitizenContent">
+        <div class="slds-modal__container">
+            <header class="slds-modal__header" style="border-bottom: solid 0px transparent;">
+                <lightning:icon class="slds-modal__close " iconName="utility:close" alternativeText="Cerrar" title="Cerrar"  onclick="{!c.closeModal}" />                
+            </header>
+
+             <div class="slds-modal__content slds-p-around_medium">
+                <div class="confirmtitle">
+                    <div class="slds-align_absolute-center">
+                        Editar
+                    </div>
+                </div>
+                <div class="editdialog">
+                    <div class="slds-p-around_medium">
+                        <div class="edit_inpuclt">
+                            <div class="label">E-Mail</div>
+                            <div class="value" >
+                                <ui:inputText  value="{!v.email}" />
+                            </div>
+                        </div>
+ 
+                        <div class="edit_input">
+                            <div class="label">Celular</div>
+                            <div class="value" >
+                                <ui:inputText  value="{!v.mobile}" />
+                            </div>
+                        </div>
+
+                        <div class="edit_input">
+                            <div class="label">Telefono fijo</div>
+                            <div class="value" >
+                                <ui:inputText  value="{!v.fijo}" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="modal_buttons slds-var-p-around_medium slds-align_absolute-center" style="height:5rem">                        
+                        <button data-action="close_modal"   onclick="{!c.proccesAction}" class="">Cancelar</button>
+                        <button data-action="save_edit"     onclick="{!c.proccesAction}" class="ok">Aceptar</button>            
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div aura:id="divBackground" class="slds-backdrop"></div>   
+</aura:component>

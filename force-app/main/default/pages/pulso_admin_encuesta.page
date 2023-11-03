@@ -1,0 +1,1423 @@
+<apex:page controller="pulso_admin_controller" docType="html-5.0" standardStylesheets="false" lightningStylesheets="false" showHeader="false" sidebar="false">
+    <html lang="en">
+        <head>
+            <title>Pulso Encuesta</title>
+            <meta charset="utf-8"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+            <apex:stylesheet value="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+            <apex:stylesheet value="https://use.fontawesome.com/releases/v5.8.1/css/all.css"/>
+            <apex:stylesheet value="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.4.0/css/bootstrap4-toggle.min.css"/>
+            <apex:stylesheet value="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" />
+            <apex:stylesheet value="{! URLFOR($Resource.PulsoCRM, 'css/pulso_admin_encuesta.css')}" />
+            <style>
+            	.icondot.active {
+                	color : #40b599;
+                }
+                .icondot.inactive {
+                	color : red;
+                }
+                
+                .modalmessage .modal-content.error {
+                	background-color : #FFF3CD;
+                }
+                
+                .modalmessage .modal-content.error {
+                	background-color : #FFF3CD;
+                }
+
+                a i:not(:first-child){
+                    margin-top:14px;
+                    margin-left:8px;
+                }                
+                .fa-stack i.fa-stack-2x { 
+                	color : #6c757d;
+                }
+                
+                .fa-stack i.fa-stack-1x{ 
+                	color : #FFFFFF;
+                }
+            </style>
+        </head>        
+        <body>
+            <header class="container-fluid align-middle">
+                <div class="row">
+                    <nav class="navbar navbar-expand-sm fixed-top bg-white navbar-light shadow-sm pulso_header">
+                        <div class="col-sm">
+                            <a class="navbar-brand logo" href="/apex/pulso_admin">
+                                <img src="{!URLFOR($Resource.PulsoLogo)}" alt="logo" /> / admin
+                            </a>
+                            
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                        </div>
+                        
+                        <div class="col-sm">
+                            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                                <ul class="navbar-nav mx-auto">
+                                    <li class="nav-item menuitemencuestas pulso-header-nav-item">
+                                        <a class="nav-link" href="/apex/pulso_admin">Mis Encuestas</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="col-sm">
+                            <div class="row justify-content-end">
+                                 <apex:outputPanel styleClass="align-middle pr-3" rendered="{! $Permission.Pulso_Crear_Encuesta }">                                
+                                    <a class="fa-stack" style="font-size:1.3em;" href="#" onclick="exportSurveyedLeads()" data-toggle="tooltip" title="Export Leads to CSV File!">
+                                        <i class="fas fa-users fa-stack-2x"></i>
+                                        <i class="fas fa-arrow-circle-down fa-stack-1x fa-inverse"></i>
+                                    </a>                                    
+                                </apex:outputPanel>
+                                
+                                <apex:outputPanel styleClass="align-middle pr-3" rendered="{! $Permission.Pulso_Crear_Encuesta }">                                
+                                    <a class="fa-stack" style="font-size:1.3em;" href="#" onclick="exportSurveyedLikes()" data-toggle="tooltip" title="Export Likes to CSV File!">
+                                        <i class="fas fa-thumbs-up fa-stack-2x"></i>
+                                        <i class="fas fa-arrow-circle-down fa-stack-1x fa-inverse"></i>
+                                    </a>
+                                </apex:outputPanel>
+                                
+                                <apex:outputPanel styleClass="align-bottom pt-1" rendered="{! $Permission.Pulso_Crear_Encuesta }">                                
+
+                                    <button class="navbar-nav bg-secondary border-0 rounded updatesurvey" type="button" data-toggle="modal" data-target="#editEncuesta">
+                                        <span class="nav-link text-white px-4 surveyaction"></span>
+                                    </button>
+                                </apex:outputPanel>
+                            </div>
+                        </div>
+
+                    </nav>
+                </div>
+            </header>
+            
+            <article class="brief backgroundgray">
+                <div class="container text-center">
+                    <h1 class="font-weight-bolder primarytext survey_name"></h1>
+                    <p class="secondarytext">
+                        <i class="fas fa-circle mr-2 mb-5 icondot"></i>
+                        <span class="survey_status"></span><span class="survey_lastupdate"></span>
+                    </p>
+                </div>
+                                
+                <div class="container mt-2">
+                    <div class="row">
+                        <div class="col rounded shadow-sm text-center cardbrief">
+                            <h2 class="font-weight-bolder pt-3 h2 primarytext" id="statsCantidadEncuestas">0</h2>
+                            <h6 class="font-weight-lighter pb-3 h6 secondarytext">PREGUNTAS</h6>
+                        </div>
+                        
+                        <div class="col rounded shadow-sm text-center cardbrief">
+                            <h2 class="font-weight-bolder pt-3 h2 primarytext" id="statsEncuestasCompletas">0</h2>
+                            <h6 class="font-weight-lighter pb-3 h6 secondarytext">ENCUESTAS COMPLETAS </h6>
+                        </div>
+                        
+                        <div class="col rounded shadow-sm text-center cardbrief">
+                            <h2 class="font-weight-bolder pt-3 primarytext" id="statsPersonasEncuestadas">0</h2>
+                            <h6 class="font-weight-lighter pb-3 secondarytext">PERSONAS IDENTIFICADAS</h6>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            
+            <div class="container-fluid" style="background-color:#FFFFFF">
+                <div class="container">
+                    <ul class="nav nav-tabs navigationtab">
+                        <li class="nav-item nav-link tab-link ml-0 mr-5 active" data-tab="tabResultados">
+                            Resultados 
+                        </li> 
+                        <li class="nav-item nav-link tab-link ml-5 mr-5" data-tab="tabTopLikes">
+                            Intereses
+                        </li>
+                        <li class="{! IF($Permission.Pulso_Generar_Audiencia,'nav-item nav-link tab-link ml-5','invisible' )}" data-tab="tabAudiencia">
+                            Audiencia
+                        </li>    
+                        <li class="nav-item nav-link tab-link ml-5 mr-auto" data-tab="tabCharts">
+                            Charts
+                        </li>  
+                    </ul>
+                </div>
+
+                <div class="container tab-block" id="tabResultados">                
+                    <div class="mt-4 container-fluid">
+                        <div class="row">
+                            <hr class="col"/>
+                            
+                            <div class="col-md-auto float-right ml-2 navigationbuttons">
+                                <button class="navigationcustombutton showtypeformresults pulsoresults" data-url="">
+                                    <i class="fa fa-eye"></i>
+                                    Resultados en tiempo real
+                                </button>    
+
+                                <button class="navigationcustombutton showpulsoresults typeformresults hideme" data-url="">
+                                    <i class="fa fa-eye"></i>
+                                    Resultados
+                                </button> 
+                                
+                                <input type="checkbox" class="togglecuitificados" data-tab="results" data-toggle="toggle" data-on="Identificados" data-off="Todos"  />
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="results pulsoresults">
+                    </div>
+                    
+                    <div class="typeformresults hideme" height="100%">
+                        <iframe src="" frameborder="0" height="100%" id="typeformsurvey" width="100%" style="min-height:500px;">
+                        </iframe>
+                    </div>
+                </div>
+                
+                <div class="container tab-block hideme" id="tabTopLikes">        
+                    <div class="mt-4 container-fluid">
+                        <div class="row">
+                            <hr class="col"/>
+                            
+                            <div class="col-md-auto float-right ml-2 navigationbuttons">                            
+                                <input type="checkbox" class="togglecuitificados" data-tab="likes" data-toggle="toggle" data-on="Identificados" data-off="Todos"  />
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="badges" cladd="hideme"></div>
+                    
+                    <div class="d-flex py-4 border-bottom">
+                        <h5 class="pl-4 my-auto brieffanpage">
+                            <div class="form-inline">
+                                <label><b>Top&nbsp;&nbsp;&nbsp;</b></label> 	
+                                    
+                                <select id="cboTopPages" class="form-control" >
+                                    <option value="10">10</option>
+                                    <option value="20">20</option>
+                                    <option value="50">50</option>
+                                    <option value="100">100</option>
+                                </select> 
+                                <label><b>&nbsp;&nbsp;&nbsp;Fanpages&nbsp;</b>&nbsp;de&nbsp;</label>
+    
+                                <span class="fanpageperson"></span>
+                            </div>
+                        </h5>
+                        
+                        <div class="ml-auto p-2">                        
+                            <button class="border-0 rounded p-2 ml-auto editfilters" type="button" data-toggle="modal" data-target="#filterModalFanPage">
+                                <span class="text-white px-2 font-weight-bolder">
+                                    <img src="{! URLFOR($Resource.PulsoCRM, 'img/admin/filter_edit.svg')}" class="iconfilter pr-2" />
+                                    EDITAR FILTRO
+                                </span>
+                            </button>
+                            <button class="border-0 rounded p-2 ml-auto bg-secondary removefilters" type="button" data-toggle="modal">
+                                <span class="text-white px-2 font-weight-bolder">
+                                    <img src="{! URLFOR($Resource.PulsoCRM, 'img/admin/filter_clear.svg')}" class="iconfilter pr-2" />
+                                    QUITAR FILTRO
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div id="fanPages"></div>
+                                                    
+                    <div class="modal fade" id="filterModalFanPage" tabindex="-1" role="dialog" aria-labelledby="filterModalTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="filterModalTitle">FILTRO</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                
+                                <div class="modal-body filteroptions" style="height:400px;overflow:scroll">
+                                    TODO:
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                    <button type="button" class="btn filter_fanpage" data-dismiss="modal" style="background:#40B599; color:white;">Filtrar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>           
+                </div>
+                            
+                <apex:outputPanel rendered="{! $Permission.Pulso_Generar_Audiencia }">                
+                    <div class="container tab-block" style="display:none" id="tabAudiencia">        
+                        <div class="d-flex py-4 border-bottom mt-5">            
+                            <div class="mx-4" style="height:40px;">
+                                <label class="checkboxcontainer">
+                                    <input type="checkbox" class="survey_option audienciacheckbox" data-scope="audience" id="limpiarSeleccion"/>
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                            
+                            <h5 class="pl-4 my-auto secondarytext">
+                                <span class="statsCuitificados"></span> 
+                                personas identificadas para seleccionar
+                            
+                            </h5>
+                            
+                            <button class="border-0 rounded p-2 ml-auto generaraudiencia" type="button" data-target="#generarAudiencia">
+                                <span class="text-white px-2 font-weight-bolder">GENERAR AUDIENCIA</span>
+                            </button>
+                        </div>
+                        
+                        <div class="audienciasresult" >
+
+                        </div>                    
+                        
+                        <div class="modal fade" id="modalGenerarAudienciaInfo">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <form action="/action_page.php" class="was-validated">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Generar Audiencia</h4>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="col-lg">
+                                                <div class="form-group">
+                                                    <label for="dataextension">DATA EXTENSION</label>
+                                                    <input type="text" class="form-control" id="dataextension" placeholder="Nombre de la DATA EXTENSION" name="dataextension" required="required"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                            <button type="button" class="btn btn-primary" data-dismiss="modal" id="generaraudiencia" name="generaraudiencia" style="background:#40B599; border:1px solid #40B599;" disabled="true">GENERAR AUDIENCIA</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </apex:outputPanel>    
+                
+                <div class="container tab-block hideme" id="tabCharts">    
+                    <div class="mt-4 container-fluid">
+                        <div class="row">
+                            <hr class="col"/>
+                            
+                            <div class="col-md-auto float-right ml-2 navigationbuttons">                            
+                                <input type="checkbox" class="togglecuitificados" data-tab="charts" data-toggle="toggle" data-on="Identificados" data-off="Todos"  />
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="mt-4 mb-4 container-fluid">
+                        <div class="row">
+                            <div class="col-md-auto">   
+                                <div class="btn-group" role="group" aria-label="Charts">
+                                    <button class="border-0 rounded p-2 ml-auto distancebutton" type="button" data-toggle="modal" data-target="#filterModalDistances">
+                                        <span class="text-white px-2 font-weight-bolder">
+                                            <img src="{! URLFOR($Resource.PulsoCRM, 'img/admin/filter_edit.svg')}" class="iconfilter pr-2" />
+                                            SELECCIONAR OPCIONES	
+                                        </span>
+                                    </button> 
+                                </div>                          
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="distancescontainer" class="chartdetail">
+                        <div id="distances">
+
+                        </div>
+                    </div>                
+                </div>
+            </div>
+            <div class="modal fade" id="filterModalDistances" tabindex="-1" role="dialog" aria-labelledby="distanceModalTitle" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="distanceModalTitle">DISTANCIAS</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        
+                        <div class="modal-body distanceoptions" style="height:400px;overflow:scroll">
+                            TODO:
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn filter_distance" data-dismiss="modal" style="background:#40B599; color:white;">Graficar Distancias</button>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+            
+            <div class="container hideme">	                  
+                <div class="row">
+                    <div class="alert alert-success alert-fixed" id="refreshtypeformalert">
+                        <button type="button" class="close" data-dismiss="alert">x</button>
+                        <strong>Actualizando</strong>
+                        La información de la encuesta se está actualizando.
+                    </div>
+                </div>
+            </div>
+                                 
+            <div class="modal fade" id="editEncuesta">
+                <div class="modal-dialog modal-lg modal-dialog-centered">
+                    <div class="modal-content">                
+                        <form role="form" data-toggle="validator">                    
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title surveymodaltitle primarytext">Editar Encuesta</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            
+                            <!-- Modal body -->
+                            <div class="modal-body">                        
+                                <div class="form-row pb-3">
+                                    <div class="col-lg">
+                                        <div class="form-group">
+                                            <label for="idencuesta" class="secondarytext">ID ENCUESTA</label>
+                                            <input type="text" class="form-control" id="idencuesta" placeholder="ID Encuesta" name="idencuesta" required="required" data-error="El identificador de la encuesta no es válido." value="" />
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-lg">
+                                        <div class="form-group">
+                                            <label for="idresultados" class="secondarytext">ID RESULTADOS</label>
+                                            <input type="text" class="form-control" id="idresultados" placeholder="ID Resultados" name="idresultados" required="required" data-error="El identificador de los resultados de la encuesta no es válido." value=""/>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group pt-3 linebordertop">
+                                    <label for="idtitulo" class="secondarytext">TITULO</label>
+                                    <input type="text" class="form-control" id="idtitulo" placeholder="Ingrese Título Encuesta" name="idtitulo" required="required" data-error="El titulo de la encuesta no es válido." value="" />
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="col-lg">
+                                        <div class="form-group">
+                                            <label for="txtQuestions" class="secondarytext">PREGUNTAS</label>
+                                            <input type="text" class="form-control" id="txtQuestions" placeholder="Preguntas" name="txtQuestions" data-error="Debe ingresar la cantidad de preguntas." value=""/>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-lg">
+                                        <div class="form-group">
+                                            <label for="idslug" class="secondarytext">SLUG</label>
+                                            <input type="text" class="form-control" id="idslug" placeholder="Ingrese Slug" name="idslug" required="required" data-error="Debe ingresar un slug para visualizar la encuesta."  value="" />
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-lg">
+                                        <div class="form-group">
+                                            <label class="text-nowrap secondarytext" for="idpauta">PAUTA</label>
+                                            <input type="text" class="form-control" id="idpauta" name="idpauta"  placeholder="Pauta de la encuesta"  value="" />
+                                        </div>
+                                    </div>                                                                        
+                                </div>                          
+                                
+                                <div class="form-group">
+                                    <label for="iddescripcion" class="secondarytext">DESCRIPCION</label>
+                                    <textarea class="form-control" rows="4" id="iddescripcion"></textarea>
+                                </div>                          
+                                
+                            </div>
+                            
+                            <!-- Modal footer -->
+                            <div class="modal-footer d-flex pt-5 pb-4 mb-1 linebordertop">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCELAR</button>
+                                <button type="button" class="btn btn-primary upsertsurveybutton"   data-dismiss="modal">GUARDAR</button>
+                            </div>
+                        </form>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modal modalmessage">
+                <div class="modal-dialog rounded">
+                    <div class="modal-content" style="background:#FFF3CD">
+                        <div class="modal-header mx-auto">
+                            <h5 class="modal-title messagetext"></h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="showCSVFileLinkModal">
+                <div class="modal-dialog modal-lg modal-dialog-centered">
+                    <div class="modal-content">                
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 id="exporttitle" class="modal-title surveymodaltitle primarytext">Exportar a CSV</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <!-- Modal body -->
+                        <div class="modal-body" id="csvFileLink">
+                        </div>
+                        <!-- Modal footer -->
+                        <div class="modal-footer d-flex pt-5 pb-4 mb-1 linebordertop">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">CERRAR</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"/>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"/>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"/>
+            <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.4.0/js/bootstrap4-toggle.min.js"/>                
+            <script src="{! URLFOR($Resource.PulsoCRM, 'js/jquery-treemap.js') }"></script>            
+            
+            <script>
+                var MODE_LIST = 1;
+                var MODE_DETAIL = 2;
+            	var MESSAGE_TYPE_SUCCESS = 1;
+            	var MESSAGE_TYPE_ERROR = 2;
+            
+                var AWS_ENDPOINT = 'https://api-pulso.prosumia.la';   
+            	var TYPEFORM_ENDPOINT = 'https://smix.typeform.com';   
+                var strSurveyId = null;
+                var strPageMode = null;
+                var objSurvey = null;
+            	var boolIdentified = false;
+            	var arrSelectedOptions = null;
+            	var arrSelectedOptionsAnt = null;
+            	var arrFacebookLike = null;
+            	var arrSelectedFilters = [];
+            	var arrBadges = [];
+            
+                $(document).ready(function() {
+                    initializePage();
+					$('[data-toggle="tooltip"]').tooltip();   
+                });
+            
+                $(document).on('click', '.upsertsurveybutton', function() {
+                    upsertSurvey();
+                });
+            
+            	$(document).on('click', '.filter_fanpage', function() {       
+                    arrBadges = [];
+                    $(".optioncheck[data-scope=filteroptions]:checked").each(function() { 
+                    	arrSelectedFilters.push($(this).data('id'));
+                        arrBadges.push({"question" : $(this).data("question"), "name" : $(this).data('option')});
+                    });
+                    updateBadges();
+                    retrieveLikes();                    
+                });
+            
+            	$(document).on('click', '.filter_distance', function() {       
+                    var arrDistancesOptions = null;
+                    arrDistancesOptions = [];
+                    $(".optioncheck[data-scope=distance]:checked").each(function() { 
+                    	arrDistancesOptions.push($(this).data('id'));
+                    });
+                    
+                    retrieveDistances(strSurveyId, 'distances', arrDistancesOptions, boolIdentified);                    
+                });
+                                  
+                $(document).on('click', '.removefilters', function() {       
+                    $(this).hide();
+                    arrBadges = [];                    
+                    updateBadges();
+                    retrieveLikes();                    
+                });
+            
+	            $(document).on('click', '.tab-link', function() {
+                    var strTab = null;
+                    
+                    strTab = $(this).data('tab');
+                    $('.tab-block').hide();
+                    $('.tab-link').removeClass('active');
+                    
+                    $(this).addClass('active');
+                    $('#' + strTab).show();      
+                    
+                    if(strTab == 'tabTopLikes') {
+                        if(arrFacebookLike == null) {
+                            retrieveLikes();
+                        } else {
+                        	displayFanBoxes();
+                        }
+                    }
+                });
+                
+            	$(document).on('change','.togglecuitificados', function(objEvent) {                   
+                    boolIdentified = $(this).is(':checked');
+
+                    if($(this).data('tab') == 'results') {
+                        fillQuestions();  
+                    } else if( $(this).data('tab') == 'likes' ) {
+                        displayFanBoxes();
+                    } else if($(this).data('tab') == 'charts') {
+                        // obtenerTopFanPages(null, boolIdentified);
+                    }
+                                              
+                    if(boolIdentified) {
+                        $('.toggle.btn.btn-light.off').removeClass('off');
+                        $('.toggle.btn.btn-light').removeClass('btn-light');
+                        $('.toggle.btn').addClass('btn-primary');
+                    } else {
+                        $('.toggle.btn.btn-primary').removeClass('btn-primary');
+                        $('.toggle.btn').addClass('btn-light');
+                        $('.toggle.btn.btn-light').addClass('off');                       
+                    }
+                    
+                    $('.togglecuitificados').prop('checked', boolIdentified);
+                })
+                
+                $(document).on('change', '.questioncheck', function(objEvent) {
+                	var boolIsChecked = false;
+                    var strQuestionId = null;
+					var strScope = null;
+                    
+                	boolIsChecked = $(this).is(':checked');
+                    strQuestionId = $(this).data('questionid');
+                    strScope = $(this).data('scope');                    
+
+                    $(".optioncheck[data-scope=" + strScope + "][data-questionid=" + strQuestionId + "]").each(function() { 
+                    	$(this).prop('checked', boolIsChecked);
+                    });
+                    
+                    $(".optioncheck[data-scope=" + strScope + "]").each(function() { 
+                        boolIsChecked = boolIsChecked && $(this).prop('checked');
+                    });
+                    
+                    $(".audienciacheckbox[data-scope=" + strScope + "]").prop('checked', boolIsChecked);
+                    
+                });
+            
+            	$(document).on('change', '.optioncheck', function(objEvent) {
+                	var boolIsChecked = true;
+                    var strQuestionId = null;
+                    var strScope = null;
+                    
+                    strQuestionId = $(this).data('questionid');
+                    strScope = $(this).data('scope');  
+                    
+                    $(".optioncheck[data-scope=" + strScope + "][data-questionid=" + strQuestionId + "]").each(function() { 
+                        boolIsChecked = boolIsChecked && $(this).prop('checked');
+                    });
+
+                    $(".questioncheck[data-scope=" + strScope + "][data-questionid=" + strQuestionId + "]").prop('checked', boolIsChecked);
+                    
+                    $(".optioncheck[data-scope=" + strScope + "]").each(function() { 
+                        boolIsChecked = boolIsChecked && $(this).prop('checked');
+                    });
+                    
+                    $(".audienciacheckbox[data-scope=" + strScope + "]").prop('checked', boolIsChecked);
+
+                });
+
+            	$(document).on('change', '.audienciacheckbox', function(objEvent) {
+                	var boolIsChecked = true;
+                    var strQuestionId = null;
+                    var strScope = null;
+                    
+                    boolIsChecked = $(this).is(':checked');
+                    strScope = $(this).data('scope');  
+                     
+                    $(".questioncheck[data-scope=" + strScope + "]").each(function() { 
+                        $(this).prop('checked', boolIsChecked);
+                    });
+                    
+                    $(".optioncheck[data-scope=" + strScope + "]").each(function() { 
+                        $(this).prop('checked', boolIsChecked);
+                    });
+                });
+            
+                $(document).on('click', '.generaraudiencia', function() {                    
+                    arrSelectedOptions = [];
+                    $('.optioncheck[data-scope=audience]:checked').each( function(intIndex) {
+                        arrSelectedOptions[intIndex]= $(this).data('id');
+                    });
+                        
+                    if (arrSelectedOptions.length > 0) {
+                        $('#modalGenerarAudienciaInfo').modal();
+                    } else {
+                        showMessage(MESSAGE_TYPE_ERROR, '¡No hay respuestas seleccionadas!');
+                    }                  
+                });
+            
+            	$(document).on('click', '#generaraudiencia', function() {                    
+                    var strDataExtension = null;
+                    
+                    strDataExtension = $('#dataextension').val();
+
+                    if (strDataExtension.length > 0) {
+                        showMessage(MESSAGE_TYPE_SUCCESS, '¡Generando Audiencia...!');
+						var datadict = {}
+                        datadict['surveyid'] = strSurveyId;
+                        datadict['data_extension'] = strDataExtension;
+                        datadict['opciones'] = arrSelectedOptions;
+                        $.ajax({
+                            method: "POST",
+                            url: AWS_ENDPOINT + '/pulso/pulso_generar_audiencia',
+                            contentType: "application/json; charset=utf-8",
+  							dataType: "json",
+                            data: JSON.stringify(datadict)
+                        }).done(function( strResult ) {
+                            window.location.reload(true);  
+                        });
+
+                    }
+                });
+
+                $(document).on('createdistance', function(objEvent) {             
+                    retrieveSurveyFromSF('{!SurveyId}'); 
+                    $('.chartypebutton[data-chart="questions"]').addClass('btn-light');
+                    $('.chartypebutton[data-chart="answers"]').addClass('btn-primary');
+                    
+                    $('#createChartModal').modal('toggle');
+                });
+            
+            	$(document).on('keyup', '#dataextension', function() {                    
+                    var strText = $(this).val();
+                    if (strText.length > 0) {
+                        $("#generaraudiencia").prop("disabled", false);
+                    } else {
+                        $("#generaraudiencia").prop("disabled", true);
+                    }               
+                });
+            
+                $('.showtypeformresults').on('click', function(objEvent) {                 
+                    $('.pulsoresults').hide();
+                    $('.typeformresults').show();                    
+                })
+                
+                $('.showpulsoresults').on('click', function(objEvent) {                 
+                    $('.pulsoresults').show();
+                    $('.typeformresults').hide();                    
+                })
+                
+                $(document).on('change','#cboTopPages', function(objEvent) { 
+                	resetFanPageFilters();
+                }); 
+                
+                function initializePage() {
+                    initializePageDetail();
+                }
+                           
+                function initializePageDetail() {
+                    strPageMode = MODE_DETAIL;
+            		strSurveyId =  $.urlParam('id');
+                    
+                    $('.surveymodaltitle').html('Editar Encuesta');
+                    $('#idencuesta').attr('disabled', true);
+                    $('.menuitemencuestas').removeClass('selected');                       
+                    $('.surveyaction').html('Editar');
+                    $('.editmode').show();
+                    
+                    retrieveSurvey(strSurveyId);
+                    retrieveSurveyInSF(strSurveyId);
+                }
+            
+                function createSurveyRequest() {
+                    var objSurvey = {};
+                    
+                    objSurvey.surveyid = $("#idencuesta").val(); 
+                    objSurvey.name = $("#idtitulo").val(); 
+                    objSurvey.totalpreguntas = $('#txtQuestions').val();
+                    objSurvey.description = $("#iddescripcion").val();
+                    objSurvey.advertising = $("#idpauta").val();
+                    objSurvey.responseid = $("#idresultados").val();
+                    objSurvey.slug = $("#idslug").val(); //url
+                    objSurvey.totalusuarios = 0;
+                    objSurvey.totalcuitificados = 0;
+                    
+                    return objSurvey;        
+                }
+            
+                function upsertSurvey() {
+                    var objSurvey = null;
+            
+                    objSurvey = createSurveyRequest();
+            
+                    if(strPageMode == MODE_LIST) {
+                        insertSurvey(objSurvey);
+                    } else if(strPageMode == MODE_DETAIL) {
+                        updateSurveyInAWS(objSurvey);
+                        updateSurveyInSalesforce(objSurvey);
+                    }
+                }
+
+            	function retrieveSurveyInSF(strSurveyId) {
+                    var strJSON = null;
+                    
+                    strJSON = JSON.stringify(objSurvey);
+                    Visualforce.remoting.Manager.invokeAction( '{!$RemoteAction.pulso_admin_controller.retrieveSurveyInfo}', strSurveyId,
+                    	function(objResult, objEvent){      
+                            if(objEvent.status) {
+                                if(objResult !== undefined && objResult && objResult.slug !== undefined && objResult.slug !== null) {
+                                    $("#idslug").val(objResult.slug);
+                                }
+                            }
+                        },
+                        {escape: true}
+					);
+                }
+
+            	function updateSurveyInSalesforce(objSurvey) {            
+                    var strJSON = null;
+                    
+                    strJSON = JSON.stringify(objSurvey);
+                    Visualforce.remoting.Manager.invokeAction( '{!$RemoteAction.pulso_admin_controller.upsertSurvey}', strJSON,
+                        function(objResult, objEvent){                    
+                            if(objEvent.status) {
+                                
+                            }
+                        },
+                        {escape: true}
+                    );
+                } 
+
+                function exportSurveyedLeads() {
+                    var strHTML = null;
+                    var strLink = null;
+                    
+                    $('.messagetext').html("Generando Archivo...");
+                    $('.modalmessage').modal('show');
+                    //TODO: Export Leads to CSV
+                    $.ajax({
+                        method: "GET",
+                        url: AWS_ENDPOINT + '/pulso/export_leads/' + strSurveyId + '?filename=' + strSurveyId + '_leads.csv'
+                    }).done(function( strResult ) {
+	                    $('.modalmessage').modal('hide');
+                        
+                        $('#showCSVFileLinkModal').modal('show');
+                        
+                        strLink = AWS_ENDPOINT + '/shared/' + strSurveyId + '_leads.csv'
+                        strHTML = 'El archivo se ha generado.<br />';
+                        strHTML += 'Puede accederlo desde el siguiente <a href="' + strLink + '">link</a>'
+                        $('#exporttitle').html('Leads exportados');
+                        $('#csvFileLink').html(strHTML);
+                        
+                        //window.location.reload(true);  
+                    });
+                }
+
+                function exportSurveyedLikes() {
+                    var strHTML = null;
+                    var strLink = null;
+                    
+                    $('.messagetext').html("Generando Archivo...");
+                    $('.modalmessage').modal('show');
+                    //TODO: Export Likes to CSV
+                    $.ajax({
+                        method: "GET",
+                        url: AWS_ENDPOINT + '/pulso/export_likes/' + strSurveyId + '?filename=' + strSurveyId + '_likes.csv'
+                    }).done(function( strResult ) {
+	                    $('.modalmessage').modal('hide');
+                        $('#showCSVFileLinkModal').modal('show');
+                        //$('#csvFileLink').html(AWS_ENDPOINT + '/shared/' + strSurveyId + '_likes.csv');
+                        //window.location.reload(true);
+                        
+                        strLink = AWS_ENDPOINT + '/shared/' + strSurveyId + '_likes.csv'
+                        strHTML = 'El archivo se ha generado.<br />';
+                        strHTML += 'Puede accederlo desde el siguiente <a href="' + strLink + '">link</a>'
+                        $('#exporttitle').html('Likes exportados');
+                        $('#csvFileLink').html(strHTML);
+
+                    });
+                }
+
+            	function createAudienceInMC() {
+                    //TODO: INSERT SURVEYS
+                    $.ajax({
+                        method: "POST",
+                        url: AWS_ENDPOINT + '/aws-api/pulso_audiencia',
+                        data: JSON.stringify(objSurvey)
+                    }).done(function( strResult ) {
+                        window.location.reload(true);  
+                    });        
+                }
+            
+                function insertSurveyInAWS(objSurvey) {
+                    //TODO: INSERT SURVEYS
+                    $.ajax({
+                        method: "POST",
+                        url: AWS_ENDPOINT + '/pulso/surveys',
+                        data: JSON.stringify(objSurvey)
+                    }).done(function( strResult ) {
+                        window.location.reload(true);  
+                    });        
+                }
+
+                function updateSurveyInAWS(objSurvey) {            
+                    $.ajax({
+                        method: "PUT",
+                        contentType: "application/json",
+                        dataType: "json",
+                        url: AWS_ENDPOINT + '/pulso/surveys',
+                        data: JSON.stringify(objSurvey),
+                        complete: function(objXHR, strStatus) {
+                            if(objXHR.status === 200) {
+                                if(objXHR.responseJSON !== undefined && objXHR.responseJSON.code !== null) {
+                                    if(objXHR.responseJSON.code === 0) {
+                                        showMessage(MESSAGE_TYPE_SUCCESS, ['La operación se ha realizado de manera exitosa']);
+                                        initializePageDetail();
+                                    } else {
+                                        showMessage(MESSAGE_TYPE_ERROR, [objXHR.responseJSON.message]);
+                                    }
+                                } else {                        
+                                    showMessage(MESSAGE_TYPE_ERROR, ['Ha ocurrido un error al intentar realizar la operación.']);
+                                }
+                            } else { 
+                                showMessage(MESSAGE_TYPE_SUCCESS, ['Ha ocurrido un error al intentar realizar la operación.']);
+                            }
+                        } 
+                    });        
+                }
+            
+            	//retrieveDistances(strSurveyId, 'distances', arrDistancesOptions, boolIdentified);                    
+
+            	function retrieveDistances(strSurveyId,strGraphType, arrDistancesOptions, boolIdentified ) {
+                    var strHTML = null;
+                    var strURL = null;
+
+                    strURL = AWS_ENDPOINT + '/pulso/surveys/' + strSurveyId + '/stats/' + strGraphType + '?size=1000&options=' + arrDistancesOptions.join(',');
+                    $(document).trigger('showloading');
+                    
+                    $.ajax({
+                        method: "GET",
+                        url: strURL,
+                        success: function(objResult, strStatus, objXHR) {
+                            try {                                                                
+                                if(objResult !== undefined && objResult !== null) {
+                                    strHTML = displayDistances(JSON.parse(objResult));
+                                    
+                                    $('#distances').html(strHTML);
+                                    $(document).trigger('hideloading');
+                                } else if(objResult.code !== undefined && objResult.code !== null) {                                
+                                    showMessage(MESSAGE_TYPE_ERROR, objResult.message);
+                                } else {
+                                    showMessage(MESSAGE_TYPE_ERROR, ['Ha ocurrido un error al intentar realizar la operación.']);
+                                }
+                            } catch(Ex) {
+                                showMessage(MESSAGE_TYPE_SUCCESS, ['Ha ocurrido un error al intentar realizar la operación. [' + Ex.message + ']']);
+                            }
+                        },
+                        complete: function(objResult, strStatus, objXHR) {                             
+                            if(objXHR.status !== 200) {
+                                showMessage(MESSAGE_TYPE_SUCCESS, ['Ha ocurrido un error al intentar realizar la operación.']);
+                            } else {
+                                if(objResult !== undefined && objResult !== null) {
+                                    console.log('distances1!');
+                                    strHTML = displayDistances(strResult);
+                                    
+                                    $('#distances').html(strHTML);
+                                    $(document).trigger('hideloading');
+                                } else if(objResult.code !== undefined && objResult.code !== null) {                                
+                                    showMessage(MESSAGE_TYPE_ERROR, objResult.message);
+                                } else {
+                                    showMessage(MESSAGE_TYPE_ERROR, ['Ha ocurrido un error al intentar realizar la operación.']);
+                                }
+                            }
+                            $(document).trigger('hideloading');
+                        }
+                    });       
+                }
+            
+            	function displayDistances1(objResult) {
+                    var strHTML = null;
+
+                    if(objResult !== undefined && objResult !== null && objResult.labelx !== undefined && objResult.labelx !== null && objResult.labely !== undefined && objResult.labely !== null && objResult.values !== undefined && objResult.values !== null && objResult.values.length > 0) {
+                        strHTML = '<div class="container">';
+
+                        for(var intIndexY = (objResult.labely.length - 1); intIndexY >= 0; intIndexY--) {
+                            strHTML += '<div class="row">';                        
+                            
+                            if(intIndexY === 0) { 
+                                for(var intIndexX = (objResult.labelx.length - 1); intIndexX > 0; intIndexX--) {
+                                    if(intIndexX === (objResult.labelx.length - 1)) {
+                                        strHTML += '<div class="col-1 d-flex flex-nowrap"></div>';
+                                    } else {
+                                        strHTML += '<div class="col-1 d-flex flex-nowrap">' + objResult.labelx[intIndexX] + '</div>';
+                                        
+                                    }
+                                }
+                            } else {
+                                    
+                                /*
+                                y = 0 es nulo
+                                x = max es nulo
+                                */
+                                for(var intIndexX = (objResult.labelx.length - 1); intIndexX > 0; intIndexX--) {
+                                    if(intIndexX === (objResult.labelx.length - 1)) {
+                                        strHTML += '<div class="col-1 d-flex flex-nowrap">' + objResult.labely[intIndexY] + '</div>';
+                                    }
+                                    strHTML += '<div class="col-1 distancevalue">' + objResult.values[intIndexY][intIndexX] + '</div>';                                      
+                                }
+                            }
+                            strHTML += '</div>';                                                    
+                        }
+
+                        strHTML += '</div>';  
+                    }
+
+                    return strHTML;
+                }
+            
+            	function displayDistances(objResult) {
+                    var strHTML = null;
+
+                    if(objResult !== undefined && objResult !== null && objResult.labelx !== undefined && objResult.labelx !== null && objResult.labely !== undefined && objResult.labely !== null && objResult.values !== undefined && objResult.values !== null && objResult.values.length > 0) {
+                        strHTML = '<div class="container">';
+
+                        for(var intIndexY = (objResult.labely.length - 1); intIndexY >= -1; intIndexY--) {
+                            strHTML += '<div class="row">';                        
+                            
+                            for(var intIndexX = (objResult.labelx.length - 1); intIndexX >= -1; intIndexX--) {
+                                //for(var intIndexX = -1; intIndexX < objResult.labelx.length; intIndexX++) {
+                                //PRIMER COLUMNA
+                                if(intIndexX < 0 ) {
+                                    if(intIndexY >= 0) {
+                                        strHTML += '<div class="col-1 d-flex flex-nowrap">' + objResult.labely[intIndexY] + '</div>';
+                                    } else {
+                                        strHTML += '<div class="col-1"></div>';
+                                    }
+                                } else if(intIndexY === -1) {
+                                    strHTML += '<div class="col-1 d-flex flex-nowrap rotate"><span class="align-middle">' + objResult.labelx[intIndexX] + '</span></div>';
+                                } else {
+                                    if(intIndexY >= 0 && intIndexX < objResult.values[intIndexY].length) {
+                                        strHTML += '<div class="col-1 distancevalue">' + objResult.values[intIndexY][intIndexX] + '</div>';
+                                    } else {
+                                        strHTML += '<div class="col-1"></div>';
+                                    }
+                                }
+                            }
+
+                            strHTML += '</div>';                                                    
+                        }
+
+                        strHTML += '</div>';  
+                    }
+
+                    return strHTML;
+                }
+            
+                function retrieveSurvey(strSurveyId) {
+                    var strUrl = null;
+                    
+                    $(document).trigger('showloading');
+                    $.ajax({
+                        method: "GET",
+                        url: AWS_ENDPOINT + '/pulso/surveys/' + strSurveyId + '?detail=True',
+                        success: function(objResult, strStatus, objXHR) {
+                            try {
+                                if(objResult !== undefined && objResult !== null && objResult.surveys !== undefined && objResult.surveys !== null && objResult.surveys.length > 0) {
+                                    objSurvey = objResult.surveys[0];
+                                    strUrl = TYPEFORM_ENDPOINT + '/report/' + objSurvey.surveyid + '/' + objSurvey.responseid;
+                                    
+                                    loadIframe('typeformsurvey', strUrl);
+                                    fillSurveyEdit();
+                                    fillSurvey();  
+                                } else if(objResult.code !== undefined && objResult.code !== null) {                                
+                                    showMessage(MESSAGE_TYPE_ERROR, objResult.message);
+                                } else {
+                                    showMessage(MESSAGE_TYPE_ERROR, 'Ha ocurrido un error al intentar realizar la operación.');
+                                }
+                            } catch(Ex) {
+                                showMessage(MESSAGE_TYPE_SUCCESS, 'Ha ocurrido un error al intentar realizar la operación. [' + Ex.message + ']');
+                            }
+                        },
+                        complete: function(objXHR, strStatus) { 
+                            if(objXHR.status !== 200) {
+                                showMessage(MESSAGE_TYPE_SUCCESS, 'Ha ocurrido un error al intentar realizar la operación.');
+                            }
+                            $(document).trigger('hideloading');
+                        }
+                    }); 
+                }
+            
+            	function generateAudicence() {
+                    //TODO: UPDATE SURVEYS
+                    $.ajax({
+                        method: "PUT",
+                        url: AWS_ENDPOINT + '/pulso/surveys',
+                        data: JSON.stringify(objSurvey)
+                    }).done(function( strResult ) {
+                        
+                    });        
+                }
+                
+            	function retrieveLikes() {
+                    var intSize = null;
+                    var strUrl = null;
+                                        
+                    $(document).trigger('showloading');
+                    
+                    intSize = $('#cboTopPages').val();    
+                  
+                    if(arrSelectedFilters !== undefined && arrSelectedFilters !== null && arrSelectedFilters.length > 0) {
+	                    strUrl = AWS_ENDPOINT + '/pulso/facebook/likes/' + strSurveyId + '?size=' + intSize + '&options=' + arrSelectedFilters.join(',');
+                    } else {
+                        strUrl = AWS_ENDPOINT + '/pulso/facebook/likes/' + strSurveyId + '?size=' + intSize;
+                    }
+                    
+                    $.ajax({
+                        method: "GET",
+                        url: strUrl
+                    }).done(function( strResult ) {
+                        arrFacebookLike = strResult;
+                        displayFanBoxes();
+                        $(document).trigger('hideloading');
+                    });        
+                }
+
+				function resetFanPageFilters() {
+                    $('.removefilters').hide();
+                    $('.filtercheckbox:checked').prop('checked', false);
+                    
+                    $("#badges").html('');
+                    
+                    arrSelectedOptionsAnt = [];
+                    retrieveLikes();
+                }
+            
+            	function fillSurveyEdit() {
+                    $("#idencuesta").val(objSurvey.surveyid);//surveyid
+                    $("#idresultados").val(objSurvey.responseid); //responseid
+                    $("#idtitulo").val(objSurvey.survey); //name
+                    $("#idpauta").val(objSurvey.advertising);
+                    $("#iddescripcion").val(objSurvey.description); //description
+                    $("#txtQuestions").val(objSurvey.totalpreguntas); //description      
+                }
+            
+				function fillSurvey() {
+                    $('.survey_name').html(objSurvey.survey);
+                    
+                    $('.survey_status').html(objSurvey.status);
+                    $('.survey_lastupdate').html(objSurvey.last_update);
+                    
+                    $('#statsCantidadEncuestas').html(formatNumberWithCommas(objSurvey.totalpreguntas));
+                    $('#statsEncuestasCompletas').html(formatNumberWithCommas(objSurvey.totalusuarios));
+                    $('#statsPersonasEncuestadas').html(formatNumberWithCommas(objSurvey.totalcuitificados));
+                    $('.statsCuitificados').html( formatNumberWithCommas(objSurvey.totalcuitificados));                    
+                    
+                    if(objSurvey.status.search('Activa') >= 0) {
+                        $('.icondot').addClass('active');
+                    } else {
+                        $('.icondot').addClass('inactive');
+                    }
+                    
+                    fillQuestions();    
+                    fillAudience();
+                    fillFilterOptions();
+                    fillDistance();
+                    
+                    corregirTextoPregunta();
+				}
+            
+            	function fillQuestions() {
+                	var strHTML = null;
+                    
+                    strHTML = retrieveSurveyHTML('question', false);
+                    
+                    $('.results').html(strHTML);
+                }
+            
+            	function fillAudience() {
+                	var strHTML = null;
+                    
+                    strHTML = retrieveSurveyHTML('audience', true);
+                    
+                    $('.audienciasresult').html(strHTML);
+                }
+            
+            	function fillDistance() {
+                	var strHTML = null;
+                    
+                    strHTML = retrieveSurveyHTML('distance', true);
+                    
+                    $('.distanceoptions').html(strHTML);
+                }
+            
+            	function fillFilterOptions() {
+                	var strHTML = null;
+                    
+                    strHTML = retrieveSurveyHTML('filteroptions',true);
+                    
+                    $('.filteroptions').html(strHTML);                    
+                }
+            
+            	function retrieveSurveyHTML(strScope, boolHasCheck) {
+                    var strHTML = null;
+                    var objQuestionBrief = null;
+                    strHTML = '';
+                    if(objSurvey.questions !== undefined && objSurvey.questions !== null && objSurvey.questions.length > 0) {	                                          
+                        $.each(objSurvey.questions, function(intIndex, objQuestion) {
+                            strHTML += '<div class="row py-3 survequestion">';
+                            strHTML += '	<div class="col-1">';
+                            strHTML += '		<h4 class="text-weight-bolder text-right text-nowrap"><b>' + (intIndex + 1) + '</b><i class="fas fa-long-arrow-alt-right"></i></h4>';
+                            strHTML += '	</div>';                        
+                            strHTML += '	<div class="col-11">';
+                            strHTML += '		<h3 class="tituloPregunta">' + objQuestion.question + '</h3>';
+                            strHTML += '	</div>';
+                            strHTML += '</div>';
+                            
+                            strHTML += '<div class="row mb-3 survequestion">';
+                            strHTML += '	<div class="col-1">';
+                            if(boolHasCheck) {
+                                strHTML += '<label class="checkboxcontainer">';
+                                strHTML += '	<input class="survey_option check filtercheckbox questioncheck" data-scope="' + strScope + '" data-questionid="' + objQuestion.questionid + '" type="checkbox" />';
+                                strHTML += '	<span class="checkmark"></span>';
+                                strHTML += '</label>';
+                            }
+                            strHTML += '	</div>';       
+                            strHTML += '	<div class="col-11">';
+                            strHTML += '      	<h6 class="pt-2 mb-n1">';
+                            
+                            if(boolIdentified || boolHasCheck) {
+                                strHTML += '           ' + formatNumberWithCommas(objQuestion.identified_count) + ' respuestas.';
+                            } else {
+                                strHTML += '           ' + formatNumberWithCommas(objQuestion.surveyed_count) + ' respuestas. [' + formatNumberWithCommas(objQuestion.identified_count) + ' personas identificadas]';                        
+                            }
+                            strHTML += '		</h6>';
+                            strHTML += '	</div>';
+                            strHTML += '</div>';
+                            
+                            strHTML += retrieveOptionsHTML(strScope, objQuestion, boolHasCheck);
+                        });
+                    }
+                    
+                    strHTML += '';
+                    
+                    return strHTML;                
+                }
+
+                function retrieveOptionsHTML(strScope, objQuestion, boolHasCheck) {
+                    var strHTML = null;
+                    var objResponse = null;
+                    var arrOptions = null;
+                    
+                    strHTML = '';
+                    if(objQuestion.options !== undefined && objQuestion.options !== null && objQuestion.options.length > 0) {
+                        if(boolIdentified) {                        
+                            arrOptions = objQuestion.options.sort((objFirst,objSecond) => (objFirst.identified_count < objSecond.identified_count) ? 1 : ((objSecond.identified_count < objFirst.identified_count) ? -1 : 0)); 
+                        } else {
+                            arrOptions = objQuestion.options.sort((objFirst,objSecond) => (objFirst.surveyed_count < objSecond.surveyed_count) ? 1 : ((objSecond.surveyed_count < objFirst.surveyed_count) ? -1 : 0)); 
+                        }
+
+                        $.each(arrOptions, function(intIndex, objOption) {
+                            if(boolIdentified) {
+                                objResponse = {};
+                                objResponse.count = objOption.identified_count;
+                            	objResponse.percentage = objOption.identified_percentage;
+                            } else {
+                                objResponse = {};
+                                objResponse.count = objOption.surveyed_count;
+                            	objResponse.percentage = objOption.surveyed_percentage;
+                            }
+                            strHTML += '<div class="row my-3 surveyoption">';
+                            strHTML += '	<div class="col-1">';
+                            if(boolHasCheck) {
+                                strHTML += '<label class="checkboxcontainer">';
+                                strHTML += '	<input class="survey_option check filtercheckbox optioncheck" data-scope="' + strScope + '" data-questionid="' + objQuestion.questionid + '" data-id="' + objOption.optionid + '" type="checkbox"  data-question="' + objQuestion.name +  '" data-option="' + objOption.option +  '" />';
+                                strHTML += '	<span class="checkmark"></span>';
+                                strHTML += '</label>';
+                            }
+                            //aca va el checkbox
+                            strHTML += '	</div>';
+                            strHTML += '	<div class="col-11">';
+                            strHTML += '		<div class="progress" data-toggle="tooltip" title="' + objOption.option + '">';
+                            strHTML += '			<div class="btn font-weight-bolder" style="width:3em;">' + (intIndex + 1) + '</div>';
+                            strHTML += '			<div class="progress-bar bg-info surveyoptionprogress" style="width:' + formatPercentage(objResponse.percentage)  + '%;">';
+                            strHTML += '				<h6 class="pulso-progress-bar-text text-left pl-3 text-truncate" style="width:75%;" >' + objOption.option + '</h6>';
+                            strHTML += '				<h6 class="pulso-progress-bar-text text-right pr-5">' + formatNumberWithCommas(objResponse.count) + ' / <b>' + formatPercentage(objResponse.percentage) + '%</b>&nbsp &nbsp</h6>';
+                            strHTML += '			</div>';
+                            strHTML += '		</div>';
+                            strHTML += '	</div>';
+                            strHTML += '</div>';
+                        });
+                    }
+                    return strHTML;
+                }
+            
+            	function displayFanBoxes() {
+                    var intSurveyMaxCount = 0;
+                    var intTotal = 0;
+                    var arrTreemapValues = null;
+                    var objTreemapValue = null;
+                    var strDefaultLogo = "{! URLFOR($Resource.PulsoCRM, 'img/admin/defaultLikeILogo.png')}"    
+                    var strHTML = null;
+                    
+                    if(boolIdentified) {                        
+                        arrFacebookLike = arrFacebookLike.sort((objFirst,objSecond) => (objFirst.identified_percentage < objSecond.identified_percentage) ? 1 : ((objSecond.identified_percentage < objFirst.identified_percentage) ? -1 : 0)); 
+                    } else {
+                        arrFacebookLike = arrFacebookLike.sort((objFirst,objSecond) => (objFirst.surveyed_percentage < objSecond.surveyed_percentage) ? 1 : ((objSecond.surveyed_percentage < objFirst.surveyed_percentage) ? -1 : 0)); 
+                    }
+                    
+                    strHTML = '';
+                    $(arrFacebookLike).each( function(intIndex, objFanPage) {
+                        strHTML += '<div class="row py-3 cardfanpage">';
+                        strHTML += '    <div class="col-1">';
+                        strHTML += '        <h4 class="text-weight-bolder text-right text-nowrap"><b>' + ( intIndex + 1) + '</b><i class="fas fa-long-arrow-alt-right fanarrow"></i></h4>';
+                        strHTML += '    </div>';
+                        strHTML += '    <div class="col rounded shadow-sm fanbox">';
+                        strHTML += '        <div class="row">';
+                        strHTML += '            <div class="col-2 text-center">';
+                        
+                        if(objFanPage.logo !== undefined && objFanPage.logo !== null && objFanPage.logo.length > 0) {
+                            strHTML += '                <img src="' + objFanPage.logo + '" class="rounded-circle img-fluid m-y align-middle" />';
+                        } else {                            
+                            strHTML += '                <img src="' + strDefaultLogo + '" class="rounded-circle img-fluid m-y align-middle logo" />';
+                        }
+                        
+                        strHTML += '            </div>';
+                        strHTML += '            <div class="col-10">';
+                        strHTML += '                <div class="d-flex mb-2 row">';
+                        strHTML += '					<div class="col-10">';
+                        strHTML += '                    	<h4 class="font-weight-bolder pt-3 fanpagename">';
+                        if(objFanPage.fanpageurl !== undefined && objFanPage.fanpageurl !== null && objFanPage.fanpageurl.length > 0 ) {
+                            strHTML += '                    	<a href="' + objFanPage.fanpageurl + '">' + objFanPage.name + '</a>';                    
+                        } else {
+                            strHTML += '                    	' + objFanPage.name + '';                    
+                        }                    
+                        strHTML += '						</h4>';                    
+                        strHTML += '					</div>';
+    
+                        
+                        strHTML += '                	<div class="col-2 justify-content-end">';
+                        strHTML += '                    	<span class="d-sm-none d-lg-block pt-3 fanpagepercetage">';
+                        
+                        if(boolIdentified) {
+                            strHTML += '							' + formatNumberWithCommas(objFanPage.identified_count) + ' / ' + objFanPage.identified_percentage + '%';                    
+                        } else {
+                            strHTML += '							' + formatNumberWithCommas(objFanPage.surveyed_count) + ' / ' + objFanPage.surveyed_percentage + '%';                                            
+                        }
+                        
+                        strHTML += '	                    </span>';                    
+                        strHTML += '   	             </div>';                    
+                        strHTML += '               </div>';
+                        
+                        strHTML += '                <h6 class="font-weight-lighter">A ' + formatNumberWithCommas(objFanPage.count) + ' les gusta esto';
+                        if(objFanPage.category !== undefined && objFanPage.category !== null && objFanPage.category.length > 0) { 
+                            strHTML += ' - ' + objFanPage.category;                    
+                        }
+                        strHTML += '                </h6>';
+                        
+                        strHTML += '                <h6 class="font-weight-lighter pb-3"><small>' + objFanPage.description + '</small></h6>';
+                        strHTML += '            </div>';                                        
+                        strHTML += '        </div>';
+                        strHTML += '    </div>';
+                        strHTML += '</div>';
+                    });
+                    
+                    
+                    $("#fanPages").html(strHTML);      
+                }
+
+            	function updateBadges() {
+                    var strHTML = null;
+                    if(arrBadges !== undefined && arrBadges !== null && arrBadges.length > 0) {
+                        strHTML  = '<div class="row pt-4">';
+                        strHTML += '	<div class="col filterfanpage">';
+                        $.each(arrBadges, function (intIndex, objItem) {
+                            strHTML += '&nbsp;<span class="badge badge-info selectedfanpage">' + objItem.question + ':' + objItem.name + '</span>';
+                        });
+                        strHTML += '	</div>';
+                        strHTML += '</div>';
+                        
+                        $("#badges").html(strHTML);
+                        
+                        $('.removefilters').show();
+                    } else {
+                        $("#badges").html('');                      
+                    }
+                }
+            
+                function formatPercentage(intNumber) { 
+                	var intPercentage = null;
+                    
+                    if(intNumber !== undefined && intNumber !== null) {
+                        intPercentage = parseInt(intNumber * 100) 
+                    } else {
+                        intPercentage = 0;
+                    }
+                    
+                    return intPercentage;
+                }
+            
+                function formatNumberWithCommas(intNumber) {
+                    var arrNumber = null;
+                    
+                    if(intNumber !== undefined && intNumber !== null) {
+                    	arrNumber = intNumber.toString().split(".");
+                    
+                    	arrNumber[0] = arrNumber[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+                    } else { 
+                    	arrNumber = [];
+                        arrNumber[0] = 0;
+                    }
+                    return arrNumber.join(",");
+                }
+                
+            	function loadIframe(strIframe, strUrl) {
+                    var objIframe = null; 
+                        
+                    objIframe = $('#typeformsurvey');
+                    if ( objIframe.length ) {      
+                        objIframe.attr('src', strUrl);   
+                    } 
+                }
+                        
+            	function showMessage(intMessageType, strMessage) {
+                    $('.messagetext').html(strMessage);
+                    
+                    $('.modalmessage').modal();
+                    setTimeout(function() {
+                        $('.modalmessage').modal('hide');
+                    }, 2000);
+            	}
+                
+                //Corrige caracteres especiales en el las preguntas
+                //y las reemplaza por HTML Tags
+            	function corregirTextoPregunta() {
+                    //Reemplazo los asteriscos por bold text
+                    $('.tituloPregunta').each( function (index) {
+                        var texto = $(this).html();
+                        var count = Math.floor(charCount(texto, '*') / 2);
+                        
+                        for (var i = 0 ; i < count ; i++) {
+	                        texto = texto.replace('*', '<b>');
+    	                    texto = texto.replace('*', '</b>');
+                        }
+                        
+                        count = Math.floor(charCount(texto, '_') / 2);
+                        for (var i = 0 ; i < count ; i++) {
+	                        texto = texto.replace('_', '<i>');
+    	                    texto = texto.replace('_', '</i>');
+                        }
+                        
+                        $(this).html(texto);
+                    });
+                }
+
+                function charCount(str, letter) {
+                    var letterCount = 0;
+                    for (var position = 0; position < str.length; position++) {
+                        if (str.charAt(position) == letter) {
+                            letterCount += 1;
+                        }
+                    }
+                    return letterCount;
+                }
+            	
+            	$.urlParam = function(strName){
+                    var arrResults = null;
+                    var objResult = null;
+                    
+                    if(strName !== undefined && strName !== null && strName.length > 0) {        
+                        arrResults = new RegExp('[\?&]' + strName + '=([^&#]*)').exec(window.location.href);
+                        
+                        if (arrResults === undefined || arrResults == null || arrResults.length < 1){
+                            objResult = null;
+                        } else {
+                            objResult = arrResults[1] || 0;
+                        }
+                    }
+                    
+                    return objResult; 
+                }
+            </script>
+            
+             <c:Loading_Modal />
+        </body>        
+    </html>    
+</apex:page>

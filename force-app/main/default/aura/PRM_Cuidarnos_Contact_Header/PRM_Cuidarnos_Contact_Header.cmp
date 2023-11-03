@@ -1,0 +1,915 @@
+<aura:component controller="PRM_Cuidarnos">
+    <aura:attribute name="community"        type="String" default="Prosumia"/>
+    <aura:attribute name="citizenWrapper" 	type="CitizenWrapper" 	required="true" />
+    <aura:attribute name="rendered" 		type="Boolean" 			required="true" default="true" />
+    <aura:attribute name="iscontacttracing" 	type="Boolean" 			required="false" default="false" />
+
+    <aura:attribute name="status" 	        type="String"  required="false" default="" />
+    <aura:attribute name="status_date" 	    type="String"  required="false" default="" />
+
+    <aura:attribute name="email" 	    type="String" 			required="false" default="" />
+    <aura:attribute name="mobile" 	    type="String" 			required="false" default="" />
+    <aura:attribute name="fijo" 	    type="String" 			required="false" default="" />
+
+    <aura:attribute name="alta" 	    type="String" 			required="false" default="" />
+
+    <aura:attribute name="tag_tipoestudio" 	type="String" 			required="false" default="" />
+
+    <aura:attribute name="tag_location" 	type="String" 			required="false" default="" />
+    <aura:attribute name="tag_mode" 	    type="String" 			required="false" default="" />
+    <aura:attribute name="iframe_url" 	    type="String" 			required="false" default="" />
+    <aura:attribute name="reprinturl" 	    type="String" 			required="false" default="" />
+    
+    <aura:attribute name="source_phone" 	    type="String" 			required="false" default="" />
+    <aura:attribute name="destination_phone" 	    type="String" 			required="false" default="" />
+
+    <aura:attribute name="arrMuestras" 	    type="List" 			required="false" default="" />
+    <aura:attribute name="etiqueta" 	    type="String" 			required="false" default="" />
+
+        
+    <aura:attribute name="arrData" 	        type="List"  />
+    <aura:attribute name="arrColumns" 	    type="List" />
+
+    <aura:handler name="init" action="{!c.initializeComponent}" value="{!this}" />
+    <aura:handler event="force:refreshView" action="{!c.forceRefreshViewHandler}"/>
+    <aura:handler event="c:Cuidarnos_Telemedico_Event" action="{! c.showTelemedicoModal }" />
+    <aura:handler event="c:PRM_Cuidarnos_ShowHistory_Event" action="{! c.showHistory }" />
+
+    <aura:registerEvent name="PRM_Cuidarnos_Edit_Completed" 			type="c:PRM_Cuidarnos_Edit_Completed" />  
+    <aura:registerEvent name="PRM_Cuidarnos_Refresh_Historial" 			type="c:PRM_Cuidarnos_Refresh_Historial" />  
+
+
+    <lightning:notificationsLibrary aura:id="notifLib"/>
+    
+    <div class="slds-grid slds-wrap slds-col slds-size_1-of-1">        
+ 
+        <div class="slds-col slds-size_1-of-1 slds-grid slds-wrap pad-bottom-10">
+            <div class="slds-col slds-size_1-of-1">                       
+                <div class="slds-col slds-size_1-of-1 title">
+                    <span class="citizenname">{! v.citizenWrapper.citizen.FirstName + ' ' +  v.citizenWrapper.citizen.MiddleName + ' ' + v.citizenWrapper.citizen.LastName}</span>
+                </div>    
+                 
+                <div class="slds-col slds-size_1-of-1 subtitle">
+                    {! v.citizenWrapper.generalInfo.Title } -
+                    <a class="searchAddress"  onclick="{! c.goToRelated}" href="javascript:void();" data-search="{! v.citizenWrapper.citizen.grouphash_coh__c}">
+                        {! v.citizenWrapper.generalInfo.Address }
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="slds-grid slds-wrap slds-col slds-size_1-of-1 action_bar">   
+            <div class="slds-col slds-size_1-of-2 slds-grid slds-wrap">
+                <div style="{! (v.status == null) || (v.status == '')?'display:none':'' }" class="status">
+                    <span class="description">{! (v.status == 'Notificado')?v.citizenWrapper.cuidarnos.covid.Cuidarnos_Muestra_Result__c:v.status}</span> 
+                    <span class="date">{! v.status_date }</span>
+                </div>
+            </div> 
+
+            <div class="slds-col slds-size_1-of-2 slds-grid slds-wrap">
+                <div class="slds-col slds-size_1-of-1 slds-wrap">
+                    <button id="btnDiscard"     data-action="discard"   onclick="{!c.proccesAction}" class="{! and(v.citizenWrapper.permissions.CuidarnosCanDiscard , (v.status == 'Asintomático' || v.status == 'Sintomático' || v.status == 'Sospechoso' || v.status == 'Inválido'))?'align_right':'slds-hide' }">Descartar</button>
+
+                    <button id="btnNotify"      data-action="notify"    onclick="{!c.proccesAction}" class="{! and(v.citizenWrapper.permissions.CuidannosCanNotify , (v.status == 'Detectable' || v.status == 'No Detectable'))?'align_right':'slds-hide' }">Notificar</button>
+ 
+                    <button id="btnInvalid"     data-action="invalid"   onclick="{!c.proccesAction}" class="{! and(v.citizenWrapper.permissions.CuidarnosCanLoad_Result , (v.status == 'Muestra'))?'align_right':'slds-hide' }">Inválido</button>
+                    <button id="btnNoDetect"    data-action="nodetect"  onclick="{!c.proccesAction}" class="{! and(v.citizenWrapper.permissions.CuidarnosCanLoad_Result ,(v.status == 'Muestra'))?'align_right':'slds-hide' }">No Detectable</button>
+                    <button id="btnDetect"      data-action="detect"    onclick="{!c.proccesAction}" class="{! and(v.citizenWrapper.permissions.CuidarnosCanLoad_Result ,(v.status == 'Muestra'))?'align_right':'slds-hide' }">Detectable</button>
+
+                    <button id="btnTag"         data-action="tag"  data-defaultlab="{! v.citizenWrapper.cuidarnos.defaultLab }"      data-tagaction="1" data-location="{! (v.citizenWrapper.cuidarnos.usuario_pilar)?'pilar': 'general' }" onclick="{!c.proccesAction}" class="{! and(v.citizenWrapper.permissions.CuidarnosCanTag ,(v.status == 'Sospechoso' || v.status == 'Inválido'))?'align_right':'slds-hide' }">Etiqueta</button>
+
+                    
+
+                    <button id="btnSuspcec"     data-action="suspect"   onclick="{!c.proccesAction}" class="{! and(v.citizenWrapper.permissions.CuidarnosCanSuspect ,(v.status == 'Asintomático' || v.status == 'Sintomático' || v.status == 'Descartado'))?'align_right':'slds-hide' }">Sospechoso</button>
+                    <button id="btnFollow"      data-action="follow"   onclick="{!c.proccesAction}" class="{! and(v.citizenWrapper.permissions.CuidarnosCanFollow ,(v.status == 'Asintomático' || v.status == 'Sintomático'))?'align_right':'slds-hide' }">Seguimiento COH</button>
+                    <button id="btnTriage"      data-action="triage"    onclick="{!c.proccesAction}" class="{! and(v.citizenWrapper.permissions.CuidarnosCanTriage ,( v.status == null || v.status == '' || v.status == 'Descartado' || v.status == 'Seguimiento COH' || v.status == 'No Detectable' || ( and(v.status == 'Notificado' , v.citizenWrapper.cuidarnos.covid.Cuidarnos_Muestra_Result__c == 'No Detectable') ) || ( and(v.status == 'Archivado' , v.citizenWrapper.cuidarnos.covid.Cuidarnos_Muestra_Result__c == 'No Detectable') ) ))?'align_right':'slds-hide' }">Triage</button>
+
+                    <button id="btnArchive"     data-action="archive"   onclick="{!c.proccesAction}" class="{! and(v.citizenWrapper.permissions.CuidarnosCanArchive ,or(v.status == 'Notificado',v.status == 'Seguimiento COH'))?'align_right':'slds-hide' }">Archivar</button>
+
+                    <div class="{! (v.status == 'Notificado')?'align_right notificado ':'slds-hide' }">
+                        <span class="helper"></span>
+                        <img src="{! $Resource.CuidarnosResource   + '/img/Notificado.png'}"  />
+                        Notificado                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="citizenseparator">&nbsp;</div>
+        
+        <div class="slds-col slds-size_1-of-1 slds-grid slds-wrap">
+            <div class="slds-col slds-size_3-of-5 subtitle  actions">
+                <span>GUID: {! v.citizenWrapper.citizen.guid__c }</span> 
+                
+                <a href="javascript:void();" data-action="edit" onclick="{!c.proccesAction}" style="{! (v.iscontacttracing)?'display:none':'' }">
+                    Editar
+                </a>
+
+                <a style="{! (v.citizenWrapper.cuidarnos.usuario_pilar)?'':'display:none;' }" href="{! v.citizenWrapper.cuidarnos.turnos_url}"  target="_blank">
+                    Turnos
+                </a> 
+
+                <a href="javascript:void();"  data-action="tag" data-tagaction="0" onclick="{!c.proccesAction}">
+                    Etiqueta
+                </a>
+
+                <a class="{! (v.citizenWrapper.permissions.CuidarnosViewHistoryTag)?'':'slds-hide' }" href="{! v.citizenWrapper.cuidarnos.pdf_url }" target="_blank">
+                    PDF
+                </a> 
+
+                <a class="{! and(v.citizenWrapper.permissions.CuidarnosCanUpdateRisk, v.status != null )?'':'slds-hide' }" href="javascript:void();"  data-action="risk" data-tagaction="0" onclick="{!c.proccesAction}">
+                        
+                    Riesgo <span class="{! (v.citizenWrapper.cuidarnos.covid.Riesgo__c != null)?'':'slds-hide' }">{! v.citizenWrapper.cuidarnos.covid.Riesgo__c }</span>
+                </a>
+                
+                <a class="{!  and(v.citizenWrapper.permissions.CuidarnosExportAlta, v.citizenWrapper.cuidarnos.covid.Estado_Epidemiologico__c =='Alta')?'':'slds-hide' }" href="{! v.citizenWrapper.cuidarnos.alta_url }" target="_blank">
+                    Constancia
+                </a>
+
+            </div> 
+
+            <div class="slds-col slds-size_2-of-5 subtitle actions">
+                <div class="align_right">
+                    <a onclick="{! c.goToRelated}" href="javascript:void();" data-search="{! v.citizenWrapper.generalInfo.relatedQuery}">
+                        Relacionamiento
+                    </a>
+                    <a href="{! '/s/contact-tracing/?id=' + v.citizenWrapper.citizen.Id }" style="{! (v.iscontacttracing)?'display:none':'' }">
+                        Contact Tracing
+                    </a>
+                    <a href="{! '/s/contact/' + v.citizenWrapper.citizen.Id }" style="{! (v.iscontacttracing)?'':'display:none' }" >
+                        Ver Perfil
+                    </a>                    
+                </div>
+            </div>
+        </div>                
+    </div>    
+
+    <section aura:id="divModalSuspect" role="dialog" tabindex="-1" class="modal slds-modal slds-modal_small"  aria-modal="true">
+        <div class="slds-modal__container">
+            <header class="slds-modal__header" style="border-bottom: solid 0px transparent;">
+                <lightning:icon class="slds-modal__close " iconName="utility:close" alternativeText="Cerrar" title="Cerrar"  onclick="{!c.closeModal}" />                
+            </header>
+
+             <div class="slds-modal__content slds-p-around_xx-large">
+                <div class="confirmtitle">
+                    <div class="slds-p-around_medium">
+                        ¿
+                        Está seguro que desea confirmar como sospechoso a
+                            {! v.citizenWrapper.citizen.FirstName + ' ' +  v.citizenWrapper.citizen.MiddleName + ' ' + v.citizenWrapper.citizen.LastName}
+                        ?
+                    </div>
+                </div>
+                <div class="confirmwarning">
+                    <div class="slds-p-around_medium">
+                        <img src="{! $Resource.CuidarnosResource   + '/img/Warning.png'}"  />
+
+                         <span> Una vez realizada, <strong>esta acción no podrá deshacerse.</strong></span>
+                    </div>
+                </div>
+
+                <div class="action_confirm">
+                    <div class="slds-p-around_medium">
+                        <!--
+                        <div class="slds-p-around_medium slds-hide">
+                            <label class="checbo">
+                                <input type="checkbox" id="chkMarkConfirm" onchange="{! c.deactivateSuspect }" />
+                                <span class="checkmark"></span>
+                            </label>
+
+                            Confirmar como <strong>Detectable</strong> (Sin envío de SMS)
+                        </div>
+                        -->
+                        <div class="slds-p-around_medium">
+                            <label class="checbox">
+                                <input type="checkbox" id="chkMarkSuspect" onchange="{! c.deactivatePositive }" />
+                                <span class="checkmark"></span>
+                            </label>
+
+                            Confirmar como <strong>Sospechoso</strong> (Sin envío de SMS)
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="modal_buttons slds-p-around_medium slds-align_absolute-center" style="height:5rem">                        
+                        <button data-action="close_modal"   onclick="{!c.proccesAction}" class="">Cancelar</button>
+                        <button data-action="mark_suspect"  onclick="{!c.proccesAction}" class="ok">Aceptar</button>            
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section aura:id="divModalConfirm" role="dialog" tabindex="-1" class="slds-modal slds-modal_small" aria-labelledby="mdlMarkCitizenTitle" aria-modal="true" aria-describedby="mdlMarkCitizenContent">
+        <div class="slds-modal__container">
+            <header class="slds-modal__header" style="border-bottom: solid 0px transparent;;">
+                <lightning:icon class="slds-modal__close " iconName="utility:close" alternativeText="Cerrar" title="Cerrar"  onclick="{!c.closeMarcarModal}" />                
+            </header>
+
+          <div class="slds-modal__content slds-p-around_large" id="mdlMarkCitizenContent">
+                <div class="confirmtitle">
+                    <div class="slds-p-around_medium">
+                        ¿
+                            Está seguro que desea confirmar a 
+                            {! v.citizenWrapper.citizen.FirstName + ' ' +  v.citizenWrapper.citizen.MiddleName + ' ' + v.citizenWrapper.citizen.LastName}
+                        ?
+                    </div>
+                </div>
+                <div class="confirmwarning">
+                    <div class="slds-p-around_medium">
+                        <lightning:icon iconName="utility:warning" alternativeText="Warning!" title="Warning" />
+
+                         Una vez realizada, esta acción no podrá deshacerse.
+                    </div>
+                </div>
+
+                <div>
+                    <div class="slds-p-around_medium slds-align_absolute-center" style="height:5rem">
+                        <div class="slds-m-around_medium floatright reactivebutton cancelbutton" onclick="{!c.closeMarcarModal}">
+                            <div class="slds-align_absolute-center reactivebuttoncontainer">
+                                <span class="slds-m-left--small slds-m-right--small"><b>No</b></span>
+                            </div>
+                        </div>
+                        <div class="slds-m-around_medium floatright reactivebutton confirmbutton" onclick="{!c.confirmarCiudadano }" data-id="{! v.citizenWrapper.citizen.Id }">
+                            <div class="slds-align_absolute-center reactivebuttoncontainer">
+                                <span class="slds-m-left--small slds-m-right--small"><b>Sí</b></span>
+                            </div>
+                        </div>         
+                    </div>
+                </div>
+          </div>
+        </div>
+    </section>
+
+
+    <section aura:id="divModalFollow" role="dialog" tabindex="-1" class="modal slds-modal slds-modal_small"  aria-modal="true">
+        <div class="slds-modal__container">
+            <header class="slds-modal__header" style="border-bottom: solid 0px transparent;">
+                <lightning:icon class="slds-modal__close " iconName="utility:close" alternativeText="Cerrar" title="Cerrar"  onclick="{!c.closeModal}" />                
+            </header>
+
+             <div class="slds-modal__content slds-p-around_xx-large">
+                <div class="confirmtitle">
+                    <div class="slds-p-around_medium">
+                        ¿
+                            Está seguro que desea dar seguimiento a los cohabitantes de 
+                            {! v.citizenWrapper.citizen.FirstName + ' ' +  v.citizenWrapper.citizen.MiddleName + ' ' + v.citizenWrapper.citizen.LastName}
+                        ?
+                    </div>
+                </div>
+                <div class="confirmwarning">
+                    <div class="slds-p-around_medium">
+                        <img src="{! $Resource.CuidarnosResource   + '/img/Warning.png'}"  />
+
+                         <span> Una vez realizada, <strong>esta acción no podrá deshacerse.</strong></span>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="modal_buttons slds-p-around_medium slds-align_absolute-center" style="height:5rem">                        
+                        <button data-action="close_modal"   onclick="{!c.proccesAction}" class="">Cancelar</button>
+                        <button data-action="mark_follow"  onclick="{!c.proccesAction}" class="ok">Aceptar</button>            
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section aura:id="divModalDiscard" role="dialog" tabindex="-1" class="modal slds-modal slds-modal_small"  aria-modal="true">
+        <div class="slds-modal__container">
+            <header class="slds-modal__header" style="border-bottom: solid 0px transparent;">
+                <lightning:icon class="slds-modal__close " iconName="utility:close" alternativeText="Cerrar" title="Cerrar"  onclick="{!c.closeModal}" />                
+            </header>
+
+             <div class="slds-modal__content slds-p-around_xx-large">
+                <div class="confirmtitle">
+                    <div class="slds-p-around_medium">
+                        ¿
+                            Está seguro que desea descartar a 
+                            {! v.citizenWrapper.citizen.FirstName + ' ' +  v.citizenWrapper.citizen.MiddleName + ' ' + v.citizenWrapper.citizen.LastName}
+                        ?
+                    </div>
+                </div>
+                <div class="confirmwarning">
+                    <div class="slds-p-around_medium">
+                        <img src="{! $Resource.CuidarnosResource   + '/img/Warning.png'}"  />
+
+                         <span> Una vez realizada, <strong>esta acción no podrá deshacerse.</strong></span>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="modal_buttons slds-p-around_medium slds-align_absolute-center" style="height:5rem">                        
+                        <button data-action="close_modal"   onclick="{!c.proccesAction}" class="">Cancelar</button>
+                        <button data-action="mark_discard"  onclick="{!c.proccesAction}" class="ok">Aceptar</button>            
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section aura:id="divModalDetect" role="dialog" tabindex="-1" class="slds-modal slds-modal_small" aria-labelledby="mdlMarkCitizenTitle" aria-modal="true" aria-describedby="mdlMarkCitizenContent">
+        <div class="slds-modal__container">
+            <header class="slds-modal__header" style="border-bottom: solid 0px transparent;">
+                <lightning:icon class="slds-modal__close " iconName="utility:close" alternativeText="Cerrar" title="Cerrar"  onclick="{!c.closeModal}" />                
+            </header>
+
+             <div class="slds-hide  slds-modal__content slds-p-around_xx-large" data-step="2" aura:id="divModalDetectContentStep2">
+                <div class="confirmtitle">
+                    <div class="slds-p-around_medium">
+                        ¿
+                            Está seguro que desea marcar como <strong>Detectable</strong> a 
+                            {! v.citizenWrapper.citizen.FirstName + ' ' +  v.citizenWrapper.citizen.MiddleName + ' ' + v.citizenWrapper.citizen.LastName}
+                        ?
+                    </div>
+                </div>
+                
+                <div class="confirmwarning">
+                    <div class="slds-p-around_medium">
+                        <img src="{! $Resource.CuidarnosResource   + '/img/Warning.png'}"  />
+
+                         <span> Una vez realizada, <strong>esta acción no podrá deshacerse.</strong></span>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="modal_buttons slds-p-around_medium slds-align_absolute-center" style="height:5rem">                        
+                        <button data-action="close_modal"   onclick="{!c.proccesAction}" class="">Cancelar</button>
+                        <button data-action="mark_detect" data-step="2"  onclick="{!c.proccesAction}" class="ok">Aceptar</button>            
+                    </div>
+                </div>
+            </div>
+
+            <div class="slds-modal__content slds-p-around_xx-large" data-step="1" aura:id="divModalDetectContentStep1">
+                <div class="confirmtitle">
+                    <div class="slds-p-around_medium">                        
+                            Selecciona un laboratorio donde guardar como <strong>Detectable</strong> a 
+                            {! v.citizenWrapper.citizen.FirstName + ' ' +  v.citizenWrapper.citizen.MiddleName + ' ' + v.citizenWrapper.citizen.LastName}
+                    </div>
+                </div>
+                
+                <div class="confirmwarningwithoutborder">
+                    <div class="slds-p-around_medium">
+                        <ui:inputSelect aura:id="cbLaboratiorioDetectado">
+                            <option value="">Seleccionar un laboratorio</option>
+                            <option value="CEMIC">CEMIC</option>
+                            <option value="Clinicas">Clinicas</option>
+                            <option value="Hidalgo">Hidalgo</option>
+                            <option value="Malbran">Malbran</option>
+                            <option value="Argenomics">Argenomics</option>
+                        </ui:inputSelect>
+                    </div>
+                </div>
+
+                <div class="confirmwarningwithoutborder">
+                    <div class="slds-p-around_medium">
+                        <ui:inputSelect aura:id="cboEtiquetaDetectado" value="{! v.etiqueta}">
+                            <option value="">Seleccionar una etiqueta</option>
+                            <aura:iteration items="{! v.arrMuestras }" var="objMuestra">
+                                <option value="{!objMuestra.Id}">{!objMuestra.Display}</option>
+                            </aura:iteration>
+                        </ui:inputSelect>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="modal_buttons slds-p-around_medium slds-align_absolute-center" style="height:5rem">                        
+                        <button data-action="close_modal"   onclick="{!c.proccesAction}" class="">Cancelar</button>
+                        <button data-action="mark_detect" data-step="1"  onclick="{!c.proccesAction}" class="ok">Aceptar</button>            
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section aura:id="divModalNoDetect" role="dialog" tabindex="-1" class="slds-modal slds-modal_small" aria-labelledby="mdlMarkCitizenTitle" aria-modal="true" aria-describedby="mdlMarkCitizenContent">
+        <div class="slds-modal__container">
+            <header class="slds-modal__header" style="border-bottom: solid 0px transparent;">
+                <lightning:icon class="slds-modal__close " iconName="utility:close" alternativeText="Cerrar" title="Cerrar"  onclick="{!c.closeModal}" />                
+            </header>
+
+             <div class="slds-hide  slds-modal__content slds-p-around_xx-large" data-step="2" aura:id="divModalNoDetectContentStep2">
+                <div class="confirmtitle">
+                    <div class="slds-p-around_medium">
+                        ¿
+                            Está seguro que desea marcar como <strong>No Detectable</strong> a 
+                            {! v.citizenWrapper.citizen.FirstName + ' ' +  v.citizenWrapper.citizen.MiddleName + ' ' + v.citizenWrapper.citizen.LastName}
+                        ?
+                    </div>
+                </div>
+                <div class="confirmwarning">
+                    <div class="slds-p-around_medium">
+                        <img src="{! $Resource.CuidarnosResource   + '/img/Warning.png'}"  />
+
+                         <span> Una vez realizada, <strong>esta acción no podrá deshacerse.</strong></span>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="modal_buttons slds-p-around_medium slds-align_absolute-center" style="height:5rem">                        
+                        <button data-action="close_modal"   onclick="{!c.proccesAction}" class="">Cancelar</button>
+                        <button data-action="mark_nodetect"  data-step="2"  onclick="{!c.proccesAction}" class="ok">Aceptar</button>            
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="slds-modal__content slds-p-around_xx-large" data-step="1" aura:id="divModalNoDetectContentStep1">
+                <div class="confirmtitle">
+                    <div class="slds-p-around_medium">                        
+                            Selecciona un laboratorio donde guardar como <strong>No detectable</strong> a 
+                            {! v.citizenWrapper.citizen.FirstName + ' ' +  v.citizenWrapper.citizen.MiddleName + ' ' + v.citizenWrapper.citizen.LastName}
+                    </div>
+                </div>
+                
+                <div class="confirmwarningwithoutborder">
+                    <div class="slds-p-around_medium">
+                        <ui:inputSelect aura:id="cbLaboratiorioNoDetectado">
+                            <option value="">Seleccionar un laboratorio</option>
+                            <option value="CEMIC">CEMIC</option>
+                            <option value="Clinicas">Clinicas</option>
+                            <option value="Hidalgo">Hidalgo</option>
+                            <option value="Malbran">Malbran</option>
+                            <option value="Argenomics">Argenomics</option>
+                        </ui:inputSelect>
+                    </div>
+                </div>
+                
+                <div class="confirmwarningwithoutborder">
+                    <div class="slds-p-around_medium">
+                        <ui:inputSelect aura:id="cboEtiquetaNoDetectado" value="{! v.etiqueta}">
+                            <option value="">Seleccionar una etiqueta</option>
+                            <aura:iteration items="{! v.arrMuestras }" var="objMuestra">
+                                <option value="{!objMuestra.Id}">{!objMuestra.Display}</option>
+                            </aura:iteration>
+                        </ui:inputSelect>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="modal_buttons slds-p-around_medium slds-align_absolute-center" style="height:5rem">                        
+                        <button data-action="close_modal"   onclick="{!c.proccesAction}" class="">Cancelar</button>
+                        <button data-action="mark_nodetect" data-step="1"  onclick="{!c.proccesAction}" class="ok">Aceptar</button>            
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section aura:id="divModalInvalid" role="dialog" tabindex="-1" class="slds-modal slds-modal_small" aria-labelledby="mdlMarkCitizenTitle" aria-modal="true" aria-describedby="mdlMarkCitizenContent">
+        <div class="slds-modal__container">
+            <header class="slds-modal__header" style="border-bottom: solid 0px transparent;">
+                <lightning:icon class="slds-modal__close " iconName="utility:close" alternativeText="Cerrar" title="Cerrar"  onclick="{!c.closeModal}" />                
+            </header>
+
+             <div class="slds-hide slds-modal__content slds-p-around_xx-large"  data-step="2" aura:id="divModalInvalidContentStep2">
+                <div class="confirmtitle">
+                    <div class="slds-p-around_medium">
+                        ¿
+                            Está seguro que desea marcar como <strong>Inválido</strong> a 
+                            {! v.citizenWrapper.citizen.FirstName + ' ' +  v.citizenWrapper.citizen.MiddleName + ' ' + v.citizenWrapper.citizen.LastName}
+                        ?
+                    </div>
+                </div>
+                <div class="confirmwarning">
+                    <div class="slds-p-around_medium">
+                        <img src="{! $Resource.CuidarnosResource   + '/img/Warning.png'}"  />
+
+                         <span> Una vez realizada, <strong>esta acción no podrá deshacerse.</strong></span>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="modal_buttons slds-p-around_medium slds-align_absolute-center" style="height:5rem">                        
+                        <button data-action="close_modal"   onclick="{!c.proccesAction}" class="">Cancelar</button>
+                        <button data-action="mark_invalid"  data-step="2" onclick="{!c.proccesAction}" class="ok">Aceptar</button>            
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="slds-modal__content slds-p-around_xx-large" data-step="1" aura:id="divModalInvalidContentStep1">
+                <div class="confirmtitle">
+                    <div class="slds-p-around_medium">                        
+                            Selecciona la muestra donde guardar como <strong>Inválido</strong> a 
+                            {! v.citizenWrapper.citizen.FirstName + ' ' +  v.citizenWrapper.citizen.MiddleName + ' ' + v.citizenWrapper.citizen.LastName}
+                    </div>
+                </div>
+                
+
+                <div class="confirmwarningwithoutborder">
+                    <div class="slds-p-around_medium">
+                        <ui:inputSelect aura:id="cboEtiquetaInvalid" value="{! v.etiqueta}">
+                            <option value="">Seleccionar una etiqueta</option>
+                            <aura:iteration items="{! v.arrMuestras }" var="objMuestra">
+                                <option value="{!objMuestra.Id}">{!objMuestra.Display}</option>
+                            </aura:iteration>
+                        </ui:inputSelect>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="modal_buttons slds-p-around_medium slds-align_absolute-center" style="height:5rem">                        
+                        <button data-action="close_modal"   onclick="{!c.proccesAction}" class="">Cancelar</button>
+                        <button data-action="mark_invalid" data-step="1"  onclick="{!c.proccesAction}" class="ok">Aceptar</button>            
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section aura:id="divModalNotify" role="dialog" tabindex="-1" class="slds-modal slds-modal_small" aria-labelledby="mdlMarkCitizenTitle" aria-modal="true" aria-describedby="mdlMarkCitizenContent">
+        <div class="slds-modal__container">
+            <header class="slds-modal__header" style="border-bottom: solid 0px transparent;">
+                <lightning:icon class="slds-modal__close " iconName="utility:close" alternativeText="Cerrar" title="Cerrar"  onclick="{!c.closeModal}" />                
+            </header>
+
+             <div class="slds-modal__content slds-p-around_xx-large">
+                <div class="confirmtitle">
+                    <div class="slds-p-around_medium">
+                        ¿
+                            Está seguro que desea  <strong>notificar</strong> a 
+                            {! v.citizenWrapper.citizen.FirstName + ' ' +  v.citizenWrapper.citizen.MiddleName + ' ' + v.citizenWrapper.citizen.LastName}
+                        ?
+                    </div>
+                </div>
+                <div class="confirmwarning">
+                    <div class="slds-p-around_medium">
+                        <img src="{! $Resource.CuidarnosResource   + '/img/Warning.png'}"  />
+
+                         <span> Una vez realizada, <strong>esta acción no podrá deshacerse.</strong></span>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="modal_buttons slds-p-around_medium slds-align_absolute-center" style="height:5rem">                        
+                        <button data-action="close_modal"   onclick="{!c.proccesAction}" class="">Cancelar</button>
+                        <button data-action="mark_notify"  onclick="{!c.proccesAction}" class="ok">Aceptar</button>            
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </section>
+
+    <section aura:id="divModalArchive" role="dialog" tabindex="-1" class="slds-modal slds-modal_small" aria-labelledby="mdlMarkCitizenTitle" aria-modal="true" aria-describedby="mdlMarkCitizenContent">
+        <div class="slds-modal__container">
+            <header class="slds-modal__header" style="border-bottom: solid 0px transparent;">
+                <lightning:icon class="slds-modal__close " iconName="utility:close" alternativeText="Cerrar" title="Cerrar"  onclick="{!c.closeModal}" />                
+            </header>
+
+             <div class="slds-modal__content slds-p-around_xx-large">
+                <div class="confirmtitle">
+                    <div class="slds-p-around_medium">
+                        ¿
+                            Está seguro que desea  <strong>archivar</strong> a 
+                            {! v.citizenWrapper.citizen.FirstName + ' ' +  v.citizenWrapper.citizen.MiddleName + ' ' + v.citizenWrapper.citizen.LastName}
+                        ?
+                    </div>
+                </div>
+                <div class="confirmwarning">
+                    <div class="slds-p-around_medium">
+                        <img src="{! $Resource.CuidarnosResource   + '/img/Warning.png'}"  />
+
+                         <span> Una vez realizada, <strong>esta acción no podrá deshacerse.</strong></span>
+                    </div>
+                </div>
+                
+                <div class="{! (v.citizenWrapper.permissions.CuidarnosCanArechiveAlta)?'slds-p-around_medium':'slds-hide' }">
+                    <label class="checbox">
+                        <input type="checkbox" id="chkAlta" onchange="{! c.showHideAlta }"  />
+                        <span class="checkmark"></span>
+                    </label>
+
+                    Otorgar <strong>alta</strong> epidemiológica.
+                </div>
+                    <!--
+                    <div class="{! v.alta == 'show'?'slds-p-around_medium':'slds-hide'}">
+                        <div class="edit_inpuclt">
+                            <div class="label">E-Mail</div>
+                            <div class="value" >
+                                <ui:inputText  value="{!v.email}" />
+                            </div>
+                        </div>
+                    </div>
+                    -->
+ 
+                <div class="modal_buttons slds-p-around_medium slds-align_absolute-center" style="height:5rem">                        
+                    <button data-action="close_modal"   onclick="{!c.proccesAction}" class="">Cancelar</button>
+                    <button data-action="mark_archive"  onclick="{!c.proccesAction}" class="ok">Aceptar</button>            
+                </div>
+           </div>
+        </div> 
+    </section>
+
+    
+    
+    <section aura:id="divModalEdit" role="dialog" tabindex="-1" class="slds-modal slds-modal_small" aria-labelledby="mdlMarkCitizenTitle" aria-modal="true" aria-describedby="mdlMarkCitizenContent">
+        <div class="slds-modal__container">
+            <header class="slds-modal__header" style="border-bottom: solid 0px transparent;">
+                <lightning:icon class="slds-modal__close " iconName="utility:close" alternativeText="Cerrar" title="Cerrar"  onclick="{!c.closeModal}" />                
+            </header>
+
+             <div class="slds-modal__content slds-p-around_medium">
+                <div class="confirmtitle">
+                    <div class="slds-align_absolute-center">
+                        Editar
+                    </div>
+                </div>
+                <div class="editdialog">
+                    <div class="slds-p-around_medium">
+                        <div class="edit_inpuclt">
+                            <div class="label">E-Mail</div>
+                            <div class="value" >
+                                <ui:inputText  value="{!v.email}" />
+                            </div>
+                        </div>
+ 
+                        <div class="edit_input">
+                            <div class="label">Celular</div>
+                            <div class="value" >
+                                <ui:inputText  value="{!v.mobile}" />
+                            </div>
+                        </div>
+
+                        <div class="edit_input">
+                            <div class="label">Telefono fijo</div>
+                            <div class="value" >
+                                <ui:inputText  value="{!v.fijo}" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="modal_buttons slds-p-around_medium slds-align_absolute-center" style="height:5rem">                        
+                        <button data-action="close_modal"   onclick="{!c.proccesAction}" class="">Cancelar</button>
+                        <button data-action="save_edit"     onclick="{!c.proccesAction}" class="ok">Aceptar</button>            
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section aura:id="divModalEtiquetaPilar" role="dialog" tabindex="-1" class="slds-modal slds-modal_small" aria-labelledby="mdlMarkCitizenTitle" aria-modal="true" aria-describedby="mdlMarkCitizenContent">
+        <div class="slds-modal__container">
+            <header class="slds-modal__header" style="border-bottom: solid 0px transparent;">
+                <lightning:icon class="slds-modal__close " iconName="utility:close" alternativeText="Cerrar" title="Cerrar"  onclick="{!c.closeModal}" />                
+            </header>
+
+            <div id="location_container"  style="display: none;"     class="slds-modal__content slds-p-around_xx-large">
+                <div class="confirmtitle">
+                    <div class="slds-p-around_medium" style="text-align: center;">
+                        Generar Etiqueta
+                    </div>
+                </div>
+
+                <div class="confirmwarningwithoutborder">
+                    <div aura:id="divLocation" class="slds-p-around_medium">
+                        <ui:inputSelect aura:id="cboLocation" value="{! v.tag_location}">
+                            <option value="">Seleccionar una ubicación</option>
+                            <option value="A">Tratado de Pilar</option>
+                            <option value="B">KM 46</option>
+                            <option value="C">Teófilo Tolosa</option>
+                            <option value="D">Hospital Sanguinetti</option>
+                            <option value="F">Centro Aislamiento Maristas</option>
+                            <option value="G">Hebraica</option>
+                            <option value="H">Foraneos TT</option>
+                            <option value="I">Hospital Falcón</option>
+                            <option value="J">Hospital Derqui</option>
+
+                            <option value="K">Maternidad</option>
+
+
+                            <option value="L">Hospital Sanguinetti - Guardia</option>
+                            <option value="M">SAME</option>
+                            <option value="N">Centro Odontológico</option>
+
+                            <option value="O">Unidad de Testeo Móvil 1</option>
+                            <option value="P">Unidad de Testeo Móvil 2</option>                                                        
+                            <option value="Q">Unidad de Testeo Móvil 3</option>
+                            <option value="R">Unidad de Testeo Móvil 4</option>
+                            <option value="S">Unidad de Testeo Móvil 5</option>
+
+                            <option value="T">Centro Municipal</option>
+                        </ui:inputSelect>
+                    </div>
+
+                    <div class="slds-p-around_medium">
+                        <ui:inputSelect aura:id="cboTipoEstudio" value="{! v.tag_tipoestudio}">							
+                            <option value="">Tipo de estudio</option>
+							<aura:iteration items="{! v.citizenWrapper.cuidarnos.tipoEstudio }" var="strEstudio">
+                                <option value="{!strEstudio}">{!strEstudio}</option>
+							</aura:iteration>							
+                        </ui:inputSelect>
+                    </div>
+
+                    <div class="slds-p-around_medium">
+                        <c:PRM_LookUp aura:id="cboObraSocial" objectName='Obra_Social__c' fieldName='Obra_Social__c' placeholder='Ingrese su obra social' recordCount='5' label='Obra Social' />
+                    </div>
+                </div>
+
+                
+                <div>
+                    <div class="modal_buttons slds-p-around_medium slds-align_absolute-center" style="height:5rem">                        
+                        <button data-action="close_modal"   onclick="{!c.proccesAction}" class="">Cancelar</button>
+                        <button data-action="generate_tag"  onclick="{!c.proccesAction}" class="ok">Generar Etiqueta</button>            
+                    </div>
+                </div>
+            </div>
+
+             <div id="tag_container" style="display: none;overflow: hidden;" class="slds-modal__content slds-p-around_xx-large">
+                <div class="confirmtitle">
+                    <div class="slds-p-around_medium" style="text-align: center;">
+                        Imprimir Etiqueta
+                    </div>
+                </div>
+                <div class="confirmwarning">
+                    <div id="print_tag" class="slds-p-around_medium">
+                        <iframe id="tagFrame" name="tagFrame" src="{! v.iframe_url }" frameborder="0" style="margin: 0 auto; display : block;" height="300" width="600px" />
+                    </div>
+                </div>
+
+                <div>
+                    <div class="modal_buttons slds-p-around_medium slds-align_absolute-center" style="height:5rem">                        
+                        <button data-action="close_modal"   onclick="{!c.proccesAction}" class="">Cancelar</button>
+                        <button data-action="print_tag"  onclick="{!c.proccesAction}" class="ok">Aceptar</button>            
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section aura:id="divModalEtiqueta" role="dialog" tabindex="-1" class="slds-modal slds-modal_small" aria-labelledby="mdlMarkCitizenTitle" aria-modal="true" aria-describedby="mdlMarkCitizenContent">
+        <div class="slds-modal__container">
+            <header class="slds-modal__header" style="border-bottom: solid 0px transparent;">
+                <lightning:icon class="slds-modal__close " iconName="utility:close" alternativeText="Cerrar" title="Cerrar"  onclick="{!c.closeModal}" />                
+            </header>
+
+             <div class="slds-modal__content slds-p-around_xx-large">
+                <div class="confirmtitle">
+                    <div class="slds-p-around_medium">
+                        ¿
+                            Está seguro que desea  <strong>generar la etiqueta</strong> de 
+                            {! v.citizenWrapper.citizen.FirstName + ' ' +  v.citizenWrapper.citizen.MiddleName + ' ' + v.citizenWrapper.citizen.LastName}
+                        ?
+                    </div>
+                </div>
+                <div class="confirmwarning">
+                    <div class="slds-p-around_medium">
+                        <img src="{! $Resource.CuidarnosResource   + '/img/Warning.png'}"  />
+
+                         <span> Una vez realizada, <strong>esta acción no podrá deshacerse.</strong></span>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="modal_buttons slds-p-around_medium slds-align_absolute-center" style="height:5rem">                        
+                        <button data-action="close_modal"   onclick="{!c.proccesAction}" class="">Cancelar</button>
+                        <button data-action="generate_tag"   onclick="{!c.proccesAction}" class="ok">Aceptar</button>            
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </section>
+
+    <section aura:id="divModalTurnos" role="dialog" tabindex="-1" class="slds-modal slds-modal_small" aria-labelledby="mdlMarkCitizenTitle" aria-modal="true" aria-describedby="mdlMarkCitizenContent">   
+        <iframe src="{! 'https://appointments.clients.debmedia.com/#/company/MunicipalidadDePilar/schedules' }" frameborder="0" style="margin: 10px auto; display : block;overflow:hidden;" height="700px" width="400px" />
+    </section>
+
+    <section aura:id="divModalIVR" role="dialog" tabindex="-1" class="slds-modal slds-modal_small" aria-labelledby="mdlMarkCitizenTitle" aria-modal="true" aria-describedby="mdlMarkCitizenContent">
+        <div class="slds-modal__container">
+            <header class="slds-modal__header" style="border-bottom: solid 0px transparent;">
+                <lightning:icon class="slds-modal__close " iconName="utility:close" alternativeText="Cerrar" title="Cerrar"  onclick="{!c.closeModal}" />                
+            </header>
+
+             <div class="slds-modal__content slds-p-around_medium">
+                <div class="confirmtitle">
+                    <div class="slds-align_absolute-center">
+                        Llamar
+                    </div>
+                </div>
+                <div class="editdialog">
+                    <div class="slds-p-around_medium">
+                        <div class="edit_inpuclt">
+                            <div class="label">Origen</div>
+                            <div class="value" >
+                                <ui:inputText  value="{!v.source_phone}" placeholder="01115XXXXXXXX" />
+                            </div>
+                        </div>
+
+                        <div class="edit_input">
+                            <div class="label">Llamar al :</div>
+                            <div class="value" >
+                                <ui:inputSelect aura:id="cboDestination">
+                                    <ui:inputSelectOption text="Celular"   />
+                                    <ui:inputSelectOption text="Teléfono fijo" />
+                                </ui:inputSelect>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+ 
+                <div>
+                    <div class="modal_buttons slds-p-around_medium slds-align_absolute-center" style="height:5rem">                        
+                        <button data-action="close_modal"   onclick="{!c.proccesAction}" class="">Cancelar</button>
+                        <button data-action="call_ivr"     onclick="{!c.proccesAction}" class="ok">Aceptar</button>            
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section aura:id="divModalHistorial" role="dialog" tabindex="-1" class="slds-modal slds-modal_small" aria-labelledby="mdlHistorialTitle" aria-modal="true" aria-describedby="mdlHistorialContent">
+        <div class="slds-modal__container">
+            <header class="slds-modal__header" style="border-bottom: solid 0px transparent;">
+                <lightning:icon class="slds-modal__close " iconName="utility:close" alternativeText="Cerrar" title="Cerrar"  onclick="{!c.closeModal}" />                
+            </header>
+
+             <div class="slds-modal__content slds-p-around_medium">
+                <div class="confirmtitle">
+                    <div class="slds-align_absolute-center">
+                        Historial
+                    </div>
+                </div>
+
+                <div class="historycontainer">
+                    <div class="slds-p-around_medium">
+                        <lightning:datatable keyField="id" data="{! v.arrData }" columns="{! v.arrColumns }" hideCheckboxColumn="true"/>
+                    </div>
+                </div>
+ 
+                <div>
+                    <div class="modal_buttons slds-p-around_medium slds-align_absolute-center" style="height:5rem">                        
+                        <button data-action="close_modal"   onclick="{!c.proccesAction}" class="">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section aura:id="divModalRisk" role="dialog" tabindex="-1" class="slds-modal slds-modal_small" aria-labelledby="mdlMarkCitizenTitle" aria-modal="true" aria-describedby="mdlMarkCitizenContent">
+        <div class="slds-modal__container">
+            <header class="slds-modal__header" style="border-bottom: solid 0px transparent;">
+                <lightning:icon class="slds-modal__close " iconName="utility:close" alternativeText="Cerrar" title="Cerrar"  onclick="{!c.closeModal}" />                
+            </header>
+
+             <div class="slds-hide  slds-modal__content slds-var-p-around_xx-large" data-step="2" aura:id="divModalRiskContentStep2">
+                <div class="confirmtitle">
+                    <div class="slds-var-p-around_medium">
+                        ¿
+                            Está seguro que desea actualizar el riesgo de  
+                            {! v.citizenWrapper.citizen.FirstName + ' ' +  v.citizenWrapper.citizen.MiddleName + ' ' + v.citizenWrapper.citizen.LastName}
+                        ?
+                    </div>
+                </div>
+                
+                <div class="confirmwarning">
+                    <div class="slds-var-p-around_medium">
+                        <img src="{! $Resource.CuidarnosResource   + '/img/Warning.png'}"  />
+
+                         <span> Una vez realizada, <strong>esta acción no podrá deshacerse.</strong></span>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="modal_buttons slds-var-p-around_medium slds-align_absolute-center" style="height:5rem">                        
+                        <button data-action="close_modal"   onclick="{!c.proccesAction}" class="">Cancelar</button>
+                        <button data-action="mark_risk" data-step="2"  onclick="{!c.proccesAction}" class="ok">Aceptar</button>            
+                    </div>
+                </div>
+            </div>
+
+            <div class="slds-modal__content slds-var-p-around_xx-large" data-step="1" aura:id="divModalRiskContentStep1">
+                <div class="confirmtitle">
+                    <div class="slds-var-p-around_medium">                        
+                            Selecciona el  <strong>riesgo</strong>  de 
+                            {! v.citizenWrapper.citizen.FirstName + ' ' +  v.citizenWrapper.citizen.MiddleName + ' ' + v.citizenWrapper.citizen.LastName}
+                    </div>
+                </div>
+                
+                <div class="confirmwarningwithoutborder">
+                    <div class="slds-var-p-around_medium">
+                        <ui:inputSelect aura:id="cboRisk">
+                            <option value="">Seleccionar el riesgo</option>
+                            <option value="Bajo">Bajo</option>
+                            <option value="Medio">Medio</option>
+                            <option value="Alto">Alto</option>
+                        </ui:inputSelect>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="modal_buttons slds-var-p-around_medium slds-align_absolute-center" style="height:5rem">                        
+                        <button data-action="close_modal"   onclick="{!c.proccesAction}" class="">Cancelar</button>
+                        <button data-action="mark_risk" data-step="1"  onclick="{!c.proccesAction}" class="ok">Aceptar</button>            
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <div aura:id="divBackground" class="slds-backdrop"></div>    
+</aura:component>

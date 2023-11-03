@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>label_place__c</fullName>
+    <externalId>false</externalId>
+    <label>Lugar Etiqueta</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Tratado del Pilar</fullName>
+                <default>false</default>
+                <label>Tratado del Pilar</label>
+            </value>
+            <value>
+                <fullName>Km 46</fullName>
+                <default>false</default>
+                <label>Km 46</label>
+            </value>
+            <value>
+                <fullName>Teófilo Tolosa</fullName>
+                <default>false</default>
+                <label>Teófilo Tolosa</label>
+            </value>
+            <value>
+                <fullName>Hospital Sanguinetti</fullName>
+                <default>false</default>
+                <label>Hospital Sanguinetti</label>
+            </value>
+            <value>
+                <fullName>Test Rápido</fullName>
+                <default>false</default>
+                <label>Test Rápido</label>
+            </value>
+            <value>
+                <fullName>Centro Aislamiento Maristas</fullName>
+                <default>false</default>
+                <label>Centro Aislamiento Maristas</label>
+            </value>
+            <value>
+                <fullName>Hospital Derqui</fullName>
+                <default>false</default>
+                <label>Hospital Derqui</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

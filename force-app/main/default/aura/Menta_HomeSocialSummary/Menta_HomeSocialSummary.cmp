@@ -1,0 +1,81 @@
+<aura:component >
+    
+    <aura:attribute name="totalprofiles" 	type="String" />
+    <aura:attribute name="totalfacebook" 	type="String" />
+    <aura:attribute name="totalinstagram" 	type="String" />
+    <aura:attribute name="totaltwitter" 	type="String" />
+    <aura:attribute name="totallinkedin" 	type="String" />
+    <aura:attribute name="terrw" type="TerritoryWrapper2" />
+    
+    <div class="card slds-size_1-of-1 slds-grid slds-wrap">
+        
+        <div class="slds-grid slds-wrap slds-size_1-of-1 slds-large-size_1-of-5 social-container">
+            <div class="slds-size_1-of-2 slds-large-size_7-of-8">
+                <div class="summary-title">
+                    PERFILES SOCIALES 
+                </div>
+                <div class="summary">
+                    {!v.terrw.totalSocialFormated}
+                </div>
+            </div>
+        </div>
+        
+        <div class="slds-grid slds-wrap slds-size_1-of-1 slds-large-size_1-of-5 social-container border">
+            <div class="slds-large-size_1-of-8 social-header icon-text">
+                <img class="icon-small" src="{!$Resource.IconsPack1 + '/mentafacebook.svg'}"/>
+            </div>
+            <div class="slds-size_1-of-2 slds-large-size_7-of-8">
+                <div class="summary-title">
+                    FACEBOOK
+                </div>
+                <div class="summary">
+                    {!v.terrw.totalFacebookFormated}
+                </div>
+            </div>
+        </div>
+        
+        <div class="slds-grid slds-wrap slds-size_1-of-1 slds-large-size_1-of-5 border social-container">
+            <div class="slds-large-size_1-of-8 social-header icon-text">
+                <img class="icon-small" src="{!$Resource.IconsPack1 + '/mentainstagram.svg'}"/>
+            </div>
+            <div class="slds-size_1-of-2 slds-large-size_7-of-8">
+                <div class="summary-title">
+                    INSTAGRAM
+                </div>
+                <div class="summary">
+                    {!v.terrw.totalInstagramFormated}
+                </div>
+            </div>
+        </div>
+        
+        <div class="slds-grid slds-wrap slds-size_1-of-1 slds-large-size_1-of-5 border social-container">
+            <div class="slds-large-size_1-of-8 social-header icon-text">
+                <img class="icon-small" src="{!$Resource.IconsPack1 + '/mentatwitter.svg'}"/>
+            </div>
+            <div class="slds-size_1-of-2 slds-large-size_7-of-8">
+                <div class="summary-title">
+                    TWITTER
+                </div>
+                <div class="summary">
+                    {!v.terrw.totalTwitterFormated}
+                </div>
+            </div>
+        </div>
+        
+        <div class="slds-grid slds-wrap slds-size_1-of-1 slds-large-size_1-of-5 border social-container">
+            <div class="slds-large-size_1-of-8 social-header icon-text">
+                <img class="icon-small" src="{!$Resource.IconsPack1 + '/mentalinkedin.svg'}"/>
+            </div>
+            <div class="slds-size_1-of-2 slds-large-size_7-of-8">
+                <div class="summary-title">
+                    LINKEDIN
+                </div>
+                <div class="summary">
+                    {!v.terrw.totalLinkedinFormated}
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</aura:component>

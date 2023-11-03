@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Ciudad_Cordoba__c</fullName>
+    <externalId>false</externalId>
+    <label>Ciudad Cordoba</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Calamuchita</fullName>
+                <default>false</default>
+                <label>Calamuchita</label>
+            </value>
+            <value>
+                <fullName>Capital</fullName>
+                <default>false</default>
+                <label>Capital</label>
+            </value>
+            <value>
+                <fullName>Colón</fullName>
+                <default>false</default>
+                <label>Colón</label>
+            </value>
+            <value>
+                <fullName>Cruz del Eje</fullName>
+                <default>false</default>
+                <label>Cruz del Eje</label>
+            </value>
+            <value>
+                <fullName>General Roca</fullName>
+                <default>false</default>
+                <label>General Roca</label>
+            </value>
+            <value>
+                <fullName>General San Martín</fullName>
+                <default>false</default>
+                <label>General San Martín</label>
+            </value>
+            <value>
+                <fullName>Ischilín</fullName>
+                <default>false</default>
+                <label>Ischilín</label>
+            </value>
+            <value>
+                <fullName>Juárez Celman</fullName>
+                <default>false</default>
+                <label>Juárez Celman</label>
+            </value>
+            <value>
+                <fullName>Marcos Juárez</fullName>
+                <default>false</default>
+                <label>Marcos Juárez</label>
+            </value>
+            <value>
+                <fullName>Minas</fullName>
+                <default>false</default>
+                <label>Minas</label>
+            </value>
+            <value>
+                <fullName>Pocho</fullName>
+                <default>false</default>
+                <label>Pocho</label>
+            </value>
+            <value>
+                <fullName>Presidente Roque Sáenz Peña</fullName>
+                <default>false</default>
+                <label>Presidente Roque Sáenz Peña</label>
+            </value>
+            <value>
+                <fullName>Punilla</fullName>
+                <default>false</default>
+                <label>Punilla</label>
+            </value>
+            <value>
+                <fullName>Río Cuarto</fullName>
+                <default>false</default>
+                <label>Río Cuarto</label>
+            </value>
+            <value>
+                <fullName>Río Primero</fullName>
+                <default>false</default>
+                <label>Río Primero</label>
+            </value>
+            <value>
+                <fullName>Río Seco</fullName>
+                <default>false</default>
+                <label>Río Seco</label>
+            </value>
+            <value>
+                <fullName>Río Segundo</fullName>
+                <default>false</default>
+                <label>Río Segundo</label>
+            </value>
+            <value>
+                <fullName>San Alberto</fullName>
+                <default>false</default>
+                <label>San Alberto</label>
+            </value>
+            <value>
+                <fullName>San Javier</fullName>
+                <default>false</default>
+                <label>San Javier</label>
+            </value>
+            <value>
+                <fullName>San Justo</fullName>
+                <default>false</default>
+                <label>San Justo</label>
+            </value>
+            <value>
+                <fullName>Santa María</fullName>
+                <default>false</default>
+                <label>Santa María</label>
+            </value>
+            <value>
+                <fullName>Sobremonte</fullName>
+                <default>false</default>
+                <label>Sobremonte</label>
+            </value>
+            <value>
+                <fullName>Tercero Arriba</fullName>
+                <default>false</default>
+                <label>Tercero Arriba</label>
+            </value>
+            <value>
+                <fullName>Totoral</fullName>
+                <default>false</default>
+                <label>Totoral</label>
+            </value>
+            <value>
+                <fullName>Tulumba</fullName>
+                <default>false</default>
+                <label>Tulumba</label>
+            </value>
+            <value>
+                <fullName>Unión</fullName>
+                <default>false</default>
+                <label>Unión</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

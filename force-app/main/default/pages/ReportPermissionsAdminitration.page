@@ -1,0 +1,689 @@
+<apex:page showHeader="true" standardStylesheets="false" sidebar="false" applyHtmlTag="true" applyBodyTag="false" docType="html-5.0" controller="ReportManager">    
+    <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">       
+        <head>
+            <title>Prosumia - Administación de reportes</title>
+            <apex:slds />
+        </head>    
+        
+        <body class="slds-scope">  
+            <div class="slds-grid">        
+                <div class="slds-size--1-of-1">   
+                    <!-- MASTHEAD -->
+                    <div id="divToastMessage" class="slds-notify_container slds-is-relative" style="display:none;">
+                        <div id="divToastTheme" class="slds-notify slds-notify_toast slds-theme_success" role="status">
+                            <span class="slds-assistive-text">success</span>
+                            <span class="slds-icon_container slds-icon-utility-success slds-m-right_small slds-no-flex slds-align-top" title="Description of icon when needed">
+                                <svg class="slds-icon slds-icon_small" aria-hidden="true">
+                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{!URLFOR($Asset.SLDS, '/assets/icons/utility-sprite/svg/symbols.svg#success')}" />
+                                </svg>
+                            </span>
+                            <div class="slds-notify__content">
+                                <h2 class="slds-text-heading_small" id="divMessage">La operación se realizo correctamente.</h2>
+                            </div>
+                            <div class="slds-notify__close">
+                                <button class="slds-button slds-button_icon slds-button_icon-inverse" title="Close">
+                                    <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{!URLFOR($Asset.SLDS, '/assets/icons/utility-sprite/svg/symbols.svg#close' )}" />
+                                    </svg>
+                                    <span class="slds-assistive-text">Close</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h1 class="slds-text-heading--label slds-m-bottom--small">
+                        <div class="slds-page-header slds-page-header--object-home" role="banner">
+                            <div class="slds-grid">
+                                <div class="slds-col slds-has-flexi-truncate">
+                                    <div class="slds-media slds-no-space slds-grow">
+                                        <div class="slds-media__figure">
+                                            <span class="slds-icon_container">
+                                                <svg aria-hidden="true" class="slds-icon slds-icon-standard-lead">
+                                                    <use xlink:href="{!URLFOR($Asset.SLDS, '/assets/icons/standard-sprite/svg/symbols.svg#lead')}"></use>
+                                                </svg>
+                                            </span>
+                                        </div>
+                                        
+                                        <div class="slds-media__body">
+                                            <p class="slds-text-title--caps slds-line-height--reset">Prosumia</p>
+                                            <button class="slds-button slds-type-focus slds-m-right--small slds-grid slds-truncate" aria-haspopup="true">
+                                                <div class="slds-grid slds-grid--vertical-align-center slds-truncate">
+                                                    <h1 class="slds-page-header__title slds-truncate" title="Administación de reportes">Administación de reportes</h1>
+                                                </div>
+                                            </button>
+                                        </div>
+                                        
+                                        <!-- BOTONERA -->
+                                        <div class="slds-col slds-no-flex slds-grid slds-align-top slds-p-bottom--xx-small">
+                                            <div class="slds-button-group" role="group">
+                                                <button class="slds-button slds-button--neutral  cancel">Cancelar</button>
+                                                <button class="slds-button slds-button--brand update">Actualizar</button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </h1>
+                </div>
+            </div>
+            <!-- / MASTHEAD -->    
+            
+            <!-- PRIMARY CONTENT WRAPPER -->
+            <div class="slds-grid slds-wrap slds-grid--pull-padded">
+                <div class="slds-panel slds-grid slds-grid--vertical slds-nowrap">
+                    <div class="fdsafda-slds-scrollable--y">
+                        <div class="slds-panel__section slds-has-divider--bottom">
+                            <fieldset class="slds-align--absolute-center slds-size--1-of-1">
+                                <legend class="slds-form-element__label slds-text-title--caps">Buscar</legend>                                  
+                                <div class="slds-grid slds-wrap slds-grid--pull-padded">
+                                    <div class="slds-p-horizontal--small slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--1-of-3 slds-p-around--medium">                                        
+                                        <div class="slds-form-element">
+                                            <label class="slds-form-element__label" for="cboSObject">Objeto</label>
+                                            <div class="slds-form-element__control">
+                                                <div class="slds-select_container">
+                                                    <select class="slds-select" id="cboSObject">
+                                                        <option value="Contact" selected="selected">Ciudadano</option>
+                                                        <option value="Territorio_Administrativo__c">Territorio Administrativo</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>                                                                                
+                                        
+                                    <div class="slds-p-horizontal--small slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--1-of-3 slds-p-around--medium">                                                                                
+                                        <div id="divUserControl" class="slds-form-element slds-lookup" data-select="single" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">        
+                                            <label class="slds-truncate  slds-form-element__label" for="txtProfileUser">Perfil / Usuario</label> 
+                                            <div class="slds-form-element__control">
+                                                <div id="divIconPositionProfileUser" class="slds-input-has-icon slds-input-has-icon--right">                                                    
+                                                    <svg id="profileUserIconClear" aria-hidden="true" class="slds-input__icon slds-input__icon--right" style="display:none;cursor:pointer;">
+                                                        <use xlink:href="{!URLFOR($Asset.SLDS, '/assets/icons/utility-sprite/svg/symbols.svg#clear')}"></use>
+                                                    </svg>
+                                                    
+                                                    <svg id="profileUserIconSearch" aria-hidden="true" class="slds-input__icon slds-input__icon--right">
+                                                        <use xlink:href="{!URLFOR($Asset.SLDS, '/assets/icons/utility-sprite/svg/symbols.svg#search')}"></use>
+                                                    </svg>
+                                                    
+                                                    
+                                                    <input id="txtProfileUser" autocomplete="off" class="slds-lookup__search-input slds-input" type="search" placeholder="Búsqueda de usuario/profile" aria-owns="divProfileUser" role="combobox" aria-activedescendent="" aria-expanded="true" aria-autocomplete="list" />
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="slds-lookup__menu" style="width:350px;overflow:auto:"  id="divProfileUser">
+                                                
+                                            </div>                                                                                           
+                                        </div>                                                                                
+                                    </div>                                                                        
+                                </div>
+                            </fieldset>     
+                            <fieldset class="slds-align--absolute-center slds-size--1-of-1">
+                                <legend class="slds-form-element__label slds-text-title--caps">Quota</legend>                                  
+                                <div class="slds-grid slds-wrap slds-grid--pull-padded">
+                                    <div class="slds-p-horizontal--small slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--1-of-3 slds-p-around--medium">                                        
+                                        <div class="slds-form-element">
+                                            <label class="slds-form-element__label" for="txtMaxRecords">Máximo a Exportar</label>                                                                                        
+                                            <div class="slds-form-element__control">
+                                                <div class="slds-input-has-icon slds-input-has-icon--right">                                                                                                        
+                                                    <input id="txtMaxRecords" autocomplete="off" class="slds-input" type="number" placeholder="Cantidad de registros permitidos por exportación" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>   
+                                    
+                                    <div class="slds-p-horizontal--small slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--1-of-3 slds-p-around--medium">                                        
+                                        <div class="slds-form-element">
+                                            <label class="slds-form-element__label" for="txtRecords">Registros</label>                                                                                        
+                                            <div class="slds-form-element__control">
+                                                <div class="slds-input-has-icon slds-input-has-icon--right">                                                                                                        
+                                                    <input id="txtRecords" autocomplete="off" class="slds-input" type="number" placeholder="Cantidad de registros permitidos" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>                                                                                
+                                        
+                                    <div class="slds-p-horizontal--small slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--1-of-3 slds-p-around--medium">                                                                                
+                                        <div id="divUserControl" class="slds-form-element slds-lookup" data-select="single" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">        
+                                            <label class="slds-truncate  slds-form-element__label" for="cboTimeRange">Tiempo</label> 
+                                            
+                                            <div class="slds-form-element__control">
+                                                <div class="slds-select_container">
+                                                    <select class="slds-select" id="cboTimeRange">
+                                                    </select>
+                                                </div>
+                                            </div>                                                                                           
+                                        </div>                                                                                
+                                    </div>                                                                        
+                                </div>
+                            </fieldset>  
+                        </div>
+                        
+                        <div class="slds-p-around--small">                            
+                            <table class="slds-table slds-table_bordered slds-max-medium-table_stacked-horizontal">
+                                <thead>
+                                    <tr class="slds-line-height_reset">
+                                        <th class="slds-text-title_caps" scope="col">
+                                            <div class="slds-truncate" title="Campo">Campo</div>
+                                        </th>
+                                        <th class="slds-text-title_caps" scope="col">
+                                            <div class="slds-truncate" title="Permiso">Permiso</div>
+                                        </th>
+                                        <th class="slds-text-title_caps" scope="col">
+                                            <div class="slds-truncate" title="Permiso de Exportación">Permiso de Exportación</div>
+                                        </th>
+                                    </tr>
+                                    <tr class="slds-line-height_reset">
+                                        <th class="slds-text-title_caps" scope="col">
+                                            <div class="slds-truncate" title="Campo">
+                                                <div class="slds-form-element__control">
+                                                    <input type="text" id="txtFieldFilter" class="slds-input" />
+                                                </div>
+                                            </div>
+                                        </th>
+                                        <th class="slds-text-title_caps" scope="col">
+                                            <div class="slds-truncate" title="Permiso">
+                                                <div class="slds-form-element">
+                                                    <label class="slds-checkbox_toggle slds-grid">
+                                                        <input id="chkActive" name="chkActive" type="checkbox" aria-describedby="chkActiveSpan" value="chkActive" />
+                                                        <span id="chkActiveSpan" class="slds-checkbox_faux_container" aria-live="assertive">
+                                                            <span class="slds-checkbox_faux"></span>
+                                                            <span class="slds-checkbox_on">Activos</span>
+                                                            <span class="slds-checkbox_off">Todos</span>
+                                                        </span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </th>
+                                        <th class="slds-text-title_caps" scope="col">
+                                            <div class="slds-truncate" title="Permiso de Exportación">
+                                                <div class="slds-form-element">
+                                                    <label class="slds-checkbox_toggle slds-grid">
+                                                        <input id="chkExport" name="chkExport" type="checkbox" aria-describedby="chkExportSpan" value="chkExportSpan" />
+                                                        <span id="chkExportSpan" class="slds-checkbox_faux_container" aria-live="assertive">
+                                                            <span class="slds-checkbox_faux"></span>
+                                                            <span class="slds-checkbox_on">Activos</span>
+                                                            <span class="slds-checkbox_off">Todos</span>
+                                                        </span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody id="results">
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>                
+            </div>       
+            
+            <!-- / PRIMARY CONTENT WRAPPER -->                 
+        </body>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        
+        <script type="text/javascript">
+		var arrProfileUsers = [];
+        var arrPermissions = [];
+        var arrFilteredData = [];
+        var arrTimeRamge = [];
+        var objProfileUserPermission = [];
+        
+        $(document).ready(function() {
+            listProfileUsers();
+            listTimeRange();
+        });
+                   
+        $('#txtProfileUser').on('profileUserSelected', function(objEvent) {
+            var strUserId = null;
+            var strProfileId = null;
+			var strSObject = null;     
+            
+            strUserId = $(this).attr('userid');
+            strProfileId = $(this).attr('profileid');
+            strSObject = $('#cboSObject').val();
+            
+        	retrievePermissions(strUserId, strProfileId, strSObject);
+        });
+         
+        $('#txtProfileUser').on('profileUserUnselected', function(objEvent) {
+        	arrPermissions = [];
+            arrFilteredData = [];
+            
+            loadPermissions();
+        });
+        
+        $(document).on('click','.update', function(objEvent) {
+            updatePermission();
+        });
+        
+        $(document).on('click','.cancel', function(objEvent){
+            clearProfileUsers();        
+            showProfileUserIcons();            
+        });
+        
+        $(document).on('click','#profileUserIconClear', function(objEvent){
+            clearProfileUsers();        
+            showProfileUserIcons();
+        });
+        
+        $(document).on('keyup','#txtFieldFilter', function(objEvent){
+			filterEntries();			            
+        });
+        
+        $(document).on('click','#chkActive', function(objEvent){
+			filterEntries();
+        });
+        
+        $(document).on('click','#chkExport', function(objEvent){
+			filterEntries();
+        });
+        
+        $(document).on('change','#cboSObject', function(objEvent){
+            var strUserId = null;
+            var strProfileId = null;
+            var strSObject = null;
+
+            strUserId = $('#txtProfileUser').attr('userid');
+            strProfileId = $('#txtProfileUser').attr('profileid');
+            strSObject = $('#cboSObject').val();
+            
+            retrievePermissions(strUserId, strProfileId, strSObject);
+        });
+        
+       
+        $(document).on('click','#divIconPositionProfileUser', function(objEvent){
+            clearProfileUsers();        
+            showProfileUserIcons();
+        });
+        
+        $(document).on('mouseenter','#txtProfileUser', function(objEvent){ 
+            $(this).css('cursor','pointer');
+            $(this).css('color','rgb(0, 112, 210)');
+        });
+        
+        $(document).on('mouseleave','#txtProfileUser', function(objEvent){ 
+            $(this).css('cursor','default');
+            $(this).css('color','');
+        });
+        
+        $("#divIconPositionProfileUser").on('keydown', '#txtProfileUser', function(objEvent) { 
+            var intKeyCode = null; 
+            var strProfileUser = null;
+            var arrResult = null;
+            
+            intKeyCode = objEvent.keyCode || objEvent.which;
+            if (intKeyCode == 9) { 
+                $('#txtProfileUser').attr('profileid', '');
+                $('#txtProfileUser').attr('userid', '');
+                $('#txtRecords').val('');
+                $('#txtMaxRecords').val('');
+                $('#cboTimeRange').val('');
+
+                strProfileUser = $('#txtProfileUser').val();
+                
+                if(strProfileUser != null && strProfileUser.length > 0) {
+                    arrResult = $.grep( arrProfileUsers, function(objItemAux) {
+                        return ( objItemAux.Name.toLowerCase().match(strProfileUser.toLowerCase()) ); 
+                    });                
+                } 
+                
+                if(arrResult != null) {
+                    if(arrResult.length >= 1 && arrResult[0].Id != null && arrResult[0].Id.length > 0 && arrResult[0].Name != null && arrResult[0].Name.length > 0) {
+                        selectProfileUser(arrResult[0].Id, arrResult[0].Name, arrResult[0].ProfileUserType);
+                        
+                        showProfileUserIcons();
+                    } else {
+                        $('#divProfileUser').slideUp('fast', function() {});
+                    }
+                } else {
+                    $('#divProfileUser').slideUp('fast', function() {});
+                }
+            }             
+        });
+        
+        $(document).on('keyup', '#txtProfileUser', function(objEvent) { 
+            var strProfileUser = null;
+            var arrResult = null;
+            
+            $('#txtProfileUser').attr('profileid', '');
+            $('#txtProfileUser').attr('userid', '');
+            $('#txtRecords').val('');
+            $('#txtMaxRecords').val('');
+            $('#cboTimeRange').val('');
+            
+            $("#txtProfileUser").trigger("profileUserUnselected");
+            strProfileUser = $('#txtProfileUser').val();
+            
+            if(strProfileUser !== undefined && strProfileUser !== null && strProfileUser.length > 0) {
+                arrResult = $.grep( arrProfileUsers, function(objItemAux) {
+                    return ( objItemAux.Name.toLowerCase().match(strProfileUser.toLowerCase()) ); 
+                });               
+            } 
+            
+            if(arrResult !== undefined && arrResult !== null && arrResult.length > 0) {
+                if(arrResult.length == 1 && arrResult[0].Id != null && arrResult[0].Id.length > 0 && arrResult[0].Name != null && arrResult[0].Name.length > 0) {
+                    selectProfileUser(arrResult[0].Id, arrResult[0].Name, arrResult[0].ProfileUserType);
+                    showProfileUserIcons();
+                } else {
+                    fillSearchProfileUsers(arrResult);
+                    
+                    $('#divProfileUser').slideDown('fast', function() {
+                        objEvent.stopPropagation();
+                    });
+                }
+            } else {
+                clearProfileUsers();
+            }            
+        });
+        
+        $(document).on('click','.profileuserlist', function(objEvent) {
+            var strProfileUserID = null;
+            var strProfileUserName = null;
+            var strProfileUserType = null;
+            
+            strProfileUserID = $(this).attr('id');
+            strProfileUserName = $(this).attr('name');
+            strProfileUserType = $(this).attr('type');
+            
+            if(strProfileUserID != null && strProfileUserID.length > 0 && strProfileUserName != null && strProfileUserName.length > 0) {
+                selectProfileUser(strProfileUserID, strProfileUserName, strProfileUserType);
+                showProfileUserIcons();
+            }
+        });
+        
+        $(document).on('click','.exportitem', function(objEvent) {
+            var strItem = null;
+            var boolCanExport = null;
+            
+            strItem = $(this).data('value');
+            boolCanExport = $(this).is(':checked');
+            
+            if(strItem !== undefined && strItem !== null && strItem.length > 0) {
+                arrResult = $.grep( arrPermissions, function(objItemAux) {
+                    return ( objItemAux.Name.toLowerCase() === strItem.toLowerCase() ); 
+                });       
+                
+                $.each(arrResult, function(intIndex, objItem) {
+                    objItem.CanExport = boolCanExport;
+                });
+            } 
+        });
+        
+        function listProfileUsers() {
+            Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.ReportManager.listUserProfile}',
+        		function(objResult, objEvent){
+                    if (objEvent.status) {
+                        arrProfileUsers = objResult;                                        
+                    } else {
+                        handleError(objEvent);
+                    }
+                }, 
+                	{buffer: true, escape: true, timeout: 120000}
+				);      
+        }
+        
+        function listTimeRange() {
+            var cboTimeRange = null;
+            Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.ReportManager.retrieveTimeRange}',
+        		function(objResult, objEvent){
+                    if (objEvent.status) {
+                        arrTimeRamge = objResult;     
+                        cboTimeRange = $("#cboTimeRange");
+                        $.each(arrTimeRamge, function() {
+                            cboTimeRange.append($("<option />").val(this).text(this));
+                        });
+                    } else {
+                        handleError(objEvent);
+                    }
+                }, 
+                	{buffer: true, escape: true, timeout: 120000}
+				);      
+        }
+        
+        function retrievePermissions(strUserId, strProfileId, strSObject) {
+            Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.ReportManager.retrievePermissions}', strUserId, strProfileId, strSObject,
+            	function(objResult, objEvent){
+                    if (objEvent.status) {
+                        objProfileUserPermission = objResult; 
+                        arrPermissions = objResult.Fields;   
+                        arrFilteredData = arrPermissions; 
+
+                        $('#txtMaxRecords').val(objResult.MaxRecords);
+                        $('#txtRecords').val(objResult.Records);
+                        $('#cboTimeRange').val(objResult.TimeRange);
+                        loadPermissions();
+                    } else {
+                        handleError(objEvent);
+                    }
+				}, 
+                	{buffer: true, escape: true, timeout: 120000}
+			);     
+        }
+        
+        function updatePermission() {
+            var strUserId = null;
+            var strProfileId = null;
+            var arrActivePermissions = null;
+            var strSObject = null;
+            var objPermissionRequest = null;
+            
+            objPermissionRequest = {};
+            objPermissionRequest.UserId = $('#txtProfileUser').attr('userid');
+            objPermissionRequest.ProfileId = $('#txtProfileUser').attr('profileid');
+            objPermissionRequest.SObjectName = $('#cboSObject').val();
+            objPermissionRequest.RecordsQuota = $('#txtRecords').val();
+            objPermissionRequest.MaxRecords = $('#txtMaxRecords').val();
+            objPermissionRequest.TimeRange = $('#cboTimeRange').val();
+            
+            arrActivePermissions = $.grep(arrPermissions, function(objItemAux) {
+            	return objItemAux.CanExport;
+            });
+            
+            objPermissionRequest.ActivePermissions = arrActivePermissions;
+            
+            Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.ReportManager.updatePermissions}', JSON.stringify(objPermissionRequest),
+        		function(objResult, objEvent){
+                    if (objEvent.status) {
+                        if(objResult == true) {
+                            $('#divToastMessage').fadeIn(400).delay(3000).fadeOut(400);   
+                            $('#divToastTheme').addClass('slds-theme_success');
+                            $('#divToastTheme').removeClass('slds-theme_error');
+                            $('#divMessage').html('La operación se realizó correctamente.');  
+                        } else {
+                            $('#divToastMessage').fadeIn(400).delay(3000).fadeOut(400);  
+                            $('#divToastTheme').removeClass('slds-theme_success');
+                            $('#divToastTheme').addClass('slds-theme_error');
+                            
+                            $('#divMessage').html('Ha ocurrido un error al intentar realizar la operación.');  
+                        }
+                    } else {
+                        handleError(objEvent);
+                    }
+                }, 
+                	{buffer: true, escape: true, timeout: 120000}
+				);      
+        }
+        
+        function filterEntries() {
+            var strFilter = false;
+            var boolIsActive = false;
+            var boolCanExport = false;
+            
+            strFilter = $('#txtFieldFilter').val();
+            boolIsActive = $('#chkActive').is(':checked');
+            boolCanExport = $('#chkExport').is(':checked');
+            
+            arrFilteredData = $.grep( arrPermissions, function(objItemAux) {
+                return ( objItemAux.Name.toLowerCase().match(strFilter.toLowerCase()) ); 
+            }); 
+            
+            if(boolIsActive === true) {
+                arrFilteredData = $.grep( arrFilteredData, function(objItemAux) {
+                    return (objItemAux.CanWrite == boolIsActive); 
+                }); 
+            }
+            
+            if(boolCanExport === true) {
+                arrFilteredData = $.grep( arrFilteredData, function(objItemAux) {
+                    return (objItemAux.CanExport == boolCanExport); 
+                }); 
+            }
+            
+            loadPermissions();
+            
+        }
+        
+        function clearProfileUsers() {
+            $('#txtProfileUser').attr('profileid', '');
+            $('#txtProfileUser').attr('userid', '');
+            $('#txtProfileUser').val('');
+            $('#divProfileUser').hide();
+            $('#txtRecords').val('');
+            $('#txtMaxRecords').val('');
+            $('#cboTimeRange').val('');
+
+            $("#txtProfileUser").trigger("profileUserUnselected");
+        }
+        
+        function showProfileUserIcons() {
+            if($('#txtProfileUser').val() != null && $('#txtProfileUser').val().length > 0) {
+                $('#profileUserIconClear').show();
+                $('#profileUserIconSearch').hide();                
+                $('#txtProfileUser').prop('readonly',true);
+            } else {
+                $('#profileUserIconClear').hide();
+                $('#profileUserIconSearch').show();
+                $('#txtProfileUser').prop('readonly',false);
+            }
+        }
+        
+        function selectProfileUser(strProfileUserId, strProfileUserName, strProfileType) {
+            if(strProfileUserId != null && strProfileUserId.length > 0 && strProfileUserName != null && strProfileUserName.length > 0) {
+                $('#txtProfileUser').val(strProfileUserName);
+                
+                if(strProfileType === 'PROFILE') {
+                    $('#txtProfileUser').attr('profileid', strProfileUserId);
+                } else if(strProfileType === 'USER') {
+                    $('#txtProfileUser').attr('userid', strProfileUserId);    
+                }
+                
+                $('#divProfileUser').slideUp('fast', function() {});   
+                
+                $("#txtProfileUser").trigger("profileUserSelected", strProfileUserId);
+            }
+        }
+        
+        function fillSearchProfileUsers(arrResult) {
+            var strHTML = null;
+            
+            $('#divProfileUser').html('');
+            
+            if(arrResult != null && arrResult.length > 0) {
+                strHTML = '<ul class="slds-lookup__list" role="listbox">'; 
+                
+                $.each(arrResult, function( intIndex, objValue ) { 
+                    strHTML += addProfileUserLine(objValue);
+                });
+                
+                strHTML += '</ul>';
+                
+                $('#divProfileUser').html(strHTML);
+            }
+        }
+        
+        function addProfileUserLine(objProfileUser) {
+            var strHTML = '';            
+            var strIconURLProfile = "{!URLFOR($Asset.SLDS, '/assets/icons/standard-sprite/svg/symbols.svg#lead')}";
+            var strIconURLUser = "{!URLFOR($Asset.SLDS, '/assets/icons/standard-sprite/svg/symbols.svg#account')}";
+            
+            strHTML += '<li class="profileuserlist" role="presentation" id="' + objProfileUser.Id + '" name="' + objProfileUser.Name + '" type="' + objProfileUser.ProfileUserType + '" >';
+            strHTML += '    <span class="slds-lookup__item-action slds-media slds-media--center" role="option">';
+            if(objProfileUser.ProfileUserType  === 'USER') {                
+                strHTML += '        <svg aria-hidden="true" class="slds-icon slds-icon-standard-account slds-icon--small slds-media__figure">';
+                strHTML += '            <use xlink:href="' + strIconURLUser + '"></use>';
+                strHTML += '        </svg>';
+            } else if(objProfileUser.ProfileUserType  === 'PROFILE') {
+                strHTML += '        <svg aria-hidden="true" class="slds-icon slds-icon-standard-lead slds-icon--small slds-media__figure">';
+                strHTML += '            <use xlink:href="' + strIconURLProfile + '"></use>';
+                strHTML += '        </svg>';            
+            }
+            strHTML += '        <div class="slds-media__body">';
+            strHTML += '            <div class="slds-lookup__result-text">';
+            
+            if(objProfileUser.ProfileUserType  === 'USER') {
+                strHTML += '            <mark>' + objProfileUser.Name + '(' + objProfileUser.Username + ')</mark></div>';     
+            } else if(objProfileUser.ProfileUserType === 'PROFILE') { 
+                strHTML += '            <mark>' + objProfileUser.Name + '</mark></div>';                 
+            }
+            strHTML += '        </div>';
+            strHTML += '    </span>';
+            strHTML += '</li>';
+            
+            return strHTML;
+        }
+        
+        function loadPermissions() {
+            var strHTML = null;
+            var strURLCheck = null;
+            var strURLUncheck = null;
+            
+            strHTML = '';
+            strURLCheck = "{!URLFOR($Asset.SLDS, '/assets/icons/utility-sprite/svg/symbols.svg#check')}";
+            strURLUncheck = "{!URLFOR($Asset.SLDS, '/assets/icons/utility-sprite/svg/symbols.svg#close')}";
+            
+            if(arrFilteredData !== undefined && arrFilteredData !== null && arrFilteredData.length > 0) {
+                $.each(arrFilteredData, function(intIndex, objItem) {
+                    strHTML += '<tr class="slds-hint-parent">';
+                    strHTML += '    <td data-label="' + objItem.Name + '" scope="row">';
+                    strHTML += '		<div class="slds-truncate" title="' + objItem.Name + '">' + objItem.Name + '</div>';
+                    strHTML += '	</td>';
+                    
+                    strHTML += '	<td data-label="Permiso">';
+                    strHTML += '		<div class="slds-form-element">';
+                    strHTML += '			<div class="slds-checkbox_add-button">';
+                    if(objItem.CanWrite === true) {
+	                    strHTML += '				<input class="slds-assistive-text" type="checkbox" id="chkPermission" disabled="" checked="checked" />';
+                    } else {
+	                    strHTML += '				<input class="slds-assistive-text" type="checkbox" id="chkPermission" disabled="" />';
+                    }
+                    strHTML += '				<label for="chkPermission" class="slds-checkbox_faux">';
+                    strHTML += '					<span class="slds-assistive-text">Permission</span>';
+                    strHTML += '				</label>';
+                    strHTML += '			</div>';                    
+                    strHTML += '		</div>';                   
+                    strHTML += '	</td>';
+                    
+                    strHTML += '	<td data-label="Exportación">';
+                    strHTML += '		<div class="slds-form-element">';
+                    strHTML += '    		<label class="slds-checkbox_toggle slds-grid">';
+                    strHTML += '				<span class="slds-form-element__label slds-m-bottom_none"></span>';
+                    if(objItem.CanExport === true) {
+                        strHTML += '				<input name="chkCheck" type="checkbox" aria-describedby="chkCheck" value="chkCheck" data-value="' + objItem.Name + '" class="exportitem" checked="checked"  />';
+                    } else {
+                        strHTML += '				<input name="chkCheck" type="checkbox" aria-describedby="chkCheck" value="chkCheck" data-value="' + objItem.Name + '" class="exportitem" />';
+                    }
+                    
+                    strHTML += '				<span id="chkCheck" class="slds-checkbox_faux_container" aria-live="assertive">';
+                    strHTML += '					<span class="slds-checkbox_faux"></span>';
+                    strHTML += '					<span class="slds-checkbox_on">Enabled</span>';
+                    strHTML += '					<span class="slds-checkbox_off">Disabled</span>';
+                    strHTML += '				</span>';
+                    strHTML += '			</label>';
+                    strHTML += '		</div>';
+                    strHTML += '	</td>';
+                    
+                    strHTML += '</tr>';
+                });
+            }
+            
+            $('#results').html(strHTML);
+        }
+        
+        function handleError() {
+            //window.alert('ERROR');
+        }
+        </script>
+    </html>
+</apex:page>

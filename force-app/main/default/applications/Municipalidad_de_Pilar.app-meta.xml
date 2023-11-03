@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Pilar_Editor_Covid_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>Covid19__c</pageOrSobjectType>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Pilar_Editor_Covid_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>Covid19__c</pageOrSobjectType>
+    </actionOverrides>
+    <brand>
+        <headerColor>#0072BC</headerColor>
+        <logoVersion>1</logoVersion>
+        <shouldOverrideOrgTheme>true</shouldOverrideOrgTheme>
+    </brand>
+    <formFactors>Small</formFactors>
+    <formFactors>Large</formFactors>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>true</isNavPersonalizationDisabled>
+    <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
+    <label>Municipalidad de Pilar</label>
+    <navType>Standard</navType>
+    <tabs>Covid19__c</tabs>
+    <tabs>Cuidarnos_IVR_Calls__c</tabs>
+    <tabs>standard-report</tabs>
+    <tabs>PilarCitizenInteractions__c</tabs>
+    <tabs>Campania__c</tabs>
+    <uiType>Lightning</uiType>
+    <utilityBar>Municipalidad_de_Pilar_UtilityBar</utilityBar>
+</CustomApplication>

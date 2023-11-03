@@ -1,0 +1,91 @@
+<apex:component >
+    <style>
+        .picklist-add {width: 15px; filter: opacity(0.3);}
+        .picklist-add:hover {cursor: pointer;}
+        .smaller-input {width: 90%}
+        
+        div[id^="found"] {
+            border: solid 1px #999999;
+            border-top: none;
+            border-radius: 4px;
+            width: 83%;
+        	position: absolute;
+        	z-index: 5000;
+        	background-color: white;
+        }
+        div[id^="found"] > div {padding-left: 10px;}
+        div[id^="found"] > div:hover {background-color: #d6d6d6; cursor: pointer;}
+    </style>
+    
+    <apex:attribute name="citizenwrapper" 	type="CitizenWrapper" 	required="true" description="Contact General Info" />  
+    
+    <div class="row contact-data" style="position: relative;">
+        <div class="card card-left-border blue">
+            <div class="row card-cont" style="margin-top: 10px;">
+                <div class="col-12 col-md-3" style="display: {!IF($ObjectType.Contact.Fields.CDP_Campaign__c.updateable,'','none')}">
+                    <c:ContactEditField inputType="multiselect" label="{!$ObjectType.Contact.Fields.CDP_Campaign__c.Label}" classlabel="label uppercase" options="{!citizenwrapper.hashtags.tagsCDPCampaign.tags }" values="{!citizenwrapper.hashtags.tagsCDPCampaign.tagsSelected }" />                    
+                </div>
+                
+                <div class="col-12 col-md-3" style="display: {!IF($ObjectType.Contact.Fields.CDP_Campaign__c.updateable,'','none')}">
+                    <div class="mb-1">
+                        <apex:outputText styleClass="label uppercase" value="Buscar/Añadir campaña" />
+                    </div>
+                    <div id="search-value">
+                        <input id="txtCDPCampaign" type="text" class="smaller-input communityInput" data-field="CDP_Campaign__c" data-multipicklist="1" data-values="{! citizenwrapper.hashtags.tagsCDPCampaign.tagsAvailableSerialized }" data-div="divCDPCampaign" />
+                        <img  class="picklist-add icon-test savepicklist" src="{!URLFOR($Resource.IconsPack1, 'plus-solid.svg')}" data-field="CDP_Campaign__c" data-multipicklist="1" data-input="txtCDPCampaign" />
+                    </div>
+                    <div id="divCDPCampaign" class="foundvalues" style="display: none;">
+                    </div>
+                </div>
+                                                                
+                <div class="col-12 col-md-3" style="display: {!IF($ObjectType.Contact.Fields.CDP_Axis__c.updateable,'','none')}">
+                    <c:ContactEditField inputType="multiselect" label="{!$ObjectType.Contact.Fields.CDP_Axis__c.Label}" classlabel="label uppercase" options="{!citizenwrapper.hashtags.tagsCDPAxis.tags }" values="{!citizenwrapper.hashtags.tagsCDPAxis.tagsSelected }" />                    
+                </div>
+                
+                <div class="col-12 col-md-3" style="display: {!IF($ObjectType.Contact.Fields.CDP_Axis__c.updateable,'','none')}">
+                    <div class="mb-1">
+                        <apex:outputText styleClass="label uppercase" value="Buscar/Añadir eje" />
+                    </div>
+                    <div id="search-value">
+                        <input id="txtCDPAxis" type="text" class="smaller-input communityInput" data-field="CDP_Axis__c" data-multipicklist="1" data-values="{! citizenwrapper.hashtags.tagsCDPAxis.tagsAvailableSerialized }" data-div="divCDPAxis" />
+                        <img  class="picklist-add icon-test savepicklist" src="{!URLFOR($Resource.IconsPack1, 'plus-solid.svg')}" data-field="CDP_Axis__c" data-multipicklist="1" data-input="txtCDPAxis" />
+                    </div>
+                    <div id="divCDPAxis" class="foundvalues" style="display: none;">
+                    </div>
+                </div>
+                                                       
+                <div class="col-12 col-md-3" style="display: {!IF($ObjectType.Contact.Fields.CDP_Status__c.updateable,'','none')}">
+                    <c:ContactEditField inputType="select" label="{!$ObjectType.Contact.Fields.CDP_Status__c.Label}" classlabel="label uppercase" options="{!citizenwrapper.hashtags.tagsCDPStatus.tags }" selectedOption="{! citizenwrapper.citizen.CDP_Status__c }" />                    
+                </div>
+                
+                <div class="col-12 col-md-3" style="display: {!IF($ObjectType.Contact.Fields.CDP_Status__c.updateable,'','none')}">
+                    <div class="mb-1">
+                        <apex:outputText styleClass="label uppercase" value="Buscar/Añadir estado" />
+                    </div>
+                    <div id="search-value">
+                        <input id="txtCDPStatus" type="text" class="smaller-input communityInput" data-field="CDP_Status__c" data-multipicklist="1" data-values="{! citizenwrapper.hashtags.tagsCDPStatus.tagsAvailableSerialized }" data-div="divCDPStatus" />
+                        <img  class="picklist-add icon-test savepicklist" src="{!URLFOR($Resource.IconsPack1, 'plus-solid.svg')}" data-field="CDP_Status__c" data-multipicklist="1" data-input="txtCDPStatus" />
+                    </div>
+                    <div id="divCDPStatus" class="foundvalues" style="display: none;">
+                    </div>
+                </div>
+                                                                               
+                <div class="col-12 col-md-3" style="display: {!IF($ObjectType.Contact.Fields.CDP_Score__c.updateable,'','none')}">
+                    <c:ContactEditField inputType="select" label="{!$ObjectType.Contact.Fields.CDP_Score__c.Label}" classlabel="label uppercase" options="{!citizenwrapper.hashtags.tagsCDPScore.tags }" selectedOption="{! citizenwrapper.citizen.CDP_Score__c }" />                    
+                </div>
+                
+                <div class="col-12 col-md-3" style="display: {!IF($ObjectType.Contact.Fields.CDP_Score__c.updateable,'','none')}">
+                    <div class="mb-1">
+                        <apex:outputText styleClass="label uppercase" value="Buscar/Añadir estado" />
+                    </div>
+                    <div id="search-value">
+                        <input id="txtCDPScore" type="text" class="smaller-input communityInput" data-field="CDP_Score__c" data-multipicklist="1" data-values="{! citizenwrapper.hashtags.tagsCDPScore.tagsAvailableSerialized }" data-div="divCDPScore" />
+                        <img  class="picklist-add icon-test savepicklist" src="{!URLFOR($Resource.IconsPack1, 'plus-solid.svg')}" data-field="CDP_Status__c" data-multipicklist="1" data-input="txtCDPScore" />
+                    </div>
+                    <div id="divCDPScore" class="foundvalues" style="display: none;">
+                    </div>
+                </div>                
+            </div>            
+        </div>
+    </div>
+</apex:component>

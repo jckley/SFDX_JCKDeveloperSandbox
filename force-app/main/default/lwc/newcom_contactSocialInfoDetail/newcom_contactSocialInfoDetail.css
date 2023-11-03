@@ -1,0 +1,33 @@
+.icon_min {
+    max-width: 25px;
+    max-height: 25px;
+    vertical-align: middle;
+    display: block;
+    /* margin-left: auto;
+    margin-right: auto; */
+    border-style: none;
+}
+
+.socialname {
+    font-family: 'Roboto Condensed';
+    color: #999999;
+    font-size: 10pt;
+    text-transform: uppercase;
+    font-weight: bold;
+    /* margin-bottom: 15px; */
+}
+
+.socialvalue {
+    padding-left : 10px;
+	font-family: 'Heebo';
+    font-weight: 300;
+    font-size: 12pt;
+    color: #F5C874;
+    text-decoration: underline #F5C874;
+}
+.socialvalue a { 
+    padding-left : 10px;
+    display: inline-block;
+    color: #F5C874;
+    text-decoration: underline #F5C874;
+}

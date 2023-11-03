@@ -1,0 +1,55 @@
+.THIS {
+    margin-top : 25px;
+    padding : 0px;
+    
+    border-radius: 6px;
+    box-shadow: 0 1px 29px 0 rgba(0, 0, 0, 0.07);
+}
+.THIS .cardtag {
+ 
+}
+.THIS .header {
+    background-color: #f8f9fc !important;
+    height: 60px;
+    padding: 20px 30px 30px 30px;
+}
+
+.THIS .header .title {
+    font-family: 'Heebo';
+    color: #999999;
+    font-weight: 300;
+    font-size: 1rem;
+}
+
+.THIS .separator {
+    border : solid 1px #CCCCCC;
+}
+
+.THIS .icon {
+    max-width: 25px;
+    max-height: 25px;
+    vertical-align: middle;
+    border-style: none;
+}
+
+.THIS .label {
+    font-weight: bold;
+    font-size : 10pt;
+    color: #999999 !important;
+}
+
+.THIS .value {
+    font-family: 'Heebo';
+    font-weight: 300;
+    font-size : 12pt;
+    color: #999999 !important;
+}
+
+.THIS .value.blue {
+    color: #229fda !important;
+}
+
+.THIS .subattribute-border {
+    border-bottom: solid 1px #ededed;
+    margin: 0 25px 20px 0;
+}

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LockEmpatiaActivistaDNIEdit</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+ $Profile.Name = &quot;Empatia_FM_Editor&quot;,
+ ISCHANGED( DNI__c  ),
+ NOT(ISBLANK(PRIORVALUE(Citizen__c )))
+)</errorConditionFormula>
+    <errorDisplayField>DNI__c</errorDisplayField>
+    <errorMessage>No se puede Cambiar el DNI de un Activista Emparejado a un Ciudadano</errorMessage>
+</ValidationRule>

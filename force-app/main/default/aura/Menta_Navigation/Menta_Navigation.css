@@ -1,0 +1,10 @@
+.THIS {
+    font-family: 'Open Sans';
+    color: #989f9a;
+    font-size: 12pt;
+    text-align: center;
+}
+
+.THIS .nav-item {text-align: center; display: inline-block; margin-right: 30px;}
+.THIS .nav-item:hover {color: #cccccc; cursor: pointer;}
+.THIS .nav-item.selected {color: #cccccc;}

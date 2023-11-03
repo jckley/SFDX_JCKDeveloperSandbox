@@ -1,0 +1,77 @@
+<template>
+
+    <div class="slds-grid slds-wrap l-content">    
+        
+        <div class="slds-size_1-of-1 slds-grid slds-wrap slds-m-bottom_small">
+            <div class="slds-size_1-of-1 slds-col header-padding">
+                <c-newcom_page-header record-id={recordId}></c-newcom_page-header>
+            </div>
+        </div>
+
+        <div class="slds-size_1-of-1 slds-large-size_1-of-4 slds-grid slds-wrap">
+            <template if:true={viewCommonData}>
+                <div class="slds-size_1-of-1">
+                    <c-newcom_contact-general-info record-id={recordId}></c-newcom_contact-general-info>
+                </div>
+            </template>
+        </div>
+
+        <div class="slds-size_1-of-1 slds-large-size_3-of-4 x-padding-left">
+            
+            <template if:true={viewCommonData}>
+                <div class="slds-size_1-of-1">
+                    <c-newcom_contact-location-info record-id={recordId}></c-newcom_contact-location-info>
+                </div>
+            </template>    
+    
+            <template if:true={viewCommonData}>
+                <div class="slds-size_1-of-1">
+                    <c-newcom_contact-address record-id={recordId}></c-newcom_contact-address>
+                </div>
+            </template>
+            
+            <template if:true={viewContactInfo}>
+                <div class="slds-col slds-size_1-of-1">            
+                    <c-newcom_contact-location-map record-id={recordId} community={communitySite} rendered={viewContactLocation} ></c-newcom_contact-location-map>
+                </div>
+            </template>
+          
+            <template if:true={viewCommonData}>
+                <div class="slds-size_1-of-1">
+                    <c-newcom_contact-contact-info record-id={recordId}></c-newcom_contact-contact-info>
+                </div>
+                <div class="slds-size_1-of-1">
+                    <c-newcom_contact-social-info record-id={recordId}></c-newcom_contact-social-info>
+                </div>
+            </template>    
+            
+            <template if:true={viewContactAtrributes}>
+                <div class="slds-size_1-of-1">
+                    <c-newcom_contact-attributes record-id={recordId}></c-newcom_contact-attributes>
+                </div>
+            </template>
+    
+            <template if:true={viewContactIncome}>
+                <div class="slds-size_1-of-1">
+                    <c-newcom_contact-attributes-income record-id={recordId} ></c-newcom_contact-attributes-income>
+                </div>
+            </template>
+            
+            <template if:true={viewContactElectoral}>
+                <div class="slds-size_1-of-1">
+                    <c-newcom_contact-attributes-electoral record-id={recordId} ></c-newcom_contact-attributes-electoral>
+                </div>
+            </template>
+            
+<!-- 
+            <template if:true={viewCommonData}>
+                <div class="slds-size_1-of-1">
+                    <c-newcom_canvas record-id={recordId} ></c-newcom_canvas>
+                </div>
+            </template> -->
+
+        </div>
+         
+    </div>
+    
+</template>

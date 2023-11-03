@@ -1,0 +1,52 @@
+.THIS {
+    margin-top : 20px;
+    padding : 0px;
+}
+
+.THIS .header {
+    background-color: #ffffff;
+    height: 60px;
+    padding: 20px 30px 30px 30px;
+    border-bottom: solid 1px #ededed;
+}
+
+.THIS .header .title {
+    font-family: 'Heebo';
+    color: #333333;
+    font-size: 17px;
+    padding-left: 15px;
+}
+
+.THIS .separator {
+    border : solid 1px #CCCCCC;
+}
+
+.THIS .icon {
+    max-width: 25px;
+    max-height: 25px;
+    vertical-align: middle;
+    border-style: none;
+    margin-bottom: 7px;
+}
+
+.THIS .label {
+    font-weight: bold;
+    font-size : 10pt;
+    color: #999999 !important;
+}
+
+.THIS .value {
+    font-family: 'Heebo';
+    font-weight: 300;
+    font-size : 12pt;
+    color: #999999 !important;
+}
+
+.THIS .value.blue {
+    color: #229fda !important;
+}
+
+.THIS .subattribute-border {
+    border-bottom: solid 1px #ededed;
+    margin: 0 25px 20px 0;
+}

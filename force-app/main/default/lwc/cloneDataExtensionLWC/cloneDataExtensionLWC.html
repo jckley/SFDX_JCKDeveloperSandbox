@@ -1,0 +1,95 @@
+<template>
+    <div class="slds-m-around_medium">
+        <lightning-layout multiple-rows="true">
+
+            <lightning-layout-item size="12">
+                <lightning-layout>
+                        <!--- DATA EXTENSION FROM -->
+                    <lightning-layout-item size="6" class="slds-p-around_small">
+                        <lightning-input label="Data Extension Origen" value={DataExtensionFrom} onchange={deFromChangeHandler} name='DataExtensionFrom' id='DataExtensionFrom'></lightning-input>
+                    </lightning-layout-item>
+
+                    <!--- ComboBox -->
+                    <!-- <lightning-layout-item size="12" class="slds-p-top_small">
+                        <lightning-combobox name="progress" label="Status" value={comboValue} placeholder="Select Progress" options={comboOptions}  onchange={handleChange} ></lightning-combobox>
+                    </lightning-layout-item> -->
+
+                    <!--- DATA EXTENSION TO -->
+                    <lightning-layout-item size="6" class="slds-p-around_small">
+                        <lightning-input label="Data Extension Destino" value={DataExtensionTo} onchange={deToChangeHandler} name='DataExtensionTo' id='DataExtensionTo'></lightning-input>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </lightning-layout-item>
+
+            <!--- FILTER ONE -->
+            <lightning-layout-item size="12">
+                <div class="slds-box slds-p-around_none slds-m-top_x-small slds-m-bottom_medium slds-m-horizontal_none" style="background-color:#F7F7F7">
+                    <lightning-layout>
+                        <lightning-layout-item size="5" class="slds-p-around_small">
+                            <lightning-input label="Filtro 1: Campo" name='FilterOneField' onchange={filterOneFieldChangeHandler} value={filterOneField}></lightning-input>
+                        </lightning-layout-item>
+
+                        <lightning-layout-item size="2" class="slds-p-around_small">
+                            <lightning-combobox 
+                                    label="Condición" 
+                                    onchange={filterOneConditionChangeHandler} 
+                                    name='FilterOneCondition'
+                                    placeholder='Condición' 
+                                    value={filterOneCondition}
+                                    options={conditionOptions}>
+                            </lightning-combobox>
+                        </lightning-layout-item>
+                        <lightning-layout-item size="5" class="slds-p-around_small">
+                            <lightning-input label="Valor" value={filterOneValue} onchange={filterOneValueChangeHandler} name='filterOneValue'></lightning-input>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                </div>
+            </lightning-layout-item>
+
+            <!--- FILTER AND/OR CONDITION -->
+            <lightning-layout-item size="12" class="slds-p-bottom_small slds-p-horizontal_small">
+                <lightning-radio-group name="radioGroup"
+                        label=''
+                        options={radioOptions}
+                        value={filterCondition}
+                        type='button'
+                        onchange={radioChangeHandler}
+                        variant='label-hidden'>
+                </lightning-radio-group>
+            </lightning-layout-item>
+
+            <!--- FILTER TWO -->
+            <lightning-layout-item size="12">
+                <div class="slds-box slds-p-around_none slds-m-top_x-small slds-m-bottom_medium slds-m-horizontal_none" style="background-color:#F7F7F7">
+                    <lightning-layout>
+                        <lightning-layout-item size="5" class="slds-p-around_small">
+                            <lightning-input label="Filtro 2: Campo" value={filterTwoField} onchange={filterTwoFieldChangeHandler} name='FilterTwoField'></lightning-input>
+                        </lightning-layout-item>
+
+                        <lightning-layout-item size="2" class="slds-p-around_small">
+                            <lightning-combobox 
+                                    label="Condición" 
+                                    onchange={filterTwoConditionChangeHandler} 
+                                    name='FilterTwoCondition'
+                                    placeholder='Condición' 
+                                    value={filterTwoCondition}
+                                    options={conditionOptions}>
+                            </lightning-combobox>
+                        </lightning-layout-item>
+
+                        <lightning-layout-item size="5" class="slds-p-around_small">
+                            <lightning-input label="Valor" value={filterTwoValue} onchange={filterTwoValueChangeHandler} name='filterTwoValue'></lightning-input>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                </div>
+            </lightning-layout-item>
+
+            <!--- CANCEL(CLEAN) / CLONE BUTTONS -->
+            <lightning-layout-item size="12" padding="around-medium">
+                <lightning-button label="Limpiar Campos" icon-name="utility:close" icon-position="right" onclick={cleanHandler} class="slds-m-right_small"></lightning-button>
+                <lightning-button label="Clonar Data Extension" icon-name="utility:play" icon-position="right" onclick={cloneHandler} class="slds-m-left_small"></lightning-button>
+            </lightning-layout-item>
+
+        </lightning-layout>
+    </div>
+</template>

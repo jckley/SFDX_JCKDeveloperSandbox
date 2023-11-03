@@ -1,0 +1,190 @@
+<template>
+    <!-- <div class="slds-p-around_small slds-grid slds-grid--vertical-align-center slds-grid--align-center"> -->
+
+    <div class="l-content card" style={hasInteractions}>
+        <div class="slds-grid slds-wrap slds-p-around_medium slds-gutters top-box">
+            <div class="slds-size_1-of-1 slds-large-size_7-of-12">
+                <img src={mibarrio.icon}   alt="" width="75px" style="position: absolute; z-index: 100; margin-left:  6%; margin-top: 12%;"/>
+                <img src={milicencia.icon} alt="" width="75px" style="position: absolute; z-index: 100; margin-left: 41%; margin-top:  1%;"/>
+                <img src={mimascota.icon}  alt="" width="75px" style="position: absolute; z-index: 100; margin-left: 45%; margin-top: 12%;"/>
+                <img src={miwifi.icon}     alt="" width="75px" style="position: absolute; z-index: 100; margin-left: 11%; margin-top: 25%;"/>
+                <img src={misalud.icon}    alt="" width="75px" style="position: absolute; z-index: 100; margin-left: 41%; margin-top: 25%;"/>
+                <img src={miotros.icon}    alt="" width="75px" style="position: absolute; z-index: 100; margin-left: 11%; margin-top:  1%;"/>
+                <canvas id="mainChart" class="mainChart" lwc:dom="manual"></canvas>
+            </div>
+            <div class="slds-size_1-of-1 slds-large-size_5-of-12 slds-m-top_large">
+                <p class="text-interacciones">
+                    {sumainteracciones}</br>
+                    Interacciones</br>
+                    realizadas</br>
+                </p>
+                <p class="text-citizen">por {citizenName}</p>
+            </div>
+        </div>
+    
+        <table>
+            <tbody>
+                <tr class="slds-grid slds-wrap slds-gutters slds-p-around_large slds-m-top_xx-large slds-border_top">
+                    <td class="slds-col slds-size_1-of-2 slds-large-size_1-of-6 slds-m-vertical_small slds-border_right">
+                        <div class="slds-align_absolute-center container-icono-programa">
+                            <img src={misalud.icon} alt="" width="75px"/>
+                        </div>
+                        <div class="slds-align_absolute-center">
+                            <span class="porcentaje">{misalud.percent}<span class="porcentaje-simbolo">%</span></span>
+                            <canvas id="myHealthChart" class="healthChart" lwc:dom="manual" width="100" height="100" style="padding: 20px;"></canvas>
+                        </div>
+                        <div class="slds-align_absolute-center">
+                            <table class="slds-table">
+                                <tbody>
+                                    <template for:each={misalud.interactions} for:index="intIndex" for:item="inter">
+                                        <tr key={inter} class="slds-grid slds-wrap interactions-row">
+                                            <td class="slds-col slds-size_4-of-5 slds-p-right_none">
+                                                <p class="slds-truncate servicio" title={inter.Servicio}>{inter.Servicio}</p>
+                                            </td>
+                                            <td class="slds-col slds-size_1-of-5 slds-p-right_none">
+                                                <p class="stats">{inter.Stats}</p>
+                                            </td>
+                                        </tr>
+                                    </template>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+            
+                    <td class="slds-col slds-size_1-of-2 slds-large-size_1-of-6 slds-m-vertical_small slds-border_right-mobile">
+                        <div class="slds-align_absolute-center container-icono-programa">
+                            <img src={mibarrio.icon} alt="" width="75px"/>
+                        </div>
+                        <div class="slds-align_absolute-center">
+                            <span class="porcentaje">{mibarrio.percent}<span class="porcentaje-simbolo">%</span></span>
+                            <canvas id="myContactsChart" class="contactsChart" lwc:dom="manual" width="100" height="100" style="padding: 20px;"></canvas>
+                        </div>
+                        <div class="slds-align_absolute-center">
+                            <table class="slds-table">
+                                <tbody>
+                                    <template for:each={mibarrio.interactions} for:index="intIndex" for:item="inter">
+                                        <tr key={inter} class="slds-grid slds-wrap interactions-row">
+                                            <td class="slds-col slds-size_4-of-5 slds-p-right_none">
+                                                <p class="slds-truncate servicio" title={inter.Servicio}>{inter.Servicio}</p>
+                                            </td>
+                                            <td class="slds-col slds-size_1-of-5 slds-p-right_none">
+                                                <p class="stats">{inter.Stats}</p>
+                                            </td>
+                                        </tr>
+                                    </template>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+            
+                    <td class="slds-col slds-size_1-of-2 slds-large-size_1-of-6 slds-m-vertical_small slds-border_right">
+                        <div class="slds-align_absolute-center container-icono-programa">
+                            <img src={milicencia.icon} alt="" width="75px"/>
+                        </div>
+                        <div class="slds-align_absolute-center">
+                            <span class="porcentaje">{milicencia.percent}<span class="porcentaje-simbolo">%</span></span>
+                            <canvas id="myBox3Chart" class="box3Chart" lwc:dom="manual" width="100" height="100" style="padding: 20px;"></canvas>
+                        </div>
+                        <div class="slds-align_absolute-center">
+                            <table class="slds-table">
+                                <tbody>
+                                    <template for:each={milicencia.interactions} for:index="intIndex" for:item="inter">
+                                        <tr key={inter} class="slds-grid slds-wrap interactions-row">
+                                            <td class="slds-col slds-size_4-of-5 slds-p-right_none">
+                                                <p class="slds-truncate servicio" title={inter.Servicio}>{inter.Servicio}</p>
+                                            </td>
+                                            <td class="slds-col slds-size_1-of-5 slds-p-right_none">
+                                                <p class="stats">{inter.Stats}</p>
+                                            </td>
+                                        </tr>
+                                    </template>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+            
+                    <td class="slds-col slds-size_1-of-2 slds-large-size_1-of-6 slds-m-vertical_small slds-border_right-mobile">
+                        <div class="slds-align_absolute-center container-icono-programa">
+                            <img src={mimascota.icon} alt="" width="75px"/>
+                        </div>
+                        <div class="slds-align_absolute-center">
+                            <span class="porcentaje">{mimascota.percent}<span class="porcentaje-simbolo">%</span></span>
+                            <canvas id="myBox4Chart" class="box4Chart" lwc:dom="manual" width="100" height="100" style="padding: 20px;"></canvas>
+                        </div>
+                        <div class="slds-align_absolute-center">
+                            <table class="slds-table">
+                                <tbody>
+                                    <template for:each={mimascota.interactions} for:index="intIndex" for:item="inter">
+                                        <tr key={inter} class="slds-grid slds-wrap interactions-row">
+                                            <td class="slds-col slds-size_4-of-5 slds-p-right_none">
+                                                <p class="slds-truncate servicio" title={inter.Servicio}>{inter.Servicio}</p>
+                                            </td>
+                                            <td class="slds-col slds-size_1-of-5 slds-p-right_none">
+                                                <p class="stats">{inter.Stats}</p>
+                                            </td>
+                                        </tr>
+                                    </template>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+            
+                    <td class="slds-col slds-size_1-of-2 slds-large-size_1-of-6 slds-m-vertical_small slds-border_right">
+                        <div class="slds-align_absolute-center container-icono-programa">
+                            <img src={miwifi.icon} alt="" width="75px"/>
+                        </div>
+                        <div class="slds-align_absolute-center">
+                            <span class="porcentaje">{miwifi.percent}<span class="porcentaje-simbolo">%</span></span>
+                            <canvas id="myBox5Chart" class="box5Chart" lwc:dom="manual" width="100" height="100" style="padding: 20px;"></canvas>
+                        </div>
+                        <div class="slds-align_absolute-center">
+                            <table class="slds-table">
+                                <tbody>
+                                    <template for:each={miwifi.interactions} for:index="intIndex" for:item="inter">
+                                        <tr key={inter} class="slds-grid slds-wrap interactions-row">
+                                            <td class="slds-col slds-size_4-of-5 slds-p-right_none">
+                                                <p class="slds-truncate servicio" title={inter.Servicio}>{inter.Servicio}</p>
+                                            </td>
+                                            <td class="slds-col slds-size_1-of-5 slds-p-right_none">
+                                                <p class="stats">{inter.Stats}</p>
+                                            </td>
+                                        </tr>
+                                    </template>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+
+                    <td class="slds-col slds-size_1-of-2 slds-large-size_1-of-6 slds-m-vertical_small">
+                        <div class="slds-align_absolute-center container-icono-programa">
+                            <img src={miotros.icon} alt="" width="75px" height="100px" style="height: 80px!important;"/>
+                        </div>
+                        <div class="slds-align_absolute-center">
+                            <span class="porcentaje">{miotros.percent}<span class="porcentaje-simbolo">%</span></span>
+                            <canvas id="myBox6Chart" class="box6Chart" lwc:dom="manual" width="100" height="100" style="padding: 20px;"></canvas>
+                        </div>
+                        <div class="slds-align_absolute-center">
+                            <table class="slds-table">
+                                <tbody>
+                                    <template for:each={miotros.interactions} for:index="intIndex" for:item="inter">
+                                        <tr key={inter} class="slds-grid slds-wrap interactions-row">
+                                            <td class="slds-col slds-size_4-of-5 slds-p-right_none">
+                                                <p class="slds-truncate servicio" title={inter.Servicio}>{inter.Servicio}</p>
+                                            </td>
+                                            <td class="slds-col slds-size_1-of-5 slds-p-right_none">
+                                                <p class="stats">{inter.Stats}</p>
+                                            </td>
+                                        </tr>
+                                    </template>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+    
+    </div>
+
+</template>

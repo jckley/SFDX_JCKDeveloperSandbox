@@ -1,0 +1,17 @@
+<aura:component controller="NavigationMenuController">    
+    <aura:attribute name="navigationMenu" 	type="NavigationMenuItem[]" />
+    <aura:attribute name="itemSelected" type="String" default=""/>
+    <aura:attribute name="search" 			type="Aura.Component[]"/>
+    
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}" />
+    <aura:handler event="c:SearchEvent" action="{!c.changeSelection}"/>
+    
+    <div class="menu-container">
+        <aura:iteration items="{!v.navigationMenu}" var="menuItem">
+             <div data-target="{!menuItem.Target}" data-label="{!menuItem.Label}" 
+                  class="{!'nav-item' + (v.itemSelected == menuItem.Target ? ' selected':'')}" 
+                  onclick="{!c.navigateToItem}"
+                  style="{!'display: ' + (and($Browser.formFactor == 'DESKTOP', menuItem.Target == '/logout')?'none':'')}">{!menuItem.Label}</div>
+         </aura:iteration>
+    </div>
+</aura:component>

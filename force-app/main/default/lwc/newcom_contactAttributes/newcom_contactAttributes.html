@@ -1,0 +1,11 @@
+<template>
+    <div class="card slds-m-top_x-large">
+        <template if:true={attributes}>
+            <div class="container slds-grid slds-wrap">
+                <template for:each={attributes} for:item="attribute">
+                    <c-newcom_tag key={attribute.label} label={attribute.label} value={attribute.value} value-css="value" ></c-newcom_tag>
+                </template>
+            </div>
+        </template>
+    </div>
+</template>

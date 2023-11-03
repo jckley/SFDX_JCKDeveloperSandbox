@@ -1,0 +1,41 @@
+<aura:component>
+    <aura:attribute name="name" 			type="String"/>
+    <aura:attribute name="logo" 			type="String"/>
+    <aura:attribute name="url" 				type="String"/>    
+    <aura:attribute name="search" 			type="Aura.Component[]"/>
+    <aura:attribute name="profileMenu" 		type="Aura.Component[]"/>
+    <aura:attribute name="navigationBar" 	type="Aura.Component[]"/>
+    
+    <div class="slds-grid slds-wrap slds-col slds-size_1-of-1 header background">
+        <div class="slds-grid slds-wrap slds-col slds-size_1-of-1 headerbackground">
+            <div class="slds-large-size_2-of-12 slds-p-left--large slds-p-right--large slds-p-top--large">
+                <div class="slds-align_absolute-center" style="height: 5rem;">
+                    <a href="https://crm.hurlingham.app/" class="logomunicipio slds-align_absolute-center" >
+                        <img src="{! $Resource.Municipios + '/' + v.name + '/Images/' + v.logo }" style="position: relative;height:50px;display:inline-block;margin: auto;" />
+                    </a>
+                </div>
+            </div>
+            
+            <div class="slds-col slds-size_8-of-12 search-bar slds-show_large">
+                <c:Municipio_SearchBar />
+            </div>
+
+            
+            <div class="slds-col slds-size_2-of-12 slds-show_large logoutcontainer">
+                <div class="exit" onclick="{!c.logout}">
+                    <div class="slds-align_absolute-center logout">
+                        <img id="icon-white" 	class="img white" style="fill:black"	src="{! $Resource.IconsPack1 + '/pcashexithover.svg'}" />
+                        <img id="icon-gray" 	class="img gray" style="fill:black"	src="{! $Resource.IconsPack1 + '/pcashexithover.svg'}" />
+                        <span class="slds-m-left--small"><b>Salir</b></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="navigation slds-show_large">
+            <c:Municipio_Navigation search="{! v.search }" />
+        </div>
+        <div class="navigationBar slds-hide_large">
+            {! v.navigationBar}
+        </div>
+    </div>	
+</aura:component>

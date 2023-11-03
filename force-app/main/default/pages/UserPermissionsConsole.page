@@ -1,0 +1,116 @@
+<apex:page showHeader="false" controller="UserPermissionsConsoleController">
+    
+    <apex:stylesheet value="{!URLFOR($Resource.bootstrap2, 'css/bootstrap.min.css')}" />
+    
+    <style>
+		a {color: #0559b3 !important; text-decoration: underline !important}
+        .div-link {color: #0559b3; text-decoration: underline !important}
+        .div-link:hover {cursor: pointer;}
+        .table-header {border-bottom: solid 2px #333333; font-weight: bold;}
+        .pbSubheader{background-color: #5aa3f1}
+    </style>
+    
+    <apex:pageBlock title="{!$Label.UserPermissions}">
+        <div class="row" style="margin-bottom: 10px;">
+            <div class="col-auto">
+                <apex:form styleClass="row">
+                    <div class="col-auto">
+                        {!$Label.User}:
+                    </div> 
+                    <apex:inputField styleClass="col-auto" label="{!$Label.User}" value="{!contact.OwnerId}"/>
+                    <div class="col-auto"> 
+                        <apex:commandButton action="{!updateUserView}" value="Update View"/>
+                    </div>
+                </apex:form>
+            </div>
+            <div class="col">
+				<a href="#" onclick="navigateToUser('{!currentUser.Id}');">{!currentUser.Id}</a>              
+            </div>
+            <div class="col">
+                <a href="#" onclick="navigateToProfile('{!currentUser.Profile.Id}');">{!currentUser.Profile.Name}</a>
+            </div>
+        </div>
+    	<apex:PageBlockSection title="Objects" columns="1" rendered="{!userId != NULL}">
+            <apex:PageBlockSection title="Contact" columns="1">
+                <div class="row">
+                    <div class="col-4 table-header">Grupo</div>
+                    <div class="col-4 table-header" style="border-left: solid 2px #333333">Permiso</div>
+                </div>
+                <apex:repeat value="{!permissions}" var="permission">
+                    <div class="row">
+                        <div class="col-4">
+                            {!permission.name}
+                        </div>
+                        <div class="col-4">
+                            <div style="{!IF(CONTAINS(permission.permissionType,'parcial'),'color: red !important','')}" class="div-link" onclick="navigateToDetail('{!currentUser.Id}','{!permission.name}');">{!permission.permissionType}</div>
+                        </div>
+                    </div>
+                </apex:repeat>
+            </apex:PageBlockSection>
+            <!--<apex:PageBlockSection title="Territory">
+                Prueba 6
+            </apex:PageBlockSection>-->
+        </apex:PageBlockSection>
+        <apex:PageBlockSection title="System Permissions" rendered="{!userId != NULL}">
+            <apex:repeat value="{!systemPermissions}" var="permission">
+                <apex:form >
+                <div class="row">
+                    <div class="col-4">
+                        {!permission.name}
+                    </div>
+                    <div class="col-4">
+                        <apex:inputCheckbox selected="{!permission.active}" disabled="true"/>
+                    </div>
+                </div>
+                    </apex:form>
+            </apex:repeat>
+        </apex:PageBlockSection>
+        <apex:PageBlockSection title="Permission Sets" columns="1" rendered="{!userId != NULL}">
+                <apex:repeat value="{!permissionSets}" var="permission">
+                        <span>
+                            {!permission.Label}
+                        </span>
+                </apex:repeat>
+        </apex:PageBlockSection>
+        <apex:PageBlockSection title="Custom Permissions" columns="1" rendered="{!userId != NULL}">
+        	<apex:repeat value="{!customPermissions}" var="permission">
+                        <span>
+                            {!permission.MasterLabel}
+                        </span>
+                </apex:repeat>
+        </apex:PageBlockSection>
+    </apex:pageBlock>
+    
+    <script type="text/javascript">
+    
+    	function navigateToUser(Id) {
+            if(typeof sforce != 'undefined'){
+                if(Id != ''){
+                    sforce.one.navigateToSObject(Id, 'detail');
+                }
+            }else{
+                window.location.href = '/' + Id + '?noredirect=1&isUserEntityOverride=1';
+            }
+        }
+    
+    	function navigateToProfile(Id) {
+            if(typeof sforce != 'undefined'){
+                if(Id != ''){
+                    sforce.one.navigateToSObject(Id, 'detail');
+                }
+            }else{
+                window.location.href = '/' + Id;
+            }
+        }
+    
+    	function navigateToDetail(Id, name) {
+            if(typeof sforce != 'undefined'){
+                if(Id != ''){
+                    sforce.one.navigateToURL('/apex/UserPermissionsDetail?id=' + Id + '&group=' + name);
+                }
+            }else{
+                window.location.href = '/apex/UserPermissionsDetail?id=' + Id + '&group=' + name;
+            }
+        }	
+    </script>
+</apex:page>

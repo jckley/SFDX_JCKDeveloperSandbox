@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Brasileros</fullName>
+    <columns>FULL_NAME</columns>
+    <columns>CONTACT.PHONE3</columns>
+    <columns>CONTACT.EMAIL</columns>
+    <columns>Document_Number__c</columns>
+    <columns>Age_f_x__c</columns>
+    <columns>Gender__c</columns>
+    <columns>Level1Name__c</columns>
+    <columns>Level2Name__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>CONTACT.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Contact.Brasilero</value>
+    </filters>
+    <label>Brasileros</label>
+    <sharedTo>
+        <group>Brasil</group>
+    </sharedTo>
+</ListView>

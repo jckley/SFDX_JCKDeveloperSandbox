@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400');
+.THIS {
+    color: #3e4954;
+    font-family: 'Roboto';
+    font-size: 14pt;
+    font-weight: 300;
+    text-align: center;
+    /* border-bottom : solid 1px #D8DBDD; */
+}
+
+.THIS .nav-item {
+    text-align: center;
+    margin-left: 30px;
+    display: inline-block;
+    padding: 20px 7px;
+}
+.THIS .nav-item:hover{
+    cursor: pointer; 
+    border-bottom: solid 1px #EF3E48;
+    color: #3e4954;
+    padding-bottom: 19px;
+}
+.THIS .nav-item.selected {
+    border-bottom: solid 3px #EF3E48;
+    padding-bottom: 17px
+}
+.THIS .nav-item.selected:hover {
+    border-bottom: solid 3px #EF3E48;
+    padding-bottom: 17px;
+    cursor: default
+}

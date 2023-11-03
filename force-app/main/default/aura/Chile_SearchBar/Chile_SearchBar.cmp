@@ -1,0 +1,58 @@
+<aura:component implements="forceCommunity:searchInterface" controller="AdFi_HeaderHandler">    
+    <aura:attribute name="community"             type="String" default="Prosumia"/>
+    <aura:attribute name="searchText" 	type="String" />
+    <aura:attribute name="filterBy" 	type="String" default="Citizens"/>
+    <aura:attribute name="results" 		type="RemotingMessageHelper.SearchResults" />
+    <aura:attribute name="rendered" 	type="Boolean" default="true" />
+
+    <aura:registerEvent name="searchEvent" type="c:SearchEvent"/>
+    <aura:handler name="init" value="{! this}" action="{! c.initializeComponent }" />
+    <aura:handler event="forceCommunity:routeChange" action="{!c.initializeComponent}"/>
+    <!-- <aura:handler name="init" value="{! this}" action="{! c.initializeComponent }" /> -->
+
+    <div class="{! (v.rendered)?'slds-form-element slds-size_1-of-1':'slds-hide'}">
+        <div class="slds-form-element__control">
+            <div class="slds-combobox-group">
+                <div class="slds-combobox_container slds-combobox-addon_end">
+                    <div class="{! ( and(v.results != null , v.results.results.length > 0))?'slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open slds-align_absolute-center':'slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-align_absolute-center'}" aria-expanded="false" aria-haspopup="listbox" id="primary-search-combobox-id-2" role="combobox">
+                        <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_left slds-global-search__form-element slds-align_absolute-center" role="none">
+                            <div class="search-bar-container">
+                                <div class="input-container slds-grid">
+                                    <img aura:id="search-icon-focus" class="search-icon-focus slds-align_absolute-center slds-hide" src="{!$Resource.chile + '/img/search-inicio.svg'}"/>
+                                    <span aura:id="search-text" class="search-text slds-align_absolute-center slds-hide">Buscar:</span>
+                                    <input class="slds-col input-cbg" type="text" onkeyup="{! c.searchText }" placeholder="{!'Buscar' + ($Browser.formFactor == 'DESKTOP'?' ciudadano':'')}" 
+                                           aura:id="enter-search" name="whatever" value="{! v.searchText}" onfocus="{!c.onFocus}" 
+                                           onblur="{!c.onBlur}" onsubmit="{!c.onSubmit}" autocapitalize="off" autocomplete="off" autocorrect="off"/>
+                                    <div aura:id="guide" class="guide slds-hide slds-align_absolute-center slds-show_large">ENTER PARA BUSCAR</div>
+                                    <div aura:id="close-icon" class="slds-hide search-icon">
+                                        <img class="icon-reposo" src="{!$Resource.chile + '/img/mentaclearreposo.png'}" onclick="{!c.clearText}"/>
+                                        <img class="icon-hover" src="{!$Resource.chile + '/img/mentaclearhover.png'}" onclick="{!c.clearText}"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div aura:id="search-results" class="slds-dropdown slds-dropdown_fluid menta-search-results" role="listbox">
+                                <ul class="slds-listbox slds-listbox_vertical" role="group">
+                                    <aura:iteration items="{! v.results.results }" var="resultSobject">                                        
+                                        <aura:iteration items="{! resultSobject.record }" var="record">                                            
+                                            <li role="presentation" class="slds-listbox__item" data-type="{!resultSobject.type}" data-id="{!record.Id }" onclick="{! c.redirectTo }">
+                                                <div style="color: #3e4145;" id="option1" class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta" role="option">                                                    
+                                                    <span class="slds-media__body">
+                                                        {! record.Name }
+                                                        <span class="slds-listbox__option-text slds-listbox__option-text_entity">
+                                                            {! resultSobject.type }                                                        
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </li>
+                                        </aura:iteration>  
+                                    </aura:iteration>                                                                       
+                                </ul>
+                            </div> -->
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</aura:component>

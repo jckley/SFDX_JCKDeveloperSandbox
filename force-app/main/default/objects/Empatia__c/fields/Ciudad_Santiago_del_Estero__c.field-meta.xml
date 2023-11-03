@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Ciudad_Santiago_del_Estero__c</fullName>
+    <externalId>false</externalId>
+    <label>Ciudad Santiago del Estero</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Añatuya</fullName>
+                <default>false</default>
+                <label>Añatuya</label>
+            </value>
+            <value>
+                <fullName>Bandera</fullName>
+                <default>false</default>
+                <label>Bandera</label>
+            </value>
+            <value>
+                <fullName>Beltrán</fullName>
+                <default>false</default>
+                <label>Beltrán</label>
+            </value>
+            <value>
+                <fullName>Campo Gallo</fullName>
+                <default>false</default>
+                <label>Campo Gallo</label>
+            </value>
+            <value>
+                <fullName>Clodomira</fullName>
+                <default>false</default>
+                <label>Clodomira</label>
+            </value>
+            <value>
+                <fullName>Colonia Dora</fullName>
+                <default>false</default>
+                <label>Colonia Dora</label>
+            </value>
+            <value>
+                <fullName>Fernández</fullName>
+                <default>false</default>
+                <label>Fernández</label>
+            </value>
+            <value>
+                <fullName>Frías</fullName>
+                <default>false</default>
+                <label>Frías</label>
+            </value>
+            <value>
+                <fullName>Ingeniero Forres</fullName>
+                <default>false</default>
+                <label>Ingeniero Forres</label>
+            </value>
+            <value>
+                <fullName>La Banda</fullName>
+                <default>false</default>
+                <label>La Banda</label>
+            </value>
+            <value>
+                <fullName>Loreto</fullName>
+                <default>false</default>
+                <label>Loreto</label>
+            </value>
+            <value>
+                <fullName>Los Juríes</fullName>
+                <default>false</default>
+                <label>Los Juríes</label>
+            </value>
+            <value>
+                <fullName>Los Telares</fullName>
+                <default>false</default>
+                <label>Los Telares</label>
+            </value>
+            <value>
+                <fullName>Monte Quemado</fullName>
+                <default>false</default>
+                <label>Monte Quemado</label>
+            </value>
+            <value>
+                <fullName>Nueva Esperanza</fullName>
+                <default>false</default>
+                <label>Nueva Esperanza</label>
+            </value>
+            <value>
+                <fullName>Pampa de los Guanacos</fullName>
+                <default>false</default>
+                <label>Pampa de los Guanacos</label>
+            </value>
+            <value>
+                <fullName>Pinto</fullName>
+                <default>false</default>
+                <label>Pinto</label>
+            </value>
+            <value>
+                <fullName>Pozo Hondo</fullName>
+                <default>false</default>
+                <label>Pozo Hondo</label>
+            </value>
+            <value>
+                <fullName>Quimilí</fullName>
+                <default>false</default>
+                <label>Quimilí</label>
+            </value>
+            <value>
+                <fullName>San Pedro de Guasayán</fullName>
+                <default>false</default>
+                <label>San Pedro de Guasayán</label>
+            </value>
+            <value>
+                <fullName>Santiago del Estero</fullName>
+                <default>false</default>
+                <label>Santiago del Estero</label>
+            </value>
+            <value>
+                <fullName>Selva</fullName>
+                <default>false</default>
+                <label>Selva</label>
+            </value>
+            <value>
+                <fullName>Sumampa</fullName>
+                <default>false</default>
+                <label>Sumampa</label>
+            </value>
+            <value>
+                <fullName>Suncho Corral</fullName>
+                <default>false</default>
+                <label>Suncho Corral</label>
+            </value>
+            <value>
+                <fullName>Termas de Río Hondo</fullName>
+                <default>false</default>
+                <label>Termas de Río Hondo</label>
+            </value>
+            <value>
+                <fullName>Tintina</fullName>
+                <default>false</default>
+                <label>Tintina</label>
+            </value>
+            <value>
+                <fullName>Villa Atamisqui</fullName>
+                <default>false</default>
+                <label>Villa Atamisqui</label>
+            </value>
+            <value>
+                <fullName>Villa Ojo de Agua</fullName>
+                <default>false</default>
+                <label>Villa Ojo de Agua</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

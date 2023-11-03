@@ -1,0 +1,94 @@
+<apex:component >
+    <apex:attribute name="terrw" type="TerritoryWrapper2" required="true" description="Territory Information" />
+    <style>
+        .icn-block{
+            display: inline-flex;
+            vertical-align: middle;
+        }
+        
+        .rollup-header{
+            margin: 15px 0 10px 10px;
+        }
+        
+        .rollup-header-text{
+            margin-left: 15px;
+            font-size: 11pt;
+            font-weight: 500;
+        	color: #b3b3b3;
+        }
+        
+        .contact-rollup-card{min-width: 22%; min-height: 150px;}
+        .contact-rollup-card-header{min-height: 50px; border-bottom: solid 1px #ededed}
+    </style>
+    <div class="row card-top-margin ">
+        <div class="card contact-rollup-card col-12 col-md card-left-border orange">
+            <div class="row contact-rollup-card-header">
+                <div class="col-md-12">
+                    <div class="rollup-header">
+                        <apex:image styleClass="icon-small" value="{!URLFOR($Resource.IconsPack1, 'profileps.svg')}"/>
+                        <span class="rollup-header-text">{!$ObjectType.Territorio_Administrativo__c.Fields.Total_Ciudadanos__c.Label}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 rollup-content giant">
+                    {!terrw.totalCiudadanosFormated}
+                </div>
+            </div>
+        </div>
+        <div class="blank-space">
+        </div>
+        <div class="card contact-rollup-card col-12 mt-3 col-md mt-md-0">
+            <div class="row contact-rollup-card-header">
+                <div class="col-md-12">
+                    <div class="rollup-header">
+                        <apex:image styleClass="icon-small" value="{!URLFOR($Resource.IconsPack1, 'mailps.svg')}"/>
+                        <span class="rollup-header-text">{!$ObjectType.Territorio_Administrativo__c.Fields.Total_Emails__c.Label}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 rollup-content giant">
+                    {!terrw.totalemailsFormated}
+                </div>
+            </div>
+        </div>
+        <div class="w-100 d-none d-md-block d-lg-none"></div>
+        <div class="blank-space d-none d-lg-block">
+        </div>
+        <div class="card contact-rollup-card col-12 mt-3 col-md mt-lg-0">
+            <div class="row contact-rollup-card-header">
+                <div class="col-md-12">
+                    <div class="rollup-header">
+                        <apex:image styleClass="icon-small" value="{!URLFOR($Resource.IconsPack1, 'cellphoneps.svg')}"/>
+                        <span class="rollup-header-text">{!$ObjectType.Territorio_Administrativo__c.Fields.Total_Moviles__c.Label}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 rollup-content giant">
+                    {!terrw.totalMobilesFormated}
+                </div>
+            </div>
+        </div>
+        <div class="blank-space">
+        </div>
+        <div class="card contact-rollup-card col-12 mt-3 col-md mt-lg-0">
+            <div class="row contact-rollup-card-header">
+                <div class="col-md-12">
+                    <div class="rollup-header">
+                        <apex:image styleClass="icon-small" value="{!URLFOR($Resource.IconsPack1, 'phoneps.svg')}"/>
+                        <span class="rollup-header-text">{!$ObjectType.Territorio_Administrativo__c.Fields.Total_Telefonos_FIjos__c.Label}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 rollup-content giant">
+                    {!terrw.totalLandingFormated}
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+</apex:component>

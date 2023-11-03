@@ -1,0 +1,91 @@
+<template>
+    <div class="grand-box slds-grid slds-wrap slds-align_absolute-center">
+        <div class="child-box slds-size_1-of-1">
+            <c-newcom_dashboard-contact-summary
+                total_ciudadanos_formated={totalCiudadanosFormated}
+                total_emails_formated={totalemailsFormated}
+                total_mobiles_formated={totalMobilesFormated}
+                total_landing_formated={totalLandingFormated} >
+            </c-newcom_dashboard-contact-summary>
+        </div>
+
+        <div class="child-box slds-size_1-of-1">
+            <c-newcom_dashboard-social-summary
+                total_facebook_formated={totalFacebookFormated}
+                total_instagram_formated={totalInstagramFormated}
+                total_twitter_formated={totalTwitterFormated}
+                total_linkedin_formated={totalLinkedinFormated}
+                facebook_icon={facebookIcon}
+                instagram_icon={instagramIcon}
+                twitter_icon={twitterIcon}
+                linkedin_icon={linkedinIcon}>
+            </c-newcom_dashboard-social-summary>
+        </div>
+
+        <div class="child-box slds-size_1-of-1">
+            <div class="slds-size_1-of-1">
+                <div class="container slds-grid slds-wrap">
+                    <div class="slds-size_1-of-1 slds-medium-size_1-of-2">
+                        
+                        <div class="people-chart card">
+                            <div class="slds-size_1-of-1 subattribute-header">
+                                Personas por sexo
+                            </div>                
+                            <div class="slds-grid slds-wrap">
+                                <!-- <div class="slds-grid slds-wrap"> -->
+                                    <div class="chart-box slds-size_1-of-1 slds-large-size_8-of-12">
+                                        <canvas id="peopleChart" class="peopleChart" lwc:dom="manual"></canvas>
+                                    </div>
+            
+                                    <div class="people-chart-text-box slds-size_1-of-1 slds-large-size_4-of-12 slds-grid slds-wrap">
+                                        <div class="slds-size_1-of-1 slds-grid_vertical slds-wrap women-box">
+                                            <!-- <div class="slds-grid slds-wrap"> -->
+                                                <div class="legend-total">
+                                                    &bull; {totalWomenFormated}
+                                                </div>
+                                                <div class="legend-percent">
+                                                    Mujeres - <b>{totalWomenPerc} %</b>
+                                                </div>
+                                            <!-- </div> -->
+                                        </div>
+                                        <div class="slds-size_1-of-1 slds-grid_vertical slds-wrap men-box">
+                                            <!-- <div class="slds-grid slds-wrap"> -->
+                                                <div class="legend-total">
+                                                    &bull; {totalMenFormated}
+                                                </div>
+                                                <div class="legend-percent">
+                                                    Hombres - <b>{totalMenPerc} %</b>
+                                                </div>
+                                            <!-- </div> -->
+                                        </div>
+                                    </div>
+                                <!-- </div> -->
+                            </div>
+                        </div>
+
+                    </div>
+        
+                    <div class="slds-size_1-of-1 slds-medium-size_1-of-2">
+                        <div class="age-chart card">
+                            <div class="slds-size_1-of-1 subattribute-header">
+                                Edades por sexo
+                            </div>
+                            
+                            <div class="chart-box slds-col slds-size_1-of-1 slds-size_1-of-1">
+                                <div class="slds-grid slds-wrap">
+                                    <div class="slds-size_1-of-1">
+                                        <canvas id="ageChart" class="ageChart" lwc:dom="manual"></canvas>
+                                    </div>                        
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        
+                </div>
+                
+            </div>
+
+
+        </div>
+    </div>
+</template>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ProsumerSMS_Campanias</fullName>
+    <columns>NAME</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>Project__c</columns>
+    <columns>CREATEDBY_USER</columns>
+    <columns>Prosumer_Cantidad_Entregados__c</columns>
+    <columns>Prosumer_Cantidad_Enviados__c</columns>
+    <columns>Prosumer_Estado__c</columns>
+    <columns>Prosumer_Mensaje_SMS__c</columns>
+    <columns>Prosumer_SAQL_Audiencias__c</columns>
+    <columns>Export__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Project__c</field>
+        <operation>equals</operation>
+        <value>ProsumerSMS</value>
+    </filters>
+    <label>ProsumerSMS Campanias</label>
+    <sharedTo>
+        <group>Admins</group>
+    </sharedTo>
+</ListView>

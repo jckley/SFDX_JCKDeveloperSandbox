@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomPermission xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>accesos a los niveles (geograficos) de la vista de ciudadano.</description>
+    <isLicensed>false</isLicensed>
+    <label>Contact View Common Data</label>
+</CustomPermission>

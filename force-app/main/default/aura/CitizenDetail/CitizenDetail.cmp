@@ -1,0 +1,61 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes,force:appHostable,flexipage:availableForAllPageTypes,force:hasRecordId" controller="ContactDetailController">	    
+    <aura:attribute name="recordId" 		type="Id"  />    
+    <aura:attribute name="baseUrl" 			type="String"  />    
+    <aura:attribute name="citizenWrapper" 	type="ContactWrapper" />
+    <aura:attribute name="permissions" 		type="RemotingMessageHelper.UserPermissions" />
+    
+    <aura:handler name="init" action="{!c.initializeComponent}" value="{!this}" />
+    
+    <div class="slds-grid slds-wrap" style="max-width: 1140px; margin: auto;">
+        <div class="slds-col slds-size_1-of-1 slds-p-around_large">
+            <c:PageHeader mainlabel="{! v.citizenWrapper.contact.FirstName + ' ' + v.citizenWrapper.contact.LastName}" secundarylabel="{! v.citizenWrapper.personTitle}" secundarylabelunderlined="{! v.citizenWrapper.personAddress}" linkToRecordId="/global-search/MANUELA PEDRAZA 648 Mar del Plata" />
+        </div>
+        
+        <div class="slds-col slds-size_1-of-1">
+            <c:ContactGeneralInfo citizenWrapper="{! v.citizenWrapper }" rendered="{! v.permissions.ContactViewCommonData}"  />
+        </div>
+        
+        <div class="slds-col slds-size_1-of-1">
+            <c:ContactLocationInfo citizenWrapper="{! v.citizenWrapper }" rendered="{! v.permissions.ContactViewLocation}" />
+        </div>
+        
+        <div class="slds-col slds-size_1-of-1">
+			<c:ContactAttributes citizenWrapper="{! v.citizenWrapper }" rendered="{! and( v.permissions.ContactViewAttributes, v.citizenWrapper.attributeTags.length > 0)}" />
+        </div>     
+        
+        <div class="slds-col slds-size_1-of-1">
+            <c:ContactAttributeIncome citizenWrapper="{! v.citizenWrapper }" rendered="{! and( v.permissions.ContactViewIncome, or(v.citizenWrapper.contact.Employer_1__c != NULL, v.citizenWrapper.contact.Employer_2__c != NULL , v.citizenWrapper.contact.Employer_3__c != NULL  ) )}" />
+        </div>   
+        
+        <div class="slds-col slds-size_1-of-1">
+            <c:ContactElectoral citizenWrapper="{! v.citizenWrapper }" rendered="{! v.permissions.ContactViewElectoral }" />
+        </div>
+        
+        <div class="slds-col slds-size_1-of-1">
+            <c:AlertaBuenosAires citizenWrapper="{! v.citizenWrapper }" rendered="{! v.permissions.ContactViewElectoral }" />
+        </div>
+        
+        <div class="slds-col slds-size_1-of-1">
+            <c:ContactAddress citizenWrapper="{! v.citizenWrapper }" rendered="{! v.permissions.ContactViewLocation }" />
+        </div>  
+        <div class="slds-col slds-size_1-of-1">            
+            <c:ContactMap citizenWrapper="{! v.citizenWrapper }" rendered="{! v.permissions.ContactViewLocation }" viewExactLocation="{! v.permissions.ContactViewMapInfo}" />
+        </div> 
+        
+        <div class="slds-col slds-size_1-of-1">            
+            <c:ContactContactInfo citizenWrapper="{! v.citizenWrapper }" rendered="{! v.permissions.ContactViewContactInfo }" showDetails="{! v.permissions.ContactViewContactInfoDetails}" />
+        </div> 
+        
+        <div class="slds-col slds-size_1-of-1">            
+            <c:ContactSocialInfo citizenWrapper="{! v.citizenWrapper }" rendered="{! v.permissions.ContactViewSocialInfo }" showDetails="{! v.permissions.ContactViewSocialInfoDetails}" />
+        </div>
+        
+        <div class="slds-col slds-size_1-of-1">
+            <c:ContactTags contw="{! v.citizenWrapper }" rendered="{!v.permissions.ContactViewTags}"/>
+        </div>
+        
+        <div class="slds-col slds-size_1-of-1">
+            <c:ContactManagement  recordId="{! v.recordId }" rendered="{!v.permissions.ViewEdition}"/>
+        </div>    
+    </div>
+</aura:component>

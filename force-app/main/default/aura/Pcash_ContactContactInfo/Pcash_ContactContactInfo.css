@@ -1,0 +1,59 @@
+.THIS {
+    font-size: 13pt;
+}
+
+.THIS .email {
+}
+.THIS .icon {
+    max-width: 35px;
+    max-height: 35px;
+    vertical-align: middle;
+    border-style: none;
+}
+
+.THIS .icon-small {
+    max-width: 25px;
+    max-height: 25px;
+    vertical-align: middle;
+    border-style: none;
+}
+
+.THIS .phoneapp {
+    width:100%;
+    height: 50px;
+    font-size: 13pt;
+    border-radius: .25rem!important;
+    border: 1px solid #dee2e6!important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.THIS .phoneapp.active {
+    background-color: #EdEdEd; 
+    color: #6fdc4e;
+    font-family: 'Heebo';
+    font-weight: 300;
+}
+
+.THIS .phoneapp.inactive {
+	color: #D1D1D1; 
+    filter: grayscale(100%);
+}
+
+.THIS .phoneapp span {
+    padding-left : 20px;
+}
+
+/* Special classes for small devices */
+@media only screen and (max-width: 768px) {
+	.THIS .separator {margin-bottom: 10px;}
+    .THIS .blank-space{width: 100%;height: 15px;}
+}
+
+/* Special classes for big devices */
+@media only screen and (min-width: 768px) {
+    .THIS .blank-space{width: 3%;}
+    .THIS .l-pl-15{padding-left: 15px;}
+    .THIS .l-ml-neg15{margin-left: -15px;}
+}

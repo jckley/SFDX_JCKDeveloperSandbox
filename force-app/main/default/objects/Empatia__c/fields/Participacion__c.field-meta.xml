@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Participacion__c</fullName>
+    <externalId>false</externalId>
+    <label>Participacion</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Difundir en Redes Sociales y WhatsApp</fullName>
+                <default>false</default>
+                <label>Difundir en Redes Sociales y WhatsApp</label>
+            </value>
+            <value>
+                <fullName>Ir a la presentación de Facundo Manes en mi ciudad</fullName>
+                <default>false</default>
+                <label>Ir a la presentación de Facundo Manes en mi ciudad</label>
+            </value>
+            <value>
+                <fullName>Subirte a la caravana de la Empatía</fullName>
+                <default>false</default>
+                <label>Subirte a la caravana de la Empatía</label>
+            </value>
+            <value>
+                <fullName>Poner un cartel de Empatía en mi casa</fullName>
+                <default>false</default>
+                <label>Poner un cartel de Empatía en mi casa</label>
+            </value>
+            <value>
+                <fullName>Ver y/o presentar un proyecto para mi ciudad</fullName>
+                <default>false</default>
+                <label>Ver y/o presentar un proyecto para mi ciudad</label>
+            </value>
+            <value>
+                <fullName>Ver y/o realizar un micro aporte en causas sociales de mi ciudad</fullName>
+                <default>false</default>
+                <label>Ver y/o realizar un micro aporte en causas sociales de mi ciudad</label>
+            </value>
+            <value>
+                <fullName>Dedicar 10hs semanales a tareas de activismo en mi ciudad</fullName>
+                <default>false</default>
+                <label>Dedicar 10hs semanales a tareas de activismo en mi ciudad</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

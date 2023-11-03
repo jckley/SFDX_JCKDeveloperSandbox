@@ -1,0 +1,51 @@
+<apex:component >
+    
+    <apex:attribute name="territorylist" type="Territorio_Administrativo__c[]" 	required="true" description="Territory List" />
+    <apex:attribute name="levelnumber" type="String" required="true" description="Level Number" />
+    <apex:attribute name="selectedterritory" type="String" description="Selected territory" />
+    <apex:attribute name="hasnext" type="Boolean" default="false" description="tells if there is other card next to it" />
+    <apex:attribute name="seeterritorytext" type="String" description="See territory text"/>
+    
+    <style>
+    
+        .subattribute-header {
+        	background-color: #f8f9fc; 
+        	border-bottom: solid 1px #ededed;
+        	margin-left: 0px;
+        	margin-top: 0px;
+        	height: 60px;
+        }
+        .subattribute-title {margin: 15px 0px 15px 15px; color: #999999; font-weight: 500; height: 100%}
+        .subattribute-border {border-bottom: solid 1px #ededed; margin: 0 25px 20px 30px;}
+        .subattribute-content {margin-bottom: 10px;}
+        
+        .right-arrow{display: none;}
+    </style>
+
+    <div id="{!levelnumber}card-content" class="card tree-card" onclick="focusCard({!levelnumber});">
+        <div class="card-cont subattribute-header">
+            <div class="subattribute-title">
+                <span>{!$Label.AdministrativeLevel} {!levelnumber}</span> 
+            </div>
+        </div>
+        <div class="level-search-bar">
+            <apex:image styleClass="search-icon" value="{!URLFOR($Resource.IconsPack1, 'searchps.svg')}"/>
+            <input id="{!levelnumber}bar" onkeyup="filterTer({!levelnumber});" type="text" placeholder="{!$Label.SearchTerritory}"/>
+            <img id="{!levelnumber}clear" onclick="clearInput({!levelnumber});" class="clear-icon" src="{!URLFOR($Resource.IconsPack1, 'closeemptyinputps.svg')}"/>
+        </div>
+        <div id="{!levelnumber}content" class="level-content">
+            <div id="{!levelnumber}barlist" class="scrollable">
+                <apex:repeat value="{!territorylist}" var="ter">
+                    <div onclick="javascript:seeChilds('{!ter.Id}',{!levelnumber},'{!ter.ParentId__c}')" id="{!ter.Id}" class="level-item {!IF(ter.Id == selectedterritory, 'selected-item','')}">
+                        <div class="level-item-content">
+                            <span onclick="backToLevel({!levelnumber}, event)" class="right-arrow"><img id="{!ter.Id}-arrow" style="transform: scaleX(-1); margin-right: 10px;" class="search-icon" src="{!URLFOR($Resource.IconsPack1, 'arrowrightps.svg')}"/></span>
+                            <span class="level-item-text">{!ter.Name}</span>
+                            <div onclick="navigateToTerritory('{!ter.Id}', event, '{!ter.ParentId__c}', {!levelnumber});" class="level-item-text-hidden">{!IF(seeterritorytext != '', seeterritorytext, $Label.SeeTerritory)} <span><apex:image styleClass="search-icon" value="{!URLFOR($Resource.IconsPack1, 'arrowrightps.svg')}"/></span></div>
+                        </div>
+                    </div>
+                </apex:repeat>
+            </div>
+        </div>
+    </div>
+
+</apex:component>

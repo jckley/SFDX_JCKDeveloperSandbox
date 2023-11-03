@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Fecha_Ultima_Modificacion_Registro__c</fullName>
+    <description>fecha ultima modificacion del registro en Ciudadanos_Actividades</description>
+    <externalId>false</externalId>
+    <label>Fecha Ultima Modificacion Registro</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>DateTime</type>
+</CustomField>

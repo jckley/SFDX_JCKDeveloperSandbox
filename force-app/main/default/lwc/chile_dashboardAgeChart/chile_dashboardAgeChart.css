@@ -1,0 +1,77 @@
+.women-color{
+    color: #885493;
+}
+.men-color {
+    color: #0082be;
+}
+
+.container {
+    font-family: 'Roboto';
+    max-width: 90%;
+    margin: auto;
+    padding: 0 15px;
+}
+
+.card {
+    background-color: #ffffff;
+    will-change: transform;
+    overflow:  hidden;
+    box-shadow: 2px 2px 3px 3px #EBEBEB;
+    min-height: 60px;
+    min-width: 190px;
+    vertical-align: middle;
+    border-radius: 6px;
+    border: solid 1px #FFFFFF;
+}
+
+.chart-box {
+    padding: 15px;
+}
+
+.subattribute-header {
+    margin-left: 0px;
+    margin-top: 0px;
+    height: 80px;
+    padding-top: 25px;
+    padding-left: 30px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: #707276;
+    font-family: 'Roboto';
+}
+
+.legend-total {
+    font-weight: bold;
+    font-size: 1.8rem;
+    font-family: 'Roboto';
+}
+
+.legend-percent {
+    padding-left: 15px;
+    font-weight: 400;
+    font-size: 0.8rem;
+    font-family: 'Roboto';
+    display: block;
+}
+
+/* Special classes for small devices */
+@media only screen and (max-width: 768px) {
+    .people-chart {
+        margin-bottom: 15px;
+    }
+    
+    .age-chart {
+        margin-top: 15px;
+    }
+}
+
+/* Special classes for big devices */
+@media only screen and (min-width: 768px) {
+    .people-chart {
+        margin-right: 15px;
+    }
+    
+    .age-chart {
+        margin-left: 15px;
+    }
+}

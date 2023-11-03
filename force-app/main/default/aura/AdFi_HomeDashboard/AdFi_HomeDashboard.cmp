@@ -1,0 +1,22 @@
+<aura:component controller="TerritoryDetailController">
+    <aura:attribute name="recordId" type="Id" />
+    
+    <ltng:require scripts="{! $Resource.ChartJS + '/Chart.bundle.min.js' }"  afterScriptsLoaded="{!c.refreshChartData}"/>
+    
+    <!--<aura:handler 	name="init" action="{!c.initializeComponent}" value="{!this}" />    -->
+    
+    <div class="card slds-size_1-of-1 slds-grid slds-wrap" style="padding: 20px 30px;">
+        <div class="slds-size_1-of-1 slds-grid slds-wrap title" style="margin-bottom: 20px;">
+            <div >Edades por sexo</div>
+        </div>
+        <div class="slds-size_1-of-1 slds-grid slds-wrap" style="margin-top: 15px; height : 252px;">
+            <canvas id="canvas"></canvas>
+        </div>
+        <div class="slds-size_1-of-1 slds-grid slds-wrap" style="margin-top: 30px; justify-content: center;">
+            <div class="dot pink"></div>
+            <span class="leyend-header" style="margin-right: 15px;">{!$Label.c.Women}</span>
+            <div class="dot blue"></div>
+            <span class="leyend-header">{!$Label.c.Men}</span>
+        </div>
+    </div>
+</aura:component>

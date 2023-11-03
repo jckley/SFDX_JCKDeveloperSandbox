@@ -1,0 +1,32 @@
+<aura:component>
+    <aura:attribute name="community"        type="String" default="Prosumia"/>
+    <aura:attribute name="citizenWrapper" 	type="CitizenWrapper" 	required="true" />
+    <aura:attribute name="rendered" 		type="Boolean" 			required="true" default="true" />
+    <aura:attribute name="fijo" 		    type="String" 			 />
+   
+    <aura:handler event="c:PRM_Cuidarnos_Edit_Completed" action="{! c.updateEditInfo }" />
+    
+    <div class="{! (v.rendered)?'slds-grid slds-wrap ' + v.community:'slds-hide'}">        
+        <div class="slds-size_1-of-1 slds-large-size_6-of-12 slds-grid">
+            <div class="slds-size_1-of-6 slds-large-size_1-of-12">
+                <img src="{! $Resource.PRM  + '/' + v.community + '/img/adfihouse.svg'}" class="icon" />
+            </div>
+            <div class="slds-size_5-of-6 slds-large-size_11-of-12 l-pl-15" onclick="{! c.goToAddres}" data-search="{! v.citizenWrapper.citizen.grouphash_coh__c }" style="cursor: pointer;">                
+                <c:PRM_DisplayField community="{! v.community }" label="{!$Label.c.Address}" value="{! v.citizenWrapper.generalInfo.addressSimple}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13 islink blue"/>
+            </div>
+        </div>
+        
+        <div class="slds-size_1-of-6 slds-hide_medium">&nbsp;</div>
+        <div class="slds-size_5-of-6 slds-large-size_2-of-12 s-pb-10">
+            <c:PRM_DisplayField community="{! v.community }" label="{!$Label.c.PostalCode}" value="{! v.citizenWrapper.citizen.MailingPostalCode}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13 blue"/>                                                                                                    
+        </div>
+        
+        <div class="slds-size_1-of-6 slds-large-size_1-of-12 l-pl-35">
+            <img src="{! $Resource.PRM   + '/' + v.community +  '/img/adfilandline.svg'}" class="icon" />                                                                                                    
+        </div>
+        
+        <div class="slds-size_5-of-6 slds-large-size_3-of-12">
+            <c:PRM_DisplayField community="{! v.community }" label="Teléfono" value="{! v.fijo }" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13 blue"/>
+        </div>
+    </div>
+</aura:component>

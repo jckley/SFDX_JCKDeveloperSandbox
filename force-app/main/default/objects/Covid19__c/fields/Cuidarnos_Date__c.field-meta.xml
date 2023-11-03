@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cuidarnos_Date__c</fullName>
+    <externalId>false</externalId>
+    <formula>/*
+IF(
+    AND(
+        ISBLANK(Cuidarnos_Comunidad_Date__c),
+        ISBLANK(salud_date__c)
+    ),
+    NULL,
+    TODAY() - 
+    MIN(
+        TODAY()-BLANKVALUE(Cuidarnos_Comunidad_Date__c,DATE(1,1,1)),
+        TODAY()-BLANKVALUE(salud_date__c,DATE(1,1,1))
+    )
+)
+*/
+TODAY()</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Cuidarnos Fecha Confirmacion Final</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

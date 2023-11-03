@@ -1,0 +1,95 @@
+.card {
+    border-radius: 4px;
+    margin-bottom: 30px;
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+    background: #FFF;
+    display: flex;
+    flex-direction: column
+}
+
+.card .card-header {
+    height: 70px;
+    padding: 0 15px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    font-size: 16px;
+    background: #343434;
+    color: #FAFAFA; 
+    display: flex;
+}
+
+.card .card-header .title {
+    padding: 0 15px;
+    border-bottom: solid 3px #ff0000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card .card-body {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+}
+
+.card .card-body .body-section {
+    display: flex;
+    gap: 15px;
+    flex-flow: wrap;
+}
+
+.card .card-body .body-section:not(:first-child) {
+    margin-top: 15px;
+}
+
+.card .card-body .body-section:not(:last-child) {
+    padding-bottom: 15px;
+    border-bottom: solid 1px #ededed;
+}
+
+.card .card-body .body-section .info-wrapper {
+    padding: 15px 12px;
+    border: 1px solid #ededed;
+    border-radius: 7px;
+}
+
+.card .card-body .body-section .info-wrapper .info-title {
+    font-size: 14px;
+    color: #999999;
+    margin-right: 15px;
+}
+
+.card .card-body .body-section .info-wrapper .info-value {
+    font-size: calc(1em + 1px);
+    color: #ff0000;
+    font-weight: bold;
+}
+
+.card .card-body .body-section .pill-wrapper {
+    padding: 15px 12px;
+    border-radius: 7px;
+    background-color: #f7f7f7;
+}
+
+.card .card-body .body-section .pill-wrapper .pill-title {
+    font-size: 14px;
+    color: #58595b;
+    margin-right: 15px;
+}
+
+/*para no agregar elementos, directamente uso SI/NO como la clase del valor de la pildora*/
+.card .card-body .body-section .pill-wrapper .SI {
+    font-size: calc(1em + 1px);
+    font-weight: bold;
+    color: #ff0000;
+}
+
+.card .card-body .body-section .pill-wrapper .NO {
+    font-size: calc(1em + 1px);
+    font-weight: bold;
+}
+
+.faltan-datos {
+    font-size: 16px;
+    color: #ff0000;
+}

@@ -1,0 +1,69 @@
+<apex:component >    
+	<apex:attribute name="citizenwrapper" 	type="CitizenWrapper" 	required="true" 					description="Contact General Info" />  
+    
+    <div class="row contact-data">
+        <div class="card card-left-border green">
+            <div class="row card-cont subattribute-header">
+                <div class="col-12 subattribute-title">
+                    <apex:image styleClass="icon-test-small" value="{!URLFOR($Resource.IconsPack1, 'jobps.svg')}"/>
+                    <span class="subattribute-title">{!$Label.Ingresos}</span> 
+                </div>
+            </div>
+            
+            <div class="row card-cont subattribute-border">
+                <div class="col-6 pl-0 col-md-5">
+                    <div class="subattribute-content" style="display:{! IF($ObjectType.Contact.Fields.Employer_1__c.updateable,'','none' )}">
+                        <c:ContactEditField rendered="{!$ObjectType.Contact.Fields.Employer_1__c.updateable}" label="{!$ObjectType.Contact.Fields.Employer_1__c.Label}" value="{!citizenwrapper.citizen.Employer_1__c}" classLabel="label uppercase"/>
+                    </div> 
+                </div>
+                <div class="col-6 pl-0 col-md-5" style="display:{! IF($ObjectType.Contact.Fields.CUIT_Empleador_1__c.updateable,'','none' )}">
+                    <div class="subattribute-content">
+                        <c:ContactEditField rendered="{!$ObjectType.Contact.Fields.CUIT_Empleador_1__c.updateable}" label="{!$ObjectType.Contact.Fields.CUIT_Empleador_1__c.Label}" value="{! citizenwrapper.citizen.CUIT_Empleador_1__c}" classLabel="label uppercase"/>
+                    </div> 
+                </div>
+                <div class="col-12 pl-0 col-md-2" style="display:{! IF($ObjectType.Contact.Fields.Sueldo_1__c.updateable,'','none' )}" >
+                    <div class="subattribute-content">
+                        <c:ContactEditField rendered="{!$ObjectType.Contact.Fields.Sueldo_1__c.updateable}" label="{!$ObjectType.Contact.Fields.Sueldo_1__c.Label}" valueNumber="{!citizenwrapper.citizen.Sueldo_1__c}" classLabel="label uppercase" inputType="number"/>
+                    </div> 
+                </div>
+            </div>
+            
+            <div class="row card-cont subattribute-border">
+                <div class="col-6 pl-0 col-md-5">
+                    <div class="subattribute-content" style="display:{! IF($ObjectType.Contact.Fields.Employer_2__c.updateable,'','none' )}">
+                        <c:ContactEditField rendered="{!$ObjectType.Contact.Fields.Employer_2__c.updateable}" label="{!$ObjectType.Contact.Fields.Employer_2__c.Label}" value="{!citizenwrapper.citizen.Employer_2__c}" classLabel="label uppercase"/>
+                    </div> 
+                </div>
+                <div class="col-6 pl-0 col-md-5" style="display:{! IF($ObjectType.Contact.Fields.CUIT_Empleador_2__c.updateable,'','none' )}">
+                    <div class="subattribute-content">
+                        <c:ContactEditField rendered="{!$ObjectType.Contact.Fields.CUIT_Empleador_2__c.updateable}" label="{!$ObjectType.Contact.Fields.CUIT_Empleador_2__c.Label}" value="{!citizenwrapper.citizen.CUIT_Empleador_2__c}" classLabel="label uppercase"/>
+                    </div> 
+                </div>
+                <div class="col-12 pl-0 col-md-2" style="display:{! IF($ObjectType.Contact.Fields.Sueldo_2__c.updateable,'','none' )}" >
+                    <div class="subattribute-content">
+                        <c:ContactEditField rendered="{!$ObjectType.Contact.Fields.Sueldo_2__c.updateable}" label="{!$ObjectType.Contact.Fields.Sueldo_2__c.Label}" valueNumber="{!citizenwrapper.citizen.Sueldo_2__c}" classLabel="label uppercase" inputType="number"/>
+                    </div> 
+                </div>
+            </div>
+            
+            <div class="row card-cont subattribute-border">
+                <div class="col-6 pl-0 col-md-5">
+                    <div class="subattribute-content" style="display:{! IF($ObjectType.Contact.Fields.Employer_3__c.updateable,'','none' )}">
+                        <c:ContactEditField rendered="{!$ObjectType.Contact.Fields.Employer_3__c.updateable}" label="{!$ObjectType.Contact.Fields.Employer_3__c.Label}" value="{!citizenwrapper.citizen.Employer_3__c}" classLabel="label uppercase"/>
+                    </div> 
+                </div>
+                <div class="col-6 pl-0 col-md-5" style="display:{! IF($ObjectType.Contact.Fields.CUIT_Empleador_3__c.updateable,'','none' )}">
+                    <div class="subattribute-content">
+                        <c:ContactEditField rendered="{!$ObjectType.Contact.Fields.CUIT_Empleador_3__c.updateable}" label="{!$ObjectType.Contact.Fields.CUIT_Empleador_3__c.Label}" value="{!citizenwrapper.citizen.CUIT_Empleador_3__c}" classLabel="label uppercase"/>
+                    </div> 
+                </div>
+                <div class="col-12 pl-0 col-md-2" style="display:{! IF($ObjectType.Contact.Fields.Sueldo_3__c.updateable,'','none' )}" >
+                    <div class="subattribute-content">
+                        <c:ContactEditField rendered="{!$ObjectType.Contact.Fields.Sueldo_3__c.updateable}" label="{!$ObjectType.Contact.Fields.Sueldo_3__c.Label}" valueNumber="{!citizenwrapper.citizen.Sueldo_3__c}" classLabel="label uppercase" inputType="number"/>
+                    </div> 
+                </div>
+            </div>
+          
+        </div>
+    </div>
+</apex:component>

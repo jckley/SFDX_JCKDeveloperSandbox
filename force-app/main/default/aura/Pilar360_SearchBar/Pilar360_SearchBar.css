@@ -1,0 +1,47 @@
+.THIS .search-bar-container {padding: 15px 25px 0 25px;}
+.THIS input {
+    border: none;
+    padding-left: 20px;
+    font-family: 'Heebo';
+    font-size: 14pt;
+    background-color: #016AAC;
+    color: #E1E1E1;
+}
+.THIS ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    font-family: 'Heebo';
+    font-size: 14pt;
+    color: #E1E1E1;
+}
+.THIS input:focus ::placeholder {display: none;}
+.THIS input:focus,.THIS textarea:focus,.THIS select:focus {outline-offset: 0px !important; outline: none !important;}
+
+.THIS .search-icon {
+    width: 15px;
+    height: 15px;
+    margin-top: 5px;
+}
+
+.THIS .icon-hover {display: none;}
+.THIS .search-icon:hover .icon-reposo {display: none;}
+.THIS .search-icon:hover .icon-hover {display: inline-block;}
+
+.THIS .guide {
+    display: inline-block; font-family: 'Roboto Condensed'; font-size: 9pt; color: #cccccc;
+    margin-right: -1px; padding-left: 27px; margin-top: 7px; text-align: right;
+}
+
+/* Special classes for small devices */
+@media only screen and (max-width: 768px) {
+    .THIS .menta-search-results {max-width: 340px;}
+    .THIS .search-bar-container {padding-top: 8px}
+    .THIS input {color: #6e9fd0; background-color: #016AAC}
+    .THIS .input-container {margin-bottom: 7px;}
+    .THIS .search-icon {filter: brightness(0.1);}
+}
+
+/* Special classes for big devices */
+@media only screen and (min-width: 768px) {
+    .THIS .menta-search-results {max-width: 500px; left: 55px; transform: translate(0);}
+    .THIS input:focus {color: #E1E1E1; background-color: #016AAC;}
+    .THIS input {background-color: #016AAC; color: #E1E1E1;}
+}

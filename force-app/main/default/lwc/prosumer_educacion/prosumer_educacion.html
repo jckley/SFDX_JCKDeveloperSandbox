@@ -1,0 +1,17 @@
+<template>
+    <div class="box">
+        <div class="header">
+          <span class="title">Nivel educativos </span>
+        </div>
+        <div class="body">
+          <div class="itemList">
+            <template for:each={educationLevels} for:item="objEducationLevel">
+              <div class={objEducationLevel.cssClases} key={objEducationLevel.name} data-educationfilter={objEducationLevel.educationfilter} onclick={handelClick_Education}>
+                    <strong>{objEducationLevel.value}</strong>
+                    <span>{objEducationLevel.name}</span>
+              </div>
+            </template>
+          </div>
+        </div>
+      </div>
+</template>

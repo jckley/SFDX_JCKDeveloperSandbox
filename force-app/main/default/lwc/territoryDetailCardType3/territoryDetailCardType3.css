@@ -1,0 +1,27 @@
+:host {
+    color: #58595b; 
+}
+
+:host .icon img {
+    height: 24px;
+    width: 24px;
+}
+
+:host .title a,
+:host .title a:link,
+:host .title a:visited {
+    color: #58595b; 
+    text-decoration: none;
+}
+:host .title a:hover {
+    color: #58595b; 
+    text-decoration: underline;
+}
+
+:host .title {
+}
+
+
+:host .value {
+    font-weight: bold;
+}

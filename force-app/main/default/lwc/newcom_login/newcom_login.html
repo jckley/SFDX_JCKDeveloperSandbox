@@ -1,0 +1,68 @@
+<template>
+    <div class="slds-grid">
+        <div class="slds-col slds-size_1-of-1" align="center">
+            
+            <!-- LOGO -->
+            <div class="slds-grid">
+                <div class="logo-container slds-col slds-size_1-of-1">
+                    <img class="logo-img" src={prosumia_logo} alt="logo Prosumia" />
+                    <span class="logo-text"> / CRM</span>
+                </div>
+            </div>
+            
+            <div class="slds-grid slds-p-top_xx-large">
+                <div class="slds-col slds-size_1-of-1" align="center">
+                    <div class="slds-card card">
+                        
+                        <!-- LEYENDA -->
+                        <div class="slds-form slds-p-top_large">
+                            <label class="slds-form-element__label slds-float_center title">Ingrese a su cuenta</label>
+                            
+                            <div class="slds-form slds-p-top_small">
+                                <form method="post">
+                                    
+                                    <!-- USUARIO -->
+                                    <div class="slds-form-element slds-p-horizontal_xx-large slds-p-top_small">
+                                        <div class="slds-form-element__control">
+                                            <input type="email" id="msj_username" placeholder="Usuario"
+                                                onchange={handleUserNameChange}
+                                                class="slds-input user-input" autofocus="autofocus" required="required" />
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- PASSWORD -->
+                                    <div class="slds-form-element slds-p-horizontal_xx-large slds-p-top_small">
+                                        <div class="slds-form-element__control">
+                                            <div class="slds-grid">
+                                                <input class="slds-input pass-input" type="password" placeholder="Contraseña" 
+                                                    onchange={handlePasswordChange} id="userpass" required="required" />
+                                                <span class="visibility-icon slds-align_absolute-center" id="toggle-button" onclick={togglePassword} >
+                                                    <img class="eyeIcon" src={show_icon} />
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- ENVIAR -->
+                                    <div class="slds-form-element slds-p-around_x-large">
+                                        <button class="login-button slds-button slds-align_absolute-center" onclick={handleLogin} type="submit">
+                                            <span class="button-text">Ingresar</span>
+                                        </button>
+                                    </div>
+
+                                    <template if:true={errorCheck}>
+                                        <div class="error slds-var-p-around_x-small slds-var-p-top_small slds-align_absolute-center slds-grid" role="alert">
+                                            <span class="slds-col slds-size_4-of-5">{errorMessage}</span>
+                                            <span class="slds-col slds-size_1-of-5"><img src={error_icon} /></span>
+                                        </div>
+                                    </template>
+                                    
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,95 @@
+.THIS {
+     color: #999999;
+}
+
+.THIS .header {
+    font-size: 16px;
+    color: #999999;
+    font-weight: bold;
+    background-color: #f8f9fc;
+    border-bottom: solid 1px #ededed;
+    padding: 14px 20px;
+}
+
+.THIS .search {
+    height: 35px;
+    border-radius: 5px;
+    border: 1px solid #ebe9e9;
+    overflow: hidden;
+}
+
+.THIS .search INPUT:focus,.THIS .search textarea:focus,.THIS .search select:focus {
+    outline-offset: 0px !important;
+    outline: none !important;
+}
+
+.THIS .slds-input:focus, .THIS .slds-input:active {
+    box-shadow: none;
+}
+
+.THIS .search INPUT { 
+    border: none;
+    height: 100%;
+    width: 90%;
+}
+
+.THIS .test{
+    margin-top: -40px;
+    width: 100%;
+    height: 40px;
+    background: linear-gradient(to bottom, transparent, white);
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), #fff 80%);
+    content: '';
+    position: relative;
+    border: solid 1px #ebebeb;
+    border-top: none;
+}
+
+@media only screen and (min-width: 48em) {
+    .THIS .territories {
+        height:50.67vh;
+    }
+}
+
+@media only screen and (max-width: 48em) {
+    .THIS .territories {
+        max-height:300px;
+    }
+}
+
+.THIS .territories.empty { 
+    height: calc(50.67vh + (32px));
+    text-align: center; 
+    align-items: center; 
+}
+
+
+.THIS .empty-card-text {
+    font-family: 'Heebo';
+    color: #b2b2b2;
+    font-size: 11pt;
+}
+
+.THIS .territories::-webkit-scrollbar {
+    width: 5px;
+    border-radius: 5px;
+}
+
+.THIS .territories::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+.THIS .territories::-webkit-scrollbar-track {
+    border-radius: 10px;
+}
+
+.THIS .big-icon {
+    max-width: 75px; 
+    max-height: 75px; 
+}
+
+.THIS .search-icon {
+    height: 15px;
+    width: 15px
+}

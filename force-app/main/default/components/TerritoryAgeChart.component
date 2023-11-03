@@ -1,0 +1,119 @@
+<apex:component >
+    <apex:attribute name="terrw" type="TerritoryWrapper2" required="true" description="Territory Information" />
+    
+    <style>
+    	.subattribute-header {
+        	background-color: #f8f9fc; 
+        	border-bottom: solid 1px #ededed;
+        	margin-left: 0px;
+        	margin-top: 0px;
+        }
+        .subattribute-title {margin: 15px 0px 15px 25px; color: #999999; font-weight: 500; font-size: 14pt;}
+        .subattribute-border {border-bottom: solid 1px #ededed; margin: 0 25px 15px 30px; min-height: 60px;}
+        .subattribute-content {margin-bottom: 10px;}
+        
+        .chart-header{font-size: 18pt; border-bottom: solid 1px #ededed;}
+        .chart-header.left{color: #f85a5c; margin-left: 10px;}
+        .chart-header.right{color: #007ab5; margin-right: 10px;}
+        .chart-legend{font-size: 8pt; padding: 0; text-align: center; color: #666666}
+        
+        .percentage{font-weight: bold;}
+        
+        .svg-icon {}
+        .svg-icon.red path{fill: #f85a5c;}
+        .svg-icon.blue path{fill: #007ab5;}
+        .icon-custom-male{max-width: 22px; max-height: 20px;}
+        
+    </style>
+    
+    <div class="row card-top-margin">
+        <div class="card card-left-border green">
+            <div class="row card-cont subattribute-header" style="margin-bottom: 0;">
+                <div class="col-12 subattribute-title">
+                    {!$Label.AgesByGender} 
+                </div>
+            </div>
+            <div class="row card-cont">
+                <div class="col">
+                    <div class="row chart-header left">
+                        <div class="col-12 d-md-none text-right">
+                            <span class="percentage">{!terrw.totalWomenPerc}%</span>
+                        </div>
+                        <div class="col-12 col-lg-10">
+                            {!$Label.Women} <span class="percentage d-none d-md-inline ml-md-3">{!terrw.totalWomenPerc}%</span>
+                        </div>
+                        <div class="d-none d-lg-block col-lg-2" style="padding-left: 0; text-align: right;">
+                            <apex:image styleClass="icon-small svg-icon red" id="women" value="{!URLFOR($Resource.IconsPack1, 'mujerps.svg')}"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1 d-none d-lg-block chart-legend">
+                    {!$Label.AgeRange}
+                </div>
+                <div class="col">
+                    <div class="row chart-header right text-md-right">
+                        <div class="d-none d-lg-block col-lg-2 text-left pl-0 pl-lg-3 pr-0">
+                            <apex:image styleClass="icon-custom-male svg-icon blue" id="men" value="{!URLFOR($Resource.IconsPack1, 'hombreps.svg')}"/>
+                        </div>
+                        <div class="col-12 d-md-none">
+                            <span class="percentage">{!terrw.totalMenPerc}%</span>
+                        </div>
+                        <div class="col-12 col-lg-10 text-lg-right">
+                            {!$Label.Men} <span class="percentage d-none d-md-inline ml-md-3">{!terrw.totalMenPerc}%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <c:PopulationPyramid pyramidvalues="{!terrw.pyramidValues}" />
+        </div>
+    </div>
+    
+    <script type="text/javascript">
+    
+    $(document).ready(function() { 
+        
+        /*JQUERY QUE PERMITE CAMBIAR EL COLOR DE LA IMAGEN SVG*/
+        
+        /*
+         * Replace all SVG images with inline SVG
+         */
+        jQuery('.svg-icon').each(function(){
+            var $img = jQuery(this);
+            var imgID = $img.attr('id');
+            var imgClass = $img.attr('class');
+            var imgURL = $img.attr('src');
+            
+            jQuery.get(imgURL, function(data) {
+                // Get the SVG tag, ignore the rest
+                var $svg = jQuery(data).find('svg');
+                
+                // Add replaced image's ID to the new SVG
+                if(typeof imgID !== 'undefined') {
+                    $svg = $svg.attr('id', imgID);
+                }
+                // Add replaced image's classes to the new SVG
+                if(typeof imgClass !== 'undefined') {
+                    $svg = $svg.attr('class', imgClass+' replaced-svg');
+                }
+                
+                // Remove any invalid XML tags as per http://validator.w3.org
+                $svg = $svg.removeAttr('xmlns:a');
+                
+                // Check if the viewport is set, if the viewport is not set the SVG wont't scale.
+                if(!$svg.attr('viewBox') && $svg.attr('height') && $svg.attr('width')) {
+                    $svg.attr('viewBox', '0 0 ' + $svg.attr('height') + ' ' + $svg.attr('width'))
+                }
+                
+                // Replace image with new SVG
+                $img.replaceWith($svg);
+                
+            }, 'xml');
+            
+        });
+        
+        /*JQUERY QUE PERMITE CAMBIAR EL COLOR DE LA IMAGEN SVG*/
+    });
+    	
+    </script>
+    
+</apex:component>

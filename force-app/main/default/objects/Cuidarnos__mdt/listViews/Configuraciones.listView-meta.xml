@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Configuraciones</fullName>
+    <columns>MasterLabel</columns>
+    <columns>DeveloperName</columns>
+    <columns>NamespacePrefix</columns>
+    <columns>SMS_Message_Id__c</columns>
+    <columns>SMS_Send_Covid_Detail_Info__c</columns>
+    <columns>SMS_Send_Enabled__c</columns>
+    <columns>SMS_Sends__c</columns>
+    <columns>Debug_Mode__c</columns>
+    <columns>Admin_Level_2__c</columns>
+    <columns>Filter_by_County__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>Configuraciones</label>
+    <language>en_US</language>
+</ListView>

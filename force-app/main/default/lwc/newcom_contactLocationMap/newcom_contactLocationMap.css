@@ -1,0 +1,20 @@
+.map-root {
+    height:300px;
+}
+
+iframe {
+	border : 0px;
+    width : 100%;
+    overflow : hidden;
+}
+
+.card {
+    background-color: #ffffff;
+    will-change: transform;
+    overflow:  hidden;
+    box-shadow: 2px 2px 3px 3px #EBEBEB;
+    min-height: 100px;
+    vertical-align: middle;
+    border-radius: 0px 0px 6px 6px;
+    border: solid 1px #FFFFFF;
+}

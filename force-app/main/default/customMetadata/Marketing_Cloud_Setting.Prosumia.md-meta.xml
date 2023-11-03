@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Prosumia</label>
+    <protected>true</protected>
+    <values>
+        <field>Account_Id__c</field>
+        <value xsi:type="xsd:string">100011800</value>
+    </values>
+    <values>
+        <field>Auth_Url__c</field>
+        <value xsi:type="xsd:string">https://mc8pbnp6vvfrwtrjrjn0829r2pv1.auth.marketingcloudapis.com/v1/requestToken</value>
+    </values>
+    <values>
+        <field>Client_Id__c</field>
+        <value xsi:type="xsd:string">01q25892k8hh5wopyauvjvh0</value>
+    </values>
+    <values>
+        <field>Client_Secret__c</field>
+        <value xsi:type="xsd:string">vGJ6qimzlmDLIVBctqRmbRkf</value>
+    </values>
+    <values>
+        <field>SMS_Message_Id__c</field>
+        <value xsi:type="xsd:string">MzY6MTE0OjA</value>
+    </values>
+    <values>
+        <field>Send_SMS_Url__c</field>
+        <value xsi:type="xsd:string">https://mc8pbnp6vvfrwtrjrjn0829r2pv1.rest.marketingcloudapis.com/sms/v1/automation/importSend</value>
+    </values>
+</CustomMetadata>

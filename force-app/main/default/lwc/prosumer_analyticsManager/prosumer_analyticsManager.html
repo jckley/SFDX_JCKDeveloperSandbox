@@ -1,0 +1,17 @@
+<template>
+    <template for:each={querysToDo} for:item="thisQuery">
+      <c-prosumer_analytics_service
+        key={thisQuery.key}
+        query_key={thisQuery.key}
+        param_base_filters={thisQuery.baseFilters}
+        onquerydata={handleQueryData}
+        onqueryerror={handleQueryError}
+        query_definition={thisQuery.queryDefinition}
+        param_data_set={param_data_set}
+        param_data_set_version={param_data_set_version}
+        param_child_level_name={param_child_level_name}
+        param_child_level_id={param_child_level_id}
+        param_base_string_filter={param_base_string_filter}
+      ></c-prosumer_analytics_service>
+    </template>
+  </template>

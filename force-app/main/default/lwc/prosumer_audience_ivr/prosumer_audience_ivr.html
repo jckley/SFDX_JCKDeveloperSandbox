@@ -1,0 +1,168 @@
+<template>
+  <div class="audienciaPageBody">
+    <template lwc:if={loadingScreenOn}>
+      <div class="spinner-container">
+        <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+      </div>
+    </template>
+    <template lwc:else>
+      <section class="slds-container main-container">
+        <div class="row d-flex justify-content-center">
+          <div class="col-11">
+            <article class="card border-0 shadow-sm cardsurvey_sm">
+              <div class="row pt-4 px-4">
+                <div class="col-12">
+                  <!-- FORMULARIO -->
+                  <!--<form action="" method="post" data-toggle="validator" role="form">-->
+
+                  <div class="slds-container slds-box slds-m-top_large message-container">
+                    <div class="slds-border_bottom slds-m-bottom_medium header">
+                      <img class="atras" src={atrasimg} onclick={handleCancelar}/>
+                      <h3 class="slds-m-bottom_small">Enviar Mensaje IVR</h3>
+                      <p>
+                        Costo: <span class="costo"><img class="logo" src={logo} />{formatedValues.campaign_cost}</span>
+                      </p>
+                    </div>
+
+                    <div class="slds-grid">
+                      <div class="slds-col">
+                        <div class="headerbox">
+                          <div>
+                            <span>{formatedValues.number_of_people}</span>
+                            <span> PERSONAS</span>
+                          </div>
+
+                          <div if:true={mobile_selected}>
+                            <img src={celular} />
+                            <p>
+                              <span>{formatedValues.number_of_mobiles}</span>
+                              <span>Teléfonos celulares</span>
+                            </p>
+                          </div>
+                          <div if:true={fijo_selected}>
+                            <img src={telefono} />
+                            <p>
+                              <span>{formatedValues.number_of_fijos}</span>
+                              <span>Teléfonos fijos</span>
+                            </p>
+                          </div>
+
+                        </div>
+
+                        <!-- Composición de la Audiencie -->
+                        <div class="audience-composition">
+                          <h3>Composición de Audiencia</h3>
+                          <div class="slds-grid slds-wrap">
+                            <template for:each={valuesFromAudiencePage.filters} for:item="audience">
+                              <div key={audience}>
+                                <span class="slds-badge slds-badge_inverse audiencias">{audience}</span>
+                              </div>
+                            </template>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+               
+                
+                  <!-- Numero de Prueba -->
+                  <div class="slds-container slds-box slds-m-top_small send-test-message-container">
+                    <div class="slds-grid">
+                      <div class="slds-form-element slds-col">
+
+                        <!-- MENSAJE de AUDIO -->
+                         <!-- PREVIEW -->
+                         <audio controls src={fileSrc} class="loadAudio" onplay={handlePlay}></audio>
+
+                         <lightning-button variant="brand" label="Gestor Archivos" title="Gestor Archivos" onclick={handleGestorArchivos} class="gestorArch"></lightning-button>
+
+                         <!-- DATE FIELDS -->
+                         <label class="slds-form-element__label" for="text-input-id-46"> <abbr class="slds-required" title="required">* </abbr>Fecha inicio / fin:</label>
+                         <div class="dates">
+                            <!-- <input type="date" min={hoy.formattedDate} value={fecha_inicio}>
+                            <input type="date" min={hoy.formattedDate} value={fecha_finalizacion}> -->
+                            <input class="fecha_inicio" type="date" onchange={updateFechaInicio} name="fecha_inicio" value={fecha_inicio_input}>
+                            <input class="fecha_finalizacion" type="date" onchange={updateFechaFinalizacion} name="fecha_finalizacion" value={fecha_finalizacion_input}>
+                         </div>
+
+                         <!-- RANGE SLIDER -->
+                         <c-multi-slider class="slider" onchange={handleSliderChange}></c-multi-slider>
+                         
+
+                        <!-- Nombre de la Campaña -->
+                        <div class="slds-form-element slds-m-top_medium nombreCampaña">
+                          <div class="row">
+                            <label class="slds-form-element__label" for="text-input-id-campaign-name"> <abbr class="slds-required" title="required">* </abbr>Nombre de la campaña</label>
+                            <div class={counterClassI}>{counterTextI}</div>
+                          </div>
+                          <div class="slds-form-element__control">
+                            <input type="text" id="text-input-id-campaign-name" placeholder="Ej: Campaña vial" required="" class="slds-input title" oninput={updateInputTitulo} onclick={hideConfirmation}/>
+                          </div>
+                          <div class="slds-form-element__help" id="error-message-id-campaign-name">Este nombre solo se mostrará de manera interna.</div>
+                        </div>
+
+                        <!-- Prueba Llamada  -->
+                        <label class="slds-form-element__label" for="text-input-id-46"> <abbr class="slds-required" title="required">* </abbr>Enviar llamada de prueba al número:</label>
+                        <div class="slds-form-element__control">
+                          <input type="number" id="text-input-id-test-mobile-number" placeholder={placeholderPrueba} required="" class="slds-input numberToTest" onchange={handleMobileChange} oninput={updateInputPrueba} onclick={hideConfirmation}/>
+                        </div>
+                        <!--<div class="slds-form-element__help" id="error-message-id-test-mobile-number">Enter a value.</div>-->
+                        <button class="slds-button slds-button_neutral enviarPrueba" onclick={sendTestMessage}>Enviar prueba ({formatedValues.ivr_cost} créditos)</button>
+                        
+                      </div>
+
+                      <div class="slds-col slds-align_absolute-center previewDiv">
+
+
+                        <audio controls src={fileSrc} class="previewAudio2"></audio>
+                        <audio controls src={audioLlamada} class="audioLlamada"></audio>
+                      
+                        
+                        
+                        <p>{currentTime24}</p>
+                        <p class="datetime">{currentDay}, {currentDate}</p>
+                        <p class="datetime">{currentTime24}</p>
+                        <p class="contador">{formattedTime}</p>
+
+                        <div class="previewParent">
+                        <div class="previewBox"></div>
+
+                        <img src={corner}/>
+                        </div>
+
+                        <img class="preview prev1" src={prev1} />
+                        <img class="preview prev2" src={prev2} />
+                        <img class="preview prev3" src={prev3} />
+                  
+
+                      </div>
+                    </div>
+                  </div>
+
+
+                    <!-- (Notificación) - Mensaje de prueba enviado -->
+              
+                    <!--<c-prosumer-toast></c-prosumer-toast>-->
+
+                   <div class="confirmado">
+                    <img src={confirmado} />
+                    <p>Mensaje de prueba enviado al {testedNumber}</p>
+                  </div> 
+
+                  <div class="slds-container slds-box slds-m-top_small send-cancel-container footer">
+                    <button type="button" class="slds-button slds-button_neutral cancelarButton" onclick={handleCancelar}>Cancelar</button>
+
+                    <button id="send-button" class="slds-button slds-button_neutral enviarConfirmar" onclick={handleEnviar} disabled>Enviar llamada ({formatedValues.campaign_cost} créditos)</button>
+                  </div>
+
+                  <!--</form>-->
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </template>
+  </div>
+</template>

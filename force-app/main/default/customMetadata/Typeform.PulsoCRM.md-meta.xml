@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>PulsoCRM</label>
+    <protected>false</protected>
+    <values>
+        <field>AuthURL__c</field>
+        <value xsi:type="xsd:string">https://api.typeform.com/oauth/authorize</value>
+    </values>
+    <values>
+        <field>Callback_Url__c</field>
+        <value xsi:type="xsd:string">https://argentina--c.na50.visual.force.com/apex/Pulso_Admin_Typeform</value>
+    </values>
+    <values>
+        <field>ClientId__c</field>
+        <value xsi:type="xsd:string">32fL3aWRkNaf32Gt9RWZcTJsveMuyh7iMnP5GqKTWmgC</value>
+    </values>
+    <values>
+        <field>ClientSecret__c</field>
+        <value xsi:type="xsd:string">7AawnzU2drRkipaaMwaJ8h59EF91m38A3czdhbWipiju</value>
+    </values>
+    <values>
+        <field>FormsUrl__c</field>
+        <value xsi:type="xsd:string">https://api.typeform.com/forms/</value>
+    </values>
+    <values>
+        <field>Page_Size__c</field>
+        <value xsi:type="xsd:double">1000.0</value>
+    </values>
+    <values>
+        <field>Scope__c</field>
+        <value xsi:type="xsd:string">offline,forms:read,responses:read</value>
+    </values>
+    <values>
+        <field>TokenUrl__c</field>
+        <value xsi:type="xsd:string">https://api.typeform.com/oauth/token</value>
+    </values>
+</CustomMetadata>

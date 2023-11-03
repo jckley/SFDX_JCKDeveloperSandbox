@@ -1,0 +1,96 @@
+.THIS {
+    font-family: 'Montserrat';
+    margin-top: 10%;
+}
+
+.THIS header {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 400;
+    font-family: 'Montserrat';
+}
+
+.THIS header .number {
+    font-weight: bold;
+}
+
+.THIS .search { 
+    text-align: center;
+    margin: 30px auto;
+    width: 600px;
+    position: relative; 
+}
+ 
+.THIS .search .slds-input { 
+    width: 100%;
+    height: 50px; 
+    display: block; 
+    padding: 10px 10px 10px 130px; 
+   
+    border: none;
+    border-radius: 6px;
+    font-family: 'Montserrat';
+    font-weight: 300;
+    font-size: 16pt;
+    color: #354051;
+}
+
+.THIS .search svg {
+    fill: #0069AB;
+}
+
+.THIS .search svg[data-key*="search"] {
+    left: 25px; 
+}
+
+.THIS .search svg[data-key*="clear"] {
+    margin-right: 25px; 
+}
+
+.THIS .search .prefix { 
+    color: #999999;
+    position: absolute; 
+    display: block; 
+    left: 60px; 
+    top: 14px;
+    font-size: 16px; 
+    z-index: 9;
+}
+
+.THIS .search .postfix { 
+    color: #999999;
+    position: absolute; 
+    right : 10px; 
+    top: 16px;
+    font-size: 16px; 
+    z-index: 9;
+
+    display: inline-block; 
+    font-family: 'Roboto Condensed'; 
+    font-size: 9pt; color: #666666;
+}
+
+@media only screen and (max-width: 768px) {
+    .THIS .search {
+        height: 50px;
+        background-color: #ffffff;
+        border-radius: 6px;
+        width: 90vw;
+    }
+    
+    .THIS input {}
+    
+}
+
+@media only screen and (min-width: 768px) {
+    .THIS .search {
+        height: 50px;
+        background-color: #ffffff;
+        border-radius: 6px;
+        width: 600px;
+        border: solid 1px #e4e4e7;
+        box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.15);
+    }
+    
+    .THIS input {width: 415px;}
+}

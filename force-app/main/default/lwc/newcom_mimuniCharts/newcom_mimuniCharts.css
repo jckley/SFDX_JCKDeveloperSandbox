@@ -1,0 +1,86 @@
+.card{
+    background-color: #ffffff;
+    will-change: transform;
+    overflow:  hidden;
+    min-height: 100px;
+    vertical-align: middle;
+    border-radius: 6px;
+    border: solid 1px #EDEDED;
+}
+
+.l-content {
+    width: 1140px;
+    margin: auto;
+    position: relative; 
+}
+
+.top-box {
+    margin-top: 6rem;
+    margin-bottom: 6rem;
+}
+
+.text-interacciones {
+    font-size: 4rem;
+    /* font-weight: bolder; */
+    line-height: 0.9;
+    font-family: 'Heebo';
+    font-weight: 900;
+    color: #3B69AB;
+}
+
+.text-citizen {
+    font-size: 2rem;
+}
+
+.container-icono-programa {
+    height: 55px!important;
+}
+
+.servicio {
+    font-weight: 300;
+    font-family: 'Heebo';
+    color: #3B69AB;
+}
+
+.stats {
+    font-weight: 300;
+    font-family: 'Heebo';
+    color: #333333;
+}
+
+.porcentaje {
+    position: absolute;
+    z-index: 100;
+    font-size: 2rem;
+    font-weight: 300;
+    font-family: 'Heebo';
+}
+
+.porcentaje-simbolo {
+    font-size: 1.2rem;
+} 
+
+.slds-border_top {
+    border-top: solid 1px #EEEEEE;
+}
+.slds-border_right {
+    border-right: solid 1px #EEEEEE;
+}
+
+.interactions-row {
+    max-width: 11rem;
+}
+
+/* Special classes for big devices */
+@media only screen and (min-width: 768px) {
+   /*.l-content {top: -105px;}*/
+   .slds-border_right-mobile {
+        border-right: solid 1px #EEEEEE;
+    }
+}
+
+/* Special classes for small devices */
+@media only screen and (max-width: 768px) {
+    .l-content {max-width: 768px;}
+    .slds-border_right-mobile {border-right: none;}
+}

@@ -1,0 +1,11 @@
+<template>
+  <div class="tileHolder">
+    <template for:each={tileList} for:item="tile">
+      <div class="item" onclick={handleClickTile} key={tile.key} data-tilelable={tile.label}>
+        <img class="icon" src={tileImage} alt={tile.label} />
+        <span>{tile.label}</span>
+        <strong>{tile.value}</strong>
+      </div>
+    </template>
+  </div>
+</template>

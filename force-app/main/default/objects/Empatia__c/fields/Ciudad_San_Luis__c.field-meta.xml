@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Ciudad_San_Luis__c</fullName>
+    <externalId>false</externalId>
+    <label>Ciudad San Luis</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Anchorena</fullName>
+                <default>false</default>
+                <label>Anchorena</label>
+            </value>
+            <value>
+                <fullName>Arizona</fullName>
+                <default>false</default>
+                <label>Arizona</label>
+            </value>
+            <value>
+                <fullName>Buena Esperanza</fullName>
+                <default>false</default>
+                <label>Buena Esperanza</label>
+            </value>
+            <value>
+                <fullName>Candelaria</fullName>
+                <default>false</default>
+                <label>Candelaria</label>
+            </value>
+            <value>
+                <fullName>Concarán</fullName>
+                <default>false</default>
+                <label>Concarán</label>
+            </value>
+            <value>
+                <fullName>El Volcán</fullName>
+                <default>false</default>
+                <label>El Volcán</label>
+            </value>
+            <value>
+                <fullName>Juana Koslay</fullName>
+                <default>false</default>
+                <label>Juana Koslay</label>
+            </value>
+            <value>
+                <fullName>Justo Daract</fullName>
+                <default>false</default>
+                <label>Justo Daract</label>
+            </value>
+            <value>
+                <fullName>La Punta</fullName>
+                <default>false</default>
+                <label>La Punta</label>
+            </value>
+            <value>
+                <fullName>La Toma</fullName>
+                <default>false</default>
+                <label>La Toma</label>
+            </value>
+            <value>
+                <fullName>Luján</fullName>
+                <default>false</default>
+                <label>Luján</label>
+            </value>
+            <value>
+                <fullName>Naschel</fullName>
+                <default>false</default>
+                <label>Naschel</label>
+            </value>
+            <value>
+                <fullName>Nogolí</fullName>
+                <default>false</default>
+                <label>Nogolí</label>
+            </value>
+            <value>
+                <fullName>Potrero de los Funes</fullName>
+                <default>false</default>
+                <label>Potrero de los Funes</label>
+            </value>
+            <value>
+                <fullName>Quines</fullName>
+                <default>false</default>
+                <label>Quines</label>
+            </value>
+            <value>
+                <fullName>San Francisco del Monte de Oro</fullName>
+                <default>false</default>
+                <label>San Francisco del Monte de Oro</label>
+            </value>
+            <value>
+                <fullName>San Luis</fullName>
+                <default>false</default>
+                <label>San Luis</label>
+            </value>
+            <value>
+                <fullName>San Martín</fullName>
+                <default>false</default>
+                <label>San Martín</label>
+            </value>
+            <value>
+                <fullName>Santa Rosa del Conlara</fullName>
+                <default>false</default>
+                <label>Santa Rosa del Conlara</label>
+            </value>
+            <value>
+                <fullName>Tilisarao</fullName>
+                <default>false</default>
+                <label>Tilisarao</label>
+            </value>
+            <value>
+                <fullName>Unión</fullName>
+                <default>false</default>
+                <label>Unión</label>
+            </value>
+            <value>
+                <fullName>Villa de Merlo</fullName>
+                <default>false</default>
+                <label>Villa de Merlo</label>
+            </value>
+            <value>
+                <fullName>Villa General Roca / Los Manantiales</fullName>
+                <default>false</default>
+                <label>Villa General Roca / Los Manantiales</label>
+            </value>
+            <value>
+                <fullName>Villa Mercedes</fullName>
+                <default>false</default>
+                <label>Villa Mercedes</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

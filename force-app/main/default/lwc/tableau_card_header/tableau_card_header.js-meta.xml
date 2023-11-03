@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>55.0</apiVersion>
+    <isExposed>true</isExposed>
+
+    <targets>
+        <target>lightning__AppPage</target>
+        <target>lightning__RecordPage</target>
+        <target>lightning__HomePage</target>
+        <target>analytics__Dashboard</target>
+    </targets>
+
+    <targetConfigs>
+        <targetConfig targets="analytics__Dashboard">
+            <hasStep>false</hasStep>
+            <property name="text" type="String" label="Text" default="Card Header Text" required="false"/>
+            <property name="linePosition" type="String" label="Line Position"  default="Bottom" description="Supported values: Top, Bottom" required="false"/>
+            <property name="lineColor" type="String" label="Line Color" description="Formats: rgba(0, 255, 255, 1) // #fafafa // red" default="red" required="false"/>
+            <property name="lineHeight" type="String" label="Line Height" default="3px" required="false"/>
+            <property name="paddingLeft" type="String" label="Left Padding" default="15px" required="false"/>
+            <property name="backgroundColor" type="String" label="Background Color" description="Formats: rgba(0, 255, 255, 1) // #fafafa // red" default="#f7f6f2" required="false"/>
+            <property name="borderTopRadius" type="String" label="Component Border Radius" description="Border radius that matches the container" default="0px" required="false"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

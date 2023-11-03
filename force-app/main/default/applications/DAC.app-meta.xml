@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <brand>
+        <headerColor>#E4770A</headerColor>
+        <shouldOverrideOrgTheme>false</shouldOverrideOrgTheme>
+    </brand>
+    <formFactors>Small</formFactors>
+    <formFactors>Large</formFactors>
+    <isNavAutoTempTabsDisabled>true</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
+    <label>AR.Prosumia.TEST</label>
+    <navType>Standard</navType>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>TerritoryDetail_NEWCOM</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Territorio_Administrativo__c</pageOrSobjectType>
+        <recordType>Territorio_Administrativo__c.Territorio_Administrativo</recordType>
+        <type>Flexipage</type>
+        <profile>Test Prosumia Multicountry</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>TerritoryDetail_NEWCOM</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Territorio_Administrativo__c</pageOrSobjectType>
+        <recordType>Territorio_Administrativo__c.Territorio_Administrativo</recordType>
+        <type>Flexipage</type>
+        <profile>Test Prosumia Multicountry</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>AR_PRSM_LWC_TerritoryDetail_TEST</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Territorio_Administrativo__c</pageOrSobjectType>
+        <recordType>Territorio_Administrativo__c.Territorio_Administrativo</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>AR_PRSM_LWC_TerritoryDetail_TEST</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Territorio_Administrativo__c</pageOrSobjectType>
+        <recordType>Territorio_Administrativo__c.Territorio_Administrativo</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <setupExperience>all</setupExperience>
+    <tabs>standard-Contact</tabs>
+    <tabs>Dashboard_Argentina</tabs>
+    <tabs>Territory_Level_DAC</tabs>
+    <tabs>Campania__c</tabs>
+    <uiType>Lightning</uiType>
+    <utilityBar>AR_Prosumia_TEST_UtilityBar</utilityBar>
+</CustomApplication>

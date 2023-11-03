@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Interest_Misiones__c</fullName>
+    <externalId>false</externalId>
+    <label>Interest Misiones</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>OPCION A</fullName>
+                <default>false</default>
+                <label>OPCION A</label>
+            </value>
+            <value>
+                <fullName>OPCION B</fullName>
+                <default>false</default>
+                <label>OPCION B</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

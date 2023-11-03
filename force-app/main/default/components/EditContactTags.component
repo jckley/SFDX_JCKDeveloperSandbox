@@ -1,0 +1,129 @@
+<apex:component >
+    <style>
+        .picklist-add {width: 15px; filter: opacity(0.3);}
+        .picklist-add:hover {cursor: pointer;}
+        .smaller-input {width: 90%}
+        #found-values {
+            border: solid 1px #999999;
+            border-top: none;   
+            border-radius: 4px;
+            width: 83%;
+        	position: absolute;
+        	z-index: 5000;
+        	background-color: white;
+        }
+        #found-values > div {padding-left: 10px;} 
+        #found-values > div:hover {background-color: #d6d6d6; cursor: pointer;}
+    </style>
+    <apex:attribute name="citizenwrapper" 	type="CitizenWrapper" 	required="true" description="Contact General Info" />  
+    
+    <div class="row contact-data" style="position: relative;">
+        <div class="card card-left-border blue">
+            <div class="row card-cont" style="margin-top: 10px;">
+                <div class="col-12 col-md-4" style="display: {!IF($ObjectType.Contact.Fields.Community__c.updateable,'','none')}">
+                    <c:ContactEditField inputType="multiselect" label="{!$ObjectType.Contact.Fields.Community__c.Label}" classlabel="label uppercase" options="{!citizenwrapper.hashtags.tagsCommunity.tags }" values="{!citizenwrapper.hashtags.tagsCommunity.tagsSelected }" />                    
+                </div>
+                 
+                <div class="col-12 col-md-4" style="display: {!IF($ObjectType.Contact.Fields.Community__c.updateable,'','none')}">
+                    <div class="mb-1">
+                        <apex:outputText styleClass="label uppercase" value="Buscar/Añadir etiqueta" />
+                    </div>
+                    <div id="search-value">
+                        <input id="txtCommunity" type="text" class="smaller-input communityInput" data-field="Community__c" data-multipicklist="1" data-values="{! citizenwrapper.hashtags.tagsCommunity.tagsAvailableSerialized}" data-div="divFoundValues" />
+                        <img  class="picklist-add icon-test savepicklist" src="{!URLFOR($Resource.IconsPack1, 'plus-solid.svg')}" data-field="Community__c" data-multipicklist="1" data-input="txtCommunity" />
+                    </div>
+                    <div id="divFoundValues" class="foundvalues" style="display: none;">
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-4" style="display: {!IF($ObjectType.Contact.Fields.Tendencia_Politica_CBA__c.updateable,'','none')}">
+                    <div class="mb-1">
+                        <apex:outputText styleClass="label uppercase" value="{!$ObjectType.Contact.Fields.Tendencia_Politica_CBA__c.Label}" />
+                    </div>
+                    <apex:selectList styleClass="form-control" value="{! citizenwrapper.citizen.Tendencia_Politica_CBA__c }"  multiselect="false" size="1">
+                        <apex:selectOptions value="{! citizenwrapper.hashtags.tagsTendeciaPoliticaCBA }" />
+                    </apex:selectList>
+                </div>
+               
+                <div class="col-12 col-md-6" style="display: {!IF($ObjectType.Contact.Fields.Audiencia_Electoral__c.updateable,'','none')}">
+                    <c:ContactEditField inputType="multiselect" label="{!$ObjectType.Contact.Fields.Audiencia_Electoral__c.Label}" classlabel="label uppercase" options="{!citizenwrapper.hashtags.tagsAudienciaElectoral.tags}" values="{!citizenwrapper.hashtags.tagsAudienciaElectoral.tagsSelected}" />                    
+                </div>
+                
+                <div class="col-12 col-md-6" style="display: {!IF($ObjectType.Contact.Fields.Audiencia_Generaciones__c.updateable,'','none')}">
+                    <c:ContactEditField inputType="multiselect" label="{!$ObjectType.Contact.Fields.Audiencia_Generaciones__c.Label}" classlabel="label uppercase" options="{!citizenwrapper.hashtags.tagsAudienciaGeneraciones.tags}" values="{!citizenwrapper.hashtags.tagsAudienciaGeneraciones.tagsSelected}" />                    
+                </div>
+                
+                <div class="col-12 col-md-6" style="display: {!IF($ObjectType.Contact.Fields.situacion_del_asalariado__c.updateable,'','none')}">
+                    <c:ContactEditField inputType="multiselect" label="{!$ObjectType.Contact.Fields.situacion_del_asalariado__c.Label}" classlabel="label uppercase" options="{!citizenwrapper.hashtags.tagsSituacionAsalariado.tags}" values="{!citizenwrapper.hashtags.tagsSituacionAsalariado.tagsSelected}" />                    
+                </div>
+                
+                <div class="col-12 col-md-6" style="display: {!IF($ObjectType.Contact.Fields.tipo_de_asalariado__c.updateable,'','none')}">
+                    <div class="mb-1">
+                        <apex:outputText styleClass="label uppercase" value="{!$ObjectType.Contact.Fields.tipo_de_asalariado__c.Label}" />
+                    </div>
+                    <apex:selectList styleClass="form-control" value="{! citizenwrapper.citizen.tipo_de_asalariado__c }"  multiselect="false" size="1">
+                        <apex:selectOptions value="{! citizenwrapper.hashtags.tagsTipoAsalariado }" />
+                    </apex:selectList>
+                </div>
+            </div>            
+        </div>
+    </div>
+    
+    <script>
+        
+        $(document).on('keyup', '.communityInput', function(objEvent) {
+            var arrTagsCommunity = [];
+            var arrMatchingValues = [];
+            var strInputValue = null;
+            var strHTML = null;
+            var strInputId = null;
+            var strDiv = null;
+            
+            if(objEvent.which === 13) {  // si apreto enter lo guardo
+                if($(this).val()  !== undefined && $(this).val()  !== null && $(this).val() !== '')  { 
+                    savePicklistValueInSalesforce($(this).data('field'), $(this).val(), $(this).data('multipicklist'));            
+                    $(this).val('');
+                }                                 
+                arrMatchingValues = [];
+                 $('.foundvalues').hide();           
+            } else { //sino muestro la lista de opciones
+                arrTags = $(this).data('values');            
+                strInputValue = $(this).val();
+                strInputId = $(this).prop('id');
+           
+                strHTML = '';
+                if(strInputValue.length > 0) {
+                    arrMatchingValues = $.grep(arrTags, function (strItem) { return strItem.toLowerCase().match('^' + strInputValue.toLowerCase()) } );
+                    
+                    $.each(arrMatchingValues, function(intIndex, strItem) {
+                        strHTML += '<div class="tagselector" data-input="' + strInputId + '" data-value="' + strItem + '">' + strItem + '</div>';                
+                    });
+                }
+                
+                $('#' + $(this).data('div') ).html(strHTML);
+                $('#' + $(this).data('div') ).show();       
+            }
+        });     
+    
+        $(document).on('click', '.tagselector', function(objEvent) { 
+            $('#' + $(this).data('input') ).val($(this).data('value'));
+            $('.foundvalues').hide();
+            
+            objEvent.stopPropagation();
+        });
+
+    
+    	$(document).on('click', '.savepicklist', function(objEvent) { 
+            var strValue = null;
+            
+            strValue = $('#' + $(this).data('input')).val();
+            
+            if(strValue  !== undefined && strValue !== null && strValue !==  '')  { 
+                savePicklistValueInSalesforce( $(this).data('field'), $(this).data('multipicklist'));     
+                $('#' + $(this).data('input')).val('');
+            }                
+            
+            $('.foundvalues').hide();
+        }); 
+    </script>    
+</apex:component>

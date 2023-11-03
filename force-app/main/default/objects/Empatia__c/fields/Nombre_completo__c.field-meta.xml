@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Nombre_completo__c</fullName>
+    <externalId>false</externalId>
+    <formula>if(
+ ISBLANK(Empatia_Activista__r.Citizen__c),
+ Nombre__c &amp; &quot; &quot; &amp; Apellido__c,
+ Empatia_Activista__r.Citizen__r.FirstName &amp; &quot; &quot; &amp;  Empatia_Activista__r.Citizen__r.LastName  
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Nombre completo</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

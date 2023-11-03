@@ -1,0 +1,63 @@
+.THIS {
+}
+
+.THIS .forceBreadCrumbItem.uiOutputText{display: none;}
+
+.THIS .forceCommunityAnalyticsObjectHome .folderNavigator,
+.THIS .forceCommunityRecordListDesktop.forceListViewManager {
+    max-width: 1200px;
+    margin : 0 auto;
+    padding :5px;
+    border-radius: 6px;
+}
+
+.THIS .forceCommunityRecordListMobile.forceCommunityObjectHome{
+    margin: 0 15px;
+    padding: 15px 0;
+    background-color: #ffffff;
+}
+
+.THIS .forceCommunityActionsContainerMobile {display: none;}
+.THIS .forceCommunityObjectHome {border-radius: 6px;}
+.THIS .forceCommunityRecordListDesktop {background-color : #FFFFFF;}
+.THIS .folderNavigator .bodyContainer {border-bottom-left-radius: 6px;border-bottom-right-radius: 6px;}
+.THIS .forceCommunityAnalyticsObjectHome .folderNavigator .slds-page-header {background-color : #FFFFFF;border-radius: 6px;}
+.THIS .forceListViewPicker, .THIS .listViewContent {color : #000000;}
+.THIS .slds-dropdown__item>a {color : #000000;}
+.THIS .body {background-color: #1d2a36; min-height:83.67vh;}
+.THIS .forceCommunitySearch {background-color: #FFFFFF;}
+.THIS .innerStacking {background-color: #ffffff;}
+.THIS .siteforceContentArea > div {padding-left: 0; padding-right: 0;}
+
+/* Special classes for small devices */
+@media only screen and (max-width: 768px) {
+    .THIS .forceCommunityAnalyticsObjectHome {
+        background-color: #ffffff;
+        border-radius: 6px;
+        margin: 0 15px;
+        overflow: hidden;
+    }
+    .THIS .reportPageFrameWrapper.forceCommunityReportPage {
+        background-color: #ffffff;
+        border-radius: 6px;
+        margin: 0 15px;
+        overflow: hidden;
+    }
+    .THIS .comm-navigation.forceCommunityGlobalNavigation {
+        background-color: #1d2a36;
+    }
+    .THIS .forceCommunityGlobalNavigation .slds-list_vertical {
+        background-color: #1a2630 !important;
+        border-right: 1px solid rgba(255, 255, 255, 0.2);
+    }
+}
+
+.THIS ::selection {
+    color: white;
+    background: rgb(216, 237, 255);
+}
+
+/* Special classes for big devices */
+@media only screen and (min-width: 768px) {
+    .THIS {}
+}

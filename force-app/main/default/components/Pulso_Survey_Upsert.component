@@ -1,0 +1,145 @@
+<apex:component controller="pulso_admin_controller">
+
+    <style>
+        #nuevaEncuesta .form-group label {
+        	font-size:0.65em;
+        }
+        
+        #nuevaEncuesta .modal-footer .btn {
+        	font-size: 0.9em;
+        	font-weight: bold;
+        }
+        
+        #nuevaEncuesta .primarytext {
+        	color:#58595b !important;
+        }
+        
+        #nuevaEncuesta .secondarytext {
+        	color:#999999  !important;
+        }
+        
+
+        #nuevaEncuesta .brandtext {
+        	color:#40b599 !important;
+        }
+        
+        #nuevaEncuesta .linebordertop {
+        	border-top:1px solid lightgray ;
+        }
+
+        #nuevaEncuesta .upsertsurveybutton {
+        	background-color:#40b599 !important;
+        	border-color : #40b599 !important;
+        }
+    </style>
+
+    <!-- ************************************************************************** -->
+    <!-- The Modal -->
+    <!-- ************************************************************************** -->
+    <div class="modal fade" id="nuevaEncuesta">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">                
+                <form role="form" data-toggle="validator">                    
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title surveymodaltitle primarytext">Crear/Editar Encuesta</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    
+                    <!-- Modal body -->
+                    <div class="modal-body">                        
+                        <div class="form-row pb-3">
+                            <div class="col-lg">
+                                <div class="form-group">
+                                    <label for="idencuesta" class="secondarytext">ID ENCUESTA</label>
+                                    <input type="text" class="form-control" id="idencuesta" placeholder="ID Encuesta" name="idencuesta" required="required" data-error="El identificador de la encuesta no es válido." value="{! survey.typeformid }" />
+                                </div>
+                            </div>
+
+                            <div class="col-lg">
+                                <div class="form-group">
+                                    <label for="idresultados" class="secondarytext">ID RESULTADOS</label>
+                                    <input type="text" class="form-control" id="idresultados" placeholder="ID Resultados" name="idresultados" required="required" data-error="El identificador de los resultados de la encuesta no es válido." value="{! survey.resultadosid }"/>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group pt-3 linebordertop">
+                            <label for="idtitulo" class="secondarytext">TITULO</label>
+                            <input type="text" class="form-control" id="idtitulo" placeholder="Ingrese Título Encuesta" name="idtitulo" required="required" data-error="El titulo de la encuesta no es válido." value="{! survey.tituloencuesta }" />
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="col-lg">
+                                <div class="form-group">
+                                    <label class="text-nowrap secondarytext" for="idpauta">PAUTA</label>
+                                    <input type="text" class="form-control" id="idpauta" name="idpauta"  placeholder="Pauta de la encuesta"  value="{! survey.pauta }" />
+                                </div>
+                            </div>
+                            
+                            <div class="col-lg">
+                                <div class="form-group">
+                                    <label for="idslug" class="secondarytext">SLUG</label>
+                                    <input type="text" class="form-control" id="idslug" placeholder="Ingrese Slug" name="idslug" required="required" data-error="Debe ingresar un slug para visualizar la encuesta."  value="{! survey.slug }" />
+                                </div>
+                            </div>
+                        </div>                          
+                        
+                        <div class="form-group">
+                            <label for="iddescripcion" class="secondarytext">DESCRIPCION</label>
+                            <textarea class="form-control" rows="4" id="iddescripcion">{! survey.descripcion }</textarea>
+                        </div>                          
+                        
+                    </div>
+                    
+                    <!-- Modal footer -->
+                    <div class="modal-footer d-flex pt-5 pb-4 mb-1 linebordertop">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCELAR</button>
+                        <button type="button" class="btn btn-primary upsertsurveybutton"   data-dismiss="modal" onclick="insertarEncuesta()">GUARDAR</button>
+                    </div>
+                </form>
+                
+            </div>
+        </div>
+    </div>
+    <script>
+     	var encuestaid = null;
+    
+        $(document).ready(function() {
+            if(window.location.href.indexOf('pulso_admin_encuesta') > 0) { 
+                $('.surveymodaltitle').html('Editar Encuesta');
+                $('#idencuesta').attr('disabled', true);
+                
+                //$('#iddefault').attr('checked', {!survey.default_survey});
+                //$('#iddefault').attr('disabled', {!survey.default_survey});
+            } else if(window.location.href.indexOf('pulso_admin') > 0) {
+                $('.surveymodaltitle').html('Crear Encuesta');
+            } 
+        });
+
+    	function insertarEncuesta() {
+            var encuesta = {};
+            encuesta.id = '{! SurveyId }';
+            encuesta.typeformid = document.getElementById("idencuesta").value;
+            //encuesta.default_survey = document.getElementById("iddefault").checked;
+            encuesta.resultadosid = document.getElementById("idresultados").value;
+        	encuesta.tituloencuesta = document.getElementById("idtitulo").value;
+        	encuesta.pauta = document.getElementById("idpauta").value;
+        	encuesta.slug = document.getElementById("idslug").value;
+        	encuesta.descripcion = document.getElementById("iddescripcion").value;
+            
+            var jsonString = JSON.stringify(encuesta);
+            
+            Visualforce.remoting.Manager.invokeAction(
+                '{!$RemoteAction.pulso_admin_controller.InsertarEncuesta}',
+                    jsonString,
+                    function(result, event){
+                        if(event.status){
+							window.location.reload(true);            
+                        }
+                    },
+                    {escape: true}
+            );
+        }   
+    </script>
+</apex:component>

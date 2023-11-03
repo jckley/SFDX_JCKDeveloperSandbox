@@ -1,0 +1,18 @@
+<template>
+  <div class="box section_gender">
+      <div class="stats">
+      <div class={womenCssClasses} onclick={handleClickOnWomanStats}>
+        <small>Mujeres</small>
+        <strong class="womantitle">{analitycsGenderData.womenSumaryFormated}</strong>
+        <span class="woman">{analitycsGenderData.womenPercent}</span>
+      </div>
+      <div class="linea"></div>
+      <div class={menCssClasses} onclick={handleClickOnMenStats}>
+        <small>Hombres</small>
+        <strong class="mentitle">{analitycsGenderData.menSumaryFormated}</strong>
+        <span class="men">{analitycsGenderData.menPercent}</span>
+      </div>
+    </div>
+    <div class="chartContainer" lwc:dom="manual"></div>
+  </div>
+</template>

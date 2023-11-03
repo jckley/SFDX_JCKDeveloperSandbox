@@ -1,0 +1,77 @@
+.box {
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+    background: #FFF;
+    padding: 0;
+    border-radius: 4px;
+    height: 100%;
+}
+
+.box .header { 
+    display: flex; 
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px; 
+    padding: 0 15px; 
+    background: #f7f6f2;
+    border: solid 1px #fff;
+    border-top-left-radius: 4px; 
+    border-top-right-radius: 4px; 
+}
+
+.box .header .title{
+    color: #58595b;
+    border-bottom: solid 3px #ff4443;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+}
+
+.box .items_ocupacion {
+    display: flex;
+    flex-direction: column;
+    padding: 15px 0;
+    gap: 15px;
+}
+
+.box .items_ocupacion .item {
+    align-items: center;
+    display: flex;
+    gap: 15px;
+    padding: 0 15px;
+    cursor: pointer;
+}
+
+.box .items_ocupacion .item.notSelected {
+    opacity: 50%;
+}
+
+.box .items_ocupacion .item .iconHolder {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box .items_ocupacion .item .iconHolder .icon {
+    width: 24px;
+}
+
+.box .items_ocupacion .item .description {
+    display: flex;
+    flex-direction: column;
+}
+
+.box .items_ocupacion .item .description strong {
+    font-size: 30px;
+    font-weight: bolder;
+    color: #58595b;
+}
+
+.box .items_ocupacion .item .description small {
+    font-size: 9.5px;
+    font-weight: bold;
+    color: #ff4443;
+}

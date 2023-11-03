@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>membership_sports_club__c</fullName>
+    <externalId>false</externalId>
+    <label>Membership Sports Club</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>Argentinos Juniors</fullName>
+                <default>false</default>
+                <label>Argentinos Juniors</label>
+            </value>
+            <value>
+                <fullName>Boca Juniors</fullName>
+                <default>false</default>
+                <label>Boca Juniors</label>
+            </value>
+            <value>
+                <fullName>Huracán</fullName>
+                <default>false</default>
+                <label>Huracán</label>
+            </value>
+            <value>
+                <fullName>River Plate</fullName>
+                <default>false</default>
+                <label>River Plate</label>
+            </value>
+            <value>
+                <fullName>Rosario Central</fullName>
+                <default>false</default>
+                <label>Rosario Central</label>
+            </value>
+            <value>
+                <fullName>Talleres</fullName>
+                <default>false</default>
+                <label>Talleres</label>
+            </value>
+            <value>
+                <fullName>Tigre</fullName>
+                <default>false</default>
+                <label>Tigre</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

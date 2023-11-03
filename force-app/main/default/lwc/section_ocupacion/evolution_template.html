@@ -1,0 +1,20 @@
+<template>
+    <div class="box">
+        <div class="header">
+          <div class="title">Tipo de ocupación</div>
+        </div>
+          <div class="items_ocupacion">
+            <template for:each={occupationTypes} for:item="objOccupationType">
+              <div class={objOccupationType.cssClasses} key={objOccupationType.name} onclick={handelClick_Ocupation} data-ocupationfilter={objOccupationType.filter}>
+                <div class="iconHolder">
+                  <img class="icon" src={objOccupationType.image} alt={objOccupationType.name}/>
+                </div>
+                <div class="description">
+                  <strong>{objOccupationType.value}</strong>
+                  <small>{objOccupationType.name}</small>
+                </div>
+              </div>
+            </template>
+          </div>
+      </div>
+</template>

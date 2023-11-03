@@ -1,0 +1,12 @@
+.THIS {
+    background-color : #FFFFFF;
+    padding-top: 25px;
+}
+
+.THIS .chart-title {
+    font-family: 'Open Sans';
+    font-size: 10pt;
+    color: #666666;
+    text-align: center;
+    padding-top: 195px;
+}

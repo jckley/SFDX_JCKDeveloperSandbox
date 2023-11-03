@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>covid_cuidarnos__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>True si fecha de ingreso O fecha de egreso no nulo al dia 22-mar-2020</description>
+    <externalId>false</externalId>
+    <label>covid_cuidarnos</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

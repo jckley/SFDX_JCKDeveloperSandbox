@@ -1,0 +1,23 @@
+<aura:component >
+    
+    <aura:attribute name="terrw" type="TerritoryWrapper" required="true" description="Territory Information" />
+    <aura:attribute name="recordId" type="String"/>
+    
+	<div class="slds-size_1-of-1 subattribute-header slds-grid slds-wrap">
+        <div class="slds-size_3-of-4">
+        	<img class="icon-header" src="{!$Resource.IconsPack1 + '/adfigender.svg'}"/><span class="header-text">  {!$Label.c.AgesByGender}</span>
+        </div>
+        <div class="slds-size_1-of-4 slds-show_large" style="padding-top: 10px; text-align: right; padding-right: 30px;">
+            <div class="dot pink"></div>
+            <span class="leyend-header" style="margin-right: 15px;">{!$Label.c.Women}</span>
+            <div class="dot blue"></div>
+            <span class="leyend-header">{!$Label.c.Men}</span>
+        </div>
+    </div>
+    
+    <div class="slds-size_1-of-1">
+        <c:AdFi_Chart chartType="bar" bar1color="#da2297" bar2color="#229fda" chartLabels="{!v.terrw.labelsAux}"
+                      menCount="{!v.terrw.menCount}" womenCount="{!v.terrw.womenCount}" menPerc="{!v.terrw.totalMenPerc}"
+                      womenPerc="{!v.terrw.totalWomenPerc}" totalWomen="{!v.terrw.totalWomenFormated}" totalMen="{!v.terrw.totalMenFormated}" recordId="{!v.recordId}"/>
+    </div>
+</aura:component>

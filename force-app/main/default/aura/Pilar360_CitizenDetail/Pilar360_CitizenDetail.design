@@ -1,0 +1,3 @@
+<design:component label="Citizen Detail">
+    <design:attribute name="makelog" label="Make Log" description="Check it if this component should log viewers" />
+</design:component>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Actividad_Seleccionada__c</fullName>
+    <externalId>false</externalId>
+    <label>Actividad Seleccionada</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Atender llamados</fullName>
+                <default>false</default>
+                <label>Atender llamados</label>
+            </value>
+            <value>
+                <fullName>Encuestar Telefonicamente</fullName>
+                <default>false</default>
+                <label>Encuestar Telefonicamente</label>
+            </value>
+            <value>
+                <fullName>Comunicar por RRSS</fullName>
+                <default>false</default>
+                <label>Comunicar por RRSS</label>
+            </value>
+            <value>
+                <fullName>Entregar Panfletos</fullName>
+                <default>false</default>
+                <label>Entregar Panfletos</label>
+            </value>
+            <value>
+                <fullName>Entregar Boletas</fullName>
+                <default>false</default>
+                <label>Entregar Boletas</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Beneficios_Sociales_CBA__c</fullName>
+    <externalId>false</externalId>
+    <label>Beneficios Sociales CBA</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Tarifa Social</fullName>
+                <default>false</default>
+                <label>Tarifa Social</label>
+            </value>
+            <value>
+                <fullName>CBA Beneficiario PAICOR</fullName>
+                <default>false</default>
+                <label>CBA Beneficiario PAICOR</label>
+            </value>
+            <value>
+                <fullName>CBA Plan CUNA</fullName>
+                <default>false</default>
+                <label>CBA Plan CUNA</label>
+            </value>
+            <value>
+                <fullName>CBA Beneficiario Más Leche</fullName>
+                <default>false</default>
+                <label>CBA Beneficiario Más Leche</label>
+            </value>
+            <value>
+                <fullName>CBA Boleto Social</fullName>
+                <default>false</default>
+                <label>CBA Boleto Social</label>
+            </value>
+            <value>
+                <fullName>CBA Boleto Obrero</fullName>
+                <default>false</default>
+                <label>CBA Boleto Obrero</label>
+            </value>
+            <value>
+                <fullName>CBA Boleto Adulto Mayor</fullName>
+                <default>false</default>
+                <label>CBA Boleto Adulto Mayor</label>
+            </value>
+            <value>
+                <fullName>CBA Boleto Educativo</fullName>
+                <default>false</default>
+                <label>CBA Boleto Educativo</label>
+            </value>
+            <value>
+                <fullName>CBA Beneficiario Tarifa Solidaria</fullName>
+                <default>false</default>
+                <label>CBA Beneficiario Tarifa Solidaria</label>
+            </value>
+            <value>
+                <fullName>CBA Beneficiario Tarjeta Social</fullName>
+                <default>false</default>
+                <label>CBA Beneficiario Tarjeta Social</label>
+            </value>
+            <value>
+                <fullName>CBA Min. Mujer Subsidio por Subsistencia</fullName>
+                <default>false</default>
+                <label>CBA Min. Mujer Subsidio por Subsistencia</label>
+            </value>
+            <value>
+                <fullName>CBA Min. Mujer APROSS</fullName>
+                <default>false</default>
+                <label>CBA Min. Mujer APROSS</label>
+            </value>
+            <value>
+                <fullName>CBA Min. Mujer Ayuda Alquiler</fullName>
+                <default>false</default>
+                <label>CBA Min. Mujer Ayuda Alquiler</label>
+            </value>
+            <value>
+                <fullName>CBA Min. Mujer Programa Nueva Vida</fullName>
+                <default>false</default>
+                <label>CBA Min. Mujer Programa Nueva Vida</label>
+            </value>
+            <value>
+                <fullName>Beneficiario PAICOR</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Beneficiario PAICOR</label>
+            </value>
+            <value>
+                <fullName>Beneficiarios Beca Deportiva CBA</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Beneficiarios Beca Deportiva CBA</label>
+            </value>
+            <value>
+                <fullName>Beneficiarios LO TENGO</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Beneficiarios LO TENGO</label>
+            </value>
+            <value>
+                <fullName>Beneficiarios Mas Leche</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Beneficiarios Mas Leche</label>
+            </value>
+            <value>
+                <fullName>Beneficiarios PLAN FINES</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Beneficiarios PLAN FINES</label>
+            </value>
+            <value>
+                <fullName>Beneficiarios Primer Paso</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Beneficiarios Primer Paso</label>
+            </value>
+            <value>
+                <fullName>Beneficiarios Tarjeta Social CBA</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Beneficiarios Tarjeta Social CBA</label>
+            </value>
+            <value>
+                <fullName>Beneficiarios Vida Digna</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Beneficiarios Vida Digna</label>
+            </value>
+            <value>
+                <fullName>Beneficiaros Banco de la Gente</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Beneficiaros Banco de la Gente</label>
+            </value>
+            <value>
+                <fullName>Boleto Estudiantil CBA</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Boleto Estudiantil CBA</label>
+            </value>
+            <value>
+                <fullName>Boleto Jubilados CBA</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Boleto Jubilados CBA</label>
+            </value>
+            <value>
+                <fullName>Boleto Obrero CBA</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Boleto Obrero CBA</label>
+            </value>
+            <value>
+                <fullName>Plan CUNA</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Plan CUNA</label>
+            </value>
+            <value>
+                <fullName>Plan Hogar Clase Media</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Plan Hogar Clase Media</label>
+            </value>
+            <value>
+                <fullName>Plan Hogar Clase Media Mix</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Plan Hogar Clase Media Mix</label>
+            </value>
+            <value>
+                <fullName>Plan Provincial Agroforestal</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Plan Provincial Agroforestal</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

@@ -1,0 +1,3 @@
+<design:component label="Chart Configuration">
+    <design:attribute  name="chartType"  label="Chart type" datasource="bar,bubble,doughnut,line,polarArea,radar,scatter" default="bar" />
+</design:component>

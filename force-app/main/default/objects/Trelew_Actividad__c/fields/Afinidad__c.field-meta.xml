@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Afinidad__c</fullName>
+    <externalId>false</externalId>
+    <label>Afinidad</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Massoni</fullName>
+                <default>false</default>
+                <label>Massoni</label>
+            </value>
+            <value>
+                <fullName>Merino</fullName>
+                <default>false</default>
+                <label>Merino</label>
+            </value>
+            <value>
+                <fullName>Posible ausente</fullName>
+                <default>false</default>
+                <label>Posible ausente</label>
+            </value>
+            <value>
+                <fullName>Indeciso</fullName>
+                <default>false</default>
+                <label>Indeciso</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

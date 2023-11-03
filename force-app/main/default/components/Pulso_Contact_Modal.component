@@ -1,0 +1,142 @@
+<apex:component controller="Pulso_Contact_Modal_Controller">    
+    <div id="popContacto" class="contactmodalcontainer">
+        <div class="content">
+            <div class="close contactmodalclose">
+                <img src="{! URLFOR( $Resource.PulsoCRM , 'img/close.png' ) }" alt="{! $Label.Pulso_Close }" />
+            </div>
+            
+            <h2>{! $Label.Pulso_Contact_Modal_Title}</h2>
+            
+            <form id="formContactModal" method="POST">
+                <div class="input">
+                    <label for="txtFirstName">{! $Label.Pulso_Contact_FirstName }:</label>
+                    <input type="text" id="txtModalFirstName" required="required" />
+                </div>
+                
+                <div class="input">
+                    <label for="txtLastName">{! $Label.Pulso_Contact_LastName }:</label>
+                    <input type="text" id="txtModalLastName" required="required" />
+                </div>
+                
+                <div class="input">
+                    <label for="txtEmail">{! $Label.Pulso_Contact_Email}:</label>
+                    <input type="email" id="txtModalEmail" required="required" />
+                </div>
+                
+                <div class="input">
+                    <label for="txtMobile">{! $Label.Pulso_Contact_Mobile }:</label>
+                    <input type="number" id="txtModalMobile" required="required" />
+                </div>
+                
+                <div class="input text">
+                    <label for="txtMessage">{! $Label.Pulso_Contact_Message }:</label>
+                    <textarea id="txtModalMessage"></textarea>
+                </div>
+                
+                <button class="btn submitform">{! $Label.Pulso_Contact_Send }</button>
+                
+                <div id="msj" class="messagecontainer">
+                    <span></span>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script type="text/javascript">
+    var boolSending = false;
+    var MESSAGE_TYPE_SUCCESS = 'SUCCESS';
+    var MESSAGE_TYPE_ERROR = 'ERROR';
+    
+    $(document).on('contactmodal', function(objEvent){                    
+        $('.contactmodalcontainer').fadeIn(400);
+    });
+    
+    $(".contactmodalclose").on('click', function(objEvent) { 
+        $('.contactmodalcontainer').fadeOut(400);  
+    });
+            
+    $(".submitform").on('click', function(objEvent) {
+        var boolIsValidForm = true;
+        var objForm = null;
+        var objRequest = null;
+        
+        objEvent.preventDefault();
+        
+        if(!boolSending)  {
+            objForm = $('#formContactModal');
+            boolSending = true;
+            boolIsValidForm = validateModalForm(objForm);
+            
+            if(boolIsValidForm === true) {  
+                objRequest = createModalRequest();
+                                           
+                Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.Pulso_Contact_Modal_Controller.saveContact}',JSON.stringify(objRequest),
+              		function(objResult, objEvent){
+                        if (objEvent.status) {
+                            resetModalForm(objForm);
+                            showModalMessage(objForm, '{! $Label.Pulso_Contact_Success }', MESSAGE_TYPE_SUCCESS);   
+                        } else {
+                            showModalMessage(objForm, '{! $Label.Pulso_Contact_Error }', MESSAGE_TYPE_ERROR) 
+                        }
+                        boolSending = false;
+                    } , {
+                        buffer: true, 
+                        escape: true, 
+                        timeout: 120000
+                    }
+				);            	         
+            } else {
+                boolSending = false;
+                showModalMessage(objForm, '{! $Label.Pulso_Contact_Error }', MESSAGE_TYPE_ERROR) 
+            }      
+        }
+    });
+       
+    function validateModalForm(objForm) {
+        var boolIsValidForm = true;
+        
+        objForm.find('input:not([type="hidden"]), textarea').each(function(){
+            if($(this).val().trim() == '') {
+                $(this).focus();
+                $(this).addClass('error');
+                
+                boolIsValidForm = false;
+                
+                return boolIsValidForm;
+            }
+        });
+        
+        return boolIsValidForm;
+    }
+    
+    function resetModalForm(objForm) {     
+        objForm.find('input:not([type="hidden"]), textarea').each(function(){
+            $(this).val('');
+        });
+    }
+    
+    function showModalMessage(objForm, strMessage, objMessageType ) {         
+        if(strMessage !== undefined && strMessage !== null && strMessage.length > 0) { 
+            objForm.find('.messagecontainer span').html(strMessage);
+            objForm.find('.messagecontainer').fadeIn(300).delay(3000).fadeOut(300); 
+            
+            if(objMessageType === 'SUCCESS') {
+                $('.contactmodalcontainer').fadeOut(400);    
+                resetModalForm(objForm);
+            } 
+        }
+    }
+    
+    function createModalRequest() {
+        var objRequest = null;
+        
+        objRequest = {};
+        objRequest.FirstName = $('#txtModalFirstName').val();
+        objRequest.LastName = $('#txtModalLastName').val();
+        objRequest.Email = $('#txtModalEmail').val();
+        objRequest.Mobile = $('#txtModalMobile').val();
+        objRequest.Description = $('#txtModalMessage').val();
+        
+        return objRequest;
+    }
+    </script>
+</apex:component>

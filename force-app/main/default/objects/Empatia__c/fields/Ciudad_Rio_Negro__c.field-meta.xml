@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Ciudad_Rio_Negro__c</fullName>
+    <externalId>false</externalId>
+    <label>Ciudad Rio Negro</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Allen</fullName>
+                <default>false</default>
+                <label>Allen</label>
+            </value>
+            <value>
+                <fullName>Campo Grande</fullName>
+                <default>false</default>
+                <label>Campo Grande</label>
+            </value>
+            <value>
+                <fullName>Catriel</fullName>
+                <default>false</default>
+                <label>Catriel</label>
+            </value>
+            <value>
+                <fullName>Cervantes</fullName>
+                <default>false</default>
+                <label>Cervantes</label>
+            </value>
+            <value>
+                <fullName>Chichinales</fullName>
+                <default>false</default>
+                <label>Chichinales</label>
+            </value>
+            <value>
+                <fullName>Chimpay</fullName>
+                <default>false</default>
+                <label>Chimpay</label>
+            </value>
+            <value>
+                <fullName>Choele Choel</fullName>
+                <default>false</default>
+                <label>Choele Choel</label>
+            </value>
+            <value>
+                <fullName>Cinco Saltos</fullName>
+                <default>false</default>
+                <label>Cinco Saltos</label>
+            </value>
+            <value>
+                <fullName>Cipolletti</fullName>
+                <default>false</default>
+                <label>Cipolletti</label>
+            </value>
+            <value>
+                <fullName>Comallo</fullName>
+                <default>false</default>
+                <label>Comallo</label>
+            </value>
+            <value>
+                <fullName>Contralmirante Cordero</fullName>
+                <default>false</default>
+                <label>Contralmirante Cordero</label>
+            </value>
+            <value>
+                <fullName>Coronel Belisle</fullName>
+                <default>false</default>
+                <label>Coronel Belisle</label>
+            </value>
+            <value>
+                <fullName>Darwin</fullName>
+                <default>false</default>
+                <label>Darwin</label>
+            </value>
+            <value>
+                <fullName>Dina Huapi</fullName>
+                <default>false</default>
+                <label>Dina Huapi</label>
+            </value>
+            <value>
+                <fullName>El Bolsón</fullName>
+                <default>false</default>
+                <label>El Bolsón</label>
+            </value>
+            <value>
+                <fullName>General Conesa</fullName>
+                <default>false</default>
+                <label>General Conesa</label>
+            </value>
+            <value>
+                <fullName>General Enrique Godoy</fullName>
+                <default>false</default>
+                <label>General Enrique Godoy</label>
+            </value>
+            <value>
+                <fullName>General Fernández Oro</fullName>
+                <default>false</default>
+                <label>General Fernández Oro</label>
+            </value>
+            <value>
+                <fullName>General Roca</fullName>
+                <default>false</default>
+                <label>General Roca</label>
+            </value>
+            <value>
+                <fullName>Guardia Mitre</fullName>
+                <default>false</default>
+                <label>Guardia Mitre</label>
+            </value>
+            <value>
+                <fullName>Ingeniero Jacobacci</fullName>
+                <default>false</default>
+                <label>Ingeniero Jacobacci</label>
+            </value>
+            <value>
+                <fullName>Ingeniero Luis A. Huergo</fullName>
+                <default>false</default>
+                <label>Ingeniero Luis A. Huergo</label>
+            </value>
+            <value>
+                <fullName>Lamarque</fullName>
+                <default>false</default>
+                <label>Lamarque</label>
+            </value>
+            <value>
+                <fullName>Los Menucos</fullName>
+                <default>false</default>
+                <label>Los Menucos</label>
+            </value>
+            <value>
+                <fullName>Luis Beltrán</fullName>
+                <default>false</default>
+                <label>Luis Beltrán</label>
+            </value>
+            <value>
+                <fullName>Mainqué</fullName>
+                <default>false</default>
+                <label>Mainqué</label>
+            </value>
+            <value>
+                <fullName>Maquinchao</fullName>
+                <default>false</default>
+                <label>Maquinchao</label>
+            </value>
+            <value>
+                <fullName>Ministro Ramos Mexía</fullName>
+                <default>false</default>
+                <label>Ministro Ramos Mexía</label>
+            </value>
+            <value>
+                <fullName>Pilcaniyeu</fullName>
+                <default>false</default>
+                <label>Pilcaniyeu</label>
+            </value>
+            <value>
+                <fullName>Pomona</fullName>
+                <default>false</default>
+                <label>Pomona</label>
+            </value>
+            <value>
+                <fullName>Río Colorado</fullName>
+                <default>false</default>
+                <label>Río Colorado</label>
+            </value>
+            <value>
+                <fullName>San Antonio Oeste</fullName>
+                <default>false</default>
+                <label>San Antonio Oeste</label>
+            </value>
+            <value>
+                <fullName>San Carlos de Bariloche</fullName>
+                <default>false</default>
+                <label>San Carlos de Bariloche</label>
+            </value>
+            <value>
+                <fullName>Sierra Colorada</fullName>
+                <default>false</default>
+                <label>Sierra Colorada</label>
+            </value>
+            <value>
+                <fullName>Sierra Grande</fullName>
+                <default>false</default>
+                <label>Sierra Grande</label>
+            </value>
+            <value>
+                <fullName>Valcheta</fullName>
+                <default>false</default>
+                <label>Valcheta</label>
+            </value>
+            <value>
+                <fullName>Viedma</fullName>
+                <default>false</default>
+                <label>Viedma</label>
+            </value>
+            <value>
+                <fullName>Villa Regina</fullName>
+                <default>false</default>
+                <label>Villa Regina</label>
+            </value>
+            <value>
+                <fullName>Ñorquincó</fullName>
+                <default>false</default>
+                <label>Ñorquincó</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

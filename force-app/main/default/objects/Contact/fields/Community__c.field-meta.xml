@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Community__c</fullName>
+    <externalId>false</externalId>
+    <label>Comunidad</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Director</fullName>
+                <default>false</default>
+                <label>Director</label>
+            </value>
+            <value>
+                <fullName>Futbolista</fullName>
+                <default>false</default>
+                <label>Futbolista</label>
+            </value>
+            <value>
+                <fullName>Mascoteros</fullName>
+                <default>true</default>
+                <label>Mascoteros</label>
+            </value>
+            <value>
+                <fullName>Futboleros</fullName>
+                <default>false</default>
+                <label>Futboleros</label>
+            </value>
+            <value>
+                <fullName>Lector</fullName>
+                <default>false</default>
+                <label>Lector</label>
+            </value>
+            <value>
+                <fullName>Pintor</fullName>
+                <default>false</default>
+                <label>Pintor</label>
+            </value>
+            <value>
+                <fullName>Tenista</fullName>
+                <default>false</default>
+                <label>Tenista</label>
+            </value>
+            <value>
+                <fullName>Fanático de futebol</fullName>
+                <default>false</default>
+                <label>Fanático de futebol</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

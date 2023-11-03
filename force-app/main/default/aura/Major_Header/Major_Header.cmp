@@ -1,0 +1,40 @@
+<aura:component>
+    <aura:attribute name="community" 		type="String"/>
+    <aura:attribute name="logo" 			type="String"/>
+    <aura:attribute name="url" 				type="String"/>    
+    <aura:attribute name="search" 			type="Aura.Component[]"/>
+    <aura:attribute name="profileMenu" 		type="Aura.Component[]"/>
+    <aura:attribute name="navigationBar" 	type="Aura.Component[]"/>
+
+    <!-- <aura:handler event="c:PRMCommunityEvent" action="{!c.handlePRMCommunityEvent}"/> -->
+    
+    <div class="slds-grid slds-wrap slds-col slds-size_1-of-1 header">
+        <a class="logo-container" onclick="{!c.home}">
+            <img class="logo" src="{! $Resource.major + '/img/major_logo.png' }" />
+            <!-- <span class="header-text">&nbsp;/ CRM</span> -->
+        </a>
+
+        <!-- <div class="tab slds-col slds-show_large"> -->
+        <div class="tab slds-col">
+            <c:Major_Tab />
+        </div>
+        
+        <div class="exit slds-show_large" onclick="{!c.logout}">
+            <img id="icon-white" class="img gray" src="{! $Resource.major + '/img/exit.svg'}" width="30" height="60"/>
+            <img id="icon-gray" class="img red" src="{! $Resource.major  + '/img/exit-hover.svg'}" width="30" height="60"/>
+        </div>
+    </div>
+    <!-- <div class="navigationBar slds-hide_large">
+        {! v.navigationBar}
+    </div> -->
+    <div class="slds-grid slds-wrap slds-col slds-size_1-of-1 header slds-hide" id="parent-div-search-super-m">
+        <div id="search-super-m" class="slds-col search slds-hide">
+            <c:Major_SearchBar rendered="false" />
+        </div>
+    </div>
+    <div id="search-super-d" class="slds-col slds-size_1-of-1 search slds-align_absolute-center slds-grid slds-wrap">
+        <c:Major_SearchBar rendered="true" />
+    </div>
+    <div id="header-extension" class="header-extension slds-hide">
+    </div>
+</aura:component>

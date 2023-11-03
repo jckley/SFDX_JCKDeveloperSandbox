@@ -1,0 +1,30 @@
+<apex:component >	 
+	<apex:attribute name="citizenwrapper" type="CitizenWrapper" required="true" description="Contact General Info" />  
+    
+    <style>
+        .subattribute-content-normal {color: #3e4145; font-size: 13pt;}
+        .subattribute-content-bold {color: #3e4145; font-size: 13pt; font-weight: bold;}
+        .subattribute-content-green {color: #3db28b; font-weight: bold; font-size: 13pt;}
+        .subattribute-border > div {margin-bottom: 25px;}
+        
+        .icon-test-small svg path {
+        	fill: blue !important;
+        }
+    </style>
+    
+    <div class="row contact-data">
+        <div class="card card-left-border blue">
+            <div class="row subattribute-header">
+                <div class="col-12 subattribute-title">
+                    <apex:image styleClass="icon-test-small" value="{!URLFOR($Resource.IconsPack1, 'tags.svg')}"/>
+                    <span class="subattribute-title">Tags</span> 
+                </div>
+            </div>
+            <div class="row card-cont">                
+                <apex:repeat value="{! citizenwrapper.hashTags.tags }" var="strTag">
+                    <c:ContactTagComponent rendered="true" label="" value="#{! strTag }" valuecolor="gray" />
+                </apex:repeat>                
+            </div>  
+        </div>
+    </div>
+</apex:component>

@@ -1,0 +1,4 @@
+<aura:component implements="flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes" access="global" >
+	<aura:handler value="{!this}" name="init" action="{!c.init}"/>
+    
+</aura:component>

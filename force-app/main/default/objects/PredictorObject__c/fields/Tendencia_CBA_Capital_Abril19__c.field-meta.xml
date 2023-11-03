@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Tendencia_CBA_Capital_Abril19__c</fullName>
+    <externalId>false</externalId>
+    <label>Tendencia_CBA_Capital_Abril19</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>base</fullName>
+                <color>#FFFFFF</color>
+                <default>false</default>
+                <label>base</label>
+            </value>
+            <value>
+                <fullName>inalcanzable</fullName>
+                <color>#FFFFFF</color>
+                <default>false</default>
+                <label>inalcanzable</label>
+            </value>
+            <value>
+                <fullName>alcanzables</fullName>
+                <color>#FFFFFF</color>
+                <default>false</default>
+                <label>alcanzables</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

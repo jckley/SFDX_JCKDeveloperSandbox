@@ -1,0 +1,21 @@
+<aura:component>
+    <aura:attribute name="citizenWrapper" 		type="ContactWrapper" 	required="true" />
+    <aura:attribute name="rendered" 			type="Boolean" 			required="true" default="true" />
+    <aura:attribute name="viewExactLocation" 	type="Boolean" 			required="true" />    
+    <aura:attribute name="streetViewLoaded" 	type="Boolean" 			required="true" default="false" />
+    <aura:attribute name="lexHost" 			type="String" default="" />
+    <aura:attribute name="vfHost" 			type="String" default="" />  
+    
+    <aura:handler name="change"  value="{!v.citizenWrapper}" action="{!c.initializeComponent}" />
+
+    <div class="{! (v.rendered)?'slds-size_1-of-1 slds-grid slds-wrap':'slds-hide'}">
+        <!--
+        <div aura:id="divMap" 			id="divMap" 		class="{! (v.streetViewLoaded)?'slds-col slds-size_1-of-1 slds-large-size_1-of-2 map':'slds-col slds-size_1-of-1 slds-large-size_1-of-1 map' }"></div>
+        <div aura:id="divStreetView" 	id="divStreetView" 	class="{! (v.streetViewLoaded)?'slds-col slds-size_1-of-1 slds-large-size_1-of-2 map':'slds-hide' }"></div>
+        -->
+        <div class="slds-size_1-of-1">
+            <c:GoogleMap citizenWrapper="{! v.citizenWrapper }" viewExactLocation="{! v.viewExactLocation }" lexHost="{! v.lexHost}"
+                         vfHost="{! v.vfHost}" frameHeight="370" centerOffSet="0.003" zoomControl="false"/>			        	
+        </div>
+    </div>
+</aura:component>

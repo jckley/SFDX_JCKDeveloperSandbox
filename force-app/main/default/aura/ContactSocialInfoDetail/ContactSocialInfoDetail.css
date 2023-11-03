@@ -1,0 +1,26 @@
+.THIS {
+    font-family: 'Roboto', sans-serif;
+}
+
+.THIS .icon_min {
+    max-width: 32px;
+    max-height: 32px;
+    vertical-align: middle;
+    border-style: none;
+}
+
+.THIS .socialname {
+    color: #999999;
+    font-size: 11pt;
+}
+.THIS .socialname span { 
+	padding-left : 10px;
+}
+.THIS .socialvalue {
+    font-size: 13pt;
+    color: #f3bb49;
+}
+
+.THIS .socialvalue div { 
+	padding-left : 10px;
+}

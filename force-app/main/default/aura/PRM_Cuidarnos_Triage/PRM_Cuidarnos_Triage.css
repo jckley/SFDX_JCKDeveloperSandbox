@@ -1,0 +1,81 @@
+.THIS {
+    font-family: 'Montserrat';
+    padding : 0px;
+}
+.THIS .header {
+    background-color: #f8f9fc;
+    line-height: 50px;
+    color: #999999;
+    font-family: 'Montserrat';
+    font-weight: 300;    
+    font-size: 20px;
+}
+.THIS .image { 
+    width: 100%;
+}
+
+.THIS .image img { 
+    margin: 0 auto;
+    display: block;
+}
+
+.THIS .label { 
+    color: #999999;
+    padding-top: 10px;
+    text-transform: uppercase;
+    text-align: center;
+    font-style: 12px;
+}
+
+
+.THIS .value { 
+    color: #999999;
+
+    padding-top: 10px;
+    font-weight: bold;
+    text-align: center;
+    font-style: 12px;
+}
+
+.THIS .link {
+    text-decoration:none;    
+}
+
+.THIS .link:hover {
+    text-decoration:underline;
+    cursor:pointer;
+}
+
+.THIS .font20 {
+    font-size: 20pt;
+}
+
+.THIS .font17 {
+    font-size: 16pt;
+}
+
+.THIS .font13 {
+    font-size: 12pt;
+}
+
+.THIS .font11 {
+    font-size: 10pt;
+}
+
+
+.THIS .confirmtitle {
+    font-size: 24pt;
+    color: #3e4954;
+    font-weight: 800; 
+}
+
+.THIS .confirmwarning {
+    font-size: 16pt;
+    color: #3e4954;
+    border: solid 3px #999999;
+    padding: 4px 4px  4px 4px;
+    border-radius: 10px;
+}
+.THIS .confirmwarning span { 
+    padding-left: 10px;
+}

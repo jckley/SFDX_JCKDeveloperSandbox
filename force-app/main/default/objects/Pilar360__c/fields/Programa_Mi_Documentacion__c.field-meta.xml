@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Programa_Mi_Documentacion__c</fullName>
+    <externalId>false</externalId>
+    <label>Programa Mi Documentacion</label>
+    <summaryFilterItems>
+        <field>PilarCitizenInteractions__c.Programs__c</field>
+        <operation>equals</operation>
+        <value>MiDocumentacion</value>
+    </summaryFilterItems>
+    <summaryForeignKey>PilarCitizenInteractions__c.Pilar360Citizen_SFID__c</summaryForeignKey>
+    <summaryOperation>count</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

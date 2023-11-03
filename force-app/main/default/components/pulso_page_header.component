@@ -1,0 +1,112 @@
+<apex:component >
+    <head>
+        <style>    
+            .pulso_header {
+            	height:80px;
+            }
+            .pulso-header-nav-item {
+                color:#999999;	
+                border-bottom:3px solid transparent  !important;
+            }
+            
+            .pulso-header-nav-item.selected,
+            .pulso-header-nav-item:hover {
+            	border-bottom:3px solid #40B599 !important;
+            	color : #58595b !important;
+            }
+            
+            .navbar-brand.logo {
+            	color : #706e6c  !important;
+            }
+            
+            .navbar-brand.logo { 
+            	width:6em;
+            }
+            <!--
+            
+            
+            .pulso-header-nav-item {
+            	color:#999999;	
+            	border-bottom:3px solid transparent  !important;
+            }
+            
+            .selected .nav-link {
+            	color : #58595b !important;
+            }
+            
+            .navbar-nav > .selected,
+            .pulso-header-nav-item:hover {
+            	border-bottom:3px solid #40B599 !important;
+            	color : #58595b !important;
+            }
+
+            .editmode {
+            	display:none;
+            }
+            
+            .navbar-brand {
+            	color : #706e6c  !important;
+            }
+            
+            .navbar-brand img {
+            	width:6em;
+            }
+            -->
+        </style>
+    </head>
+    
+    <!-- NAVIGATION BAR -->
+    <header class="container-fluid"> 
+        <div class="row">
+            <nav class="navbar navbar-expand-sm fixed-top bg-white navbar-light shadow-sm pulso_header">                
+                <div class="col-sm">
+                    <apex:outputLink styleClass="navbar-brand logo" value="/apex/pulso_admin">
+                        <img src="{!URLFOR($Resource.PulsoLogo)}" alt="logo" />  / admin
+                    </apex:outputLink>                    
+                    
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+                
+                <div class="col-sm">
+                    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                        <ul class="navbar-nav mx-auto">
+                            <li class="nav-item menuitemencuestas pulso-header-nav-item">
+                                <a class="nav-link" href="/apex/pulso_admin">Mis Encuestas</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+           
+                    <div class="col-sm justify-content-end">         
+                        <div class="row justify-content-end">
+                            <apex:outputPanel rendered="{! $Permission.Pulso_Crear_Encuesta }">
+                                <button class="navbar-nav bg-secondary border-0 rounded" type="button" data-toggle="modal" data-target="#nuevaEncuesta">
+                                    <span class="nav-link text-white px-4 surveyaction"></span>
+                                </button>     
+                               
+                            </apex:outputPanel>
+                        </div>
+                    </div>
+            </nav>
+        </div>
+    </header>
+
+	<c:Pulso_Survey_Upsert />
+    <c:Pulso_Survey_Results />
+     
+    <script>
+        $(document).ready(function() {
+        	if(window.location.href.indexOf('pulso_admin_encuesta') > 0) {                 
+                $('.menuitemencuestas').removeClass('selected');                       
+                $('.surveyaction').html('Editar');
+                $('.editmode').show();
+            } else if(window.location.href.indexOf('pulso_admin') > 0) {
+                $('.menuitemencuestas').addClass('selected');                    
+                $('.surveyaction').html('Crear');                
+                $('.editmode').hide();
+            } 
+        });
+    </script>
+</apex:component>

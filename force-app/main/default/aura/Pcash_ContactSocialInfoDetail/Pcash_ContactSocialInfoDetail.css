@@ -1,0 +1,33 @@
+.THIS {
+    width : 100%;
+}
+
+.THIS .icon_min {
+    max-width: 32px;
+    max-height: 32px;
+    vertical-align: middle;
+    border-style: none;
+}
+
+.THIS .socialname {
+    margin-left: 15px;
+    color: #999999;
+    font-size: 10pt;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.THIS .socialname span { 
+	padding-left : 10px;
+}
+.THIS .socialvalue {
+	font-family: 'Heebo';
+    font-weight: 300;
+    font-size: 12pt;
+    color: #6fdc4e;
+    padding-right: 15px;
+}
+
+.THIS .socialvalue a { 
+    display: inline-block;
+    color: #6fdc4e;
+}

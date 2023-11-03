@@ -1,0 +1,34 @@
+<template>
+
+    <div class="slds-size_1-of-1 slds-grid slds-wrap">
+        <span class="socialname">
+            <img src={iconUrl} class="icon_min"/>
+        </span>
+        <span class="socialvalue">
+            <template if:true={showDetails}>
+                <template if:true={socialLink}>
+                    <template if:true={socialUser}>
+                        <a target="_blank" href={socialLink}>{socialUser}</a>
+                    </template>
+                    <template if:false={socialUser}>
+                        <a target="_blank" href={socialLink}>{socialLink}</a>
+                    </template>
+                </template>
+                <template if:false={socialLink}>
+                    <template if:true={socialUser}>
+                        <div>{socialUser}</div>
+                    </template>
+                    <template if:false={socialUser}>
+                        <div>{label.No}</div>
+                    </template>
+                </template>
+            </template>
+            <template if:false={showDetails}>
+                <div>{hasSocialData}</div>
+            </template>
+        </span>
+        
+
+    </div>    
+    
+</template>

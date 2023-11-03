@@ -1,0 +1,58 @@
+<aura:component controller="ContactDetailController">
+    <aura:attribute name="community"        type="String"           default="Prosumia"/>
+    <aura:attribute name="citizenWrapper" 	type="CitizenWrapper" 	required="true" />
+    <aura:attribute name="rendered" 		type="Boolean" 			required="true" default="true" />
+    
+	<aura:handler event="c:PRM_Cuidarnos_Refresh_Historial" action="{! c.refreshStatus }" />
+
+    <aura:registerEvent name="PRM_Cuidarnos_ShowHistory_Event" 			type="c:PRM_Cuidarnos_ShowHistory_Event" />  
+
+    <div class="slds-col--padded slds-size_1-of-1" >
+        <div class="{! 'card slds-grid slds-wrap slds-m-top_large ' + v.community}">
+            <div class="slds-grid slds-wrap slds-col slds-size_1-of-1 header" >
+                <div class="slds-col slds-size_1-of-1">
+                    <span class="slds-p-left_large title uppercase">
+                        <a href="javascript:void();" data-action="viewhistory" onclick="{! c.proccesAction}">
+                            Historial
+                        </a>                         
+                    </span>
+                </div>           
+            </div>
+            
+            <div class="slds-col slds-size_1-of-1 slds-grid slds-wrap" style="padding: 30px 30px;">
+                <div class="subattribute-border slds-size_1-of-6">
+                    <div class="image"><img src="{! $Resource.CuidarnosResource + '/img/icono-triage.svg' }" class="icon-small" /></div>    
+                    <div class="label">Triage</div>
+                    <div class="value">{! v.citizenWrapper.cuidarnos.Triage }</div>
+                </div>
+
+                <div class="subattribute-border slds-size_1-of-6 sl">
+                    <div class="image"><img src="{! $Resource.CuidarnosResource + '/img/icono-telemedico.svg' }" class="icon-small" /></div>    
+                    <div class="label">Telemédico</div>
+                    <div class="value">{! v.citizenWrapper.cuidarnos.Telemedico }</div>
+                </div>
+                <div class="subattribute-border slds-size_1-of-6">
+                    <div class="image"><img src="{! $Resource.CuidarnosResource + '/img/icono-muestra.svg' }" class="icon-small" /></div>    
+                    <div class="label">Muestra</div>
+                    <div class="value">{! v.citizenWrapper.cuidarnos.Muestra }</div>
+                </div>
+                <div class="subattribute-border slds-size_1-of-6">
+                    <div class="image"><img src="{! $Resource.CuidarnosResource + '/img/icono-resultado.svg' }" class="icon-small" /></div>    
+                    <div class="label">{! (v.citizenWrapper.cuidarnos.Resultado == '')?'Resultado':v.citizenWrapper.cuidarnos.covid.Cuidarnos_Muestra_Result__c }</div>
+                    <div class="value">{! v.citizenWrapper.cuidarnos.Resultado }</div>
+                </div>
+                <div class="subattribute-border slds-size_1-of-6">
+                    <div class="image"><img src="{! $Resource.CuidarnosResource + '/img/icono-notificacion.svg' }" class="icon-small" /></div>    
+                    <div class="label">Notificación</div>
+                    <div class="value">{! v.citizenWrapper.cuidarnos.Notificacion }</div>
+                </div>
+
+                <div class="subattribute-border slds-size_1-of-6">
+                    <div class="image"><img src="{! $Resource.CuidarnosResource + '/img/iconoi-archived.svg' }" class="icon-small" /></div>    
+                    <div class="label">Archivado</div>
+                    <div class="value">{! v.citizenWrapper.cuidarnos.Archivado }</div>
+                </div>
+            </div>
+        </div>
+    </div> 
+</aura:component>

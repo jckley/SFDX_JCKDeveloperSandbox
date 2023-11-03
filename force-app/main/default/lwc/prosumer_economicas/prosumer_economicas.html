@@ -1,0 +1,18 @@
+<template>
+  <div class="box">
+    <div class="header">
+      <img src={acteconomicas}/> <span class="title">Actividades Economicas</span>
+    </div>
+    <div class="body">
+      <div class="itemlist">
+        <template for:each={actividadesEconomicas} for:item="thisItem" for:index="intIndex">
+          <div class={thisItem.cssClasses} key={thisItem.actividadfilter} onclick={handelClick_Actividades} data-actividadfilter={thisItem.actividadfilter}>
+            <img class="itemIcon" src={thisItem.image} />
+            <span>{thisItem.name}</span>
+            <strong>{thisItem.value}</strong>
+          </div>
+        </template>
+      </div>
+    </div>
+  </div>
+</template>

@@ -1,0 +1,29 @@
+<aura:component>
+    <aura:attribute name="citizenWrapper" 	type="CitizenWrapper" 	required="true" />
+    <aura:attribute name="rendered" 		type="Boolean" 			required="true" default="true" />
+    <aura:attribute name="fijo" 		type="String" />
+
+    <aura:handler event="c:PRM_Cuidarnos_Edit_Completed" action="{! c.updateEditInfo }" />
+
+    <div class="{! (v.rendered)?'slds-grid slds-wrap card':'slds-hide'}" >
+        
+        <div class="slds-size_1-of-1 slds-large-size_6-of-12 slds-grid separator">
+            <div class="slds-size_1-of-6 slds-large-size_1-of-12">
+                <img src="{! $Resource.Ecuador + '/img/home.svg'}" class="icon" />
+            </div>
+            <div class="slds-size_5-of-6 slds-large-size_11-of-12">
+                <c:Ecuador_DisplayField label="{!$Label.c.Address}" value="{! v.citizenWrapper.generalInfo.addressSimple }" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13"/>                                                                                        
+            </div>
+        </div>
+        
+        <div class="slds-size_1-of-6 slds-hide_medium">&nbsp;</div>
+        <div class="slds-size_5-of-6 slds-large-size_2-of-12 separator">
+            <c:Ecuador_DisplayField label="{!$Label.c.PostalCode}" value="{! v.citizenWrapper.citizen.MailingPostalCode }" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13"/>                                                                                                    
+        </div>
+        
+        <div class="slds-size_1-of-6 slds-hide_medium">&nbsp;</div>
+        <div class="slds-size_5-of-6 slds-large-size_3-of-12">
+            <c:Ecuador_DisplayField label="Teléfono Domicilio" value="{! v.fijo}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13"/>                                                                                                                
+        </div>
+    </div>
+</aura:component>

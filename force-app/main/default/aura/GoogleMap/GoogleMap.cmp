@@ -1,0 +1,20 @@
+<aura:component access="global" implements="forceCommunity:availableForAllPageTypes,force:appHostable,flexipage:availableForAllPageTypes" >
+    <aura:attribute name="citizenWrapper" 		type="CitizenWrapper" 	 />
+    <aura:attribute name="territoryWrapper" 	type="TerritoryWrapper" 	 />
+    <aura:attribute name="viewExactLocation" 	type="Boolean" 			 />
+    
+    <aura:attribute name="lexHost" 			type="String" default="" />
+    <aura:attribute name="vfHost" 			type="String" default="" />
+	<aura:attribute name="frameHeight" 		type="String" default="300" />
+    <aura:attribute name="centerOffSet"		type="String" default="0" /> 
+    <aura:attribute name="zoomControl"		type="Boolean" default="true" /> 
+        
+    <aura:handler name="init" value="{!this}" action="{!c.initializeComponent}" />
+   
+    <div>
+        <iframe aura:id="vfFrame" src="{! v.vfHost + 'GoogleMap?lexHost=' + v.lexHost + 
+                                       '&amp;' + 'centerOffSet=' + v.centerOffSet +
+                                       '&amp;' + 'zoomControl=' + v.zoomControl}" frameBorder="0" 
+                scrolling="no" style="{!'height:' + v.frameHeight + 'px;'}"/>
+    </div>
+</aura:component>

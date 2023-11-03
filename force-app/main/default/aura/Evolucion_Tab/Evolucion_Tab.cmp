@@ -1,0 +1,36 @@
+<aura:component controller="ContactDetailController">
+    <aura:attribute name="access_territory" type="Boolean"/>
+    <aura:attribute name="access_dashboar" type="Boolean" />
+    <aura:attribute name="access_loaded" type="Boolean" />
+    <aura:handler event="forceCommunity:routeChange" action="{!c.handleRouteChange}"/>
+    <aura:handler name="init" value="{!this}" action="{!c.handleInit}"/>
+    <aura:handler name="render" value="{!this}" action="{!c.handleRender}"/>
+
+    <div class="slds-tabs_default tab-container slds-grid">
+        <ul class="slds-tabs_default__nav tab slds-col slds-size_1-of-1 slds-align_absolute-center" role="tablist">
+            <aura:if isTrue="{!v.access_loaded}">
+            <li aura:id="home" class="slds-tabs_default__item" title="Inicio" role="presentation">
+                <a class="slds-tabs_default__link" onclick="{!c.home}" role="tab" tabindex="0" aria-selected="true" aria-controls="tab-default-1" id="tab-default-1__item">Inicio</a>
+            </li>
+            </aura:if>
+            <aura:if isTrue="{!v.access_loaded}">
+            <li aura:id="citizens" class="slds-tabs_default__item" title="Ciudadanos" role="presentation">
+                <a class="slds-tabs_default__link" onclick="{!c.globalSearch}" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-default-2" id="tab-default-2__item">Ciudadanos</a>
+            </li>
+            </aura:if>
+            <aura:if isTrue="{!v.access_territory}">
+                <li aura:id="territories" class="slds-tabs_default__item" title="Territorios" role="presentation">
+                    <a class="slds-tabs_default__link" onclick="{!c.territories}" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-default-3" id="tab-default-3__item">Territorios</a>
+                </li>
+            </aura:if> 
+            <!-- <li aura:id="change" class="slds-tabs_default__item" title="Cambiar Perfil Usuario" role="presentation">
+                <a class="slds-tabs_default__link" onclick="{!c.changeProfile}" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-default-4" id="tab-default-4__item">Cambiar Perfil Usuario</a>
+            </li> -->
+            <aura:if isTrue="{!v.access_dashboar}">
+                <li aura:id="dashboard" class="slds-tabs_default__item" title="Dashboard" role="presentation">
+                    <a class="slds-tabs_default__link" onclick="{!c.dashboard}" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-default-5" id="tab-default-5__item">Dashboard</a>
+                </li>
+            </aura:if> 
+        </ul>
+    </div>
+</aura:component>

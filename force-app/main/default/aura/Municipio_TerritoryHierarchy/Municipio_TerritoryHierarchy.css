@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed|Heebo:300,400');
+.THIS {
+
+    font-family: 'Roboto Condensed','sans-serif';
+    max-width: 1140px; 
+    margin: auto; 
+
+}
+
+.THIS .card {
+    background-color: #ffffff;
+    will-change: transform;
+    border-radius: 6px;
+    overflow:  hidden;
+    vertical-align: middle;
+    width: 100%;
+    box-shadow: 0px 1px 29px 0px rgba(0, 0, 0, 0.07);
+}
+
+.THIS .pl-15 {
+    padding-left: 15px;
+}
+
+@media only screen and (max-width: 768px) {
+    .THIS .s-pl-15{padding-left: 15px;}
+    .THIS .s-pr-15{padding-right: 15px;}
+}
+
+@media only screen and (min-width: 768px) {
+    .THIS .l-pl-15{padding-left: 15px;}
+    .THIS .l-pl-35{padding-left: 35px;}
+}

@@ -1,0 +1,28 @@
+.THIS {
+}
+
+.THIS .title {
+    margin-left: 0px;
+    margin-top: 0px;
+    font-family : 'Heebo';
+    font-weight: 300;
+    font-size: 15pt;
+    color: #3e4145;
+}
+
+.THIS .dot {
+    height: 7px;
+    width: 7px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-bottom: 1px;
+    margin-right: 5px;
+}
+.THIS .dot.pink {background-color: #da2297;}
+.THIS .dot.blue {background-color: #229fda;}
+
+.THIS .leyend-header{
+    margin-top: -6px;
+    text-transform: uppercase;
+    color: #9ea0a3;
+}

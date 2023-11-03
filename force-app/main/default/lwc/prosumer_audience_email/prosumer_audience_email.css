@@ -1,0 +1,294 @@
+.audienciaPageBody {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-container {
+    margin: 0 0 0 0;
+    width: 45%;
+    min-width: 650px;
+}
+
+.slds-container{
+    border:none;
+}
+
+.main-container .datos-audiencia {
+    background-color: white;
+    padding:40px;
+}
+
+.main-container .datos-audiencia .header{
+    display: flex;
+    justify-content: space-between;
+    position:relative;
+    align-items: center;
+    padding-bottom:15px;
+    border-bottom: 2px solid #e4e4e4;
+}
+
+.main-container .datos-audiencia .header h3{
+    font-family: Roboto;
+    font-weight: 600;
+    font-size: 23px;
+    color: #3c3c3c;
+}
+
+
+.main-container .datos-audiencia .header p{
+    color: #666666;
+    font-size: 14px;
+}
+
+.main-container .datos-audiencia .header .costo{
+    background-color: #f6e6c4;
+    padding: 10px;
+    border-radius: 24px;
+    color: #e99000 !important;
+    font-weight: 600;
+    font-size: 14px;
+    padding-top: 11px;
+    padding-bottom: 12px;
+    padding-right: 14px;
+    margin-left: 5px;
+}
+
+.main-container .datos-audiencia .header .costo img{
+    width: 25px;
+    margin-right: 7px;
+}
+
+.main-container .datos-audiencia .header .atras{
+    position: absolute;
+    left: -63px;
+    top: -6px;
+    width: 45px;
+}
+
+.main-container .datos-audiencia .header .atras:hover{
+    cursor: pointer;
+}
+
+.main-container .datos-audiencia .audience-information{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+
+.main-container .datos-audiencia .audience-information img{
+    width: 55px;
+}
+
+.main-container .datos-audiencia .audience-information div{
+    box-shadow: 0px 2px 10px 1px rgb(0 0 0 / 10%);
+    width: 48%;
+    height: 95px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius:7px;
+}
+
+.main-container .datos-audiencia .audience-information div:nth-of-type(1) span:nth-of-type(1){
+    font-weight: 600;
+    font-size: 34px;
+    color: #3c3c3c;
+}
+
+.main-container .datos-audiencia .audience-information div:nth-of-type(1) span:nth-of-type(2){
+    margin-left: 10px;
+    font-size: 17px;
+    color: #666666;
+}
+
+.main-container .datos-audiencia .audience-information div:nth-of-type(2) p{
+    background-color: #e4e4e4;
+    height: 55px;
+    display: flex;
+    padding: 20px;
+    border-radius: 7px;
+    margin-left: 20px;
+    align-items: center;
+    color:#767676;
+}
+  
+.main-container .datos-audiencia .audience-information div:nth-of-type(2) span:nth-of-type(1){
+    color: #3c3c3c;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.main-container .datos-audiencia .audience-information div:nth-of-type(2) span:nth-of-type(2){
+    margin-top: 5px;
+    margin-left: 10px;
+
+}
+
+.main-container .datos-audiencia .audience-composition .slds-badge {
+    margin: 0.25rem 0.5rem 0.25rem 0;
+}
+
+.main-container .datos-audiencia .audience-composition .audiencias{
+    color: #666666;
+    background-color: #e4e4e4;
+    font-size: 15px;
+    font-weight: 200;
+    padding: 9px 13px;
+    border-radius: 6px;
+}
+
+.main-container .datos-audiencia .audience-composition h3{
+    font-size: 17px;
+    font-family: Roboto;font-size: 23px;
+    color: #3d3d3d;
+    margin-bottom: 10px;
+}
+
+.main-container .inputs-campaña{
+    margin-top:20px !important;
+    background-color: white;
+}
+
+.main-container .inputs-campaña .inputs{}
+
+.main-container .inputs-campaña .preview{
+    max-width: 375px;
+}
+
+.preview{
+    position: absolute;
+    z-index: 1;
+}
+
+.previewDiv{
+    width: 350px;
+    height: 715px;
+    position:relative;
+    align-items: flex-start !important;
+}
+
+.main-container .buttons-container {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top:20px !important;
+}
+
+.main-container .buttons-container .cancelarButton{
+    background-color: #666666;
+    width: 200px;
+   
+    font-size: 17px;
+    font-weight: 500;
+    margin-top: 35px;
+    margin-bottom: 35px;
+    border: none;
+    color: white;
+    padding: 9px 24px;
+}
+
+.main-container .buttons-container .enviarConfirmar{
+    background-color: #e99000;
+    font-size: 17px;
+    font-weight: 500;
+    margin-top: 35px;
+    margin-bottom: 35px;
+    margin-left: 35px;
+    border: none;
+    color: white;
+    padding: 9px 24px;
+    transition: 0.5s;
+}
+
+.main-container .buttons-container button:disabled{
+    background-color:#e4e4e4 !important
+}
+
+.emailContent{
+    z-index: 2;
+    position: absolute;
+    width: 334px;
+
+    margin-top: 145px;
+    background-color: white;
+}
+
+.main-container{
+    width: 830px;
+
+}
+
+.colLeft, .previewDiv{
+    width: 50%;
+    padding: 0% 5% 0% 5%;
+}
+
+/* PROSUMER INPUT */
+
+select{
+    width: 100%;
+    border-radius: 7px;
+    height: 54px;
+    margin-top: 7px;
+    color: rgb(196, 196, 196)
+}
+
+option{
+    width: 100% !important;
+}
+
+option:focus{
+    border-color: #fcb941 !important;
+    box-shadow: 0 0 3px 2px rgba(252, 185, 65, 0.4) !important;
+}
+
+input, select{
+    border: solid 2px #e6e6e6 !important;
+    font-size: 17px !important;
+    padding: 10px 20px !important;
+}
+
+input:focus, select:focus{
+    border-color: #fcb941 !important;
+    box-shadow: 0 0 3px 2px rgba(252, 185, 65, 0.4) !important;
+}
+
+.prosumerSeparador{
+    padding-bottom: 40px;
+    border-bottom: 2px solid #e4e4e4;
+    margin-bottom: 40px;
+}
+
+input::placeholder{
+    color:rgb(196, 196, 196);
+}
+
+.inputs-campaña label{
+    color: #515151cf;
+    margin-bottom: 7px;
+    font-size: 17px;
+}
+
+/* BOTON ENVIAR PRUEBA */
+
+  .enviarPrueba{
+    background-color: #faaa00;
+    width: 100%;
+   
+    font-size: 17px;
+    font-weight: 500;
+    margin-top: 12px;
+    margin-bottom: 6px;
+    margin-right: 5px;
+
+    border: none;
+    color: white;
+    transition: 1s;
+    padding: 9px 24px;
+  }

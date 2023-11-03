@@ -1,0 +1,25 @@
+<aura:component>
+    <aura:attribute name="citizenWrapper" 	type="ContactWrapper" required="true" />
+    <aura:attribute name="rendered" 		type="Boolean" 			required="true" default="true" />
+     
+    <div class="{! (v.rendered)?'card slds-grid slds-wrap slds-m-top_large':'slds-hide'}">
+    	<div class="slds-grid slds-wrap slds-col slds-size_1-of-1 header" >
+            <div class="slds-col slds-size_1-of-1">
+                <img src="{! $Resource.IconsPack1 + '/adfiincome.svg'}" class="icon" />
+                
+                <span class="slds-p-left_large title">{!$Label.c.Ingresos}</span>
+            </div>           
+        </div>
+            
+        <div class="slds-col slds-size_1-of-1 slds-grid slds-wrap" style="padding: 10px 30px;">
+            <c:AdFi_ContactEmployer employer="{!v.citizenWrapper.contact.Employer_1__c}" cuit="{!v.citizenWrapper.cuit1Formated}"  income="{!v.citizenWrapper.salary1Formated}" rendered="{! v.citizenWrapper.contact.CUIT_Empleador_1__c != NULL}" />
+            <c:AdFi_ContactEmployer employer="{!v.citizenWrapper.contact.Employer_2__c}" cuit="{!v.citizenWrapper.cuit2Formated}"  income="{!v.citizenWrapper.salary2Formated}" rendered="{! v.citizenWrapper.contact.CUIT_Empleador_2__c != NULL}" />
+            <c:AdFi_ContactEmployer employer="{!v.citizenWrapper.contact.Employer_3__c}" cuit="{!v.citizenWrapper.cuit3Formated}"  income="{!v.citizenWrapper.salary3Formated}" rendered="{! v.citizenWrapper.contact.CUIT_Empleador_3__c != NULL}" />            
+        </div>
+                
+        <div class="slds-col slds-size_1-of-1 slds-text-align_right" style="padding: 15px 30px 30px 0;">
+            <span class="label">Ingresos totales: </span>
+            <span class="value blue">{! v.citizenWrapper.incomeFormated} {!$Label.c.Currency}</span>
+        </div>
+    </div>
+</aura:component>

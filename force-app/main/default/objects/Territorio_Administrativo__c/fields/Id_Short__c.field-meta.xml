@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Id_Short__c</fullName>
+    <description>Concatenación del Id de 15 dígitos de este registros, con el de los registros padres hasta el nivel 1. Se usa para pasarlo a los filtros del dashboard en la comunidad.
+
+Permite por un lado, armar un filtro que va contra un columna calculada de ciudadanos y por otro, pasa información sobre el nivel del territorio.</description>
+    <externalId>false</externalId>
+    <formula>CASE(
+ Nivel_Administrativo__c ,
+ 1, Id,
+ 2, ParentId__c &amp; &quot;-&quot; &amp; Id,
+ 3, ParentId__r.ParentId__c &amp; &quot;-&quot; &amp; ParentId__c &amp; &quot;-&quot; &amp; Id,
+ 4, ParentId__r.ParentId__r.ParentId__c &amp; &quot;-&quot; &amp; ParentId__r.ParentId__c &amp; &quot;-&quot; &amp; ParentId__c &amp; &quot;-&quot; &amp; Id,
+ &apos;NA&apos;)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Id_Short</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

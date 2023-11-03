@@ -1,0 +1,57 @@
+<apex:page standardController="Campaign" extensions="Typeform_pushpull" title="PULL STATS" id="mypage">
+<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" />
+<style >
+    
+.styled-Button {
+   height: 29px;
+   overflow: hidden;
+   width: 180px;
+   font-family: 'Lato', sans-serif !important;
+   font-size:13px !important;
+   font-weight:bold !important;
+   padding-left: 10px !important;
+   padding-right: 10px !important;
+}
+
+.semi-square {
+   -webkit-border-radius: 5px;
+   -moz-border-radius: 5px;
+   border-radius: 5px;
+}
+
+/* -------------------- Colors: Background */
+.bluebutton    { 
+    background : none !important; 
+    background-color: #3b8ec2 !important ;
+    color:#fff !important;
+    font-family: 'Lato', sans-serif !important;
+    font-size:13px;
+}
+
+.generalfont {
+    font-family: 'Lato', sans-serif !important;
+    font-size:13px !important;
+}
+</style>
+   <apex:form id="myfrm">
+       <apex:commandButton value="PULL Typeform" action="{!parseAllData}" styleClass="styled-Button semi-square bluebutton" rerender="ps" onclick="showProcessStart()" />
+       <br/><br/>  
+       <apex:commandButton value="PULL Campaign (Email Blast)" action="{!parseEmailBlastData}" styleClass="styled-Button semi-square bluebutton" rerender="ps" onclick="showProcessStart()"/>
+       <br/> <br/> 
+       <apex:commandButton value="PULL Campaign Members" action="{!pullcampaignMem}" styleClass="styled-Button semi-square bluebutton" rerender="ps" onclick="showProcessStart()"/>
+       <br/> <br/> 
+       <br/>
+		<!-- {!req_e}<br/><br/>
+       {!CSVContent} <br/> 
+       {!waitMessage}-->
+       <div id="processstatus" class="generalfont"></div>
+       <apex:outputPanel id="ps" styleClass="generalfont">{!waitMessage}</apex:outputPanel>
+   </apex:form>
+   
+   <script type="text/javascript">
+   function showProcessStart(){
+   	document.getElementById('processstatus').innerHTML="Process Started!"
+   }
+   </script>
+   
+</apex:page>

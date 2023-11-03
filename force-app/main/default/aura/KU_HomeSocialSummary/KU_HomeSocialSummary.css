@@ -1,0 +1,48 @@
+.THIS {
+    padding: 25px 0 15px 20px;
+    color: #707276;
+}
+
+.THIS.card {border-radius: 6px; border: solid 1px rgb(183, 210, 229);}
+.THIS > div:first-child {padding-top: 10px;}
+.THIS > div:first-child .summary-title {margin-bottom: 10px;}
+.THIS > div:first-child .summary {font-size: 30pt;}
+.THIS .social-container {padding: 25px 0 0px 40px;}
+.THIS > div:first-child {padding-left: 15px;}
+
+.THIS .icon-small {
+    max-width: 25px;
+    max-height: 25px;
+}
+
+.THIS .summary-title{
+    font-family: 'Roboto Condensed';
+    font-weight: bold;
+    font-size: 10pt;
+    color: #999999;
+}
+
+.THIS .summary {
+    font-family: 'Heebo';
+    font-weight: 300;
+    font-size: 22pt;
+    color: #676666;
+}
+.THIS .icon-text {padding-top: 10px; margin-right: 10px;}
+
+/* Special classes for small devices */
+@media only screen and (max-width: 768px) {
+    .THIS {padding: 25px 15px 30px 15px;}
+    .THIS > div:first-child {justify-content: center; padding: 0;}
+    .THIS .border {border-top: solid 1px #ededed;}
+    .THIS > div > div:last-child {margin-left: 20px}
+}
+
+/* Special classes for big devices */
+@media only screen and (min-width: 768px) {
+    .THIS {padding: 25px 0 30px 20px; color: #707276;}
+    .THIS > div:first-child {padding-top: 10px;}
+    .THIS > div > div {margin-left: -5px;}
+    .THIS .border {border-left: solid 1px #ededed;}
+    .THIS > div > div:last-child {padding-left: 5px}
+}

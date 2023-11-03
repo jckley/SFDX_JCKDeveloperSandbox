@@ -1,0 +1,46 @@
+<aura:component>
+    <aura:attribute name="citizenWrapper" 	type="ContactWrapper" 	required="true" />
+    <aura:attribute name="rendered" 		type="Boolean" 		 	required="true" default="true" />
+    <aura:attribute name="ismobile" 		type="Boolean" 		 	default="{! ( $Browser.formFactor == 'PHONE' ) }" />
+    <aura:attribute name="hasPicture" 		type="Boolean" 			default="{! (v.citizenWrapper.contact.PhotoUrl_legacy__c != null) }" />
+
+    <div class="slds-grid slds-wrap slds-p-around_small card">
+        <div class="{! v.hasPicture?'slds-col slds-size_1-of-1 slds-large-size_2-of-12':'slds-hide'}">
+            <img class="citizenPicture" src="{! v.citizenWrapper.contact.PhotoUrl_legacy__c }" alt="{! v.citizenWrapper.contact.FirstName + ' ' + v.citizenWrapper.contact.Lastname }" />
+        </div>
+        
+        <div class="{! v.hasPicture?'slds-col slds-size_1-of-1 slds-large-size_10-of-12 slds-grid slds-wrap infocontainer':'slds-col slds-size_1-of-1 slds-grid slds-wrap infocontainer'}">
+            <div class="slds-col slds-size_1-of-2 slds-large-size_1-of-3 slds-m-bottom_medium cardIndicator red">
+                <c:ContactDisplayField label="Nombre" value="{! v.citizenWrapper.contact.FirstName}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font17"/>
+            </div>
+            
+            <div class="slds-col slds-size_1-of-2 slds-large-size_2-of-3 slds-m-bottom_medium">
+                <c:ContactDisplayField label="Apellido" value="{! v.citizenWrapper.contact.LastName}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font17"/>
+            </div>
+            
+            <div class="{! v.hasPicture?'slds-col slds-size_1-of-2 slds-large-size_1-of-3 slds-p-bottom_medium cardIndicator gray':'slds-col slds-size_1-of-2 slds-large-size_1-of-6 slds-p-top_medium cardIndicator gray'}">
+                <c:ContactDisplayField label="Sexo" value="{! v.citizenWrapper.gender}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font11"/>
+            </div>
+            
+            <div class="{! v.hasPicture?'slds-col slds-size_1-of-2 slds-large-size_1-of-3 slds-p-bottom_medium':'slds-col slds-size_1-of-2 slds-large-size_1-of-6 slds-p-top_medium'}">
+                <c:ContactDisplayField label="Edad" value="{! v.citizenWrapper.contact.Age_f_x__c}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font11"/>
+            </div>
+            
+            <div class="{! v.hasPicture?'slds-col slds-size_1-of-1 slds-large-size_1-of-3 slds-p-bottom_medium':'slds-col slds-size_1-of-1 slds-large-size_1-of-6 slds-p-top_medium'}">
+                <c:ContactDisplayField label="Fecha de Nacimiento" value="{! v.citizenWrapper.dateFormated}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font11"/>
+            </div>
+            
+            <div class="{! v.hasPicture?'slds-col slds-size_1-of-1 slds-large-size_1-of-3 slds-p-bottom_medium cardIndicator gray':'slds-col slds-size_1-of-1 slds-large-size_1-of-6 slds-p-top_medium'}">
+                <c:ContactDisplayField label="Nacionalidad" value="{! v.citizenWrapper.contact.Nacionalidad__c}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font11"/>
+            </div>
+            
+            <div class="{! v.hasPicture?'slds-col slds-size_1-of-1 slds-large-size_1-of-3 slds-p-bottom_medium':'slds-col slds-size_1-of-1 slds-large-size_1-of-6 slds-p-top_medium'}">
+                <c:ContactDisplayField label="Documento" value="{! v.citizenWrapper.documentFormated}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font11"/>
+            </div>
+            
+            <div class="{! v.hasPicture?'slds-col slds-size_1-of-1 slds-large-size_1-of-3 slds-p-bottom_medium':'slds-col slds-size_1-of-1 slds-large-size_1-of-6 slds-p-top_medium'}">
+                <c:ContactDisplayField label="CUIT / CUIL" value="{! v.citizenWrapper.cuitFormated}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font11"/>
+            </div>
+        </div>
+    </div>
+</aura:component>

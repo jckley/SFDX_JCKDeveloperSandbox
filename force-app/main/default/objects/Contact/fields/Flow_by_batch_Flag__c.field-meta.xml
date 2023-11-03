@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Flow_by_batch_Flag__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Se utiliza el campo como flag. Un batch puede recorrer hasta 50M de registros, y cambiar el valor del flag en cualquier sentido, de true a false, o de false a true.
+
+Luego, para automatizaciones simples, se pueden crear los flows que hagan falta, que se ejecuten cuando el valor del campo cambie.
+
+Batchs name: BatchToTriggerFlowsTest
+
+Flow names:</description>
+    <externalId>false</externalId>
+    <label>Flow by batch - Flag</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

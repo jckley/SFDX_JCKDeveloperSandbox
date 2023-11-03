@@ -1,0 +1,141 @@
+<apex:page showHeader="false" standardStylesheets="false" sidebar="false" applyHtmlTag="false" applyBodyTag="false" docType="html-5.0" controller="TerritoryListController">
+    <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" lang="en">
+        <head>
+            <meta charset="utf-8" />
+            <meta http-equiv="x-ua-compatible" content="ie=edge" />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <!-- Import the Design System style sheet -->
+            <apex:slds />
+        </head>
+        <body>
+            <div class="slds-scope">
+                <div class="slds-page-header slds-m-bottom_x-small">
+                    <div class="slds-grid">
+                        <div class="slds-col slds-has-flexi-truncate">
+                            <nav class="slds-m-bottom--xx-small" role="navigation" aria-label="Breadcrumbs">
+                                <ol class="slds-breadcrumb slds-list--horizontal">
+                                    <li class="slds-breadcrumb__item slds-text-title_caps"><a href="javascript:navigateToList('{!territory.Id}');">{!$ObjectType.Territorio_Administrativo__c.label}</a></li>
+                                    <li class="slds-breadcrumb__item slds-text-title_caps"><a href="javascript:navigateToTerritory('{!territory.ParentId__c}');">{!parentTerritoryName}</a></li>
+                                    <li class="slds-breadcrumb__item slds-text-title_caps"><a href="javascript:navigateToTerritory('{!territory.Id}');">{!territory.Name}</a></li>
+                                </ol>
+                            </nav>
+                            <h1 class="slds-page-header__title slds-truncate">{!$Label.TerritoryHierarchy}</h1>
+                        </div>
+                    </div>
+                </div>
+                <table class="slds-table slds-table_bordered slds-tree slds-table_tree" role="treegrid" aria-readonly="true">
+                    <thead>
+                        <tr class="slds-text-title_caps">
+                            <th class="slds-cell-buffer_left" scope="col">
+                                <div class="slds-grid slds-grid_vertical-align-center">
+                                    <div class="slds-truncate">{!$Label.TerritoryName}</div>
+                                </div>
+                            </th>
+                            <th scope="col">
+                                <div class="slds-truncate">{!$Label.TerritoryType}</div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr id="{!territory.Id}" aria-expanded="true" aria-level="1" aria-posinset="1" aria-setsize="{!childTerritoriesSize}" class="slds-hint-parent" tabindex="0">
+                            <th class="slds-tree__item" data-label="{!$Label.TerritoryName}" scope="row">
+                                <button onclick="javascript:exp_coll_row('{!territory.Id}');" class="slds-button slds-button_icon slds-button_icon slds-button_icon-x-small slds-m-right_x-small {!IF(childTerritoriesSize == 0, 'slds-hidden', '')}" aria-hidden="true" tabindex="-1">
+                                    <svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+                                        <use xlink:href="{!URLFOR($Asset.SLDS, 'assets/icons/utility-sprite/svg/symbols.svg#chevronright')}"></use>
+                                    </svg>
+                                </button>
+                                <div class="slds-truncate"><a href="javascript:navigateToTerritory('{!territory.Id}');" tabindex="-1">{!territory.Name}</a></div>
+                            </th>
+                            <td data-label="{!$Label.TerritoryType}" role="gridcell">
+                                <div class="slds-truncate">{!$Label.AdministrativeLevel} {!territory.Nivel_Administrativo__c}</div>
+                            </td>
+                        </tr>
+                        <apex:repeat value="{!childTerritories}" var="ter" id="first-childs">
+                            <tr id="{!territory.Id}-{!ter.Id}" aria-expanded="false" aria-level="2" class="slds-hint-parent">
+                                <th class="slds-tree__item" data-label="{!$Label.TerritoryName}" scope="row">
+                                    <button onclick="javascript:exp_coll_row('{!territory.Id}-{!ter.Id}');" class="slds-button slds-button_icon slds-button_icon slds-button_icon-x-small slds-m-right_x-small {!IF(ter.Nivel_Administrativo__c > 3, 'slds-hidden', '')}" aria-hidden="true" tabindex="-1">
+                                        <svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">
+                                            <use xlink:href="{!URLFOR($Asset.SLDS, 'assets/icons/utility-sprite/svg/symbols.svg#chevronright')}"></use>
+                                        </svg>
+                                    </button>
+                                    <div class="slds-truncate"><a href="javascript:navigateToTerritory('{!ter.Id}');" tabindex="-1">{!ter.Name}</a></div>
+                                </th>
+                                <td data-label="{!$Label.TerritoryType}" role="gridcell">
+                                    <div class="slds-truncate">{!$Label.AdministrativeLevel} {!ter.Nivel_Administrativo__c}</div>
+                                </td>
+                            </tr>
+                        </apex:repeat>
+                    </tbody>
+                </table>
+            </div>
+        </body>
+    </html>
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous"></script>
+    <script src="/soap/ajax/15.0/connection.js" type="text/javascript"></script>
+    <script src="/soap/ajax/15.0/apex.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            sforce.connection.sessionId = '{!$Api.Session_ID}';
+        });
+    
+        function exp_coll_row(Id) {
+            var level = $('#' + Id).attr('aria-level')*1; //this field represents the tree level not the administrative level
+            if($('#' + Id).attr('aria-expanded') == 'true'){
+                $('#' + Id).attr('aria-expanded','false');
+                $("[id*='" + Id + "-']").hide();
+            }else{
+                if(level > 1 && $('[id*="' + Id.split('-')[Id.split('-').length - 1] + '-"]').length == 0 ){
+                    var childTerritories = sforce.apex.execute("TerritoryListController","getChildTerritories",{territoryId:Id});
+                    childTerritories = JSON.parse(childTerritories);
+                    if(childTerritories.length == 0){
+                        $('#' + Id +' button').addClass('slds-hidden');
+                    }else{
+                        createChildTerritoriesHTML(childTerritories, Id, level);
+                    }
+                }
+                $('#' + Id).attr('aria-expanded','true');
+                $("[id*=" + Id + "-]").show();
+            }
+        }
+    
+        function navigateToTerritory(Id){
+            if(typeof sforce != 'undefined' && document.referrer.indexOf(".lightning.force.com") > 0){
+                sforce.one.navigateToURL('/apex/TerritoryDetailComponents?id=' + Id);
+            }else{
+                window.location.href = '/apex/TerritoryDetailComponents?id=' + Id;
+            }
+        }
+    
+        function navigateToList(Id){
+            if(typeof sforce != 'undefined' && document.referrer.indexOf(".lightning.force.com") > 0){
+                sforce.one.navigateToURL('lightning/o/Territorio_Administrativo__c/list');
+            }else{
+                window.location.href = '/' + Id.substring(0,3) + '/o';
+            }
+        }
+    
+        function createChildTerritoriesHTML(childTerritories, parentId, treeLevel){
+            var htmlGrandChilds = '';
+            childTerritories.forEach(function(ter) {
+                htmlGrandChilds +='<tr id="' + parentId + '-' + ter.Id + '" aria-expanded="false" aria-level="' + (treeLevel + 1) + '" class="slds-hint-parent">';
+                htmlGrandChilds +='  <th class="slds-tree__item" data-label="{!$Label.TerritoryName}" scope="row">';
+                htmlGrandChilds +='     <button onclick="javascript:exp_coll_row(' + "'" + parentId + '-' + ter.Id + "'" + ');" class="slds-button slds-button_icon slds-button_icon slds-button_icon-x-small slds-m-right_x-small ';
+                htmlGrandChilds += ter.Nivel_Administrativo__c < 4 ? '" aria-hidden="true" tabindex="-1">' : 'slds-hidden" aria-hidden="true" tabindex="-1">';
+                htmlGrandChilds +='         <svg class="slds-button__icon slds-button__icon_small" aria-hidden="true">';
+                htmlGrandChilds +='             <use xlink:href="{!URLFOR($Asset.SLDS, 'assets/icons/utility-sprite/svg/symbols.svg#chevronright')}"></use>';
+                htmlGrandChilds +='         </svg>';
+                htmlGrandChilds +='     </button>';
+                htmlGrandChilds +='     <div class="slds-truncate"><a href="javascript:navigateToTerritory(' + "'" + ter.Id + "'" + ');" tabindex="-1">' + ter.Name + '</a></div>';
+                htmlGrandChilds +='   </th>';
+                htmlGrandChilds +='   <td data-label="{!$Label.TerritoryType}" role="gridcell">';
+                htmlGrandChilds +='     <div class="slds-truncate">{!$Label.AdministrativeLevel} ' +  ter.Nivel_Administrativo__c + '</div>';
+                htmlGrandChilds +='   </td>';
+                htmlGrandChilds +='</tr>';
+            });
+            $(htmlGrandChilds).insertAfter('#' + parentId);
+        }
+    </script>
+</apex:page>

@@ -1,0 +1,20 @@
+<template>
+    <div class="cardHolder">
+        <div class="photoHolder">
+        <template if:true={citizenHasPhoto}>
+            <img src={photoValue} />
+        </template>
+        <template if:false={citizenHasPhoto}>
+            <div>{photoValue}</div>
+        </template>
+        </div>
+        <div class="infoHolder">
+            <div class="name">
+                {param_citizen_record.Name}
+            </div>
+            <div class="location">
+                {param_citizen_record.Level1Name__c} - {param_citizen_record.Level2Name__c}
+            </div>
+        </div>
+    </div>
+</template>

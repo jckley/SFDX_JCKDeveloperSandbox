@@ -1,0 +1,53 @@
+/*
+.THIS {
+    margin-top : 25px;
+    height: 100%;
+}
+*/
+
+.THIS.Cuidarnos {
+    font-family : 'Montserrat';
+    height: 100%;
+    border-top-left-radius: 0% !important;
+    border-top-right-radius: 0% !important;
+}
+
+@media only screen and (max-device-width: 576px) { 
+   .THIS.Prosumia .social-border-bottom {
+        border-bottom: solid 1px #EF3E48;
+        margin-bottom: 15px;
+    }
+
+    .THIS.Argentina .social-border-bottom {
+        border-bottom: solid 1px #EF3E48;
+        margin-bottom: 15px;
+    }
+
+    .THIS.Cuidarnos .social-border-bottom {
+        border-bottom: solid 1px #e8e8e8;
+        margin-bottom: 15px;
+    }
+}
+
+@media only screen and (min-device-width: 768px) {
+   .THIS.Prosumia .social-border-left {
+        border-left: solid 1px #EF3E48;
+        height: 75px;
+    }
+    .THIS.THIS.Argentina .social-border-left {
+        border-left: solid 1px #EF3E48;
+        height: 75px;
+    }
+
+    .THIS.THIS.Cuidarnos .social-border-left {
+        border-left: solid 1px #e8e8e8;
+        height: 100%;
+    }
+}
+
+.THIS .icon {
+    max-width: 25px;
+    max-height: 25px;
+    vertical-align: middle;
+    border-style: none;
+}

@@ -1,0 +1,74 @@
+<template>
+    <div class="prTabSet">
+        <lightning-tabset>
+            <lightning-tab label="Email Builder">
+                <div class="prEmailBuilderTabWrapper">
+                    <div class="prSection prTemplateSelector">
+                        <c-prosumer_emailbuilder_template 
+                            typename="Inserte una Imagen" 
+                            typekey="imagen"
+                            ontemplateclick={handleTemplateClick}>
+                        </c-prosumer_emailbuilder_template>
+                        <c-prosumer_emailbuilder_template 
+                            typename="Inserte un Texto" 
+                            typekey="texto"
+                            ontemplateclick={handleTemplateClick}>
+                        </c-prosumer_emailbuilder_template>
+                        <c-prosumer_emailbuilder_template
+                            typename="Inserte un Boton"
+                            typekey="boton"
+                            ontemplateclick={handleTemplateClick}>
+                        </c-prosumer_emailbuilder_template>
+                    </div>
+                    <div class="prSection prPlaceholders">
+                        <template  for:each={listOfComponents} for:item="component">
+                            <c-prosumer_emailbuilder_placeholder
+                                key={component.key}
+                                placeholderobject={component}
+                                onpreviewclick={handlePreviewClick}
+                                ondeleteclick={handleDeleteClick}
+                                ></c-prosumer_emailbuilder_placeholder>
+                        </template>
+                    </div>
+                    <div class="prSection prProperties">
+                        <c-prosumer_emailbuilder_propertiesform listofcomponents={listOfComponents} onchangeproperty={handleChangeProperty}></c-prosumer_emailbuilder_propertiesform>
+                    </div>
+                    <div class="prSection prNav">
+                        <lightning-input type="text" label="Nombre del mail" onchange={handleNombreChange} value={nombreDelMail}></lightning-input>
+                        <lightning-button 
+                                label="Guardar"
+                                title="Guardar"
+                                onclick={handleGuardar}>
+                        </lightning-button>   
+                    </div>
+                    <div class="prSection prPruebaEmail">
+                        <div class="prInputsList">
+                            <lightning-input type="text" label="Email destinatario" onchange={handleMailDestinatarioChange}></lightning-input>
+                            <lightning-input type="text" label="Nombre remitente" onchange={handleNombreRemitenteChange}></lightning-input>
+                            <lightning-input type="text" label="Email remitente: Nombre" onchange={handleNombreMailRemitenteChange}></lightning-input>
+                            <lightning-combobox
+                                    name="Email remitente: Dominio"
+                                    label="Email remitente: Dominio"
+                                    placeholder="Seleccione un dominio aprobado"
+                                    options={opcionesDominios}
+                                    onchange={handleDominioMailRemitenteChange}></lightning-combobox>
+                        </div>
+                        <lightning-button 
+                            label="Enviar correo de prueba"
+                            title="Enviar correo de prueba"
+                            onclick={handleEnviarPrueba}>
+                        </lightning-button>
+                    </div>
+                    <c-prosumer-toast></c-prosumer-toast>
+                </div>
+            </lightning-tab>
+            <lightning-tab label="Preview" onactive={handleActivePreview}>
+                <div class="prPreviewTabWrapper">
+                    <div class="prPreview">
+                        <c-prosumer_emailbuilder_preview listofcomponents={listOfComponents}></c-prosumer_emailbuilder_preview>
+                    </div>
+                </div>
+            </lightning-tab>
+        </lightning-tabset>
+    </div>
+</template>

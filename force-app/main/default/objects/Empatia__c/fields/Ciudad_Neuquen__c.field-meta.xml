@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Ciudad_Neuquen__c</fullName>
+    <externalId>false</externalId>
+    <label>Ciudad Neuquen</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Aluminé</fullName>
+                <default>false</default>
+                <label>Aluminé</label>
+            </value>
+            <value>
+                <fullName>Andacollo</fullName>
+                <default>false</default>
+                <label>Andacollo</label>
+            </value>
+            <value>
+                <fullName>Añelo</fullName>
+                <default>false</default>
+                <label>Añelo</label>
+            </value>
+            <value>
+                <fullName>Bajada del Agrio</fullName>
+                <default>false</default>
+                <label>Bajada del Agrio</label>
+            </value>
+            <value>
+                <fullName>Barrancas</fullName>
+                <default>false</default>
+                <label>Barrancas</label>
+            </value>
+            <value>
+                <fullName>Buta Ranquil</fullName>
+                <default>false</default>
+                <label>Buta Ranquil</label>
+            </value>
+            <value>
+                <fullName>Caviahue - Copahue</fullName>
+                <default>false</default>
+                <label>Caviahue - Copahue</label>
+            </value>
+            <value>
+                <fullName>Centenario</fullName>
+                <default>false</default>
+                <label>Centenario</label>
+            </value>
+            <value>
+                <fullName>Chos Malal</fullName>
+                <default>false</default>
+                <label>Chos Malal</label>
+            </value>
+            <value>
+                <fullName>Cutral - Có</fullName>
+                <default>false</default>
+                <label>Cutral - Có</label>
+            </value>
+            <value>
+                <fullName>El Cholar</fullName>
+                <default>false</default>
+                <label>El Cholar</label>
+            </value>
+            <value>
+                <fullName>El Huecú</fullName>
+                <default>false</default>
+                <label>El Huecú</label>
+            </value>
+            <value>
+                <fullName>Huigan Có</fullName>
+                <default>false</default>
+                <label>Huigan Có</label>
+            </value>
+            <value>
+                <fullName>Junín de los Andes</fullName>
+                <default>false</default>
+                <label>Junín de los Andes</label>
+            </value>
+            <value>
+                <fullName>Las Coloradas</fullName>
+                <default>false</default>
+                <label>Las Coloradas</label>
+            </value>
+            <value>
+                <fullName>Las Lajas</fullName>
+                <default>false</default>
+                <label>Las Lajas</label>
+            </value>
+            <value>
+                <fullName>Las Ovejas</fullName>
+                <default>false</default>
+                <label>Las Ovejas</label>
+            </value>
+            <value>
+                <fullName>Loncopué</fullName>
+                <default>false</default>
+                <label>Loncopué</label>
+            </value>
+            <value>
+                <fullName>Los Miches</fullName>
+                <default>false</default>
+                <label>Los Miches</label>
+            </value>
+            <value>
+                <fullName>Mariano Moreno</fullName>
+                <default>false</default>
+                <label>Mariano Moreno</label>
+            </value>
+            <value>
+                <fullName>Neuquén</fullName>
+                <default>false</default>
+                <label>Neuquén</label>
+            </value>
+            <value>
+                <fullName>Picún Leufú</fullName>
+                <default>false</default>
+                <label>Picún Leufú</label>
+            </value>
+            <value>
+                <fullName>Piedra del Águila</fullName>
+                <default>false</default>
+                <label>Piedra del Águila</label>
+            </value>
+            <value>
+                <fullName>Plaza Huincul</fullName>
+                <default>false</default>
+                <label>Plaza Huincul</label>
+            </value>
+            <value>
+                <fullName>Plottier</fullName>
+                <default>false</default>
+                <label>Plottier</label>
+            </value>
+            <value>
+                <fullName>Rincón de los Sauces</fullName>
+                <default>false</default>
+                <label>Rincón de los Sauces</label>
+            </value>
+            <value>
+                <fullName>San Martín de los Andes</fullName>
+                <default>false</default>
+                <label>San Martín de los Andes</label>
+            </value>
+            <value>
+                <fullName>San Patricio del Chañar</fullName>
+                <default>false</default>
+                <label>San Patricio del Chañar</label>
+            </value>
+            <value>
+                <fullName>Senillosa</fullName>
+                <default>false</default>
+                <label>Senillosa</label>
+            </value>
+            <value>
+                <fullName>Taquimilán</fullName>
+                <default>false</default>
+                <label>Taquimilán</label>
+            </value>
+            <value>
+                <fullName>Tricao Malal</fullName>
+                <default>false</default>
+                <label>Tricao Malal</label>
+            </value>
+            <value>
+                <fullName>Villa El Chocón</fullName>
+                <default>false</default>
+                <label>Villa El Chocón</label>
+            </value>
+            <value>
+                <fullName>Villa La Angostura</fullName>
+                <default>false</default>
+                <label>Villa La Angostura</label>
+            </value>
+            <value>
+                <fullName>Villa Pehuenia</fullName>
+                <default>false</default>
+                <label>Villa Pehuenia</label>
+            </value>
+            <value>
+                <fullName>Vista Alegre</fullName>
+                <default>false</default>
+                <label>Vista Alegre</label>
+            </value>
+            <value>
+                <fullName>Zapala</fullName>
+                <default>false</default>
+                <label>Zapala</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

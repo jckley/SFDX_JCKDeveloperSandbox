@@ -1,0 +1,26 @@
+.THIS {
+    margin-top : 25px;
+    padding: 35px;
+}
+
+.THIS .icon {
+    max-width: 35px;
+    max-height: 35px;
+    vertical-align: middle;
+    border-style: none;
+    margin-top: 8px;
+}
+
+/* Special classes for small devices */
+@media only screen and (max-width: 768px) {
+    .THIS .separator { 
+        padding-bottom: 10px;
+    }
+}
+
+/* Special classes for big devices */
+@media only screen and (min-width: 768px) {
+    .THIS .l-mr-15{
+        margin-right: 15px
+    }
+}

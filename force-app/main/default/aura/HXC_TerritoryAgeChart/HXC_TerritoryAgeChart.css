@@ -1,0 +1,41 @@
+.THIS {
+    color: #707276;
+}
+
+.THIS.subattribute-header {
+    background-color: #f8f9fc; 
+    margin-left: 0px;
+    margin-top: 0px;
+    height: 80px;
+    padding-top: 25px;
+    padding-left: 30px;
+}
+
+.THIS .icon-header {
+    width: 15px;
+    height: 15px;
+    margin-bottom: 5px;
+}
+
+.THIS .header-text {
+    font-family: 'Heebo';
+    font-weight: 300;
+    font-size: 14pt;
+    margin-left: 10px;
+}
+
+.THIS .dot {
+    height: 7px;
+    width: 7px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-bottom: 1px;
+    margin-right: 5px;
+}
+.THIS .dot.pink {background-color: #da2297;}
+.THIS .dot.blue {background-color: #229fda;}
+
+.THIS .leyend-header{
+    text-transform: uppercase;
+    color: #9ea0a3;
+}

@@ -1,0 +1,45 @@
+.THIS {
+    padding: 25px 0 30px 20px;
+    color: #707276;
+}
+
+.THIS .social-container {
+    padding: 25px 0 0px 15px;
+}
+
+.THIS .icon-small {
+    max-width: 25px;
+    max-height: 25px;
+}
+
+.THIS .summary-title{
+    font-family: 'Roboto Condensed';
+    font-weight: bold;
+    font-size: 10pt;
+    color: #999999;
+}
+
+.THIS .summary {
+    font-family: 'Heebo';
+    font-weight: 300;
+    font-size: 22pt;
+    color: #333333;
+}
+
+.THIS .icon-text {padding-top: 10px;}
+
+/* Special classes for small devices */
+@media only screen and (max-width: 768px) {
+    .THIS {padding: 0 15px; margin-top: 25px;}
+    .THIS .border {border-top: solid 1px #ededed;}
+    .THIS .social-container {padding-bottom: 15px;}
+    .THIS > div > div:last-child {margin-left: 20px}
+}
+
+/* Special classes for big devices */
+@media only screen and (min-width: 768px) {
+    .THIS {margin-top: 220px;}
+    .THIS .border {border-left: solid 1px #ededed;}
+    .THIS > div > div {margin-left: -5px;}
+    .THIS > div > div:last-child {padding-left: 5px}
+}

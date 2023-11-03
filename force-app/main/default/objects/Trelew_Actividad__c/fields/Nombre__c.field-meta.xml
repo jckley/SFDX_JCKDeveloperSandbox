@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Nombre__c</fullName>
+    <externalId>false</externalId>
+    <formula>HYPERLINK(&apos;/lightning/r/Trelew_Actividad__c/&apos; + Id + &apos;/view&apos;,Citizen_SFID__r.FirstName + &apos; &apos; + Citizen_SFID__r.MiddleName + &apos; &apos; +Citizen_SFID__r.LastName)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Contacto Actividad</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

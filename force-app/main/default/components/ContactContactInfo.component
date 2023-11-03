@@ -1,0 +1,83 @@
+<apex:component >    
+    <style>        
+        .toggle-box {
+        	width: 100%;
+        	height: 50px;
+        	display: flex;
+            align-items: center;
+            justify-content: center;
+        	font-size: 13pt;
+        }
+        .toggle-box.active{background-color: #EdEdEd; color: #f3bb49;}
+        .toggle-box.inactive{color: #D1D1D1; filter: grayscale(100%);}
+        
+        .iconimage {
+        	width: 43px; 
+        	margin-top: 7px;
+        }
+        
+        .emaildata {
+	        min-width: 40%;
+        }
+        
+        .mobiledata {
+	        min-width: 57%;
+        }
+        
+    </style>
+    <apex:attribute name="citizenwrapper" type="CitizenWrapper" required="true" description="Contact General Info" />  
+    <apex:attribute name="editionMode" type="Boolean" 	required="false" default="false" description="Flag for component edition"/>
+  
+    <div class="row contact-data">
+        <div class="col-12 pl-0 col-lg card card-left-border orange emaildata">
+            <div class="row card-cont">
+                <div class="col-2 col-md-1 col-lg-2">
+                    <div class="iconimage">
+                        <apex:image styleClass="icon-test" value="{!URLFOR($Resource.IconsPack1, 'mailps.svg')}"/>
+                    </div>
+                </div>
+                <div class="col-10 col-md-11 col-lg-10">                    
+                    <c:ContactDisplayField rendered="{!(!editionMode) || (!$ObjectType.Contact.Fields.Email.updateable)}" label="{!$ObjectType.Contact.Fields.Email.Label}" value="{!citizenwrapper.citizen.Email}" nullvalue="{!$Label.NoInformation}" showDetail="{! $Permission.Contact_View_Contact_Info_Details}" classLabel="label uppercase" classValue="data-value-yellow f16"/>
+                    <c:ContactEditField rendered="{!editionMode && $ObjectType.Contact.Fields.Email.updateable}" label="{!$ObjectType.Contact.Fields.Email.Label}" value="{!citizenwrapper.citizen.Email}" classLabel="label uppercase"/>
+                </div>
+            </div>
+        </div>
+        <div class="blank-space" style="width: 3%">
+            
+        </div>
+        
+        <div class="col-12 pl-0 mt-4 col-lg mt-lg-0 card mobiledata">
+            <div class="row card-cont">
+                <div class="col-12 col-md-5">
+                    <div class="row">
+                        <div class="col-2">
+                            <div class="iconimage">
+                                <apex:image styleClass="icon-test" value="{!URLFOR($Resource.IconsPack1, 'cellphoneps.svg')}"/>
+                            </div>
+                        </div>
+                        <div class="col-8 ml-lg-3">
+                            <c:ContactDisplayField rendered="{!(!editionMode) || (!$ObjectType.Contact.Fields.MobilePhone.updateable)}" label="{!$ObjectType.Contact.Fields.MobilePhone.Label}" value="{!citizenwrapper.citizen.MobilePhone}" nullvalue="{!$Label.NoInformation}" showDetail="{! $Permission.Contact_View_Contact_Info_Details}" classLabel="label uppercase" classValue="data-value-yellow f16"/>
+                            <c:ContactEditField rendered="{!editionMode && $ObjectType.Contact.Fields.MobilePhone.updateable}" label="{!$ObjectType.Contact.Fields.MobilePhone.Label}" value="{!citizenwrapper.citizen.MobilePhone}" classLabel="label uppercase"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col mt-4 mt-sm-0 pr-0">
+                    <div style="display: {!IF((!editionMode || !$ObjectType.Contact.Fields.Whatsapp__c.updateable),'','none')}" class="border rounded toggle-box {!IF(citizenwrapper.citizen.Whatsapp__c, 'active', 'inactive')}">
+                        <apex:image styleClass="icon-test-small" value="{!URLFOR($Resource.IconsPack1, 'whatsappps.svg')}"/>
+                        <span style="margin-left: 5px;">WhatsApp</span>
+                    </div>
+                    
+                    <c:ContactEditField rendered="{!editionMode && $ObjectType.Contact.Fields.Whatsapp__c.updateable}" label="{!$ObjectType.Contact.Fields.Whatsapp__c.Label}" valueBoolean="{!citizenwrapper.citizen.Whatsapp__c}" classLabel="label uppercase" inputType="checkbox"/>
+                </div>
+                
+                <div class="col mt-4 mt-sm-0 mr-sm-4 pr-0">
+                    <div style="display: {!IF((!editionMode || !$ObjectType.Contact.Fields.Telegram__c.updateable),'','none')}" class="border rounded toggle-box {!IF(citizenwrapper.citizen.Telegram__c, 'active', 'inactive')}">
+                        <apex:image styleClass="icon-test-small" value="{!URLFOR($Resource.IconsPack1, 'telegramps.svg')}"/>
+                        <span style="margin-left: 5px;">Telegram</span>
+                    </div>
+                    <c:ContactEditField rendered="{!editionMode && $ObjectType.Contact.Fields.Telegram__c.updateable}" label="{!$ObjectType.Contact.Fields.Telegram__c.Label}" valueBoolean="{!citizenwrapper.citizen.Telegram__c}" classLabel="label uppercase" inputType="checkbox"/>
+                </div>
+            </div>            
+        </div>
+    </div>
+</apex:component>

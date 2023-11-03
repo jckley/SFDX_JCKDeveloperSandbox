@@ -1,0 +1,73 @@
+<apex:component >    
+    <style>        
+        @media only screen and (max-device-width: 576px) { 
+            #street-view {
+                height: 100%;
+                min-height: 150px;
+                background-color: grey;
+                width: 100%;
+            }
+        
+            #map-head {
+                height: 100%;
+                min-height: 150px;
+                background-color: grey;
+                width: 100%;
+            }
+        }
+        
+        @media only screen and (min-device-width: 576px) {
+        	#street-view {
+                height: 100%;
+                min-height: 300px;
+                background-color: grey;
+                width: 100%;
+            }
+        
+            #map-head {
+                height: 100%;
+                min-height: 300px;
+                background-color: grey;
+                width: 100%;
+            }
+        }
+        
+        .image-icon {
+        	width: 43px; 
+        	margin-top: 7px;
+        }
+
+        .separator-margin{margin-bottom: 20px;}
+        
+       
+    </style>
+    
+    <apex:attribute name="citizenwrapper" 	type="CitizenWrapper" 	required="true" description="Contact General Info" />  
+    
+    <div class="row contact-data">
+        <div class="card card-left-border orange">
+            <div class="row card-cont" style="margin-bottom: 10px;">
+                <div class="col-10 col-md-7 col-lg-5 pl-lg-2 separator-margin" style="display: {!IF((!$ObjectType.Contact.Fields.MailingStreet.updateable) && (!$ObjectType.Contact.Fields.MailingStreet.updateable) && (!$ObjectType.Contact.Fields.MailingStreet.updateable),'','none')}">
+                    <c:ContactDisplayField rendered="{!(!$ObjectType.Contact.Fields.MailingStreet.updateable)}" label="{!$Label.Address}" value="{!citizenwrapper.generalInfo.AddressSimple 	}" nullvalue="{!$Label.NoInformation}" classLabel="label uppercase" classValue="data-value-yellow f16" />
+                </div>
+                <div class="mb-4 col-lg-4" style="display: {!IF($ObjectType.Contact.Fields.MailingStreet.updateable,'','none')}">
+                    <c:ContactEditField rendered="{!$ObjectType.Contact.Fields.MailingStreet.updateable}" label="{!$ObjectType.Contact.Fields.MailingStreet.Label}" value="{!citizenwrapper.citizen.MailingStreet}" classLabel="label uppercase"/>
+                </div>
+                <div class="mb-4 col-lg-4" style="display: {!IF($ObjectType.Contact.Fields.MailingNumber__c.updateable,'','none')}">
+                    <c:ContactEditField rendered="{!$ObjectType.Contact.Fields.MailingNumber__c.updateable}" label="{!$ObjectType.Contact.Fields.MailingNumber__c.Label}" value="{!citizenwrapper.citizen.MailingNumber__c}" classLabel="label uppercase"/>
+                </div>
+                <div class="mb-4 col-lg-4" style="display: {!IF($ObjectType.Contact.Fields.MailingAppartment__c.updateable,'','none')}">
+                    <c:ContactEditField rendered="{!$ObjectType.Contact.Fields.MailingAppartment__c.updateable}" label="{!$ObjectType.Contact.Fields.MailingAppartment__c.Label}" value="{!citizenwrapper.citizen.MailingAppartment__c}" classLabel="label uppercase"/>
+                </div>
+                <div class="col-10 col-md-4 col-lg-4 separator-margin">
+                    <c:ContactDisplayField rendered="{!(!$ObjectType.Contact.Fields.MailingPostalCode.updateable)}" label="{!$Label.PostalCode}" value="{!citizenwrapper.citizen.MailingPostalCode}" nullvalue="{!$Label.NoInformation}" classLabel="label uppercase" classValue="data-value-yellow f16"/>
+                    <c:ContactEditField rendered="{!$ObjectType.Contact.Fields.MailingPostalCode.updateable}" label="{!$ObjectType.Contact.Fields.MailingPostalCode.Label}" value="{!citizenwrapper.citizen.MailingPostalCode}" classLabel="label uppercase"/>
+                </div> 
+                <div class="col-10 col-md-3 pl-lg-2">
+                    <c:ContactDisplayField rendered="{!(!$ObjectType.Contact.Fields.HomePhone.updateable)}" label="{!$ObjectType.Contact.Fields.HomePhone.Label}" value="{!citizenwrapper.citizen.HomePhone}" nullvalue="{!$Label.NoInformation}" showDetail="{! $Permission.Contact_View_Contact_Info_Details}" classLabel="label uppercase" classValue="data-value-yellow f16"/>                            
+                    <c:ContactEditField rendered="{!$ObjectType.Contact.Fields.HomePhone.updateable}" label="{!$ObjectType.Contact.Fields.HomePhone.Label}" value="{!citizenwrapper.citizen.HomePhone}" classLabel="label uppercase"/>
+                </div>                      
+            </div>
+        </div>
+    </div>
+</apex:component>

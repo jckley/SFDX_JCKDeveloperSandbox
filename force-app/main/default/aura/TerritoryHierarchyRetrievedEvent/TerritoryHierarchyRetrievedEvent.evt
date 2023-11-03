@@ -1,0 +1,4 @@
+<aura:event type="APPLICATION" description="Evento que se dispara cuando los territorios para un level son devueltos" >
+    <aura:attribute name="level" 				type="Integer" />
+    <aura:attribute name="territories" 			type="RemotingMessageHelper.Territory[]" />
+</aura:event>

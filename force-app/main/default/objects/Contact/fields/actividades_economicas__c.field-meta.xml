@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>actividades_economicas__c</fullName>
+    <externalId>false</externalId>
+    <label>Actividades Económicas</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Arte y recreación</fullName>
+                <default>false</default>
+                <label>Arte y recreación</label>
+            </value>
+            <value>
+                <fullName>Comercio</fullName>
+                <default>false</default>
+                <label>Comercio</label>
+            </value>
+            <value>
+                <fullName>Comunicación e información</fullName>
+                <default>false</default>
+                <label>Comunicación e información</label>
+            </value>
+            <value>
+                <fullName>Construcción</fullName>
+                <default>false</default>
+                <label>Construcción</label>
+            </value>
+            <value>
+                <fullName>Educación</fullName>
+                <default>false</default>
+                <label>Educación</label>
+            </value>
+            <value>
+                <fullName>Empleo público</fullName>
+                <default>false</default>
+                <label>Empleo público</label>
+            </value>
+            <value>
+                <fullName>Extractivismo</fullName>
+                <default>false</default>
+                <label>Extractivismo</label>
+            </value>
+            <value>
+                <fullName>Finanzas y aseguradoras</fullName>
+                <default>false</default>
+                <label>Finanzas y aseguradoras</label>
+            </value>
+            <value>
+                <fullName>Fuerzas de seguridad</fullName>
+                <default>false</default>
+                <label>Fuerzas de seguridad</label>
+            </value>
+            <value>
+                <fullName>Gestión de desechos</fullName>
+                <default>false</default>
+                <label>Gestión de desechos</label>
+            </value>
+            <value>
+                <fullName>Industrias manufactureras</fullName>
+                <default>false</default>
+                <label>Industrias manufactureras</label>
+            </value>
+            <value>
+                <fullName>Inmobiliarias</fullName>
+                <default>false</default>
+                <label>Inmobiliarias</label>
+            </value>
+            <value>
+                <fullName>Justicia</fullName>
+                <default>false</default>
+                <label>Justicia</label>
+            </value>
+            <value>
+                <fullName>Reparaciones y oficios</fullName>
+                <default>false</default>
+                <label>Reparaciones y oficios</label>
+            </value>
+            <value>
+                <fullName>Reparaciones y suministro de servicios básicos</fullName>
+                <default>false</default>
+                <label>Reparaciones y suministro de servicios básicos</label>
+            </value>
+            <value>
+                <fullName>Rural</fullName>
+                <default>false</default>
+                <label>Rural</label>
+            </value>
+            <value>
+                <fullName>Salud</fullName>
+                <default>false</default>
+                <label>Salud</label>
+            </value>
+            <value>
+                <fullName>Servicios profesionales</fullName>
+                <default>false</default>
+                <label>Servicios profesionales</label>
+            </value>
+            <value>
+                <fullName>Transporte</fullName>
+                <default>false</default>
+                <label>Transporte</label>
+            </value>
+            <value>
+                <fullName>Turismo</fullName>
+                <default>false</default>
+                <label>Turismo</label>
+            </value>
+            <value>
+                <fullName>Hotelería y gastronomía</fullName>
+                <default>false</default>
+                <label>Hotelería y gastronomía</label>
+            </value>
+            <value>
+                <fullName>Gas y electricidad</fullName>
+                <default>false</default>
+                <label>Gas y electricidad</label>
+            </value>
+            <value>
+                <fullName>Tecnología</fullName>
+                <default>false</default>
+                <label>Tecnología</label>
+            </value>
+            <value>
+                <fullName>Suministro de agua</fullName>
+                <default>false</default>
+                <label>Suministro de agua</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

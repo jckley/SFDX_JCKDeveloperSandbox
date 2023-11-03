@@ -1,0 +1,82 @@
+.box { box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1); background: #FFF; padding: 15px 15px 0; border-radius: 4px; ;margin-bottom: 30px;}
+
+section.vaccines .box { display: flex; flex-direction: column; padding: 3px; }
+
+section.vaccines .box .header { display: flex; align-items: flex-end; border-top-left-radius: 4px; border-top-right-radius: 4px; background: #f7f6f2; height: 70px; padding: 0 15px; font-size: calc(14px + 2px); color: #58595b; }
+
+section.vaccines .box .header .icon { width: 45px; height: 45px; display: flex; padding: 0 0 calc( (70px - 1.2em - 3px) / 2); border-radius: 50%; background: #f7f7f7; }
+
+section.vaccines .box .header .title { border-bottom: solid 3px #3db28b; padding: 0 0 calc( (70px - 1.2em - 3px) / 2); }
+
+section.vaccines .box .subTitle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 30px 5px 0 5px;
+    height: 45px;
+    padding: 0 10px;
+    font-size: 16px;
+    background: #f7f6f2;
+    color: #58595b; 
+    border-top: solid 3px rgb(227, 227, 227);
+}
+
+section.vaccines .box .items { display: flex; flex-direction: column; }
+
+section.vaccines .box .items .header-item, section.vaccines .box .items .item { display: flex; flex-direction: column; }
+
+section.vaccines .box .items .header-item { padding: 15px !important; }
+
+section.vaccines .box .items .item { padding: 15px !important; border-bottom: solid 1px #ededed; }
+
+section.vaccines .box .items .title { color: #999999; font-size: 14px; font-weight: normal; padding: 0 0 0.4em; }
+
+section.vaccines .box .items .item:last-child { border-bottom: 0; }
+
+section.vaccines .box .items .header-item, section.vaccines .box .items .item { flex: 1; justify-content: center; padding: 0 15px; }
+
+section.vaccines .box .items .header-item .title { color: #999999; font-size: 14px; font-weight: normal; padding: 0 0 0.4em; }
+
+section.vaccines .box .items .item .value { font-size: calc(14px + 2px); color: #3e4145; line-height: 1.1; }
+
+
+section.vaccines .box .table .header-item, section.vaccines .box .table .item { gap: 15px; }
+section.vaccines .box .table { padding-left: 15px;}
+
+section.vaccines .box .tags { 
+    padding: 30px 15px; 
+    border-bottom: solid 1px #ededed; 
+}
+
+section.vaccines .box .tags .tag { font-size: 14.7px; color: #58595b; background: #f7f7f7; padding: 7px 12px; border-radius: 7px; inline-size: min-content }
+
+section.vaccines .box .tags .tag .SIM { color: #3db28b; }
+
+section.vaccines .box .tags .tag .NÃO { color: #58595b; }
+
+
+.no-data-img { height: 7px; width: 7px; }
+
+
+@media (min-width: 992px) {
+    section.vaccines .box .table .header-item, section.vaccines .box .table .item { flex-direction: row; padding: 15px !important; } 
+    section.vaccines .box .table .header-item, section.vaccines .box .table .item:nth-child(1) { flex: 2; }
+    
+}
+
+@media (max-width: 992px) {
+    section.vaccines .box .table .header-item {
+        display:none;
+    }
+
+    .table .item span:nth-of-type(1):before { content: "Dosis:"; }
+    .table .item span:nth-of-type(2):before { content: "Fecha:"; }
+    .table .item span:nth-of-type(3):before { content: "Vacuna Aplicada:"; }
+    .table .item span:before { 
+        color: #999999;
+        font-size: 14px;
+        display: block;
+        font-weight: normal;
+        padding: 0 0 0.4em;
+	}
+}

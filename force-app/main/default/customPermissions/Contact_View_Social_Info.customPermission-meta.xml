@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomPermission xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>permisos para visualizar seccion de redes sociales en prosumia app.</description>
+    <isLicensed>false</isLicensed>
+    <label>Contact View Social Info</label>
+    <requiredPermission>
+        <customPermission>Contact_View_Common_Data</customPermission>
+        <dependency>true</dependency>
+    </requiredPermission>
+</CustomPermission>

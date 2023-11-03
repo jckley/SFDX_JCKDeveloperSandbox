@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Archivados</fullName>
+    <columns>Name_with_Link__c</columns>
+    <columns>Document_Number__c</columns>
+    <columns>Edad__c</columns>
+    <columns>Archive_Date__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>cuidarnos_customer__c</field>
+        <operation>equals</operation>
+        <value>Pilar</value>
+    </filters>
+    <filters>
+        <field>Cuidarnos_Comunidad_Status__c</field>
+        <operation>equals</operation>
+        <value>Archivado</value>
+    </filters>
+    <label>Archivados</label>
+    <sharedTo>
+        <group>Communities_Argentina</group>
+        <group>Cuidarnos_Pilar</group>
+    </sharedTo>
+</ListView>

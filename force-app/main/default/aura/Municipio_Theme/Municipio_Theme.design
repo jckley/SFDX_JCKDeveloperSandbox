@@ -1,0 +1,5 @@
+<design:component>
+    <design:attribute name="MunicipioName" 		label="Municipio"/>
+    <design:attribute name="MunicipioLogo" 		label="Logo"/>
+    <design:attribute name="MunicipioDomain" 	label="Dominio"/>
+</design:component>

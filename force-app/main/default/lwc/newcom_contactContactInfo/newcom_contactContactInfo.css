@@ -1,0 +1,77 @@
+.icon {
+    max-width: 23px;
+    max-height: 23px;
+    vertical-align: middle;
+    border-style: none;
+    margin-right:1rem;
+}
+
+.icon-small {
+    max-width: 25px;
+    max-height: 25px;
+    vertical-align: middle;
+    border-style: none;
+}
+
+.phoneapp {
+    width:100%;
+    height: 50px;
+    font-size: 14pt;
+    border: 1px solid #d7d7d7!important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.phoneapp.active {
+    background-color: #f8f9fc; 
+    color: #2f75bb;
+    font-family: 'Heebo';
+    font-weight: 300;
+}
+
+.phoneapp.inactive {
+    font-family: 'Heebo';
+    font-weight: 300;
+	background-color: #fcfdfe; 
+    filter: grayscale(100%);
+    color: #e4e2e3;
+}
+
+.phoneapp span {
+    padding-left : 20px;
+}
+
+.mobile-info-column {
+    padding-left: 2rem;
+}
+
+/* Special classes for small devices */
+@media only screen and (max-width: 768px) {
+    .separator{margin-bottom: 30px;}
+  /*  .THIS {margin-top: 20px;}*/
+    .mobile-info-column{
+        padding-left: 0rem;
+        padding-top: 0.75rem;
+    }
+}
+
+/* Special classes for big devices */
+@media only screen and (min-width: 768px) {
+    /*.THIS {margin-top: 20px;}*/
+    .mobile-info-column{
+        padding-left: 2rem;
+        padding-top: 0rem;
+    }
+}
+
+.card {
+    background-color: #ffffff;
+    will-change: transform;
+    overflow:  hidden;
+    box-shadow: 2px 2px 3px 3px #EBEBEB;
+    min-height: 100px;
+    vertical-align: middle;
+    border-radius: 6px;
+    border: solid 1px #FFFFFF;
+}

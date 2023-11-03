@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Rollup_Fields_PilarCitizenInteractions</fullName>
+    <booleanFilter>1 OR 2 OR 3 OR 4 OR 5</booleanFilter>
+    <columns>NAME</columns>
+    <columns>Citizen__c</columns>
+    <columns>FullName__c</columns>
+    <columns>Programa_Mi_Salud__c</columns>
+    <columns>Programa_Mi_Barrio__c</columns>
+    <columns>Programa_Mi_Documentacion__c</columns>
+    <columns>Programa_Mi_Mascota__c</columns>
+    <columns>Programa_Otros__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Programa_Mi_Salud__c</field>
+        <operation>greaterThan</operation>
+        <value>0</value>
+    </filters>
+    <filters>
+        <field>Programa_Otros__c</field>
+        <operation>greaterThan</operation>
+        <value>0</value>
+    </filters>
+    <filters>
+        <field>Programa_Mi_Barrio__c</field>
+        <operation>greaterThan</operation>
+        <value>0</value>
+    </filters>
+    <filters>
+        <field>Programa_Mi_Documentacion__c</field>
+        <operation>greaterThan</operation>
+        <value>0</value>
+    </filters>
+    <filters>
+        <field>Programa_Mi_Mascota__c</field>
+        <operation>greaterThan</operation>
+        <value>0</value>
+    </filters>
+    <label>Rollup Fields PilarCitizenInteractions</label>
+</ListView>

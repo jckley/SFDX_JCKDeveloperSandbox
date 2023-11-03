@@ -1,0 +1,424 @@
+<apex:page docType="html-5.0" standardStylesheets="false" lightningStylesheets="false" title="SMS" showHeader="false" sidebar="false" controller="MensajesController">
+    <html lang="en">        
+        <head>
+            <title>SMS</title>
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            
+            <apex:stylesheet value="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+            <apex:stylesheet value="https://use.fontawesome.com/releases/v5.8.1/css/all.css"/>
+            <apex:stylesheet value="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap"/>
+            <apex:stylesheet value="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.css" />
+            <apex:stylesheet value="{! URLFOR($Resource.sms_utils, '/css/sms.css')}"/>
+
+
+            <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" />
+            <apex:includeScript value="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" />
+            <apex:includeScript value="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" />
+            <apex:includeScript value="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js" />
+            <apex:includeScript value="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.js" />
+
+        </head>
+            
+        <body>
+            
+            <c:sms_header newSend="false" resend="true"></c:sms_header>
+            
+            <!-- DETALLE DE MENSAJE -->
+            <section class="container px-auto" style="padding-top:110px !important;">
+
+                <div class="row d-flex">
+                    <div class="col-2">
+                        <!-- Gracias vuelvas prontos -->
+                        <form action="/apex/sms_index" method="post">
+                            <span class="d-inline float_left" style="border:none; background:none;">
+                                <button class="btn btn-xs" style="border-radius:50%; background:white;">
+                                    <i class="fa fa-arrow-left fa-xs secondarytext"></i>
+                                </button>
+                                &nbsp;
+                                <span class="secondarytext" style="font-size:0.85em;">
+                                    Volver
+                                </span>
+                            </span>
+                        </form>
+                    </div>
+                    <div class="col-8" style="text-align:center;">
+                        
+                        <!-- Título mensaje -->
+                        <div>
+                            <h2 class="text-weight-normal" style="color:#58595B;">
+                                <span id="sms_name">No hay un mensaje para esta campaña</span>
+                            </h2>
+                        </div>
+                        <div class="font-weight-normal" style="font-size:0.75em; color:#808080;">
+                            Enviado: <span id="sms_sendDateTime">Nunca</span>
+                        </div>
+                    </div>
+                    
+                    <!-- STATUS -->
+                    <div class="col-2">
+                        <!-- Estado -->
+                        <button class="btn float_left" style="border-radius:30px; background:#FFFFFF; float:right;">
+                            <i class="fas fa-check-circle" style="color:#3DB28B;"></i>
+                            &nbsp;
+                            <span class="secondarytext" style="font-size:0.75em;">
+                                <span id="sms_estado">NO DISPONIBLE</span>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <!-- EXPORT -->
+                    <div class="col pt-5 pr-3">
+                        <div class="d-inline py-3" style="float:right;">
+                                <!--
+                           
+                            <span class="secondarytext" style="font-size:0.7rem;">
+                                EXPORTAR:
+                            </span>&nbsp;
+                            <div class="btn-group" role="group">
+                                <button class="btn btn-sm" aria-pressed="true" style="border-color:#E5E5E5; background-color:#FFFFFF;">
+                                    <img src="{! URLFOR($Resource.sms_utils, '/img/sms_upload.png')}" alt="download?" height="12px" width="12px" />
+                                    <span style="font-size:0.7rem; color:#59585B;">CSV</span>
+                                </button>
+                                <button class="btn btn-sm" aria-pressed="true" style="border-color:#E5E5E5; background-color:#FFFFFF;">
+                                    <img src="{! URLFOR($Resource.sms_utils, '/img/sms_upload.png')}" alt="download?" height="12px" width="12px" />
+                                    <span style="font-size:0.7rem; color:#59585B;">XML</span>
+                                </button>
+                                <button class="btn btn-sm" aria-pressed="true" style="border-color:#E5E5E5; background-color:#FFFFFF;">
+                                    <img src="{! URLFOR($Resource.sms_utils, '/img/sms_upload.png')}" alt="download?" height="12px" width="12px" />
+                                    <span style="font-size:0.7rem; color:#59585B;">JSON</span>
+                                </button>
+                            </div>
+                            -->
+                        </div>
+                    </div>
+                </div>
+                
+                
+                <div class="row d-flex">
+                    <!-- MENSAJE y CONTENIDO -->
+                    <div class="col-5">
+                        <article class="card border-0 shadow-sm cardsurvey_sm">
+                            <!-- DESTINATARIO -->
+                            <span class="card-title px-4 pt-4" style="font-size:0.85em; color:#999999;">ENVIADO A:</span>
+                            <span id="sms_destiny" class="card-text px-4 pt-2 pb-4" style="font-size:0.975rem; color:#616770; max-height:10px;">No hay grupo destinatario</span>
+                            
+                            <!-- CUERPO MENSAJE -->
+                            <span class="card-title px-4 pt-4" style="font-size:0.85em; color:#999999;">MENSAJE:</span>
+                            <span id="sms_body" class="card-text px-4 pt-2 pb-4" style="font-size:0.975rem; color:#616770; min-height:150px;">Lorem ipsum ...</span>
+                        </article>
+                    </div>
+  
+                    <div class="col-7">
+                        <article class="card border-0 shadow-sm cardsurvey_sm">
+                            <div class="row d-flex p-4">
+                                
+                                <!-- ENVÍOS TOTALES -->
+                                <div class="col" style="text-align:center; border-right:1px solid #F0F0F0;">
+                                    <h3 style="font-size:1.8rem; color:#58595B;"><b id="sms_totalsSent">0</b></h3>
+                                    <div>
+                                        <span style="font-size:0.75rem; color:#A5A5A5;">ENVÍOS TOTALES</span>
+                                    </div>
+                                </div>
+                                
+                                <!-- PÚBLICO IMPACTADO -->
+                                <div class="col" style="text-align:center; border-right:1px solid #F0F0F0;">
+                                    <h3 style="font-size:1.8rem; color:#58595B;"><b id="sms_totalsAudience">0</b></h3>
+                                    <div>
+                                        <span style="font-size:0.75rem; color:#A5A5A5;">PÚBLICO IMPACTADO</span>
+                                    </div>
+                                </div>
+                                
+                                <!-- IMP X PERSONA -->
+                                <div class="col" style="text-align:center;">
+                                    <h3 style="font-size:1.8rem; color:#58595B;"><b id="sms_impXPersona">0</b></h3>
+                                    <div>
+                                        <span style="font-size:0.75rem; color:#A5A5A5;">IMP. X PERSONA</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                        
+                        <div class="pt-4"></div>
+                        
+                        <article class="card border-0 shadow-sm cardsurvey_sm">
+                            <div class="container">
+                                <div class="row d-flex">
+                                    
+                                    <!-- ENVÍOS EXITOSOS -->
+                                    <div class="col-6 d-block py-4" style="border-bottom:1px solid #F0F0F0;">
+                                        <div class="row px-4">
+                                            <div col="col">
+                                                <img style="float:left;" src="{! URLFOR($Resource.sms_utils, '/img/sms_success.png')}" alt="mensajes exitosos" height="25" width="25" />
+                                            </div>
+                                            <span class="col" style="font-size:1rem; color:#A5A5A5; float:left;">Exitosos</span>
+                                            <span class="col" style="font-size:1.1rem; color:#A5A5A5; text-align:right;"><b style="float:right;" id="sms_cantSuccess">0</b></span>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- RECHAZADOS TOTALES -->
+                                    <div class="col-6 d-block py-4 px-4" style="border-bottom:1px solid #F0F0F0;">
+                                        <div class="row">
+                                            <div col="col">
+                                                <img style="float:left;" src="{! URLFOR($Resource.sms_utils, '/img/sms_reject.png')}" alt="mensajes rechazados" height="25" width="25" />
+                                            </div>
+                                            <span class="col" style="font-size:1rem; color:#A5A5A5; float:left;">Rechazados</span>
+                                            <span class="col" style="font-size:1.1rem; color:#A5A5A5; text-align:right;"><b style="float:right;" id="sms_cantRejected">0</b></span>    
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="row d-flex">
+                                    
+                                    <!-- RESPUESTAS TOTALES -->
+                                    <div class="col-6 d-block py-4">
+                                        <div class="row px-4">
+                                            <div col="col">
+                                                <img style="float:left;" src="{! URLFOR($Resource.sms_utils, '/img/sms_response.png')}" alt="respuestas" height="25" width="25" />
+                                            </div>
+                                            <div class="col" style="font-size:1rem; color:#A5A5A5; float:left;">Respuestas</div>
+                                            <div class="col" style="font-size:1.1rem; color:#A5A5A5; text-align:right;"><b style="float:right;" id="sms_cantResponses">0</b></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6" style="text-align:center; border-bottom:1px solid #F0F0F0;">
+                                    </div>
+                                </div>    
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+            </section>
+        </body>
+        
+        <script>
+        var TOAST_TYPE_SUCCESS = 1;
+    	var TOAST_TYPE_ERROR = 2;
+
+        $(document).on('click', '.sendfailed', function() {
+            var objRequest = null;
+
+            objRequest = {};
+            objRequest.usuario = '{! Usuario}';
+            objRequest.password = '{! Password}';
+            objRequest.provision = '{! Provision}';
+            objRequest.operacion = '{! Operacion}';
+            objRequest.sourceAddress = '{! SourceAddress}';
+            objRequest.consultaEstado = '{! ConsultaEstado}';
+            objRequest.messageid = '{! MensajeId}';
+            objRequest.maxintentos = '{! MaxIntentos}';
+
+            $.ajax({
+                method: "POST",
+                url: 'https://api-pulso.prosumia.la/aws-api/sondeos/retry/',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data: JSON.stringify(objRequest)
+            }).done(function( strResult ) {
+                showMessage(TOAST_TYPE_SUCCESS, ['Reenviando fallidos']);
+            });
+        
+        })
+    
+        /*********************************************************************/
+        // OBTENGO VALOR DE UNA VARIABLE POR NOMBRE
+        function getParameterByName(name) {
+            var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
+            return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+        }
+        
+        /*********************************************************************/
+        // FORMATEO NUMEROS
+        var formatNumber = {
+            separador: ".", // separador para los miles
+            sepDecimal: ',', // separador para los decimales
+            
+            formatear:function (num){
+                var result = null;
+                num +='';
+                var splitStr = num.split('.');
+                var splitLeft = splitStr[0];
+                var splitRight = splitStr.length > 1 ? this.sepDecimal + splitStr[1] : '';
+                var regx = /(\d+)(\d{3})/;
+                
+                while (regx.test(splitLeft)) {
+                    splitLeft = splitLeft.replace(regx, '$1' + this.separador + '$2');
+                }
+                result = this.simbol + splitLeft +splitRight;
+
+                return (result !== undefined && result !== null)?result:'N/A' 
+            },
+            new:function(num, simbol){
+            this.simbol = simbol ||'';
+            num = (num === undefined || num === null)?0:num;
+            
+            return this.formatear(num);
+        	}
+        }
+        
+        /*********************************************************************/
+        
+        var campania = null;
+        
+        // RECIBO VARIABLES
+        var cadVariables = location.search.substring(1,location.search.length);
+        var arrVariables = cadVariables.split("&");
+        
+        for (i=0; i<arrVariables.length; i++) {
+            arrVariableActual = arrVariables[i].split("=");
+            // SI LA VARIABLE ES DE CREACIÓN DE MENSAJE EXITOSO
+            if(getParameterByName('campania')){
+                campania = (getParameterByName('campania'));
+                //alert(campania);
+            }
+            
+        }
+        
+        // FORMATEO FECHAS
+        function formatAMPM(date) {
+            var hours = date.getHours();
+            var minutes = date.getMinutes();
+            var ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12; // the hour '0' should be '12'
+            minutes = minutes < 10 ? '0'+minutes : minutes;
+            var strTime = hours + ':' + minutes + ' ' + ampm;
+            return strTime;
+        }
+        
+        // CARGO MENSAJES
+        function LoadMessages() {
+            //console.log(campania);
+            Visualforce.remoting.Manager.invokeAction(
+                //Invoking controller action
+                '{!$RemoteAction.MensajesController.mensajes}',campania,
+                
+                function(result, event){
+                    var intIndex = 0;
+                    
+                    // slds icons variables
+                    var sms_name = "";
+                    var sms_sendDateTime = "";
+                    var sms_destiny = "";
+                    var sms_body = "";
+                    var sms_totalsSent = "";
+                    var sms_totalsAudience = "";
+                    var sms_impXPersona = "";
+                    var sms_cantSuccess = "";
+                    var sms_cantRejected = "";
+                    var sms_cantResponses = "";
+                    var sms_estado = "";
+                    
+                    // variable para formato de fechas
+                    var options = { year: 'numeric', month: 'long', day: 'numeric', hour: "numeric", minute: "numeric", hour12:"false" };
+                    
+                    //We can access the records through the parameter result
+                    //event.status determines if there is error or not 
+                    if(event.status){
+                        for (var valor of result) {
+                            if(result[intIndex].Id !== null || result[intIndex].Id !== ''){
+                                sms_name = result[intIndex].Name;
+                                document.title = "SMS - " + result[intIndex].Name;
+                                var sms_sendDateTime_aux = new Date(result[intIndex].SendDateTime__c);
+                                sms_body = result[intIndex].Body__c;
+                                sms_destiny = result[intIndex].Receiver__c;
+                                sms_totalsSent = formatNumber.new(result[intIndex].TotalsSent__c);
+                                sms_totalsAudience = formatNumber.new(result[intIndex].TotalsAudience__c);
+                                sms_impXPersona = formatNumber.new(result[intIndex].ImpXPersona__c);
+                                sms_cantSuccess = formatNumber.new(result[intIndex].CantSuccess__c);
+                                sms_cantRejected = formatNumber.new(result[intIndex].CantRejected__c);
+                                sms_cantResponses = formatNumber.new(result[intIndex].CantResponses__c);
+                                sms_estado = result[intIndex].Campania__r.Status__c;
+                                
+                                var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+                                sms_sendDateTime = (sms_sendDateTime_aux.getDate() + " de " + meses[sms_sendDateTime_aux.getMonth()] + " de " + sms_sendDateTime_aux.getFullYear() + " " + formatAMPM(sms_sendDateTime_aux));
+                            }
+                        }
+                        
+                        if(result[intIndex].Id !== null || result[intIndex].Id !== ''){
+                            document.getElementById("sms_name").innerHTML = sms_name;
+                            document.getElementById("sms_sendDateTime").innerHTML = sms_sendDateTime;
+                            document.getElementById("sms_body").innerHTML = sms_body;
+                            document.getElementById("sms_destiny").innerHTML = sms_destiny;
+                            document.getElementById("sms_totalsSent").innerHTML = sms_totalsSent;
+                            document.getElementById("sms_totalsAudience").innerHTML = sms_totalsAudience;
+                            document.getElementById("sms_impXPersona").innerHTML = sms_impXPersona;
+                            document.getElementById("sms_cantSuccess").innerHTML = sms_cantSuccess;
+                            document.getElementById("sms_cantRejected").innerHTML = sms_cantRejected;
+                            document.getElementById("sms_cantResponses").innerHTML = sms_cantResponses;
+                            document.getElementById("sms_estado").innerHTML = sms_estado;
+                        }
+                    }
+                },
+                {escape: true} 
+            );
+        }
+        
+        // Llamo a la función
+        LoadMessages();
+
+
+
+        function showMessage(intType, arrMessages) {
+	        var strHTML = null;
+	        var strClass = null;
+
+	        switch(intType) {
+	            case TOAST_TYPE_SUCCESS:
+	                strClass = 'success';
+	            break;
+
+	            case TOAST_TYPE_ERROR:
+	                strClass = 'error';
+	            break;
+	        }
+
+	        if(arrMessages != null && arrMessages.length > 0) {
+	        	strHTML = '';
+	            $.each(arrMessages, function( intIndex, strMessage ) { 
+	            	strHTML  += strMessage + '<br />';
+	            });
+
+
+                $.toast({
+                    text: strHTML, // Text that is to be shown in the toast
+                    heading: 'Note', // Optional heading to be shown on the toast
+                    icon: strClass, // Type of toast icon
+                    showHideTransition: 'slide', // fade, slide or plain
+                    allowToastClose: true, // Boolean value true or false
+                    hideAfter: 3000, // false to make it sticky or number representing the miliseconds as time after which toast needs to be hidden
+                    stack: 5, // false if there should be only one toast at a time or a number representing the maximum number of toasts to be shown at a time
+                    position: 'top-center', // bottom-left or bottom-right or bottom-center or top-left or top-right or top-center or mid-center or an object representing the left, right, top, bottom values
+                    
+                    
+                    
+                    textAlign: 'center',  // Text alignment i.e. left, right or center
+                    loader: true,  // Whether to show loader or not. True by default
+                    loaderBg: '#9EC600',  // Background color of the toast loader
+                    beforeShow: function () {}, // will be triggered before the toast is shown
+                    afterShown: function () {}, // will be triggered after the toat has been shown
+                    beforeHide: function () {}, // will be triggered before the toast gets hidden
+                    afterHidden: function () {}  // will be triggered after the toast has been hidden
+                });
+    
+	        }
+	    }
+
+        function handleError(objEvent) {
+	        var strErrorMessage = '';
+
+	        if(objEvent != null && objEvent.message != null) {
+	            strErrorMessage += objEvent.message;
+
+	            if(objEvent.type === 'exception') {
+	                strErrorMessage += objEvent.where;
+	            }
+
+	            showMessage(TOAST_TYPE_ERROR, [strErrorMessage]);
+	        }
+	    }
+        </script>
+    </html>
+</apex:page>

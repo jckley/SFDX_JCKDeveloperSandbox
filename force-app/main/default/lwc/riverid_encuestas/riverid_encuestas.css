@@ -1,0 +1,85 @@
+@font-face {
+  /*
+      font family is used to give a name to the custom font,
+       you use this for referencing the custom font later
+  */
+  font-family: "Roboto";
+  /*
+      This is the location of the Custom Font, note, I have stored in a ZIP file
+   */
+  src: url('/s/sfsites/c/resource/Communities/SALESFORCE/Fonts/Roboto/Roboto-Regular.ttf') format('TrueType');
+}
+* { box-sizing: border-box; margin: 0; padding: 0; position: relative; }
+
+:host  {
+  --main-color: #ff0000;
+}
+
+.all-page {
+  width: 100%;
+  height: 100%; 
+  /* font-family: "Roboto", "Roboto-Regular"!important; */
+  /* font-family: "Roboto"!important; */
+  padding: 15px;
+  margin: 0 auto;
+}
+
+@media (min-width: 992px) { .all-page { width: 960px; } }
+@media (min-width: 1200px) { .all-page { width: 1140px; } }
+
+.all-page.community {
+  background: #f7f7f7;
+}
+
+.all-page.crm {
+  background: transparent;
+}
+
+.title {
+  margin-bottom: 15px;
+  font-size: 25px;
+  font-weight: bold;
+  color: #58595b;
+}
+
+.lista-encuestas {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.lista-encuestas .box { 
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+  background: #FFF;
+  padding: 15px 15px;
+  border-radius: 4px;
+}
+
+.lista-encuestas .box:hover{
+  background: #f3f3f3;
+}
+
+.lista-encuestas .clickMe {
+  cursor: pointer
+}
+
+.lista-encuestas .name {
+  font-weight: bold; font-size: 14px; color: #999999;
+}
+
+.lista-encuestas .last-col-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.lista-encuestas .last-col-wrapper .respuestas-label {
+  font-weight: normal; font-size: 14px; color: #999999;
+}
+
+.lista-encuestas .last-col-wrapper .respuestas-value {
+  font-weight: bold; font-size: 14px;
+}
+
+.lista-encuestas .last-col-wrapper .barrasIcon{
+  width: 13px;
+}

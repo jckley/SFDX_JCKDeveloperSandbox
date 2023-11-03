@@ -1,0 +1,28 @@
+.c-container {
+    margin: 10px 0 20px 0;
+}
+
+.card {
+    background-color: #ffffff;
+    will-change: transform;
+    overflow:  hidden;
+    box-shadow: 2px 2px 3px 3px #EBEBEB;
+    min-height: 100px;
+    vertical-align: middle;
+    border-radius: 6px 6px 0px 0px;
+    border: solid 1px #FFFFFF;
+}
+
+.icon {
+    max-width: 25px;
+    max-height: 25px;
+    vertical-align: middle;
+    border-style: none;
+}
+
+.icon-small {
+    max-width: 25px;
+    max-height: 25px;
+    vertical-align: middle;
+    border-style: none;
+}

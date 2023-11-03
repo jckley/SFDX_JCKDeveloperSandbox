@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TerritoryWithGenderKey__c</fullName>
+    <description>Se usa para facilitar los mapeos en apex. Al obtener una key unica para el registro y conocida en el registro del citizen (id territorio al que pertenece + genero del citizen)</description>
+    <externalId>false</externalId>
+    <formula>CASESAFEID(Territory__c ) &amp;   UPPER(TEXT( Gender__c ))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>TerritoryWithGenderKey</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,19 @@
+<aura:component>
+    <aura:attribute name="community"        type="String" default="Prosumia"/>
+    <aura:attribute name="citizenWrapper" 	type="CitizenWrapper" 	required="true" />
+    <aura:attribute name="rendered" 		type="Boolean" 			required="true" default="true" />
+    
+    <div class="{! (v.rendered)?'card slds-grid slds-wrap ':'slds-hide'}">        
+        <div class="slds-size_1-of-1 slds-large-size_1-of-1 separator slds-grid">
+            <div class="slds-grid slds-size_1-of-1  slds-wrap">
+                <div class="slds-col slds-size_1-of-1 cuidarnostitle" style="margin-bottom: 5px;">                      
+                    <div class="centerme">Score</div>
+                </div> 
+                <div class="slds-col slds-size_1-of-1 valuecontainer">
+                    <div class="{! (and(v.citizenWrapper.citizen.Covid19_Score_Percent__c != 0, and(v.citizenWrapper.citizen.Covid19_Score_Percent__c != null, v.citizenWrapper.citizen.Covid19_Score_Percent__c != '')))? 'centervalue' : 'slds-hide'}">{! v.citizenWrapper.citizen.Covid19_Score_Percent__c } <span class="percent">%</span></div>
+                    <div class="{! (v.citizenWrapper.citizen.Covid19_Score_Percent__c == null || v.citizenWrapper.citizen.Covid19_Score_Percent__c == ''  || v.citizenWrapper.citizen.Covid19_Score_Percent__c == 0)? 'centervalue' : 'slds-hide'}">-</div>
+                </div>
+            </div>
+        </div>        
+    </div>
+</aura:component>

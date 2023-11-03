@@ -1,0 +1,55 @@
+<apex:component >
+    
+    <style>
+    	input {
+        	border: none; 
+        	border-bottom: solid 1px #d6d6d6; 
+        	width: 100%; 
+        	padding-right: 15px;
+        }
+    </style>
+    
+    <apex:attribute name="label" 		type="String" 	description="Field Label" />
+    <apex:attribute name="value" 		type="String" 	description="Field Value" 		default=""/>
+    <apex:attribute name="valueNumber" 	type="Double" 	description="Number Field Value"/>
+    <apex:attribute name="valueBoolean" type="Boolean" 	description="Number Field Value"/>
+    <apex:attribute name="valueDate" 	type="Date" 	description="Date Field Value"/>
+    <apex:attribute name="inputType" 	type="String" 	description="input type" 		default="text" />
+    <apex:attribute name="classLabel" 	type="String" 	description="Label CSS class" 	default="" />
+    
+    <apex:attribute name="options" 		type="Object[]" description="Options" />
+    <apex:attribute name="values" 		type="String[]" description="Options" />
+
+    <apex:attribute name="selectedOption" type="String" description="Options" />
+    
+    <div class="mb-1">
+        <apex:outputText styleClass="{!classLabel}" value="{!label}" />
+    </div>
+    <div>
+        <!--
+        <apex:actionRegion rendered="{!inputType == 'text'}">
+        	<apex:input value="{!value}"/>
+        </apex:actionRegion>
+        <apex:actionRegion rendered="{!inputType == 'date'}">
+        	<apex:input value="{!valueDate}" type="date"/>
+        </apex:actionRegion>
+        <apex:actionRegion rendered="{!inputType == 'number'}">
+        	<apex:input value="{!valueNumber}" type="number"/>
+        </apex:actionRegion>
+        <apex:actionRegion rendered="{!inputType == 'checkbox'}">
+        	<apex:inputCheckbox value="{!valueBoolean}" />
+        </apex:actionRegion>
+        <apex:actionRegion rendered="{!inputType == 'select'}">
+            <apex:selectList styleClass="selectpicker form-control" value="{! selectedOption}" multiselect="false" size="1">
+                <apex:selectOptions value="{! options }" />
+            </apex:selectList>
+        </apex:actionRegion>
+        <apex:actionRegion rendered="{!inputType == 'multiselect'}">
+            <apex:selectList styleClass="selectpicker form-control" value="{! values }" multiselect="true" size="3">
+                <apex:selectOption itemValue="" itemLabel=""></apex:selectOption>
+                <apex:selectOptions value="{! options }" />
+            </apex:selectList>
+        </apex:actionRegion>
+    -->
+    </div> 
+</apex:component>

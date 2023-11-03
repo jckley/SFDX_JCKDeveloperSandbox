@@ -1,0 +1,92 @@
+<aura:component >	
+    <aura:attribute name="community"        type="String"           default="Prosumia"/>
+    <aura:attribute name="citizenWrapper" 	type="CitizenWrapper" 	required="true" />
+    <aura:attribute name="rendered" 		type="Boolean" 			required="true" default="true" />
+    
+    <div class="{! (v.rendered)?'slds-grid slds-wrap':'slds-hide'}">
+        <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2" >
+            <div class="{! 'card slds-grid slds-wrap paddingtop' + v.community }">    
+                <div class="slds-grid slds-wrap slds-col slds-size_1-of-6" >
+                    <div class="slds-col slds-size_1-of-1" style="padding: 30px 30px;">
+                        <img src="{! $Resource.PRM   + '/' + v.community +  '/img/outbound.png'}" class="icon" />
+                    </div>           
+                </div>
+
+                <div class="slds-col slds-size_5-of-6 slds-grid slds-wrap" style="padding: 30px 30px;">
+                    <div class="subattribute-border slds-size_1-of-1 slds-grid slds-wrap">
+                        <div class="slds-size_1-of-1 slds-large-size_1-of-2 slds-p-bottom_medium">
+                            <c:PRM_DisplayField community="{! v.community }" label="Fecha :" value="{! v.citizenWrapper.cuidarnos.DateExitSPFormat}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13"/>            
+                        </div>
+                        
+                        <div class="slds-size_1-of-1 slds-large-size_1-of-2 slds-p-bottom_medium">
+                            <c:PRM_DisplayField community="{! v.community }"  label="Hacia :" value="{! v.citizenWrapper.citizen.mig_outbound_country__c}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13"/>            
+                        </div>
+                        
+                        <div class="slds-size_1-of-1 slds-large-size_1-of-2 slds-p-bottom_medium">
+                            <span style="{! and((v.citizenWrapper.citizen.mig_outbound_crossing_type__c == 'Terrestre'), and(v.citizenWrapper.citizen.mig_outbound_crossing_terrestrial_type__c != null,v.citizenWrapper.citizen.mig_outbound_crossing_terrestrial_type__c != '' ))?'':'display:none' }">
+                                <c:PRM_DisplayField community="{! v.community }"  label="Medio :" value="{! v.citizenWrapper.citizen.mig_outbound_crossing_type__c + ' (' + v.citizenWrapper.citizen.mig_outbound_crossing_terrestrial_type__c + ')' }" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13"/>                                
+                            </span>
+                          
+                            <span style="{! and((v.citizenWrapper.citizen.mig_outbound_crossing_type__c == 'Terrestre'), and(v.citizenWrapper.citizen.mig_outbound_crossing_terrestrial_type__c != null,v.citizenWrapper.citizen.mig_outbound_crossing_terrestrial_type__c != '' ))?'display:none':'' }">
+                                <c:PRM_DisplayField community="{! v.community }"  label="Medio :" value="{! v.citizenWrapper.citizen.mig_outbound_crossing_type__c}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13"/>                                
+                            </span>
+                        </div>     
+    
+                        <div class="slds-size_1-of-1 slds-large-size_1-of-2 slds-p-bottom_medium">
+                            <c:PRM_DisplayField community="{! v.community }"  label="Paso :" value="{! v.citizenWrapper.citizen.mig_outbound_crossing_point__c}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13"/>            
+                        </div>     
+
+                        <div class="slds-size_1-of-1 slds-large-size_1-of-1 slds-p-bottom_medium">
+                            <div onclick="{! c.goToPlane }" data-search="{! v.citizenWrapper.citizen.mig_outbound_transportation_desc__c }" data-searchid="{! v.citizenWrapper.citizen.mig_outbound_transportation_id__c }">
+                                <c:PRM_DisplayField community="{! v.community }"  label="Transporte :" value="{! v.citizenWrapper.citizen.mig_outbound_transportation_desc__c}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="{! (v.citizenWrapper.citizen.mig_outbound_transportation_desc__c.length > 0)?'value font13 islink':'value font13' }"/>            
+                            </div>
+                        </div> 
+                    </div>            
+                </div>
+            </div>    
+        </div>
+        
+        <div class="slds-col padleft-desktop padtop-mobile slds-size_1-of-1 slds-large-size_1-of-2" >
+            <div class="{! 'card slds-grid slds-wrap paddingtop' + v.community}">
+                <div class="slds-grid slds-wrap slds-col slds-size_1-of-6" >
+                    <div class="slds-col slds-size_1-of-1" style="padding: 30px 30px;">
+                        <img src="{! $Resource.PRM   + '/' + v.community +  '/img/inbound.png'}" class="icon" />
+                    </div>           
+                </div>
+                    
+                <div class="slds-col slds-size_5-of-6 slds-grid slds-wrap" style="padding: 30px 30px;">
+                    <div class="subattribute-border slds-size_1-of-1 slds-grid slds-wrap">
+                        <div class="slds-size_1-of-1 slds-large-size_1-of-2 slds-p-bottom_medium">
+                            <c:PRM_DisplayField community="{! v.community }" label="Fecha :" value="{! v.citizenWrapper.cuidarnos.DateEntrySPFormat}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13"/>            
+                        </div>
+                        
+                        <div class="slds-size_1-of-1 slds-large-size_1-of-2 slds-p-bottom_medium">
+                            <c:PRM_DisplayField community="{! v.community }"  label="Desde :" value="{! v.citizenWrapper.citizen.mig_inbound_country__c}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13"/>            
+                        </div>
+                        
+                        <div class="slds-size_1-of-1 slds-large-size_1-of-2 slds-p-bottom_medium">
+                            <span style="{! and((v.citizenWrapper.citizen.mig_inbound_crossing_type__c == 'Terrestre'), and(v.citizenWrapper.citizen.mig_inbound_crossing_terrestrial_type__c != null,v.citizenWrapper.citizen.mig_inbound_crossing_terrestrial_type__c != '' ))?'':'display:none' }">
+                                <c:PRM_DisplayField community="{! v.community }"  label="Medio :" value="{! v.citizenWrapper.citizen.mig_inbound_crossing_type__c + ' (' + v.citizenWrapper.citizen.mig_inbound_crossing_terrestrial_type__c + ')' }" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13"/>                                
+                            </span>
+
+                            <span style="{! and((v.citizenWrapper.citizen.mig_inbound_crossing_type__c == 'Terrestre'), and(v.citizenWrapper.citizen.mig_inbound_crossing_terrestrial_type__c != null,v.citizenWrapper.citizen.mig_inbound_crossing_terrestrial_type__c != '' ))?'display:none':'' }">
+                                <c:PRM_DisplayField community="{! v.community }"  label="Medio :" value="{! v.citizenWrapper.citizen.mig_inbound_crossing_type__c}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13"/>                                
+                            </span>
+                        </div>
+
+                                    
+                        <div class="slds-size_1-of-1 slds-large-size_1-of-2 slds-p-bottom_medium">
+                            <c:PRM_DisplayField community="{! v.community }"  label="Paso :" value="{! v.citizenWrapper.citizen.mig_inbound_crossing_point__c}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13"/>            
+                        </div>
+
+                        <div class="slds-size_1-of-1 slds-large-size_1-of-1 slds-p-bottom_medium">
+                            <div onclick="{! c.goToPlane }" data-search="{! v.citizenWrapper.citizen.mig_inbound_transportation_desc__c }" data-searchid="{! v.citizenWrapper.citizen.mig_inbound_transportation_id__c }">
+                                <c:PRM_DisplayField community="{! v.community }"  label="Transporte :" value="{! v.citizenWrapper.citizen.mig_inbound_transportation_desc__c}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="{! (v.citizenWrapper.citizen.mig_inbound_transportation_desc__c.length > 0)?'value font13 islink':'value font13' }"/>            
+                            </div>
+                        </div>
+                    </div>            
+                </div>
+            </div>
+        </div>
+    </div>
+</aura:component>

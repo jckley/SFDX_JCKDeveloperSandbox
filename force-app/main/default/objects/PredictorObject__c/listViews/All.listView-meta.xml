@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>NAME</columns>
+    <columns>actividades_economicas__c</columns>
+    <columns>Education_Level_f_x__c</columns>
+    <columns>Edad__c</columns>
+    <columns>Jerarquia_f_x__c</columns>
+    <columns>jerarquia_empleo__c</columns>
+    <columns>Electoral_Section_19__c</columns>
+    <columns>Label__c</columns>
+    <columns>Target_Melella_f_x__c</columns>
+    <columns>Target_Melella_Boolean__c</columns>
+    <columns>Voto_Melella__c</columns>
+    <columns>Predicted_Values_Boolean__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+</ListView>

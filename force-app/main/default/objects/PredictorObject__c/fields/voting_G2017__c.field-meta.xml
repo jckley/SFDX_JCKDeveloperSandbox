@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>voting_G2017__c</fullName>
+    <externalId>false</externalId>
+    <label>Elección G2017</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>NO EMPADRONADO</fullName>
+                <color>#FFFFFF</color>
+                <default>true</default>
+                <label>NO EMPADRONADO</label>
+            </value>
+            <value>
+                <fullName>EMITIDO</fullName>
+                <color>#FFFFFF</color>
+                <default>false</default>
+                <label>EMITIDO</label>
+            </value>
+            <value>
+                <fullName>NO VOTO</fullName>
+                <color>#FFFFFF</color>
+                <default>false</default>
+                <label>NO VOTO</label>
+            </value>
+            <value>
+                <fullName>NO VOTO (MENOR DE 18)</fullName>
+                <color>#FFFFFF</color>
+                <default>false</default>
+                <label>NO VOTO (MENOR DE 18)</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

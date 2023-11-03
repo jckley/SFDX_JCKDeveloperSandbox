@@ -1,0 +1,784 @@
+<template>
+    <div class={all_page_class} if:true={isRecordReady}>
+
+        <a href="#" class="close_fullscreen">x</a>
+        
+        <div class={sticky_class}>
+            <aside>
+                <div class="box profile_resume"  data-aos="zoom-in" data-aos-once="true">
+                    <figure class="profile_image">
+                      <!--  <template if:true={photoLegacyUrl}>
+                            <img src={photoLegacyUrl} />
+                        </template>
+                        <template if:false={photoLegacyUrl}>-->
+                            <div>{citizenInitials}</div>
+                       <!-- </template>-->
+                    </figure>
+                    <div class="citizen_name">
+                        <h1>{record.citizen.Name}</h1>
+                    </div>
+        
+                    <div class="personal_data">
+
+                        <div class="item" style="flex: 1 1 100%; flex-direction: row;">
+                            <span class="value2" style="margin-right: 5px"> {personal_data_array.documento} </span>
+                   
+                            <p class="separacion">l</p>
+
+                            <span class="value2" style="margin-left:5px"> {personal_data_array.cuit} </span>
+                        
+                        </div>
+
+
+                        <div class="profileRow">
+                        <template if:true={edad}>
+                            <span class="value"> {personal_data_array.edad} años </span> <!--años-->
+                        </template>
+                  
+                        
+                        <template if:true={fecha_nac}>
+                            
+                            <span class="value"> {personal_data_array.fecha_nac} </span>
+                       
+                        </template>
+                    
+                        </div>   
+
+                        <div class="profileRow">     
+
+                        <template if:true={sexo}>
+                            <span class="value"> {personal_data_array.sexo} </span>
+                        </template>
+                     
+                        
+                        <template if:true={nacionalidad}>
+                            
+                            <span class="value"> {personal_data_array.nacionalidad} </span>
+                        
+                        </template>  
+                    
+                        </div>
+
+                        <div class="profileRow">                 
+                        <template if:true={generacion}>
+                                <span class="value"> {personal_data_array.generacion} </span>
+                         </template>
+                       
+                            
+                         
+                                <template if:true={TRIBU2023}>
+                                <span class="value tribu">{TRIBU2023}</span>
+                                </template>
+                                
+                         
+                        </div>
+                  
+
+                    </div>
+                </div>
+              <!--  <div class="citizen_guid" data-aos="zoom-in" data-aos-once="true">
+                    <h5><strong>/ GUID: {personal_data_array.guid}</strong></h5>
+                </div>-->
+            </aside>
+
+            <article>
+                <template if:true={permissions.Contact_View_Common_Data}>
+                    <div class="box" data-aos="zoom-in" data-aos-once="true">
+                        <section class="address">
+                            <div class="icon">
+                                <img src={pinURL} alt="icon address">
+                            </div>
+                            <address>
+                           
+                                    
+                                <template if:true={record.citizen.Level4Name__c}>
+                                    <p>
+                                        <span class="value">{record.citizen.Level4Name__c}</span>
+                                    </p>
+                                </template>
+
+                          
+                             
+                                <template if:true={record.citizen.Level3Name__c}>
+                                    <p>
+                                        <span class="value">{record.citizen.Level3Name__c}</span>
+                                    </p>
+                                </template>
+
+                           
+                                <template if:true={record.citizen.Level2Name__c}>
+                                    <p>
+                                        <span class="value">{record.citizen.Level2Name__c}</span>
+                                    </p>
+                                </template>
+
+                                  
+                                <template if:true={record.citizen.Level1Name__c}>
+                                    <p>
+                                        <span class="value">{record.citizen.Level1Name__c}</span>
+                                    </p>
+                                </template>
+
+                           
+                                  
+                                <template if:true={level0}>
+                                    <p>
+                                        <span class="value">{level0}</span>
+                                    </p>
+                                </template>
+
+                          
+
+                             
+                            </address>
+                        </section>
+                    </div>
+                </template>
+
+                <template if:true={permissions.Contact_View_Location}>
+                    <div class="box no-padding" data-aos="zoom-in" data-aos-once="true">
+                        <section class="map">
+
+
+                            <div class="header">
+                                <div class="icon"><img src={iconAddress} alt="icon address"></div>
+                                <div class="item direccion">
+                                    <span class="title">Dirección</span>
+                                    <div class="vapermissionslue">
+                                        <p if:false={hasRelatedCoh}>{record.generalInfo.Address}</p>
+                                        <a if:true={hasRelatedCoh} onclick={goToRelated}>{record.generalInfo.Address}</a>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <span class="title">Código Postal:</span>
+                                    <template if:true={record.citizen.MailingPostalCode}>
+                                        <div class="value"><p>{record.citizen.MailingPostalCode}</p></div>
+                                    </template>
+                                    <template if:false={record.citizen.MailingPostalCode}>
+                                        <div class="value">
+                                            <p>-</p>
+                                            </div>
+                                    </template>
+                                </div>
+                                <div class="item telefonoFijo">
+                                    <span class="title">
+                                        Teléfono fijo:
+                                    </span>
+                                    <template if:true={record.citizen.HomePhone}>
+                                        <div class="value">
+                                            <a href={call_phone} target="_blank">{record.citizen.HomePhone}</a>
+                                            </div>
+                                    </template>
+                                    <template if:false={record.citizen.HomePhone}>
+                                        <div class="value">
+                                            <p>-</p>
+                                            </div>
+                                    </template>
+                                </div>
+                            </div>
+
+                            
+                            <!--MAP-->
+
+                            <div if:true={hasMapView} class="map_container" id="map" style="margin: 20px;
+                            border-radius: 7px;
+                            margin-bottom: 0px;
+                            width: calc(100% - 40px);">
+                            </div>
+                            
+                            <div if:true={hasStreetView} class="map_container streetview" id="streetview" style="height: 325px;">
+                                <iframe class="fullscreen"  src={streetviewURL} style="    width: calc(100% - 40px);
+                               
+                                border: none;
+                                margin: 20px;
+                                border-radius: 7px;
+                                height: 285px;"></iframe>              
+                            </div>
+
+                        </section>
+
+                    </div>
+                </template>
+
+
+
+            <section class="social" data-aos="zoom-in" data-aos-once="true">        <!--CONTACT INFO (EMAIL Y TELEFONO)-->
+
+                <template if:true={permissions.Contact_View_Contact_Info}>
+                    <!--<div class="box_contact non" data-aos="zoom-in" data-aos-once="true">-->
+
+
+                    <template if:true={socialrow1}>
+                        <div class="socialrow">
+
+                            <template if:false={emailNoLink}>
+                            <div class="socialData">
+
+                                <div class="icon">
+                                    <img src={emailIcon} alt="icon address">
+                                </div>
+
+                                <template if:true={emailNoLink}>
+                                    <div class="value">
+                                        <p>-</p>
+                                    </div>
+                                </template>
+                                <template if:false={emailNoLink}>
+                                    <div class="value">
+                                        <a href={send_email} target="_blank">{email}</a>
+                                    </div>
+                                </template>
+
+                            </div>
+                            </template>
+               
+                
+                    
+                       
+                            <template if:false={cellphoneNoLink}>
+                                <div class="socialData whatsappRow">
+                                    
+                                    <div class="aux">
+                                    <div class="icon">
+                                        <img src={celular} alt="icon address">
+                                    </div>
+
+                                    <template if:true={cellphoneNoLink}>
+                                        <div class="value">
+                                            <p>-</p>
+
+
+
+
+                                        </div>
+                                    </template>
+                                    <template if:false={cellphoneNoLink}>
+                                        <div class="value">
+                                            <a href={call_mobile} target="_blank">{cellphone}</a>
+
+                                           
+
+                                        </div>
+                                    </template>
+                                     </div>
+
+                               
+
+
+                                        <template if:false={iconWhatsappGray}>
+                                         <a href={write_whatsapp} target="_blank" class="wpplink">
+      
+                                            <span class="wpp">
+                                                <img src={iconWhatsapp} alt="WhatsApp" />
+ 
+                                                Si
+            
+                                            </span>
+
+
+                                         </a>
+                                        </template>
+
+
+                                        <template if:true={iconWhatsappGray}>
+                                        
+                                                <span class="wpp">
+                                                    <img src={iconWhatsapp} alt="WhatsApp" />
+            
+            
+                                                    No
+                                                
+                                    
+                                                </span>
+    
+                                        </template>
+                                 
+
+
+                                </div>
+                            </template>
+                       
+                   
+                        </div>
+                    </template>
+                  
+
+                        
+                     
+                         
+                            <!--
+                            <div class="item">
+                                <div class="value">
+                                    <template if:false={iconWhatsappGray}>
+                                        <a href={write_whatsapp} target="_blank" class="btn_whataspp">
+                                            <img src={iconWhatsapp} alt="WhatsApp" />
+                                            <span>WhatsApp</span>  
+                                        </a>
+                                    </template>
+                                    <template if:true={iconWhatsappGray}>
+                                        <div class="btn_whataspp-gray">
+                                            <img src={iconWhatsapp} alt="WhatsApp" />
+                                            <span>WhatsApp</span>  
+                                        </div>
+                                    </template>
+                                </div>
+                            </div>
+                            -->
+                       
+                    <!--</div>-->
+                </template>
+
+
+                      <!--SOCIAL ICONS x4-->
+
+
+           
+                <template if:true={permissions.Contact_View_Social_Info}>
+                   
+                    <template if:true={socialrow2}>
+                        <div class="socialrow">
+
+                        <template if:false={facebookNoLink}>
+                            <template for:each={social_array1} for:item="social">
+                                <div key={social} class="socialData">
+                                    <div class="icon">
+                                        <img src={social.icon} alt="icon address">
+                                    </div>
+                                    <template if:true={social.social_no_link}>
+                                        <div class="value">
+                                            <p>-</p>
+                                        </div>
+                                    </template>
+                                    <template if:false={social.social_no_link}>
+                                        <div class="value">
+                                            <a href={social.link} target="_blank" title={social.usuario}>{social.usuario}</a>
+                                        </div>
+                                    </template>
+                                </div>
+                            </template>
+                        </template>
+                    
+               
+                
+                    
+                        <template if:false={twitterNoLink}>
+                            <template for:each={social_array2} for:item="social">
+                                <div key={social} class="socialData">
+                                    <div class="icon">
+                                        <img src={social.icon} alt="icon address">
+                                    </div>
+                                    <template if:true={social.social_no_link}>
+                                        <div class="value">
+                                            <p>-</p>
+                                        </div>
+                                    </template>
+                                    <template if:false={social.social_no_link}>
+                                        <div class="value">
+                                            <a href={social.link} target="_blank" title={social.usuario}>{social.usuario}</a>
+                                        </div>
+                                    </template>
+                                </div>
+                            </template>
+                        </template>
+                   
+                        </div>
+                    </template>
+
+                    <template if:true={socialrow3}>
+                        <div class="socialrow">
+                    
+                        <template if:false={instagramNoLink}>
+                            <template for:each={social_array3} for:item="social">
+                                <div key={social} class="socialData">
+                                    <div class="icon">
+                                        <img src={social.icon} alt="icon address">
+                                    </div>
+                                    <template if:true={social.social_no_link}>
+                                        <div class="value">
+                                            <p>-</p>
+                                        </div>
+                                    </template>
+                                    <template if:false={social.social_no_link}>
+                                        <div class="value">
+                                            <a href={social.link} target="_blank" title={social.usuario}>{social.usuario}</a>
+                                        </div>
+                                    </template>
+                                </div>
+                            </template>
+                        </template>
+                   
+               
+
+                
+                 
+                        <template if:false={linkedinNoLink}>
+                            <template for:each={social_array4} for:item="social">
+                                <div key={social} class="socialData">
+                                    <div class="icon">
+                                        <img src={social.icon} alt="icon address">
+                                    </div>
+                                    <template if:true={social.social_no_link}>
+                                        <div class="value">
+                                            <p>-</p>
+                                        </div>
+                                    </template>
+                                    <template if:false={social.social_no_link}>
+                                        <div class="value">
+                                            <a href={social.link} target="_blank" title={social.usuario}>{social.usuario}</a>
+                                        </div>
+                                    </template>
+                                </div>
+                            </template>
+                        </template>
+
+                        </div>
+                    </template>
+
+                    
+               </template>
+            </section>
+
+
+            </article></div>
+
+            <template if:true={permissions.Contact_View_Relationship}>
+                <section class="relaionshipt" data-aos="zoom-in" data-aos-once="true">
+                    <div class="box grafo">
+                        <!--<div class="header">
+                            <span class="title">Relacionamiento</span>
+                            <a href={relacionamientoURL} target="_blank" class="fullscreen"><img src={iconExpand} alt="fullscreen"/></a>
+                        </div>-->
+
+                        <div class="clickLayout" onclick={endLayout}>Click para interactuar</div>
+                        
+                        <div class="rel_container">
+                            <iframe src={relacionamientoURL} style="width:100%;height:100%"></iframe>
+                        </div>
+                    </div>
+                </section>
+            </template>
+
+        <!--</article></div>-->
+        
+        
+        <div class={sticky_class2}>
+            <aside class="profile2">
+                <div class="box profile_resume"  data-aos="zoom-in" data-aos-once="true">
+                    <figure class="profile_image">
+                      <!--  <template if:true={photoLegacyUrl}>
+                            <img src={photoLegacyUrl} />
+                        </template>
+                        <template if:false={photoLegacyUrl}>-->
+                            <div>{citizenInitials}</div>
+                       <!-- </template>-->
+                    </figure>
+                    <div class="citizen_name">
+                        <h1>{record.citizen.Name}</h1>
+                    </div>
+        
+                    <div class="personal_data">
+
+                        <div class="item" style="flex: 1 1 100%; flex-direction: row;">
+                            <span class="value2" style="margin-right: 5px"> {personal_data_array.documento} </span>
+                   
+                            <p class="separacion">l</p>
+
+                            <span class="value2" style="margin-left:5px"> {personal_data_array.cuit} </span>
+                        
+                        </div>
+
+
+                        <div class="profileRow">
+                        <template if:true={edad}>
+                            <span class="value"> {personal_data_array.edad} años </span> <!--años-->
+                        </template>
+                  
+                        
+                        <template if:true={fecha_nac}>
+                            
+                            <span class="value"> {personal_data_array.fecha_nac} </span>
+                       
+                        </template>
+                    
+                        </div>   
+
+                        <div class="profileRow">     
+
+                        <template if:true={sexo}>
+                            <span class="value"> {personal_data_array.sexo} </span>
+                        </template>
+                     
+                        
+                        <template if:true={nacionalidad}>
+                            
+                            <span class="value"> {personal_data_array.nacionalidad} </span>
+                        
+                        </template>  
+                    
+                        </div>
+
+                        <div class="profileRow">                 
+                        <template if:true={generacion}>
+                                <span class="value"> {personal_data_array.generacion} </span>
+                         </template>
+                       
+                            
+                         
+                                <template if:true={TRIBU2023}>
+                                <span class="value tribu">{TRIBU2023}</span>
+                                </template>
+                                
+                         
+                        </div>
+                  
+
+                    </div>
+                </div>
+              <!--  <div class="citizen_guid" data-aos="zoom-in" data-aos-once="true">
+                    <h5><strong>/ GUID: {personal_data_array.guid}</strong></h5>
+                </div>-->
+            </aside>
+        
+        <article>
+            <!--
+                <template if:true={permissions.Contact_View_Attributes}>
+                    <template if:true={renderAttributesInfo}>
+                        <section class="info_profile" data-aos="zoom-in" data-aos-once="true">
+                            <div class="box slds-grid slds-wrap">
+                                <template for:each={formatedItems} for:item="attribute">
+                                <div key={attribute} class="item slds-col">
+                                    <span class="title">{attribute.label}</span>
+                                    <span class="value">{attribute.value}</span>
+                                </div>
+                                </template>
+                            </div>
+                        </section>
+                    </template>
+                </template>
+            -->
+
+                <template if:true={permissions.Contact_View_Income}>
+                    <template if:true={renderIncomeInfo}>
+                        <section class="job_history" data-aos="zoom-in" data-aos-once="true">
+                            <div class="box">
+
+                                <img src={trabajo} class="headerimg"/>
+
+                                <div class="headertags">
+                                    <template if:true={educationLevel}>
+                                        <span>{educationLevel}</span>
+                                    </template>
+                                    
+                                    <template for:each={condicionIngresoArray} for:item="condicion">
+                                        <span key={condicion}>{condicion}</span>
+                                    </template>
+                                    
+                                    <template for:each={actividadesEconomicasArray} for:item="actividad">
+                                        <span key={actividad}>Trabaja en {actividad}</span>
+                                    </template>
+
+                                    <template if:true={ingresoLevel}>
+                                        <span>Ingreso {ingresoLevel}</span>
+                                    </template>
+
+                                    
+
+                                </div>
+
+                                <!--<div class="header">
+                                    <span class="title">Relación de dependencia</span>
+                                </div>-->
+                                
+                                <div class="items tablasueldo">
+                                    <p class="sueldoheader">
+                                        <span class="title slds-col slds-size_2-of-5">Empleador</span>
+                                 
+                                        <span class="title slds-col slds-size_1-of-5">Sueldo</span>
+                                    </p>
+                                    
+                                    <template for:each={record.incomeInfo.employers} for:item="employer">
+                                        <div class="itemsueldo" key={employer}>
+                                       
+                                            <div style="gap:10px;display:flex;">
+
+                                                <span class="value slds-col slds-size_1-of-1 slds-medium-size_2-of-5">CUIT: {employer.cuit}</span>
+
+                                                <span class="value slds-col slds-size_1-of-1 slds-medium-size_2-of-5">{employer.name}</span>
+                                       
+                                               
+                                            </div>
+                                            <div>
+                                                <span class="ammount slds-col slds-size_1-of-1 slds-medium-size_1-of-5">$&nbsp;{employer.income}</span>
+                                            </div>
+                                        </div>
+                                    </template>
+
+                                    <!-- <p class="footer-item">
+                                        <span class="title">Ingresos Totales: </span>
+                                        <span class="value blue">$&nbsp;{totalIncome}</span>
+                                    </p> -->
+                                    <p class="item ingresos-totales">
+                                        <!-- <span class="value slds-col slds-size_1-of-1 slds-medium-size_2-of-5">&nbsp;</span> -->
+                                        <span class="title slds-col slds-size_1-of-1 slds-medium-size_4-of-5">Ingresos Totales: </span>
+                                        <span class="ammount slds-col slds-size_1-of-1 slds-medium-size_1-of-5">$&nbsp;{totalIncome}</span>
+                                    </p>
+
+                                </div>
+                            </div>
+                        </section>
+                    </template>
+                </template>
+
+                <template if:true={permissions.Contact_View_Mobility}>
+                    <template if:true={renderMobilityInfo}>
+                        <section class="mobility" data-aos="zoom-in" data-aos-once="true">
+                            <div class="box">
+                               
+
+                                <img src={transporte} class="headerimg"/>
+
+                                <div class="headertags transporte">
+                                   <!-- <span>Tiene {mobilities.length} X</span>--> <span class="autoBox" if:true={carShow}>Tiene {carsX}</span> <span class="motoBox" if:true={motoShow}>Tiene {motoX}</span>
+                                </div>
+
+                                <div class="items tablaautos">
+                                    <p class="transporteheader">
+                                        <span class="title">Tipo</span>
+                                        <span class="title">Descripción</span>
+                                        <span class="title">Patente</span>
+                                    </p>
+                                    <template for:each={mobilities} for:item="mobility">
+                                        <div key={mobility} class="itemtabla">
+                                        
+                                            <div>
+                                                <span class="value slds-col slds-size_1-of-1 slds-medium-size_1-of-5">{mobility.clase}</span>
+                                            </div>
+                                            <div>
+                                                <span class="value slds-col slds-size_1-of-1 slds-medium-size_3-of-5">{mobility.descripcion}</span>
+                                            </div>
+                                            <div>
+                                                <span class="value slds-col slds-size_1-of-1 slds-medium-size_1-of-5">{mobility.patente}</span>
+                                            </div>
+                                            
+                                        </div>
+                                    </template>
+                                </div>
+                            </div>
+                        </section>
+                    </template>
+                </template>
+
+                <template if:true={permissions.Contact_View_Electoral}>
+                    <section class="vote" data-aos="zoom-in" data-aos-once="true">
+                        <div class="box">
+                            <!--<div class="header">
+                            <span class="title">Información electoral</span>
+                            </div>-->
+
+                            <img src={electoral} class="headerimg"/>
+
+                            <div class="headertags">
+                                
+
+
+
+                                <template for:each={electoralArray} for:item="electoral">
+                        
+                                    <span key={electoral}>{electoral}</span>
+                                        
+                                </template>
+
+                                <template for:each={politicaArray} for:item="politica">
+                        
+                                    <span key={politica}>{politica}</span>
+                                        
+                                </template>
+
+
+                            </div>
+                            
+                     
+
+                            <div class="items distritoElectoral">
+                                <div class="item">
+                                    <template for:each={electoral_array1} for:item="vote">
+                                        <p key={vote}>
+                                            <span class="title">{vote.title}</span>
+                                            <span class="value">{vote.value}</span>
+                                        </p>
+                                    </template>
+                                </div>
+                            </div>
+                            
+                            <div class="items distritoElectoral">
+                                <div class="item">
+                                    <template for:each={electoral_array2} for:item="vote">
+                                        <p key={vote}>
+                                            <span class="title">{vote.title}</span>
+                                            <span class="value">{vote.value}</span>
+                                        </p>
+                                    </template>
+                                </div>
+                            </div>
+
+
+
+
+
+                            <div class="tags">
+                                <template for:each={votos_array} for:item="voto">
+                                    <span key={voto} class="tag">
+                                    {voto.text}: <img src={voto.sino}>
+                                    </span>
+                                </template>
+                            </div>
+                            
+                            <div class="items">
+                                <div class="item afiliacion">
+                                    <p>
+                                        <span class="title">Afiliación partidaria:</span>
+                                        <span class="value">
+                                            <template if:true={noParty}>
+                                                -
+                                            </template>
+                                            <template if:false={noParty}>
+                                                {record.citizen.party_affiliation__c}
+                                            </template>
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </section>
+                </template>
+
+                <template if:true={permissions.Contact_View_Health}>
+                    <section data-aos="zoom-in" data-aos-once="true">
+                        <c-prosumer_section_salud datos={record.datosSalud} iconsrc={iconNoData}></c-prosumer_section_salud>
+                    </section>
+                </template>
+
+         
+
+                <template if:true={permissions.Contact_View_Tags}>
+                    <template if:true={renderTagInfo}>
+                        <section class="tags footerTags" data-aos="zoom-in" data-aos-once="true">
+                            <div class="box">
+                                <!--<div class="header">
+                                    <span class="title">Tags</span>
+                                </div>-->
+                                <div class="container">
+                                    <template for:each={tags_array} for:item="tag">
+                                        <span key={tag} class="tag">#{tag}</span>
+                                    </template>
+                                </div>
+                            </div>
+                        </section>
+                    </template>
+                </template>
+            </article>
+        </div>
+    </div>
+
+</template>

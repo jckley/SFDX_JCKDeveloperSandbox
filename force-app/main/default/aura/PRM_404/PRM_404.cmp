@@ -1,0 +1,13 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes,force:appHostable,flexipage:availableForAllPageTypes">	    
+	<div>
+		<div id="notfound">
+			<div class="notfound">
+				<div class="notfound-404"></div>
+				<h1>404</h1>
+				<h2>No se encuentra el recurso solicitado.</h2>
+				<p>El recurso no se encuentra o no tiene acceso a él.</p>
+				<a href="https://comunidad.cuidarnos.com/s/">Volver al inicio</a>
+			</div>
+		</div>
+	</div>
+</aura:component>

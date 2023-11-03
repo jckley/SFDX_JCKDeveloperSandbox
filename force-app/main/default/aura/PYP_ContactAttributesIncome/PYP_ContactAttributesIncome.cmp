@@ -1,0 +1,24 @@
+<aura:component>
+    <aura:attribute name="citizenWrapper" 	type="CitizenWrapper" required="true" />
+    <aura:attribute name="rendered" 		type="Boolean" 			required="true" default="true" />
+     
+    <div class="{! (v.rendered)?'card slds-grid slds-wrap':'slds-hide'}">
+    	<div class="slds-grid slds-wrap slds-col slds-size_1-of-1 header" >
+            <div class="slds-col slds-size_1-of-1">
+                <img src="{! $Resource.IconsPack1 + '/KUingresos.svg'}" class="icon" />
+                <span class="title">{!$Label.c.Ingresos}</span>
+            </div>           
+        </div>
+            
+        <div class="slds-col slds-size_1-of-1 slds-grid slds-wrap" style="padding: 10px 30px;">
+            <aura:iteration items="{! v.citizenWrapper.incomeInfo.employers }" var="objEmployer">
+                <c:PYP_ContactEmployer employer="{! objEmployer.name}" cuit="{! objEmployer.cuit}"  income="{! objEmployer.income}" rendered="{! objEmployer.cuit != NULL}" />
+            </aura:iteration>
+        </div>
+                
+        <div class="slds-col slds-size_1-of-1 slds-text-align_right" style="padding: 15px 30px 30px 0;">
+            <span class="label" style="padding-right: 30px;">Ingresos totales: </span>
+            <span class="value blue">{! v.citizenWrapper.incomeInfo.totalIncome}&nbsp;{!$Label.c.Currency}</span>
+        </div>
+    </div>
+</aura:component>

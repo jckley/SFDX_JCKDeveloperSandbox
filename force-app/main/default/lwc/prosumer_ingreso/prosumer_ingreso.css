@@ -1,0 +1,90 @@
+.box {
+
+    background: #FFF;
+    padding: 0;
+    border-radius: 4px;
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border-radius:7px;
+}
+
+
+.box .header { 
+    display: flex;
+    flex-direction: row;
+    padding: 30px 30px;
+    color: #58595b;
+    align-items: center;
+}
+
+.box .body {
+    padding-top: 0px;
+    padding-bottom: 30px; 
+    padding-left: 30px; 
+    padding-right: 30px; 
+}
+
+.box .body .itemList {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+
+.box .body .itemList .item {
+    flex: 0 1 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.box .body .itemList .item.notSelected {
+    opacity: 50%;
+}
+
+.box .body .itemList .item:hover {
+    cursor: pointer;
+}
+
+.box .body .itemList .item .value {
+    padding: 10px 5px;
+    border-radius: 4px;
+    background: #e9121c;
+    color: #FFF;
+    font-weight: bold;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 30px;
+    height: 60px;
+    font-size: 19px;
+
+}
+
+.box .body .itemList .item .name {
+    color: #ff0f0f;
+    margin-top: 10px;
+    margin-bottom: 6px;
+    font-size: 18px;
+}
+
+.box .body .itemList .item .description {
+    color: grey;
+}
+
+.item .value:hover{
+    background: #b40000 !important;
+}
+
+.title{
+    font-size:18px;
+    margin-left: 20px;
+}
+
+img{
+    width: 43px;
+}

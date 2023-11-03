@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Nos_vota_no_sabemos_necesita_logistica</fullName>
+    <booleanFilter>1 AND (2 AND 3)</booleanFilter>
+    <columns>Nombre__c</columns>
+    <columns>Citizen_SFID__c</columns>
+    <columns>Fecha__c</columns>
+    <columns>Afinidad__c</columns>
+    <columns>Medio__c</columns>
+    <columns>Necesita_Logistica__c</columns>
+    <columns>Direccion_de_Recogida__c</columns>
+    <columns>Comentario__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Afinidad__c</field>
+        <operation>equals</operation>
+        <value>Merino</value>
+    </filters>
+    <filters>
+        <field>Necesita_Logistica__c</field>
+        <operation>notEqual</operation>
+        <value>Si</value>
+    </filters>
+    <filters>
+        <field>Necesita_Logistica__c</field>
+        <operation>notEqual</operation>
+        <value>No</value>
+    </filters>
+    <label>Nos vota, no sabemos requiere logistica</label>
+    <sharedTo>
+        <group>TrelewJxC2023</group>
+    </sharedTo>
+</ListView>

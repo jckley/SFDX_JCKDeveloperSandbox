@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cuidarnos_Status__c</fullName>
+    <externalId>false</externalId>
+    <formula>/*
+IF(
+  OR( ISBLANK(Cuidarnos_Comunidad_Date__c), (salud_date__c &gt;  Cuidarnos_Comunidad_Date__c )),
+ BLANKVALUE(salud_status__c, &apos;&apos;),
+ BLANKVALUE(Cuidarnos_Comunidad_Status__c, &apos;&apos;)
+)
+*/
+&apos;&apos;</formula>
+    <label>Cuidarnos Estado Confirmacion Final</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

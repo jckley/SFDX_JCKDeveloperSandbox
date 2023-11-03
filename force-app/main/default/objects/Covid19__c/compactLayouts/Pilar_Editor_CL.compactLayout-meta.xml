@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Pilar_Editor_CL</fullName>
+    <fields>FullName__c</fields>
+    <fields>Document_Number__c</fields>
+    <fields>Edad__c</fields>
+    <fields>Cuidarnos_Comunidad_Status__c</fields>
+    <fields>Name</fields>
+    <label>Pilar Editor CL</label>
+</CompactLayout>

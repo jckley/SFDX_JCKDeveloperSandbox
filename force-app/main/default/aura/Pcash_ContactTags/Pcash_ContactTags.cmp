@@ -1,0 +1,15 @@
+<aura:component >	
+    <aura:attribute name="contw" 	type="ContactWrapper" required="true" />
+    <aura:attribute name="rendered" 	type="Boolean" default="true" />
+    
+    <div class="slds-size-1-of-1 contact-data" style="{!'margin-top: 25px; ' + ( and(v.rendered, v.contw.tagsCommunity.length gt 0)? '':'display: none')}">
+        <div class="card" style="padding: 15px 30px 30px 30px">
+            <div class="slds-grid slds-wrap card-cont">
+                <aura:iteration items="{!v.contw.tagsForCommunity }" var="strTag">
+                    <c:Pcash_TagComponent label="" value="{! strTag }" valueCSS="value-gray" rendered="true"/>                
+                </aura:iteration>              
+            </div>
+        </div>
+    </div>
+    
+</aura:component>

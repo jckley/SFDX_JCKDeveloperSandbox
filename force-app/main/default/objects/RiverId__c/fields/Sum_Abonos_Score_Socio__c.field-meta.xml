@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sum_Abonos_Score_Socio__c</fullName>
+    <externalId>false</externalId>
+    <label>Sum Abonos Score Socio</label>
+    <summarizedField>RiverId_Polls__c.Abonos__c</summarizedField>
+    <summaryForeignKey>RiverId_Polls__c.RiverId_SFID__c</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

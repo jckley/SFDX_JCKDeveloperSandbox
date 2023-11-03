@@ -1,0 +1,23 @@
+<aura:component >
+    <aura:attribute name="citizenWrapper" 	type="ContactWrapper" 	required="true" />
+    <aura:attribute name="rendered" 		type="Boolean" 			required="true" default="true" />
+    <aura:attribute name="showDetails" 		type="Boolean" 			required="true" default="true" />
+    
+    <div class="{! (v.rendered)?'slds-align_absolute-center card slds-grid slds-wrap slds-p-vertical_large slds-p-right_large':'slds-hide'}">
+        <div class="slds-col slds-grid slds-wrap slds-size_1-of-1 slds-large-size_1-of-4 social-border-bottom" style="padding-left: 30px;">
+            <c:Municipio_ContactSocialInfoDetail icon="adfifacebook.svg" name="Facebook" sociallink="{! v.citizenWrapper.contact.Facebook_Link__c}" socialuser="{! v.citizenWrapper.contact.Usuario_Facebook__c}" showDetails="{! v.showDetails}" />
+        </div>
+        
+        <div class="slds-col slds-grid slds-wrap slds-size_1-of-1 slds-large-size_1-of-4 slds-p-left_large social-border-bottom social-border-left">
+            <c:Municipio_ContactSocialInfoDetail icon="adfitwitter.svg" name="Twitter" sociallink="{! v.citizenWrapper.contact.Twitter_Link__c}" socialuser="{! v.citizenWrapper.contact.Usuario_Twitter__c}" showDetails="{! v.showDetails}" />        	
+        </div>
+        
+        <div class="slds-col slds-grid slds-wrap slds-size_1-of-1 slds-large-size_1-of-4 slds-p-left_large social-border-bottom social-border-left">
+            <c:Municipio_ContactSocialInfoDetail icon="adfiinstagram.svg" name="Instagram" sociallink="{! v.citizenWrapper.contact.Instagram_Link__c}" socialuser="{! v.citizenWrapper.contact.Usuario_Instagram__c}" showDetails="{! v.showDetails}" />        
+        </div>
+        
+        <div class="slds-col slds-grid slds-wrap slds-size_1-of-1 slds-large-size_1-of-4 slds-p-left_large social-border-left">
+            <c:Municipio_ContactSocialInfoDetail icon="adfilinkedin.svg" name="Linkedin" sociallink="{! v.citizenWrapper.contact.Linkedin_Link__c}" socialuser="{! v.citizenWrapper.contact.Usuario_Linkedin__c}" showDetails="{! v.showDetails}" />        
+        </div>        
+    </div>
+</aura:component>

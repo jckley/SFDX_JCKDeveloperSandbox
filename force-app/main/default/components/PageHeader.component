@@ -1,0 +1,37 @@
+<apex:component >
+    
+    <apex:attribute name="mainlabel" 				type="String" description="Main Label" required="true" />
+    <apex:attribute name="secundarylabel" 			type="String" description="Secundary Label" />
+    <apex:attribute name="secundarylabelunderlined" type="String" description="Secundary Label content underlined" />
+    <apex:attribute name="linkToRecordId" 			type="String" description="Link to record id" default="#" />
+    <apex:attribute name="viewhierarchyfunction" 	type="String" description="Javascript function to hierarchy view" default="void(0)" />
+  
+    <style>
+    	.page-header-title{
+            font-family: 'Roboto', sans-serif;
+            font-weight: bold;
+            font-size: 30pt;
+            color: #58595b
+        }
+        
+        .page-header-subtitle-underlined{font-weight: bold; color: #999999}
+        .searchAddress:hover{text-decoration: underline; color: #999999}
+        .view-hierarchy:hover{text-decoration: underline; color: #58595b; cursor:pointer;}
+    </style>
+    
+    <div id="page-header-title" class="row" style="margin: 0 10px 0 10px">
+        <div class="mx-auto" style="text-align: center;">
+            <div class="page-header-title {!IF(viewhierarchyfunction != 'void(0)', 'view-hierarchy', '')}"  onclick="javascript:{!viewhierarchyfunction}">{!mainlabel}</div>
+        </div>
+    </div>
+    <div id="page-header-subtitle" class="row" style="margin: 0 10px 0 10px">
+        <div class="mx-auto" style="text-align: center;">
+            <span class="label">
+                {!secundarylabel}
+                <a class="searchAddress page-header-subtitle-underlined" href="#" onclick="navigateToRecord('{!linkToRecordId}');">
+                    {!secundarylabelunderlined}
+                </a>
+            </span>
+        </div>
+    </div>
+</apex:component>

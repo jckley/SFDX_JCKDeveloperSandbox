@@ -1,0 +1,239 @@
+<apex:page docType="html-5.0" 
+    standardStylesheets="false" 
+    lightningStylesheets="true" 
+    title="Login" 
+    showHeader="false" 
+    sidebar="false" 
+    controller="CommunityAuthController"
+    applyBodyTag="false"
+    applyHtmlTag="false"
+    >
+
+    <html lang="en">
+        <head>
+            <title >River ID</title>
+            <link REL="icon" type="img/x-icon"
+            HREF="{! URLFOR($Resource.RiverIdResourses, '/favicon.png')}"/>
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            
+            <apex:stylesheet value="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+            <apex:stylesheet value="https://use.fontawesome.com/releases/v5.8.1/css/all.css"/>
+            <apex:stylesheet value="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap"/>
+            <style>
+                html {
+                    height: 100%;
+                }
+                body {
+                    min-height: 100%;
+                    background-size: 1200px 600px;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-color: black;
+                }
+                .slds-scope {
+                    width: 100%;
+                }
+                
+                .logo-container {
+                    padding-top: 10%;
+                }
+                
+                .logo-img {
+                    height: 30px !important;
+                }
+                .bandera-container {
+                    margin-top: 3rem;
+                    font-size: 1.1em !important;
+                    font-family: 'Roboto' !important;
+                    color: #646564 !important;
+                }     
+                .title {
+                    font-size: 1.2em !important;
+                    font-weight: 600 !important;
+                    color: #646564 !important;
+                }
+                
+                .card {
+                    background-color: #FFFFFF !important;
+                    will-change: transform !important;
+                    overflow: hidden !important;
+                    vertical-align: middle !important;
+                    border-radius: 6px !important;
+                    border: solid 1px #FFFFFF !important;
+                    width: 400px !important;
+                }
+                
+                input {
+                	width: 100%;
+                    border: solid 1.5px #d6d6d6 !important;
+                	border-radius: 6px !important;
+                    height: 50px !important;
+                    font-size: 1.1em !important;
+                    font-family: 'Roboto' !important;
+                    font-weight: bold !important;
+                    color: #646564 !important;
+                	padding: 0 10px;
+                }
+                
+                .password {
+                	padding: 0 40px 0 10px;
+                }
+                
+                input:focus {
+                    border: solid 1px #d6d6d6 !important;
+                    font-size: 1.1em !important;
+                    font-family: 'Roboto' !important;
+                    font-weight: bold !important;
+                    color: #646564 !important;
+                }
+                
+                input::placeholder {
+                    font-family: 'Roboto' !important;
+                    font-size: 1.1em !important !important;
+                    color: #999999 !important;
+                }
+                
+                .visibility-icon {
+                    margin-left: -30px !important;
+                    cursor: pointer !important;
+                }
+                
+                .visibility-icon img {
+                	max-width: 20px;
+                }
+                
+				.slds-scope button,
+                .slds-scope input[type=button],
+                .slds-scope input[type=reset],
+                .slds-scope input[type=submit] {
+                	background-color:  #EC3323 !important;
+                    width: 150px !important;
+                    height: 50px !important;
+                	color: #FFFFFF !important;
+                    font-size: 1.2em !important;
+                    font-family: 'Roboto' !important;
+                    font-weight: bold !important;
+                	border-radius: 6px !important;
+                }
+                
+                .login-button {
+                	border: none;
+                    background-color:  #EC3323 !important;
+                    width: 150px !important;
+                    height: 50px !important;
+                }
+                
+                .button-text {
+                    color: #FFFFFF !important;
+                    font-size: 1.2em !important;
+                    font-family: 'Roboto' !important;
+                    font-weight: bold !important;
+                }
+                
+                .error {
+                    text-align: center;
+                    word-break: break-word;
+                    max-width: 20rem;
+                    color: #ff9e9e;
+                }
+            </style>
+        </head>
+            
+        <body style="background-image: url({! URLFOR($Resource.RiverIdResourses, '/background.jpg')});">
+            <apex:slds /> 
+            <section class="slds-scope" align="center">
+                <div class="slds-grid">
+                    <div class="slds-col slds-size_1-of-1" align="center">
+                        
+                        <!-- LOGO -->
+                        <div class="slds-grid">
+                            <div class="logo-container slds-col slds-size_1-of-1">
+                                <img class="logo-img" src="{! URLFOR($Resource.RiverIdResourses, '/logo.svg')}" alt="logo" />
+                            </div>
+                        </div>
+                    	<div class="slds-grid slds-p-top_xx-large">
+                            <div class="slds-col slds-size_1-of-1" align="center">
+                                <div class="slds-card card">
+                                    
+                                    <!-- LEYENDA -->
+                                    <div class="slds-form slds-p-top_large">
+                                        <label class="slds-form-element__label slds-float_center title">Ingrese a su cuenta</label>
+                                        
+                                        <div class="slds-form slds-p-top_small">
+                                            <apex:form id="loginForm" forceSSL="true">
+                                                <apex:outputPanel layout="block">
+                                                    
+                                                    <div class="error">
+                                                        <apex:pageMessages id="error" />
+                                                        <!-- <img class="errorIcon" src="{! URLFOR($Resource.Communities, '/SALESFORCE/img/login/login-error.svg')}" alt="show pass" /> -->
+                                                    </div>
+                                                    
+                                                    <!-- USUARIO -->
+                                                    <div class="slds-form-element slds-p-horizontal_xx-large slds-p-top_small">
+                                                        <div class="slds-form-element__control">
+                                                            <apex:inputText id="username" value="{!username}" html-placeholder="Usuario" />
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <!-- PASSWORD -->
+                                                    <div class="slds-form-element slds-p-horizontal_xx-large slds-p-top_small">
+                                                        <div class="slds-form-element__control">
+                                                            <div class="slds-grid">
+                                                                <apex:inputSecret styleClass="password" id="password" value="{!password}" html-placeholder="Contraseña" redisplay="false" />
+                                                                <span class="visibility-icon slds-align_absolute-center" id="toggle-button" >
+                                                                    <img class="eyeIcon" src="{! URLFOR($Resource.Communities, '/SALESFORCE/img/login/login-viewpass.svg')}" alt="show pass" />
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <!-- ENVIAR -->
+                                                    <div class="slds-form-element slds-p-around_x-large">
+                                                        <apex:commandButton action="{!doLogin}" value="Ingresar" id="loginButton"/>
+                                                    </div>
+                                                    
+                                                </apex:outputPanel>
+                                            </apex:form>
+                                
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--bandera-->
+                        <div class="slds-grid">
+                            <div class="bandera-container slds-col slds-size_1-of-1">
+                                <img class="logo-img" alt="bandera Prosumia" 
+                                        src="{! IF(NOT(ISBLANK(zipBundle)),URLFOR($Resource[zipBundle], '/SALESFORCE/img/prosumia_bandera.png'),'')}"
+                                        style="{! IF(NOT(ISBLANK(zipBundle)),'', 'display:none')}"/>
+                                <span style="{! IF(NOT(ISBLANK(footerTitle)),'margin-left: 5px;', 'display:none')}">{!footerTitle}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+            
+            <script>
+                let passwordInput =  document.querySelector('#j_id0\\:loginForm\\:password'),
+                    toggle = $('#toggle-button')[0];
+                
+                function togglePassword() {
+                    if (passwordInput.type === 'password') {
+                        passwordInput.type = 'text';
+                        $('.eyeIcon')[0].src ="{! URLFOR($Resource.Communities, '/SALESFORCE/img/login/login-notviewpass.svg')}";
+                    } else {
+                        passwordInput.type = 'password';
+                        $('.eyeIcon')[0].src = "{! URLFOR($Resource.Communities, '/SALESFORCE/img/login/login-viewpass.svg')}";
+                    }
+                }
+                
+                toggle.addEventListener('click', togglePassword, false);
+            // togglePassword();
+            </script>
+            
+        </body>
+	</html>
+</apex:page>

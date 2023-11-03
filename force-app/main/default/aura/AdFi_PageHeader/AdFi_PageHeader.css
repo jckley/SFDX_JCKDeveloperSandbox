@@ -1,0 +1,33 @@
+.THIS {
+    font-family: 'Heebo', sans-serif;
+    font-weight: 300;
+}
+
+.THIS .title {
+    font-size: 29pt;
+    color: #ffffff
+}
+
+.THIS .main-label:hover{
+    cursor: pointer;
+    text-decoration : underline;
+}
+
+.THIS .subtitle,
+.THIS .subtitle a,
+.THIS .subtitle a:visited,
+.THIS .subtitle a:link,
+.THIS .subtitle a:hover {
+    font-size: 10pt;
+    line-height: 1.5;
+    color: #ffffff;
+}
+.THIS .subtitle {
+    font-weight: 400;    
+}
+.THIS .subtitle A {
+    font-weight: 	bold; 
+}
+.THIS .subtitle A:hover { 
+    text-decoration : underline;
+}

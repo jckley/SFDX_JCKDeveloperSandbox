@@ -1,0 +1,94 @@
+@font-face {
+    /*
+        font family is used to give a name to the custom font,
+         you use this for referencing the custom font later
+    */
+    font-family: "Roboto";
+    /*
+        This is the location of the Custom Font, note, I have stored in a ZIP file
+     */
+    src: url('/s/sfsites/c/resource/Communities/SALESFORCE/Fonts/Roboto/Roboto-Regular.ttf') format('TrueType');
+}
+header {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 400;
+    font-family: 'Roboto';
+    color: white;
+}
+
+header .number {
+    font-weight: bold;
+}
+
+.search { 
+    width: 600px;
+    height: 50px;
+    margin: 30px auto;
+    position: relative; 
+    background-color: #ffffff !important;
+    border-radius: 6px;
+    text-align: center;
+}
+ 
+.searchInput { 
+    width: 100%;
+    height: 50px; 
+    display: block; 
+    
+    border: none;
+    border-radius: 6px;
+    font-family: 'Roboto';
+    font-weight: 300;
+    font-size: 16pt;
+    color: #354051;
+}
+
+.searchInput .slds-input { 
+    width: 600px;
+    height: 50px; 
+    
+    border: none;
+    border-radius: 6px;
+    font-family: 'Roboto';
+    font-weight: 300;
+    font-size: 16pt;
+    color: #354051;
+	padding-left: 120px;
+}
+
+.search svg {
+    fill: #676767; 
+    z-index:999;
+}
+
+.search svg[data-key*="search"] {
+    left: 25px; 
+}
+
+.search button {
+    margin-right: 15px; 
+}
+
+.search .prefix { 
+    color: #999999;
+    position: absolute; 
+    display: block; 
+    left: 60px; 
+    top: 14px;
+    font-size: 16px; 
+    z-index: 9;
+}
+
+.search .postfix { 
+    color: #999999;
+    position: absolute; 
+    right : 10px; 
+    top: 16px;
+    font-size: 16px; 
+    z-index: 999;
+
+    display: inline-block; 
+    font-family: 'Roboto'; 
+    font-size: 9pt; color: #666666;
+}

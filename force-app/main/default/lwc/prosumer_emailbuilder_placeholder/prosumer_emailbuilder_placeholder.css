@@ -1,0 +1,33 @@
+.wrapperReference {
+    position: relative;
+}
+
+.wrapperReference .prNoSelected {
+    border : 1px solid rgb(201, 201, 201);
+    margin : 10px;
+    cursor: pointer;
+    transition: border-color .2s ease-out;
+}
+
+.wrapperReference .prNoSelected:hover{
+    border : 1px solid rgb(49, 49, 49);
+}
+
+.wrapperReference .prSelected {
+    border : 3px solid rgb(93, 90, 255);
+    margin : 10px;
+    cursor: pointer;
+}
+
+.wrapperReference .botonEliminar {
+    cursor: pointer;
+    position: absolute;
+    z-index: 1;
+    top: 5px;
+    right: 15px;
+    visibility: hidden;
+}
+
+.wrapperReference:hover .botonEliminar {
+    visibility: visible;
+}

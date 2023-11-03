@@ -1,0 +1,35 @@
+<template>
+    <div class="territorylist">
+        <c-common-header title={title} subtitle={subtitle} subtitle_link_text='' subtitle_link_url=''></c-common-header>
+
+        <div class="slds-grid">
+            <template for:each={arrTerritory} for:index="intIndex" for:item="objTerritory">
+                <c-newcom_territory-level key={objTerritory} level={objTerritory}></c-newcom_territory-level>
+            </template>
+        </div>
+        <div class="slds-grid">
+
+            <template for:each={territories} for:index="intIndex" for:item="territory">
+                <li key={territory} class="levelItem" onclick={handleClick} data-name={territory.Name} id={territory.Id}>
+                    <div class="container">
+                        <span class="right-arrow hideondesktop">
+                            <img class="searchIcon" src={iconRight} />
+                        </span>
+
+                        <h2>{territory.Name}</h2>
+
+                        <div class="showmeonhover">
+                            <span>
+                                <a key={territory} href={strLink} territory-id={territory.Id} onclick={territoryDetailLink}>Ver territorio</a>
+                                <img src={iconRight} alt="" />
+                            </span>
+                        </div>
+                    </div>
+                </li>
+            </template>
+        
+
+
+        </div>
+    </div>
+</template>

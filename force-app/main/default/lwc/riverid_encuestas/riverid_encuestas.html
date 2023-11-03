@@ -1,0 +1,32 @@
+<template>
+    <div class={all_page_class} if:true={isRecordReady}>
+        <h1 class="title">Encuestas ({cantidadEncuestas})</h1>
+        <div class="lista-encuestas">
+            <template for:each={encuestas} for:item="encuesta" for:index="intIndex">
+                <div class="box slds-grid slds-gutters clickMe"
+                            data-aos="zoom-in"
+                            data-aos-once="true"
+                            key={encuesta.id} 
+                            onclick={navigateTo} 
+                            data-navigateurl={encuesta.link} >
+                        <div class="name slds-col 
+                                slds-small-size_7-of-12
+                                slds-medium-size_8-of-12
+                                slds-large-size_9-of-12">
+                            {encuesta.name}
+                        </div>
+                        <div class="last-col-wrapper slds-col
+                                slds-small-size_5-of-12
+                                slds-medium-size_4-of-12
+                                slds-large-size_3-of-12">
+                            <span>
+                                <span class = "respuestas-label">Respuestas: </span>
+                                <span class = "respuestas-value">{encuesta.respuestas}</span>
+                            </span>
+                            <img class="barrasIcon" src={barrasIcon}/>
+                        </div>
+                </div>
+            </template>
+        </div>
+    </div>
+</template>

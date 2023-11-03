@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>NAME</columns>
+    <columns>LogId__c</columns>
+    <columns>Citizen_ID__c</columns>
+    <columns>Customer__c</columns>
+    <columns>User__c</columns>
+    <columns>Marked_Date__c</columns>
+    <columns>SMS_Status__c</columns>
+    <columns>SMS_Last_Modified_Date__c</columns>
+    <columns>Related_Citizen_Mobile__c</columns>
+    <columns>Related_Citizen_FirstName__c</columns>
+    <columns>Related_Citizen_LastName__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+</ListView>

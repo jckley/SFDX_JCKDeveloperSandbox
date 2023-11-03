@@ -1,0 +1,501 @@
+<apex:component >    
+    <style>        
+        @media only screen and (max-device-width: 576px) { 
+            #street-view {
+                height: 100%;
+                min-height: 150px;
+                background-color: grey;
+                width: 100%;
+            }
+        
+            #map-head {
+                height: 100%;
+                min-height: 150px;
+                background-color: grey;
+                width: 100%;
+            }
+        }
+        
+        @media only screen and (min-device-width: 576px) {
+        	#street-view {
+                height: 100%;
+                min-height: 300px;
+                background-color: grey;
+                width: 100%;
+            }
+        
+            #map-head {
+                height: 100%;
+                min-height: 300px;
+                background-color: grey;
+                width: 100%;
+            }
+        }
+                
+        .image-icon {
+        	width: 43px; 
+        	margin-top: 7px;
+        }
+
+        .separator-margin{margin-bottom: 20px;}
+        
+       
+    </style>
+    
+    <apex:attribute name="citizenwrapper" 	type="CitizenWrapper" 	required="true" description="Contact General Info" />  
+    <apex:attribute name="mainCountry" 	type="String" 	        required="true" description="Default country" default="Argentina" />  
+
+    <div class="row contact-data">		
+        <div class="card card-left-border orange">
+            <div class="row card-cont" style="margin-bottom: 10px;">
+                <div class="col-2 col-md-1 col-lg-auto separator-margin">
+                    <div class="image-icon">
+                        <apex:image styleClass="icon-test" value="{!URLFOR($Resource.IconsPack1, 'addressps.svg')}"/>
+                    </div>
+                </div>
+                <div class="col-10 col-md-7 col-lg-5 pl-lg-2 separator-margin">                    
+                    <c:ContactDisplayField label="{!$Label.Address}" value="{! citizenwrapper.generalInfo.addressSimple }" nullvalue="{!$Label.NoInformation}" classLabel="label uppercase" classValue="data-value-yellow f16" />
+                </div>
+                
+                <div class="col-2 d-sm-none separator-margin"></div>
+                
+                <div class="col-10 col-md-4 col-lg-2 separator-margin">
+                    <c:ContactDisplayField label="{!$Label.PostalCode}" value="{!citizenwrapper.citizen.MailingPostalCode}" nullvalue="{!$Label.NoInformation}" classLabel="label uppercase" classValue="data-value-yellow f16"/>                            
+                </div> 
+                <div class="col-2 col-md-1 col-lg-auto separator-margin">
+                    <div class="image-icon">
+                        <apex:image styleClass="icon-test" value="{!URLFOR($Resource.IconsPack1, 'phoneps.svg')}"/>
+                    </div>
+                </div>
+                <div class="col-10 col-md-3 pl-lg-2">
+                    <c:ContactDisplayField label="TELÉFONO FIJO" value="{!citizenwrapper.citizen.HomePhone}" nullvalue="{!$Label.NoInformation}" showDetail="{! $Permission.Contact_View_Contact_Info_Details}" classLabel="label uppercase" classValue="data-value-yellow f16"/>                            
+                </div>                      
+            </div>
+        </div>
+        <div class=" mapcontainer">
+            <div id="map-head"></div>
+        </div>
+        
+        <div class="streetviewcontainer">                  
+            <div id="street-view">{!$Label.StreetViewNotAvailable}</div>
+        </div>
+    </div>
+
+    <apex:includeScript value="https://maps.googleapis.com/maps/api/js?key=AIzaSyBEqode5kv6zDevz-uin7EreqXtxGl3g4E"/>
+
+    <script>    
+    var objMap = null;
+    var objStreetView = null;
+    var objStreetViewMobile = null;
+    var intZoom = 17;
+    
+    $(document).ready(function() {
+        $('#loading').hide();
+        var objCoordinate = null;    
+        
+        objMap = null;
+        if({!$Permission.Contact_View_Map_Info}){
+            objCoordinate = retrieveMapCoordinate();
+            showStreetViewPOV(objCoordinate);
+            
+            centerMapWithAddress(objCoordinate);
+        }       
+    });
+    
+    $(document).on('streetViewLoaded', function() {
+        $('.mapcontainer').addClass('col-12 col-lg-6 pl-0 pr-0');
+        $('.streetviewcontainer').addClass('col-12 col-lg-6 pl-0 pr-0');
+    });
+    
+    $(document).on('streetViewHidden', function() {
+        $('.mapcontainer').addClass('col-12 col-lg-12 pl-0 pr-0');
+        $('.streetviewcontainer').hide();
+
+    });    
+    
+     function centerMapWithCoordinate(objCoordinate) {
+        var objMapSettings = null;
+        var objMapMarker = null;
+        
+        objMapSettings = retrieveMapSettings(objCoordinate, intZoom);
+        
+        objMap = new google.maps.Map(document.getElementById('map-head'),objMapSettings);
+        
+        if({! $Permission.Contact_View_Map_Info}) {
+            objMapMarker = new google.maps.Marker({
+                position: objCoordinate.Google,
+                map: objMap
+            });
+        }
+    }
+
+    function centerMapWithAddress(objCoordinate) {
+        var objGeocoder = null;
+        var objMapSettings = null;
+        
+        objGeocoder = new google.maps.Geocoder();
+        objGeocoder.geocode({
+            'address': objCoordinate.Address.join(','),
+            'componentRestrictions' : {
+                'country' : '{! mainCountry }'
+            }
+        }, function(arrResults, objStatus) {
+            if (objStatus == google.maps.GeocoderStatus.OK && arrResults.length > 0) {
+                if(arrResults[0].geometry.location_type == 'APPROXIMATE') {
+                    intZoom -= 2;
+                }
+                objCoordinate.Latitude = arrResults[0].geometry.location.lat();
+                objCoordinate.Longitude = arrResults[0].geometry.location.lng();
+                objCoordinate.Google = {};
+                objCoordinate.Google.lat = objCoordinate.Latitude;
+                objCoordinate.Google.lng = objCoordinate.Longitude;
+                objCoordinate.Google.center = {};
+                objCoordinate.Google.center.lat = objCoordinate.Latitude;
+                objCoordinate.Google.center.lng = objCoordinate.Longitude;
+                
+                centerMapWithCoordinate(objCoordinate);                              
+            } else {
+                //si no devolvio la direccion, vuelvo a llamar a la funcion buscando por un nivel superior-
+                //si no lo encuentro a la primera, debo ocultar el street view
+                hideStreetView();
+                intZoom -= 2; //voy alejando el zoom a medida que no voy encontrando la locacion
+             	objCoordinate.Address.shift();
+                centerMapWithAddress(objCoordinate);
+            }
+        });
+    }    
+    
+    function showStreetViewPOV(objCoordinate) {
+        var objGeocoder = null;
+        var objMapSettings = null;
+        
+        objGeocoder = new google.maps.Geocoder();
+        objGeocoder.geocode({
+            'address': objCoordinate.Address.join(',').replace(',,',','),
+             'componentRestrictions' : {
+                'country' : '{! mainCountry }'
+            }
+        }, function(arrResults, objStatus) {
+            //PODRIA VALIDAR TAMBIEN QUE LAT Y LNG NO SEAN NULOS.
+            if (objStatus == google.maps.GeocoderStatus.OK && arrResults.length > 0 && arrResults[0].geometry.location_type != 'APPROXIMATE') {
+                objCoordinate.Latitude = arrResults[0].geometry.location.lat();
+                objCoordinate.Longitude = arrResults[0].geometry.location.lng();
+                objCoordinate.Google = {};
+                objCoordinate.Google.lat = objCoordinate.Latitude;
+                objCoordinate.Google.lng = objCoordinate.Longitude;
+                objCoordinate.Google.center = {};
+                objCoordinate.Google.center.lat = objCoordinate.Latitude + 0.0017;
+                objCoordinate.Google.center.lng = objCoordinate.Longitude;
+                if(objCoordinate.Latitude != null && objCoordinate.Longitude != null ) {
+                    showStreetView(objCoordinate);    
+                } else {
+                    hideStreetView();  
+                }
+            } else {
+                //si no devolvio la direccion, vuelvo a llamar a la funcion buscando por un nivel superior-
+                //si no lo encuentro a la primera, debo ocultar el street view
+                if(objCoordinate.Latitude != null && objCoordinate.Longitude != null ) {
+                	showStreetView(objCoordinate)
+                } else {
+                    hideStreetView();                                        
+                }                
+            }
+        });
+    }
+    
+    function showStreetView(objCoordinate) {
+        var objStreetViewService = null;
+        var objStreetViewSettings = null;
+        
+        objStreetViewSettings = retrieveStreetViewSetting();
+        objStreetView = new google.maps.StreetViewPanorama(document.getElementById('street-view'), objStreetViewSettings);
+        //objStreetViewMobile = new google.maps.StreetViewPanorama(document.getElementById('street-view-mobile'), objStreetViewSettings);
+        objStreetViewService = new google.maps.StreetViewService();
+        
+        objStreetViewService.getPanorama({ 
+                location: objCoordinate.Google, 
+                radius: 50,
+                preference: google.maps.StreetViewPreference.NEAREST,
+                source: google.maps.StreetViewSource.OUTDOOR
+            }, retrieveStreetViewCallback
+        );
+    }
+    
+    function retrieveStreetViewCallback(objData, strStatus) {
+        if  (strStatus === 'OK') {  
+            objStreetView.setPano(objData.location.pano);
+            $(document).trigger('streetViewLoaded');
+        } else {
+        	hideStreetView();
+        }        
+    }
+    
+    function hideStreetView() {
+		$('#street-view').hide();    
+        $(document).trigger('streetViewHidden');
+    }
+        
+    function retrieveMapCoordinate() {
+        var objCoordinate = null;
+        
+        objCoordinate = {};
+        objCoordinate.Latitude = '{!citizenwrapper.citizen.MailingLatitude}';
+        objCoordinate.Longitude = '{!citizenwrapper.citizen.MailingLongitude}';
+        objCoordinate.Address = [];
+        
+        objCoordinate.Address[0] = '{!citizenwrapper.citizen.MailingStreet} {!citizenwrapper.citizen.MailingNumber__c}';
+        objCoordinate.Address[1] = '{!citizenwrapper.citizen.Level4Name__c}';
+        objCoordinate.Address[2] = '{!citizenwrapper.citizen.Level3Name__c}';
+        objCoordinate.Address[3] = '{!citizenwrapper.citizen.Level2Name__c}';
+        objCoordinate.Address[4] = '{!citizenwrapper.citizen.Level1Name__c}';
+        
+        objCoordinate.Latitude = (objCoordinate.Latitude !== '')?parseFloat(objCoordinate.Latitude):null;
+        objCoordinate.Longitude = (objCoordinate.Longitude !== '')?parseFloat(objCoordinate.Longitude):null;
+        objCoordinate.Google = {};
+        objCoordinate.Google.lat = objCoordinate.Latitude;
+        objCoordinate.Google.lng = objCoordinate.Longitude;
+        objCoordinate.Google.center = {};
+        objCoordinate.Google.center.lat = objCoordinate.Latitude;
+        objCoordinate.Google.center.lng = objCoordinate.Longitude;
+
+        return objCoordinate;
+    }
+    
+    function retrieveMapSettings(objCoordinate, intZoom) {
+        var objMapFeatures = null;
+        
+        objMapFeatures = {};
+        objMapFeatures.zoom = (intZoom !== undefined && intZoom !== null && intZoom > 0 && intZoom < 18)?intZoom:14;
+        objMapFeatures.center = objCoordinate.Google.center;
+        objMapFeatures.zoomControl = true;
+        objMapFeatures.mapTypeControl = false;
+        objMapFeatures.scaleControl = false;
+        objMapFeatures.streetViewControl = false;
+        objMapFeatures.rotateControl = false;
+        objMapFeatures.scrollwheel = false;
+        objMapFeatures.fullscreenControl = false;
+        
+        objMapFeatures.styles = retrieveStyles();
+        
+        return objMapFeatures;
+    }
+    
+	function retrieveStreetViewSetting() {
+    	return {
+                pov : { heading: 0, pitch: 0},
+                zoom : 1,
+                linksControl : false,
+                panControl : false,
+                fullScreenControl : false,
+                enableCloseButton : false,
+                motionTrackingControl : false,
+            	scrollwheel : false
+            };
+    }
+
+    function retrieveStyles () {
+    	return [
+                {
+                    "featureType": "all",
+                    "elementType": "labels",
+                    "stylers": [
+                        {
+                            "visibility": "off"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "administrative",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "visibility": "simplified"
+                        },
+                        {
+                            "color": "#5b6571"
+                        },
+                        {
+                            "lightness": "35"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "administrative.neighborhood",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "visibility": "off"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "landscape",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "visibility": "on"
+                        },
+                        {
+                            "color": "#f3f4f4"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "landscape.man_made",
+                    "elementType": "geometry",
+                    "stylers": [
+                        {
+                            "weight": 0.9
+                        },
+                        {
+                            "visibility": "off"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "poi.park",
+                    "elementType": "geometry.fill",
+                    "stylers": [
+                        {
+                            "visibility": "on"
+                        },
+                        {
+                            "color": "#83cead"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "visibility": "on"
+                        },
+                        {
+                            "color": "#ffffff"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road",
+                    "elementType": "labels",
+                    "stylers": [
+                        {
+                            "visibility": "on"
+                        },
+                        {
+                            "lightness": "-21"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road",
+                    "elementType": "labels.text",
+                    "stylers": [
+                        {
+                            "color": "#7a7676"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road",
+                    "elementType": "labels.text.stroke",
+                    "stylers": [
+                        {
+                            "visibility": "off"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road.highway",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "visibility": "on"
+                        },
+                        {
+                            "color": "#fee379"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road.highway",
+                    "elementType": "geometry",
+                    "stylers": [
+                        {
+                            "visibility": "on"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road.highway",
+                    "elementType": "labels",
+                    "stylers": [
+                        {
+                            "visibility": "off"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road.highway",
+                    "elementType": "labels.icon",
+                    "stylers": [
+                        {
+                            "visibility": "off"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road.highway.controlled_access",
+                    "elementType": "labels.icon",
+                    "stylers": [
+                        {
+                            "visibility": "off"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road.arterial",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "visibility": "simplified"
+                        },
+                        {
+                            "color": "#ffffff"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road.arterial",
+                    "elementType": "labels",
+                    "stylers": [{
+                            "visibility": "off"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road.arterial",
+                    "elementType": "labels.icon",
+                    "stylers": [
+                        {
+                            "visibility": "off"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "water",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "visibility": "on"
+                        },
+                        {
+                            "color": "#badbec"
+                        }
+                    ]
+                }
+            ];
+    }
+    </script>
+</apex:component>

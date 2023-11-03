@@ -1,0 +1,62 @@
+<aura:component controller="PRM_Cuidarnos">
+    <aura:attribute name="community"        type="String" default="Prosumia"/>
+    <aura:attribute name="citizenWrapper" 	type="CitizenWrapper" 	required="true" />
+    <aura:attribute name="rendered" 		type="Boolean" 			required="true" default="true" />
+    <aura:attribute name="showDetails" 		type="Boolean" 			required="true" default="true" />
+    
+    <aura:attribute name="mobile" 		type="String" />
+    <aura:attribute name="email" 		type="String" />
+
+    <aura:registerEvent name="Cuidarnos_Telemedico_Event" 			type="c:Cuidarnos_Telemedico_Event" />   
+	<aura:handler event="c:PRM_Cuidarnos_Edit_Completed" action="{! c.updateEditInfo }" />
+    <lightning:notificationsLibrary aura:id="notifLib"/>
+    <div class="{! (v.rendered)?'slds-grid slds-wrap ' + v.community :'slds-hide'}">        
+        <article class="slds-col--padded slds-size_1-of-1"  style="padding: 10px 30px;">
+            <div class="slds-grid slds-wrap slds-col slds-size_1-of-1" >
+                <div class="slds-size_1-of-1 slds-large-size_5-of-12 bloque slds-grid slds-p-left_small separator">
+                    <div class="slds-size_2-of-12 mobile-icon-margin">
+                        <img src="{! $Resource.PRM + '/' + v.community +  '/img/adfimail.svg'}" class="icon" />
+                    </div>
+                    <div class="slds-size_10-of-12 mobile-email-margin">
+                        <c:PRM_DisplayField community="{! v.community }" label="Email" value="{! (v.showDetails)?v.email:(v.email == NULL?$Label.c.No:$Label.c.Yes)}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13 blue"/>                                                                                        
+                    </div>
+                </div>
+ 
+                <div class="slds-size_1-of-1 slds-large-size_3-of-12 bloque verticalseparator separator slds-grid">
+                    <div class="slds-size_2-of-12 l-mr-15">
+                        <img src="{! $Resource.PRM + '/' + v.community +  '/img/adfimobile.svg'}" class="icon" />
+                    </div>
+                    <div class="slds-size_10-of-12 mobile-mobile-margin"  >
+                        <c:PRM_DisplayField community="{! v.community }" label="Celular" value="{! (v.showDetails)?v.mobile:(v.mobile == NULL?$Label.c.No:$Label.c.Yes)}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13 blue"/>
+                    </div>
+                </div>
+                
+                <div class="slds-size_1-of-1 slds-large-size_2-of-12 bloque slds-grid slds-p-left_small slds-p-right_small">
+                    <div class="{! v.citizenWrapper.permissions.CuidarnosCanCall?'phoneapp active':'slds-hide' }">
+                        <a href="javascript:void();" onclick="{! c.showTelemedicoModal }" target="_blank">
+                            <img src="{! $Resource.CuidarnosResource + '/img/Telemedico.png' }" class="icon-small" />    
+                            <span>Telemédico</span>
+                        </a>
+                    </div>
+                    <div class="{! v.citizenWrapper.permissions.CuidarnosCanCall?'slds-hide':'phoneapp inactive' }">
+                        <img src="{! $Resource.CuidarnosResource + '/img/Telemedico.png' }" class="icon-small" />    
+                        <span>Telemédico</span>
+                    </div>
+                </div>
+                
+                <div class="slds-size_1-of-1 slds-large-size_2-of-12 bloque slds-grid slds-p-left_small slds-p-right_small ">
+                    <div class="{! v.citizenWrapper.permissions.CuidarnosCanNotifyEmail?'phoneapp active':'slds-hide' }">
+                        <a href="javascript:void();" onclick="{! c.notifyUser }" target="_blank">
+                            <img src="{! $Resource.CuidarnosResource + '/img/Notificacion.png' }" class="icon-small" />    
+                            <span>Notificacion</span>
+                        </a>
+                    </div>
+                    <div class="{! v.citizenWrapper.permissions.CuidarnosCanNotifyEmail?'slds-hide':'phoneapp inactive' }">
+                        <img src="{! $Resource.CuidarnosResource + '/img/Notificacion.png' }" class="icon-small" />    
+                        <span>Notificacion</span>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </div>
+</aura:component>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>HUR_Encuesta_Resultado__c</fullName>
+    <externalId>false</externalId>
+    <label>HUR Encuesta Resultado</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>VOTO 2</fullName>
+                <color>#FFFFFF</color>
+                <default>false</default>
+                <label>VOTO 2</label>
+            </value>
+            <value>
+                <fullName>VOTO 3</fullName>
+                <color>#FFFFFF</color>
+                <default>false</default>
+                <label>VOTO 3</label>
+            </value>
+            <value>
+                <fullName>VOTO 4</fullName>
+                <color>#FFFFFF</color>
+                <default>false</default>
+                <label>VOTO 4</label>
+            </value>
+            <value>
+                <fullName>Juan Horacio Zabaleta</fullName>
+                <color>#FFFFFF</color>
+                <default>false</default>
+                <label>Juan Horacio Zabaleta</label>
+            </value>
+            <value>
+                <fullName>Lucas Delfino</fullName>
+                <color>#FFFFFF</color>
+                <default>false</default>
+                <label>Lucas Delfino</label>
+            </value>
+            <value>
+                <fullName>Luis Acuña</fullName>
+                <color>#FFFFFF</color>
+                <default>false</default>
+                <label>Luis Acuña</label>
+            </value>
+            <value>
+                <fullName>No sabe</fullName>
+                <color>#FFFFFF</color>
+                <default>false</default>
+                <label>No sabe</label>
+            </value>
+            <value>
+                <fullName>Otro</fullName>
+                <color>#FFFFFF</color>
+                <default>false</default>
+                <label>Otro</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

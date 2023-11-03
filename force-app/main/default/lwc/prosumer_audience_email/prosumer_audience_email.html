@@ -1,0 +1,192 @@
+<template>
+  <div class="audienciaPageBody">
+    <template lwc:if={loadingScreenOn}>
+      <div class="spinner-container">
+        <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+      </div>
+    </template>
+    <template lwc:else>
+      <div class="slds-container main-container">
+        <!--DATOS DE AUDIENCIA-->
+        <div class="slds-container slds-box slds-m-top_large datos-audiencia">
+          <div class="slds-border_bottom slds-m-bottom_medium header">
+            <img class="atras" src={atrasimg} onclick={handleCancelar} />
+            <h3 class="slds-m-bottom_small">Enviar Email</h3>
+            <p>
+              Costo: <span class="costo"><img class="logo" src={logo} />{formatedValues.email_campaing_cost}</span>
+            </p>
+          </div>
+          <div class="slds-grid">
+            <div class="slds-col">
+              <div class="audience-information">
+                <div>
+                  <span>{formatedValues.number_of_people}</span>
+                  <span> PERSONAS</span>
+                </div>
+                <div>
+                  <img src={celular} />
+                  <p>
+                    <span>{formatedValues.number_of_emails}</span>
+                    <span>Direcciones de email</span>
+                  </p>
+                </div>
+              </div>
+              <div class="audience-composition">
+                <h3>Composición de Audiencia</h3>
+                <div class="slds-grid slds-wrap">
+                  <template for:each={valuesFromAudiencePage.filters} for:item="audience">
+                    <div key={audience}>
+                      <span class="slds-badge slds-badge_inverse audiencias">{audience}</span>
+                    </div>
+                  </template>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="slds-container slds-box slds-m-top_small slds-grid inputs-campaña">
+
+        <!-- INICIA FORMULARIO (COLUMNA IZQUIERDA) -->
+          <div class="slds-col inputs colLeft">
+            <!--<lightning-combobox name="Template de email" label="Template de email" placeholder="Selecione un template" 
+                    onchange={handleEmailTemplateChange} options={opcionesEmailsTemplate}></lightning-combobox>-->
+
+
+
+                    <div class="slds-form-element slds-m-top_medium prosumerInput">
+                    <label for="emailTemplate"><abbr class="slds-required" title="required">* </abbr> Email Template</label>
+                    <select name="emailTemplate" id="emailTemplate" onchange={handleEmailTemplateChange} class="slds-select">
+                        <option value="">Selecione un template</option>
+                        <!-- Render dynamic options based on opcionesEmailsTemplate -->
+                        <template for:each={opcionesEmailsTemplate} for:item="option">
+                            <option key={option.value} value={option.value}>{option.label}</option>
+                        </template>
+                    </select>
+                  </div>
+
+
+              <!-- Nombre de la Campaña -->
+              <div class="slds-form-element slds-m-top_medium prosumerInput">
+                <div class="row">
+                  <label class="slds-form-element__label" for="text-input-id-campaign-name"> <abbr class="slds-required" title="required">* </abbr>Nombre de la campaña</label>
+                  <div class={counterClassI}>{counterTextI}</div>
+                </div>
+                <div class="slds-form-element__control">
+                  <input type="text" id="text-input-id-campaign-name" placeholder="Ej: Campaña vial" required="" class="slds-input title" oninput={updateInputTitulo} onclick={hideConfirmation} onchange={handleNombreCampañaChange}/>
+                </div>
+                 <div class="slds-form-element__help" id="error-message-id-campaign-name">Este nombre solo se mostrará de manera interna.</div> 
+              </div>
+              <!-- Nombre de la Campaña -->
+
+
+
+
+
+
+
+                   <!-- Asunto de la campaña -->
+              <div class="slds-form-element slds-m-top_medium prosumerInput">
+                <div class="row">
+                  <label class="slds-form-element__label" for="text-input-id-campaign-name"> <abbr class="slds-required" title="required">* </abbr>Asunto de la campaña</label>
+                  <!--<div class={counterClassI}>{counterTextI}</div>-->
+                </div>
+                <div class="slds-form-element__control">
+                  <input type="text" id="text-input-id-campaign-asunto" placeholder="Ej: Conocé más sobre nuestra Campaña vial" required="" class="slds-input title"  onclick={hideConfirmation} onchange={handleAsuntoCampañaChange}/>
+                
+                <!-- ACLARACION: el ONINPUT SE BORRO ACA -->
+                </div>
+                <!-- <div class="slds-form-element__help" id="error-message-id-campaign-name">Este nombre solo se mostrará de manera interna.</div> -->
+              </div>
+              <!-- Asunto de la campaña -->
+
+
+
+
+
+
+
+               <!-- Nombre remitente de la campaña -->
+               <div class="slds-form-element slds-m-top_medium prosumerInput">
+                <div class="row">
+                  <label class="slds-form-element__label" for="text-input-id-campaign-name"> <abbr class="slds-required" title="required">* </abbr>Nombre remitente de la campaña</label>
+                  <!--<div class={counterClassI}>{counterTextI}</div>-->
+                </div>
+                <div class="slds-form-element__control">
+                  <input type="text" id="text-input-id-campaign-nombre-remitente" placeholder="Ej: Pablo Perez" required="" class="slds-input title"  onclick={hideConfirmation} onchange={handleNombreRemitenteChange}/>
+                
+                <!-- ACLARACION: el ONINPUT SE BORRO ACA -->
+                </div>
+                <!-- <div class="slds-form-element__help" id="error-message-id-campaign-name">Este nombre solo se mostrará de manera interna.</div> -->
+              </div>
+              <!-- Nombre remitente de la campaña -->
+
+
+
+
+
+
+               <!-- Email remitente de la campaña -->
+               <div class="slds-form-element slds-m-top_medium prosumerSeparador"> <!-- SEPARADOR -->
+                <div class="row">
+                  <label class="slds-form-element__label" for="text-input-id-campaign-name"> <abbr class="slds-required" title="required">* </abbr>Email remitente de la campaña</label>
+                  <!--<div class={counterClassI}>{counterTextI}</div>-->
+                </div>
+                <div class="slds-form-element__control">
+                  <input type="text" id="text-input-id-campaign-email-remitente" placeholder="Ej: nombre@dominio.com" required="" class="slds-input title"  onclick={hideConfirmation} onchange={handleEmailRemitenteChange}/>
+                
+                <!-- ACLARACION: el ONINPUT SE BORRO ACA -->
+                </div>
+                <!-- <div class="slds-form-element__help" id="error-message-id-campaign-name">Este nombre solo se mostrará de manera interna.</div> -->
+              </div>
+              <!-- Email remitente de la campaña -->
+
+
+
+              <!-- Email remitente de la campaña -->
+              <div class="slds-form-element slds-m-top_medium prosumerInput"> <!-- SEPARADOR -->
+                <div class="row">
+                  <label class="slds-form-element__label" for="text-input-id-campaign-name"> <abbr class="slds-required" title="required">* </abbr>Enviar email de prueba a la dirección:</label>
+                  <!--<div class={counterClassI}>{counterTextI}</div>-->
+                </div>
+                <div class="slds-form-element__control">
+                  <input type="text" id="text-input-id-campaign-email-test" placeholder="Ej: nombre@dominio.com" required="" class="slds-input title"  onclick={hideConfirmation} onchange={handleEmailRemitenteChange}/>
+                
+                <!-- ACLARACION: el ONINPUT SE BORRO ACA -->
+                </div>
+                <!-- <div class="slds-form-element__help" id="error-message-id-campaign-name">Este nombre solo se mostrará de manera interna.</div> -->
+              </div>
+              <!-- Email remitente de la campaña -->
+
+
+              <button class="slds-button slds-button_neutral enviarPrueba" onclick={sendTestMessage}>Enviar prueba ({formatedValues.email_cost} créditos)</button>
+
+          </div>
+        <!-- FINALIZA FORMULARIO (COLUMNA IZQUIERDA) -->
+
+        <!-- INICIA PREVIEW (COLUMNA DERECHA) -->
+          <div class="slds-col slds-align_absolute-center previewDiv">
+            <!--<div style="display: flex; flex-direction: column; justify-items: center; align-items: center;">PREVIEW IRIA ACA</div>-->
+            <p class="datetime">{formattedDate}</p>
+            <img class="preview" src={prosumerEmail} />
+            <div data-placeholder lwc:dom="manual" class="emailContent"></div>
+          </div>
+        <!-- FINALIZA PREVIEW (COLUMNA DERECHA) -->
+
+        </div>
+
+        <!--BOTONES-->
+        <div class="slds-container slds-box slds-m-top_small buttons-container footer">
+          <button type="button" class="slds-button slds-button_neutral cancelarButton" onclick={handleCancelar}>Cancelar</button>
+          <button id="send-button" 
+                  class="slds-button slds-button_neutral enviarConfirmar" 
+                  onclick={handleEnviar} 
+                  disabled={disableEnviarCampaña}>
+                    Enviar mails ({formatedValues.email_campaing_cost} créditos)
+          </button>
+        </div>
+      </div>
+    </template>
+  </div>
+</template>

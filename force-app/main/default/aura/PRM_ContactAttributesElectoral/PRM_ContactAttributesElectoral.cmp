@@ -1,0 +1,84 @@
+<aura:component>
+    <aura:attribute name="community"        type="String"           default="Prosumia"/>
+    <aura:attribute name="citizenWrapper" 	type="CitizenWrapper" 	required="true" />
+    <aura:attribute name="rendered" 		type="Boolean" 			required="true" default="true" />
+     
+    <div class="{! (v.rendered)?'card slds-grid slds-wrap slds-m-top_large ' + v.community:'slds-hide'}">
+    	<div class="slds-grid slds-wrap slds-col slds-size_1-of-1 header" >
+            <div class="slds-col slds-size_1-of-1">
+                <img src="{! $Resource.PRM   + '/' + v.community +  '/img/adfielectoral.svg'}" class="icon" />
+                <span class="slds-p-left_large title">{!$Label.c.Electoral}</span>
+            </div>           
+        </div>
+            
+        <div class="slds-col slds-size_1-of-1 slds-grid slds-wrap" style="padding: 30px 30px;">
+            <div class="subattribute-border slds-size_1-of-1 slds-grid slds-wrap">
+                <div class="slds-size_1-of-1 slds-large-size_1-of-5 slds-p-bottom_medium">
+                    <c:PRM_DisplayField community="{! v.community }" label="Distrito :" value="{! v.citizenWrapper.citizen.Electoral_District__c}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13"/>            
+                </div>
+                
+                <div class="slds-size_1-of-3 slds-large-size_1-of-5 slds-p-bottom_medium">
+                    <c:PRM_DisplayField community="{! v.community }"  label="Sección :" value="{! v.citizenWrapper.citizen.Electoral_Section__c}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13"/>            
+                </div>
+                
+                <div class="slds-size_1-of-3 slds-large-size_1-of-5 slds-p-bottom_medium">
+                    <c:PRM_DisplayField community="{! v.community }"  label="Circuito :" value="{! v.citizenWrapper.citizen.Electoral_Circuit__c}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13"/>            
+                </div>
+                
+                <div class="slds-size_1-of-3 slds-p-bottom_medium slds-hide_medium">
+                    <c:PRM_DisplayField community="{! v.community }"  label="Mesa :" value="{! v.citizenWrapper.citizen.Electoral_Booth__c}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13"/>            
+                </div>
+                
+                <div class="slds-size_1-of-1 slds-large-size_1-of-5 slds-p-bottom_medium">
+                    <c:PRM_DisplayField community="{! v.community }"  label="Escuela :" value="{! v.citizenWrapper.citizen.Escuela_Electoral__c}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13"/>            
+                </div>
+                
+                <div class="slds-large-size_1-of-5 slds-p-bottom_medium slds-show_large">
+                    <c:PRM_DisplayField label="Mesa :" value="{! v.citizenWrapper.citizen.Electoral_Booth__c}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13"/>            
+                </div>
+            </div>
+            
+            <div class="subattribute-border slds-size_1-of-1 slds-grid slds-wrap">
+                <div class="slds-size_1-of-2 slds-large-size_1-of-6 slds-p-bottom_medium">
+                    <c:PRM_DisplayField community="{! v.community }"  label="Votó PASO ´15 :" value="{! (v.citizenWrapper.citizen.voting_P2015__c == 'EMITIDO')?$Label.c.Yes:$Label.c.No }" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="{!  (v.citizenWrapper.citizen.voting_P2015__c == 'EMITIDO')?'value blue font13':'value font13'}"/>            
+                </div>
+                
+                <div class="slds-size_1-of-2 slds-large-size_1-of-5 slds-p-bottom_medium">
+                    <c:PRM_DisplayField community="{! v.community }"  label="Votó General ´15 :" value="{! (v.citizenWrapper.citizen.voting_G2015__c == 'EMITIDO')?$Label.c.Yes:$Label.c.No }" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="{!  (v.citizenWrapper.citizen.voting_G2015__c == 'EMITIDO')?'value blue font13':'value font13'}"/>            
+                </div>
+                
+                <div class="slds-size_1-of-1 slds-large-size_1-of-6 slds-p-bottom_medium">
+                    <c:PRM_DisplayField community="{! v.community }"  label="Votó Ballotage ´15 :" value="{! (v.citizenWrapper.citizen.voting_B2015__c == 'EMITIDO')?$Label.c.Yes:$Label.c.No  }" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="{!  (v.citizenWrapper.citizen.voting_B2015__c == 'EMITIDO')?'value blue font13':'value font13'}"/>            
+                </div>
+                
+                <div class="slds-size_1-of-2 slds-large-size_1-of-6 slds-p-bottom_medium">
+                    <c:PRM_DisplayField community="{! v.community }"  label="Votó PASO ´17 :" value="{! (v.citizenWrapper.citizen.voting_P2017__c == 'EMITIDO')?$Label.c.Yes:$Label.c.No  }" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="{!  (v.citizenWrapper.citizen.voting_P2017__c == 'EMITIDO')?'value blue font13':'value font13'}"/>            
+                </div>
+                
+                <div class="slds-size_1-of-2 slds-large-size_1-of-6 slds-p-bottom_medium">
+                    <c:PRM_DisplayField community="{! v.community }"  label="Votó General ´17 :" value="{! (v.citizenWrapper.citizen.voting_G2017__c == 'EMITIDO')?$Label.c.Yes:$Label.c.No  }" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="{!  (v.citizenWrapper.citizen.voting_G2017__c == 'EMITIDO')?'value blue font13':'value font13'}"/>            
+                </div>
+
+                <div class="slds-size_1-of-1 slds-large-size_1-of-6 slds-p-bottom_medium">
+                    <c:PRM_DisplayField community="{! v.community }"  label="Votó PASO ´19 :" value="{! (v.citizenWrapper.citizen.voting_P2019__c == 'EMITIDO')?$Label.c.Yes:$Label.c.No  }" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="{!  (v.citizenWrapper.citizen.voting_P2019__c == 'EMITIDO')?'value blue font13':'value font13'}"/>            
+                </div>
+
+                <div class="slds-size_1-of-2 slds-large-size_1-of-6 slds-p-bottom_medium">
+                    <c:PRM_DisplayField community="{! v.community }"  label="Votó General ´19 :" value="{! (v.citizenWrapper.citizen.voting_G2019__c == 'EMITIDO')?$Label.c.Yes:$Label.c.No  }" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="{!  (v.citizenWrapper.citizen.voting_G2019__c == 'EMITIDO')?'value blue font13':'value font13'}"/>            
+                </div>
+
+                <div class="slds-size_1-of-1 slds-large-size_1-of-6 slds-p-bottom_medium">
+                    <c:PRM_DisplayField community="{! v.community }"  label="Votó PASO ´21 :" value="{! (v.citizenWrapper.citizen.voting_P2021__c == 'EMITIDO')?$Label.c.Yes:$Label.c.No  }" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="{!  (v.citizenWrapper.citizen.voting_P2021__c == 'EMITIDO')?'value blue font13':'value font13'}"/>
+                </div>
+
+            </div>
+			
+            <div class="slds-size_1-of-1 slds-grid slds-wrap">
+                <div class="slds-size_1-of-1 slds-large-size_1-of-1 slds-p-bottom_medium">
+                    <c:PRM_DisplayField community="{! v.community }"  label="Afiliación partidaria :" value="{!  v.citizenWrapper.citizen.party_affiliation__c}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13"/>            
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</aura:component>

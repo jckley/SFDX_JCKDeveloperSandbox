@@ -1,0 +1,29 @@
+<template>
+    <div class="box">
+        <div class="header">
+          <div class="title">Generaciones</div>
+        </div>
+        <div class="body">
+
+          <div class="itemList">
+            <template for:each={agesData_forCards} for:item="thisAgeData">
+              <div class={thisAgeData.cssClasses} key={thisAgeData.name} onclick={handelClick_cardAudienciaGeneracional} data-filtervalue={thisAgeData.filter}>
+                <div class="iconHolder">
+                  <img class="icon" src={thisAgeData.image} alt={thisAgeData.name} />
+                </div>
+                <div class="descriptionHolder">
+                  <strong class="value">{thisAgeData.value}</strong>
+                  <small class="name">{thisAgeData.name}</small>
+                  <p>{thisAgeData.description}</p>
+                </div>
+              </div>
+            </template>
+          </div>
+          
+
+          
+
+
+        </div>
+      </div>
+</template>

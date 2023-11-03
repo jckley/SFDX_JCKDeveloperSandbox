@@ -1,0 +1,43 @@
+<aura:component >
+    <aura:attribute name="citizenWrapper" 	type="ContactWrapper" 	required="true" />
+    <aura:attribute name="rendered" 		type="Boolean" 			required="true" default="true" />
+    <aura:attribute name="showDetails" 		type="Boolean" 			required="true" default="true" />
+    
+    <div class="{! (v.rendered)?'slds-grid slds-wrap slds-m-top_large':'slds-hide'}">
+        <div class="email card slds-grid slds-wrap slds-max-medium-size_1-of-1 slds-p-around_large" style="border-left: solid 5px #f3bb49; min-width: 40%;">
+        	<div class="slds-col slds-size_1-of-6">
+                <img src="{! $Resource.IconsPack1 + '/mailps.svg'}" class="icon" />
+            </div>
+            
+            <div class="slds-col slds-size_5-of-6">
+                <c:ContactDisplayField label="Email" value="{! (v.showDetails)?v.citizenWrapper.contact.Email:(v.citizenWrapper.contact.Email == NULL?$Label.c.No:$Label.c.Yes)}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13 yellow"/>                                                                                        
+            </div>
+        </div>
+        
+        <div class="blank-space"></div>
+        
+        <div class="card slds-p-around_large slds-grid slds-wrap slds-col slds-max-small-size_1-of-1">
+    		<div class="slds-col slds-size_1-of-6 slds-large-size_1-of-12">
+                <img src="{! $Resource.IconsPack1 + '/cellphoneps.svg'}" class="icon" />
+            </div>
+            
+            <div class="slds-col slds-size_5-of-6 slds-large-size_4-of-12">
+                <c:ContactDisplayField label="Celular" value="{! (v.showDetails)?v.citizenWrapper.contact.MobilePhone:(v.citizenWrapper.contact.MobilePhone == NULL?$Label.c.No:$Label.c.Yes)}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13 yellow"/>                                                                                        
+            </div>
+            
+            <div class="slds-col slds-size_1-of-1 slds-large-size_3-of-12">
+                <div class="{!(v.citizenWrapper.contact.Whatsapp__c)?'phoneapp active':'phoneapp inactive'}">
+                    <img src="{! $Resource.IconsPack1 + '/whatsappps.svg'}" class="icon-small" />    
+                    <span>WhatsApp</span>
+                </div>
+            </div>
+            <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-12"></div>
+            <div class="slds-col slds-size_1-of-1 slds-large-size_3-of-12">
+                <div class="{!(v.citizenWrapper.contact.Telegram__c)?'phoneapp active':'phoneapp inactive'}">
+                    <img src="{! $Resource.IconsPack1 + '/telegramps.svg'}" class="icon-small" />
+                    <span>Telegram</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</aura:component>

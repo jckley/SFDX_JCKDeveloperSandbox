@@ -1,0 +1,54 @@
+.header {
+    background-color: #F7F6F2;
+    height: 60px;
+    padding: 20px 30px 30px 30px;
+    border-bottom: solid 1px #ebebeb;
+}
+
+.header .title {
+    font-family: 'Heebo';
+    color: #646466;
+    font-size: 17px;
+}
+
+.separator {
+    border : solid 1px #CCCCCC;
+}
+
+.icon {
+    max-width: 25px;
+    max-height: 25px;
+    vertical-align: middle;
+    border-style: none;
+    margin-bottom: 7px;
+}
+
+.label {
+    text-transform: uppercase;
+    font-family: 'Roboto Condensed';
+    font-weight: bold;
+    font-size : 10pt;
+    color: #999999 !important;
+}
+
+.value {
+    font-family: 'Heebo';
+    font-weight: 300;
+    font-size : 12pt;
+    color: #676666 !important;
+}
+
+.value.blue {
+    color: #2f75bb !important;
+}
+
+.card {
+    background-color: #ffffff;
+    will-change: transform;
+    overflow:  hidden;
+    box-shadow: 2px 2px 3px 3px #EBEBEB;
+    min-height: 100px;
+    vertical-align: middle;
+    border-radius: 6px;
+    border: solid 1px #FFFFFF;
+}

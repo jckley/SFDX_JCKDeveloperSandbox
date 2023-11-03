@@ -1,0 +1,25 @@
+.THIS {
+    height: 100%;
+}
+
+.THIS.wtimeline > div > div {padding-left: 20px; margin-bottom: 15px;}
+
+/* Special classes for small devices */
+@media only screen and (max-width: 768px) {
+    .THIS .separator{margin-bottom: 15px;}
+    .THIS .social-border-bottom {border-bottom: solid 1px #ededed;margin-bottom: 15px;}
+    .THIS {margin-top: 20px;}
+    .THIS.no-timeline {padding: 20px;}
+    .THIS.no-timeline > div:first-child {padding-left: 24px;}
+}
+
+/* Special classes for big devices */
+@media only screen and (min-width: 768px) {
+    .THIS {margin-top: 20px;}
+    .THIS.wtimeline > div:last-child {margin-left: 20px;}
+    .THIS.no-timeline > div:first-child {padding-left: 24px;}
+    .THIS .icon {max-width: 25px; max-height: 25px; vertical-align: middle; border-style: none;}
+    .THIS .spacing {padding-top: 10px;padding-bottom: 10px;}
+    .THIS .social-border-left {border-left: solid 1px #ededed; height: 75px;}
+    .THIS.no-timeline {padding: 20px; padding-left: 0;}
+}

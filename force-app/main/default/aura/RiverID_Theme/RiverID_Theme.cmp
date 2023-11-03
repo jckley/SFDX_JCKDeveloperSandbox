@@ -1,0 +1,20 @@
+<aura:component implements="forceCommunity:themeLayout" access="global" description="Municipios Community Template" >
+    <aura:attribute name="search" 		type="Aura.Component[]" required="false"/>
+    <aura:attribute name="profileMenu" 	type="Aura.Component[]" required="false"/>
+    <aura:attribute name="navBar" 		type="Aura.Component[]" required="false"/>
+    <aura:attribute name="body" 		type="Aura.Component[]" required="false"/>
+    
+    <aura:attribute name="Name" 		type="String" default="Prosumia"/> 
+    <aura:attribute name="Logo" 		type="String" default="" />
+    <aura:attribute name="Domain" 		type="String" default="" />
+    
+    <div class="{! 'slds-grid slds-wrap ' + v.Name }">
+        <div class="slds-col slds-size_1-of-1">
+            <c:RiverID_Header community="{! v.Name }" logo="{! v.Logo }" url="{! v.Domain }" search="{! v.search }" profileMenu="{! v.profileMenu }" navigationBar="{! v.navBar }" />
+        </div>    
+        
+        <div class="slds-col slds-size_1-of-1 body"> 
+            {!v.body}
+        </div>
+    </div>   	
+</aura:component>

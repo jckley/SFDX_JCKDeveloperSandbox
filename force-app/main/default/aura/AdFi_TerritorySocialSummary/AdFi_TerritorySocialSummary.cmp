@@ -1,0 +1,68 @@
+<aura:component >
+    
+    <aura:attribute name="totalprofiles" 	type="String" />
+    <aura:attribute name="totalfacebook" 	type="String" />
+    <aura:attribute name="totalinstagram" 	type="String" />
+    <aura:attribute name="totaltwitter" 	type="String" />
+    <aura:attribute name="totallinkedin" 	type="String" />
+    
+    <div class="slds-size_1-of-1 subattribute-header slds-p-left_medium">
+        <img class="icon-header" src="{!$Resource.IconsPack1 + '/adfisocial.svg'}"/><span class="header-text">  {!$Label.c.SocialProfiles}</span>
+    </div>
+    <div class="slds-size_1-of-1 slds-grid slds-wrap slds-p-vertical_x-large">
+            
+        <div class="slds-size_1-of-1 slds-large-size_1-of-4">
+            <div class="social-border-top slds-grid slds-wrap 
+                        slds-p-vertical_small slds-p-left_x-large p-top-large outer-m-top-large">
+                <div class="slds-col slds-size_1-of-2 slds-large-size_1-of-2 social-header icon-text slds-m-top_xx-small">
+                    <img class="icon-small" src="{!$Resource.IconsPack1 + '/adfifacebook.svg'}"/>
+                    <span class="slds-m-left_x-small summary-title">FACEBOOK</span>
+                </div>
+                <div class="slds-col slds-size_1-of-2 slds-large-size_1-of-2 summary medium m-top-large">
+                    {!v.totalfacebook}
+                </div>
+            </div>
+        </div>
+            
+        <div class="slds-size_1-of-1 slds-large-size_1-of-4 border-top">
+            <div class="social-border-top slds-grid slds-wrap 
+                        slds-p-vertical_small slds-p-left_x-large social-border-left p-top-large outer-m-top-large">
+                <div class="slds-col slds-size_1-of-2 slds-large-size_1-of-2 social-header icon-text slds-m-top_xx-small">
+                    <img class="icon-small" src="{!$Resource.IconsPack1 + '/adfiinstagram.svg'}"/>
+                    <span class="slds-m-left_x-small summary-title">INSTAGRAM</span>
+                </div>
+                <div class="slds-col slds-size_1-of-2 slds-large-size_1-of-2 summary medium m-top-large">
+                    {!v.totalinstagram}
+                </div>
+            </div>
+        </div>
+            
+        <div class="slds-size_1-of-1 slds-large-size_1-of-4 border-top">
+            <div class="social-border-top slds-grid slds-wrap
+                        slds-p-vertical_small slds-p-left_x-large social-border-left p-top-large outer-m-top-large">
+                <div class="slds-col slds-size_1-of-2 slds-large-size_1-of-2 social-header icon-text slds-m-top_xx-small">
+                    <img class="icon-small" src="{!$Resource.IconsPack1 + '/adfitwitter.svg'}"/>
+                    <span class="slds-m-left_x-small summary-title">TWITTER</span>
+                </div>
+                <div class="slds-col slds-size_1-of-2 slds-large-size_1-of-2 summary medium m-top-large">
+                    {!v.totaltwitter}
+                </div>
+            </div>
+        </div>
+            
+        <div class="slds-size_1-of-1 slds-large-size_1-of-4 border-top">
+            <div class="social-border-top slds-grid slds-wrap
+                        slds-p-vertical_small slds-p-left_x-large social-border-left p-top-large outer-m-top-large">
+                <div class="slds-col slds-size_1-of-2 slds-large-size_1-of-2 social-header icon-text slds-m-top_xx-small">
+                    <img class="icon-small" src="{!$Resource.IconsPack1 + '/adfilinkedin.svg'}"/>
+                    <span class="slds-m-left_x-small summary-title">LINKEDIN</span>
+                </div>
+                <div class="slds-col slds-size_1-of-2 slds-large-size_1-of-2 summary medium m-top-large">
+                    {!v.totallinkedin}
+                </div>
+            </div>
+        </div>
+            
+
+    </div>
+</aura:component>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Status__c</fullName>
+    <externalId>false</externalId>
+    <label>Status</label>
+    <required>true</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Inicial</fullName>
+                <default>false</default>
+                <label>Inicial</label>
+            </value>
+            <value>
+                <fullName>En Progreso</fullName>
+                <default>false</default>
+                <label>En Progreso</label>
+            </value>
+            <value>
+                <fullName>Exito</fullName>
+                <default>false</default>
+                <label>Exito</label>
+            </value>
+            <value>
+                <fullName>Fallo</fullName>
+                <default>false</default>
+                <label>Fallo</label>
+            </value>
+            <value>
+                <fullName>Marcado y confirmado</fullName>
+                <default>false</default>
+                <label>Marcado y confirmado</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

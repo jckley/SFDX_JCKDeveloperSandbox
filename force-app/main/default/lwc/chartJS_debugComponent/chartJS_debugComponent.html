@@ -1,0 +1,14 @@
+<template>
+    <div class="wrapper">
+        <div class = "butons">
+            <lightning-button variant="brand" label="getState" title="getState" onclick={handleClick_getState}></lightning-button>
+            <lightning-button variant="brand" label="setState" title="setState" onclick={handleClick_setState}></lightning-button>
+            <lightning-button variant="brand" label="setSelection" title="setSelection" onclick={handleClick_setSelection}></lightning-button>
+            <lightning-button variant="brand" label="getResults" title="getResults" onclick={handleClick_getResults}></lightning-button>
+        </div>
+        <div class = "inputs">
+            <lightning-input type="text" label="state to set"></lightning-input>
+            <lightning-input type="text" label="selection to set"></lightning-input>
+        </div>
+    </div>
+</template>

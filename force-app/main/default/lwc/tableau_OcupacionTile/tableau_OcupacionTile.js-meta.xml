@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>54.0</apiVersion>
+    <isExposed>true</isExposed>
+
+    <targets>
+        <target>lightning__AppPage</target>
+        <target>lightning__RecordPage</target>
+        <target>lightning__HomePage</target>
+        <target>analytics__Dashboard</target>
+    </targets>
+
+    <targetConfigs>
+        <targetConfig targets="analytics__Dashboard">
+            <hasStep>true</hasStep>
+            <property name="imageRouteParam" type="String" label="Image Route" 
+                    description="Route to the image in the Communities static resourse" 
+                    default="/SALESFORCE/img/Territories/ae_empleado.svg"/>
+            <property name="tileLabelParam" type="String" label="Tile label" 
+                    description="Name to show in the component"/>
+            <property name="filterParam" type="String" label="Filter Value" 
+                    description="Value to filter dashboard on click."/>
+            <property name="filterFieldParam" type="String" label="Filter Field" 
+                    description="Field to filter for."/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

@@ -1,0 +1,15 @@
+<aura:component>
+    <aura:attribute name="community"        type="String"           default="Prosumia"/>
+    <aura:attribute name="citizenWrapper" 	type="CitizenWrapper" 	required="true" />
+
+    <aura:attribute name="latitude" 	type="String" 	required="true" default="37.784173"  />
+    <aura:attribute name="longitude" 	type="String" 	required="true" default="-122.401557"/>
+    
+    <ltng:require styles="/resource/leaflet/leaflet.css" />   
+    <ltng:require scripts="/resource/leaflet/leaflet.js"  />
+    
+    <aura:handler name="change" value="{!v.citizenWrapper}" action="{!c.initializeComponent}" />
+
+    <div class="map" id="map"></div>
+
+</aura:component>

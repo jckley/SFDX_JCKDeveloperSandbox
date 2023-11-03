@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Communities Argentina</label>
+    <protected>false</protected>
+    <values>
+        <field>Admin_Level_0__c</field>
+        <value xsi:type="xsd:string">ARG</value>
+    </values>
+    <values>
+        <field>Admin_Level_1__c</field>
+        <value xsi:type="xsd:string">Buenos Aires</value>
+    </values>
+    <values>
+        <field>Admin_Level_2__c</field>
+        <value xsi:type="xsd:string">Pilar</value>
+    </values>
+    <values>
+        <field>Admin_Level_3__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Allowed_API_Users__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>DashboardId__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Dashboard_Sintomas__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Dashboard_Territorial__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Debug_Mode__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>Filter_by_County__c</field>
+        <value xsi:type="xsd:string">Age_f_x__c &gt; 16</value>
+    </values>
+    <values>
+        <field>Iframe_Url__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Label_Identifier__c</field>
+        <value xsi:type="xsd:string">Hash</value>
+    </values>
+    <values>
+        <field>Notification_SMS_1__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Notification_SMS_2__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Notification_SMS_3__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>SMS_Keyword__c</field>
+        <value xsi:type="xsd:string">FREETEXT</value>
+    </values>
+    <values>
+        <field>SMS_Message_Id__c</field>
+        <value xsi:type="xsd:string">MTI0Nzo3ODow</value>
+    </values>
+    <values>
+        <field>SMS_Message__c</field>
+        <value xsi:type="xsd:string">Estamos trabajando en la deteccion temprana de casos COVID-19. Fuiste seleccionado para realizarte el test. Ingresa en https://cuidarnos.app?gid=##LINK##</value>
+    </values>
+    <values>
+        <field>SMS_Send_Covid_Detail_Info__c</field>
+        <value xsi:type="xsd:boolean">true</value>
+    </values>
+    <values>
+        <field>SMS_Send_Enabled__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>SMS_Sends__c</field>
+        <value xsi:type="xsd:double">100.0</value>
+    </values>
+</CustomMetadata>

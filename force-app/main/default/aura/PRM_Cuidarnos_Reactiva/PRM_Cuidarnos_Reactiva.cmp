@@ -1,0 +1,51 @@
+<aura:component >	
+    <aura:attribute name="community"        type="String"           default="Prosumia"/>
+    <aura:attribute name="citizenWrapper" 	type="CitizenWrapper" 	required="true" />
+    <aura:attribute name="rendered" 		type="Boolean" 			required="true" default="true" />
+    
+    <div class="{! (v.rendered)?'card slds-grid slds-wrap ' + v.community:'slds-hide'}">     
+        <div class="slds-col slds-size_1-of-1 slds-grid slds-wrap" style="padding: 10px 30px;">
+            <div class="subattribute-border slds-size_1-of-1 slds-grid slds-wrap">
+               
+                <div class="slds-size_1-of-1 slds-large-size_1-of-5 slds-p-bottom_medium">
+                    <c:PRM_DisplayField community="{! v.community }"  label="Fecha :" value="{! v.citizenWrapper.cuidarnos.covid.salud_date__c }" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13"/>            
+                </div>
+                <!--
+                <div class="slds-size_1-of-1 slds-large-size_1-of-5 slds-p-bottom_medium">
+                    <c:PRM_DisplayField community="{! v.community }" label="Test :" value="{! v.citizenWrapper.cuidarnos.covid.salud_test__c}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13"/>            
+                </div>
+                -->
+                <div class="slds-size_1-of-1 slds-large-size_1-of-5 slds-p-bottom_medium">
+                    <c:PRM_DisplayField community="{! v.community }"  label="Resultado :" value="{! v.citizenWrapper.cuidarnos.covid.salud_status__c}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13"/>            
+                </div>
+                
+                <div class="slds-size_1-of-1 slds-large-size_1-of-5 slds-p-bottom_medium">
+                    <c:PRM_DisplayField community="{! v.community }"  label="Contagio :" value="{! v.citizenWrapper.cuidarnos.covid.salud_link__c  }" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13"/>                                
+                </div>
+                            
+                <div class="slds-size_1-of-1 slds-large-size_1-of-5 slds-p-bottom_medium">
+                    <c:PRM_DisplayField community="{! v.community }"  label="Condición :" value="{! v.citizenWrapper.cuidarnos.covid.salud_treatment__c}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13"/>            
+                </div>
+
+                <div class="slds-size_1-of-1 slds-large-size_1-of-5 slds-p-bottom_medium">
+                    <c:PRM_DisplayField community="{! v.community }"  label="Internación :" value="{! v.citizenWrapper.cuidarnos.covid.salud_treatmenttype__c}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13"/>            
+                </div>
+
+                <div class="slds-size_1-of-1 slds-large-size_1-of-1 slds-p-bottom_medium">
+                    <div class="{! 'slds-grid slds-wrap ' + v.community }">
+                        <div class="slds-col slds-size_1-of-1 label uppercase" style="margin-bottom: 5px;">
+                            Sintomas
+                        </div> 
+                        <div class="slds-col slds-size_1-of-1 value font13 slds-wrap" style="display: inline-flex;">
+                            <aura:iteration items="{!v.citizenWrapper.cuidarnos.reactiva_sintomas }" var="strTag">                                    
+                                <div class="tag">
+                                    <span class="value-gray">{!  strTag }</span>      
+                                </div>                                           
+                            </aura:iteration>                    
+                        </div>
+                    </div>
+                </div>
+            </div>            
+        </div>
+    </div>
+</aura:component>

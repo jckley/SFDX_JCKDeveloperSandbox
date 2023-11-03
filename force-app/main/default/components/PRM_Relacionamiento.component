@@ -1,0 +1,43 @@
+<apex:component >
+	<apex:attribute name="canvasname"       type="String" required="false" description="Tipo"        default="defaulttype" />  
+    <apex:attribute name="citizenwrapper"   type="CitizenWrapper" required="false" description="Contact General Info" />  
+	<apex:attribute name="width"            type="String" required="false" description="Ancho"      default="780px" />  
+	<apex:attribute name="height"           type="String" required="false" description="Altura"      default="200px" />  
+	<apex:attribute name="type"             type="String" required="false" description="Tipo"        default="defaulttype" />  
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script> 
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script> 
+    
+    <div class="row contact-data">
+        <div class="card card-left-border red">
+            <div class="row card-cont subattribute-header">
+                <div class="col-12 subattribute-title">
+                    <apex:image styleClass="icon-test-small" value="{!URLFOR($Resource.UserRelation)}"/>
+                    <span class="subattribute-title">Relacionamiento</span> 
+
+                    <div style="float:right;margin-right: 25px;cursor:pointer;display:none;" data-toggle="modal" data-target="#fullscreen">
+                        <apex:image styleClass="icon-test-small" value="{!URLFOR($Resource.Expand)}"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="normal">
+                <apex:canvasApp applicationName="{! canvasname }" namespacePrefix="" height="{! height }" width="{! width }" parameters="{'id':'{! citizenwrapper.citizen.id }'}" />
+            </div>                    
+        </div>
+    </div>
+
+    <style>
+        .modal-content span,
+        .modal-content span div {
+            height: 100%;
+        }
+    </style>
+    <div id="fullscreen" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="fullscreen" aria-hidden="true">
+        <div class="modal-dialog modal-lg" style="height: 100%">
+          <div class="modal-content"  style="height: 100%">
+                <apex:canvasApp applicationName="{! canvasname }" namespacePrefix="" height="100%" width="100%" parameters="{'id':'{! citizenwrapper.citizen.id }'}" />
+          </div>
+        </div>
+    </div>   
+</apex:component>

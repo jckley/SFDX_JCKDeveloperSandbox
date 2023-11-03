@@ -1,0 +1,114 @@
+.box {
+    border-radius:7px;
+    background: #FFF;
+    padding: 0;
+    border-radius: 4px;
+    position: relative;
+    height: 100%;
+}
+
+.title{
+    font-size:18px;
+    margin-left: 20px;
+}
+
+.box .header { 
+    display: flex;
+    flex-direction: row;
+    padding: 30px 30px;
+    color: #58595b;
+    align-items: center;
+}
+
+.box .body {
+    padding: 0 30px 15px 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.box .body .filtersList{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    padding: 10px 20px;
+    gap: 10px;
+    align-items: center;
+    margin-right: auto;
+}
+
+.box .body .filtersList .filterItem{
+    background-color: #e4e4e4;
+    border-radius: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 15px;
+    padding-right: 10px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.box .body .filtersList .filterItem .value{
+    margin-right: 15px;
+    font-size: 14px;
+    color: #58595b;
+}
+
+.box .body .filtersList .filterItem .item-closeWrapper{
+    cursor: pointer;
+}
+
+.box .body .filtersList .filterItem .item-closeWrapper .close-icon {
+    height: 15px;
+    width: 15px;
+    fill: #999999;
+}
+
+.box .body .filtersList .closeWrapper{
+    background-color: #e4e4e4;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.box .body .itemlist { 
+    display: flex; 
+    flex-wrap: wrap; 
+    margin-bottom: 10px;
+    overflow-y: auto;
+}
+
+.box .body .itemlist .item { 
+    flex: 0 1 33%;
+    display: flex;
+    gap: 15px;
+ 
+    align-items: center;
+    font-size: 15px;
+    color: #666666;
+    margin: 5px 0px 0px 0px;
+    padding: 6px 20px 6px 17px;
+    border-radius: 7px;
+}
+
+.box .body .itemlist .item.notSelected { 
+    opacity: 50%;
+}
+
+.box .body .itemlist .item .iconMarker { width: 25px; }
+
+.box .body .itemlist .item strong { margin: 0 0 0 auto; color: #4a484d; }
+
+.box .body .itemlist .item:hover { 
+    cursor: pointer;
+    background-color: rgb(240 240 240);
+}
+
+.header img{
+    width: 43px;
+}

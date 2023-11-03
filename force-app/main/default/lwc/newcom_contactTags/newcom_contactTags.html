@@ -1,0 +1,71 @@
+<template>
+    <div class="container slds-grid slds-wrap">
+
+        <template if:true={tagsActividadesEconomicas}>
+            <template if:true={tagsActividadesEconomicasLength} for:each={tagsActividadesEconomicas} for:item="tagActividadEconomica">
+                <c-newcom_contact-tags-detail key={tagActividadEconomica} value={tagActividadEconomica} ></c-newcom_contact-tags-detail>
+            </template>
+        </template>
+        
+        <template if:true={tagsAudienciaPolitica}>
+            <template if:true={tagsAudienciaPoliticaLength} for:each={tagsAudienciaPolitica} for:item="tagAudienciaPolitica">
+                <c-newcom_contact-tags-detail key={tagAudienciaPolitica} value={tagAudienciaPolitica} ></c-newcom_contact-tags-detail>
+            </template>
+        </template>
+
+        <template if:true={tagsAudienciaElectoral}>
+            <template if:true={tagsAudienciaElectoralLength} for:each={tagsAudienciaElectoral} for:item="tagAudienciaElectoral">
+                <c-newcom_contact-tags-detail key={tagAudienciaElectoral} value={tagAudienciaElectoral} ></c-newcom_contact-tags-detail>
+            </template>
+        </template>
+
+        <template if:true={tagsAudienciaGeneraciones}>
+            <template if:true={tagsAudienciaGeneracionesLength} for:each={tagsAudienciaGeneraciones} for:item="tagAudienciaGeneraciones">
+                <c-newcom_contact-tags-detail key={tagAudienciaGeneraciones} value={tagAudienciaGeneraciones} ></c-newcom_contact-tags-detail>
+            </template>
+        </template>
+
+        <template if:true={tagsCommunity}>
+            <template if:true={tagsCommunityLength} for:each={tagsCommunity} for:item="tagCommunity">
+                <c-newcom_contact-tags-detail key={tagCommunity} value={tagCommunity} ></c-newcom_contact-tags-detail>
+            </template>
+        </template>
+
+        <template if:true={tagsCDPAxis}>
+            <template if:true={tagsCDPAxisLength} for:each={tagsCDPAxis} for:item="tagCDPAxis">
+                <c-newcom_contact-tags-detail key={tagCDPAxis} value={tagCDPAxis} ></c-newcom_contact-tags-detail>
+            </template>
+        </template>
+
+        <template if:true={tagsCDPCampaign}>
+            <template if:true={tagsCDPCampaignLength} for:each={tagsCDPCampaign} for:item="tagCDPCampaign">
+                <c-newcom_contact-tags-detail key={tagCDPCampaign} value={tagCDPCampaign} ></c-newcom_contact-tags-detail>
+            </template>
+        </template>
+
+        <template if:true={tagsCDPScore}>
+            <template if:true={tagsCDPScoreLength} for:each={tagsCDPScore} for:item="tagCDPScore">
+                <c-newcom_contact-tags-detail key={tagCDPScore} value={tagCDPScore} ></c-newcom_contact-tags-detail>
+            </template>
+        </template>
+
+        <template if:true={tagsCDPStatus}>
+            <template if:true={tagsCDPStatusLength} for:each={tagsCDPStatus} for:item="tagCDPStatus">
+                <c-newcom_contact-tags-detail key={tagCDPStatus} value={tagCDPStatus} ></c-newcom_contact-tags-detail>
+            </template>
+        </template>
+
+        <template if:true={tagsEPDLG}>
+            <template if:true={tagsEPDLGLength} for:each={tagsEPDLG} for:item="tagEPDLG">
+                <c-newcom_contact-tags-detail key={tagEPDLG} value={tagEPDLG} ></c-newcom_contact-tags-detail>
+            </template>
+        </template>
+        
+        <template if:true={tagsSituacionAsalariado}>
+            <template if:true={tagsSituacionAsalariadoLength} for:each={tagsSituacionAsalariado} for:item="tagSituacionAsalariado">
+                <c-newcom_contact-tags-detail key={tagSituacionAsalariado} value={tagSituacionAsalariado} ></c-newcom_contact-tags-detail>
+            </template>
+        </template>
+
+    </div>
+</template>

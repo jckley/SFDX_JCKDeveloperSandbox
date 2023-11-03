@@ -1,0 +1,4 @@
+<aura:event type="COMPONENT" description="Click of the label of the header" >
+    <aura:attribute name="recordId" 		type="String" />
+    <aura:attribute name="adminLevel" 	type="String" />
+</aura:event>

@@ -1,0 +1,185 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed|Heebo:100,300,400');
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400');
+.THIS {
+    font-family: "Roboto", "Heebo";
+    margin-top: 10%;
+}
+
+.THIS header {
+    text-align: center;
+    font-size: 26px;
+    font-weight: 300;
+    font-family: 'Roboto';
+    color: #646464;
+}
+
+.THIS .total-citizens {
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+    font-family: 'Roboto';
+    color: #646464;
+}
+
+.THIS header .number {
+    font-weight: bold;
+}
+
+.THIS .search { 
+    width: 60%;
+    height: 80px;
+    margin: 30px auto;
+    position: relative; 
+    background-color: #ffffff;
+    border-radius: 5px;
+    text-align: center;
+}
+ 
+.THIS .search .slds-input { 
+    width: 100%;
+    height: 50px; 
+    display: block; 
+    padding: 10px 40px 10px; 
+   
+    border: none;
+    border-radius: 5px;
+    font-family: 'Roboto';
+    font-weight: 300;
+    font-size: 16pt;
+    color: #354051;
+}
+
+.THIS .search svg {
+    fill: #676767; 
+    z-index:999;
+}
+
+.THIS .slds-media__body {
+    text-align: left;
+    width: 70%;
+}
+
+.THIS .search svg[data-key*="search"] {
+    left: 25px; 
+}
+
+/* Moves clear-search button to the right */
+.THIS .search button {
+    margin-right: 15px; 
+}
+
+.THIS .search .prefix { 
+    color: #999999;
+    position: absolute; 
+    display: block; 
+    left: 60px; 
+    top: 14px;
+    font-size: 16px; 
+    z-index: 9;
+}
+
+.THIS .search .postfix { 
+    color: #999999;
+    position: absolute; 
+    /* right : 10px;  */
+    top: 16px;
+    font-size: 16px; 
+    z-index: 999;
+
+    display: inline-block; 
+    font-family: 'Roboto Condensed'; 
+    font-size: 9pt; color: #666666;
+}
+
+@media only screen and (max-width: 768px) {
+    .THIS .search {
+        width: 90vw;
+    }
+    
+}
+
+@media only screen and (min-width: 768px) {
+    .THIS .search {
+        border: solid 1px #e4e4e7;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.09), 0 6px 6px rgba(0,0,0,0.03);
+    }
+    
+    .THIS input {width: 415px;}
+}
+
+.THIS .combobox {
+    display: block;
+}
+
+.THIS input {
+    border: none;
+    padding-left: 20px;
+    padding-top: 20px;
+    font-family: 'Roboto';
+    font-size: 14pt;
+    background-color: #FFFFFF;
+    color: #E1E1E1;
+}
+.THIS ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    font-family: 'Roboto';
+    font-size: 14pt;
+    color: #E1E1E1;
+}
+.THIS input:focus ::placeholder {display: none;}
+.THIS input:focus,.THIS textarea:focus,.THIS select:focus {outline-offset: 0px !important; outline: none !important;}
+
+.THIS .search-icon, .THIS .search-icon-focus {
+    width: 20px;
+    height: 20px;
+    margin-top: 20px;
+}
+
+.THIS .icon-reposo, .THIS .icon-hover {
+    margin-top: 25px;
+}
+
+.THIS .search-text {
+    margin-top: 18px;
+    margin-left: 20px;
+    font-family: 'Roboto';
+    font-size: 14pt;
+    color: #E1E1E1;
+}
+
+.THIS .icon-hover {display: none;}
+.THIS .search-icon:hover .icon-reposo {display: none;}
+.THIS .search-icon:hover .icon-hover {display: inline-block;}
+
+.THIS .guide {
+    display: inline-block;
+    font-family: 'Roboto';
+    font-size: 9pt;
+    color: #cccccc;
+    margin-right: -1px;
+    padding-left: 27px;
+    margin-top: 23px;
+    text-align: right;
+}
+
+/* Special classes for small devices */
+@media only screen and (max-width: 768px) {
+    .THIS .menta-search-results {max-width: 340px; max-height: 250px; overflow-y:scroll;}
+    .THIS .search-bar-container {padding-top: 8px}
+    .THIS input {color: #666666; background-color: #FFFFFF;}
+    .THIS .input-container {margin-bottom: 7px;}
+    .THIS .search-icon {margin-left: 5px; margin-top: 20px; margin-right: 5px;}
+    /* .THIS .search-icon {filter: brightness(0.1);} */
+}
+
+/* Special classes for big devices */
+@media only screen and (min-width: 768px) {
+    .THIS .search-bar-container {padding: 8px 25px 0 25px;}
+    .THIS .menta-search-results {max-width: 500px; max-height: 180px; left: 55px; transform: translate(0); overflow-y:scroll;}
+    .THIS input:focus {color: #666666; background-color: #FFFFFF;}
+    .THIS input {background-color: #FFFFFF; color: #666666;}
+}
+
+/* Special classes for XL devices */
+@media only screen and (min-width: 1920px) {
+    .THIS .search {width: 1500px;}
+}

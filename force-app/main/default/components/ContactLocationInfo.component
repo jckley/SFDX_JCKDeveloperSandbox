@@ -1,0 +1,48 @@
+<apex:component >	
+	<apex:attribute name="citizenwrapper" 	type="CitizenWrapper" 	required="true" description="Contact General Info" />  
+    <style>    	
+        .viewterritoryline:hover {
+            cursor:pointer;
+            text-decoration: underline;
+        }
+    </style>
+    
+    <div class="row contact-data">
+        <div class="col-12 no-padding-for-col card card-left-border red">
+            <div class="row card-cont">
+                <div class="col-6 col-md-3"> 
+                    <div class="row">
+                        <div class="d-none d-lg-block col-md-3">
+                            <div>
+                                <apex:image styleClass="icon-test" value="{!URLFOR($Resource.IconsPack1, 'locationps.svg')}"/>
+                            </div>
+                        </div>
+                        <div class="col-12 mb-3 mb-md-0 col-md-9 viewterritory" data-locationid="{! citizenwrapper.citizen.Level1ID__c }">
+                            <c:ContactDisplayField label="{!$ObjectType.Contact.Fields.Level1Name__c.Label}" value="{! citizenwrapper.citizen.Level1Name__c}" nullvalue="{!$Label.NoInformation}" classLabel="label uppercase" classValue="data-value f16 viewterritoryline"/>                                                                                        
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 mb-3 mb-md-0 col-md-3 viewterritory"  data-locationid="{! citizenwrapper.citizen.Level2ID__c}">
+                    <c:ContactDisplayField label="{!$ObjectType.Contact.Fields.Level2Name__c.Label}" value="{! citizenwrapper.citizen.Level2Name__c}" nullvalue="{!$Label.NoInformation}" classLabel="label uppercase" classValue="data-value f16 viewterritoryline"/>                                                                                        
+                </div>
+                <div class="col-6 mb-md-0 col-md-3 viewterritory"  data-locationid="{! citizenwrapper.citizen.Level3ID__c}">
+                    <c:ContactDisplayField label="{!$ObjectType.Contact.Fields.Level3Name__c.Label}" value="{! citizenwrapper.citizen.Level3Name__c}" nullvalue="{!$Label.NoInformation}" classLabel="label uppercase" classValue="data-value f16 viewterritoryline"/>                                                                                          
+                </div>
+                <div class="col-6 mb-md-0 col-md-3 viewterritory" data-locationid="{! citizenwrapper.citizen.Level4ID__c}">
+                    <c:ContactDisplayField label="{!$ObjectType.Contact.Fields.Level4Name__c.Label}" value="{! citizenwrapper.citizen.Level4Name__c}" nullvalue="{!$Label.NoInformation}" classLabel="label uppercase" classValue="data-value f16 viewterritoryline"/>                                                                                          
+                </div>
+            </div>
+        </div>
+    </div>    
+    <script> 
+    	$('.viewterritory').on('click', function() {
+            if(typeof sforce != 'undefined'){
+                if($(this).data('locationid') != ''){
+                	sforce.one.navigateToSObject($(this).data('locationid'), 'detail');
+                }
+            } else {
+                window.location.href = '/' + $(this).data('locationid');
+            }
+        });
+    </script>
+</apex:component>

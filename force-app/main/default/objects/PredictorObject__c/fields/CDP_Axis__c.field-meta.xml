@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CDP_Axis__c</fullName>
+    <externalId>false</externalId>
+    <label>EPG Axis</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>TestAxis</fullName>
+                <color>#FFFFFF</color>
+                <default>false</default>
+                <label>TestAxis</label>
+            </value>
+            <value>
+                <fullName>NONE</fullName>
+                <color>#FFFFFF</color>
+                <default>false</default>
+                <label>NONE</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

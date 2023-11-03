@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Referente_Territorial</fullName>
+    <fields>Name</fields>
+    <fields>Type</fields>
+    <fields>ParentId</fields>
+    <fields>Parent_Territorio_type__c</fields>
+    <fields>Total_Number_of_Contacts__c</fields>
+    <fields>Total_Number_of_Emails__c</fields>
+    <fields>Total_Number_of_Mobiles__c</fields>
+    <fields>Total_Number_of_Landlines__c</fields>
+    <fields>IsCustomerPortal</fields>
+    <label>Referente Territorial</label>
+</CompactLayout>

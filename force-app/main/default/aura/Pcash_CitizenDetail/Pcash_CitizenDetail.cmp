@@ -1,0 +1,57 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes,force:appHostable,flexipage:availableForAllPageTypes,force:hasRecordId" controller="ContactDetailController">	    
+    <aura:attribute name="recordId" 		type="Id"  />        
+    <aura:attribute name="citizenWrapper" 	type="ContactWrapper" />
+    <aura:attribute name="permissions" 		type="RemotingMessageHelper.UserPermissions" />
+    <aura:attribute name="lexHost" 			type="String" default="" />
+    <aura:attribute name="vfHost" 			type="String" default="" />  
+    
+    <aura:handler name="init" action="{!c.initializeComponent}" value="{!this}" />
+    <aura:handler 	event="c:ContactUpdatedEvent" 		action="{! c.refreshPage }" />
+        
+    <div class="slds-grid slds-wrap" style="max-width: 1140px; margin: auto;">
+        <div class="slds-col slds-size_1-of-1 slds-p-around_large">
+            <c:Pcash_PageHeader mainlabel="{! v.citizenWrapper.contact.FirstName + ' ' + v.citizenWrapper.contact.LastName}"/>
+        </div>
+        
+        <div class="slds-col slds-size_1-of-1">
+            <c:Pcash_ContactGeneralInfo citizenWrapper="{! v.citizenWrapper }" rendered="{! v.permissions.ContactViewCommonData}"  canEdit="{!v.permissions.ViewEdition}"/>
+        </div>
+        
+        <div class="slds-col slds-size_1-of-1">
+            <c:Pcash_ContactLocationInfo citizenWrapper="{! v.citizenWrapper }" rendered="{! v.permissions.ContactViewLocation}"  />
+        </div>
+        
+        <div class="slds-size_1-of-1 slds-hide_medium slds-m-top_medium" style="border-top-left-radius: 6px; border-top-right-radius: 6px; overflow: hidden;">            
+            <c:ContactMap citizenWrapper="{! v.citizenWrapper }" rendered="{! v.permissions.ContactViewLocation }" viewExactLocation="{! v.permissions.ContactViewMapInfo}" lexHost="{! v.lexHost}" vfHost="{! v.vfHost}" frameHeight="150"/>
+        </div> 
+        <div class="slds-size_1-of-1">
+            <c:Pcash_ContactAddress citizenWrapper="{! v.citizenWrapper }" rendered="{! v.permissions.ContactViewLocation }"/>
+        </div>  
+        <div class="slds-size_1-of-1 slds-show_medium" style="border-bottom-left-radius: 6px; border-bottom-right-radius: 6px; overflow: hidden;">            
+            <c:ContactMap citizenWrapper="{! v.citizenWrapper }" rendered="{! v.permissions.ContactViewLocation }" viewExactLocation="{! v.permissions.ContactViewMapInfo}" lexHost="{! v.lexHost}" vfHost="{! v.vfHost}" />
+        </div>
+
+        <div class="slds-col slds-size_1-of-1">            
+            <c:Pcash_ContactContactInfo citizenWrapper="{! v.citizenWrapper }" rendered="{! v.permissions.ContactViewContactInfo }" showDetails="{! v.permissions.ContactViewContactInfoDetails}"/>
+        </div>
+        
+        <div class="slds-col slds-size_1-of-1">            
+            <c:Pcash_ContactSocialInfo citizenWrapper="{! v.citizenWrapper }" rendered="{! v.permissions.ContactViewSocialInfo }" showDetails="{! v.permissions.ContactViewSocialInfoDetails}"/>
+        </div>
+        
+        <div class="slds-col slds-size_1-of-1">
+			<c:Pcash_ContactAttributes citizenWrapper="{! v.citizenWrapper }" rendered="{! and( v.permissions.ContactViewAttributes, v.citizenWrapper.attributeTags.length > 0)}"/>
+        </div>     
+        
+        <div class="slds-col slds-size_1-of-1">
+            <c:Pcash_ContactAttributesIncome  citizenWrapper="{! v.citizenWrapper }" rendered="{! and( v.permissions.ContactViewIncome, or(v.citizenWrapper.contact.CUIT_Empleador_1__c != NULL, v.citizenWrapper.contact.CUIT_Empleador_2__c != NULL , v.citizenWrapper.contact.CUIT_Empleador_3__c != NULL  ) )}" />
+        </div>   
+        
+        <div class="slds-col slds-size_1-of-1">
+            <c:Pcash_ContactTags contw="{! v.citizenWrapper }" rendered="{!v.permissions.ContactViewTags}" />
+        </div>
+        
+        <!--Edition Modal-->
+        <c:ContactEdition recordId="{!v.recordId}"/>
+    </div>
+</aura:component>

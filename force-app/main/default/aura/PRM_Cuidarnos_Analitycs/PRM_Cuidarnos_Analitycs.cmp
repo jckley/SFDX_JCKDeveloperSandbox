@@ -1,0 +1,13 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes,force:appHostable,flexipage:availableForAllPageTypes,force:hasRecordId" controller="PRM_Cuidarnos_Analitycs">
+    <aura:attribute name="dashboardId" 		type="Id"  /> 
+    <aura:attribute name="height" 		    type="Integer"  default="600"  /> 
+    <aura:attribute name="dashboardtype"    type="String"   default="Sintomas"  /> 
+
+    <aura:handler name="init" action="{!c.initializeComponent}" value="{!this}" />
+    
+    <div class="slds-grid slds-wrap">        
+        <div class="slds-col slds-size_1-of-1 pad-top-30">
+            <wave:waveDashboard dashboardId="{! v.dashboardId }" height="{! v.height}" />
+        </div>
+    </div>
+</aura:component>

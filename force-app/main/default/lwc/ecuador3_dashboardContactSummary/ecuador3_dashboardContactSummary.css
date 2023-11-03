@@ -1,0 +1,55 @@
+.container {
+    font-family: 'Roboto';
+    max-width: 90%;
+    margin: auto;
+    padding: 0 15px;
+}
+
+.card {
+    background-color: #ffffff;
+    will-change: transform;
+    overflow:  hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.09), 0 6px 6px rgba(0,0,0,0.03);
+    min-height: 144px;
+    vertical-align: middle;
+    border-radius: 6px;
+    border: solid 1px #FFFFFF;
+}
+
+.summary-value {
+    font-family: 'Roboto';
+    font-weight: 800;
+    font-size: 2.3rem;
+    color: #646564;
+    text-align: center;
+}
+
+.summary-title {
+    font-weight: bold;
+    font-size: 0.7rem;
+    color: #b3b3b3;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+/* Special classes for small devices */
+@media only screen and (max-width: 768px) {
+    .separation-border{border-top: solid 1px #ededed;}
+
+    .espacio-l {
+        margin-top: 30px !important;
+    }
+}
+
+/* Special classes for big devices */
+@media only screen and (min-width: 768px) {
+    .separation-border{border-left: solid 1px #ededed; height: 142px;}
+
+    .espacio-r {
+        margin-right: 15px !important;
+    }
+
+    .espacio-l {
+        margin-left: 15px !important;
+    }
+}

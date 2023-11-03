@@ -1,0 +1,51 @@
+.cardHolder {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.cardHolder .photoHolder{
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+}
+
+.cardHolder .photoHolder img {
+  height: 70px;
+  border-radius: 50%;
+  width: 70px;
+  object-fit: cover;
+}
+
+.cardHolder .photoHolder div {
+  display: flex;
+  align-items: center; 
+  justify-content: center;
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+  background: #deddd9;
+  color: #f5f5f5;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  line-height: .98;
+}
+
+
+.cardHolder .infoHolder{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.cardHolder .infoHolder .name{
+    color: lightseagreen;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.cardHolder .infoHolder .location{
+    font-style: italic;
+    padding-left: 15px;
+}

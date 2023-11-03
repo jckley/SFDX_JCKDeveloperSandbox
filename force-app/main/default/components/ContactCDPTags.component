@@ -1,0 +1,29 @@
+<apex:component >
+	 
+    <apex:attribute name="contw" type="ContactWrapper" 	required="true" description="Contact General Info" />
+    
+    <div class="row contact-data">
+        <div class="card card-left-border blue">
+            <div class="row subattribute-header">
+                <div class="col-12 subattribute-title">
+                    <apex:image styleClass="icon-test-small" value="{!URLFOR($Resource.IconsPack1, 'tags.svg')}"/>
+                    <span class="subattribute-title">Tags / El Poder de la Gente</span> 
+                </div>
+            </div>
+            
+            <div class="row card-cont" style="margin-top: 10px;">                
+                <apex:repeat value="{! contw.tagsCDPCampaing }" var="strTag">
+                    <c:ContactTagComponent rendered="true" label="" value="#{!strTag }" valuecolor="gray" />
+                </apex:repeat>
+                
+                <apex:repeat value="{! contw.tagsCDPAxis }" var="strTag">
+                    <c:ContactTagComponent rendered="true" label="" value="#{!strTag }" valuecolor="gray" />
+                </apex:repeat>
+                
+                <c:ContactTagComponent rendered="{!contw.contact.CDP_Status__c != NULL}" label="" value="#{!contw.tagsCDPStatus}" valuecolor="gray" />
+                <c:ContactTagComponent rendered="{!contw.contact.CDP_Score__c != NULL}" label="" value="#{!contw.tagsCDPScore}" valuecolor="gray" />
+                
+            </div>            
+        </div>
+    </div>
+</apex:component>

@@ -1,0 +1,18 @@
+.THIS {
+}
+
+.THIS .map {
+    height:100%;
+}
+
+/* Special classes for small devices */
+@media only screen and (max-width: 768px) {
+    .THIS .separator{margin-bottom: 15px;}
+    
+}
+
+/* Special classes for big devices */
+@media only screen and (min-width: 768px) {
+    .THIS > div:first-child {width: 60%}
+    .THIS > div:last-child {width: 40%}
+}

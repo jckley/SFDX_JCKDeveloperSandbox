@@ -1,0 +1,395 @@
+<apex:page docType="html-5.0"  apiVersion="45" showChat="false" showHeader="false" sidebar="false" applyHtmlTag="false" applyBodyTag="false" expires="0" standardStylesheets="false" lightningStylesheets="false" controller="Pulso_Home_Controller"> 
+    <html>
+        <head>
+            <title>{! survey.name }</title>
+            <meta charset="UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+            <meta name="description" content="Pulso" />
+            <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+            <meta name="robots" content="all" />
+             
+            <meta property="og:title" content=""/>
+            <meta property="og:type" content="website"/>
+            <meta property="og:url" content=""/>
+            <meta property="og:image" content=""/>
+            <meta property="og:site_name" content=""/>
+            <meta property="og:description" content=""/>
+				
+            <link rel="shorcut icon" href="{! URLFOR( $Resource.PulsoCRM , 'img/favicon.png' ) }" />
+            <link href="https://fonts.googleapis.com/css?family=Heebo:300,400,700,900|Roboto:300,400,700" rel="stylesheet" />
+            <link href="{! URLFOR( $Resource.PulsoCRM , 'css/reset.css' ) }" rel="stylesheet" />
+            <link href="{! URLFOR( $Resource.PulsoCRM , 'css/css.css?v=9' ) }" rel="stylesheet" />
+            <link href="{! URLFOR( $Resource.PulsoCRM , 'css/font-awesome.min.css' ) }" rel="stylesheet" />
+                    
+            <apex:includeScript value="https://code.jquery.com/jquery-3.1.1.min.js"/>
+            <apex:includeScript value="{! URLFOR( $Resource.PulsoCRM , 'js/send-form.js' ) }"/>
+            <apex:includeScript value="{! URLFOR( $Resource.PulsoCRM , 'js/funciones.js' ) }"/>
+            
+            <style type="text/css">
+                #survey{
+                    padding: 130px 50px 50px;
+                    height: 100vh;
+                    background-color: #F8F8F9;
+                    box-sizing: border-box;
+                    position: relative;
+                }
+                #survey .logo{
+                    position: absolute;
+                    top:10px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                }
+                #survey a.pp{
+                    float: right;
+                    display: inline-block;
+                    color: #AEAEAF;
+                    font-size: 12px;
+                    text-decoration: underline;
+                    font-family: 'Roboto', sans-serif;
+                    margin-top: 20px;
+                }
+                
+                .surveydetailalreadyanserwered {
+                	display:none;
+                }
+                @media (max-width: 750px) {
+                    #survey {padding: 90px 20px 50px !important;}
+                    #survey .logo{width: 80px}
+                    #survey{padding: 40px 10px 50px;}
+                }
+            </style>
+        </head>
+        <body>
+            <header>
+                <a href="#">
+                    <img src="{! URLFOR( $Resource.PulsoCRM , 'img/logo-pulso.svg' ) }" alt="{! $Label.Pulso_Title }" />
+                </a>
+                <nav>
+                    <ul class="nav">
+                        <li><a href="https://pulso.social/que-es.html">{! $Label.Pulso_Nav_Que_es }</a></li>
+                        <li><a href="https://pulso.social/que-es-panel.html">{! $Label.Pulso_Nav_Que_es_Panel }</a></li>
+                        <li><a href="#" class="contactmodal">{! $Label.Pulso_Nav_Contacto }</a></li>
+                        <li><a href="https://pulso.social/faqs.html">{! $Label.Pulso_Nav_FAQ }</a></li>
+                    </ul>
+                    <ul class="share">
+                        <li><a href="{! pulso.TwitterLink }" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                        <li><a href="{! pulso.FacebookLink }" target="_blank"><i class="fa fa-facebook-official" aria-hidden="true"></i></a></li>
+                        <li><a href="{! pulso.InstagramLink }" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                    </ul>
+                </nav>
+                <div id="burger">
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                </div>
+            </header>
+            
+            <section id="encuesta" class="landing-encuesta landingmode mb-0">
+                <div id="encuesta-info" class="info">
+                    <div class="copy">
+                        <h2>{! survey.name }</h2>
+                        <p>{! survey.description }</p>
+                    </div>
+                    <img src="{! URLFOR( $Resource.PulsoCRM , 'img/ico-index-landing.png' ) }" alt="{! $Label.Pulso_Title }" />
+                </div>
+                <div id="encuesta-zocalo" class="zocalo">
+                    <apex:actionRegion rendered="{! survey.showQuestion }">
+                    	<small class="zocalologin">{! $Label.Pulso_Questions_Count} {! survey.preguntas } {! $Label.Pulso_Questions } </small>
+                    </apex:actionRegion>
+                    <apex:actionRegion rendered="{! !survey.showQuestion }">
+                        <style>
+                        	.landing-encuesta .zocalo small:before {
+                            	height : 0px;
+                            }
+                        </style>
+                    	<small class="zocalologin"></small>
+                    </apex:actionRegion>
+                    
+                    <small class="surveydetailalreadyanserwered">USTED YA HA CONTESTADO ESTA ENCUESTA</small>
+                    <span class="btn surveybutton zocalologin">{! $Label.Pulso_Survey_Take }</span>
+                    <span style="display:none;"  class="facebookConnector">
+                         <c:FacebookConnector surveyid="{! survey.typeformid }" />
+					</span> 
+                </div>
+                <div id="thanks" class="info" style="display:none;">
+                    <div class="zocalologin">
+                        <h2>Gracias por participar</h2>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="home" style="background: none" class="landingmode">
+                <img src="{! URLFOR( $Resource.PulsoCRM , 'img/image-home.png' ) }" alt="{! $Label.Pulso_Title }" class="city anima hideme" />
+                <h1 class=" anima hideme">{! $Label.Pulso_Opinion}</h1>
+            </section>
+            
+            <section id="formaParte" class="anima hiden landingmode">
+                <div class="copy">
+                    <h2 class="anima hideme">{! $Label.Pulso_Register_SignUp_Title } </h2>
+                    <p class="anima hideme">{! $Label.Pulso_Register_SignUp_Description }</p>
+                    <a href="#form" class="ancla btn anima hideme">{! $Label.Pulso_Register_SignUp }</a>
+                </div>
+                <div class="img" style="background-image: url('{! URLFOR( $Resource.PulsoCRM , '/img/img-forma-parte.jpg')}')"></div>
+            </section>
+           
+             <section class="landingmode">
+                  <c:Pulso_Contact_Form />
+            </section>
+            
+            <section id="survey" class="survey suverymode surveydetail">
+                <iframe id="typeformsurvey" src="" frameborder="0" height="100%" width="100%" style=""></iframe>
+
+                <!-- <a href="#" class="pp">{! $Label.Pulso_Nav_Privacy }</a>-->
+            </section>
+                               
+            <footer>
+                <img src="{! URLFOR($Resource.PulsoCRM, 'img/logo-pulso.svg') }" alt="{! $Label.Pulso_Title }" />
+                
+                <div class="buttons">
+                    <ul>
+                        <li><a href="https://pulso.social/que-es.html">{! $Label.Pulso_Nav_Que_es }</a></li>
+                        <li><a href="https://pulso.social/que-es-panel.html">{! $Label.Pulso_Nav_Que_es_Panel }</a></li>
+                        <li><a href="#" class="contactmodal">{! $Label.Pulso_Nav_Contacto }</a></li>
+                    </ul>
+                    <ul>
+                        <!-- <li><a href="https://pulso.social/legales.html">{! $Label.Pulso_Nav_TermsConditions }</a></li> -->
+                        <li><a href="https://pulso.social/politicas.html">{! $Label.Pulso_Nav_Privacy }</a></li>
+                        <li><a href="https://pulso.social/faqs.html">{! $Label.Pulso_Nav_FAQ }</a></li>
+                    </ul>
+                </div>
+                
+                <ul class="share">
+                    <li><a href="{! pulso.TwitterLink }" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                    <li><a href="{! pulso.FacebookLink }" target="_blank"><i class="fa fa-facebook-official" aria-hidden="true"></i></a></li>
+                    <li><a href="{! pulso.InstagramLink }" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                </ul>
+            </footer>
+                                             
+            <c:Pulso_Contact_Modal />
+
+            <script type="text/javascript">
+	            var AWS_ENDPOINT = 'https://api-pulso.prosumia.la';   
+    	        var TYPEFORM_ENDPOINT = 'https://smix.typeform.com';   
+            	var _boolAlreadyAnswered = false;
+            	var _boolIframeLoaded = false;
+            	var _intZocalo = $('.zocalo').offset().top;
+            	var _boolButtonPressed = false;
+            	var _strUrl = null;
+            
+                $('.surveybutton').on('click', function(){ 
+                    _boolButtonPressed = true;
+                    $(document).trigger('connecttofacebook');
+            	});
+            
+                $(document).on('facebook_connected', function(objEvent, objFacebookUser) { 
+                    checkUserAnswerSurvey('{! survey.typeformid}', objFacebookUser);
+                    
+                    if(_boolButtonPressed === true) {
+                        _boolButtonPressed = false;                        
+                        encryptData(objFacebookUser, '{! survey.typeformid}');
+                    }
+            	});
+            
+                $('.contactmodal').on('click', function(objEvent){
+                    $(document).trigger('contactmodal');  
+                })
+                        	                                                           
+                $('.input').on('change', 'select' ,function(){
+                    var objValue = null;
+                    
+                    objValue = $(this).val();
+                    
+                    if(objValue !== undefined && objValue !== null && objValue.length > 0) {
+                        $(this).parents('.input').find('label').css({'display':'none'})
+                    } else {		
+                        $(this).parents('.input').find('label').css({'display':'block'})
+                    }
+                });
+               
+                $(window).on('scroll', function(){     
+                    var intWidth = null;
+                    var intScrollTop = null;
+                    var intBottomObject = null;
+                    var intBottomWindow = null; 
+                    
+                    $('.anima').each(function(intIndex){        
+                        var intBottomObject = $(this).offset().top + ($(this).outerHeight() / 2 );
+                        var intBottomWindow = $(window).scrollTop() + $(window).height();  
+                        
+                        if( intBottomWindow > intBottomObject ) {            
+                            $(this).removeClass('hideme');
+                            $(this).removeClass('hiden');
+                        }                        
+                    }); 
+
+                    intWidth = $(window).width();
+                    intScrollTop = $(window).scrollTop();
+                    
+                    if(intWidth > 750){
+                        if( intScrollTop > (_intZocalo - 130)){
+                            $('.zocalo').addClass('fix');
+                        } else {
+                            $('.zocalo').removeClass('fix');
+                        }
+                    } else {
+                        if( intScrollTop > (_intZocalo - 80)){
+                            $('.zocalo').addClass('fix');
+                        } else {
+                            $('.zocalo').removeClass('fix');
+                        }
+                    }
+                })
+                
+                $('a.ancla').click(function(objEvent){				
+                    var strAncla = null;
+                    
+                    objEvent.preventDefault();		
+                    strAncla = $(this).attr('href'); 
+                    
+                    $('body,html').stop(true,true).animate({				
+                        scrollTop: $(strAncla).offset().top
+                    },1000);                    
+                });   
+
+                function checkUserAnswerSurvey(strSurveyId, objFacebookUser) {
+                    var strUrl = null;
+                    $.ajax({
+                        method: "GET",
+                        url: AWS_ENDPOINT + '/pulso/surveys/{! survey.id}/' + objFacebookUser.id,
+                        success: function(objResult, strStatus, objXHR) {
+                            if(objResult !== undefined && objResult !== null) {
+                                _boolAlreadyAnswered = (objResult.count > 0);
+                                loadIframe();                                
+                            } else {
+                                _boolAlreadyAnswered = true; // si ocurre un error lo dejo responder de nuevo
+                                handleError(objEvent);                            
+                            }
+                        },
+                        complete: function(objXHR, strStatus) { 
+                            if(objXHR.status !== 200) {
+                                _boolAlreadyAnswered = true; // si ocurre un error lo dejo responder de nuevo
+                                handleError(objEvent);
+                            }
+                        }
+                    }); 
+                }
+            
+
+            
+            	function encryptData(objFacebookUser, objSurveyId) {
+                    Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.Pulso_Home_Controller.retrieveEncryptData}', objFacebookUser.id,
+                    	function(objResult, objEvent){
+                            if (objEvent.status) {
+                               showSurvey(objFacebookUser, objSurveyId, objResult);
+                            } else {
+                                handleError(objEvent);
+                            }
+                        }, 
+                        {escape: true}
+					); 
+                }
+             
+            	function  showSurvey(objFacebookUser, objSurveyId, strPulsoHash) {
+                	_strUrl = '{! pulso.TypeFormUrl }/{! survey.typeformid}?';
+                    _strUrl += '&fbid=' + objFacebookUser.id;
+                    //_strUrl += '&mail=' + objFacebookUser.email;
+                    _strUrl += '&pulsohash=' + strPulsoHash;                    
+                    _strUrl += '{! QSParameters }';
+                     
+                    _boolIframeLoaded = true;
+                    
+                    loadIframe();
+                }
+            
+                function loadIframe() {
+                    var objIframe = null; 
+                        
+                    objIframe = $('#typeformsurvey');
+                    if ( objIframe.length ) {      
+                        if(_boolIframeLoaded === true) {
+                            if(_boolAlreadyAnswered === true) {
+                                $('.zocalologin').hide();
+                                $('.surveydetailalreadyanserwered').show();
+                            } else {             
+                                objIframe.attr('src', _strUrl);   
+                                
+                                $('.landingmode').fadeOut(200);
+                                $('.surveymode').fadeIn(200);                           
+                            }
+                        }
+                    } 
+                }
+            
+            	function receiveParams() {
+                    // RECIBO VARIABLES
+                    var strFacebookId = null;
+                    var strSurveyId = null;
+                    
+                    cadVariables = location.search.substring(1,location.search.length);
+                    arrVariables = cadVariables.split("&");
+                    
+                    for (i=0; i<arrVariables.length; i++) {
+                        arrVariableActual = arrVariables[i].split("=");
+                        
+                        // SI LA VARIABLE ES DE CREACIÓN DE MENSAJE EXITOSO
+                        if(arrVariableActual[1] == "success"){
+                            $('#encuesta-info').hide();
+                            $('#encuesta-zocalo').hide();
+                            $('#thanks').show();                            
+                        } else if(arrVariableActual[0] == 'fbid') {
+                            strFacebookId = arrVariableActual[1];
+                        } else if(arrVariableActual[0] == 'surveyid') {                        
+                            strSurveyId = arrVariableActual[1];
+                        }
+                       
+                        if(strFacebookId !== undefined && strFacebookId !== null && strFacebookId.length > 0 && strSurveyId !== undefined && strSurveyId !== null && strSurveyId.length > 0 ) {
+                        	saveUserSurvey(strSurveyId,strFacebookId);
+                        }                                                
+                    }
+                }
+            
+            	function saveUserSurvey(strSurveyId,strFacebookId) {
+                    var strUrl = null;
+                    $.ajax({
+                        method: "POST",
+                        url: AWS_ENDPOINT + '/pulso/surveys/{! survey.id}/' + objFacebookUser.id,
+                        success: function(objResult, strStatus, objXHR) {
+                            if(objResult !== undefined && objResult !== null) {
+                                _boolAlreadyAnswered = (objResult.count > 0);
+                                loadIframe();                                
+                            } else {
+                                _boolAlreadyAnswered = true; // si ocurre un error lo dejo responder de nuevo
+                                handleError(objEvent);                            
+                            }
+                        },
+                        complete: function(objXHR, strStatus) { 
+                            if(objXHR.status !== 200) {
+                                _boolAlreadyAnswered = true; // si ocurre un error lo dejo responder de nuevo
+                                handleError(objEvent);
+                            }
+                        }
+                    }); 
+                }
+            
+            	receiveParams();
+            
+            </script>
+            <!-- Global site tag (gtag.js) - Google Analytics -->
+            <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-140015658-2"></script>
+            <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                
+                gtag('config', 'UA-140015658-2');
+            </script>
+
+            <script type="text/javascript" src="http://100011800.collect.igodigital.com/collect.js"></script>
+            <script type="text/javascript">
+                _etmc.push(["setOrgId", "100011800"]);
+            _etmc.push(["trackPageView"]);
+            </script>
+        </body>
+    </html>    
+
+</apex:page>

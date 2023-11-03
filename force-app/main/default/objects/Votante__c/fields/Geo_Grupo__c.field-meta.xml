@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Geo_Grupo__c</fullName>
+    <externalId>false</externalId>
+    <label>Geo Grupo Lista</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Acuña</fullName>
+                <default>false</default>
+                <label>Acuña</label>
+            </value>
+            <value>
+                <fullName>Sin Grupo</fullName>
+                <default>false</default>
+                <label>Sin Grupo</label>
+            </value>
+            <value>
+                <fullName>Geo_Barrio</fullName>
+                <default>false</default>
+                <label>Geo_Barrio</label>
+            </value>
+            <value>
+                <fullName>Castagnino</fullName>
+                <default>false</default>
+                <label>Castagnino</label>
+            </value>
+            <value>
+                <fullName>Cabero (+)</fullName>
+                <default>false</default>
+                <label>Cabero (+)</label>
+            </value>
+            <value>
+                <fullName>Centro</fullName>
+                <default>false</default>
+                <label>Centro</label>
+            </value>
+            <value>
+                <fullName>Las Flores</fullName>
+                <default>false</default>
+                <label>Las Flores</label>
+            </value>
+            <value>
+                <fullName>Belgrano</fullName>
+                <default>false</default>
+                <label>Belgrano</label>
+            </value>
+            <value>
+                <fullName>Las Violetas</fullName>
+                <default>false</default>
+                <label>Las Violetas</label>
+            </value>
+            <value>
+                <fullName>Escuela</fullName>
+                <default>false</default>
+                <label>Escuela</label>
+            </value>
+            <value>
+                <fullName>El Libertador (+)</fullName>
+                <default>false</default>
+                <label>El Libertador (+)</label>
+            </value>
+            <value>
+                <fullName>Sarmiento (+)</fullName>
+                <default>false</default>
+                <label>Sarmiento (+)</label>
+            </value>
+            <value>
+                <fullName>Magnasco (+)</fullName>
+                <default>false</default>
+                <label>Magnasco (+)</label>
+            </value>
+            <value>
+                <fullName>Parque Monte Grande</fullName>
+                <default>false</default>
+                <label>Parque Monte Grande</label>
+            </value>
+            <value>
+                <fullName>Media Luna (+)</fullName>
+                <default>false</default>
+                <label>Media Luna (+)</label>
+            </value>
+            <value>
+                <fullName>Villa Zoila (+)</fullName>
+                <default>false</default>
+                <label>Villa Zoila (+)</label>
+            </value>
+            <value>
+                <fullName>Norte</fullName>
+                <default>false</default>
+                <label>Norte</label>
+            </value>
+            <value>
+                <fullName>Cerino (+)</fullName>
+                <default>false</default>
+                <label>Cerino (+)</label>
+            </value>
+            <value>
+                <fullName>Panamericano (+)</fullName>
+                <default>false</default>
+                <label>Panamericano (+)</label>
+            </value>
+            <value>
+                <fullName>Héroes De Malvinas (+)</fullName>
+                <default>false</default>
+                <label>Héroes De Malvinas (+)</label>
+            </value>
+            <value>
+                <fullName>Monte Grande</fullName>
+                <default>false</default>
+                <label>Monte Grande</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,132 @@
+<template>
+  <div>
+    <div if:true={areManagerParamsReady}>
+      <c-analytics-manager-territory
+        onquerydata={handleQueryData}
+        onqueryerror={handleQueryError}
+        param_child_level_name={analitycsManagerParams.child_level_name}
+        param_child_level_id={analitycsManagerParams.child_level_id}
+        param_dataset_name={analitycsManagerParams.dataset_name}
+        param_territory_id={analitycsManagerParams.territory_id}
+      ></c-analytics-manager-territory>
+    </div>
+    <div class="spinner-container" if:true={loadingScreenOn}>
+      <lightning-spinner
+        alternative-text="Loading"
+        size="large"
+      ></lightning-spinner>
+    </div>
+    <div class={all_page_class} if:true={isAnalitycsReady}>
+        <div class="stickyMarginHelper"></div>
+        <aside>
+          <div class="box territorios_resume" data-aos="zoom-in" data-aos-once="true">
+            <div class="item location">
+              <h2>
+                <template
+                  for:each={parentsArrayNavigation}
+                  for:item="admObj"
+                  for:index="intIndex"
+                >
+                  <a class="admin-link" href={admObj.link} key={admObj.id}
+                    >{admObj.name}</a
+                  ><template if:false={admObj.isLast}> / </template>
+                </template>
+                <strong>{territoryLt.Name}</strong>
+              </h2>
+            </div>
+            <div class="item habitantes">
+              <strong>{analitycsGenderData.totalSumaryFormated}</strong>
+              <small>Ciudadanos</small>
+            </div>
+            <c-Section_gender-doughnut param_data_from_analytics={dataFromAnalytics} onfilterclick={handleFilterClickOnComponent}></c-section_gender-doughnut>
+          </div>
+
+          <div class="info">
+            <span>{parentLvlNavigation.thisTerritoryInfo}</span>
+            <br />
+            <span if:true={parentLvlNavigation.parentTerritoryInfo}
+              ><a href={parentLvlNavigation.parentTerritoryInfo.link}
+                >{parentLvlNavigation.parentTerritoryInfo.info}
+                <img class="iconTerritories" src={iconTerritories} /></a
+            ></span>
+          </div>
+        </aside>
+
+        <article class="mainBody">
+          <c-section_filters class="filterComponent" onremoveone={handleRemoveOneFilter} onremoveall={handleRemoveAllFilters}></c-section_filters>
+
+          <section data-aos="zoom-in" data-aos-once="true">
+            
+            <c-section_ages-bars param_data_from_analytics={dataFromAnalytics} onfilterclick={handleFilterClickOnComponent}></c-section_ages-bars>
+            
+            <!--
+            <c-chart-j-s_number-tile param_data_from_analytics={dataFromAnalytics} onfilterclick={handleFilterClickOnComponent}></c-chart-j-s_number-tile>
+            -->
+          </section>
+
+          <section
+            class="map"
+            data-aos="zoom-in"
+            data-aos-once="true"
+            if:true={showMap}
+          >
+            <div class="box no-padding">
+              <div class="header">
+                <div class="title active">Referencia Geográfica</div>
+              </div>
+              <div class="container">
+                <div class="map_container" id="map"></div>
+              </div>
+            </div>
+          </section>
+
+          <!-- GEOGRAPIC DISTRIBUTION -->
+          <template if:true={showGeographicDistribution}>
+            <section
+              class="map_locations"              
+            >
+              <div class="box line-top red">
+                <div class="container">
+                  <div class="items">
+                    <template
+                      for:each={geographicDistribution}
+                      for:item="objGeographicDistribution"
+                      for:index="intIndex"
+                    >
+                      <a
+                        class="item"
+                        href={objGeographicDistribution.link}
+                        key={objGeographicDistribution.id}
+                      >
+                        <!-- <a href={objGeographicDistribution.link}> -->
+                        <img class="iconMarker" src={iconMarker} />
+                        <span>{objGeographicDistribution.name}</span>
+                        <strong>{objGeographicDistribution.value}</strong>
+                        <!-- </a> -->
+                      </a>
+                    </template>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </template>
+
+          <!-- INCOME SECTION -->
+          <section class="ingresosWrapper" data-aos="zoom-in" data-aos-once="true">
+            <c-section_ingreso param_data_from_analytics={dataFromAnalytics} onfilterclick={handleFilterClickOnComponent}></c-section_ingreso>
+            <c-section_ocupacion param_data_from_analytics={dataFromAnalytics} onfilterclick={handleFilterClickOnComponent}></c-section_ocupacion>
+          </section>
+
+          <!-- EDUCATION SECTION -->
+          <section class="nivel_educativo" data-aos="zoom-in" data-aos-once="true">
+            <c-section_educacion param_data_from_analytics={dataFromAnalytics} onfilterclick={handleFilterClickOnComponent}></c-section_educacion>
+          </section>
+
+
+          <section class="actividades_economicas" data-aos="zoom-in" data-aos-once="true">
+            <c-section_actividades-economicas param_data_from_analytics={dataFromAnalytics} onfilterclick={handleFilterClickOnComponent}></c-section_actividades-economicas>
+          </section>
+        </article>
+      </div>
+  </div>
+</template>

@@ -1,0 +1,21 @@
+<aura:component >
+	<aura:attribute name="ter0" type="Territorio_Administrativo__c" description="Territory Level 0"  />
+    <aura:attribute name="ter1" type="Territorio_Administrativo__c" description="Territory Level 1"  />
+    <aura:attribute name="ter2" type="Territorio_Administrativo__c" description="Territory Level 2"  />
+    <aura:attribute name="ter3" type="Territorio_Administrativo__c" description="Territory Level 3"  />
+    <aura:attribute name="ter4" type="Territorio_Administrativo__c" description="Territory Level 4" />
+    <aura:attribute name="territoryName" type="String" required="true"/>
+    
+    <div class="slds-size_1-of-1 slds-grid slds-wrap">
+        <div class="slds-size_1-of-1 breadcrum">
+            <span id="{!v.ter0.Id}" onclick="{!c.navigateToTerritory}">{!v.ter0.Name}</span>
+            <span style="{!'display: ' + (v.ter1.Id != NULL ?'':'none')}"> / </span> <span id="{!v.ter1.Id}" onclick="{!c.navigateToTerritory}">{!v.ter1.Name}</span> 
+            <span style="{!'display: ' + (v.ter2.Id != NULL ?'':'none')}"> / </span> <span id="{!v.ter2.Id}" onclick="{!c.navigateToTerritory}">{!v.ter2.Name}</span>
+            <span style="{!'display: ' + (v.ter3.Id != NULL ?'':'none')}"> / </span> <span id="{!v.ter3.Id}" onclick="{!c.navigateToTerritory}">{!v.ter3.Name}</span>
+            <span style="{!'display: ' + (v.ter4.Id != NULL ?'':'none')}"> / </span> <span id="{!v.ter4.Id}" onclick="{!c.navigateToTerritory}">{!v.ter4.Name}</span>
+        </div>
+        <div class="slds-size_1-of-1 name">
+            {!v.territoryName}
+        </div>
+    </div>
+</aura:component>

@@ -1,0 +1,353 @@
+.card{
+    background-color: #ffffff;
+    will-change: transform;
+    overflow:  hidden;
+    min-height: 100px;
+    vertical-align: middle;
+    border-radius: 6px;
+    border: solid 1px #EDEDED;
+}
+
+.l-content {
+    width: 90%;
+    margin: auto;
+    position: relative; 
+}
+
+.timeline {margin-top: 30px;}
+
+.edit-icon {margin-top: 6px; margin-right: 6px;}
+
+.rounded-container{
+    width: 200px;
+    display: table;
+}
+
+.container360 {
+    border-bottom: solid 1px #666666;
+    display: inline-block;
+}
+
+.logo360 {
+    height: 24px;
+    max-height: 24px;
+    display: table-cell;
+}
+.text360 {
+    height: 24px;
+    max-height: 24px;
+    color : #666666;
+    font-size: 12px;
+    display: table-cell;
+    line-height: 12px;
+    width: 70%;
+}
+
+.rounded-container:hover {cursor: pointer;}
+
+.header-extension {display:none;}
+
+.title {
+    font-weight: bold;
+}
+
+.subtitle,
+.subtitle a,
+.subtitle a:visited,
+.subtitle a:link,
+.subtitle a:hover {
+    font-size: 10pt;
+    line-height: 1.5;
+    cursor: pointer;
+}
+
+.subtitle {
+    font-weight: 400;    
+}
+
+.subtitle A {
+    font-weight: 	bold; 
+    text-decoration : underline;
+}
+
+.subtitle A:hover { 
+    text-decoration : underline;
+    color : #1cdcbb;
+}
+
+.action_bar {
+    background-color: #f1f1f2;
+    position: relative;
+}
+
+.action_bar .status  {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.action_bar .status span.description {
+    font-size: 24pt;
+    color: #3e4954;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding-left: 15px;    
+    padding-right: 15px;
+}
+
+.action_bar .status span.date {
+    font-size: 12pt;
+    font-weight: bold;
+    color: #3e4954;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    vertical-align: super;
+}
+
+.modal_buttons button,
+.action_bar button {
+    border-radius: 6px;
+    border: none;
+    background-color: #dbdbdb;
+    font-size: 12pt;
+    color: #3e4954;
+    font-weight: bold;
+    width: 160px;
+
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.action_bar button:hover { 
+    background-color: #2196F3;
+}
+
+.modal_buttons button.ok {
+    background-color: #2196F3;
+    margin-left: 15px;
+}
+
+.align_right {
+    float: right;
+    margin-right: 10px;
+}
+
+.action_bar .notificado  {
+    width: 160px;
+    white-space: nowrap;
+    
+    text-align: center; 
+    margin: 1em 0;
+}
+
+.action_bar .notificado .helper {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.action_bar .notificado img {
+    vertical-align: middle;
+    max-height: 25px;
+    max-width: 160px;    
+}
+
+.citizenseparator {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.subtitle.actions span {
+    font-weight: bold;
+}
+
+.subtitle.actions a {
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.confirmtitle {
+    font-size: 24pt;
+    color: #3e4954;
+    font-weight: 800;
+}
+
+.confirmwarning {
+    font-size: 16pt;
+    color: #3e4954;
+    border: solid 3px #999999;
+    padding: 4px 4px  4px 4px;
+    border-radius: 10px;
+}
+.confirmwarning span { 
+    padding-left: 10px;
+}
+
+.historycontainer {
+    font-size: 10pt;
+    color: #3e4954;
+    border: solid 3px #999999;
+    padding: 4px 4px  4px 4px;
+    border-radius: 10px;
+}
+.historycontainer span { 
+    padding-left: 10px;
+}
+
+.confirmwarningwithoutborder {
+    font-size: 16pt;
+    color: #3e4954;
+    padding: 4px 4px  4px 4px;
+}
+.confirmwarningwithoutborder span { 
+    padding-left: 10px;
+}
+
+.confirmwarningwithoutborder select { 
+    padding: 5px 5px 5px 5px;
+
+    border: solid 2px #999999;
+    padding: 4px 4px  4px 40px;
+    border-radius: 10px;
+    height: 70px;
+}
+
+
+.uiInput--select.select:not([multiple]), 
+.uiInput--select .select:not([multiple]), 
+.uiInput--select .uiPopupTrigger a {
+    padding: 5px 5px 5px 5px;
+
+    border: solid 3px #999999;
+    padding: 4px 4px  4px 40px;
+    border-radius: 10px;
+    height: 70px;
+}
+
+.confirmwarningwithoutborder .slds-select_container:before, 
+.confirmwarningwithoutborder .slds-select_container:after {
+    display: none;
+}
+
+.uiInput--select select, 
+.uiInput--select .required .uiPopupTrigger a {
+    border: solid 3px red !important;
+}
+
+.required_field {
+    font-size: 32px;
+    color: red;
+    font-weight: bold;
+}
+
+.editdialog .label {
+    font-size: 12pt;
+    color: #3e4954;
+    padding: 4px 4px  4px 4px;
+    text-transform: uppercase;
+}
+
+.editdialog .value input {
+    border-radius: 6px;
+    border : solid 2px #CCCCCC;
+    height: 60px;
+    font-size: 20px;
+}
+
+.action_confirm  * .checkbox {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer; 
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+  
+.action_confirm * .checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+  
+.action_confirm * .checkbox .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+}
+  
+.action_confirm * .checkbox:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+  
+.action_confirm * .checkbox input:checked ~ .checkmark {
+    background-color: #2196F3;
+}
+  
+.action_confirm * .checkbox .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+  
+.action_confirm  * .checkbox input:checked ~ .checkmark:after {
+    display: block;
+}
+  
+.action_confirm * .checkbox .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.action_confirm {
+    font-size: 24px;
+}
+
+.x-padding-left{
+    padding-left: 0rem;
+}
+
+/* Special classes for big devices */
+@media only screen and (min-width: 768px) {
+    .l-map {
+       margin: auto;
+       position: relative;
+       top: 192px;
+       z-index: 5;
+       box-shadow: 0px 13px 36px 0px rgba(0, 0, 0, 0.1);
+   }
+   .header-padding{padding-left: 25px;}
+   /*.THIS.l-content {top: -495px;}*/
+   .l-content {top: -125px;}
+   .title {    
+       font-size: 24pt;
+       color: #666666;
+   }
+   .subtitle,
+   .subtitle a,
+   .subtitle a:visited,
+   .subtitle a:link,
+   .subtitle a:hover {
+       color: #666666;
+   }
+   .x-padding-left{
+       padding-left: 2rem;
+   }
+}

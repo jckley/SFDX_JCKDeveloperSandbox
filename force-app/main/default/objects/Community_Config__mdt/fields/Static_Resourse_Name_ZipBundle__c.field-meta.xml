@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Static_Resourse_Name_ZipBundle__c</fullName>
+    <description>Nombre del recurso con la carpeta con los recursos de la comunidad. Por ahora, la pagina de login solo va a buscar la bandera que se muestra en el footer.</description>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>Nombre del recurso con la carpeta con los recursos de la comunidad. Por ahora, la pagina de login solo va a buscar la bandera que se muestra en el footer.</inlineHelpText>
+    <label>Static Resourse Name - ZipBundle</label>
+    <length>255</length>
+    <required>false</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

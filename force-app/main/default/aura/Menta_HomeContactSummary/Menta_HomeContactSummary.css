@@ -1,0 +1,30 @@
+.THIS .social-container {padding: 25px 20px 15px 30px;}
+
+.THIS .summary-title {
+    font-family: 'Poppins';
+    font-weight: 300;
+    font-size: 11pt;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+.THIS .card {display: block !important;}
+.THIS .summary-value {
+    font-family: 'Open Sans';
+    font-weight: bold;
+    font-size: 30pt;
+    color: #ffffff;
+}
+
+/* Special classes for small devices */
+@media only screen and (max-width: 768px) {
+    .THIS > div {margin-bottom: 15px;}
+    .THIS .border{border-top: solid 1px #00b39e;}
+    .THIS .social-container {text-align: center; padding-bottom: 15px;}
+}
+
+/* Special classes for big devices */
+@media only screen and (min-width: 768px) {
+    .THIS .border{border-left: solid 1px #00b39e;}
+    .THIS > div {padding-right: 20px;}
+    .THIS > div:last-child {padding-right: 0;}
+}

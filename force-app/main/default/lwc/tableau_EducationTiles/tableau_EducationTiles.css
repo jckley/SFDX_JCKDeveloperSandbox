@@ -1,0 +1,46 @@
+.tileHolder {
+    display:flex;
+    flex-direction: row;
+    gap: 10px;
+    height: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.tileHolder .item {
+    background: #F7F7F7;
+    padding: 1.5em 5px 1.5em 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    height: 100%;
+    flex:1;
+}
+
+.tileHolder .item:hover {
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
+
+.tileHolder .item .icon {
+    max-width: 25px;
+    max-height: 25px;
+}
+
+.tileHolder .item div {
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+}
+
+.tileHolder .item div .tileValue {
+    font-size: 15.26px;
+    color: #ff4443;
+}
+
+.tileHolder .item div .tileName {
+    font-size: 10px;
+    font-weight: bold;
+    color: #58595b;
+}

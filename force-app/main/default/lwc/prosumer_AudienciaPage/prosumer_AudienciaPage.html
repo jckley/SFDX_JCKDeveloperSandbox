@@ -1,0 +1,40 @@
+<template>
+  <div class="audienciaPageBody">
+    <template lwc:if={loadingScreenOn}>
+      <div class="spinner-container">
+        <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+      </div>
+    </template>
+    <template lwc:if={areManagerParamsReady}>
+      <c-prosumer_analytics-manager
+        onquerydata={handleQueryData}
+        onqueryerror={handleQueryError}
+        param_child_level_name={analitycsManagerParams.child_level_name}
+        param_child_level_id={analitycsManagerParams.child_level_id}
+        param_dataset_name={analitycsManagerParams.dataset_name}
+        param_base_string_filter={analitycsManagerParams.base_filters}
+      ></c-prosumer_analytics-manager>
+    </template>
+    <div class="gridContainer" if:true={isAnalitycsReady}>
+      <c-prosumer_filters
+        class="filterComponent"
+        param_data_from_analytics={dataFromAnalytics}
+        onremoveone={handleRemoveOneFilter}
+        onremoveall={handleRemoveAllFilters}
+        onclickejecutar={handleClickEjectuar}
+        onremoveterritories={handleRemoveTerritories}
+      ></c-prosumer_filters>
+      <c-prosumer_moviles class="moviles" param_data_from_analytics={dataFromAnalytics} onfilterclick={handleFilterClickOnComponent}> </c-prosumer_moviles>
+      <c-prosumer_telefonos class="telefonos" param_data_from_analytics={dataFromAnalytics} onfilterclick={handleFilterClickOnComponent}> </c-prosumer_telefonos>
+      <c-prosumer_emails class="emails" param_data_from_analytics={dataFromAnalytics} onfilterclick={handleFilterClickOnComponent}> </c-prosumer_emails>
+      <c-prosumer_direcciones class="direcciones" param_data_from_analytics={dataFromAnalytics} onfilterclick={handleFilterClickOnComponent}> </c-prosumer_direcciones>
+      <c-prosumer_territories-list class="territories" param_data_from_analytics={dataFromAnalytics} onfilterclick={handleFilterClickOnComponent} onremoveterritories={handleRemoveTerritories}></c-prosumer_territories-list>
+      <c-prosumer_gender class="genero" param_data_from_analytics={dataFromAnalytics} onfilterclick={handleFilterClickOnComponent}> </c-prosumer_gender>
+      <c-prosumer_audiencia-generacional_cards class="generacional" param_data_from_analytics={dataFromAnalytics} onfilterclick={handleFilterClickOnComponent}></c-prosumer_audiencia-generacional_cards>
+      <c-prosumer_ingreso class="ingreso" param_data_from_analytics={dataFromAnalytics} onfilterclick={handleFilterClickOnComponent}> </c-prosumer_ingreso>
+      <c-prosumer_ocupacion class="ocupacion" param_data_from_analytics={dataFromAnalytics} onfilterclick={handleFilterClickOnComponent}> </c-prosumer_ocupacion>
+      <c-prosumer_educacion class="educacion" param_data_from_analytics={dataFromAnalytics} onfilterclick={handleFilterClickOnComponent}> </c-prosumer_educacion>
+      <c-prosumer_economicas class="economicas" param_data_from_analytics={dataFromAnalytics} onfilterclick={handleFilterClickOnComponent}> </c-prosumer_economicas>
+    </div>
+  </div>
+</template>

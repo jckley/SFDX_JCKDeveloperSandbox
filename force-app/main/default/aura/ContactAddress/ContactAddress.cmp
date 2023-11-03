@@ -1,0 +1,27 @@
+<aura:component>
+    <aura:attribute name="citizenWrapper" 	type="ContactWrapper" 	required="true" />
+    <aura:attribute name="rendered" 		type="Boolean" 			required="true" default="true" />
+    
+    <div class="{! (v.rendered)?'card slds-grid slds-wrap slds-p-around_medium':'slds-hide'}" style="border-left: solid 5px #f3bb49;">
+        <div class="slds-col slds-size_1-of-6 slds-large-size_1-of-12">
+            <img src="{! $Resource.IconsPack1 + '/addressps.svg'}" class="icon" />
+        </div>
+        
+        <div class="slds-col slds-size_5-of-6 slds-large-size_5-of-12">
+            <c:ContactDisplayField label="{!$Label.c.Address}" value="{! v.citizenWrapper.personAddressOnlyPisoDepto}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13 yellow"/>                                                                                        
+        </div>
+        
+        <div class="slds-col slds-size_1-of-6 slds-hide_medium">&nbsp;</div>
+        <div class="slds-col slds-size_5-of-6 slds-large-size_2-of-12">
+            <c:ContactDisplayField label="{!$Label.c.PostalCode}" value="{! v.citizenWrapper.contact.MailingPostalCode}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13 yellow"/>                                                                                                    
+        </div>
+        
+        <div class="slds-col slds-size_1-of-6 slds-large-size_1-of-12">
+            <img src="{! $Resource.IconsPack1 + '/phoneps.svg'}" class="icon" />                                                                                                    
+        </div>
+        
+        <div class="slds-col slds-size_5-of-6 slds-large-size_3-of-12">
+            <c:ContactDisplayField label="Teléfono" value="{! v.citizenWrapper.contact.HomePhone}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13 yellow"/>                                                                                                                
+        </div>
+    </div>
+</aura:component>

@@ -1,0 +1,94 @@
+<template>
+        <section class="vaccines">
+            <div class="box">
+               <!-- <div class="header">
+                    <span class="title">Salud</span>
+                </div>-->
+
+                <img src={salud} class="headerimg"/>
+
+                <div class="headertags">
+                    <template if:true={datos.tiene_comorbilidades}>
+                        <span class="value tiene">
+                                Tiene Comorbilidades
+                        </span>
+                    </template>
+                    <template if:false={datos.tiene_comorbilidades}>
+                        <span class="value notiene">
+                            No tiene Comorbilidades
+                    </span>
+                    </template>
+                    
+                 
+                   
+                    <template for:each={comorbilidadesArray} for:item="comorbilidad">
+                        
+                    <span key={comorbilidad}>{comorbilidad}</span>
+                        
+                    </template>
+                
+    
+                    <span class={datos.tuvoCovid}>{datos.tuvoCovid} tuvo COVID</span>
+                </div>
+
+                <div class="items">
+                   <!-- <div class="item">
+                            <span class="title">Comorbilidades:</span>
+                            <template if:true={datos.tiene_comorbilidades}>
+                                <span class="value">
+                                        {datos.comorbilidades}
+                                </span>
+                            </template>
+                            <template if:false={datos.tiene_comorbilidades}>
+                                <img class="no-data-img" src={iconsrc}/>
+                            </template>
+                    </div>-->
+                    <div class="obrasocial">
+                            <span class="title">Obra social:</span>
+                            <template if:true={datos.tiene_obraSocial}>
+                                <span class="value">
+                                        {datos.obraSocial}
+                                </span>
+                            </template>
+                            <template if:false={datos.tiene_obraSocial}>
+                                <span class="value">
+                                    -
+                                </span>
+                            </template>
+                    </div>
+                </div>
+
+                <!--<div class="subTitle">
+                    COVID
+                </div>
+                <div class= "tags">
+                    <span class="tag">
+                    Tuvo COVID 19: <strong class={datos.tuvoCovid}>{datos.tuvoCovid}</strong>
+                    </span>
+                </div>-->
+
+                <template if:true={datos.mostrarVacunas}>
+                    <div class="items table">
+                        <p class="vacunasheader">
+                            <span class="title slds-col slds-size_1-of-5">Vacuna COVID</span>
+                            <span class="title slds-col slds-size_1-of-5">Fecha aplicación</span>
+                            <span class="title slds-col slds-size_3-of-5">Vacuna aplicada</span>
+                        </p>
+                        <template for:each={datos.vacunas} for:item="thisVacuna">
+                            <div key={thisVacuna} class="itemtabla">
+                                <div>
+                                    <span class="value slds-col slds-size_1-of-1 slds-medium-size_1-of-5">{thisVacuna.dosis}</span>
+                                </div>
+                                <div>
+                                    <span class="value slds-col slds-size_1-of-1 slds-medium-size_1-of-5">{thisVacuna.fecha}</span>
+                                </div>
+                                <div>
+                                    <span class="value slds-col slds-size_1-of-1 slds-medium-size_3-of-5">{thisVacuna.nombre}</span>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </template>
+            </div>
+        </section>
+</template>

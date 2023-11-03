@@ -1,0 +1,36 @@
+<aura:component >
+    <aura:attribute name="search" 			type="Aura.Component[]"/>
+    <aura:attribute name="profileMenu" 		type="Aura.Component[]"/>
+    <aura:attribute name="navigationBar" 	type="Aura.Component[]"/>
+    
+    <div class="slds-grid slds-wrap slds-col slds-size_1-of-1 header">
+        <a class="logo-container" href="/s/">
+            <img src="{! $Resource.LogosPack + '/MentaLogo.png'}"/>
+        </a>
+        
+        <div class="navigation slds-show_large">
+            <c:Menta_Navigation/>
+        </div>
+        
+        <div class="navigationBar slds-hide_large">
+            {! v.navigationBar}
+        </div>
+        
+        <div id="search-super-d" class="slds-col search slds-show_large">
+            <c:Menta_SearchBar/>
+        </div>
+        
+        <div class="exit slds-show_large" onclick="{!c.logout}">
+            <img class="icon-reposo" src="{! $Resource.IconsPack1 + '/mentaexitreposo.png'}"/>
+            <img class="icon-hover" src="{! $Resource.IconsPack1 + '/mentaexithover.png'}"/>
+        </div>
+    </div>
+    <div class="slds-grid slds-wrap slds-col slds-size_1-of-1 header slds-hide_large">
+        <div id="search-super-m" class="slds-col search search-focus slds-hide_large" style="{!$Browser.isIOS?'margin: 5px 15px':''}">
+            <c:Menta_SearchBar/>
+        </div>
+    </div>
+    <div class="header-extension">
+    </div>
+	
+</aura:component>

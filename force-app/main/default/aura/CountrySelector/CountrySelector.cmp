@@ -1,0 +1,13 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes,force:appHostable,flexipage:availableForAllPageTypes,force:hasRecordId" controller="CountrySelectorController">
+    <aura:attribute name="territories" type="RemotingMessageHelper.Territory[]"  />
+    <aura:attribute name="selectedValue" type="String"  />
+
+    <aura:handler name="init" action="{!c.initializeComponent}" value="{!this}" />
+    <aura:handler name="change" value="{!v.selectedValue}"  action="{!c.updateUserRole}"  />
+
+    <lightning:select name="cboCountrySelector" label="País" aura:id="cboCountrySelector" value="{!v.selectedValue}">
+        <aura:iteration  items="{! v.territories }" var="objTerritory" >
+            <option text="{! objTerritory.Name }" value="{! objTerritory.Name }" selected="{! objTerritory.IsSelected  }"/>
+        </aura:iteration>
+    </lightning:select>
+</aura:component>

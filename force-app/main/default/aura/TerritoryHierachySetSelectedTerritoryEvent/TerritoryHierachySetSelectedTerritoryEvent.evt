@@ -1,0 +1,4 @@
+<aura:event type="APPLICATION" description="Evento que se dispara cuando se quiere seleccionar determinado territorio">
+    <aura:attribute name="territoryid" 	type="Id" />
+    <aura:attribute name="level" 		type="Integer" />
+</aura:event>

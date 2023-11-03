@@ -1,0 +1,34 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes,force:appHostable,flexipage:availableForAllPageTypes,force:hasRecordId" access="global" controller="TerritoryDetailController">
+    <aura:attribute name="recordId" 		type="Id" />    
+    <aura:attribute name="territoryWrapper" 	type="TerritoryWrapper2" />
+    <aura:attribute name="lexHost" 			type="String" default="" />
+    <aura:attribute name="vfHost" 			type="String" default="" />
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler name="mainHeaderClickEvent" event="c:mainHeaderClick" action="{!c.navigateTohierarchyView}" />
+    
+    <div class="slds-show_large territory-map">
+        <c:GoogleMap territoryWrapper="{! v.territoryWrapper }" viewExactLocation="false" lexHost="{! v.lexHost}" 
+                     vfHost="{! v.vfHost}" frameHeight="400" zoomControl="false"/>			        	
+    </div>
+    <div class="slds-grid slds-wrap floating">
+        <div class="slds-grid slds-wrap slds-size_1-of-1 card green-container" style="padding: 30px 0 10px 0; z-index: 10;">
+            <c:Menta_TerritoryHeader ter0="{!v.territoryWrapper.ter0}" ter1="{!v.territoryWrapper.ter1}" 
+                                     ter2="{!v.territoryWrapper.ter2}" ter3="{!v.territoryWrapper.ter3}"
+                                     ter4="{!v.territoryWrapper.ter4}" territoryName="{!v.territoryWrapper.territoryName}"/>
+            <c:Menta_TerritoryContactSummary terrw="{!v.territoryWrapper}"/>
+        </div>
+        
+        <div class="slds-size_1-of-1 slds-grid slds-wrap">
+            <c:Menta_TerritorySocialSummary totalprofiles="{!v.territoryWrapper.totalSocialFormated}" 
+                                               totalfacebook="{!v.territoryWrapper.totalFacebookFormated}" 
+                                               totalinstagram="{!v.territoryWrapper.totalInstagramFormated}"
+                                               totaltwitter="{!v.territoryWrapper.totalTwitterFormated}"
+                                               totallinkedin="{!v.territoryWrapper.totalLinkedinFormated}"/>
+        </div>
+        
+        <div class="slds-size_1-of-1 slds-grid slds-wrap" style="margin-top: 20px;">
+            <c:Menta_TerritoryAgeChart terrw="{!v.territoryWrapper}" recordId="{!v.recordId}"/>
+        </div>
+    </div>    
+</aura:component>

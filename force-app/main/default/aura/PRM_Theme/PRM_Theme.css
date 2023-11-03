@@ -1,0 +1,161 @@
+.THIS {
+}
+
+
+.THIS.Cuidarnos {
+    background: #f8f9fc;
+}
+
+.THIS .forceEntityIcon {
+    background-color : #3FA948 !important;    
+}
+
+.THIS .forceCommunityActionsContainerMobile,
+.THIS .forceBreadCrumbItem.uiOutputText{
+    display: none;
+}
+
+.THIS .forceCommunityAnalyticsObjectHome .folderNavigator,
+.THIS .forceCommunityRecordListDesktop.forceListViewManager {
+    max-width: 1200px;
+    margin : 0 auto;
+    padding :5px;
+    border-radius: 6px;
+    box-shadow: 0px 1px 29px 0px rgba(0, 0, 0, 0.07);
+}
+
+.THIS .forceCommunityRecordListMobile.forceCommunityObjectHome{
+    margin: 0 15px;
+    padding: 15px 0;
+    background-color: #ffffff;
+}
+
+.THIS .forceCommunityAnalyticsObjectHome .folderNavigator {
+    padding: 0;
+}
+
+.THIS .forceCommunityObjectHome {
+    border-radius: 6px;
+}
+
+.THIS .forceCommunityRecordListDesktop {
+    background-color : #FFFFFF;
+}
+
+.THIS .folderNavigator .bodyContainer {
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+.THIS .forceCommunityAnalyticsObjectHome .folderNavigator .slds-page-header {
+    background-color : #FFFFFF;
+    border-radius: 6px;
+}
+
+.THIS .forceListViewPicker, .THIS .listViewContent {
+    color : #000000;
+}
+
+.THIS .slds-dropdown__item>a { 
+    color : #000000;
+}
+
+.THIS .body { 
+    background-color: #f8f9fc; 
+    min-height:83.67vh;    
+}
+
+.THIS .forceCommunitySearch {
+    background-color: #FFFFFF; 
+    margin: auto; 
+    border-radius: 6px; 
+    box-shadow: 0px 1px 29px 0px rgba(0, 0, 0, 0.07); 
+    overflow: hidden; 
+    max-width: 1200px;
+}
+
+.THIS .innerStacking {
+    background-color: #ffffff;
+}
+
+.THIS .siteforceContentArea > div {
+    padding-left: 0; 
+    padding-right: 0;
+}
+
+.THIS community_navigation-global-navigation-list > div > div {
+    filter: brightness(0.6);
+}
+
+
+@media only screen and (max-width: 768px) {
+    .THIS .forceCommunityAnalyticsObjectHome {
+        background-color: #ffffff;
+        border-radius: 6px;
+        margin: 0 15px;
+        overflow: hidden;
+    }
+    .THIS .reportPageFrameWrapper.forceCommunityReportPage {
+        background-color: #ffffff;
+        border-radius: 6px;
+        margin: 0 15px;
+        overflow: hidden;
+    }
+    
+    .THIS .comm-navigation.forceCommunityGlobalNavigation {
+        background-color: #FFFFFF !important;
+        height : 105px;
+        vertical-align:middle;
+    }
+    
+    .THIS .forceCommunityGlobalNavigation .slds-list_vertical {
+        color : #AAAAAA;
+        font-size: 18px;
+        background-color: #FFFFFF !important;
+        border-right: 1px solid rgba(255, 255, 255, 0.2);
+     
+    }
+    .THIS .forceCommunityGlobalNavigation .slds-list__item a:hover, 
+    .THIS .forceCommunityGlobalNavigation .slds-list__item a.slds-is-active:not([data-type="home"]), 
+    .THIS .forceCommunityGlobalNavigation .slds-list__item button:not([disabled]):hover, 
+    .THIS .forceCommunityGlobalNavigation .slds-list__item button:not([disabled]).slds-is-active:not([data-type="home"]) {
+        border-left: 2px solid  #3FA948;
+        background-color: #FFFFFF !important;
+    }
+    
+    .THIS .forceCommunityGlobalNavigation .slds-list_vertical > li:first-child {
+        display: none;
+    }
+    
+    .THIS .forceCommunityGlobalNavigation .slds-list_vertical > li {
+        border-bottom: 1px solid #AAAAAA;
+        text-transform: none !important;
+    }
+
+
+	.THIS .forceCommunityGlobalNavigation .slds-list__item a, 
+    .THIS .forceCommunityGlobalNavigation .slds-list__item button {
+        text-transform : none;
+    }
+    .THIS .forceSearchResultsCompact.searchResults.list {
+        padding: 0 15px;
+          
+    }
+    .THIS .forceCommunitySearch {
+        margin: 0 15px;
+    }
+    .THIS .forceCommunityGlobalNavigation>*, 
+    .THIS .forceCommunityGlobalNavigation>*>.slds-grid {
+        height:105px;
+        border-bottom: solid 1px #d8dbdd;  
+    }
+}
+
+.THIS ::selection {
+    color: white;
+    background: rgb(216, 237, 255);
+}
+
+/* Special classes for big devices */
+@media only screen and (min-width: 768px) {
+    .THIS {}
+}

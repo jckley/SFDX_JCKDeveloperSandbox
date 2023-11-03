@@ -1,0 +1,78 @@
+.card {
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+    background: #FFF;
+    padding: 0;
+    border-radius: 4px; 
+}
+
+.filtersWrapper{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    padding: 10px 20px;
+    gap: 10px;
+    align-items: center;
+}
+
+.filtersTitle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.filtersTitle .filtro-icon{
+    height: 20px;
+    width: 20px;
+    fill: #d1d1d1;
+}
+
+.filtersTitle .title {
+    margin-left: 10px;
+    font-size: 17px;
+    color: #999;
+}
+
+.filterItem{
+    background-color: #e4e4e4;
+    border-radius: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 15px;
+    padding-right: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.filterItem .value{
+    margin-right: 15px;
+    font-size: 14px;
+    color: #58595b;
+}
+
+.filterItem .item-closeWrapper{
+    cursor: pointer;
+}
+
+.filterItem .item-closeWrapper .close-icon {
+    height: 15px;
+    width: 15px;
+    fill: #999999;
+}
+
+.closeWrapper{
+    background-color: #f2f2f2;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.closeWrapper .close-all-icon {
+    height: 15px;
+    width: 15px;
+    fill: #999999;
+}

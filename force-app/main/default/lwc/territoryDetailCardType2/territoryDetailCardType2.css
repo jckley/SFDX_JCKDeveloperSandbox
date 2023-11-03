@@ -1,0 +1,43 @@
+:host article .value,
+:host article .description {
+  
+}
+
+:host article .value .container,
+:host article .description .container {
+    height: 100%;
+}
+
+:host article .description .container .title {
+    font-size: 12px; 
+    font-weight: 600;
+    text-transform: uppercase;
+    line-height: 1;
+}
+
+:host article .description .container .description {
+    color: #CCCCCC; 
+    font-size: 10px; 
+    font-weight: normal;
+    line-height: 1;
+}
+
+
+:host article .value .container .total {
+    color: #58595b; 
+    font-weight: bold;
+    font-size: 36px; 
+    line-height: 1;
+}
+
+:host .Prosumia article .description .container .title { 
+    color: #EF3E48; 
+}
+
+:host .AdFi article .description .container .title { 
+    color: green 
+}
+
+:host .HxC article .description .container .title { 
+    color: #01AEF3; 
+}

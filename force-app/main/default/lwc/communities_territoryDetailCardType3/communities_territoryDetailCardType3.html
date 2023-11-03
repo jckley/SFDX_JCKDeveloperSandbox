@@ -1,0 +1,16 @@
+<template>
+    <main class={community}>
+        <article class="slds-grid slds-wrap slds-p-around_x-small slds-align_absolute-center">
+            <div class="slds-col slds-size_1-of-12 icon">
+                <img src={icono} alt="name" />
+            </div>    
+            <div class="slds-col slds-size_7-of-12 title">
+                <a href={link} if:true={haslink}><span>{name}</span></a>
+                <span if:false={haslink}>{name}</span>
+            </div>    
+            <div class="slds-col slds-size_4-of-12 slds-text-align_right value">
+                <span>{value}</span>
+            </div>                
+        </article>
+    </main>
+</template>

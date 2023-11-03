@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Socios_INFANTILES</fullName>
+    <columns>FULL_NAME</columns>
+    <columns>Document_Number__c</columns>
+    <columns>Edad__c</columns>
+    <columns>Administrative_Level_2__c</columns>
+    <columns>RiverId_Nro_socio__c</columns>
+    <columns>RiverId_cat_socio__c</columns>
+    <columns>RiverId_fecha_socio__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Is_RiverId_Citizen__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <filters>
+        <field>RiverId_cat_socio__c</field>
+        <operation>equals</operation>
+        <value>INFANTIL</value>
+    </filters>
+    <label>Socios Infantiles</label>
+    <sharedTo>
+        <group>RiverId</group>
+        <group>RiverId_Communities</group>
+    </sharedTo>
+</ListView>

@@ -1,0 +1,35 @@
+.tile { 
+    display: flex;
+    flex-direction: row;
+    gap: 15px; 
+    align-items: center;
+    padding-left: 15px; 
+    padding-right: 15px;
+}
+.tile .iconHolder{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    width: 60px;
+    background-color: #f7f7f7;
+}
+.tile .iconHolder .icon { 
+    width: 24px;
+    color: #4a484d;
+}
+.tile div {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+.tile div .tileValue{
+    font-size: 30px;
+    font-weight: bold;
+    color: #58595b;
+}
+.tile div .tileLabel{
+    font-size: 10px;
+    font-weight: bold;
+    color: #ff4443;
+}

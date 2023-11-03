@@ -1,0 +1,21 @@
+.chart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 15px;
+    margin: 0px;
+}
+.chartjsTooltip {
+    position: absolute;
+    /*js se encarga de ponerle display:flex, cuando se hace hover sobre algun dato*/
+    display: none;
+    justify-content: center;
+    z-index: 0;
+    align-items: center;
+    color: gray;
+}
+
+.chartjsTooltip p {
+    text-align: center;
+}

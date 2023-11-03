@@ -1,0 +1,29 @@
+<aura:component>
+    <aura:attribute name="community"        type="String"           default="Prosumia"/>
+    <aura:attribute name="citizenWrapper" 	type="CitizenWrapper"   required="true" />
+    <aura:attribute name="rendered" 		type="Boolean" 			required="true" default="true" />
+
+    <div class="{! (v.rendered)?'card slds-grid slds-wrap ' + v.community:'slds-hide'}">            
+        <div class="slds-col slds-size_1-of-1 slds-grid slds-wrap" style="padding: 10px 30px;">
+            <div class="slds-col slds-size_1-of-1 slds-grid slds-wrap title">
+                <div class="slds-col slds-size_1-of-2 label uppercase" style="margin-bottom: 15px;">
+                    Razón Social
+                </div> 
+                <div class="slds-col slds-size_1-of-2 label  uppercase ">
+                    CUIT
+                </div>
+            </div>
+
+            <aura:iteration items="{! v.citizenWrapper.incomeInfo.employers }" var="objEmployer">
+                <div class="slds-grid slds-wrap slds-col slds-size_1-of-1 ">
+                    <div class="slds-col slds-size_1-of-2 value link font13 " style="margin-bottom: 15px;">
+                        <a onclick="{! c.goToCompany}" href="javascript:void();" data-search="{! v.citizenWrapper.citizen.grouphash_cot__c }">{! objEmployer.name}</a>
+                    </div> 
+                    <div class="slds-col slds-size_1-of-2 value link font13 "  style="margin-bottom: 15px;">
+                        <a onclick="{! c.goToCompany}" href="javascript:void();" data-search="{! v.citizenWrapper.citizen.grouphash_cot__c }">{! objEmployer.cuit}</a>
+                    </div>                        
+                </div>
+            </aura:iteration>
+       </div>
+    </div>
+</aura:component>

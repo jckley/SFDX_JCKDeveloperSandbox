@@ -1,0 +1,502 @@
+<apex:page docType="html-5.0" standardStylesheets="false" lightningStylesheets="false" showHeader="false" sidebar="false" controller="pulso_admin_controller">
+    <html lang="en">        
+        <head>
+            <title>Pulso Encuestas</title>
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+            <apex:stylesheet value="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+            <apex:stylesheet value="https://use.fontawesome.com/releases/v5.8.1/css/all.css"/>
+            <apex:stylesheet value="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap"/>
+            <apex:stylesheet value="{! URLFOR($Resource.PulsoCRM, '/css/pulso_admin.css')}"/>
+        </head>
+         
+        <body>
+            <header class="container-fluid">
+                <div class="row">
+                    <nav class="navbar navbar-expand-sm fixed-top bg-white navbar-light shadow-sm pulso_header">
+                        <div class="col-sm">
+                            <a class="navbar-brand logo" href="/apex/pulso_admin">
+                                <img src="{!URLFOR($Resource.PulsoLogo)}" alt="logo" /> / admin
+                            </a>
+                            
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                        </div>
+                        
+                        <div class="col-sm">
+                            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                                <ul class="navbar-nav mx-auto">
+                                    <li class="nav-item menuitemencuestas pulso-header-nav-item">
+                                        <a class="nav-link" href="/apex/pulso_admin">Mis Encuestas</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="col-sm justify-content-end">
+                            <div class="row justify-content-end">
+                                <button class="navbar-nav bg-secondary border-0 rounded createsurvey" type="button" data-toggle="modal" data-target="#nuevaEncuesta">
+                                    <span class="nav-link text-white px-4 surveyaction"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+            
+            <article class="container brief hideonload">
+                <div class="row">
+                    <div class="col rounded shadow-sm text-center cardbrief">
+                        <h2 class="font-weight-bolder pt-3 h2 primarytext" id="statSurvey">0</h2>
+                        <h6 class="font-weight-lighter pb-3 h6 secondarytext">ENCUESTAS</h6>
+                    </div>
+                    
+                    <div class="col rounded shadow-sm text-center cardbrief">
+                        <h2 class="font-weight-bolder pt-3 h2 primarytext" id="statSurveyed">0</h2>
+                        <h6 class="font-weight-lighter pb-3 h6 secondarytext">PERSONAS ENCUESTADAS</h6>
+                    </div>
+                    
+                    <div class="col rounded shadow-sm text-center cardbrief">
+                        <h2 class="font-weight-bolder pt-3 primarytext" id="statIdentified">0</h2>
+                        <h6 class="font-weight-lighter pb-3 secondarytext">PERSONAS IDENTIFICADAS</h6>
+                    </div>
+                </div>
+            </article>
+            
+            <!-- ************************************************************************** -->
+            <!-- DINAMICALLY ADDED CARDS  -->
+            <!-- ************************************************************************** -->
+            <div class="container pt-5 hideonload">
+                <h3 class="font-weight-bold primarytext" id="misencuestas"></h3>
+            </div>
+            
+            <div class="container hideonload" style="margin-top:30px">
+                <input type="search" id="buscador" name="objSurvey.surveyid" list="noticias" class="form-control" 
+                       placeholder="Buscar encuesta" onkeyup="javascript:searchSurveys();" autofocus="autofocus" /><br />
+                <datalist class="row" id="noticias">
+                </datalist>
+            </div>
+            
+            <!-- ************************************************************************** -->
+            <!-- PAGINATION -->
+            <!-- ************************************************************************** -->
+            <div class="container px-4 pt-4 pb-1 hideonload">
+                <ul class="pagination justify-content-end" id="pages">
+                </ul>
+            </div>
+            
+            <!-- ************************************************************************** -->
+            <!-- NEW SURVEY MODAL -->
+            <!-- ************************************************************************** -->
+            <div class="modal fade" id="nuevaEncuesta">
+                <div class="modal-dialog modal-lg modal-dialog-centered">
+                    <div class="modal-content">                
+                        <form id="frmNewSurvey" role="form" data-toggle="validator">
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title surveymodaltitle primarytext">Crear/Editar Encuesta</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            
+                            <!-- Modal body -->
+                            <div class="modal-body">                        
+                                <div class="form-row pb-3">
+                                    <div class="col-lg">
+                                        <div class="form-group">
+                                            <label for="idencuesta" class="secondarytext">ID ENCUESTA</label>
+                                            <input type="text" class="form-control" id="idencuesta" placeholder="ID Encuesta" name="idencuesta" required="required" data-error="El identificador de la encuesta no es válido." value="" />
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-lg">
+                                        <div class="form-group">
+                                            <label for="idresultados" class="secondarytext">ID RESULTADOS</label>
+                                            <input type="text" class="form-control" id="idresultados" placeholder="ID Resultados" name="idresultados" required="required" data-error="El identificador de los resultados de la encuesta no es válido." value=""/>
+                                        </div>
+                                    </div>                                                                       
+                                </div>
+                                
+                                <div class="form-group pt-3 linebordertop">
+                                    <label for="idtitulo" class="secondarytext">TITULO</label>
+                                    <input type="text" class="form-control" id="idtitulo" placeholder="Ingrese Título Encuesta" name="idtitulo" required="required" data-error="El titulo de la encuesta no es válido." value="" />
+                                </div>
+                                
+                                <div class="form-row">
+                                     <div class="col-lg">
+                                        <div class="form-group">
+                                            <label for="txtQuestions" class="secondarytext">PREGUNTAS</label>
+                                            <input type="number" min="1" class="form-control" id="txtQuestions" placeholder="Preguntas" name="txtQuestions" required="required" data-error="Debe ingresar la cantidad de preguntas." value=""/>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-lg">
+                                        <div class="form-group">
+                                            <label for="idslug" class="secondarytext">SLUG</label>
+                                            <input type="text" class="form-control" id="idslug" placeholder="Ingrese Slug" name="idslug" required="required" data-error="Debe ingresar un slug para visualizar la encuesta."  value="" />
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-lg">
+                                        <div class="form-group">
+                                            <label class="text-nowrap secondarytext" for="idpauta">PAUTA</label>
+                                            <input type="text" class="form-control" id="idpauta" placeholder="Pauta de la encuesta" name="idpauta" value="" />
+                                        </div>
+                                    </div>                                                                        
+                                </div>                          
+                                
+                                <div class="form-group">
+                                    <label for="iddescripcion" class="secondarytext">DESCRIPCION</label>
+                                    <textarea class="form-control" rows="4" id="iddescripcion" required="required"></textarea>
+                                </div>                          
+                                
+                            </div>
+                            
+                            <!-- Modal footer -->
+                            <div class="modal-footer d-flex pt-5 pb-4 mb-1 linebordertop">
+                                <button type="button" class="btn btn-secondary cancelsurveybutton" data-dismiss="modal">CANCELAR</button>
+                                <button type="submit" class="btn btn-primary upsertsurveybutton">GUARDAR</button>
+                            </div>
+                        </form>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade modalmessage">
+                <div class="modal-dialog rounded">
+                    <div class="modal-content" style="background:#FFF3CD">
+                        <div class="modal-header mx-auto">
+                            <h5 class="modal-title messagetext"></h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js"></script>
+        </body>
+
+        <script>
+        var PAGE_SIZE = 1000;
+        var PAGE_GROUP = 3;
+        var MESSAGE_TYPE_SUCCESS = 1;
+        var MESSAGE_TYPE_ERROR = 2;
+        var AWS_ENDPOINT = 'https://api-pulso.prosumia.la';
+        
+        var strEncuestaid = null;
+        var strPageMode = null;
+        var arrSurveys = [];
+        var intSurveyNumber = 0;
+        var intPageIndex = 1;
+        var idSurveyIsValid = false;
+        
+        $(document).ready(function() {
+            initializePage();
+        });
+        
+        //Open Survey Modal
+        $(document).on('click', '.createsurvey', function() {
+            resetSurveyForm();
+        });
+        
+        //Survey Modal - Input "ID Encuesta" lost focus
+        $(document).on('focusout', '#idencuesta', function() {
+            idSurveyIsValid = false;
+            validateSurvey($("#idencuesta").val());
+        });
+
+        $("#frmNewSurvey").submit( function() {
+            var objSurvey = null;
+            validateSurvey($("#idencuesta").val());
+            objSurvey = createSurveyRequest();
+            if(objSurvey.IsValid == true) {
+                if (idSurveyIsValid == true) {
+	                insertSurveyInAWS(objSurvey);
+		            $('#nuevaEncuesta').modal('hide');
+        	        return true;
+                }
+            } else {
+                showMessage(MESSAGE_TYPE_SUCCESS, 'Debe completar todos los datos requeridos');
+            }
+            return false;
+        });
+
+        
+        function initializePage() {
+            initializePageList();
+        }
+        
+        function initializePageList() {
+            $('.surveymodaltitle').html('Crear nueva encuesta');
+            $('.menuitemencuestas').addClass('selected');                    
+            $('.surveyaction').html('Crear nueva encuesta');                
+            $('.editmode').hide();
+            
+            retrieveSurveys();
+            retrieveSurveyBrief();
+        }
+                
+        function createSurveyRequest() {
+            var objSurvey = {};
+            
+            objSurvey.surveyid = $("#idencuesta").val(); 
+            objSurvey.responseid = $("#idresultados").val();
+            objSurvey.name = $("#idtitulo").val(); 
+            objSurvey.totalpreguntas = parseInt($('#txtQuestions').val());
+            objSurvey.slug = $("#idslug").val(); //url
+            objSurvey.advertising = $("#idpauta").val();
+            objSurvey.description = $("#iddescripcion").val();
+            objSurvey.totalusuarios = 0;
+            objSurvey.totalcuitificados = 0;
+
+            objSurvey.IsValid = true;
+            objSurvey.IsValid = objSurvey.IsValid && objSurvey.surveyid !== undefined && objSurvey.surveyid !== null && objSurvey.surveyid.length > 0;
+            objSurvey.IsValid = objSurvey.IsValid && objSurvey.name !== undefined && objSurvey.name !== null && objSurvey.name.length > 0;
+            objSurvey.IsValid = objSurvey.IsValid && objSurvey.totalpreguntas !== undefined && objSurvey.totalpreguntas !== null && objSurvey.totalpreguntas > 0;
+            objSurvey.IsValid = objSurvey.IsValid && objSurvey.slug !== undefined && objSurvey.slug !== null && objSurvey.slug.length > 0;
+            objSurvey.IsValid = objSurvey.IsValid && objSurvey.description !== undefined && objSurvey.description !== null && objSurvey.description.length > 0;
+
+            return objSurvey;        
+        }
+        
+        function insertSurveyInSalesforce(objSurvey) {            
+            var strJSON = null;
+            
+            strJSON = JSON.stringify(objSurvey);
+            Visualforce.remoting.Manager.invokeAction( '{!$RemoteAction.pulso_admin_controller.upsertSurvey}', strJSON,
+                function(objResult, objEvent){                    
+                    if(objEvent.status) {                        
+                        showMessage(MESSAGE_TYPE_SUCCESS, 'La operación se ha realizado de manera exitosa');
+                        retrieveSurveys();
+                        resetSurveyForm();
+                        retrieveSurveyBrief();
+                    }
+                },
+                {escape: true}
+            );
+        } 
+
+        function insertSurveyInAWS(objSurvey) {            
+            $.ajax({
+                method: "POST",
+                contentType: "application/json",
+                dataType: "json",
+                url: AWS_ENDPOINT + '/pulso/surveys',
+                data: JSON.stringify(objSurvey),
+                complete: function(objXHR, strStatus) {
+                    if(objXHR.status === 200) { 
+                        if(objXHR.responseJSON.code === 0) {
+                            insertSurveyInSalesforce(objSurvey);
+                        } else {
+                            showMessage(MESSAGE_TYPE_SUCCESS, objXHR.responseJSON.message);
+                        }
+                    } else {
+                        showMessage(MESSAGE_TYPE_SUCCESS, 'Ha ocurrido un error al intentar realizar la operación.');
+                    }
+                }
+            });
+        }
+
+        function validateSurvey(surveyid) {
+            $.ajax({
+                method: "GET",
+                url: AWS_ENDPOINT + '/pulso/surveys/' + surveyid + '?validate=True'
+            }).done(function( answer ) {
+                idSurveyIsValid = true;
+                if (answer.validate == 'False') {
+                    idSurveyIsValid = false;
+                    if ($("#nuevaEncuesta").hasClass('show')) {    //check if modal is open
+	                	showMessage(MESSAGE_TYPE_SUCCESS, 'ID Encuesta NO VALIDO. ' + answer.message);
+                        $("#idencuesta").focus();   //set focus at the invalid field 'idencuesta'
+                    }
+                }
+            });  
+        }
+
+        function retrieveSurveys() {
+            $.ajax({
+                method: "GET",
+                url: AWS_ENDPOINT + '/pulso/surveys/?page=' + intPageIndex + '&size=' + PAGE_SIZE
+            }).done(function( arrResult ) {
+                
+                arrSurveys = arrResult;
+                
+                intSurveyNumber = arrSurveys.length;
+                searchSurveys(); //listSurveys(intPageIndex);
+                $('.hideonload').show();
+            });  
+        }
+
+        function retrieveSurveyBrief() {
+            $.ajax({
+                method: "GET",
+                url: AWS_ENDPOINT + '/pulso/surveys/totals'
+            }).done(function( objBrief ) {
+                $('#statSurvey').html(formatNumberWithCommas(objBrief.surveys));
+                $('#statSurveyed').html(formatNumberWithCommas(objBrief.surveyed));
+                $('#statIdentified').html(formatNumberWithCommas(objBrief.identified));
+            });  
+        }
+        
+        function resetSurveyForm() {
+            $("#idencuesta").val('');
+            $("#idresultados").val('');
+            $("#idtitulo").val('');
+            $("#idpauta").val('');
+            $("#idslug").val('');
+            $("#iddescripcion").val('');
+            $("#txtQuestions").val('');
+        }
+        
+        function listSurveys(page) {
+            var strICONPeople = "{! URLFOR($Resource.PulsoCRM, 'img/admin/personas.svg')}";            
+            var strICONAnswers = "{! URLFOR($Resource.PulsoCRM, 'img/admin/respuestas.svg')}";            
+            var ultimaPagina = Math.ceil(intSurveyNumber / PAGE_SIZE);
+            
+            noticias.innerHTML = "";
+            
+            var htmlCardCode =  '';
+            for (var a = (page-1)*PAGE_SIZE ; a < Math.min( page * PAGE_SIZE, intSurveyNumber) ; a++) {
+                var objSurvey = arrSurveys[a];
+                
+                htmlCardCode += '<div class="card border-0 shadow-sm rounded col-sm cardsurvey" style="display:' + objSurvey.display + ';">';
+                htmlCardCode += '		<div class="card-body">';
+                htmlCardCode += '			<h4><a class="btn-link font-weight-bolder primarytext" href="/apex/pulso_admin_encuesta?id=' + objSurvey.surveyid + '">' + objSurvey.name + '</a></h4>';
+                htmlCardCode += '			<h6 class="font-weight-lighter py-2 secondarytext">' + formatNumberWithCommas(objSurvey.totalpreguntas) + ' Preguntas</h6>';
+                htmlCardCode += '		</div>';
+                htmlCardCode += '		<div class="card-footer border-0">';
+                htmlCardCode += '			<div class="d-flex text-black secondarytext">';
+                htmlCardCode += '				<div class="py-2 pl-2 pr-0"><img src="' + strICONAnswers + '" class="imgcardicon" /></div>';                
+                htmlCardCode += '				<div class="py-2 pl-2 pr-3">' + formatNumberWithCommas(objSurvey.totalusuarios) + '</div>';
+                htmlCardCode += '				<div class="py-2 pl-2 pr-0"><img src="' + strICONPeople + '" class="imgcardicon" /></div>';                
+                htmlCardCode += '				<div class="py-2 pl-2 pr-3">' + formatNumberWithCommas(objSurvey.totalcuitificados) + '</div>';
+                htmlCardCode += '			</div>';
+                htmlCardCode += '		</div>';
+                htmlCardCode += '</div>';
+            }
+            
+            $('#noticias').html(htmlCardCode);
+            intPageIndex = page;
+            paginationBuildList(page);
+        }
+        
+        function paginationBuildList (page) {
+            var cantidadPaginas = Math.ceil(intSurveyNumber / PAGE_SIZE);
+            
+            if(cantidadPaginas > 1){	
+                var pageGroup = Math.ceil(page / PAGE_GROUP);
+                var maxPageGroup = Math.ceil(cantidadPaginas / PAGE_GROUP);
+                var minPageGroup = 1;
+                
+                var pagelist = document.getElementById("pages");
+                pagelist.innerHTML = "";
+                
+                if (pageGroup > minPageGroup) {
+                    pagelist.innerHTML += '<li class="px-2 page-item"><a class="border-0">...</a></li>';
+                }                
+                
+                var firstPageInGroup = (pageGroup - 1) * PAGE_GROUP + 1;
+                var lastPageInGroup = Math.min(cantidadPaginas, (pageGroup * PAGE_GROUP));
+                pagelist.innerHTML += '<li>&nbsp;</li>'; // fix porque el primer item  se ve mal 
+                for (var i = firstPageInGroup ; i <= lastPageInGroup ; i++) {
+                    pagelist.innerHTML += '<li class="page-item px-1"><a class="page-link border-0" href="javascript:listSurveys('+i.toString()+');">'+i.toString()+'</a></li>';
+                }
+                
+                if (pageGroup < maxPageGroup) {
+                    pagelist.innerHTML += '<li class="page-item"><a class="border-0">...</a></li>';
+                }
+                
+                pagelist.innerHTML += '<li class="page-item"><a class="page-link border-0" href="javascript:paginationGotoFirst();">Primera</a></li>';
+                pagelist.innerHTML += '<li class="page-item"><a class="page-link border-0" href="javascript:paginationPageGroupLeft();">&lt;</a></li>';
+                pagelist.innerHTML += '<li class="page-item"><a class="page-link border-0" href="javascript:paginationPageGroupRight();">&gt;</a></li>';
+                pagelist.innerHTML += '<li class="page-item"><a class="page-link border-0" href="javascript:paginationGotoLast();">Última</a></li>';
+                
+                paginationSetActivePage(page);
+            } else {
+                $('.pagination').hide();
+            }
+        }
+        
+        function paginationSetActivePage(page) {
+            var pageitems = document.getElementsByClassName("page-link");
+            for (var i = 0 ; i < pageitems.length ; i++) {
+                pageitems[i].classList.remove("active");
+                if (parseInt(pageitems[i].innerHTML) == page) {
+                    pageitems[i].classList.add("active");
+                }
+            }
+        }
+        
+        function paginationPageGroupLeft() {
+            var pageGroup = Math.ceil(intPageIndex / PAGE_SIZE);
+            if (pageGroup > 1) {
+                var newPage = Math.max((pageGroup - 2) * PAGE_SIZE + 1, 1);
+                listSurveys(newPage);
+                paginationBuildList(newPage);
+            }
+        }
+        
+        function paginationPageGroupRight() {
+            var lastPage = Math.ceil(intSurveyNumber / PAGE_SIZE);
+            var pageGroup = Math.ceil(intPageIndex / PAGE_GROUP);
+            var maxPageGroup = Math.ceil(lastPage / PAGE_GROUP);
+            if (pageGroup < maxPageGroup) {
+                var newPage = Math.min((pageGroup * PAGE_GROUP) + 1, lastPage);
+                listSurveys(newPage);
+                paginationBuildList(newPage);
+            }
+        }
+        
+        function paginationGotoFirst() {
+            listSurveys(1);
+            PaginationBuildList(1);
+        }
+        
+        function paginationGotoLast() {
+            var lastPage = Math.ceil(intSurveyNumber / PAGE_SIZE);
+            listSurveys(lastPage);
+            PaginationBuildList(lastPage);
+        }    
+        
+        function formatNumberWithCommas(intNumber) {
+            var arrNumber = null;
+            
+            arrNumber = intNumber.toString().split(".");
+            
+            arrNumber[0] = arrNumber[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+            
+            return arrNumber.join(",");
+        }                        
+        
+        function showMessage(intMessageType, strMessage) {
+            $('.messagetext').html(strMessage);
+            
+            $('.modalmessage').modal();
+            setTimeout(function() {
+                $('.modalmessage').modal('hide');
+            }, 3000);
+        }
+        
+        function searchSurveys() {
+            
+            var searchContent = document.getElementById('buscador').value;
+            
+            for(var a=0; a<arrSurveys.length;a++){
+                var objSurvey = arrSurveys[a];
+                
+                if(objSurvey.name.toLowerCase().includes(searchContent.toLowerCase())){
+                	objSurvey.display = "";
+                } else {
+                    objSurvey.display = "none";
+                }
+            }         
+            
+            listSurveys(1);
+        }
+        </script>
+    </html>
+</apex:page>

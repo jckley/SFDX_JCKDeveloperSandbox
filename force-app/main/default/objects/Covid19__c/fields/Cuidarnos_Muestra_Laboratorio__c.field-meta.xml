@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cuidarnos_Muestra_Laboratorio__c</fullName>
+    <externalId>false</externalId>
+    <label>Laboratorio Muestra</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Hidalgo</fullName>
+                <default>false</default>
+                <label>Hidalgo</label>
+            </value>
+            <value>
+                <fullName>CEMIC</fullName>
+                <default>false</default>
+                <label>CEMIC</label>
+            </value>
+            <value>
+                <fullName>Clinicas</fullName>
+                <default>false</default>
+                <label>Clinicas</label>
+            </value>
+            <value>
+                <fullName>Malbran</fullName>
+                <default>false</default>
+                <label>Malbran</label>
+            </value>
+            <value>
+                <fullName>Argenomics</fullName>
+                <default>false</default>
+                <label>Argenomics</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

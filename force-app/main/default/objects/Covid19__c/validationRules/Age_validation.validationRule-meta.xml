@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Age_validation</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND( Edad__c &lt; 0, Edad__c &gt; 130)</errorConditionFormula>
+    <errorMessage>Invalid age.</errorMessage>
+</ValidationRule>

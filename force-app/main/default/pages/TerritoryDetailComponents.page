@@ -1,0 +1,140 @@
+<apex:page standardStylesheets="false" showHeader="false" standardController="Territorio_Administrativo__c" extensions="TerritoryDetailController">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <style>
+        
+        .floating-panel {
+            position: absolute;
+            z-index: 5;
+            font-family: 'Roboto','sans-serif';
+            top: 50px;
+            left: 50%;
+            margin-right: -50%;
+            transform: translate(-50%);
+        }
+        
+        .card {
+        	width: 100%;
+            will-change: transform;
+            border-radius: 0px;
+            border: 1px solid #f2f2f2;
+            overflow:  hidden;
+            transition: all 400ms cubic-bezier(0.165, 0.840, 0.440, 1.000); 
+            .z-1;
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.10), 0 2px 2px 0 rgba(0, 0, 0, 0.10);
+        }
+        .card-cont {margin: 25px 0px 25px 5px;}
+        
+        .label {color: #999999;} /*Todos los label del CSS*/
+        
+        .card-top-margin {margin: 25px 15px 0 15px;} /*Margen superior de cada nueva card*/
+        
+        .blank-space{width: 4%} /*Espacio en blanco entre cards*/
+        
+        .searchAddress:hover {
+        cursor:pointer;
+        }
+        
+        .uppercase {
+        text-transform: uppercase;
+        }
+        
+        .capitalize {
+        text-transform: capitalize;
+        }
+        
+        .rollup-content{
+            margin-top: 15px;
+            margin-bottom: 25px;
+            font-weight: bold;
+            color: #666666;
+            display: inline-flex;
+            vertical-align: middle;
+            justify-content: center;
+        }
+        .rollup-content.giant{font-size: 29pt;}
+        .rollup-content.medium{font-size: 20pt;}
+        .rollup-content.s24{font-size: 24px;}
+        
+        .icn-text{
+            font-size: 12pt;
+            color: #999999;
+        }
+        
+        .icon-small{max-width: 25px; max-height: 25px;}
+        
+        #loading{
+            text-align: center;
+            background: #e9e9e9;
+            position: absolute;   
+            top: 0;                  
+            right: 0;                
+            bottom: 0;
+            left: 0;
+            opacity: 0.5;
+        	z-index: 100;
+        }
+        
+        .loading-gif{
+        	position: relative;
+        	background: #e9e9e9;
+        	opacity: 0.5;
+        	left: 0;
+            top: 50%;
+        }
+        /*Borde izquierdo de algunas cartas*/
+		.card-left-border {
+        	border-left: solid 5px;
+        }        
+        .card-left-border.red {border-left-color: #f04b61;}
+        .card-left-border.orange {border-left-color: #f3bb49;}
+        .card-left-border.green {border-left-color: #3db28b;}
+        .card-left-border.blue {border-left-color: #0082be;}
+        
+    </style>
+    
+    <apex:stylesheet value="{!URLFOR($Resource.bootstrap2, 'css/bootstrap.min.css')}" />
+    <apex:stylesheet value="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <apex:stylesheet value="https://use.fontawesome.com/releases/v5.0.12/css/all.css" />
+    <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" />
+    
+    <div id="loading">
+        <apex:image styleClass="loading-gif" value="{!$Resource.LoadingGif}"/>
+    </div>
+    <div class="container-fluid">
+        <div class="container floating-panel">
+            <c:PageHeader mainlabel="{!terrWrap.territoryName}" secundarylabel="{!terrWrap.territoryNameDetail }" secundarylabelunderlined="{!terrWrap.partentTerritoryName}" linkToRecordId="{! terrWrap.parentId }" viewhierarchyfunction="openTerritoryHierarchy();"/>
+            <c:TerritoryAgeChart terrw="{!terrWrap}"/>
+            <c:TerritoryContacts terrw="{!terrWrap}"/>
+            <c:TerritorySocial terrw="{!terrWrap}"/>
+            <div style="height:60px;">&nbsp;</div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#loading').hide();
+        });
+    
+    function openTerritoryHierarchy(){
+        if(typeof sforce != 'undefined'){
+            if($(this).data('locationid') != ''){
+                sforce.one.navigateToURL('/apex/TerritoryHierarchy?id=' + '{!terrWrap.territory.Id}' + '&al=' + '{!terrWrap.territory.Nivel_Administrativo__c}');
+            }
+        }else{
+            window.location.href = '/apex/TerritoryHierarchy?id=' + '{!terrWrap.territory.Id}' + '&al=' + '{!terrWrap.territory.Nivel_Administrativo__c}';
+        }
+    }
+    
+    function navigateToRecord(recordId){
+        
+        if(recordId != '#'){
+            if(typeof sforce != 'undefined' && document.referrer.indexOf(".lightning.force.com") > 0){
+                sforce.one.navigateToURL('/apex/TerritoryDetailComponents?id=' + recordId);
+            }else{
+                window.location.href = '/apex/TerritoryDetailComponents?id=' + recordId;
+            }
+        }
+    }
+    </script>
+</apex:page>

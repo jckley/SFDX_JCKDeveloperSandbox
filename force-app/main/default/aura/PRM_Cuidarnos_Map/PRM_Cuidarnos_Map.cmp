@@ -1,0 +1,22 @@
+<aura:component>
+    <aura:attribute name="community"        type="String"           default="Prosumia"/>
+
+    <aura:attribute name="citizenWrapper" 		type="CitizenWrapper" 	required="true" />
+    <aura:attribute name="rendered" 			type="Boolean" 			required="true" default="true" />
+    <aura:attribute name="viewExactLocation" 	type="Boolean" 			required="true" default="true" />    
+    <aura:attribute name="lexHost" 			    type="String" default="" />
+    <aura:attribute name="vfHost" 			    type="String" default="" />
+    <aura:attribute name="frameHeight" 			type="String" default="400" />
+    <aura:attribute name="zoomControl"		    type="Boolean"          default="true" /> 
+    <aura:attribute name="zoom"		            type="Integer"          default="8" /> 
+    <aura:attribute name="centerOffSet"		    type="String" default="0" /> 
+
+    <aura:handler name="change"  value="{!v.citizenWrapper}" action="{!c.initializeComponent}" />
+
+    <div class="{! (v.rendered)?'slds-grid slds-wrap':'slds-hide'}">
+        <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-1 map">
+            <c:PRM_ContactLocationMap citizenWrapper="{! v.citizenWrapper }" />
+
+        </div>		        
+    </div>
+</aura:component>

@@ -1,0 +1,20 @@
+<aura:component >
+	
+    <aura:attribute name="citizenWrapper" 	type="ContactWrapper" />
+    <aura:attribute name="rendered" 		type="Boolean" />
+    
+    <div class="{! (v.rendered)?'card slds-grid slds-wrap slds-p-around_medium':'slds-hide'}" style="border-left: solid 5px #3db28b; margin-top:25px;">
+        <div class="slds-col slds-size_1-of-1 slds-large-size_2-of-6 slds-p-bottom_medium">
+            <c:ContactDisplayField label="Alerta Buenos Aires Embajador:" value="{! v.citizenWrapper.contact.Alerta_Buenos_Aires__c ? 'SI' : 'NO'}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label" valueCSS="value font13"/>            
+        </div>
+        
+        <div class="slds-col slds-size_1-of-1 slds-large-size_2-of-6 slds-p-bottom_medium">
+            <c:ContactDisplayField label="Alerta Buenos Aires ID:" value="{! v.citizenWrapper.contact.Alerta_Buenos_Aires_ID__c}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label" valueCSS="value font13"/>            
+        </div>
+        
+        <div class="slds-col slds-size_1-of-1 slds-large-size_2-of-6 slds-p-bottom_medium">
+            <c:ContactDisplayField label="Alerta Buenos Aires SirenaID:" value="{! v.citizenWrapper.contact.Alerta_Buenos_Aires_SirenaID__c}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label" valueCSS="value font13"/>            
+        </div>
+    </div>
+    
+</aura:component>

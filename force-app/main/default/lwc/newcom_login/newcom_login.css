@@ -1,0 +1,97 @@
+@font-face {
+    /*
+        font family is used to give a name to the custom font,
+         you use this for referencing the custom font later
+    */
+    font-family: "Roboto";
+    /*
+        This is the location of the Custom Font, note, I have stored in a ZIP file
+     */
+    src: url('/s/sfsites/c/resource/Communities/SALESFORCE/Fonts/Roboto/Roboto-Regular.ttf') format('TrueType');
+}
+
+.slds-scope {
+    width: 100%;
+}
+
+.logo-container {
+    padding-top: 10%;
+}
+
+.logo-img {
+    height: 30px;
+    /* width: 30%; */
+}
+
+.logo-text {
+    font-size: 1.35em !important;
+    vertical-align: middle;
+    color: #848281;
+}
+
+.title {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #646564;
+}
+
+.card {
+    background-color: #FFFFFF;
+    will-change: transform;
+    overflow: hidden;
+    box-shadow: 2px 2px 3px 3px #EBEBEB;
+    /* min-height: 100px; */
+    vertical-align: middle;
+    border-radius: 6px 6px 0px 0px;
+    border: solid 1px #FFFFFF;
+    width: 400px;
+    /* float:center; */
+}
+
+input {
+    border: solid 1.5px #d3c4bc;
+    height: 50px;
+    font-size: 1.1em;
+    font-family: 'Roboto';
+    font-weight: bold;
+    color: #646564;
+}
+
+input:focus {
+    border: solid 1px #d3c4bc;
+    font-size: 1.1em;
+    font-family: 'Roboto';
+    font-weight: bold;
+    color: #646564;
+}
+
+input::placeholder {
+    font-family: 'Roboto';
+    font-size: 1.1em !important;
+    color: #999999;
+}
+
+.visibility-icon {
+    margin-left: -40px;
+    cursor: pointer;
+}
+
+.login-button {
+    background-color: #F1B954;
+    width: 150px !important;
+    height: 50px !important;
+}
+
+.button-text {
+    color: #FFFFFF;
+    font-size: 1.2em;
+    font-family: 'Roboto';
+    font-weight: bold;
+}
+
+.error {
+    text-align: center;
+    word-break: break-word;
+    max-width: 20rem;
+    color: #ff9e9e;
+}

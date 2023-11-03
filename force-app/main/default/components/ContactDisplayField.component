@@ -1,0 +1,23 @@
+<apex:component >
+    <apex:attribute name="label" type="String" description="Field Label" />
+    <apex:attribute name="value" type="String" description="Field Value" />
+    <apex:attribute name="showDetail" type="Boolean" default="true" description="Field Value" />
+    <apex:attribute name="nullvalue" type="String" description="Field Value" />
+    <apex:attribute name="classLabel" type="String" default="" description="Label CSS class" />
+    <apex:attribute name="classValue" type="String" default="" description="Value CSS class" />
+    
+    <div class="mb-1">
+        <apex:outputText styleClass="{!classLabel}" value="{!label}" />
+    </div>
+    <div>
+        <apex:actionRegion rendered="{! showDetail}">
+            <apex:outputText styleClass="{!classValue}" rendered="{! value != ''}" value="{!value}" />
+            <apex:outputText styleClass="no-info" rendered="{!value == ''}" value="{!nullvalue}" />
+        </apex:actionRegion>
+        
+        <apex:actionRegion rendered="{! !showDetail}">
+            <apex:outputText rendered="{! value != ''}" value="{! $Label.Yes}" />
+            <apex:outputText styleClass="no-info" rendered="{!value == ''}" value="{!nullvalue}" />
+        </apex:actionRegion>
+    </div>
+</apex:component>

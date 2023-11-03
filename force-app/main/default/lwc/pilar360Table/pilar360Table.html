@@ -1,0 +1,93 @@
+<template>
+    <div class="slds-grid slds-wrap" style={hasInteractions}>
+        <div class="slds-size_1-of-1 slds-grid slds-wrap slds-m-top_x-large">
+            <div class="slds-size_1-of-1 slds-large-size_1-of-6">
+                <div class="slds-form-element">
+                    <div class="slds-form-element__control">
+                        <div class="slds-select_container">
+                            <select class="slds-select" id="select-01" onchange={handleChangePrograms} >
+                                <template for:each={programs} for:index="intIndex" for:item="prog">
+                                    <option key={prog} value={prog.value}>{prog.label}</option>
+                                </template>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="slds-size_1-of-1 slds-large-size_1-of-6 separator">
+                <div class="slds-form-element">
+                    <div class="slds-form-element__control">
+                        <div class="slds-select_container">
+                            <select class="slds-select" id="select-02" onchange={handleChangeDates} >
+                                <template for:each={dates} for:index="intIndex" for:item="date">
+                                    <option key={date} value={date.value}>{date.label}</option>
+                                </template>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <template if:true={datesValuePersonalize}>
+                <div class="slds-size_1-of-1 slds-large-size_2-of-6 separator">
+                    <div class="slds-grid slds-gutters">
+                        <div class="slds-col slds-m-left_large">
+                            <lightning-input type="date" name="startdate" class="startdate" label="Desde" value={start_date} onchange={handleDateChange} required ></lightning-input>
+                        </div>
+                        <div class="slds-col slds-m-right_large">
+                            <lightning-input type="date" name="enddate" class="enddate" label="Hasta" value={end_date} onchange={handleDateChange} required></lightning-input>
+                        </div>
+                    </div>
+                </div>
+            </template>
+        </div>
+
+        <div class="card slds-size_1-of-1 slds-m-top_x-large">
+            <div>
+                <table class="slds-table">
+                    <thead>
+                        <tr class="">
+                            <th class="slds-size_1-of-4">
+                                <div class="slds-truncate" title="Programa">Programa</div>
+                            </th>
+                            <th class="slds-size_2-of-4">
+                                <div class="slds-truncate" title="Servicio">Servicio</div>
+                            </th>
+                            <th class="slds-size_1-of-4">
+                                <div class="slds-truncate" title="Fecha"><button class="slds-button slds-button_neutral order-dates-button" onclick={handleChangeOrderDate}><span class="date-color">Fecha</span>&nbsp;&nbsp;<span class="arrow-color">{iconDate}</span></button></div>
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <template for:each={interactions} for:item="interaction">
+                            <tr class={interaction.Display} key={interaction.Id} >
+                                <td class="slds-size_1-of-4" data-label="Programa">
+                                    <div class="slds-truncate program-field" title="Programa">{interaction.Programs__c}</div>
+                                </td>
+                                <td class="slds-size_2-of-4" data-label="Servicio">
+                                    <div class="slds-truncate" title="Servicio">{interaction.Services__c}</div>
+                                </td>
+                                <td class="slds-size_1-of-4" data-label="Fecha">
+                                    <div class="slds-truncate" title="Fecha de Interacción">{interaction.Interaction_Date__c}</div>
+                                </td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+
+                <div class="paginator slds-size_1-of-1 slds-grid slds-wrap slds-align_absolute-center slds-border_top">
+                    <div class="options slds-size_2-of-5">
+                        <label>Mostrando <b>{firstRecord} - {lastRecord}</b> de <b>{totalInteractions}</b> {interactionDescript}</label>
+                    </div>
+                    <div class="pagination slds-size_3-of-5">
+                        <template for:each={pages} for:index="intIndex" for:item="page" >
+                            <a key={page.value} onclick={handleChangeCurrentPage} name={page.value} class={page.active}>{page.value}</a>
+                        </template>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</template>

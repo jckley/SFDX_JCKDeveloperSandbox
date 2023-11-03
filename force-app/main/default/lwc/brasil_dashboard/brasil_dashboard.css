@@ -1,0 +1,120 @@
+.grand-box {
+    width: 100%;
+    display: flex;
+    align-content: center;
+}
+
+.child-box {
+    width: 90%;
+    max-width: 1140px !important;
+    align-content: center;
+    margin-top: 25px;
+}
+
+.container {
+    font-family: 'Roboto';
+    max-width: 90%;
+    margin: auto;
+    padding: 0 15px;
+}
+
+.card {
+    background-color: #ffffff;
+    will-change: transform;
+    overflow:  hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.09), 0 6px 6px rgba(0,0,0,0.03);
+    vertical-align: middle;
+    border-radius: 6px;
+    border: solid 1px #FFFFFF;
+}
+
+.chart-box {
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.subattribute-header {
+    margin-left: 0px;
+    margin-top: 0px;
+    height: 80px;
+    padding-top: 25px;
+    padding-left: 30px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: #646564;
+    font-family: 'Roboto';
+}
+
+.women-box {
+    color: #885493;
+}
+
+.men-box {
+    color: #0082be;
+}
+
+.legend-total {
+    font-weight: bold;
+    font-size: 1.5rem;
+    font-family: 'Roboto';
+}
+
+.legend-percent {
+    padding-left: 15px;
+    padding-top: 5px;
+    font-weight: 400;
+    font-size: 0.8rem;
+    font-family: 'Roboto';
+    display: block;
+}
+
+/* Special classes for small devices */
+@media only screen and (max-width: 768px) {
+    .people-chart {
+        margin-bottom: 15px;
+    }
+    
+    .age-chart {
+        margin-top: 15px;
+    }
+
+    .people-chart-text-box {
+        text-align: center;
+    }
+
+    .women-box, .men-box {
+        min-height: 50px;
+        margin: 15px auto;
+    }
+}
+
+/* Special classes for big devices */
+@media only screen and (min-width: 768px) {
+    .women-box, .men-box {
+        min-height: 125px;
+    }
+
+    .women-box .legend-total {
+        margin-top: 2rem;
+    }
+
+    .people-chart, .age-chart {
+        height: 350px;
+    }
+
+    .people-chart {
+        margin-right: 15px;
+    }
+    
+    .age-chart {
+        margin-left: 15px;
+    }
+
+    .chart-box {
+        min-height: 250px;
+    }
+
+    .card {
+        min-height: 60px;
+    }
+}

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>WHERE_statement__c</fullName>
+    <description>WHERE statement para la query que define los registros a recorrer. Se debe verificar que los campos existan en el objeto definido en el FROM statement. Se deben utilizar los api names de los campos.</description>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>WHERE statement para la query que define los registros a recorrer. Se debe verificar que los campos existan en el objeto definido en el FROM statement. Se deben utilizar los api names de los campos.</inlineHelpText>
+    <label>WHERE statement</label>
+    <length>255</length>
+    <required>false</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

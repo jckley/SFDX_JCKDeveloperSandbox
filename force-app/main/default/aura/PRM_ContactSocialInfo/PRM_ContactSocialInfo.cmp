@@ -1,0 +1,52 @@
+<aura:component >
+    <aura:attribute name="community"        type="String" default="Prosumia"/>
+    <aura:attribute name="citizenWrapper" 	type="CitizenWrapper" 	required="true" />
+    <aura:attribute name="rendered" 		type="Boolean" 			required="true" default="true" />
+    <aura:attribute name="showDetails" 		type="Boolean" 			required="true" default="true" />
+    
+
+
+    <div class="{! (v.rendered)?'slds-align_absolute-center slds-show_medium slds-grid slds-wrap ' + v.community:'slds-hide'}">
+        <div class="slds-col slds-grid slds-wrap slds-size_1-of-1 slds-large-size_1-of-4 social-border-bottom" style="padding-left: 30px;">
+            <div class="slds-col slds-grid slds-wrap slds-size_1-of-1 slds-p-around_medium">
+                <c:PRM_ContactSocialInfoDetail community="{! v.community }"  icon="adfifacebook.svg" name="Facebook" sociallink="{! v.citizenWrapper.citizen.Facebook_Link__c}" socialuser="{! v.citizenWrapper.citizen.Usuario_Facebook__c}" showDetails="{! v.showDetails}" />
+            </div>
+        </div>
+        
+        <div class="slds-col slds-grid slds-wrap slds-size_1-of-1 slds-large-size_1-of-4 slds-p-left_large social-border-bottom social-border-left">
+            <div class="slds-col slds-grid slds-wrap slds-size_1-of-1 slds-p-around_medium">
+                <c:PRM_ContactSocialInfoDetail community="{! v.community }"  icon="adfitwitter.svg" name="Twitter" sociallink="{! v.citizenWrapper.citizen.Twitter_Link__c}" socialuser="{! v.citizenWrapper.citizen.Usuario_Twitter__c}" showDetails="{! v.showDetails}" />        	
+            </div>
+        </div>
+        
+        <div class="slds-col slds-grid slds-wrap slds-size_1-of-1 slds-large-size_1-of-4 slds-p-left_large social-border-bottom social-border-left">
+            <div class="slds-col slds-grid slds-wrap slds-size_1-of-1 slds-p-around_medium">
+                <c:PRM_ContactSocialInfoDetail community="{! v.community }"  icon="adfiinstagram.svg" name="Instagram" sociallink="{! v.citizenWrapper.citizen.Instagram_Link__c}" socialuser="{! v.citizenWrapper.citizen.Usuario_Instagram__c}" showDetails="{! v.showDetails}" />        
+            </div>
+        </div>
+        
+        <div class="slds-col slds-grid slds-wrap slds-size_1-of-1 slds-large-size_1-of-4 slds-p-left_large social-border-left">
+            <div class="slds-col slds-grid slds-wrap slds-size_1-of-1 slds-p-around_medium">
+                <c:PRM_ContactSocialInfoDetail community="{! v.community }"  icon="adfilinkedin.svg" name="Linkedin" sociallink="{! v.citizenWrapper.citizen.Linkedin_Link__c}" socialuser="{! v.citizenWrapper.citizen.Usuario_Linkedin__c}" showDetails="{! v.showDetails}" />        
+            </div>
+        </div>        
+    </div>
+
+    <div class="{! (v.rendered)?'slds-align_absolute-center  slds-hide_medium card slds-grid slds-wrap slds-p-vertical_large ' + v.community:'slds-hide'}">
+        <div class="slds-col slds-grid slds-wrap slds-size_1-of-1 slds-large-size_1-of-4 social-border-bottom" style="padding-left: 30px;">
+            <c:PRM_ContactSocialInfoDetail community="{! v.community }"  icon="adfifacebook.svg" name="Facebook" sociallink="{! v.citizenWrapper.citizen.Facebook_Link__c}" socialuser="{! v.citizenWrapper.citizen.Usuario_Facebook__c}" showDetails="{! v.showDetails}" />
+        </div>
+        
+        <div class="slds-col slds-grid slds-wrap slds-size_1-of-1 slds-large-size_1-of-4 slds-p-left_large social-border-bottom social-border-left">
+            <c:PRM_ContactSocialInfoDetail community="{! v.community }"  icon="adfitwitter.svg" name="Twitter" sociallink="{! v.citizenWrapper.citizen.Twitter_Link__c}" socialuser="{! v.citizenWrapper.citizen.Usuario_Twitter__c}" showDetails="{! v.showDetails}" />        	
+        </div>
+        
+        <div class="slds-col slds-grid slds-wrap slds-size_1-of-1 slds-large-size_1-of-4 slds-p-left_large social-border-bottom social-border-left">
+            <c:PRM_ContactSocialInfoDetail community="{! v.community }"  icon="adfiinstagram.svg" name="Instagram" sociallink="{! v.citizenWrapper.citizen.Instagram_Link__c}" socialuser="{! v.citizenWrapper.citizen.Usuario_Instagram__c}" showDetails="{! v.showDetails}" />        
+        </div>
+        
+        <div class="slds-col slds-grid slds-wrap slds-size_1-of-1 slds-large-size_1-of-4 slds-p-left_large social-border-left">
+            <c:PRM_ContactSocialInfoDetail community="{! v.community }"  icon="adfilinkedin.svg" name="Linkedin" sociallink="{! v.citizenWrapper.citizen.Linkedin_Link__c}" socialuser="{! v.citizenWrapper.citizen.Usuario_Linkedin__c}" showDetails="{! v.showDetails}" />        
+        </div>        
+    </div>
+</aura:component>

@@ -1,0 +1,58 @@
+.container {
+    font-family: 'Roboto';
+    max-width: 90%;
+    margin: auto;
+    padding: 0 15px;
+}
+
+.card {
+    background-color: #ffffff;
+    will-change: transform;
+    overflow:  hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.09), 0 6px 6px rgba(0,0,0,0.03);
+    min-height: 90px;
+    min-width: 190px;
+    vertical-align: middle;
+    border-radius: 6px;
+    border: solid 1px #FFFFFF;
+}
+
+.social-box {
+    padding: 25px 25px;
+    vertical-align: middle;
+    margin-top: 10px;
+}
+
+.social-newtwork {
+    display: inline-flex;
+}
+
+.icon-small {
+    max-width: 13px;
+    max-height: 13px;
+}
+
+.summary-title {
+    color: #b3b3b3;
+    font-weight: 400;
+    font-size: 12px;
+    text-align: center;
+}
+
+.summary {
+    color: #646564;
+    font-family: 'Roboto';
+    font-weight: 700;
+    font-size: 18px;
+    text-align: center;
+}
+
+/* Special classes for small devices */
+@media only screen and (max-width: 768px) {
+    .social-border {border-top: solid 1px #ededed;}
+}
+
+/* Special classes for big devices */
+@media only screen and (min-width: 768px) {
+    .social-border {border-left: solid 1px #ededed; height: 80%;}
+}

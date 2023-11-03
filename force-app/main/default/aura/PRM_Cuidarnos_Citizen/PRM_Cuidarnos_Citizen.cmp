@@ -1,0 +1,90 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes,force:appHostable,flexipage:availableForAllPageTypes,force:hasRecordId" controller="ContactDetailController">
+    <aura:attribute name="recordId"       type="Id" />
+    <aura:attribute name="citizenWrapper" type="CitizenWrapper" />
+    <aura:attribute name="permissions"    type="RemotingMessageHelper.UserPermissions" />
+    <aura:attribute name="lexHost"        type="String" default="" />
+    <aura:attribute name="vfHost"         type="String" default="" />
+    <aura:attribute name="community"      type="String" default="Cuidarnos" />
+    <aura:attribute name="linkToRecordId" type="String" default="" />
+
+    <aura:handler name="init" action="{!c.initializeComponent}" value="{!this}" />
+
+    <div class="slds-grid slds-wrap">
+        <div class="slds-col slds-size_1-of-1 pad-top-30">
+            <c:PRM_Cuidarnos_Contact_Header citizenWrapper="{! v.citizenWrapper }" status="{! v.citizenWrapper.cuidarnos.status}" status_date="{! v.citizenWrapper.cuidarnos.confirmdate }" mobile="{! v.citizenWrapper.cuidarnos.mobile_phone }" email="{! v.citizenWrapper.cuidarnos.email }" fijo="{! v.citizenWrapper.cuidarnos.fijo }"  />
+        </div>
+
+        <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-1 pad-top-30">
+            <c:PRM_Cuidarnos_GeneralInfo community="{! v.community }" citizenWrapper="{! v.citizenWrapper }" rendered="{! v.permissions.ContactViewCommonData}" />
+        </div>
+
+        <div
+            class="{! v.citizenWrapper.permissions.ContactViewLocation ?'slds-col slds-size_1-of-1 pad-top-10':'slds-hide' }">
+            <c:PRM_ContactLocationInfo community="{! v.community }" citizenWrapper="{! v.citizenWrapper }" rendered="{! v.permissions.ContactViewLocation}" />
+        </div>
+
+        <div class="slds-col slds-size_1-of-1 slds-grid slds-wrap pad-top-10">
+            <div class="slds-col slds-size_1-of-1 slds-grid slds-wrap card">
+                <div class="{! (v.citizenWrapper.permissions.ContactViewLocation)?'slds-col slds-size_1-of-1 pad-top-10':'slds-hide'}" >
+                    <c:PRM_ContactAddress community="{! v.community }" citizenWrapper="{! v.citizenWrapper }" rendered="{! v.permissions.ContactViewLocation }" fijo="{! v.citizenWrapper.cuidarnos.fijo }" />
+                </div>
+
+                <div class="{! v.citizenWrapper.permissions.ContactViewContactInfo ?'slds-col slds-size_1-of-1':'slds-hide'}" >
+                    <c:PRM_Cuidarnos_Map community="{! v.community }" citizenWrapper="{! v.citizenWrapper }" rendered="{! v.permissions.ContactViewLocation }" />
+                </div>
+
+                <div class="{! v.citizenWrapper.permissions.ContactViewContactInfo ?'slds-col slds-size_1-of-1':'slds-hide'}" >
+                    <c:PRM_Cuidarnos_ContactInfo community="{! v.community }" citizenWrapper="{! v.citizenWrapper }" mobile="{! v.citizenWrapper.cuidarnos.mobile_phone }" email="{! v.citizenWrapper.cuidarnos.email }" rendered="{! v.permissions.ContactViewContactInfo }" />
+                </div>
+
+                <div class="{! v.citizenWrapper.permissions.ContactViewSocialInfo? 'slds-col slds-size_1-of-1': 'slds-hide' }" >
+                    <c:PRM_ContactSocialInfo community="{! v.community }" citizenWrapper="{! v.citizenWrapper }" rendered="{! v.permissions.ContactViewSocialInfo }" showDetails="{! v.permissions.ContactViewSocialInfoDetails}" />
+                </div>
+            </div>
+        </div>
+
+        <div class="{! and( v.citizenWrapper.permissions.ContactViewIncome, v.citizenWrapper.incomeInfo.employers.length > 0 )?'slds-col slds-size_1-of-1 pad-top-30':'slds-hide' }" >
+            <c:PRM_Cuidarnos_Income community="{! v.community }" citizenWrapper="{! v.citizenWrapper }" rendered="{! and( v.permissions.ContactViewIncome, v.citizenWrapper.incomeInfo.employers.length > 0 )}" />
+        </div>
+
+        <div class="{! (v.citizenWrapper.cuidarnos.hasOOSS)?'slds-col slds-size_1-of-1 pad-top-30':'slds-hide' }" >
+            <c:PRM_Cuidarnos_OOSS community="{! v.community }" citizenWrapper="{! v.citizenWrapper }" rendered="{! v.citizenWrapper.cuidarnos.hasOOSS }" />
+        </div>
+
+        <div class="{! and( and(v.citizenWrapper.permissions.ContactViewCuidarnos, or(v.citizenWrapper.cuidarnos.DateExitSPFormat != '', v.citizenWrapper.cuidarnos.DateEntrySPFormat != '') ) , !v.citizenWrapper.cuidarnos.usuario_pilar)?'slds-col slds-size_1-of-1 pad-top-30':'slds-hide' }" >
+            <c:PRM_Cuidarnos community="{! v.community }" citizenWrapper="{! v.citizenWrapper }" rendered="{! and(v.permissions.ContactViewCuidarnos, or(v.citizenWrapper.cuidarnos.DateExitSPFormat != '', v.citizenWrapper.cuidarnos.DateEntrySPFormat != '') ) }" />
+        </div>
+
+        <div class="{! (v.citizenWrapper.permissions.ContactViewCuidarnos)?'slds-col slds-size_1-of-1 pad-top-30':'slds-hide' }" >
+            <c:PRM_Cuidarnos_Triage community="{! v.community }" citizenWrapper="{! v.citizenWrapper }" rendered="{! v.permissions.ContactViewCuidarnos }" />
+        </div>
+
+        <div class="{! ( and(v.citizenWrapper.permissions.ContactViewCuidarnos,and(v.citizenWrapper.cuidarnos.covid.proactiva_resultgroup__c != null,v.citizenWrapper.cuidarnos.covid.proactiva_resultgroup__c != '') ))?'slds-col slds-size_1-of-1 pad-top-30':'slds-hide' }" >
+            <c:PRM_Cuidarnos_Proactiva community="{! v.community }" citizenWrapper="{! v.citizenWrapper }" rendered="{!v.permissions.ContactViewCuidarnos}" />
+        </div>
+
+        <div class="{! and( and(v.citizenWrapper.permissions.ContactViewCuidarnos, or(v.citizenWrapper.cuidarnos.DateExitSPFormat != '', v.citizenWrapper.cuidarnos.DateEntrySPFormat != '') ) , !v.citizenWrapper.cuidarnos.usuario_pilar)?'slds-col slds-size_1-of-1 pad-top-30':'slds-hide' }" >
+            <c:PRM_Cuidarnos_Reactiva community="{! v.community }" citizenWrapper="{! v.citizenWrapper }" rendered="{! and(v.permissions.ContactViewCuidarnos, and(v.citizenWrapper.cuidarnos.covid.salud_status__c != null,v.citizenWrapper.cuidarnos.covid.salud_status__c != '') ) }" />
+        </div>
+
+        <div class="{! and(v.permissions.ContactViewEtiquetas,v.citizenWrapper.cuidarnos.covid.Cuidarnos_Muestra_Result__c != null) ?'slds-col slds-size_1-of-1 pad-top-30':'slds-hide' }" >
+            <c:PRM_Cuidarnos_Etiquetas community="{! v.community }" citizenWrapper="{! v.citizenWrapper }" rendered="{! and(v.permissions.ContactViewEtiquetas, v.citizenWrapper.cuidarnos.covid.Cuidarnos_Muestra_Result__c != null ) }" />
+        </div>
+
+        <div class="{! and(v.permissions.ContactViewSerologico, v.citizenWrapper.cuidarnos.covid.testserologico_lugar__c != null) ?'slds-col slds-size_1-of-1 pad-top-30':'slds-hide' }" >
+            <c:PRM_Cuidarnos_Resultados community="{! v.community }" citizenWrapper="{! v.citizenWrapper }" rendered="{! and(v.permissions.ContactViewSerologico,v.citizenWrapper.cuidarnos.covid.testserologico_lugar__c != null) }"             />
+        </div>
+        <!--
+        <div class="{! and(v.citizenWrapper.permissions.ContactViewCuidarnos, v.citizenWrapper.cuidarnos.situacion.length > 0 )?'slds-col slds-size_1-of-1 pad-top-30':'slds-hide' }">
+            <c:PRM_Cuidarnos_Temperatura community="{! v.community }" citizenWrapper="{! v.citizenWrapper }" rendered="{!  and(v.permissions.ContactViewCuidarnos, v.citizenWrapper.cuidarnos.situacion.length > 0 ) }"  />
+        </div>   
+-->
+        <div class="{! and(v.permissions.CuidarnosViewHisopado, v.citizenWrapper.cuidarnos.covid.centro_hisopado__c != null)  ?'slds-col slds-size_1-of-1 pad-top-30':'slds-hide' }" >
+            <c:PRM_Cuidarnos_Hisopado community="{! v.community }" citizenWrapper="{! v.citizenWrapper }" rendered="{! and(v.permissions.CuidarnosViewHisopado, v.citizenWrapper.cuidarnos.covid.centro_hisopado__c != null) }"             />
+        </div>
+
+        <div class="{! v.citizenWrapper.permissions.ContactViewCuidarnosViewObservations?'slds-col slds-size_1-of-1 pad-top-30 pad-bottom-70 ':'slds-hide' }" >
+            <c:PRM_Cuidarnos_Observations community="{! v.community }" citizenWrapper="{! v.citizenWrapper }" rendered="{!  v.permissions.ContactViewCuidarnosViewObservations }" isreadonly="{! ! v.permissions.ContactViewCuidarnosEditObservations }" arrObservation="{! v.citizenWrapper.cuidarnos.observaciones }" />
+        </div>
+    </div>
+</aura:component>

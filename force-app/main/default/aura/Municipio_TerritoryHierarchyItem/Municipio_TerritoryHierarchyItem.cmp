@@ -1,0 +1,37 @@
+<aura:component>
+    <aura:attribute 	name="selected" 			type="Boolean"  />
+    <aura:attribute 	name="territory" 			type="RemotingMessageHelper.Territory" />
+    <aura:attribute 	name="anyTerritorySelected" 			type="Boolean"  />
+
+    <aura:handler 	name="init" action="{!c.initializeComponent}" value="{!this}" />    
+    
+	<aura:handler event="c:TerritoryHierarchySelectEvent" 				action="{! c.unselectOtherTerritories }" />
+    <aura:handler event="c:TerritoryHierarchyUnselectTerritoryEvent" 	action="{! c.unselectTerritory }" />
+    
+    <aura:registerEvent name="TerritoryHierarchySelectEvent" 				type="c:TerritoryHierarchySelectEvent" />   
+    <aura:registerEvent name="TerritoryHierarchyUnselectTerritoryEvent" 	type="c:TerritoryHierarchyUnselectTerritoryEvent" />   
+    <aura:registerEvent name="TerritoryHierarchySaveSelectedEvent" 			type="c:TerritoryHierarchySaveSelectedEvent" />   
+    
+    <div class="{!(v.territory == 'NULL')?'slds-hidden':and($Browser.formFactor != 'DESKTOP',and(v.anyTerritorySelected,!v.selected))?
+                'slds-hide':v.anyTerritorySelected?'spacing':''}">
+       
+        <div aura:id="divTerritory" class="{!'territory slds-m-horizontal_medium slds-p-horizontal_large slds-p-bottom_x-small '
+                                           + ($Browser.isIOS?'iphone-after ':' ')
+                                           +  (v.selected == true?'selected':'')}"  data-territoryid="{! v.territory.Id }" 
+             data-level="{! v.territory.Level }" onclick="{! c.toggleTerritorySelection }">
+            <ul>
+                <li class="{!and($Browser.formFactor != 'DESKTOP', v.selected)?($Browser.isIOS?'back_arrow_ios':'back_arrow'):'slds-hide'}">
+                    <img src="{! $Resource.IconsPack1 + '/arrowrightps.svg'}"  />
+                </li>
+             	<li class="name">
+                    {! v.territory.Name }
+                </li>
+                <li class="detail" data-territoryid="{! v.territory.Id }" onclick="{! c.showTerritory }">
+                    <span class="slds-show_large">{! $Label.c.SeeTerritory}</span>
+                    <span class="slds-hide_large">{! $Label.c.View}</span>
+                    <img src="{! $Resource.IconsPack1 + '/arrowrightps.svg' }" />
+                </li>
+            </ul>            
+        </div>
+    </div>
+</aura:component>

@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed|Heebo:100,300,400');
+.THIS {color: white;}
+
+.THIS.background {background-color: #f8f9fc;}
+
+.THIS .logo {margin-top: 25px; padding-left: 25px;}
+.THIS .logo a span {color: white; font-size: 14pt; padding-left: 3px;}
+.THIS .logo{max-width: 35px; max-height: 35px;}
+.THIS a {text-decoration: none;}
+
+.THIS .navigation {
+    border-top: 1px solid #d3d6da;
+    border-bottom: 1px solid #d3d6da;
+    width: 100%;
+    margin: 0 auto;
+    display: block;
+}
+
+.THIS .search-bar{
+    margin: auto;
+    margin-top: 19px;
+    margin-bottom: 17px;
+    justify-content: center;
+    display: flex;
+}
+
+.THIS .exit {
+    width: 90px;
+    height: 40px;
+    border-radius: 6px;
+    border: solid 1px #3e4954;
+    display: inline-block;
+    color: #3e4954;
+    font-family: 'Heebo';
+    font-weight: 400;
+    font-size: 11pt;
+}
+
+.THIS .exit:hover {
+    cursor: pointer;
+    color: #757d86;
+    border: solid 1px #757d86;
+}
+.THIS .gray {display: none}
+.THIS .img{width: 15px; height: 15px;}
+.THIS .exit:hover .white{display: none;}
+.THIS .exit:hover .gray{display: inline-block;}
+
+.THIS .navigationBar {/*margin-left: 44%;*/margin-top: 25px;}
+
+/* Special classes for small devices */
+@media only screen and (max-width: 768px) {
+    .THIS {border-bottom: 1px solid rgba(255, 255, 255, 0.2)}
+    .THIS .search-bar{
+        margin: auto;
+        margin-top: 19px;
+        margin-bottom: 17px;
+        justify-content: center;
+        display: flex;
+        padding: 0 15px;
+    }
+    
+    .THIS > div:first-child {width: calc(100% - 70px)}
+    .THIS .navigation-bar {position: absolute; left: 50%}
+}
+
+/* Special classes for big devices */
+@media only screen and (min-width: 768px) {
+    .THIS {}
+}

@@ -1,0 +1,57 @@
+.tileHolder {
+    display:flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.tileHolder .item{
+    display: flex;
+    flex-direction: row;
+    flex:1;
+    padding: 27px 15px;
+    gap:10px;
+    justify-content: start;
+    align-items: center;
+}
+
+.tileHolder .item:hover{
+    cursor: pointer;
+    background-color: #f7f7f7;
+}
+
+.tileHolder .item:nth-child(2) {
+    border-top: dotted 1px #999;
+    border-bottom: dotted 1px #999;
+}
+
+.tileHolder .item .icon {
+    max-width: 30px;
+    max-height: 30px;    
+}
+
+.tileHolder .item .tileValue {
+    color: rgb(88, 89, 91);
+    font-size: 24px;
+    min-width: 120px;
+    text-align: end;
+    height: 30px;
+}
+
+.tileHolder .item div{
+    display: flex;
+    flex-direction: column;
+    height: 30px;
+    justify-content: center;
+}
+
+.tileHolder .item div .tileName {
+    font-weight: bold;
+    color: #ef3e48;
+    font-size: 10px;
+}
+
+.tileHolder .item div .tileDescription {
+    color: #999999;
+    font-size: 10px;
+}

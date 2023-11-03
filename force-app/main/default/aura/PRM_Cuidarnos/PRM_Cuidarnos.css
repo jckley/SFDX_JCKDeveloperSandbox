@@ -1,0 +1,82 @@
+.THIS {
+    padding : 0px;
+    font-family: 'Montserrat';
+
+}
+
+.THIS .paddingtop {
+    padding-left: 30px;
+}
+
+.THIS .header {
+    background-color: #f8f9fc;
+    height: 60px;
+    padding: 30px 30px 30px 30px;
+}
+
+.THIS .header .title {
+    font-family: 'Montserrat';
+    color: #999999;
+    font-weight: 300;
+    font-size: 1rem;
+}
+
+.THIS .separator {
+    border : solid 1px #CCCCCC;
+}
+
+.THIS .icon {
+    max-width: 25px;
+    max-height: 25px;
+    vertical-align: middle;
+    border-style: none;
+}
+
+.THIS .label {
+    font-weight: bold;
+    font-size : 10pt;
+    color: #999999 !important;
+}
+
+.THIS .value {
+    font-family: 'Montserrat';
+    font-weight: 300;
+    font-size : 12pt;
+    color: #333333 !important;
+}
+
+.THIS .value.blue {
+    color: #0069AB !important;
+}
+
+.THIS .subattribute-border {
+    /*
+    border-bottom: solid 1px #ededed;
+    margin: 0 25px 20px 0;
+    */
+}
+
+.THIS .Prosumia .value.blue {
+    color: #EF3E48 !important;
+}
+
+.THIS .Argentina .value.blue {
+    color: #EF3E48 !important;
+}
+
+.THIS .Cuidarnos .value.blue {
+    color: #0069AB !important;
+}
+
+@media only screen and (min-width: 768px) {
+    .THIS .padleft-desktop {
+        padding-left: 15px;
+    }
+}
+
+
+@media only screen and (max-width: 768px) {
+    .THIS .padtop-mobile {
+        padding-top: 30px;
+    }
+}

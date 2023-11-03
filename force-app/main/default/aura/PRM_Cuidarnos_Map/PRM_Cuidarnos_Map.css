@@ -1,0 +1,12 @@
+.THIS {
+}
+
+.THIS .map {
+    height:300px;
+}
+
+.THIS iframe {
+	border : 0px;
+    width : 100%;
+    overflow : hidden;
+}

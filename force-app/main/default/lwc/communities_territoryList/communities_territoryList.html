@@ -1,0 +1,11 @@
+<template>
+    <div class="territorylist">
+        <c-common-header title={title} subtitle={subtitle} subtitle_link_text='' subtitle_link_url=''></c-common-header>
+
+        <div class="slds-grid">
+            <template for:each={arrTerritory} for:index="intIndex" for:item="objTerritory">
+                <c-communities_territory-level key={objTerritory} level={objTerritory}></c-communities_territory-level>
+            </template>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,51 @@
+<template>
+    <div class="slds-grid slds-wrap territories" id="territories">
+
+        <template for:each={territoryboxes} for:index="intIndex" for:item="territorybox">
+            <div class="territoryboss" key={territorybox}>
+                <div class={territorybox.class} data-level={territorybox.level}>
+                    <h1>Nivel Administrativo {territorybox.level}</h1>
+                    <div class="slds-box">
+                        <div class="searchinput slds-grid">
+                            <img src={iconSearch} alt=""/>
+                            <input oninput={handleInputFilter} name="enter-search" type="search" placeholder="Buscar territorio..." autocomplete="off"></input>
+                        </div>
+                        <div class="territory-name slds-grid slds-grid_align-spread" data-id={territorybox.id} data-level={territorybox.level} data-name={territorybox.name}  data-parentid={territorybox.parentid}>
+                            <div class="slds-col slds-size_11-of-12 name">
+                                <a class="slds-size_1-of-1 slds-grid" href={territorybox.href} onclick={handleBoxClick} data-id={territorybox.id}>
+                                    <span class="slds-col slds-size_10-of-12 slds-truncate">{territorybox.name}</span>
+                                    <span class="slds-col slds-size_2-of-12">
+                                        <img class="icon-right" src={iconRight} alt=""/>
+                                    </span>
+                                </a>
+                            </div>
+                            <div class="slds-col slds-size_1-of-12 close" onclick={handleTerritoryBoxCloseClick}>
+                                <span><img class="icon-close" src={iconClose} alt=""/></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+        
+        <div class={viewButton}>
+            <a class="slds-button crazy-button" onclick={goLastTerritory}>Ver Territorio</a>
+        </div>
+    </div>
+
+    <div class="slds-grid slds-wrap childterritories">
+        <template for:each={territories} for:index="intIndex" for:item="territory" if:true={territory.visible}>
+            <div key={territory} class="levelItem slds-col slds-size_1-of-1 slds-large-size_1-of-5" onclick={handleClick}  data-name={territory.Name} id={territory.Id}>
+                <div class="container slds-grid">
+                    <div class="childterritoryname slds-col slds-size_10-of-12 slds-truncate">
+                        <span>{territory.Name}</span>
+                    </div>
+                    <div class="showmeonhover slds-col slds-size_2-of-12">
+                        <span><img src={iconRight} alt=""/></span>
+                    </div>
+                </div>
+            </div>
+        </template>
+    </div>
+        
+</template>

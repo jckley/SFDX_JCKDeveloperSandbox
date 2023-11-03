@@ -1,0 +1,69 @@
+<template>
+
+    <div class="card slds-m-top_x-large">
+        <div class="slds-grid slds-wrap">
+            <h3 class="header slds-size_1-of-1">
+                <!-- <img src={iconCheck} class="icon" /> -->
+                <span class="title">{label.Electoral}</span>
+            </h3>
+
+            <div class="slds-size_1-of-1 slds-grid slds-wrap item separator">
+                <div class="slds-size_1-of-2 slds-large-size_2-of-8">
+                    <c-newcom_display-field label={label.District} value={district} label-css="label uppercase" value-css="value font13"></c-newcom_display-field>
+                </div>
+
+                <div class="slds-size_1-of-2 slds-large-size_3-of-8">
+                    <c-newcom_display-field label={label.Section} value={section} label-css="label uppercase" value-css="value font13"></c-newcom_display-field>
+                </div>
+
+                <div class="slds-size_1-of-3 slds-large-size_1-of-8">
+                    <c-newcom_display-field label={label.Circuit} value={circuit} label-css="label uppercase" value-css="value font13"></c-newcom_display-field>
+                </div>
+
+                <div class="slds-size_1-of-3 slds-large-size_1-of-8">
+                    <c-newcom_display-field label={label.ElectoralSchool} value={electoralSchool} label-css="label uppercase" value-css="value font13"></c-newcom_display-field>
+                </div>
+
+                <div class="slds-size_1-of-3 slds-large-size_1-of-8">
+                    <c-newcom_display-field label={label.ElectoralBooth} value={electoralBooth} label-css="label uppercase" value-css="value font13"></c-newcom_display-field>
+                </div>
+                
+            </div>
+
+            <div class="slds-size_1-of-1 slds-grid slds-wrap item separator">
+                <div class="slds-col">
+                    <c-newcom_tag-electoral label="Votó PASO ´15: " value={paso15} label-css="label uppercase" value-css="value font13"></c-newcom_tag-electoral>
+                </div>
+
+                <div class="slds-col">
+                    <c-newcom_tag-electoral label="Votó General ´15: " value={general15} label-css="label uppercase" value-css="value font13"></c-newcom_tag-electoral>
+                </div>
+
+                <div class="slds-col">
+                    <c-newcom_tag-electoral label="Votó Ballotage ´15: " value={ballotage15} label-css="label uppercase" value-css="value font13"></c-newcom_tag-electoral>
+                </div>
+
+                <div class="slds-col">
+                    <c-newcom_tag-electoral label="Votó PASO ´17: " value={paso17} label-css="label uppercase" value-css="value font13"></c-newcom_tag-electoral>
+                </div>
+
+                <div class="slds-col">
+                    <c-newcom_tag-electoral label="Votó General ´17: " value={general17} label-css="label uppercase" value-css="value font13"></c-newcom_tag-electoral>
+                </div>
+
+                <div class="slds-col">
+                    <c-newcom_tag-electoral label="Votó PASO ´19: " value={paso19} label-css="label uppercase" value-css="value font13"></c-newcom_tag-electoral>
+                </div>
+
+                <div class="slds-col">
+                    <c-newcom_tag-electoral label="Votó General ´19: " value={general19} label-css="label uppercase" value-css="value font13"></c-newcom_tag-electoral>
+                </div>
+            </div>
+
+            <div class="slds-size_1-of-1 item">
+                <c-newcom_display-field label="Afiliación partidaria: " value={affiliation} label-css="label uppercase" value-css="value font13"></c-newcom_display-field>           
+            </div>
+
+        </div>
+    </div>
+</template>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>testserologico_lugar__c</fullName>
+    <externalId>false</externalId>
+    <label>Test Serologico Lugar</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Km 46</fullName>
+                <default>false</default>
+                <label>Km 46</label>
+            </value>
+            <value>
+                <fullName>Teófilo Tolosa</fullName>
+                <default>false</default>
+                <label>Teófilo Tolosa</label>
+            </value>
+            <value>
+                <fullName>Test móvil</fullName>
+                <default>false</default>
+                <label>Test móvil</label>
+            </value>
+            <value>
+                <fullName>Hospital Sanguinetti</fullName>
+                <default>false</default>
+                <label>Hospital Sanguinetti</label>
+            </value>
+            <value>
+                <fullName>CAPS</fullName>
+                <default>false</default>
+                <label>CAPS</label>
+            </value>
+            <value>
+                <fullName>Derqui</fullName>
+                <default>false</default>
+                <label>Derqui</label>
+            </value>
+            <value>
+                <fullName>Falcon</fullName>
+                <default>false</default>
+                <label>Falcon</label>
+            </value>
+            <value>
+                <fullName>Maternidad</fullName>
+                <default>false</default>
+                <label>Maternidad</label>
+            </value>
+            <value>
+                <fullName>Pilares</fullName>
+                <default>false</default>
+                <label>Pilares</label>
+            </value>
+            <value>
+                <fullName>CEPA</fullName>
+                <default>false</default>
+                <label>CEPA</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

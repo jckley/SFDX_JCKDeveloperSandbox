@@ -1,0 +1,10 @@
+<aura:component >
+    <div>
+        <div class="slds-grid slds-wrap title-container">
+            <div class="slds-col slds-size_5-of-6 title">
+                Hotspots                   
+            </div>
+        </div>
+        <iframe aura:id="vfFrame" src="http://live.adfi.co/?token=c9b03516d76cdca73b071c1c6b2f6637" frameBorder="0"  scrolling="no" />
+    </div>
+</aura:component>

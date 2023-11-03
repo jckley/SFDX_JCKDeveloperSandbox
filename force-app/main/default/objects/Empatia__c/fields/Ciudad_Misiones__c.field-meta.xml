@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Ciudad_Misiones__c</fullName>
+    <externalId>false</externalId>
+    <label>Ciudad Misiones</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Alba Posse</fullName>
+                <default>false</default>
+                <label>Alba Posse</label>
+            </value>
+            <value>
+                <fullName>Almafuerte</fullName>
+                <default>false</default>
+                <label>Almafuerte</label>
+            </value>
+            <value>
+                <fullName>Apóstoles</fullName>
+                <default>false</default>
+                <label>Apóstoles</label>
+            </value>
+            <value>
+                <fullName>Aristóbulo del Valle</fullName>
+                <default>false</default>
+                <label>Aristóbulo del Valle</label>
+            </value>
+            <value>
+                <fullName>Arroyo del Medio</fullName>
+                <default>false</default>
+                <label>Arroyo del Medio</label>
+            </value>
+            <value>
+                <fullName>Azara</fullName>
+                <default>false</default>
+                <label>Azara</label>
+            </value>
+            <value>
+                <fullName>Bernardo de Irigoyen</fullName>
+                <default>false</default>
+                <label>Bernardo de Irigoyen</label>
+            </value>
+            <value>
+                <fullName>Bonpland</fullName>
+                <default>false</default>
+                <label>Bonpland</label>
+            </value>
+            <value>
+                <fullName>Caá Yari</fullName>
+                <default>false</default>
+                <label>Caá Yari</label>
+            </value>
+            <value>
+                <fullName>Campo Grande</fullName>
+                <default>false</default>
+                <label>Campo Grande</label>
+            </value>
+            <value>
+                <fullName>Campo Ramón</fullName>
+                <default>false</default>
+                <label>Campo Ramón</label>
+            </value>
+            <value>
+                <fullName>Campo Viera</fullName>
+                <default>false</default>
+                <label>Campo Viera</label>
+            </value>
+            <value>
+                <fullName>Candelaria</fullName>
+                <default>false</default>
+                <label>Candelaria</label>
+            </value>
+            <value>
+                <fullName>Capioví</fullName>
+                <default>false</default>
+                <label>Capioví</label>
+            </value>
+            <value>
+                <fullName>Caraguatay</fullName>
+                <default>false</default>
+                <label>Caraguatay</label>
+            </value>
+            <value>
+                <fullName>Cerro Azul</fullName>
+                <default>false</default>
+                <label>Cerro Azul</label>
+            </value>
+            <value>
+                <fullName>Cerro Corá</fullName>
+                <default>false</default>
+                <label>Cerro Corá</label>
+            </value>
+            <value>
+                <fullName>Colonia Alberdi</fullName>
+                <default>false</default>
+                <label>Colonia Alberdi</label>
+            </value>
+            <value>
+                <fullName>Colonia Aurora</fullName>
+                <default>false</default>
+                <label>Colonia Aurora</label>
+            </value>
+            <value>
+                <fullName>Colonia Delicia</fullName>
+                <default>false</default>
+                <label>Colonia Delicia</label>
+            </value>
+            <value>
+                <fullName>Colonia Polana</fullName>
+                <default>false</default>
+                <label>Colonia Polana</label>
+            </value>
+            <value>
+                <fullName>Colonia Victoria</fullName>
+                <default>false</default>
+                <label>Colonia Victoria</label>
+            </value>
+            <value>
+                <fullName>Colonia Wanda</fullName>
+                <default>false</default>
+                <label>Colonia Wanda</label>
+            </value>
+            <value>
+                <fullName>Comandante Andrés Guacurari / Comandante Andresito</fullName>
+                <default>false</default>
+                <label>Comandante Andrés Guacurari / Comandante Andresito</label>
+            </value>
+            <value>
+                <fullName>Concepción de la Sierra</fullName>
+                <default>false</default>
+                <label>Concepción de la Sierra</label>
+            </value>
+            <value>
+                <fullName>Corpus</fullName>
+                <default>false</default>
+                <label>Corpus</label>
+            </value>
+            <value>
+                <fullName>2 Arroyos</fullName>
+                <default>false</default>
+                <label>2 Arroyos</label>
+            </value>
+            <value>
+                <fullName>2 de Mayo</fullName>
+                <default>false</default>
+                <label>2 de Mayo</label>
+            </value>
+            <value>
+                <fullName>El Alcazár</fullName>
+                <default>false</default>
+                <label>El Alcazár</label>
+            </value>
+            <value>
+                <fullName>El Soberbio</fullName>
+                <default>false</default>
+                <label>El Soberbio</label>
+            </value>
+            <value>
+                <fullName>Eldorado</fullName>
+                <default>false</default>
+                <label>Eldorado</label>
+            </value>
+            <value>
+                <fullName>Fachinal</fullName>
+                <default>false</default>
+                <label>Fachinal</label>
+            </value>
+            <value>
+                <fullName>Florentino Ameghino</fullName>
+                <default>false</default>
+                <label>Florentino Ameghino</label>
+            </value>
+            <value>
+                <fullName>Garuhapé</fullName>
+                <default>false</default>
+                <label>Garuhapé</label>
+            </value>
+            <value>
+                <fullName>Garupá</fullName>
+                <default>false</default>
+                <label>Garupá</label>
+            </value>
+            <value>
+                <fullName>General Alvear</fullName>
+                <default>false</default>
+                <label>General Alvear</label>
+            </value>
+            <value>
+                <fullName>General Urquiza</fullName>
+                <default>false</default>
+                <label>General Urquiza</label>
+            </value>
+            <value>
+                <fullName>Gobernador López</fullName>
+                <default>false</default>
+                <label>Gobernador López</label>
+            </value>
+            <value>
+                <fullName>Gobernador Roca</fullName>
+                <default>false</default>
+                <label>Gobernador Roca</label>
+            </value>
+            <value>
+                <fullName>Guaraní</fullName>
+                <default>false</default>
+                <label>Guaraní</label>
+            </value>
+            <value>
+                <fullName>Hipólito Yrigoyen</fullName>
+                <default>false</default>
+                <label>Hipólito Yrigoyen</label>
+            </value>
+            <value>
+                <fullName>Itacaruaré</fullName>
+                <default>false</default>
+                <label>Itacaruaré</label>
+            </value>
+            <value>
+                <fullName>Jardín América</fullName>
+                <default>false</default>
+                <label>Jardín América</label>
+            </value>
+            <value>
+                <fullName>Leandro N. Alem</fullName>
+                <default>false</default>
+                <label>Leandro N. Alem</label>
+            </value>
+            <value>
+                <fullName>Loreto</fullName>
+                <default>false</default>
+                <label>Loreto</label>
+            </value>
+            <value>
+                <fullName>Los Helechos</fullName>
+                <default>false</default>
+                <label>Los Helechos</label>
+            </value>
+            <value>
+                <fullName>Mártires</fullName>
+                <default>false</default>
+                <label>Mártires</label>
+            </value>
+            <value>
+                <fullName>Mojón Grande</fullName>
+                <default>false</default>
+                <label>Mojón Grande</label>
+            </value>
+            <value>
+                <fullName>Montecarlo</fullName>
+                <default>false</default>
+                <label>Montecarlo</label>
+            </value>
+            <value>
+                <fullName>9 de Julio</fullName>
+                <default>false</default>
+                <label>9 de Julio</label>
+            </value>
+            <value>
+                <fullName>Oberá</fullName>
+                <default>false</default>
+                <label>Oberá</label>
+            </value>
+            <value>
+                <fullName>Olegario Víctor Andrade</fullName>
+                <default>false</default>
+                <label>Olegario Víctor Andrade</label>
+            </value>
+            <value>
+                <fullName>Panambí</fullName>
+                <default>false</default>
+                <label>Panambí</label>
+            </value>
+            <value>
+                <fullName>Posadas</fullName>
+                <default>false</default>
+                <label>Posadas</label>
+            </value>
+            <value>
+                <fullName>Profundidad</fullName>
+                <default>false</default>
+                <label>Profundidad</label>
+            </value>
+            <value>
+                <fullName>Puerto Esperanza</fullName>
+                <default>false</default>
+                <label>Puerto Esperanza</label>
+            </value>
+            <value>
+                <fullName>Puerto Iguazú</fullName>
+                <default>false</default>
+                <label>Puerto Iguazú</label>
+            </value>
+            <value>
+                <fullName>Puerto Leoni</fullName>
+                <default>false</default>
+                <label>Puerto Leoni</label>
+            </value>
+            <value>
+                <fullName>Puerto Libertad</fullName>
+                <default>false</default>
+                <label>Puerto Libertad</label>
+            </value>
+            <value>
+                <fullName>Puerto Piray</fullName>
+                <default>false</default>
+                <label>Puerto Piray</label>
+            </value>
+            <value>
+                <fullName>Puerto Rico</fullName>
+                <default>false</default>
+                <label>Puerto Rico</label>
+            </value>
+            <value>
+                <fullName>Ruiz de Montoya</fullName>
+                <default>false</default>
+                <label>Ruiz de Montoya</label>
+            </value>
+            <value>
+                <fullName>San Antonio</fullName>
+                <default>false</default>
+                <label>San Antonio</label>
+            </value>
+            <value>
+                <fullName>San Ignacio</fullName>
+                <default>false</default>
+                <label>San Ignacio</label>
+            </value>
+            <value>
+                <fullName>San Javier</fullName>
+                <default>false</default>
+                <label>San Javier</label>
+            </value>
+            <value>
+                <fullName>San José</fullName>
+                <default>false</default>
+                <label>San José</label>
+            </value>
+            <value>
+                <fullName>San Martín</fullName>
+                <default>false</default>
+                <label>San Martín</label>
+            </value>
+            <value>
+                <fullName>San Pedro</fullName>
+                <default>false</default>
+                <label>San Pedro</label>
+            </value>
+            <value>
+                <fullName>San Vicente</fullName>
+                <default>false</default>
+                <label>San Vicente</label>
+            </value>
+            <value>
+                <fullName>Santa Ana</fullName>
+                <default>false</default>
+                <label>Santa Ana</label>
+            </value>
+            <value>
+                <fullName>Santa María</fullName>
+                <default>false</default>
+                <label>Santa María</label>
+            </value>
+            <value>
+                <fullName>Santiago de Liniers</fullName>
+                <default>false</default>
+                <label>Santiago de Liniers</label>
+            </value>
+            <value>
+                <fullName>Santo Pipó</fullName>
+                <default>false</default>
+                <label>Santo Pipó</label>
+            </value>
+            <value>
+                <fullName>Tres Capones</fullName>
+                <default>false</default>
+                <label>Tres Capones</label>
+            </value>
+            <value>
+                <fullName>25 de Mayo</fullName>
+                <default>false</default>
+                <label>25 de Mayo</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

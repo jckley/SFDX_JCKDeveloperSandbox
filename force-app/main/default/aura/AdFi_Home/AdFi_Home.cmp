@@ -1,0 +1,16 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes,force:appHostable,flexipage:availableForAllPageTypes">	    
+    <div class="slds-grid slds-wrap">
+        <div class="slds-col slds-size_1-of-1 slds-large-size_6-of-12" style="padding: 15px;">
+            <c:AdFi_HotspotMap />
+        </div>
+        <!--<div class="slds-col slds-size_1-of-1 slds-large-size_5-of-12" style="padding: 15px;">
+            <c:AdFi_HomeDashboard recordId="a2L6A000000EILzUAO" />
+        </div>-->
+        <div class="slds-col slds-size_1-of-1 slds-large-size_6-of-12" style="padding: 15px;">
+            <c:AdFi_ConnectedPeople peopleCount="5"/>
+        </div>
+        <!--<div class="slds-col slds-size_1-of-1 slds-large-size_5-of-12" style="padding: 15px;">
+            <c:AdFi_ConnectedPeopleIncome />
+        </div>-->
+    </div>
+</aura:component>

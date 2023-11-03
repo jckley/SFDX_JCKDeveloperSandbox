@@ -1,0 +1,36 @@
+.THIS {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+}
+
+.THIS .title {
+    font-size: 29pt;
+    color: #3e4954;
+}
+
+.THIS .main-label:hover{
+    cursor: pointer;
+    text-decoration : underline;
+}
+
+.THIS .subtitle,
+.THIS .subtitle a,
+.THIS .subtitle a:visited,
+.THIS .subtitle a:link,
+.THIS .subtitle a:hover {
+    font-size: 10pt;
+    line-height: 1.5;
+    color: #3e4954;
+    cursor: pointer;
+}
+.THIS .subtitle {
+    font-weight: 400;    
+}
+.THIS .subtitle A {
+    font-weight: 	bold; 
+    text-decoration : underline;
+}
+.THIS .subtitle A:hover { 
+    text-decoration : underline;
+    color : #1cdcbb;
+}

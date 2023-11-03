@@ -1,0 +1,55 @@
+.THIS {
+    color: #707276;
+}
+
+.THIS.subattribute-header {
+    background-color: #f8f9fc; 
+    margin-left: 0px;
+    margin-top: 0px;
+    height: 80px;
+    padding-top: 25px;
+}
+
+.THIS .icon-header {
+    width: 15px;
+    height: 15px;
+    margin-left: 15px;
+    margin-bottom: 5px;
+}
+
+.THIS .icon-small {
+    max-width: 25px;
+    max-height: 25px;
+}
+
+.THIS .header-text {
+    font-family: 'Heebo';
+    font-weight: 300;
+    font-size: 14pt;
+    margin-left: 10px;
+}
+
+.THIS .summary-title{
+    color: #a6a6a6;
+    font-weight: bold;
+    font-size: 10pt;
+}
+
+.THIS .summary {
+    font-family: 'Heebo';
+    font-size: 13pt;
+}
+
+.THIS .social-border-left {
+    border-left: solid 1px #ededed;
+}
+
+/* Special classes for small devices */
+@media only screen and (max-width: 768px) {
+    .THIS .border-top {border-top: solid 1px #ededed;}
+}
+
+/* Special classes for big devices */
+@media only screen and (min-width: 768px) {
+    .THIS {}
+}

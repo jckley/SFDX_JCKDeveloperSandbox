@@ -1,0 +1,5 @@
+<design:component >
+    <design:attribute  name="height"  label="Alto del componente" default="600" />
+
+    <design:attribute  name="dashboardtype"  label="Alto del componente" default="Territorial" datasource="Territorial,Sintomas,Sanitario" />
+</design:component>

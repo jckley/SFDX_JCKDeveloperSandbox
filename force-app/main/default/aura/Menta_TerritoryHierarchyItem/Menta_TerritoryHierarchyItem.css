@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Poppins:300');
+.THIS {
+}
+
+.THIS .territory { 
+    padding: 4px 15px 15px 20px;
+    margin: 0 15px 1px 15px;
+    line-height:35px;
+    height: 42px;
+}
+.THIS .territory .back_arrow {display: inline-block; position: relative;}
+.THIS .territory .back_arrow IMG {transform: scaleX(-1); position :inline-block;
+    max-height: 15px; max-width: 15px;vertical-align: top;}
+.THIS .territory .back_arrow_ios {display: inline-block; position: relative; left: -10px;}
+.THIS .territory .back_arrow_ios IMG {-webkit-transform: scaleX(-1); transform: scaleX(-1); display :inline-block;
+    max-height: 15px; max-width: 15px;}
+.THIS .territory ul {list-style-type: none; margin: 0; padding: 0;}
+.THIS .territory ul li {display:flex; align-items:center;}
+
+.THIS .territory.selected {
+    background-color: #f2f2f2; 
+    border-radius: 10px; 
+    cursor: pointer;
+    line-height:35px;    
+    height: 42px; 
+}
+
+.THIS .territory .name {
+    font-family: 'Open Sans';
+    display: inline-block;    
+    position: relative;
+    white-space: nowrap;
+    width: 100%;
+    font-size: 13pt;
+}
+
+.THIS .territory.selected .name{ 
+    color: #00a290;
+    font-weight: bold;
+    width: calc(100% - 105px);
+    overflow:hidden;
+    white-space: nowrap;
+}
+
+.THIS .territory.selected .name.not-selected{ 
+    color: #00a290 !important;
+    font-weight: bold;
+    width: calc(100% - 105px);
+    overflow:hidden;
+    white-space: nowrap;
+}
+
+.THIS .territory .detail {
+    font-family: 'Open Sans';
+    font-weight: bold;
+    display:none;
+}
+
+
+.THIS .territory.selected 	.detail {
+    display: inline; 
+    color: #58595b;
+    float: right; 
+    font-weight: bold; 
+    font-size: 9pt;    
+}
+
+.THIS .territory .detail IMG {
+    max-width: 15px;
+    max-height: 15px;
+    margin-left: 10px;
+}
+
+/* Special classes for small devices */
+@media only screen and (max-width: 768px) {
+    .THIS .territory.selected {margin-bottom: 14px;}
+    .THIS .territory.selected 	.name { 
+        width: calc(100% - 50px);
+        text-overflow: ellipsis;
+    }
+}
+
+/* Special classes for big devices */
+@media only screen and (min-width: 768px) {
+    .THIS {}
+    .THIS .territory:hover {
+        background-color: #f2f2f2; 
+        border-radius: 10px; 
+        cursor: pointer;
+        line-height:35px;    
+        height: 42px; 
+    }
+    .THIS .territory:hover .name {
+        color: #4e4e4e !important;
+        font-weight: bold;
+        width: calc(100% - 105px);
+        overflow:hidden;
+        white-space: nowrap;
+    }
+    .THIS .territory.selected 	.name:after ,
+    .THIS .territory:hover 		.name:after {
+        content:'';
+        position: absolute;
+        left: 100%;
+        margin-left: -40px;
+        width: 40px;
+        height:100%;
+        top:0;
+        background:linear-gradient(to right, transparent, #f2f2f2);
+        background-image: linear-gradient(to right, rgba(255, 255, 255, 0), #f2f2f2 80%);
+    }
+    .THIS .territory.selected:hover .name{ 
+        color: #00a290;
+        font-weight: bold;
+        width: calc(100% - 105px);
+        overflow:hidden;
+        white-space: nowrap;
+    }
+    .THIS .territory.selected:hover .name.not-selected{ 
+        color: #00a290 !important;
+        font-weight: bold;
+        width: calc(100% - 105px);
+        overflow:hidden;
+        white-space: nowrap;
+    }
+    .THIS .territory:hover .detail {
+        display: inline; 
+        color: #58595b;
+        float: right; 
+        font-weight: bold; 
+        font-size: 9pt;    
+    }
+    .THIS .territory.selected .detail:hover ,
+    .THIS .territory .detail:hover { 
+        text-decoration:underline;
+    }
+}

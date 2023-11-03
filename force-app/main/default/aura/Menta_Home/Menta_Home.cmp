@@ -1,0 +1,17 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes,force:appHostable,flexipage:availableForAllPageTypes" controller="PCash_HomeController">	    
+    
+    <aura:attribute name="territoryWrapper" 	type="TerritoryWrapper2" />
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <div class="slds-grid slds-wrap">
+        <div class="slds-size_1-of-1 slds-grid slds-wrap">
+            <c:Menta_HomeContactSummary terrw="{!v.territoryWrapper}"/>
+        </div>
+        
+        <div class="slds-size_1-of-1 slds-grid slds-wrap">
+            <c:Menta_HomeSocialSummary terrw="{!v.territoryWrapper}"/>
+        </div>
+        
+    </div>
+</aura:component>

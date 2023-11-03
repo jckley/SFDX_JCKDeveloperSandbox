@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cuidarnos_Comunidad_Status__c</fullName>
+    <externalId>false</externalId>
+    <label>Estado</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Sintomático</fullName>
+                <default>false</default>
+                <label>Sintomático</label>
+            </value>
+            <value>
+                <fullName>Sospechoso</fullName>
+                <default>false</default>
+                <label>Sospechoso</label>
+            </value>
+            <value>
+                <fullName>Muestra</fullName>
+                <default>false</default>
+                <label>Muestra</label>
+            </value>
+            <value>
+                <fullName>Detectable</fullName>
+                <default>false</default>
+                <label>Detectable</label>
+            </value>
+            <value>
+                <fullName>No Detectable</fullName>
+                <default>false</default>
+                <label>No Detectable</label>
+            </value>
+            <value>
+                <fullName>Inválido</fullName>
+                <default>false</default>
+                <label>Inválido</label>
+            </value>
+            <value>
+                <fullName>Notificado</fullName>
+                <default>false</default>
+                <label>Notificado</label>
+            </value>
+            <value>
+                <fullName>Descartado</fullName>
+                <default>false</default>
+                <label>Descartado</label>
+            </value>
+            <value>
+                <fullName>Asintomático</fullName>
+                <default>false</default>
+                <label>Asintómatico</label>
+            </value>
+            <value>
+                <fullName>Archivado</fullName>
+                <default>false</default>
+                <label>Archivado</label>
+            </value>
+            <value>
+                <fullName>Seguimiento COH</fullName>
+                <default>false</default>
+                <label>Seguimiento COH</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

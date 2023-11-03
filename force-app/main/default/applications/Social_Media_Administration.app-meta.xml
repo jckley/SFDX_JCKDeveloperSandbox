@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <defaultLandingTab>standard-home</defaultLandingTab>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
+    <label>Social Media Administration</label>
+    <tabs>standard-Chatter</tabs>
+    <tabs>Social_Destination__c</tabs>
+    <tabs>Social_Source__c</tabs>
+    <tabs>Social_Media__c</tabs>
+    <tabs>standard-SocialPersona</tabs>
+    <tabs>standard-SocialPost</tabs>
+    <tabs>Export</tabs>
+    <tabs>Cuidarnos_IVR_Calls__c</tabs>
+    <tabs>PilarCitizenInteractions__c</tabs>
+    <tabs>Campania__c</tabs>
+</CustomApplication>

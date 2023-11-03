@@ -1,0 +1,47 @@
+.c-container {
+    margin: 20px 0 20px 0;
+}
+.title {
+    font-family: 'Heebo';
+    font-weight:bold;
+}
+.cabecera {
+    color: #999999;
+    font-family: 'Roboto Condensed';
+    font-weight: bold;
+    font-size: x-small !important;
+}
+.fuente {
+    color: #404246;
+    font-family: 'Heebo';
+    font-size: small !important;
+}
+.slds-box {
+    border-color: #CEE1F0;
+    border-style: solid;
+    border-width: inherit;
+}
+
+.card {
+    background-color: #ffffff;
+    will-change: transform;
+    overflow:  hidden;
+    box-shadow: 2px 2px 3px 3px #EBEBEB;
+    min-height: 100px;
+    vertical-align: middle;
+    border-radius: 6px;
+    border: solid 1px #FFFFFF;
+}
+.icon {
+    max-width: 35px;
+    max-height: 35px;
+    vertical-align: middle;
+    border-style: none;
+}
+
+.icon-small {
+    max-width: 25px;
+    max-height: 25px;
+    vertical-align: middle;
+    border-style: none;
+}

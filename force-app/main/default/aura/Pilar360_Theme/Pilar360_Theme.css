@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed|Heebo:100,300,400');
+.THIS {
+}
+
+.THIS .salesforceIdentityLoginForm2 .uiButton{
+    background-color:#ED1F24;
+}
+
+.THIS .forceBreadCrumbItem.uiOutputText{display: none;}
+.THIS .forceCommunityActionsContainerMobile {display: none;}
+.THIS .forceCommunityAnalyticsObjectHome .folderNavigator,
+.THIS .forceCommunityRecordListDesktop.forceListViewManager {
+    max-width: 1200px;
+    width: 100%;
+    margin : 0 auto;
+    position: absolute;
+    top: 90px;
+    left: 50%;
+    transform: translate(-50%);
+    max-height:77.67vh;
+    overflow: hidden;
+    border: solid 1px rgb(183, 210, 229);
+    border-radius: 6px;
+    padding: 0 15px;
+}
+.THIS .forceCommunityAnalyticsObjectHome .folderNavigator {padding: 0;}
+.THIS .forceCommunityRecordListDesktop {background-color : #F7F7F7;}
+.THIS .folderNavigator .bodyContainer {
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+.THIS .forceCommunityAnalyticsObjectHome .folderNavigator .slds-page-header {background-color : #F7F7F7;}
+.THIS .forceListViewPicker {color : #000000;}
+.THIS .listViewContent {color : #000000;}
+.THIS .slds-dropdown__item > a {color : #000000;}
+.THIS .body {min-height: 80vh; background-color: #F7F7F7;}
+.THIS .forceCommunitySearch {background-color: #F7F7F7;}
+.THIS .siteforceContentArea > div {padding-left: 0; padding-right: 0;}
+.THIS .innerStacking {background-color: #F7F7F7;}
+.THIS .forceCommunitySearch {
+    position: relative;
+    top: -115px;
+    margin: 0 15px;
+    max-width: 1200px;
+    margin: auto;
+    border: solid 1px #b6d2e3;
+    border-radius: 6px;
+
+}
+
+.THIS .forceCommunityGlobalNavigation .slds-list_vertical > li:first-child {display: none;}
+.THIS .forceCommunityGlobalNavigation .slds-list_vertical > li > a > span{font-family: 'Heebo';}

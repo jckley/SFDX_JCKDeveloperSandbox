@@ -1,0 +1,516 @@
+<apex:page docType="html-5.0" standardStylesheets="false" lightningStylesheets="true" title="SMS" showHeader="false" sidebar="false" controller="MensajesController">
+    <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" lang="en">
+        <head>
+            <title>SMS</title>
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            
+            <apex:stylesheet value="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+            <apex:stylesheet value="https://use.fontawesome.com/releases/v5.8.1/css/all.css"/>
+            <apex:stylesheet value="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css"/>
+            <apex:stylesheet value="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" />
+            <apex:stylesheet value="https://cdnjs.cloudflare.com/ajax/libs/easy-autocomplete/1.3.5/easy-autocomplete.min.css" />
+            <apex:stylesheet value="https://cdnjs.cloudflare.com/ajax/libs/easy-autocomplete/1.3.5/easy-autocomplete.themes.min.css" />
+            <apex:stylesheet value="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.css" />
+            
+            <apex:stylesheet value="{! URLFOR($Resource.sms_utils, '/css/sms.css')}" />
+         
+           
+            <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" />
+            <apex:includeScript value="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" />
+            <apex:includeScript value="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" />
+            <apex:includeScript value="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js" />
+            <apex:includeScript value="https://cdnjs.cloudflare.com/ajax/libs/easy-autocomplete/1.3.5/jquery.easy-autocomplete.min.js" />
+            <apex:includeScript value="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.js" />
+        </head>      
+        
+        <apex:remoteObjects >
+            <apex:remoteObjectModel name="Campania__c" fields="Id,Name,Project__c"/>
+            <apex:remoteObjectModel name="Project__c" fields="Id,Name"/>
+        </apex:remoteObjects>
+
+        <body>            
+            <c:sms_header newSend="false" resend="false"></c:sms_header>
+            <div class='notifications bottom-right'></div>
+            <!-- CREAR MENSAJE -->
+            <section class="container px-auto" style="padding-top:110px !important;">                                
+                <div class="row d-flex justify-content-center">
+                    <div class="col-11">
+                        <article class="card border-0 shadow-sm cardsurvey_sm">
+                            
+                            <div class="row pt-4 px-4">
+                                <div class="col-12">
+                                    
+                                    <h3><b style="font-size:0.8em; color:#58595B;">Enviar mensaje</b></h3>
+                                    <hr style="width:100%; color:#EEEEEE; height:1px; align:center;" />
+                                    
+                                    <div class="pt-3"></div>
+                                    
+                                    <!-- FORMULARIO -->
+                                    <form action="" method="post" data-toggle="validator" role="form">
+                                        <!-- PLATAFORMA -->
+                                        <div class="form-group">
+                                            <span class="sub-title">PLATAFORMA</span>
+                                            <div class="pt-2"></div>
+                                            <select class="form-control sms-element" id="sms_platform" required="required" data-error="DEBE SELECCIONAR LA PLATAFORMA DE ENVÍO.">
+                                                <option value="MC">MarketingCloud</option>
+                                                <option value="SONDEOS">Sondeos</option>
+                                            </select>
+                                            <div class="help-block with-errors error-color"></div>
+                                        </div>
+                                        
+                                        <div class="pt-3"></div>
+                                        <hr class="sms-line" />
+                                        <div class="pt-3"></div>
+
+                                        <!-- TITULO -->
+                                        <div class="form-group">
+                                            <span class="sub-title">TÍTULO</span>
+                                            <span class="sub-title" style="float:right;" id="charNumTittle">40</span>
+                                            <div class="pt-2"></div>
+                                            <input class="form-control sms-element" type="text" id="sms_name"  onkeyup="countChars(this, 'charNumTittle', 40, 'sms_name', 'exceeded-tittle');" placeholder="Título del mensaje"  data-maxlength="40" data-maxlength-error='EL TEXTO ES DEMASIADO LARGO.' data-error="DEBE INGRESAR EL NOMBRE DEL MENSAJE." required="required" />
+                                            <div class="help-block with-errors error-color"></div>
+                                            <div id="exceeded-tittle" class="error-color"></div>
+                                        </div>
+                                                                                
+                                        <div class="pt-3"></div>
+                                        <hr class="sms-line" />
+                                        <div class="pt-3"></div>
+                                        
+                                        <!-- Proyecto -->
+                                        <div class="form-group">
+                                            <span class="sub-title">Proyecto</span>
+                                            <span class="sub-title" style="float:right;" id="charNumTittle">40</span>
+                                            <div class="pt-2"></div>
+                                            <input class="form-control sms-element" type="text" id="sms_project"  onkeyup="countChars(this, 'charNumTittle', 40, 'sms_project', 'exceeded-tittle');" placeholder="Proyecto del mensaje" data-maxlength="40" data-maxlength-error='EL TEXTO ES DEMASIADO LARGO.' data-error="DEBE INGRESAR EL PROYECTO DEL MENSAJE." required="required" onkeypress="onFocusProyecto(this);" />
+                                            <div class="help-block with-errors error-color"></div>
+                                            <div id="exceeded-tittle" class="error-color"></div>
+                                        </div>
+                                                                                
+                                        <div class="pt-3"></div>
+                                        <hr class="sms-line" />
+                                        <div class="pt-3"></div>
+                                        
+                                        <!-- Campaña -->
+                                        <div class="form-group">
+                                            <span class="sub-title">Campaña</span>
+                                            <span class="sub-title" style="float:right;" id="charNumTittle">40</span>
+                                            <div class="pt-2"></div>
+                                            <input class="form-control sms-element" type="text" id="sms_campaign" onkeyup="countChars(this, 'charNumTittle', 40, 'sms_campaign', 'exceeded-tittle');" placeholder="Campaña del mensaje"  data-maxlength="40" data-maxlength-error='EL TEXTO ES DEMASIADO LARGO.' data-error="DEBE INGRESAR LA CAMPAÑA DEL MENSAJE." required="required" onkeypress="onFocusCampania(this);"/>
+                                            <div class="help-block with-errors error-color"></div>
+                                            <div id="exceeded-tittle" class="error-color"></div>
+                                        </div>
+                                                                                
+                                        <div class="pt-3"></div>
+                                        <hr class="sms-line" />
+                                        <div class="pt-3"></div>
+                                                                                 
+                                        <!-- PÚBLICO -->
+                                        <div id="divPublicContainer" class="form-group">
+                                            <span class="sub-title">PÚBLICO</span>
+                                            <div class="pt-2"></div>
+                                            <input id="sms_public" class="form-control sms-element sms-search" type="text" placeholder="Escoja un data extension" data-maxlength="40" data-maxlength-error='EL TEXTO ES DEMASIADO LARGO.' data-error="DEBE INGRESAR EL PÚBLICO." required="required"/>
+                                            <div id="divInvalidPublic" class="help-block with-errors error-color"></div>
+                                        </div>
+                                        
+                                        <div class="pt-3"></div>
+                                        <hr class="sms-line" />
+                                        <div class="pt-3"></div>
+                                        
+                                        <!-- REMITENTE -->
+                                        <div class="form-group">
+                                            <span class="sub-title">REMITENTE</span>
+                                            <div class="pt-2"></div>
+                                            <select class="form-control sms-element" id="sms_method" required="required" data-error="DEBE INGRESAR EL MÉTODO DE ENVÍO.">
+                                                <option value="30777">Número Corto</option>
+                                                <option value="1757">Número Largo</option>
+                                            </select>
+                                            <div class="help-block with-errors error-color"></div>
+                                        </div>
+                                        
+                                        <div class="pt-3"></div>
+                                        <hr class="sms-line" />
+                                        <div class="pt-3"></div>
+                                        
+                                        <!-- MENSAJE -->
+                                        <div class="form-group">
+                                            <span class="sub-title">MENSAJE</span>
+                                            <span class="sub-title" style="float:right;" id="charNum">255</span>
+                                            <div class="pt-2"></div>
+                                            <textarea required="required" id="sms_message" placeholder="Escriba su mensaje"
+                                                      onkeyup="countChars(this, 'charNum', 255, 'sms_message', 'exceeded-message');"
+                                                      class="form-control sms-element" style="height:140px !important;"
+                                                      data-error="DEBE INGRESAR EL TEXTO DEL MENSAJE."></textarea>
+                                            <div class="help-block with-errors error-color"></div>
+                                            <div id="exceeded-message" class="error-color"></div>
+                                        </div>
+                                        
+                                        <div class="pt-5"></div>
+                                        
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <button type="button" onclick="javascript:window.history.back();" class="btn btn-cancel">CANCELAR</button>
+                                            </div>
+                                            
+                                            <div class="col-6">
+                                                <button id="send-button" type="submit" class="btn btn-send">ENVIAR</button>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="pt-5"></div>
+                                        
+                                    </form>
+                                    
+                                </div>
+                            </div>
+                            
+                        </article>
+                    </div>
+                </div>
+                
+            </section>
+
+            <!-- LOADING -->
+            <div class="modal fade bd-example-modal-lg" data-backdrop="static" data-keyboard="false" tabindex="-1">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content" style="width: 48px">
+                        <span class="fa fa-spinner fa-spin fa-3x"></span>
+                    </div>
+                </div>
+            </div>
+            
+        <script>
+        var TOAST_TYPE_SUCCESS = 1;
+    	var TOAST_TYPE_ERROR = 2;
+        var strSender = null;
+        var strMessage = null;
+        var strDataExtension = null;
+        var strDataExtensionVal = null;
+        var strTitulo = null;
+        var strProyectoId = null;
+        var strProyecto = null;
+        var strCampaniaId = null;
+        var strCampania = null;
+        var strPlatform = null;
+            
+        // ACCIÓN DEL FORMULARIO
+        $('form').validator().on('submit', function (objEvent) {
+            var strPublic = null;
+            $('#divInvalidPublic').html('');
+            $('#divPublicContainer').removeClass('has-error');
+            $('#divPublicContainer').removeClass('has-danger');
+            
+            if (!objEvent.isDefaultPrevented()) {
+                strPublic = $('#sms_public').val();
+                console.log('pasa')
+                if(validatePublic(strPublic ) ) {
+                    showLoading();
+                    
+                    objEvent.preventDefault();
+                    
+                    sendMessage();	
+                } else {
+                    objEvent.preventDefault();
+                    $('#divInvalidPublic').html('La audiencia seleccionada no es válida');
+                    $('#divPublicContainer').addClass('has-error');
+                    $('#divPublicContainer').addClass('has-danger');
+                }
+            } 
+        });
+
+        function validatePublic(strPublic) {
+            return ($.grep(arrDataExtensions,function(e,t,a) { return e.text == strPublic}).length > 0);
+        }
+            
+        // CUENTO LOS CARACTERES
+        function countChars(obj, objChars, maxChars, objTitle, objTitleError){
+            var maxLength = maxChars;	// CANTIDAD MAXIMA DE CARACTERES PERMITIDOS EN EL TITULO
+            var strLength = obj.value.length;
+            var charRemain = (maxLength - strLength);
+            
+            $('#' + objChars).html(charRemain);
+            
+            if(charRemain < 0){
+                $('#' + objTitleError).html('EL TEXTO ES DEMASIADO LARGO.');
+                $('#' + objTitle).addClass("invalid");
+            } else {
+                $('#' + objTitleError).html('');
+                $('#' + objTitle).removeClass("invalid");
+            }
+        }
+        
+        // LLENO COMBO
+		function fillcombo(objCombo, arrItems, strDefaultOption) {
+            if(strDefaultOption !== undefined && strDefaultOption !== null && strDefaultOption.length > 0) {
+                objCombo.append($('<option>', { 
+                    value: '',
+                    disabled:'disabled',
+                    selected:'selected',
+                    label : strDefaultOption 
+                }));
+            }
+            $.each(arrItems, function (intIndex, objItem) {
+                objCombo.append($('<option>', { 
+                    value: objItem.value,
+                    label : objItem.text 
+                }));
+            });
+        }
+        var arrDataExtensions = [];
+        loadDataExtensions();
+
+        function loadDataExtensions() {
+            $.ajax({
+                url:"https://api-pulso.prosumia.la/aws-api/pulso_mc_data_extension/retrieve_data_extensions",
+                type:"GET",
+                success:function(objResponse) {
+                    const strDataExtensions = String(objResponse.message);
+                    var intIndex = 0;
+                    var intIndexFrom = 0;
+                    var intIndexTo = 0;
+                    var strDataExtensionName = null;
+                    var strDataExtensionCustomerKey = null;
+                    
+                    while (intIndex !== -1) {
+                        intIndex = strDataExtensions.indexOf("CustomerKey", intIndex);
+                        if (intIndex !== -1) {                            
+                            intIndexFrom = strDataExtensions.indexOf("\"", intIndex);
+                            intIndexTo = strDataExtensions.indexOf("\"", intIndexFrom + 1);
+                            strDataExtensionCustomerKey = strDataExtensions.substring(intIndexFrom + 1, intIndexTo);
+                            
+                            intIndex = intIndexTo + 1;                            
+                            intIndex = strDataExtensions.indexOf("Name", intIndex);                            
+                            intIndexFrom = strDataExtensions.indexOf("\"", intIndex);
+                            intIndexTo = strDataExtensions.indexOf("\"", intIndexFrom + 1);
+                            intIndex = intIndexTo + 1;
+                            strDataExtensionName = strDataExtensions.substring(intIndexFrom + 1, intIndexTo);
+                            
+                            arrDataExtensions.push( { 'value' : strDataExtensionCustomerKey , 'text' :  strDataExtensionName});
+                        }
+                    }
+                },
+                error:function(objError){
+                    showMessage(TOAST_TYPE_ERROR, ['Ha ocurrido un error al obtener las dataextensios. Intente en unos minutos']);
+                }
+            });            
+        }
+        
+		var arrDataExtensionOptions = {
+			data: arrDataExtensions,
+            getValue: "text",
+			list: {
+                // setea el valor de la variable 
+                onSelectItemEvent: function() {
+                    strDataExtensionVal = $("#sms_public").getSelectedItemData().value;
+                },
+                // permite que machée mientras uno escribe
+                match: { enabled: true },
+                // ordena los ítems del list
+                sort: { enabled: true },
+                maxNumberOfElements: 10000
+			}
+        };
+        
+        $("#sms_public").easyAutocomplete(arrDataExtensionOptions);
+
+        var arrProyectos = [];
+        var arrProyectosIds = [];
+
+        function onFocusProyecto(input){
+            var Project__c = new SObjectModel.Project__c();
+            Project__c.retrieve({where: {Name: {like: input.value + "%" }}}, function(err, records, event) {
+                if (err) {
+                    alert(err);
+                } else {
+                    records.forEach(function(record) {
+                        var proyecto = { 
+                            value: record.get("Id"),
+                            text : record.get("Name"),
+                        };
+                        if(arrProyectosIds.includes(proyecto.value) === false){
+                            arrProyectos.push(proyecto);
+                            arrProyectosIds.push(proyecto.value);
+                        }
+                        
+                    });
+                }
+            });
+        }
+
+        var arrProjectsOptions = {
+			data: arrProyectos,
+            getValue: "text",
+			list: {
+                // setea el valor de la variable 
+                onSelectItemEvent: function() {
+                    strProyectoId = $("#sms_project").getSelectedItemData().value;
+                    strCampaniaId = null;
+                    arrCampanias.length = 0;
+                    arrCampaniasIds.length = 0;
+                },
+
+                // permite que machée mientras uno escribe
+                match: { enabled: true },
+                // ordena los ítems del list
+                sort: { enabled: true },
+                maxNumberOfElements: 10000
+			}
+        };
+
+        $("#sms_project").easyAutocomplete(arrProjectsOptions);
+
+        var arrCampanias = [];
+        var arrCampaniasIds = [];
+        
+        function onFocusCampania(input){
+            var Campania__c = new SObjectModel.Campania__c();
+            if(strProyectoId == null){
+                Campania__c.retrieve({where: {Name: {like: input.value + "%" }}}, function(err, records, event) {
+                    if (err) {
+                        alert(err);
+                    } else {
+                        records.forEach(function(record) {
+                            console.log('record');
+                            var campania = { 
+                                    value: record.get("Id"),
+                                    text : record.get("Name"),
+                                };
+                            if(arrCampaniasIds.includes(campania.value) === false){
+                                arrCampanias.push(campania);
+                                arrCampaniasIds.push(campania.value);
+                            }
+                        });
+                    }
+                });
+            } else {
+                Campania__c.retrieve({where: {Name: {like: input.value + "%" }, Project__c: {eq: strProyectoId}}}, function(err, records, event) {
+                    if (err) {
+                        alert(err);
+                    } else {
+                        records.forEach(function(record) {
+                            var campania = { 
+                                    value: record.get("Id"),
+                                    text : record.get("Name"),
+                                };
+                            if(arrCampaniasIds.includes(campania.value) === false){
+                                arrCampanias.push(campania);
+                                arrCampaniasIds.push(campania.value);
+                            }
+                        });
+                    }
+                });
+            }
+        }
+
+        var arrCampaignsOptions = {
+			data: arrCampanias,
+            getValue: "text",
+			list: {
+                // setea el valor de la variable 
+                onSelectItemEvent: function() {
+                    strCampaniaId = $("#sms_campaign").getSelectedItemData().value;
+                },
+                // permite que machée mientras uno escribe
+                match: { enabled: true },
+                // ordena los ítems del list
+                sort: { enabled: true },
+                maxNumberOfElements: 10000
+			}
+        };
+
+        $("#sms_campaign").easyAutocomplete(arrCampaignsOptions);
+        
+        function sendMessage() {
+            strSender = $('#sms_method').val();
+            strMessage = $('#sms_message').val();
+            strDataExtension = $('#sms_public').val();
+            strCampania = $('#sms_campaign').val();
+            strProyecto = $('#sms_project').val();
+            strTitulo = $('#sms_name').val();
+            strPlatform = $('#sms_platform').val();
+            
+            if(strSender !== undefined && strSender !== null && strMessage !== undefined && strMessage !== null && strDataExtension !== undefined && strDataExtension !== null && strProyecto !== undefined && strProyecto !== null && strCampania !== undefined && strCampania !== null) {
+                Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.MensajesController.sendMessage}',strSender, strDataExtensionVal, strDataExtension, strMessage, strTitulo, strProyectoId, strProyecto, strCampaniaId, strCampania, strPlatform, 
+                    function(objResult, objEvent){
+                        if (objEvent.status) {
+                           location.href = '/apex/sms_index?e=success';
+                        } else {
+                            handleError(objEvent);
+                        }
+                    }, 
+                        {buffer: true, escape: true, timeout: 120000}
+                );   
+            } else {
+                showMessage(TOAST_TYPE_ERROR, ['Los datos ingresados no son correctos']);
+            }
+        }
+
+        function showMessage(intType, arrMessages) {
+	        var strHTML = null;
+	        var strClass = null;
+
+	        switch(intType) {
+	            case TOAST_TYPE_SUCCESS:
+	                strClass = 'success';
+	            break;
+
+	            case TOAST_TYPE_ERROR:
+	                strClass = 'error';
+	            break;
+	        }
+
+	        if(arrMessages != null && arrMessages.length > 0) {
+	        	strHTML = '';
+	            $.each(arrMessages, function( intIndex, strMessage ) { 
+	            	strHTML  += strMessage + '<br />';
+	            });
+
+
+                $.toast({
+                    text: strHTML, // Text that is to be shown in the toast
+                    heading: 'Note', // Optional heading to be shown on the toast
+                    icon: strClass, // Type of toast icon
+                    showHideTransition: 'slide', // fade, slide or plain
+                    allowToastClose: true, // Boolean value true or false
+                    hideAfter: 3000, // false to make it sticky or number representing the miliseconds as time after which toast needs to be hidden
+                    stack: 5, // false if there should be only one toast at a time or a number representing the maximum number of toasts to be shown at a time
+                    position: 'top-center', // bottom-left or bottom-right or bottom-center or top-left or top-right or top-center or mid-center or an object representing the left, right, top, bottom values
+                    
+                    
+                    
+                    textAlign: 'center',  // Text alignment i.e. left, right or center
+                    loader: true,  // Whether to show loader or not. True by default
+                    loaderBg: '#9EC600',  // Background color of the toast loader
+                    beforeShow: function () {}, // will be triggered before the toast is shown
+                    afterShown: function () {}, // will be triggered after the toat has been shown
+                    beforeHide: function () {}, // will be triggered before the toast gets hidden
+                    afterHidden: function () {}  // will be triggered after the toast has been hidden
+                });
+    
+	        }
+	    }
+
+        function handleError(objEvent) {
+	        var strErrorMessage = '';
+
+	        if(objEvent != null && objEvent.message != null) {
+	            strErrorMessage += objEvent.message;
+
+	            if(objEvent.type === 'exception') {
+	                strErrorMessage += objEvent.where;
+	            }
+
+	            showMessage(TOAST_TYPE_ERROR, [strErrorMessage]);
+	        }
+	    }
+         
+        function showLoading() {
+            $('.modal').modal('show');
+            setTimeout(function () {
+                $('.modal').modal('hide');
+            }, 50000);
+        }            
+        </script>
+        </body>
+    </html>
+</apex:page>

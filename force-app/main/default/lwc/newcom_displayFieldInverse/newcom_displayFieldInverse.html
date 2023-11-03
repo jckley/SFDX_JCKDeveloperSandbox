@@ -1,0 +1,27 @@
+<template>
+
+    <div class="slds-grid slds-wrap">
+        <div class={cssValue} style="margin-top: 10px;">
+            <template if:true = "{value}">
+                <template if:false = "{notShowDetail}">
+                    <span >{ value }</span>
+                </template>
+                <template if:true = "{notShowDetail}">
+                    <span>{ label.Yes }</span>
+                </template>
+            </template>
+            <template if:false = "{value}">
+                <template if:true = "{emptyValue}">
+                    <span>{ emptyValue }</span>
+                </template>
+                <template if:false = "{emptyValue}">
+                    <span>{ label.NoInformation }</span>
+                </template>
+            </template>
+        </div>
+        <div class={cssLabel} style="margin-bottom: 10px;">
+            { label }
+        </div>
+    </div>
+    
+</template>

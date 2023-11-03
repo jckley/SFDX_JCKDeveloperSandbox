@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Prosumer_Envialo_Simple_Preview__c</fullName>
+    <description>Para enviar el preview, hace falta tener una campaña creada. La idea va a ser usar 1 sola por cuenta para los preview y guardar el id aca. Si no tiene Id asociado, se crea y se asigna.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Para enviar el preview, hace falta tener una campaña creada. La idea va a ser usar 1 sola por cuenta para los preview y guardar el id aca. Si no tiene Id asociado, se crea y se asigna.</inlineHelpText>
+    <label>Prosumer Envialo Simple Preview Campain</label>
+    <length>255</length>
+    <required>false</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

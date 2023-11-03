@@ -1,0 +1,61 @@
+<apex:component controller="pulso_admin_controller" > 
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"></link>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"></link>
+    <style>
+        .modal-dialog {
+        	overflow-y: initial !important
+        }
+        
+         .modal-body {
+            max-height: calc(100vh - 200px);
+            overflow-y: auto;
+        }                
+    </style>
+    <apex:includeScript value="https://code.jquery.com/jquery-3.1.1.min.js"/>    
+    <apex:includeScript value="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"/>
+
+    <div class="modal fade" id="filterModalFanPage" tabindex="-1" role="dialog" aria-labelledby="filterModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="filterModalTitle">FILTRO</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <apex:variable value="{!0}" var="counter"/>
+                    <apex:repeat value="{!ListaDeDatosEncuestas}" var="varencuesta">
+                        <c:pulso_encuesta_info_pregunta encuesta="{!varencuesta}" callCounter="{!counter}" flag="{!'true'}" PersonasEncuestadas="{!StatsPersonasEncuestadas}" callingClass="{!'filtercheckbox'}"></c:pulso_encuesta_info_pregunta>
+                        <apex:variable value="{!counter+1}" var="counter"/>
+                    </apex:repeat>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn filter_fanpage" data-dismiss="modal" style="background:#40B599; color:white;">Filtrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $('.filter_fanpage').on('click', function(objEvent) {  
+            var arrayOfSelectedOptions = null;
+            var objOption = null;
+            
+            arrayOfSelectedOptions = [];
+            $.each($('.check.filtercheckbox:checked'), function (intIndex, objItem) {
+                objOption = {};
+                objOption.id = $(this).data('salesforceid');
+                objOption.question = $(this).data('question');
+                objOption.name = $(this).data('name');
+                
+                arrayOfSelectedOptions.push(objOption);
+            });
+            
+            $(document).trigger('fanpage_filtered', [arrayOfSelectedOptions]);
+            $('#filterModalFanPage').modal('toggle');
+        });
+    </script>
+</apex:component>

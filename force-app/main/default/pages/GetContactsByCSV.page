@@ -1,0 +1,114 @@
+<apex:page showHeader="true" standardStylesheets="false" sidebar="false" applyHtmlTag="true" applyBodyTag="false" docType="html-5.0" controller="ContactsCSVController">
+    <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <head>
+            <title>Prosumia - Subir CSV</title>
+            <apex:slds />
+        </head>
+        <body class="slds-scope">
+            <div class="slds-grid">
+                <div class="slds-size_1-of-1 slds-grid slds-wrap">        
+                    <div class="slds-size--1-of-1">
+                        <!-- MASTHEAD -->
+                        <div id="divToastMessage" class="slds-notify_container slds-is-relative" style="position:absolute; display: none">
+                            <div id="divToastTheme" class="slds-notify slds-notify_toast {!IF(isSuccessMessage,'slds-theme_success','slds-theme_error')}" role="status">
+                                <span class="slds-assistive-text">success</span>
+                                <span class="slds-icon_container slds-icon-utility-success slds-m-right_small slds-no-flex slds-align-top" style="display: {!IF(isSuccessMessage,'','none')}">
+                                    <svg class="slds-icon slds-icon_small" aria-hidden="true">
+                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{!URLFOR($Asset.SLDS, '/assets/icons/utility-sprite/svg/symbols.svg#success')}" />
+                                    </svg>
+                                </span>
+                                <span class="slds-icon_container slds-icon-utility-error slds-m-right_small slds-no-flex slds-align-top" style="display: {!IF(isSuccessMessage,'none','')}">
+                                    <svg class="slds-icon slds-icon_small" aria-hidden="true">
+                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{!URLFOR($Asset.SLDS, '/assets/icons/utility-sprite/svg/symbols.svg#error')}" />
+                                    </svg>
+                                </span>
+                                <div class="slds-notify__content">
+                                    <h2 class="slds-text-heading_small" id="divMessage">{!pageMessage}</h2>
+                                </div>
+                                <div class="slds-notify__close">
+                                    <button class="slds-button slds-button_icon slds-button_icon-inverse" title="Close">
+                                        <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{!URLFOR($Asset.SLDS, '/assets/icons/utility-sprite/svg/symbols.svg#close' )}" />
+                                        </svg>
+                                        <span class="slds-assistive-text">Close</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <h1 class="slds-text-heading--label slds-m-bottom--small">
+                            <div class="slds-page-header slds-page-header--object-home" role="banner">
+                                <div class="slds-grid">
+                                    <div class="slds-col slds-has-flexi-truncate">
+                                        <div class="slds-media slds-no-space slds-grow">
+                                            <div class="slds-media__figure">
+                                                <span class="slds-icon_container">
+                                                    <svg aria-hidden="true" class="slds-icon slds-icon-standard-lead">
+                                                        <use xlink:href="{!URLFOR($Asset.SLDS, '/assets/icons/standard-sprite/svg/symbols.svg#lead')}"></use>
+                                                    </svg>
+                                                </span>
+                                            </div>
+                                            
+                                            <div class="slds-media__body">
+                                                <p class="slds-text-title--caps slds-line-height--reset">Prosumia</p>
+                                                <button class="slds-button slds-type-focus slds-m-right--small slds-grid slds-truncate" aria-haspopup="true">
+                                                    <div class="slds-grid slds-grid--vertical-align-center slds-truncate">
+                                                        <h1 class="slds-page-header__title slds-truncate" title="Buscador por CSV">Buscador por CSV</h1>
+                                                    </div>
+                                                </button>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </h1>
+                    </div>
+                    <apex:form >
+                        <div class="slds-size_1-of-1">
+                            <div class="slds-form-element">
+                                <span class="slds-form-element__label" id="file-selector-primary-label">Seleccione un archivo en formato CSV de hasta 7500 lineas</span>
+                                <div class="slds-form-element__control">
+                                    <div class="slds-file-selector slds-file-selector_files">
+                                        <div class="slds-file-selector__dropzone">
+                                            <apex:inputFile value="{!contentFile}" filename="{!nameFile}" accept=".csv"/>
+                                            <!--<input class="slds-file-selector__input slds-assistive-text" type="file" id="file-upload-input-01" aria-labelledby="file-selector-primary-label file-selector-secondary-label" />
+                                            <label class="slds-file-selector__body" for="file-upload-input-01" id="file-selector-secondary-label">
+                                                <span class="slds-file-selector__button slds-button slds-button_neutral">
+                                                    <svg class="slds-button__icon slds-button__icon_left" aria-hidden="true">
+                                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#upload" />
+                                                    </svg>Upload Files</span>
+                                                <span class="slds-file-selector__text slds-medium-show">or Drop Files</span>
+                                            </label>-->
+                                        </div>
+                                    </div>
+                                    <apex:commandButton action="{!ReadFile}" value="Buscar" id="theButton"/>
+                                    <div>
+                                        <div class="mb-1">
+                                            <br/>
+                                            <apex:outputText styleClass="label uppercase" value="Seleccione un criterio de apareamiento" />
+                                        </div>
+                                        <apex:selectList value="{!selectedSearchCriteria}" multiselect="false" size="1">
+                                            <apex:selectOptions value="{!posibleCriteriaOptions}" />
+                                        </apex:selectList>
+                                    </div>
+                                    <!--<button class="slds-button slds-button_neutral" onclikc="readCSV();">Consultar</button>-->
+                                </div>
+                            </div>
+                        </div>
+                    </apex:form>
+                </div>
+            </div>
+        </body>
+        <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" />
+        <script type="text/javascript">
+            $(document).ready(function() {
+                var message = "{!pageMessage}";
+                if(message != '' && message != null){
+                    $('#divToastMessage').fadeIn(400).delay(3000).fadeOut(400);
+                }
+                
+            });
+        </script>
+    </html>
+</apex:page>

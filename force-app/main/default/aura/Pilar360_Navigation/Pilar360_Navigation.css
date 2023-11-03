@@ -1,0 +1,10 @@
+.THIS {
+    font-family: 'Heebo';
+    color: #b1c5e0;
+    font-size: 12pt;
+    text-align: center;
+}
+
+.THIS .nav-item {text-align: center; display: inline-block; margin-right: 30px;}
+.THIS .nav-item:hover {color: #ffffff; cursor: pointer;}
+.THIS .nav-item.selected {color: #ffffff;}

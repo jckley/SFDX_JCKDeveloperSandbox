@@ -1,0 +1,57 @@
+<apex:component >
+    <apex:attribute name="newSend"          type="Boolean" required="true" description="Contact General Info" />  
+    <apex:attribute name="resend"           type="Boolean" required="true" description="Contact General Info" />  
+
+    <header class="container-fluid">
+        <div class="row">
+            <nav class="navbar navbar-expand-sm fixed-top bg-white navbar-light shadow-sm sms_header">
+                <div class="col-sm">
+                    <a class="navbar-brand logo" href="/apex/sms_index">
+                        
+                        <!-- LOGO PROSUMIA -->
+                        <img src="{!URLFOR($Resource.sms_utils, '/img/sms_logo.png')}" alt="logo" style="width: 120px !important;" /> / SMS
+                    </a>
+                </div>
+                
+                <div class="col-sm justify-content-end">
+                    <div class="row justify-content-end">
+                        
+                        <div style="{! IF(newSend,'', 'display:none') }">
+                            <!-- BOTON ENVIAR MENSAJE -->
+                            <form id="enviar" action="/apex/sms_create" method="post">
+                                <button class="btn border-0" style="background-color:#B1B1B1; color:white; width:140px !important;
+                                                                    height:45px !important; text-align:center; font-size:0.8em" type="submit">
+                                    Enviar mensaje
+                                </button>
+                            </form>
+                        </div>
+                        <div style="{! IF(resend,'', 'display:none') }">
+                            <!-- BOTON ENVIAR MENSAJE -->
+                            <form id="enviar" action="/apex/sms_create" method="post">
+                                <button class="sendfailed btn border-0" style="background-color:#B1B1B1; color:white; width:140px !important;
+                                                                    height:45px !important; text-align:center; font-size:0.8em" type="button">
+                                    Reenviar fallidos
+                                </button>
+                            </form>
+                        </div>
+                        
+                        <!-- LOGO LOGOUT
+                        <form class="pl-3">
+                            <button class="btn" type="button" id="btnCancelarEnvias" style="height:45px !important;">
+                                Cancelar envios
+                            </button>    
+                        </form> -->
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <div class="modal1 fade bd-example-modal-lg" data-backdrop="static" data-keyboard="false" tabindex="-1">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content" style="width: 48px">
+                    <span class="fa fa-spinner fa-spin fa-3x"></span>
+                </div>
+            </div>
+        </div>
+    </header>
+</apex:component>

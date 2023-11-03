@@ -1,0 +1,30 @@
+<apex:component >
+    <apex:attribute name="employer" type="String" description="Employer" />
+    <apex:attribute name="cuit" 	type="String" description="CUIT" />
+    <apex:attribute name="income" 	type="String" description="Income" />
+    
+    <div class="row card-cont subattribute-border">
+        <div class="col-6 pl-0 col-md-5">
+            <div class="subattribute-content">
+                <c:ContactDisplayField label="{!$ObjectType.Contact.Fields.Employer_1__c.Label}" value="{!employer}" nullvalue="{!$Label.NoInformation}" classLabel="label" classValue="subattribute-label-green uppercase"/>
+            </div> 
+        </div>
+        <div class="col-6 pl-0 col-md-5">
+            <div class="subattribute-content">
+                <c:ContactDisplayField label="{!$ObjectType.Contact.Fields.CUIT_Empleador_1__c.Label}:" value="{!cuit}" nullvalue="{!$Label.NoInformation}" classLabel="label" classValue="label uppercase"/>
+            </div> 
+        </div>
+
+        <div class="col-12 pl-0 col-md-2" style="display:{! IF(income != NULL,'','none' )}" >
+            <div class="subattribute-content label">
+                <div class="mb-1">
+                    {!$ObjectType.Contact.Fields.Sueldo_1__c.Label}:
+                </div>
+                <div>
+                    <apex:outputText rendered="{!income != NULL}" value="$ {!income}" />
+                    <apex:outputText styleClass="no-info" rendered="{!income == NULL}" value="-" />                   
+                </div>
+            </div> 
+        </div>
+    </div>
+</apex:component>

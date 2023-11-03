@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Level0Name__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(Nivel_Administrativo__c == 0, Name, ( 
+IF(Nivel_Administrativo__c == 1 ,ParentId__r.Name, 
+IF(Nivel_Administrativo__c == 2, ParentId__r.ParentId__r.Name, 
+IF(Nivel_Administrativo__c == 3, ParentId__r.ParentId__r.ParentId__r.Name,
+IF(Nivel_Administrativo__c == 4, ParentId__r.ParentId__r.ParentId__r.ParentId__r.Name,NULL)	
+) 
+) 
+) 
+)
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Level0Name</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

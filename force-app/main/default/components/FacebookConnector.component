@@ -1,0 +1,182 @@
+<apex:component controller="FacebookConnector">
+    <apex:attribute name="surveyid" type="String" description="Survey Id" />
+    <div id="fb-root"></div>
+
+    <script async="async" defer="defer" crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version={! Version}&appId={! ApplicationId}&autoLogAppEvents=1"></script>
+    <script type="text/javascript">     
+    $(document).on('connecttofacebook', function(objEvent){ 
+        logIntoFacebook();
+    });
+    
+    //118042215506210
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId      : '{! ApplicationId}',
+            cookie     : true,
+            xfbml      : true,
+            version    : '{! Version}'
+        });
+        
+        FB.getLoginStatus(function(objResponse) {              
+            parseLogInStatus(objResponse);
+        });
+        
+ 
+        FB.AppEvents.logPageView();   
+    };
+
+    function logIntoFacebook2() {
+        FB.login(function(objResponse) {
+            parseLogInStatus(objResponse);
+        },{
+            scope: "email,user_likes,user_location,user_birthday,user_gender,user_link",
+            auth_type: "rerequest"
+        });
+    }
+    function logIntoFacebook() {
+        FB.login(function(objResponse) {
+            parseLogInStatus(objResponse);
+        },{
+            scope: "email",
+            auth_type: "rerequest"
+        });
+    }
+    
+    function checkLoginStatus() {
+        FB.getLoginStatus(function(objResponse) {
+            parseLogInStatus(objResponse);
+        });
+    }
+    
+    function retrieveUserInfo2(strFacebookUserId) {
+        FB.api('/me?fields=gender,first_name,last_name,email,birthday,id,location,link', function (objResponse) {    
+            if(objResponse !== undefined && objResponse !== null && (objResponse.error === undefined || objResponse.error === null)) {                
+                saveUserInfo(strFacebookUserId, objResponse);
+            }
+        });
+    }
+    function retrieveUserInfo(strFacebookUserId) {
+        FB.api('/me?fields=first_name,last_name,email', function (objResponse) {    
+            if(objResponse !== undefined && objResponse !== null && (objResponse.error === undefined || objResponse.error === null)) {                
+                saveUserInfo(strFacebookUserId, objResponse);
+            }
+        });
+    }
+    
+    
+    function retrieveUserLikes(strFacebookUserId) {
+        FB.api("/" + strFacebookUserId + "/likes", function (objResponse) {
+                if (objResponse !== undefined && objResponse !== null && objResponse.data !== undefined && objResponse.data !== null && objResponse.data.length > 0 && (objResponse.error === undefined || objResponse.error === null)) {
+                    saveUserLikes(strFacebookUserId, objResponse);
+                    retrieveMoreLikes(strFacebookUserId, objResponse);
+                } 
+            }
+        );
+    }
+    
+    function parseLogInStatus(objResponse) {
+        if(objResponse.status == 'connected') { 
+            fbq('track', 'Connected');
+            retrieveUserInfo(objResponse.authResponse.userID);
+        } 
+    }
+    
+    function retrieveMoreLikes(strFacebookUserId, objResponse) {
+        if(objResponse !== undefined && objResponse !== null && objResponse.paging !== undefined && objResponse.paging !== null && objResponse.paging.next !== undefined && objResponse.paging.next !== null) {
+            FB.api( objResponse.paging.next, function (objResponse) {
+                    if (objResponse !== undefined && objResponse !== null && objResponse.data !== undefined && objResponse.data !== null && objResponse.data.length > 0 && (objResponse.error === undefined || objResponse.error === null)) {
+                        saveUserLikes(strFacebookUserId, objResponse);
+                        retrieveMoreLikes(strFacebookUserId, objResponse);
+                    } 
+                }
+            );
+        }    
+    }
+    
+    function saveUserInfo(strFacebookUserId, objResponse) {
+        var strUrl = null;
+        var objRequest = null;
+        if(objResponse !== undefined && objResponse !== null && (objResponse.error === undefined || objResponse.error === null)) {            
+            objRequest = {};
+            objRequest.facebookid = objResponse.id;
+            objRequest.surveyid = '{! surveyid }';
+            objRequest.firstname = objResponse.first_name;
+            objRequest.lastname = objResponse.last_name;
+            objRequest.birthdate = objResponse.birthday;
+            objRequest.gender = objResponse.gender;
+            objRequest.email = objResponse.email;
+            objRequest.link = objResponse.link;
+
+            objRequest.city = (objResponse.location !== undefined && objResponse.location !== null)? objResponse.location.name:'';            
+            objRequest.facebooklocationid =  (objResponse.location !== undefined && objResponse.location !== null)? objResponse.location.id:'';            
+            
+            $.ajax({
+                method: "POST",
+                url: AWS_ENDPOINT + '/pulso/leads',
+                contentType: "application/json",
+                dataType: "json",
+                data : JSON.stringify(objRequest),
+                success: function(objResult, strStatus, objXHR) {
+                    if(objResult !== undefined && objResult !== null) {    
+                        $(document).trigger('facebook_connected', objResponse);
+
+                        //retrieveUserLikes(strFacebookUserId);                                            
+                    } 
+                },
+                complete: function(objXHR, strStatus) { 
+                    if(objXHR.status !== 200) {
+                    }
+                }
+            }); 
+        }
+    }
+    
+    function saveUserLikes(strFacebookUserId, objResponse) {
+        var strUrl = null;
+        var arrData = null;
+        if(objResponse !== undefined && objResponse !== null && (objResponse.error === undefined || objResponse.error === null)) {            
+            arrData = [];
+            $.each(objResponse.data, function(intIndex, objData) {
+            	objData.facebookid = objData.id;
+                arrData.push(objData);
+            });
+            
+            $.ajax({
+                method: "POST",
+                url: AWS_ENDPOINT + '/pulso/facebook/pages/' + strFacebookUserId,
+                data : JSON.stringify(objResponse.data),
+                contentType: "application/json",
+                dataType: "json",
+                success: function(objResult, strStatus, objXHR) {
+                    console.log('likes saved')
+                },
+                complete: function(objXHR, strStatus) { 
+                    if(objXHR.status !== 200) {
+                    }
+                }
+            }); 
+        }
+    }
+    
+    </script>
+    <!-- Facebook Pixel Code -->
+    <script> 
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+     if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+     n.queue=[];t=b.createElement(e);t.async=!0;
+     t.src=v;s=b.getElementsByTagName(e)[0];
+     s.parentNode.insertBefore(t,s)}(window, document,'script', 'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '{! PixelId}');
+    fbq('track', 'LandingView');
+    </script>
+    <noscript>
+    	<img height="1" width="1" style="display:none"  src="https://www.facebook.com/tr?id={! PixelId}&ev=LandingView&noscript=1"/>
+    </noscript>
+    <!-- End Facebook Pixel Code -->
+
+	<!--
+    <div onlogin="checkLoginStatus();" class="fb-login-button" data-scope="public_profile,email,user_likes,user_birthday,user_gender" data-size="large" data-button-type="continue_with" data-auto-logout-link="false" data-use-continue-as="false"></div>
+    -->
+</apex:component>

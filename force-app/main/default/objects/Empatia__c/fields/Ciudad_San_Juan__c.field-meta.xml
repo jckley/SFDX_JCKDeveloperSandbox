@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Ciudad_San_Juan__c</fullName>
+    <externalId>false</externalId>
+    <label>Ciudad San Juan</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>25 de Mayo</fullName>
+                <default>false</default>
+                <label>25 de Mayo</label>
+            </value>
+            <value>
+                <fullName>9 de Julio</fullName>
+                <default>false</default>
+                <label>9 de Julio</label>
+            </value>
+            <value>
+                <fullName>Albardón</fullName>
+                <default>false</default>
+                <label>Albardón</label>
+            </value>
+            <value>
+                <fullName>Angaco</fullName>
+                <default>false</default>
+                <label>Angaco</label>
+            </value>
+            <value>
+                <fullName>Calingasta</fullName>
+                <default>false</default>
+                <label>Calingasta</label>
+            </value>
+            <value>
+                <fullName>Capital</fullName>
+                <default>false</default>
+                <label>Capital</label>
+            </value>
+            <value>
+                <fullName>Caucete</fullName>
+                <default>false</default>
+                <label>Caucete</label>
+            </value>
+            <value>
+                <fullName>Chimbas</fullName>
+                <default>false</default>
+                <label>Chimbas</label>
+            </value>
+            <value>
+                <fullName>Iglesia</fullName>
+                <default>false</default>
+                <label>Iglesia</label>
+            </value>
+            <value>
+                <fullName>Jáchal</fullName>
+                <default>false</default>
+                <label>Jáchal</label>
+            </value>
+            <value>
+                <fullName>Pocito</fullName>
+                <default>false</default>
+                <label>Pocito</label>
+            </value>
+            <value>
+                <fullName>Rawson</fullName>
+                <default>false</default>
+                <label>Rawson</label>
+            </value>
+            <value>
+                <fullName>Rivadavia</fullName>
+                <default>false</default>
+                <label>Rivadavia</label>
+            </value>
+            <value>
+                <fullName>San Martín</fullName>
+                <default>false</default>
+                <label>San Martín</label>
+            </value>
+            <value>
+                <fullName>Santa Lucía</fullName>
+                <default>false</default>
+                <label>Santa Lucía</label>
+            </value>
+            <value>
+                <fullName>Sarmiento</fullName>
+                <default>false</default>
+                <label>Sarmiento</label>
+            </value>
+            <value>
+                <fullName>Ullum</fullName>
+                <default>false</default>
+                <label>Ullum</label>
+            </value>
+            <value>
+                <fullName>Valle Fértil</fullName>
+                <default>false</default>
+                <label>Valle Fértil</label>
+            </value>
+            <value>
+                <fullName>Zonda</fullName>
+                <default>false</default>
+                <label>Zonda</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

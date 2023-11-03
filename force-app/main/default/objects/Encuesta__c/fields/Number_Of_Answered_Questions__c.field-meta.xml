@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Number_Of_Answered_Questions__c</fullName>
+    <externalId>false</externalId>
+    <label>Number_Of_Answered_Questions</label>
+    <summarizedField>User_Survey__c.Number_Of_Answered_Questions__c</summarizedField>
+    <summaryForeignKey>User_Survey__c.Survey__c</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

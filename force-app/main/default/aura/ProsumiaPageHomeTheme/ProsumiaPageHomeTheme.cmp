@@ -1,0 +1,9 @@
+<aura:component implements="forceCommunity:layout" description="Prosumia Page Template">    
+    <aura:attribute name="bodyComponent"   	type="Aura.Component[]" />
+
+   <div class="slds-grid slds-wrap">
+        <div class="slds-col slds-size_12-of-12 slds-p-around_x-large">
+            {!v.bodyComponent}
+        </div>
+    </div>    
+</aura:component>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Total_Number_of_40_64_year_olds__c</fullName>
+    <description>Campo Agregado de Ciudadanos de 40 a 64 Años</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Numero de CIudadanos de entre 40 y 64 años x Territorio</inlineHelpText>
+    <label>Número de Ciudadanos entre 40 y 64 años</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

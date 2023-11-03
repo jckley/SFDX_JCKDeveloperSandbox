@@ -1,0 +1,40 @@
+<aura:component>
+    <aura:attribute name="community" 		type="String"/>
+    <aura:attribute name="logo" 			type="String"/>
+    <aura:attribute name="url" 				type="String"/>    
+    <aura:attribute name="search" 			type="Aura.Component[]"/>
+    <aura:attribute name="profileMenu" 		type="Aura.Component[]"/>
+    <aura:attribute name="navigationBar" 	type="Aura.Component[]"/>
+    
+    <div class="{! 'slds-grid slds-wrap slds-col slds-size_1-of-1 header background ' + v.community }">
+        <div class="slds-grid slds-wrap slds-col slds-size_1-of-1 headerbackground">
+            <div class="slds-large-size_2-of-12 slds-p-left--large slds-p-right--large slds-p-top--large">
+                <div class="slds-align_absolute-center">
+                    <a class="logocommunity slds-align_absolute-center" onclick="{!c.home}" >
+                        <img src="{! $Resource.PRM + '/' + v.community + '/img/Logo.png' }" style="position: relative;display:inline-block;margin: auto;" />
+                    </a>
+                </div>
+            </div>
+            
+            <div class="slds-col slds-size_8-of-12 search-bar slds-show_large">
+                <c:PRM_SearchBar />
+            </div>
+
+            <div class="slds-col slds-size_2-of-12 slds-show_large logoutcontainer">
+                <div class="exit" onclick="{!c.logout}">
+                    <div class="slds-align_absolute-center logout">
+                        <img id="icon-white" 	class="img white" style="fill:black"	src="{! $Resource.PRM + '/' + v.community + '/img/pcashexithover.svg'}" />
+                        <img id="icon-gray" 	class="img gray" style="fill:black"	src="{! $Resource.PRM  + '/' + v.community + '/img/pcashexithover.svg'}" />
+                        <span class="slds-m-left--small"><b>Salir</b></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="navigation slds-show_large">
+            <c:PRM_Navigation community="{! v.community }" search="{! v.search }" />
+        </div>
+        <div class="navigationBar slds-hide_large">
+            {! v.navigationBar}
+        </div>
+    </div>	
+</aura:component>

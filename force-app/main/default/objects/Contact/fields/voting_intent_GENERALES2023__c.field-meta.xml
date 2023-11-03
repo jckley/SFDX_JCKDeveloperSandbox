@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>voting_intent_GENERALES2023__c</fullName>
+    <externalId>false</externalId>
+    <label>Intención de voto GENERALES 2023</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Massa</fullName>
+                <default>false</default>
+                <label>Massa</label>
+            </value>
+            <value>
+                <fullName>Milei</fullName>
+                <default>false</default>
+                <label>Milei</label>
+            </value>
+            <value>
+                <fullName>Bregman</fullName>
+                <default>false</default>
+                <label>Bregman</label>
+            </value>
+            <value>
+                <fullName>Schiaretti</fullName>
+                <default>false</default>
+                <label>Schiaretti</label>
+            </value>
+            <value>
+                <fullName>Bullrich</fullName>
+                <default>false</default>
+                <label>Bullrich</label>
+            </value>
+            <value>
+                <fullName>Blanco</fullName>
+                <default>false</default>
+                <label>Blanco</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

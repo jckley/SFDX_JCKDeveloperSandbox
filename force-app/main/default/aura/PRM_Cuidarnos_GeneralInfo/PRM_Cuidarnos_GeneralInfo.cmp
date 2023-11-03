@@ -1,0 +1,57 @@
+<aura:component>
+    <aura:attribute name="community"        type="String" default="Prosumia"/>
+    <aura:attribute name="citizenWrapper" 	type="CitizenWrapper"   required="true" />
+    <aura:attribute name="rendered" 		type="Boolean" 		 	required="true" default="true" />
+    <aura:attribute name="ismobile" 		type="Boolean" 		 	                default="{! ( $Browser.formFactor == 'PHONE' ) }" />
+    <aura:attribute name="hasPicture" 		type="Boolean" 			                default="false" />
+    <aura:attribute name="canEdit" 	        type="Boolean" 	        required="true" default="false" />
+
+    <div class="{! (v.rendered)? v.community + ' card slds-grid slds-wrap':'slds-hide'}">    
+        <div class="slds-col slds-size_1-of-1 slds-grid slds-wrap" style="padding: 10px 30px;">
+            <div class="slds-size_1-of-1 slds-grid slds-wrap cardIndicator red">
+                <div class="slds-size_1-of-1 slds-large-size_1-of-3 separator">
+                    <c:PRM_DisplayField community="{! v.community}" label="Nombre" value="{! v.citizenWrapper.citizen.FirstName}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font17"/>
+                </div>
+                
+                <div class="slds-size_1-of-1 slds-large-size_1-of-3">
+                    <c:PRM_DisplayField community="{! v.community}" label="Apellido" value="{! v.citizenWrapper.citizen.LastName}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font17"/>
+                </div>
+                
+                <div class="slds-col slds-size_1-of-2 slds-large-size_1-of-3 slds-show_large" style="{!'text-align: right; display: ' + (v.canEdit?'':'none')}">
+                    <div class="rounded-container" onclick="{!c.redirectToEditPage}">
+                        <img src="{! $Resource.PRM + '/' + v.community +  '/img/adfiedit.svg'}" class="icon"/>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-size_1-of-1 slds-grid slds-wrap cardIndicator gray" style="margin-top: 25px;">
+                <div class="{! v.hasPicture?' slds-size_1-of-2 slds-large-size_1-of-3 slds-p-bottom_medium':'slds-size_1-of-2 slds-large-size_1-of-6'}">
+                    <c:PRM_DisplayField community="{! v.community}" label="Sexo" value="{! v.citizenWrapper.generalInfo.Gender }" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font11"/>
+                </div>
+                
+                <div class="slds-size_1-of-2 slds-hide_medium">
+                    <c:PRM_DisplayField community="{! v.community}" label="Nacionalidad" value="{! v.citizenWrapper.citizen.Nacionalidad__c }" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font11"/>
+                </div>
+                
+                <div class="{!'slds-size_1-of-2 ' + (v.hasPicture?'slds-large-size_1-of-3 slds-p-bottom_medium':'slds-large-size_1-of-6')}">
+                    <c:PRM_DisplayField community="{! v.community}" label="Edad" value="{!(v.citizenWrapper.citizen.Age_f_x__c) + ' años'}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font11"/>
+                </div>
+                
+                <div class="{!'slds-size_1-of-2 ' + (v.hasPicture?'slds-large-size_1-of-3 slds-p-bottom_medium':'slds-large-size_1-of-6')}">
+                    <c:PRM_DisplayField community="{! v.community}" label="Fecha de Nacimiento" value="{! v.citizenWrapper.generalInfo.BirthdateSPFormat }" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font11"/>
+                </div>
+                
+                <div class="{!'slds-show_medium ' + (v.hasPicture?'slds-large-size_1-of-3 slds-p-bottom_medium':'slds-large-size_1-of-6')}">
+                    <c:PRM_DisplayField community="{! v.community}" label="Nacionalidad" value="{! v.citizenWrapper.citizen.Nacionalidad__c}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font11"/>
+                </div>
+                
+                <div class="{!'slds-size_1-of-2 ' + (v.hasPicture?'slds-large-size_1-of-3 slds-p-bottom_medium':'slds-large-size_1-of-6')}">
+                    <c:PRM_DisplayField community="{! v.community}" label="Documento" value="{! v.citizenWrapper.generalInfo.DNI}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font11"/>
+                </div>
+                
+                <div class="{!'slds-size_1-of-2 ' + (v.hasPicture?'slds-large-size_1-of-3 slds-p-bottom_medium':'slds-large-size_1-of-6')}">
+                    <c:PRM_DisplayField community="{! v.community}" label="CUIT / CUIL" value="{! v.citizenWrapper.generalInfo.CUIT }" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font11"/>
+                </div>
+            </div> 
+        </div>
+    </div>
+</aura:component>

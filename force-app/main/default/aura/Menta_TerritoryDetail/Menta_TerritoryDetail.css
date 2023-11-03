@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400|Poppins:300');
+.THIS {
+}
+
+.THIS .green-container {
+    border-radius: 4px !important;
+    background-color: #00a08e !important;
+    border: none !important;
+    box-shadow: 0px 2px 15px 0px rgba(0, 0, 0, 0.2);
+}
+
+.THIS .card{
+    background-color: #ffffff;
+    border: solid 1px #ebebeb;
+    overflow:  hidden;
+    display: flex;
+    vertical-align: middle;
+}
+
+/* Special classes for small devices */
+@media only screen and (max-width: 768px) {
+    .THIS {padding: 0 15px}
+    
+    .THIS.floating{
+        position: relative;
+        top: -140px;
+        max-width: 1140px;
+        margin: auto;
+    }
+    
+    .THIS > div:nth-child(2) {margin-top: 25px;}
+}
+
+/* Special classes for big devices */
+@media only screen and (min-width: 768px) {
+    .THIS.territory-map {
+        margin-top: -32px;
+        box-shadow: 0px 13px 36px 0px rgba(0, 0, 0, 0.1);
+        position: relative;
+        z-index: 5
+    }
+    
+    .THIS.floating{
+        position: relative;
+        top: -500px;
+        max-width: 1140px;
+        margin: auto;
+    }
+    
+    .THIS > div:nth-child(2) {margin-top: 236px;}
+}

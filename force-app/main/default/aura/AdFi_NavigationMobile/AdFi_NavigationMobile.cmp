@@ -1,0 +1,22 @@
+<aura:component controller="NavigationMenuController">
+    <aura:attribute name="navigationMenu" 	type="NavigationMenuItem[]" />
+    <aura:attribute name="itemSelected" type="String" default=""/>
+    
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}" />
+    
+    <div class="navigation-open-button"><img src="{! $Resource.IconsPack1 + '/adfimenubars.svg'}" class="icon" onclick="{!c.openNavigationMenu}"/></div>
+    <div aura:id="mob-nav-menu-background" class="menu-background slds-hide">
+        <div aura:id="mob-nav-menu" class="menu-container slds-hide">
+            <div class="nav-icon">
+                <img src="{! $Resource.IconsPack1 + '/adfimenubars.svg'}" class="icon" onclick="{!c.closeNavigationMenu}"/>
+            </div>
+            <aura:iteration items="{!v.navigationMenu}" var="menuItem">
+                <div data-target="{!menuItem.Target}" data-label="{!menuItem.Label}" 
+                     class="{!'nav-item' + (v.itemSelected == menuItem.Target ? ' selected':'')}" 
+                     onclick="{!c.navigateToItem}"
+                     style="{!'display: ' + (and($Browser.formFactor == 'DESKTOP', menuItem.Target == '/logout')?'none':'')}">{!menuItem.Label}</div>
+            </aura:iteration>
+        </div>
+    </div>
+	
+</aura:component>

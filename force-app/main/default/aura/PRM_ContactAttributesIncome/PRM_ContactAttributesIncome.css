@@ -1,0 +1,58 @@
+.THIS {
+    margin-top : 25px;
+    padding : 0px;
+
+}
+
+.THIS .header {
+    background-color: #f8f9fc;
+    height: 60px;
+    padding: 20px 30px 30px 30px;
+}
+
+.THIS .header .title {
+    font-family: 'Montserrat';
+    color: #999999;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.THIS .separator {
+    border : solid 1px #CCCCCC;
+}
+
+.THIS .icon {
+    max-width: 25px;
+    max-height: 25px;
+    vertical-align: middle;
+    border-style: none;
+}
+
+.THIS .label {
+    text-transform: uppercase;
+    font-family: 'Roboto Condensed';
+    font-weight: bold;
+    font-size : 10pt;
+    color: #999999 !important;
+}
+
+.THIS.Prosumia .value.blue {
+    font-family: 'Montserrat';
+    font-weight: 300;
+    font-size : 12pt;
+    color: #EF3E48 !important;
+}
+
+.THIS.Argentina .value.blue {
+    font-family: 'Montserrat';
+    font-weight: 300;
+    font-size : 12pt;
+    color: #EF3E48 !important;
+}
+
+.THIS.Cuidarnos .value.blue {
+    font-family: 'Montserrat';
+    font-weight: 300;
+    font-size : 12pt;
+    color: #1cdcbb !important;
+}

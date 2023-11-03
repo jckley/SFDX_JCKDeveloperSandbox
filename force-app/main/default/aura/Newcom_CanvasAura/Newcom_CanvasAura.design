@@ -1,0 +1,7 @@
+<design:component >
+    <design:attribute name="width" 		     label="Width"/>
+    <design:attribute name="height" 		 label="Height"/>
+    <design:attribute name="canvasname" 	 label="Canvas"/>
+    <design:attribute name="canvasnamespace" label="Namespace"/>
+    <design:attribute name="community" 	     label="Comunidad"/>
+</design:component>

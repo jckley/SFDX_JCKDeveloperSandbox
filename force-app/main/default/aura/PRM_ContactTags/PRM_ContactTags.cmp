@@ -1,0 +1,21 @@
+<aura:component >	
+    <aura:attribute name="community"        type="String" default="Prosumia"/>
+    <aura:attribute name="citizenWrapper" 	type="CitizenWrapper" required="true" />
+    <aura:attribute name="rendered" 	    type="Boolean" default="true" />
+    
+    <div class="{! 'slds-size-1-of-1 contact-data cardtag ' + v.community }" style="{!'margin-top: 25px; ' + ( and(v.rendered, v.citizenWrapper.hashTags.tags.length > 0 )? '':'display: none')}">
+        <div class="slds-grid slds-wrap slds-col slds-size_1-of-1 header" >
+            <div class="slds-col slds-size_1-of-1">
+                <img src="{! $Resource.PRM + '/' + v.community + '/img/tags.svg'}" class="icon" />
+                <span class="slds-p-left_large title">Tags</span>
+            </div>           
+        </div>
+        <div class="card" style="padding: 15px 30px 30px 30px">
+            <div class="slds-grid slds-wrap card-cont">
+                <aura:iteration items="{!v.citizenWrapper.hashTags.tags }" var="strTag">
+                    <c:PRM_TagComponent community="{! v.community }" label="" value="{! '#' + strTag }" valueCSS="value-gray" rendered="true"/>                
+                </aura:iteration>                    
+            </div>
+        </div>
+    </div>    
+</aura:component>

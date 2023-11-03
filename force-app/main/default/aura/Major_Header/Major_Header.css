@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed|Heebo:100,300,400');
+.THIS {
+    color: white;
+    font-family: 'Roboto';
+}
+
+.THIS a {
+    text-decoration: none;
+}
+
+.THIS.background {
+    background-color: #f8f9fc;
+}
+
+.THIS .headerbackground {
+    background-color: #FFFFFF;   
+    border-bottom : solid 1px #D8DBDD;
+    height: 90px;
+}
+
+.THIS .logo a span {
+    color: white; 
+    font-size: 14pt; 
+    padding-left: 3px;
+}
+
+
+.THIS .navigation {
+    /* width: 100%; */
+    margin: 0 auto;
+    display: block;
+}
+
+.THIS .navigationBar {
+    margin-top: 25px;
+}
+
+.THIS .search-bar{
+    margin: auto;
+    margin-top: 19px;
+    margin-bottom: 17px;
+    justify-content: center;
+    display: flex;
+}
+
+.THIS .logoutcontainer {
+    margin-top: 25px; 
+    padding-right: 25px; 
+    text-align: right;
+}
+.THIS .logout {
+     height: 100%;
+    font-weight:bold;
+}
+
+.THIS .exit {
+    width: 90px;
+    height: 40px;
+    border-radius: 6px;
+    display: inline-block;
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 11pt;
+    cursor: pointer;
+    color: #757d86;
+    /* border: solid 1px #FFFFFF; */
+    z-index: 999;
+}
+
+.THIS .exit:hover {
+    cursor: pointer;
+    color: #757d86;
+    /* border: solid 1px #FFFFFF; */
+}
+
+.THIS .red { 
+    display: none 
+}
+.THIS .img {
+    margin-top: 10px;
+    width: 15px; 
+    height: 15px;
+}
+.THIS .exit:hover .gray {
+    display: none;
+}
+
+.THIS .exit:hover .red{ 
+    display: inline-block;
+}
+
+.THIS .exit .gray {
+    display: inline-block;
+}
+
+.THIS .exit .red { 
+    display: none;
+}
+
+/* Special classes for small devices */
+@media only screen and (max-width: 768px) {
+    .THIS {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .THIS .search-bar {
+        margin: auto;
+        margin-top: 19px;
+        margin-bottom: 17px;
+        justify-content: center;
+        display: flex;
+        padding: 0 15px;
+    }
+    
+    .THIS > div:first-child {
+        width: calc(100% - 70px);
+    }
+    
+    .THIS .navigation-bar {
+        position: absolute; 
+        left: 50%;
+    }
+    
+    .THIS .logomunicipio {
+       height : 100%;
+       vertical-align:middle;
+    }
+    
+    .THIS .navigationBar {
+        margin-top : 0px;
+        height : 105px;
+        background-color: #FFFFFF !important;
+        border-bottom: solid 1px #d8dbdd;
+        vertical-align:middle;
+
+    }
+}
+
+
+
+.THIS.header {
+    background-color: #0D3D78;
+    height: 72px;
+    border-bottom: solid 1px #F0F0F0;
+    box-shadow: 0px 5px 5px -5px rgba(101, 111, 119, 0.25);
+}
+
+.THIS .logo-container {
+    /* border-right: solid 1px #F0F0F0; */
+    height: 100%;
+    display: block;
+    margin: auto;
+    padding: 7px 15px 12px 15px;
+    z-index: 999;
+}
+
+.THIS .logo {
+    /* width: 150px; */
+    margin-top: 15px;
+    height: 30px;
+}
+
+.THIS .header-text {
+    font-size: 16px;
+    font-weight: bold;
+    font-family: 'Roboto';
+    color: #646464;
+    vertical-align: middle;
+}
+
+.THIS .navigation {
+    /* border-right: solid 1px #F0F0F0; */
+    height: 100%;
+    padding: 5px 5px 5px 5px;
+}
+
+.THIS .search {
+    width: 600px;
+}
+
+.THIS .exit{ padding: 15px 20px 15px 30px; height: 100%; }
+.THIS .icon-hover {display: none;}
+.THIS .exit:hover {cursor: pointer;}
+.THIS .exit:hover .icon-reposo {display: none;}
+.THIS .exit:hover .icon-hover {display: inline-block;}
+
+.THIS.header-extension {height: 125px;}
+.THIS .search-focus {background-color: #48739f;}
+
+.THIS .navigationBar {
+    background-color: #FFFFFF;
+    display: flex;
+    justify-content: right;
+    position: absolute;
+    left: 81%;
+    margin-top: 15px;
+}
+
+/* Special classes for small devices */
+@media only screen and (max-width: 768px) {
+    .THIS .logo-container {border-right: none}
+    .THIS .comm-navigation.forceCommunityGlobalNavigation {color:black; background-color: #FFFFFF}
+    .THIS .forceCommunityGlobalNavigation .slds-list_vertical {
+        background-color: #FFFFFF !important;
+    }
+    .THIS.header-extension {background-color: #ffffff; display:none;}
+    .THIS #search-super-m {display: none;}
+    .THIS #parent-div-search-super-m {display: none;}
+    /* {margin: 10px 15px; border-radius: 6px; background-color: transparent} */
+
+    /* DAC */
+    .THIS.header {
+        height: 100%;
+    }
+    .THIS .tab {
+        width: 80%;
+        left: auto;
+        /*transform: translateX(0%);*/
+        transform: unset;
+        top: -5px;
+    }
+}
+
+/* Special classes for big devices */
+@media only screen and (min-width: 768px) {
+    .THIS.header-extension {background-color: #ffffff; box-shadow: 0px 5px 5px -5px rgba(101, 111, 119, 0.25); position: relative; display:block;}
+    .THIS .search {
+        /* border-right: solid 1px #F0F0F0; */
+        height: 100%;
+    }
+
+    .THIS .tab {
+        margin-left: -45px;
+    }
+}

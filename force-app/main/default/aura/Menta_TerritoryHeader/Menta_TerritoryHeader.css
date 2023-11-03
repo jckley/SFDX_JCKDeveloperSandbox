@@ -1,0 +1,34 @@
+.THIS {
+    padding-left: 25px;
+    font-family: 'Open Sans';
+    border-bottom: solid 1px #00b39e;
+}
+
+.THIS .breadcrum {
+    font-weight: 300;
+    color: #ffffff;
+    font-size: 12pt;
+}
+
+.THIS .breadcrum > span:hover {
+    font-weight: bold;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.THIS .name {
+    margin-top: 5px;
+    font-weight: bold;
+    font-size: 32pt;
+    color: #ffffff;
+}
+
+/* Special classes for small devices */
+@media only screen and (max-width: 768px) {
+    .THIS {padding-bottom: 15px;}
+}
+
+/* Special classes for big devices */
+@media only screen and (min-width: 768px) {
+    .THIS {}
+}

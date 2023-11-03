@@ -1,0 +1,30 @@
+<template>
+    <div class="sectionEmpatia">
+        <div class="titleHolder">
+            <span class="title">#Involucrate</span>
+        </div>
+        <div class="itemsHolder">
+            <div class="item">
+                <span class="label">Fecha de inscripción</span>
+                <span class="value">{fechaNormalizada}</span>
+            </div>
+            <div class="item">
+                <span class="label">Evento</span>
+                <span class="value">{proxyRecord.Evento__c}</span>
+            </div>
+            <div class="item">
+                <span class="label">Participación</span>
+                <template if:true={participaciones}>
+                    <div class="pill-container">
+                        <template for:each={participaciones} for:item="participacion">
+                            <span class="pill" key={participacion}>{participacion}</span>
+                        </template>
+                    </div>
+                </template>
+                <template if:false={participaciones}>
+                    <span class="value">–</span>
+                </template>
+            </div>
+        </div>
+    </div>
+</template>

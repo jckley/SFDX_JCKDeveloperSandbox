@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TestJCK</fullName>
+    <columns>NAME</columns>
+    <columns>guid__c</columns>
+    <columns>Number_Responses_Socio__c</columns>
+    <columns>Sum_Futbol_Score_Socio__c</columns>
+    <columns>Avg_Score_Futbol_Socio__c</columns>
+    <columns>Sum_Abonos_Score_Socio__c</columns>
+    <columns>Avg_Score_Abono_Socio__c</columns>
+    <columns>Sum_Beneficios_Score_Socio__c</columns>
+    <columns>Avg_Score_Beneficios_Socio__c</columns>
+    <columns>Sum_Estadio_Score_Socio__c</columns>
+    <columns>Avg_Score_Estadio_Socio__c</columns>
+    <columns>Sum_Instalaciones_Score_Socio__c</columns>
+    <columns>Avg_Score_Instalaciones_Socio__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>TestJCK</label>
+    <sharedTo>
+        <group>Admins</group>
+    </sharedTo>
+</ListView>

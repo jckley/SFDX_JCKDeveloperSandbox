@@ -1,0 +1,98 @@
+<apex:component >
+    
+     <style>
+         @media only screen and (max-device-width: 768px) { 
+            .social-border-top {
+        		border-top: solid 1px #ededed;
+            }
+        }
+        
+        @media only screen and (min-device-width: 992px) {
+        	.social-border-left {
+                border-left: solid 1px #ededed;
+            }
+        }
+         
+		.social-header{
+            margin-top: 15px;
+         	margin-left: 15px;
+        }
+        
+        .social-info{
+            margin-left: 15px;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+    </style>
+    
+    <apex:attribute name="terrw" type="TerritoryWrapper2" required="true" description="Territory Information" />
+    
+    <div class="row card-top-margin">
+        <div class="card card-left-border orange">
+            <div class="row card-cont">
+                <div class="col-lg">
+                    <div class="row" style="justify-content: center; color: #999999; font-weight: 500; font-size: 12pt;">
+                        {!$ObjectType.Territorio_Administrativo__c.Fields.Social_Profiles__c.Label}
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 rollup-content giant" style="margin-bottom: 0px;">
+                            {!terrw.totalSocialFormated}
+                        </div>
+                    </div>
+                </div>
+                <div class="ml-3 mr-3 pl-0 pr-0 col-lg ml-lg-0 mr-lg-0 pl-lg-3 pr-lg-3 social-border-left social-border-top">
+                    <div class="row">
+                        <div class="col-5 col-lg-12 pl-0 pr-0 social-header icn-text">
+                            <apex:image styleClass="icon-small" value="{!URLFOR($Resource.IconsPack1, 'facebookps.svg')}"/>
+                            <span class="ml-2">{!$ObjectType.Territorio_Administrativo__c.Fields.Total_Facebook__c.Label}</span>
+                        </div>
+                        <div class="col-6 col-lg-12">
+                            <div class="col-md-12 rollup-content medium mb-0 mt-2 mt-lg-3">
+                                {!terrw.totalFacebookFormated}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ml-3 mr-3 pl-0 pr-0 col-lg ml-lg-0 mr-lg-0 pl-lg-3 pr-lg-3 social-border-left social-border-top">
+                    <div class="row">
+                        <div class="col-5 col-lg-12 pl-0 pr-0 social-header icn-text">
+                            <apex:image styleClass="icon-small" value="{!URLFOR($Resource.IconsPack1, 'instagramps.svg')}"/>
+                            <span class="ml-2">{!$ObjectType.Territorio_Administrativo__c.Fields.Total_Instagram__c.Label}</span>
+                        </div>
+                        <div class="col-6 col-lg-12">
+                            <div class="col-md-12 rollup-content medium mb-0 mt-2 mt-lg-3">
+                                {!terrw.totalInstagramFormated}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ml-3 mr-3 pl-0 pr-0 col-lg ml-lg-0 mr-lg-0 pl-lg-3 pr-lg-3 social-border-left social-border-top">
+                    <div class="row">
+                        <div class="col-5 col-lg-12 pl-0 pr-0 social-header icn-text">
+                            <apex:image styleClass="icon-small" value="{!URLFOR($Resource.IconsPack1, 'twitterps.svg')}"/>
+                            <span class="ml-2">{!$ObjectType.Territorio_Administrativo__c.Fields.Total_Twitter__c.Label}</span>
+                        </div>
+                        <div class="col-6 col-lg-12">
+                            <div class="col-md-12 rollup-content medium mb-0 mt-2 mt-lg-3">
+                                {!terrw.totalTwitterFormated}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ml-3 mr-3 pl-0 pr-0 col-lg ml-lg-0 mr-lg-0 pl-lg-3 pr-lg-3 social-border-left social-border-top">
+                    <div class="row">
+                        <div class="col-5 col-lg-12 pl-0 pr-0 social-header icn-text">
+                            <apex:image styleClass="icon-small" value="{!URLFOR($Resource.IconsPack1, 'linkedinps.svg')}"/>
+                            <span class="ml-2">{!$ObjectType.Territorio_Administrativo__c.Fields.Total_Linkedin__c.Label}</span>
+                        </div>
+                        <div class="col-6 col-lg-12">
+                            <div class="col-md-12 rollup-content medium mb-0 mt-2 mt-lg-3">
+                                {!terrw.totalLinkedinFormated}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</apex:component>

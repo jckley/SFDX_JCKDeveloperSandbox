@@ -1,0 +1,46 @@
+<template>
+        <div class="card">
+            <div class="card-header">
+                <span class="title">Comunidad River ID</span>
+            </div>
+            <div class="card-body">
+                <template if:true={riverData}>
+                        <div class="body-section">
+                            <div class="info-wrapper">
+                                <span class="info-title">Categoria Social:</span>
+                                <span class="info-value">{riverData.cat_socio__c}</span>
+                            </div>
+                        <div class="info-wrapper">
+                                <span class="info-title">Fecha de Alta de Socio:</span>
+                                <span class="info-value">{riverData.fecha_socio__c}</span>
+                            </div>
+                        </div>
+                        <div class="body-section">
+                            <div class="pill-wrapper">
+                                <span class="pill-title">Voto 2009:</span>
+                                <span class={riverData.voto_2009__c} >{riverData.voto_2009__c}</span>
+                            </div>
+                            <div class="pill-wrapper">
+                                <span class="pill-title">Voto 2013:</span>
+                                <span class={riverData.voto_2013__c} >{riverData.voto_2013__c}</span>
+                            </div>
+                            <div class="pill-wrapper">
+                                <span class="pill-title">Voto 2017:</span>
+                                <span class={riverData.voto_2017__c}>{riverData.voto_2017__c}</span>
+                            </div>
+                            <div class="pill-wrapper">
+                                <span class="pill-title">Voto 2021:</span>
+                                <span class={riverData.voto_2021__c}>{riverData.voto_2021__c}</span>
+                            </div>
+                        </div>
+                </template>
+                <template if:false={riverData}>
+                    <div class="body-section">
+                        <div class="slds-align_absolute-center" >
+                            <span class="faltan-datos">NO SE ENCONTRARON DATOS DE ESTE CIUDADANO</span>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
+</template>

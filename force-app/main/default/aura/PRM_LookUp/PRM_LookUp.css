@@ -1,0 +1,54 @@
+.THIS .verticalAlign {
+	cursor: pointer;
+    margin: 6px 0px 0px 6px!important;
+    
+    
+}
+
+.THIS .slds-pill {
+    padding: 5px 5px 5px 5px;
+
+    border: solid 2px #999999;
+    padding: 4px 4px  4px 40px;
+    border-radius: 10px;
+    height: 70px;
+}
+
+.THIS .fullWidth {
+	width: 100% !important;
+}
+.THIS .recordListBox {
+	margin-top:0px !important;
+	overflow-y: scroll;
+}
+.THIS .inputBox input {
+    padding-left: 30px !important;
+    padding: 5px 5px 5px 5px;
+
+    border: solid 2px #999999;
+    padding: 4px 4px  4px 40px;
+    border-radius: 10px;
+    height: 70px;
+}
+
+.THIS .eachItem:hover {
+    background-color: #EEE;
+    cursor: pointer;
+}
+.THIS .inputIcon {
+	z-index: 99;
+    padding: 2px 0;
+}
+
+/* For Scrolling */
+.THIS ::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+}
+.THIS ::-webkit-scrollbar-track {
+   display: none !important;
+}
+.THIS ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: rgba(0,0,0,0.4);
+}

@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Ciudad_Salta__c</fullName>
+    <externalId>false</externalId>
+    <label>Ciudad Salta</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Aguaray</fullName>
+                <default>false</default>
+                <label>Aguaray</label>
+            </value>
+            <value>
+                <fullName>Aguas Blancas</fullName>
+                <default>false</default>
+                <label>Aguas Blancas</label>
+            </value>
+            <value>
+                <fullName>Angastaco</fullName>
+                <default>false</default>
+                <label>Angastaco</label>
+            </value>
+            <value>
+                <fullName>Animaná</fullName>
+                <default>false</default>
+                <label>Animaná</label>
+            </value>
+            <value>
+                <fullName>Apolinario Saravia</fullName>
+                <default>false</default>
+                <label>Apolinario Saravia</label>
+            </value>
+            <value>
+                <fullName>Cachi</fullName>
+                <default>false</default>
+                <label>Cachi</label>
+            </value>
+            <value>
+                <fullName>Cafayate</fullName>
+                <default>false</default>
+                <label>Cafayate</label>
+            </value>
+            <value>
+                <fullName>Campo Quijano</fullName>
+                <default>false</default>
+                <label>Campo Quijano</label>
+            </value>
+            <value>
+                <fullName>Campo Santo</fullName>
+                <default>false</default>
+                <label>Campo Santo</label>
+            </value>
+            <value>
+                <fullName>Cerrillos</fullName>
+                <default>false</default>
+                <label>Cerrillos</label>
+            </value>
+            <value>
+                <fullName>Chicoana</fullName>
+                <default>false</default>
+                <label>Chicoana</label>
+            </value>
+            <value>
+                <fullName>Colonia Santa Rosa</fullName>
+                <default>false</default>
+                <label>Colonia Santa Rosa</label>
+            </value>
+            <value>
+                <fullName>Coronel Moldes</fullName>
+                <default>false</default>
+                <label>Coronel Moldes</label>
+            </value>
+            <value>
+                <fullName>El Bordo</fullName>
+                <default>false</default>
+                <label>El Bordo</label>
+            </value>
+            <value>
+                <fullName>El Carril</fullName>
+                <default>false</default>
+                <label>El Carril</label>
+            </value>
+            <value>
+                <fullName>El Galpón</fullName>
+                <default>false</default>
+                <label>El Galpón</label>
+            </value>
+            <value>
+                <fullName>El Jardín</fullName>
+                <default>false</default>
+                <label>El Jardín</label>
+            </value>
+            <value>
+                <fullName>El Potrero</fullName>
+                <default>false</default>
+                <label>El Potrero</label>
+            </value>
+            <value>
+                <fullName>El Quebrachal</fullName>
+                <default>false</default>
+                <label>El Quebrachal</label>
+            </value>
+            <value>
+                <fullName>El Tala</fullName>
+                <default>false</default>
+                <label>El Tala</label>
+            </value>
+            <value>
+                <fullName>Embarcación</fullName>
+                <default>false</default>
+                <label>Embarcación</label>
+            </value>
+            <value>
+                <fullName>General Ballivián</fullName>
+                <default>false</default>
+                <label>General Ballivián</label>
+            </value>
+            <value>
+                <fullName>General Güemes</fullName>
+                <default>false</default>
+                <label>General Güemes</label>
+            </value>
+            <value>
+                <fullName>General Mosconi</fullName>
+                <default>false</default>
+                <label>General Mosconi</label>
+            </value>
+            <value>
+                <fullName>General Pizarro</fullName>
+                <default>false</default>
+                <label>General Pizarro</label>
+            </value>
+            <value>
+                <fullName>Guachipas</fullName>
+                <default>false</default>
+                <label>Guachipas</label>
+            </value>
+            <value>
+                <fullName>Hipólito Yrigoyen</fullName>
+                <default>false</default>
+                <label>Hipólito Yrigoyen</label>
+            </value>
+            <value>
+                <fullName>Iruya</fullName>
+                <default>false</default>
+                <label>Iruya</label>
+            </value>
+            <value>
+                <fullName>Isla de Cañas</fullName>
+                <default>false</default>
+                <label>Isla de Cañas</label>
+            </value>
+            <value>
+                <fullName>Joaquín Víctor González</fullName>
+                <default>false</default>
+                <label>Joaquín Víctor González</label>
+            </value>
+            <value>
+                <fullName>La Caldera</fullName>
+                <default>false</default>
+                <label>La Caldera</label>
+            </value>
+            <value>
+                <fullName>La Candelaria</fullName>
+                <default>false</default>
+                <label>La Candelaria</label>
+            </value>
+            <value>
+                <fullName>La Merced</fullName>
+                <default>false</default>
+                <label>La Merced</label>
+            </value>
+            <value>
+                <fullName>La Poma</fullName>
+                <default>false</default>
+                <label>La Poma</label>
+            </value>
+            <value>
+                <fullName>La Viña</fullName>
+                <default>false</default>
+                <label>La Viña</label>
+            </value>
+            <value>
+                <fullName>Las Lajitas</fullName>
+                <default>false</default>
+                <label>Las Lajitas</label>
+            </value>
+            <value>
+                <fullName>Los Toldos</fullName>
+                <default>false</default>
+                <label>Los Toldos</label>
+            </value>
+            <value>
+                <fullName>Molinos</fullName>
+                <default>false</default>
+                <label>Molinos</label>
+            </value>
+            <value>
+                <fullName>Nazareno</fullName>
+                <default>false</default>
+                <label>Nazareno</label>
+            </value>
+            <value>
+                <fullName>Payogasta</fullName>
+                <default>false</default>
+                <label>Payogasta</label>
+            </value>
+            <value>
+                <fullName>Pichanal</fullName>
+                <default>false</default>
+                <label>Pichanal</label>
+            </value>
+            <value>
+                <fullName>Profesor Salvador Mazza</fullName>
+                <default>false</default>
+                <label>Profesor Salvador Mazza</label>
+            </value>
+            <value>
+                <fullName>Rivadavia Banda Norte</fullName>
+                <default>false</default>
+                <label>Rivadavia Banda Norte</label>
+            </value>
+            <value>
+                <fullName>Rivadavia Banda Sur</fullName>
+                <default>false</default>
+                <label>Rivadavia Banda Sur</label>
+            </value>
+            <value>
+                <fullName>Rosario de La Frontera</fullName>
+                <default>false</default>
+                <label>Rosario de La Frontera</label>
+            </value>
+            <value>
+                <fullName>Rosario de Lerma</fullName>
+                <default>false</default>
+                <label>Rosario de Lerma</label>
+            </value>
+            <value>
+                <fullName>Río Piedras</fullName>
+                <default>false</default>
+                <label>Río Piedras</label>
+            </value>
+            <value>
+                <fullName>Salta</fullName>
+                <default>false</default>
+                <label>Salta</label>
+            </value>
+            <value>
+                <fullName>San Antonio de Los Cobres</fullName>
+                <default>false</default>
+                <label>San Antonio de Los Cobres</label>
+            </value>
+            <value>
+                <fullName>San Carlos</fullName>
+                <default>false</default>
+                <label>San Carlos</label>
+            </value>
+            <value>
+                <fullName>San José de Metán</fullName>
+                <default>false</default>
+                <label>San José de Metán</label>
+            </value>
+            <value>
+                <fullName>San Ramón de la Nueva Orán</fullName>
+                <default>false</default>
+                <label>San Ramón de la Nueva Orán</label>
+            </value>
+            <value>
+                <fullName>Santa Victoria Este</fullName>
+                <default>false</default>
+                <label>Santa Victoria Este</label>
+            </value>
+            <value>
+                <fullName>Santa Victoria Oeste</fullName>
+                <default>false</default>
+                <label>Santa Victoria Oeste</label>
+            </value>
+            <value>
+                <fullName>Seclantás</fullName>
+                <default>false</default>
+                <label>Seclantás</label>
+            </value>
+            <value>
+                <fullName>Tartagal</fullName>
+                <default>false</default>
+                <label>Tartagal</label>
+            </value>
+            <value>
+                <fullName>Tolar Grande</fullName>
+                <default>false</default>
+                <label>Tolar Grande</label>
+            </value>
+            <value>
+                <fullName>Urundel</fullName>
+                <default>false</default>
+                <label>Urundel</label>
+            </value>
+            <value>
+                <fullName>Vaqueros</fullName>
+                <default>false</default>
+                <label>Vaqueros</label>
+            </value>
+            <value>
+                <fullName>Villa San Lorenzo</fullName>
+                <default>false</default>
+                <label>Villa San Lorenzo</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

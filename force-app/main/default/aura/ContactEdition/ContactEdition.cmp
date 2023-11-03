@@ -1,0 +1,84 @@
+<aura:component access="GLOBAL" implements="force:lightningQuickAction,lightning:actionOverride,forceCommunity:availableForAllPageTypes,force:appHostable,flexipage:availableForAllPageTypes,force:hasRecordId" controller="ContactDetailController">	    
+    <aura:attribute name="recordId" 	type="Id" />
+    <aura:attribute name="layout" 		type="Metadata.Layout"  />
+    <aura:attribute name="record" 		type="Contact"/>
+    <aura:attribute name="simpleRecord" type="Contact"/>
+    <aura:attribute name="recordError" 	type="String"/>
+    <aura:attribute name="nameFields" 	type="List" default="['FirstName', 'LastName']"/>
+    
+    <force:recordData aura:id="recordEditor"
+                      layoutType="FULL"
+                      recordId="{!v.recordId}"
+                      targetError="{!v.recordError}"
+                      targetRecord="{!v.record}"
+                      targetFields ="{!v.simpleRecord}"
+                      mode="EDIT" />
+    
+    <aura:handler name="init" action="{!c.initializeComponent}" value="{!this}" />
+    <aura:handler 	event="c:ShowContactEditionEvent" 		action="{! c.loadModal }" />  
+    <aura:registerEvent name="ContactUpdatedEvent" 			type="c:ContactUpdatedEvent" />   
+    
+    <section aura:id="divModal" role="dialog" tabindex="-1" class="slds-modal slds-modal_large slds-hide" aria-labelledby="divContactEdition" aria-modal="true" aria-describedby="divModalContent">
+        <div class="slds-modal__container">
+            <header class="slds-modal__header">     
+                <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="{! $Label.c.Close }" onclick="{!c.cancelSave}">
+                    <lightning:icon iconName="utility:close" alternativeText="{! $Label.c.Close }" size="medium" />
+                </button>
+                <h2 id="divContactEdition" class="slds-text-heading_medium slds-hyphenate">{! v.simpleRecord.FirstName + ' ' + v.simpleRecord.LastName}</h2>
+            </header>
+            <div class="slds-modal__content slds-p-around_medium" id="divModalContent">
+                <div class="slds-grid slds-wrap "> 
+                    <lightning:recordEditForm class="slds-card slds-size_1-of-1" recordId="{! v.recordId }" objectApiName="Contact">            
+                        <aura:iteration items="{! v.layout.layoutSections}" var="layoutSection">
+                            <aura:if isTrue="{! and( layoutSection.style != 'CustomLinks', layoutSection.layoutColumns.length > 0) }"> 
+                                <article class="slds-section slds-is-open slds-size_1-of-1">
+                                    <h3 class="{! (layoutSection.editHeading == true)?'slds-section__title slds-theme_shade theme-shade':'slds-hide' }">
+                                        <span class="slds-truncate slds-p-horizontal_small" title="{! layoutSection.label }">{! layoutSection.label }</span>
+                                    </h3>
+                                    
+                                    <div aria-hidden="false" class="slds-section__content">
+                                        <div class="slds-grid slds-wrap"> 
+                                            <aura:iteration items="{! layoutSection.layoutColumns }" var="column">                                                                                            
+                                                <div class="{! or(layoutSection.style == ('TwoColumnsTopToBottom'), layoutSection.style == 'TwoColumnsLeftToRight' )?'slds-col slds-size_1-of-2 slds-p-around_small':'slds-col slds-size_1-of-1 slds-p-around_small' }">
+                                                    <aura:iteration items="{! column.layoutItems }" var="item">                               
+                                                        <aura:if isTrue="{! item.behavior != 'Readonly'}">   
+                                                            <aura:if isTrue="{! item.field != null  }">  
+                                                                <div class="{! (item.field == 'Name')?'':'slds-hide' }">  
+                                                                    <lightning:inputName aura:id="input1" firstName="{! v.simpleRecord.FirstName }" lastName="{! v.simpleRecord.LastName }" fieldsToDisplay="{!v.nameFields}" />
+                                                                </div>
+                                                                
+                                                                <div class="{! (item.field == 'Community__c')?'':'slds-hide' }">  
+                                                                    <aura:if isTrue="{! item.field == 'Community__c' }">                                                                   
+                                                                        <c:CommunityField field="{! item.field}" sobject="Contact" fieldname="{! $Label.c.Community_Field }" value="{! v.simpleRecord.Community__c}" />
+                                                                    </aura:if>
+                                                                </div>
+                                                                <div class="{! ( and(item.field != 'Name', item.field != 'Community__c'))?'':'slds-hide' }">  
+                                                                    <force:inputField value="{! item.field }"/>
+                                                                    <lightning:inputField fieldName="{! item.field }" class="slds-p-around_medium" />                                                                                                                                        
+                                                                </div>
+                                                            </aura:if>
+                                                            
+                                                            <aura:set attribute="else">
+                                                                <lightning:outputField fieldName="{! item.field }" class="slds-p-around_medium" />                                                                    
+                                                            </aura:set>
+                                                        </aura:if>
+                                                    </aura:iteration>
+                                                </div>                                                
+                                            </aura:iteration>                 
+                                        </div>
+                                    </div>
+                                    <footer class="slds-card__footer"></footer>
+                                </article>    
+                            </aura:if>
+                        </aura:iteration>    
+                    </lightning:recordEditForm>
+                </div>    
+            </div>
+            <footer class="slds-modal__footer">                         
+                <lightning:button label="{! $Label.c.Save }" variant="brand" onclick="{!c.handleSaveRecord}" />        
+                <lightning:button label="{! $Label.c.Cancel }" 	variant="neutral" onclick="{!c.cancelSave}" />
+            </footer>
+        </div>
+    </section>
+    <div aura:id="divBackground" class="slds-backdrop"></div>    
+</aura:component>

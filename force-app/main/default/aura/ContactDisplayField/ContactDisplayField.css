@@ -1,0 +1,54 @@
+.THIS {
+
+}
+
+.THIS .uppercase {
+    text-transform: uppercase;
+}
+
+.THIS .label {
+    color: #999999;
+    font-size: 11pt;
+}
+
+.THIS .value {
+    color: #3E4145;
+    font-family : 'Roboto';
+}
+
+.THIS .green {
+    color: #3db28b !important;
+}
+
+.THIS .gray {
+    color: #999999 !important;
+}
+
+.THIS .yellow {
+    color: #f3bb49 !important;
+}
+
+.THIS .blue {
+    color: #229fda !important;
+}
+
+.THIS .link {
+    text-decoration:none;    
+}
+
+.THIS .link:hover {
+    text-decoration:underline;
+    cursor:pointer;
+}
+
+.THIS .font17 {
+    font-size: 17pt;
+}
+
+.THIS .font13 {
+    font-size: 13pt;
+}
+
+.THIS .font11 {
+    font-size: 11pt;
+}

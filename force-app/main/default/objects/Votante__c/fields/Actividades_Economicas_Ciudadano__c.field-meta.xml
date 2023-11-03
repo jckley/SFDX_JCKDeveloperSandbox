@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Actividades_Economicas_Ciudadano__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(INCLUDES(Citizen__r.actividades_economicas__c, &quot;Arte y Recreacion&quot;), &quot;Arte y Recreacion;&quot;, null) &amp;
+IF(INCLUDES(Citizen__r.actividades_economicas__c, &quot;Comercio&quot;), &quot;Comercio;&quot;, null) &amp;
+IF(INCLUDES(Citizen__r.actividades_economicas__c, &quot;Comunicación e información;&quot;), &quot;Comunicación e información&quot;, null) &amp;
+IF(INCLUDES(Citizen__r.actividades_economicas__c, &quot;Construcción&quot;), &quot;Construcción;&quot;, null) &amp;
+IF(INCLUDES(Citizen__r.actividades_economicas__c, &quot;Educación&quot;), &quot;Educación;&quot;, null) &amp;
+IF(INCLUDES(Citizen__r.actividades_economicas__c, &quot;Empleo público&quot;), &quot;Empleo público;&quot;, null) &amp;
+IF(INCLUDES(Citizen__r.actividades_economicas__c, &quot;Extractivismo&quot;), &quot;Extractivismo;&quot;, null) &amp;
+IF(INCLUDES(Citizen__r.actividades_economicas__c, &quot;Finanzas y aseguradoras&quot;), &quot;Finanzas y aseguradoras;&quot;, null) &amp;
+IF(INCLUDES(Citizen__r.actividades_economicas__c, &quot;Fuerzas de seguridad&quot;), &quot;Fuerzas de seguridad;&quot;, null) &amp;
+IF(INCLUDES(Citizen__r.actividades_economicas__c, &quot;Gestión de desechos&quot;), &quot;Gestión de desechos;&quot;, null) &amp;
+IF(INCLUDES(Citizen__r.actividades_economicas__c, &quot;Industrias manufactureras&quot;), &quot;Industrias manufactureras;&quot;, null) &amp;
+IF(INCLUDES(Citizen__r.actividades_economicas__c, &quot;Inmobiliarias&quot;), &quot;Inmobiliarias;&quot;, null) &amp;
+IF(INCLUDES(Citizen__r.actividades_economicas__c, &quot;Justicia&quot;), &quot;Justicia;&quot;, null) &amp;
+IF(INCLUDES(Citizen__r.actividades_economicas__c, &quot;Reparaciones y oficios&quot;), &quot;Reparaciones y oficios;&quot;, null) &amp;
+IF(INCLUDES(Citizen__r.actividades_economicas__c, &quot;Reparaciones y suministro de servicios básicos&quot;), &quot;Reparaciones y suministro de servicios básicos;&quot;, null) &amp;
+IF(INCLUDES(Citizen__r.actividades_economicas__c, &quot;Rural&quot;), &quot;Rural;&quot;, null) &amp;
+IF(INCLUDES(Citizen__r.actividades_economicas__c, &quot;Salud&quot;), &quot;Salud;&quot;, null) &amp;
+IF(INCLUDES(Citizen__r.actividades_economicas__c, &quot;Servicios profesionales&quot;), &quot;Servicios profesionales;&quot;, null) &amp;
+IF(INCLUDES(Citizen__r.actividades_economicas__c, &quot;Transporte&quot;), &quot;Transporte;&quot;, null) &amp;
+IF(INCLUDES(Citizen__r.actividades_economicas__c, &quot;Turismo&quot;), &quot;Turismo;&quot;, null) &amp;
+IF(INCLUDES(Citizen__r.actividades_economicas__c, &quot;Hotelería y gastronomía&quot;), &quot;Hotelería y gastronomía;&quot;, null) &amp;
+IF(INCLUDES(Citizen__r.actividades_economicas__c, &quot;Gas y electricidad&quot;), &quot;Gas y electricidad;&quot;, null) &amp;
+IF(INCLUDES(Citizen__r.actividades_economicas__c, &quot;Tecnología&quot;), &quot;Tecnología;&quot;, null) &amp;
+IF(INCLUDES(Citizen__r.actividades_economicas__c, &quot;Suministro de agua&quot;), &quot;Suministro de agua;&quot;, null)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Actividades Economicas Ciudadano</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,576 @@
+<apex:page docType="html-5.0"  apiVersion="45" showChat="false" showHeader="false" sidebar="false" applyHtmlTag="false" applyBodyTag="false" expires="0" standardStylesheets="false" lightningStylesheets="false" controller="ExportController">
+  	<html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" lang="en">
+    	<head>
+            <title>Export - listado</title>
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <apex:slds />
+            
+            <link rel="SHORTCUT ICON" href="{! URLFOR($Resource.prosumia_icon) }" type="image/png"/>
+            <apex:stylesheet value="{! URLFOR($Resource.export_utils, '/css/export.css')}" />
+        </head>
+        <body style="background-color:#f7f7f7;">
+            <div class="slds-scope">
+                <header class="slds-global-header_container">
+                    <div class="slds-global-header" style="height:80px;">
+                        <div class="slds-grid">
+							<div class="slds-global-header__item">
+                                <a href="/apex/export_index">
+                                    <div class="slds-global-header__logo" style="background-image: url({! URLFOR($Resource.prosumia_logo) }); width: 120px !important; margin-top: 10px !important; margin-left: 10px !important;">
+                                    </div>
+                                </a>
+							</div>
+                           
+                            <div class="slds-col">
+                                <div class="slds-global-header__body">
+                                    <h1 class="slds-global-header__title slds-m-right_medium slds-align-middle slds-truncate slds-align-middle" 
+                                        style="font-size:1.3em; margin-top:18px !important; color:#8F8D8C;" title="SMS"> / CRM</h1>
+                                </div>
+                            </div>
+                            
+                            <div class="slds-col slds-no-flex slds-p-top_xx-small">
+                                <div class="slds-grid">
+                                    <form action="" method="post">
+                                        <button class="slds-button slds-button_x-large slds-align-middle" type="submit" 
+                                                style="height:45px !important;">
+                                            <span class="slds-item_label slds-p-horizontal_large slds-p-top_small" style="font-size:1rem; color:#A5A5A5;">
+                                                <img src="{! URLFOR($Resource.sms_utils, '/img/sms_logout.png') }" alt="mensajes enviados" height="18" width="18" />
+                                            </span>
+                                        </button>    
+                                    </form>
+                                </div>
+                            </div>
+                    	</div>
+                	</div>
+                </header>
+                
+                
+                <section class="slds-global-body_container slds-p-horizontal_xx-large" style="padding-top:80px;">
+                                            
+                    <div id="estado_envio" class="slds-text-heading_large slds-p-horizontal_xx-large" style="display:none;">
+                        <div class="slds-col slds-size--1-of-1 slds-p-horizontal_medium">
+                            <div style="height:50px; background-color:#D2E9E1; border-radius: 5px; border: 1px solid #3DB28B;">
+                                <span style="padding-left:10px; color:#3DB28B; font-size:1rem;">Mensaje cargado correctamente. Se <b>enviar&aacute; ahora</b>.</span>
+                                <div style="float:right !important; padding-right:10px; padding-top:4px;">
+                                    <svg aria-hidden="true" class="slds-icon slds-icon-text-default" 
+                                         style="width: 1.2rem !important; height: 1.2rem !important; background-color:#3DB28B !important;
+                                                border-radius: 50px !important; fill: #FFFFFF;">
+                                        <use xlink:href="{!URLFOR($Asset.SLDS, 'assets/icons/utility-sprite/svg/symbols.svg#check')}"></use>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        
+                    <div class="slds-text-heading_large slds-p-top_small">
+                        <div class="slds-grid slds-text-heading_large slds-p-around_x-large">
+                            
+                            <div class="slds-col slds-size_1-of-12"></div>
+                            
+                            <div class="slds-col slds-size_10-of-12 slds-card">
+                                <div class="slds-p-around_small">
+                                    <div class="slds-card__body slds-card__body_inner slds-p-bottom_small" style="border:none;">
+                                        
+                                        <!-- PANEL EXPORTADOR -->
+                                        <div style="border-bottom:1px solid #EEEEEE;">
+                                            <div class="slds-clearfix slds-p-bottom_small">
+                                                <div class="slds-float_left">
+                                                    <b style="font-size:0.8em; color:#58595B;">Exportar datos</b>
+                                                </div>
+                                                <div class="slds-float_right">
+                                                    <form action="/apex/export_create" method="post">
+                                                        <button class="slds-button slds-button_x-small slds-align_absolute-center slds-float_right"
+                                                                style="background-color:#999999; color:white; font-size:0.5em; width:140px !important;
+                                                                       height:45px !important;" type="submit">
+                                                            <b>Nuevo export</b>
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- TABLA DE ITEMS -->
+                                        <table class="slds-table" role="grid">
+                                            <thead>
+                                                <tr class="slds-line-height_reset">
+                                                    
+                                                    <!--
+                                                    <th class="slds-text-align_center slds-align-middle" scope="col" style="width:3rem">
+                                                        <div class="slds-th__action slds-th__action_form">
+                                                            <span class="slds-icon_container slds-icon-utility-settings">
+                                                                <svg aria-hidden="true" class="slds-icon slds-icon_xx-small slds-icon-text-default">
+                                                                    <use xlink:href="{!URLFOR($Asset.SLDS, 'assets/icons/utility-sprite/svg/symbols.svg#settings')}"></use>
+                                                                </svg>
+                                                            </span>
+                                                        </div>
+                                                    </th> -->
+                                                    
+                                                    <th aria-label="nombre" aria-sort="none" class="slds-is-sortable" scope="col">
+                                                        <span class="slds-truncate letra-titulo" title="nombre">NOMBRE EXPORT</span>
+                                                        <!--<span class="slds-icon_container slds-icon-utility-down">
+                                                            <svg aria-hidden="true" class="slds-icon slds-icon_xx-small slds-icon-text-default">
+                                                                <use xlink:href="{!URLFOR($Asset.SLDS, 'assets/icons/utility-sprite/svg/symbols.svg#down')}"></use>
+                                                            </svg>
+                                                        </span>-->
+                                                    </th>
+                                                    
+                                                    <th aria-label="tipo" aria-sort="none" class="slds-align-middle" scope="col">
+                                                        <span class="slds-truncate letra-titulo" title="tipo">TIPO</span>
+                                                    </th>
+                                                    
+                                                    <th aria-label="fecha_pedido" aria-sort="none" class="slds-align-middle" scope="col">
+                                                        <span class="slds-truncate letra-titulo" title="fecha_pedido">FECHA DE PEDIDO</span>
+                                                    </th>
+                                                    <th aria-label="fecha_pedido" aria-sort="none" class="slds-align-middle" scope="col">
+                                                        <span class="slds-truncate letra-titulo" title="cantidad">Cantidad de registros</span>
+                                                    </th>
+                                                    <th aria-label="estado" aria-sort="none" class="slds-align-middle" scope="col">
+                                                        <span class="slds-truncate letra-titulo" title="estado">ESTADO</span>
+                                                    </th>
+                                                    
+                                                    <th class="" scope="col" style="width:3.25rem">
+                                                        <div class="slds-truncate slds-assistive-text" title="configuraciones">Configuraciones</div>
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            
+                                            <tbody id="exports">
+                                            </tbody>
+                                        </table>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--
+                    <table id="mytable"><thead>
+                        <tr>
+                            <th id="sl">S.L.</th>
+                            <th id="nm">name</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Ronaldo</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Messi</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Ribery</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Bale</td>
+                            </tr>
+                        </tbody>
+                    </table>                    
+                    -->
+                    <div class="slds-text-heading_large slds-p-vertical_large slds-p-horizontal_xx-large">                
+                        <div class="clearfix">
+                            <div class="box options">
+                                <label style="font-size:0.5em; color:#868789;">Mostrando <b><span id="firstRecord">1</span> - <span id="lastRecord">25</span></b> de <b id="totalMensajes">0</b> pedidos de export</label>
+                            </div>
+                            <div class="box pagination" style="font-size:0.5em;">
+                                <!-- page: <span id="page"></span> -->
+                                <span id="pages"></span>
+                                <a href="javascript:firstPage()" id="btn_first">Primera</a>
+                                <a href="javascript:prevPage()" id="btn_prev">&lt;</a>
+                                <a href="javascript:nextPage()" id="btn_next">&gt;</a>
+                                <a href="javascript:lastPage()" id="btn_last">&Uacute;ltima</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+			</div>
+            
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            
+            <script>
+                
+                var totalPages = 1;
+            	var currentPage = 1;
+                var cantidadItemsPorLinea = 1;
+                var cantidadItemsPorPagina = 25;
+                var totalRegistros = 0;
+            
+            	// ESTADOS
+            	var rejected = "Rechazado";
+                var pending = "Pendiente de aprobación";
+                var done = "Finalizado";
+                var executing = "En espera de ejecución";
+                var approved = "Aprobado";
+                
+                // RECIBO VARIABLES
+                cadVariables = location.search.substring(1,location.search.length);
+                arrVariables = cadVariables.split("&");
+            
+                for (i=0; i<arrVariables.length; i++) {
+                  arrVariableActual = arrVariables[i].split("=");
+                    // SI LA VARIABLE ES DE CREACION DE MENSAJE EXITOSO
+                    if(arrVariables[i] == "e=success"){
+                        $('#estado_envio').fadeIn(3000);
+                        $('#estado_envio').fadeOut(3000);
+                    }
+
+                }
+                $(document).on('click', '.itembuttom', function() { 
+                    console.log('aca vamos')
+                    var strId = $(this).data('id');
+
+                    if($('#' + strId).hasClass("slds-is-open")){
+                        $('#' + strId).removeClass('slds-is-open');
+                    } else {
+                        $('#' + strId).addClass('slds-is-open');
+                    }
+                });
+
+                $(document).on('click', '.exportitem', function() { 
+                    console.log('aca vamos')
+                    var strId = $(this).data('id');
+                    var strAction = $(this).data('action');
+
+                    if( strAction === 'approve') {
+                        approveRequest(strId);
+                    } else if(strAction === 'reject') {
+                        rejectRequest(strId);
+                    } else if(strAction === 'cancel') {
+                        cancelRequest(strId);
+                    }
+                });
+
+            	function LoadExports() {
+                    Visualforce.remoting.Manager.invokeAction(
+                        //Invoking controller action
+    
+                        '{!$RemoteAction.ExportController.exports}',null,
+    
+                        function(result, event){
+                            var strImage = "{!URLFOR($Asset.SLDS, 'assets/icons/utility-sprite/svg/symbols.svg#threedots_vertical')}";
+                            var intIndex = 0;
+                            var btn_next = document.getElementById("btn_first");
+                            var btn_next = document.getElementById("btn_next");
+                            var btn_prev = document.getElementById("btn_prev");
+                            var btn_last = document.getElementById("btn_last");
+                            //var page_span = document.getElementById("page");
+                            
+                            //We can access the records through the parameter result
+                            //event.status determines if there is error or not 
+                            if(event.status){                            
+                                
+                                var htmlCardCode = '';
+                                var htmlCardCodeForEach = '';
+                                
+                                variable = result;
+                                totalRegistros = variable.length;
+                                
+                                intIndex = (currentPage-1)*cantidadItemsPorPagina;
+                                $('#firstRecord').html(intIndex+1);
+                                
+                                for (intIndex ; intIndex < Math.min( currentPage * cantidadItemsPorPagina, totalRegistros) ; intIndex++) {
+                                    
+                                    
+                                    htmlCardCodeForEach = '';
+                                    
+                                    htmlCardCodeForEach += '<tr id="export_'+(intIndex+1)+'" aria-selected="false" class="slds-hint-parent" style="height:60px;">';
+                                    /*htmlCardCodeForEach += '    <td class="slds-text-align_center fila" role="gridcell">';
+                                    htmlCardCodeForEach += '        <div class="slds-checkbox">';
+                                    htmlCardCodeForEach += '            <input type="checkbox" name="options" id="checkbox-'+(intIndex+1)+'" value="checkbox-'+(intIndex+1)+'" tabindex="'+(intIndex)+'" aria-labelledby="check-button-label-'+(intIndex+1)+' column-group-header" />';
+                                    htmlCardCodeForEach += '            <label class="slds-checkbox__label" for="checkbox-'+(intIndex+1)+'" id="check-button-label-'+(intIndex+1)+'">';
+                                    htmlCardCodeForEach += '                <span class="slds-checkbox_faux"></span>';
+                                    htmlCardCodeForEach += '                <span class="slds-form-element__label slds-assistive-text">Select item '+(intIndex+1)+'</span>';
+                                    htmlCardCodeForEach += '            </label>';
+                                    htmlCardCodeForEach += '        </div>';
+                                    htmlCardCodeForEach += '    </td>';*/
+                                    htmlCardCodeForEach += '    <td class="fila" role="gridcell">';
+                                    htmlCardCodeForEach += '        <div class="slds-truncate letra-filas" title="nombre export" style="color:#999999;">path &#92; <span style="color:#333333;">' + result[intIndex].Name + '</span></div>';
+                                    htmlCardCodeForEach += '    </td>';
+                                    htmlCardCodeForEach += '    <td class="fila" role="gridcell">';
+                                    htmlCardCodeForEach += '        <div class="slds-truncate letra-filas" title="tipo">' + result[intIndex].Type__c + '</div>';
+                                    htmlCardCodeForEach += '    </td>';
+                                    htmlCardCodeForEach += '    <td class="fila" role="gridcell">';
+                                    htmlCardCodeForEach += '        <div class="slds-truncate letra-filas" title="fecha de pedido">' + result[intIndex].Order_Date.substring(0,result[intIndex].Order_Date.indexOf(' ')) + '</div>';
+                                    htmlCardCodeForEach += '    </td>';
+
+                                    htmlCardCodeForEach += '    <td class="fila" role="gridcell">';
+                                    htmlCardCodeForEach += '        <div class="slds-truncate letra-filas" title="Cantidad de registros">' + ((result[intIndex].Record_Count__c == undefined)?0:result[intIndex].Record_Count__c) + '</div>';
+                                    htmlCardCodeForEach += '    </td>';
+
+                                    
+                                    htmlCardCodeForEach += '    <td class="fila" role="gridcell">';
+                                    
+                                    if(result[intIndex].Status__c.toLowerCase() == rejected.toLowerCase()){
+                                        htmlCardCodeForEach += '        <div class="slds-truncate letra-filas" title="estado" style="color:#A20707;">' + result[intIndex].Status__c + '</div>';
+                                    } else if(result[intIndex].Status__c.toLowerCase() == pending.toLowerCase()){
+                                        htmlCardCodeForEach += '        <div class="slds-truncate letra-filas" title="estado" style="color:#E2930B;">' + result[intIndex].Status__c + '</div>';
+                                    } else if(result[intIndex].Status__c.toLowerCase() == approved.toLowerCase()){
+                                        htmlCardCodeForEach += '        <div class="slds-truncate letra-filas" title="estado" style="color:#21AD05;">' + result[intIndex].Status__c + '</div>';
+                                    } else {
+                                        htmlCardCodeForEach += '        <div class="slds-truncate letra-filas" title="estado">' + result[intIndex].Status__c + '</div>';
+                                    }
+                                    htmlCardCodeForEach += '    </td>';
+                                    htmlCardCodeForEach += '    <td class="fila" role="gridcell">';
+                                    if(result[intIndex].Status__c.toLowerCase().indexOf("pendiente de aprobació") >= 0 || result[intIndex].Status__c.toLowerCase().indexOf("en ejecución") >= 0){
+                                        if({!canApprove}) {
+                                            htmlCardCodeForEach += '        <div class="slds-dropdown-trigger slds-dropdown-trigger_click" id="' + result[intIndex].Id  + '">';
+                                            htmlCardCodeForEach += '            <button  class="slds-button slds-button_icon slds-button_icon-border-filled itembuttom" data-id="' + result[intIndex].Id  + '">';
+                                            htmlCardCodeForEach += '                <svg aria-hidden="true" class="slds-icon slds-icon_xx-small slds-icon-text-default">';
+                                            htmlCardCodeForEach += '                    <use xlink:href="' + strImage  + '"></use>';
+                                            htmlCardCodeForEach += '                </svg>';
+                                            htmlCardCodeForEach += '                <span class="slds-assistive-text"></span>';
+                                            htmlCardCodeForEach += '            </button>';
+                                            htmlCardCodeForEach += '            <div class="slds-dropdown slds-dropdown_right">';
+                                            htmlCardCodeForEach += '                <ul class="slds-dropdown__list" role="menu" aria-label="Show More">';
+
+                                            if(result[intIndex].Status__c.toLowerCase().indexOf("pendiente de aprobació") >= 0) {
+                                                htmlCardCodeForEach += '                    <li class="slds-dropdown__item exportitem" data-id="' + result[intIndex].Id  + '" data-action="approve" role="presentation">';
+                                                htmlCardCodeForEach += '                        <span role="menuitem" tabindex="0">';
+                                                htmlCardCodeForEach += '                            <span class="slds-truncate" title="Aprobar">Aprobar</span>';
+                                                htmlCardCodeForEach += '                        </span>';
+                                                htmlCardCodeForEach += '                    </li>';
+                                                htmlCardCodeForEach += '                    <li class="slds-dropdown__item exportitem" data-id="' + result[intIndex].Id  + '" data-action="reject" role="presentation">';
+                                                htmlCardCodeForEach += '                        <span role="menuitem" tabindex="-1">';
+                                                htmlCardCodeForEach += '                            <span class="slds-truncate" title="Rechazar">Rechazar</span>';
+                                                htmlCardCodeForEach += '                        </span>';
+                                                htmlCardCodeForEach += '                    </li>';
+                                            }
+
+                                            if(result[intIndex].CreatedById == '{!$User.Id}') {
+                                                    htmlCardCodeForEach += '            <li class="slds-dropdown__item exportitem" data-id="' + result[intIndex].Id  + '" data-action="cancel" role="presentation">';
+                                                    htmlCardCodeForEach += '                <span role="menuitem" tabindex="0">';
+                                                    htmlCardCodeForEach += '                    <span class="slds-truncate" title="Cancelar">Cancelar</span>';
+                                                    htmlCardCodeForEach += '                </span>';
+                                                    htmlCardCodeForEach += '             </li>';
+                                            }
+
+                                            htmlCardCodeForEach += '                </ul>';
+                                            htmlCardCodeForEach += '            </div>';
+                                            htmlCardCodeForEach += '        </div>';
+                                        } else if(result[intIndex].CreatedById == '{!$User.Id}') {
+                                            htmlCardCodeForEach += '        <div class="slds-dropdown-trigger slds-dropdown-trigger_click" id="' + result[intIndex].Id  + '">';
+                                            htmlCardCodeForEach += '            <button  class="slds-button slds-button_icon slds-button_icon-border-filled itembuttom" data-id="' + result[intIndex].Id  + '">';
+                                            htmlCardCodeForEach += '                <svg aria-hidden="true" class="slds-icon slds-icon_xx-small slds-icon-text-default">';
+                                            htmlCardCodeForEach += '                    <use xlink:href="' + strImage  + '"></use>';
+                                            htmlCardCodeForEach += '                </svg>';
+                                            htmlCardCodeForEach += '                <span class="slds-assistive-text"></span>';
+                                            htmlCardCodeForEach += '            </button>';
+                                            htmlCardCodeForEach += '            <div class="slds-dropdown slds-dropdown_right">';
+                                            htmlCardCodeForEach += '                <ul class="slds-dropdown__list" role="menu" aria-label="Show More">';
+                                            htmlCardCodeForEach += '                    <li class="slds-dropdown__item exportitem" data-id="' + result[intIndex].Id  + '" data-action="cancel" role="presentation">';
+                                            htmlCardCodeForEach += '                        <span role="menuitem" tabindex="0">';
+                                            htmlCardCodeForEach += '                            <span class="slds-truncate" title="Cancelar">Cancelar</span>';
+                                            htmlCardCodeForEach += '                        </span>';
+                                            htmlCardCodeForEach += '                    </li>';
+                                            htmlCardCodeForEach += '                </ul>';
+                                            htmlCardCodeForEach += '            </div>';
+                                            htmlCardCodeForEach += '        </div>';
+                                        }
+                                    } 
+                                    htmlCardCodeForEach += '    </td>';
+                                    htmlCardCodeForEach += '</tr>';
+                                    
+                                    htmlCardCode += htmlCardCodeForEach;                                                                        
+                                }
+                                
+                                $('#contador').html('(' + totalRegistros + ')');
+                                $('#totalMensajes').html(totalRegistros);
+                                $('#lastRecord').html(intIndex);
+                                
+                                $('#exports').html(htmlCardCode);
+                                
+                                totalPages = Math.ceil(totalRegistros/cantidadItemsPorPagina);
+                                
+                                calculatePages();
+                                ocultarPocisionales();                                
+                            }
+                        },
+                        {escape: true}
+                    );
+                }
+
+                function prevPage()
+                {
+                    if (currentPage > 1) {
+                        currentPage--;
+                        changePage(currentPage);
+                    }
+                }
+            
+            	function firstPage()
+                {
+                    currentPage = 1;
+                    changePage(currentPage);
+                }
+                
+                function nextPage()
+                {
+                    if (currentPage < totalPages) {
+                        currentPage++;
+                        changePage(currentPage);
+                    }
+                }
+            
+            	function lastPage()
+                {
+                    currentPage = totalPages
+                    changePage(currentPage);
+                }
+                
+                function changePage(page)
+                {                 
+                    // Validate page
+                    currentPage = page;
+                    if (page < 1) currentPage = 1;
+                    if (page > totalPages) currentPage = totalPages;
+                    
+                    LoadExports();
+                }
+            
+                function calculatePages(){
+                    var htmlCode = '';
+                    
+                    for(var varNumber = Math.max(currentPage-2, 1); varNumber <= Math.min(currentPage+2, totalPages); varNumber++) {
+                        if(varNumber == currentPage){
+                            htmlCode += '<a class="active" href="javascript:changePage('+varNumber+');">'+varNumber+'</a>';
+                        } else {
+                            htmlCode += '<a href="javascript:changePage('+varNumber+');">'+varNumber+'</a>';
+                        }
+                    }
+
+                    $('#pages').html(htmlCode);
+                    // console.log('htmlCode:'+htmlCode);
+                }
+            
+            	function ocultarPocisionales() {
+                	if (currentPage == 1) {
+                        btn_prev.style.visibility = "hidden";
+                        btn_first.style.visibility = "hidden";
+                    } else {
+                        btn_prev.style.visibility = "visible";
+                        btn_first.style.visibility = "visible";
+                    }
+                    
+                    if (currentPage == totalPages) {
+                        btn_next.style.visibility = "hidden";
+                        btn_last.style.visibility = "hidden";
+                    } else {
+                        btn_next.style.visibility = "visible";
+                        btn_last.style.visibility = "visible";
+                    }
+                }
+            
+            	function ocultarElementos(){
+                    var i;
+                    for(i=1; i<=totalRegistros; i++)
+                    	$('#dropdown-export_'+i).removeClass('slds-is-open');
+                }
+            
+            	function ocultarElemento(elemento){
+                    if($('#' + elemento).hasClass("slds-is-open")){
+                        $('#' + elemento).removeClass('slds-is-open');
+                    }
+                }
+                
+            	function mostrarElemento(elemento){
+                    if($('#' + elemento).hasClass("slds-is-open")){
+                        ocultarElementos();
+                    }
+                    else {
+                        ocultarElementos();
+                        $('#' + elemento).addClass("slds-is-open");
+                    }
+                }
+                LoadExports();
+                changePage(currentPage);
+            
+            	function approveRequest(id){
+                    console.log('aprobando')                    //METER UNA VALIDACION
+                    Visualforce.remoting.Manager.invokeAction( '{!$RemoteAction.ExportController.processRequest}',id, true,
+                        function(objResult, objEvent){
+                            if(objEvent.status){
+                                location.href = '/apex/export_index?success=1'
+                            }
+                        },
+                        {escape: true}
+                    );    
+                }
+            
+            	function rejectRequest(id){
+                    console.log('rechanzando')                    //METER UNA VALIDACION
+                     Visualforce.remoting.Manager.invokeAction( '{!$RemoteAction.ExportController.processRequest}',id, false,
+                        function(objResult, objEvent){
+                            if(objEvent.status){
+                                location.href = '/apex/export_index?success=1'
+                            }
+                        }, 
+                        {escape: true}
+                    );  
+                }
+
+                function cancelRequest(id){
+                    console.log('cancel')                    //METER UNA VALIDACION
+                     Visualforce.remoting.Manager.invokeAction( '{!$RemoteAction.ExportController.cancelRequest}',id,
+                        function(objResult, objEvent){
+                            if(objEvent.status){
+                                location.href = '/apex/export_index?success=1'
+                            }
+                        },
+                        {escape: true}
+                    );  
+                }
+
+            //  sortTable(f,n)
+            //  f : 1 ascending order, -1 descending order
+            //  n : n-th child(<td>) of <tr>
+                function sortTable(f,n){
+                    var rows = $('#mytable tbody  tr').get();
+                
+                    rows.sort(function(a, b) {
+                
+                        var A = getVal(a);
+                        var B = getVal(b);
+                
+                        if(A < B) {
+                            return -1*f;
+                        }
+                        if(A > B) {
+                            return 1*f;
+                        }
+                        return 0;
+                    });
+                
+                    function getVal(elm){
+                        var v = $(elm).children('td').eq(n).text().toUpperCase();
+                        if($.isNumeric(v)){
+                            v = parseInt(v,10);
+                        }
+                        return v;
+                    }
+                
+                    $.each(rows, function(index, row) {
+                        $('#mytable').children('tbody').append(row);
+                    });
+                }
+                var f_sl = 1; // flag to toggle the sorting order
+                var f_nm = 1; // flag to toggle the sorting order
+                $("#sl").click(function(){
+                    f_sl *= -1; // toggle the sorting order
+                    var n = $(this).prevAll().length;
+                    sortTable(f_sl,n);
+                });
+                $("#nm").click(function(){
+                    f_nm *= -1; // toggle the sorting order
+                    var n = $(this).prevAll().length;
+                    sortTable(f_nm,n);
+                });
+            </script>
+            
+        </body>
+	</html>
+</apex:page>

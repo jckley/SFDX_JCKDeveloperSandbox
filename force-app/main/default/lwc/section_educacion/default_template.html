@@ -1,0 +1,20 @@
+<template>
+    <div class="box">
+        <div class="header">
+          <span class="title"> Nivel educativo </span>
+        </div>
+          <div class="items_nivel_educativo">
+            <template for:each={educationLevels} for:item="objEducationLevel">
+              <div class={objEducationLevel.cssClases} key={objEducationLevel.name}>
+                  <div class="iconHolder">
+                    <img class="icon" src={objEducationLevel.image} alt={objEducationLevel.name}/>
+                  </div>
+                  <div class="title" data-educationfilter={objEducationLevel.educationfilter} onclick={handelClick_Education}>
+                    <strong>{objEducationLevel.value}</strong>
+                    <span>{objEducationLevel.name}</span>
+                  </div>
+              </div>
+            </template>
+          </div>
+      </div>
+</template>

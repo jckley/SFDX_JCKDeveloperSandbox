@@ -1,0 +1,101 @@
+.THIS {
+}
+
+.THIS .territory {
+    line-height:35px;    
+    height: 42px; 
+}
+
+.THIS .territory .back_arrow {
+    display: inline-block;    
+    position: relative;
+}
+
+.THIS .territory .back_arrow IMG {    
+    transform: scaleX(-1);     
+    position :inline-block;
+    max-height: 15px;
+    max-width: 15px;
+    vertical-align: top;
+}
+
+.THIS .territory ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.THIS .territory ul li {
+
+    display:flex; 
+    align-items:center;  
+}
+
+.THIS .territory.selected,
+.THIS .territory:hover {
+    background-color: #e6e7eb; 
+    border-radius: 10px; 
+    cursor: pointer;
+    
+    line-height:35px;    
+    height: 42px; 
+}
+
+.THIS .territory .name {
+    display: inline-block;    
+    position: relative;
+    white-space: nowrap;
+    width: 100%;
+    font-size: 13pt;
+    font-weight: bold;   
+    color: gray;
+    padding-left : 5px;
+  
+}
+
+.THIS .territory.selected 	.name,
+.THIS .territory:hover 		.name { 
+    color: #333333;
+    width: calc(100% - 100px);
+    overflow:hidden;
+    white-space: nowrap;
+}
+
+.THIS .territory .detail {
+    display:none;
+}
+
+
+.THIS .territory.selected 	.detail ,
+.THIS .territory:hover 		.detail {
+    display: inline; 
+    color: #58595b;
+    float: right; 
+    font-weight: bold; 
+    font-size: 9pt;    
+}
+
+.THIS .territory.selected 	.name:after ,
+.THIS .territory:hover 		.name:after {
+    content:'';
+    position: absolute;
+    left: 100%;
+    margin-left: -40px;
+    width: 40px;
+    height:100%;
+    top:0;
+    background:linear-gradient(to right, transparent, #e6e7eb);    
+}
+
+
+
+.THIS .territory.selected 	.detail:hover ,
+.THIS .territory 			.detail:hover { 
+    text-decoration:underline;
+}
+
+.THIS .territory .detail IMG {
+    max-width: 15px;
+    max-height: 15px;
+    margin-left: 10px;
+}

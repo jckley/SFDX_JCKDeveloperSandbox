@@ -1,0 +1,14 @@
+.THIS  {
+    
+}
+
+.THIS .value {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-right: 5px;
+}
+
+.THIS .infocontainer {
+    height: 210px;
+}

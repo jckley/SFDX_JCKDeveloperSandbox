@@ -1,0 +1,81 @@
+<template>
+    <article class="card" style={showCard}>
+        <header>
+            <h1><b>{label.lblLevel} { level }</b></h1>  
+        </header>    
+
+        <!-- SI TERRITORY TIENE DATOS VA ESTO -->
+        <template if:true={areDetailsVisible}>
+            <ul class="childterritories">
+                <li>
+                    <div> 
+                        <lightning-input name="enter-search" type="search" placeholder="Search Territory..."></lightning-input>
+                    </div>
+                </li>
+
+                <template for:each={territories} for:index="intIndex" for:item="territory">
+                    <li key={territory} class="levelItem" onclick={handleClick} data-name={territory.Name} id={territory.Id}>
+                        <div class="container">
+                            <span class="right-arrow hideondesktop">
+                                <img class="searchIcon" src={iconRight} />
+                            </span>
+
+                            <h2>{territory.Name}</h2>
+
+                            <div class="showmeonhover">
+                                <span>
+                                    <a key={territory} href={strLink} territory-id={territory.Id} onclick={territoryDetailLink}>Ver territorio</a>
+                                    <img src={iconRight} alt="" />
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+                </template>
+            </ul>
+        </template>
+
+        <!-- SI TERRITORY NO TIENE DATOS VA ESTO -->
+        <template if:false={areDetailsVisible}>
+            <div class="row empty-card-content">
+                <div class="cardNoInfo">
+                    <div>
+                        <img class="big-icon" src={iconArrow} style="margin: 0 75px 10px 0;"/>
+                    </div>
+                    <div>
+                        <img class="big-icon" src={iconNivelAdm} />
+                    </div>
+                    <div class="empty-card-text">
+                        Seleccione un nivel administrativo {levelAnterior} para ver su composición
+                    </div>
+                </div>
+            </div>
+        </template>
+        
+    </article>
+</template>
+
+<!---
+<div class="card tree-card" id="1card-content" onclick="focusCard(1);" style="height: 298.149px;">
+    <div class="card-cont subattribute-header">
+        <div class="subattribute-title">
+            <span>Level 1</span> 
+        </div>
+    </div>
+
+    <div class="level-search-bar"><img src="/resource/1561570169000/IconsPack1/searchps.svg?orgId=00D1h0000000jIt" class="search-icon">
+        <input id="1bar" onkeyup="filterTer(1);" placeholder="Search Territory..." type="text">
+        <img class="clear-icon" id="1clear" onclick="clearInput(1);" src="/resource/1561570169000/IconsPack1/closeemptyinputps.svg?orgId=00D1h0000000jIt">
+    </div>
+    <div class="level-content" id="1content">
+        <div class="scrollable" id="1barlist">
+                <div class="level-item " id="a2L1h000000E5UQEA0" onclick="javascript:seeChilds('a2L1h000000E5UQEA0',1,'a2L1h000000E5UBEA0')">
+                    <div class="level-item-content">
+                        <span class="right-arrow" onclick="backToLevel(1, event)"><img class="search-icon" id="a2L1h000000E5UQEA0-arrow" src="/resource/1561570169000/IconsPack1/arrowrightps.svg?orgId=00D1h0000000jIt" style="transform: scaleX(-1); margin-right: 10px;"></span>
+                        <span class="level-item-text">Buenos Aires</span>
+                        <div class="level-item-text-hidden" onclick="navigateToTerritory('a2L1h000000E5UQEA0', event, 'a2L1h000000E5UBEA0', 1);">See territory <span><img src="/resource/1561570169000/IconsPack1/arrowrightps.svg?orgId=00D1h0000000jIt" class="search-icon"></span></div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+-->

@@ -1,0 +1,161 @@
+<apex:component >
+    <apex:attribute name="encuesta" type="datos_encuesta" required="true" description="Survey General Info"/>
+    <apex:attribute name="callCounter" type="integer" required="true" description="Loop counter"/>
+    <apex:attribute name="flag" type="boolean" required="true" description="Component Style"/>
+    <apex:attribute name="PersonasEncuestadas" type="integer" required="true" description="Cantidad de Personas Encuestadas"/>
+    <apex:attribute name="callingClass" type="string" required="true" description="Filter Modal Flag"/>
+
+	<apex:outputPanel rendered="{!callCounter==0}">
+        <head>
+            <style>                 
+                .checkboxcontainer {
+                    display: block;
+                    position: relative;
+                    margin-top: 0px;
+                    margin-bottom: 0px;
+                    cursor: pointer;
+                    user-select: none;
+                	height : 40px;
+                }
+                
+                .checkboxcontainer input {
+                    position: absolute;
+                    opacity: 0;
+                    cursor: pointer;
+                    height: 0;
+                    width: 0;
+                }
+                
+                .checkmark {
+                    position: absolute;
+                    top: 8px;
+                    left: 70%;
+                    height: 25px;
+                    width: 25px;
+                    background-color: white;
+                    border:2px solid lightgrey;
+                    border-radius: 5px;
+                }
+                
+                .checkboxcontainer:hover input ~ .checkmark {
+                    background-color: #ccc;
+                }
+                
+                .checkboxcontainer input:checked ~ .checkmark {
+                    background-color: #40b599;
+                }
+                
+                .surveyanswer .progress {
+                	height : 40px;
+                }
+                
+                .primarytext {
+                	color:#58595b !important;
+                }
+                .secondarytext {
+                	color:#999999  !important;
+                }
+                .brandtext {
+                	color:#40b599 !important;
+                }
+                
+            </style>
+        </head>
+    </apex:outputPanel>    
+
+    
+    <div class="row pt-3 survequestion">
+        <div class="col-1">
+            <h4 class="text-weight-bolder text-right text-nowrap primarytext"><b>{!encuesta.nro_pregunta}</b><i class="fas fa-long-arrow-alt-right"></i></h4>
+        </div>
+        <div class="col-11 primarytext">
+           <h3 class="tituloPregunta">{!encuesta.titulo}</h3>
+        </div>
+    </div>
+
+
+    <div class="row mb-3">
+        <div class="col-1">
+            <apex:outputPanel rendered="{!flag==true}">
+                <div>
+                    <label class="checkboxcontainer">
+                        <input type="checkbox" class="survey_option selector {!callingClass} group{!encuesta.nro_pregunta}" onclick="selectGroup('group{!encuesta.nro_pregunta}', '{!callingClass}')"/>
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+            </apex:outputPanel>
+        </div>
+        <div class="col-11">
+           <h6 class="pt-2 mb-n1 text-info brandtext">
+               {!encuesta.suma_respuestas} respuestas. [{!PersonasEncuestadas} personas identificadas]
+           </h6>
+        </div>
+    </div>        
+
+    
+    <apex:repeat value="{!encuesta.lista_opciones}" var="opcion">
+        <div class="row my-3 surveyanswer">
+            <div class="col-1">
+                <apex:outputPanel rendered="{!flag==true}">
+                    <div>
+                        <label class="checkboxcontainer">
+                            <input type="checkbox" class="survey_option check {!callingClass} group{!encuesta.nro_pregunta}" 
+                                   data-salesforceid="{! opcion.opcionid }" 
+                                   data-name="{! opcion.pregunta }" data-question="{! encuesta.nro_pregunta }" name="Pregunta{!encuesta.nro_pregunta}" 
+                                   onclick="verificarCheckbox('group{!encuesta.nro_pregunta}', '{!callingClass}')"/>
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                </apex:outputPanel>
+           	</div>
+            
+            
+            <div class="col-11">
+                <div class="progress" data-toggle="tooltip" title="{!opcion.pregunta}">
+   	                <div class="btn font-weight-bolder" style="width:2em;">{!opcion.nro_opcion}</div>
+       	            <div class="progress-bar bg-info" style="width:{!IF(flag==true, 0, opcion.porcentaje)}%;">
+                        <h6 class="pulso-progress-bar-text text-left pl-3 text-truncate" style="width:75%;">{!opcion.pregunta}</h6>
+                        <h6 class="pulso-progress-bar-text text-right pr-5">{!opcion.respuestas} / <b>{!opcion.porcentaje}%</b></h6>
+                    </div>
+                </div>
+            </div>
+            
+        </div>        
+    </apex:repeat>
+    
+    <script>
+		function verificarCheckbox(group, filterClass) {
+            $('#limpiarSeleccion.' + filterClass).prop('checked', false);
+            if ($('.' + filterClass + '.check:checked').length > 0) {
+                $('#limpiarSeleccion.' + filterClass).prop('checked', true);
+            }
+            $('.' + filterClass + '.selector.' + group).prop('checked', false);
+            if ($('.' + filterClass + '.check.' + group + ':checked').length > 0) {
+	            $('.' + filterClass + '.selector.' + group).prop('checked', true);
+            }
+        }
+    
+    	function selectGroup(group, filterClass) {
+            var status = $('.' + filterClass + '.selector.' + group).prop('checked');
+            $('.' + filterClass + '.check.' + group).prop('checked', status);
+            verificarCheckbox(group, filterClass);
+        }
+    
+        $('.progress').ready(function(){
+            $('[data-toggle="tooltip"]').tooltip({delay: {show: 750, hide: 50}});   
+        });
+    
+    //$(document).on('mouseenter', '.progress-bar', function() {
+    //      var pregunta = $(this).children('.text-truncate')[0];
+    //      if(pregunta.offsetWidth < pregunta.scrollWidth && !$(pregunta).attr('title')) {
+    //          $(this).tooltip({
+    //              title: $(pregunta).text(),
+    //              placement: "bottom"
+    //          });
+    //          $(this).tooltip('show');
+    //      }
+    //  });
+
+    </script>
+    
+</apex:component>

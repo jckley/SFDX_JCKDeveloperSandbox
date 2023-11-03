@@ -1,0 +1,414 @@
+<apex:page showHeader="true" standardStylesheets="false" sidebar="false" applyHtmlTag="true" applyBodyTag="false" docType="html-5.0" controller="ReportManager">    
+	<apex:includeLightning /> 
+    <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">       
+        <head>
+            <title>Prosumia - Exportación de reportes</title>
+            <apex:slds />
+            
+            <apex:remoteObjects jsNamespace="prosumia">
+                <apex:remoteObjectModel name="Report_Quereable__c" fields="Folder_Name__c,Report_Id__c,Format__c,Type__c,Source__c,Id,Name"/>
+            </apex:remoteObjects> 
+        </head>
+        
+        <body class="slds-scope">  
+            <c:ToastNotification />
+            <div class="slds-grid">        
+                <div class="slds-size--1-of-1">   
+                    <h1 class="slds-text-heading--label slds-m-bottom--small">
+                        <div class="slds-page-header slds-page-header--object-home" role="banner">
+                            <div class="slds-grid">
+                                <div class="slds-col slds-has-flexi-truncate">
+                                    <div class="slds-media slds-no-space slds-grow">
+                                        <div class="slds-media__figure">
+                                            <span class="slds-icon_container">
+                                                <svg aria-hidden="true" class="slds-icon slds-icon-standard-lead">
+                                                    <use xlink:href="{!URLFOR($Asset.SLDS, '/assets/icons/standard-sprite/svg/symbols.svg#lead')}"></use>
+                                                </svg>
+                                            </span>
+                                        </div>
+                                        
+                                        <div class="slds-media__body">
+                                            <p class="slds-text-title--caps slds-line-height--reset">Prosumia</p>
+                                            <button class="slds-button slds-type-focus slds-m-right--small slds-grid slds-truncate" aria-haspopup="true">
+                                                <div class="slds-grid slds-grid--vertical-align-center slds-truncate">
+                                                    <h1 class="slds-page-header__title slds-truncate" title="Administación de reportes">Administación de reportes</h1>
+                                                </div>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </h1>
+                </div>
+            </div>
+            <!-- / MASTHEAD -->    
+
+            <!-- PRIMARY CONTENT WRAPPER -->
+            <div class="slds-grid slds-wrap slds-grid--pull-padded slds-p-around_large">
+                <div class="slds-panel slds-grid slds-grid--vertical slds-nowrap">
+                    
+                    <div class="slds-tabs_default">
+                        <ul class="slds-tabs_default__nav" role="tablist">
+                            <li class="slds-tabs_default__item slds-is-active" title="Reports" role="presentation">
+                                <a class="slds-tabs_default__link" href="javascript:void(0);" role="tab" tabindex="0" aria-selected="true" aria-controls="tabReports" id="tabReportsTitle">Reportes</a>
+                            </li>
+                            <li class="slds-tabs_default__item" title="Analytics" role="presentation">
+                                <a class="slds-tabs_default__link" href="javascript:void(0);" role="tab" tabindex="-1" aria-selected="false" aria-controls="tabAnalytics" id="tabAnalyticsTitle">Analytics</a>
+                            </li>
+                            <li class="slds-tabs_default__item" title="CloneDataExtension" role="presentation">
+                                <a class="slds-tabs_default__link" href="javascript:void(0);" role="tab" tabindex="-2" aria-selected="false" aria-controls="tabCloneDataExtension" id="tabCloneDataExtensionTitle">Clonar Data Extension</a>
+                            </li>
+                        </ul>
+
+                        <div id="tabReports" class="slds-tabs_default__content" role="tabpanel" aria-labelledby="tabReportsTitle">                        
+                            <div class="fdsafda-slds-scrollable--y">                       
+                                <div class="slds-p-around--small">                            
+                                    <table class="slds-table slds-table_bordered slds-max-medium-table_stacked-horizontal">
+                                        <thead>
+                                            <tr class="slds-line-height_reset">
+                                                <th class="slds-text-title_caps" scope="col">
+                                                    <div class="slds-truncate" title="Campo">Nombre</div>
+                                                </th>
+                                                <th class="slds-text-title_caps" scope="col">
+                                                    <div class="slds-truncate" title="Campo">Carpeta</div>
+                                                </th>
+                                                <th class="slds-text-title_caps" scope="col">
+                                                    <div class="slds-truncate" title="Campo">Formato</div>
+                                                </th>
+                                                <th class="slds-text-title_caps" scope="col">
+                                                    <div class="slds-truncate" title="Permiso de Exportación">Acciones</div>
+                                                </th>
+                                            </tr>
+                                            <tr class="slds-line-height_reset">
+                                                <th class="slds-text-title_caps" scope="col">
+                                                    <div class="slds-truncate" title="Campo">
+                                                        <div class="slds-form-element__control">
+                                                            <input type="text" id="txtFieldFilter" class="slds-input" />
+                                                        </div>
+                                                    </div>
+                                                </th>
+                                                
+                                                <th class="slds-text-title_caps" scope="col" colspan="3">
+                                                    &nbsp;
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="results">
+                                            
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="tabAnalytics" class="slds-tabs_default__content slds-hide" role="tabpanel" aria-labelledby="tabAnalyticsTitle">
+                            <div class="slds-p-around--small"> 
+                                <div class="slds-form">
+                                    <div class="slds-form-element slds-form-element_stacked">
+                                        <label class="slds-form-element__label" for="txtName">Destino</label>
+                                        <div class="slds-form-element__control">
+                                            <input type="text" id="txtDataExtension" placeholder="Ingrese el nombre de la data extension destino o del archivo a exportar" class="slds-input" />
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="slds-grid slds-gutters">
+                                        <div class="slds-col">
+                                            <div class="slds-form-element">
+                                                <label class="slds-checkbox_toggle slds-grid">
+                                                    <span class="slds-form-element__label slds-m-bottom_none">Todos los registros</span>
+                                                    <input id="chkQueryAll" type="checkbox" aria-describedby="chkQueryAllToggle" value="1" />
+                                                    <span id="chkQueryAllToggle" class="slds-checkbox_faux_container" aria-live="assertive">
+                                                        <span class="slds-checkbox_faux"></span>
+                                                        <span class="slds-checkbox_on">Sí</span>
+                                                        <span class="slds-checkbox_off">No</span>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="slds-col">
+                                            <div class="slds-form-element">
+                                                <label class="slds-checkbox_toggle slds-grid">
+                                                    <span class="slds-form-element__label slds-m-bottom_none">Sendable DE</span>
+                                                    <input id="chkSendableDE" type="checkbox" aria-describedby="chkToggleSendableDE" value="0" />
+                                                    <span id="chkToggleSendableDE" class="slds-checkbox_faux_container" aria-live="assertive">
+                                                        <span class="slds-checkbox_faux"></span>
+                                                        <span class="slds-checkbox_on">Sí</span>
+                                                        <span class="slds-checkbox_off">No</span>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                                                        
+                                    <div class="slds-form-element slds-form-element_stacked">
+                                        <label class="slds-form-element__label" for="txtSAQL">SAQL</label>
+                                        <div class="slds-form-element__control">
+                                            <textarea id="txtSAQL" placeholder="Ingrese el SAQL del lente" class="slds-textarea" style="min-height:260px;"></textarea>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="slds-form-element slds-form-element_stacked">
+                                        <button class="slds-button slds-button_neutral resetForm">Cancelar</button>
+                                    	<button class="slds-button slds-button_brand sendToMarketingCloud">Enviar a Marketing Cloud</button>
+                                        <button class="slds-button slds-button_brand exportCSV">Exportar a CSV</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="tabCloneDataExtension" class="slds-tabs_default__content slds-hide" role="tabpanel" aria-labelledby="tabCloneDataExtensionTitle">
+                            <div id="lightning" />
+                        </div>
+
+                    </div>
+                </div>                
+            </div>       
+            
+            <!-- / PRIMARY CONTENT WRAPPER -->                 
+        </body>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script type="text/javascript">
+        var arrReports = [];
+        var arrLenses = [];
+        var arrFilteredReports = [];
+        var arrFilteredLenses = [];
+        
+        $(document).ready(function() {
+            listReports();
+        });
+        
+        $(document).on('click','.exportitem', function(objEvent){ 
+            executeBatch($(this).data('reportid'));
+        });
+              
+        $(document).on('keyup','#txtFieldFilter', function(objEvent){
+            filterEntries();			            
+        });
+
+         $(document).on('click','.slds-tabs_default__item', function(objEvent){
+             $('.slds-tabs_default__item').removeClass('slds-is-active');
+             $('.slds-tabs_default__link').attr("aria-selected",false);
+
+             $(this).addClass('slds-is-active');
+             $(this).children().attr("aria-selected",true);			           
+             
+             $('.slds-tabs_default__content[id !=' + $(this).children().attr('aria-controls') + ']').addClass('slds-hide');
+             $('#' + $(this).children().attr('aria-controls')).removeClass('slds-hide');
+        });
+        
+        $(document).on('click','.resetForm', function(objEvent){
+            $('INPUT,TEXTAREA').val('');			            
+        });
+
+        $(document).on('click','.sendToMarketingCloud', function(objEvent){
+            var strDataExtension = null;
+            var strSAQL = null;
+            var boolQueryAll = false;
+            var boolSendableDE = false;
+
+            $('.sendToMarketingCloud').attr("disabled", true);
+            $('.exportCSV').attr("disabled", true);
+            setTimeout(function(){
+	            $('.sendToMarketingCloud').attr("disabled", false);
+	            $('.exportCSV').attr("disabled", false);
+            }, 4000);
+
+            strDataExtension = $('#txtDataExtension').val();
+            strSAQL = $('#txtSAQL').val();
+
+            if(strDataExtension !== undefined && strDataExtension !== null && strDataExtension.length > 0 && strSAQL !== undefined && strSAQL !== null && strSAQL.length > 0) { 
+                boolQueryAll = $('#chkQueryAll').is(':checked');            
+                boolSendableDE = $('#chkSendableDE').is(':checked');
+                showMessage(TOAST_TYPE_SUCCESS, ['Enviando la información a Marketing Cloud!!']);
+                
+                Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.ReportManager.sendAnalyticsToMarketingCloud}',strDataExtension, strSAQL, boolQueryAll, boolSendableDE,
+					function(objResult, objEvent){
+                        if (objEvent.status) {
+
+                        } else {
+                            //handleError(objEvent);
+                        }
+                    }, 
+						{buffer: true, escape: true, timeout: 120000}
+				);
+
+            } else {
+                showMessage(TOAST_TYPE_ERROR, ['Debe ingresar todos los parámetros requeridos']);
+            }
+            
+        });
+
+        $(document).on('click','.exportCSV', function(objEvent){
+            var strDataExtension = null;
+            var strSAQL = null;
+            var boolQueryAll = false;
+
+            $('.sendToMarketingCloud').attr("disabled", true);
+            $('.exportCSV').attr("disabled", true);
+            setTimeout(function(){
+	            $('.sendToMarketingCloud').attr("disabled", false);
+	            $('.exportCSV').attr("disabled", false);
+            }, 4000);
+
+            strSAQL = $('#txtSAQL').val();
+            strDataExtension = $('#txtDataExtension').val();
+
+            if(strSAQL !== undefined && strSAQL !== null && strSAQL.length > 0) { 
+                boolQueryAll = $('#chkQueryAll').is(':checked');   
+                
+                Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.ReportManager.exportAnalytics}', strDataExtension, strSAQL, boolQueryAll,
+					function(objResult, objEvent){
+                        if (objEvent.status) {
+                            showMessage(TOAST_TYPE_SUCCESS, ['El reporte se esta generando']);
+                        } else {
+                            handleError(objEvent);
+                        }
+                    }, 
+						{buffer: true, escape: true, timeout: 120000}
+				);
+            } else {
+                showMessage(TOAST_TYPE_ERROR, ['Debe ingresar todos los parámetros requeridos']);
+            }                         
+
+        });
+        
+        function listReports() {
+            var objReport = null;
+
+            objReport = new prosumia.Report_Quereable__c()
+            objReport.retrieve({  where: {
+                Type__c: {eq: 'Contacts_Only__c'}                
+            }}, function(objError, arrResults, objEvent) {
+                arrReports = arrResults;
+                arrFilteredReports = arrResults;
+                loadReports(arrFilteredReports);
+            }); 
+        }
+                      
+        function executeBatch(strReportId) {	
+            Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.ReportManager.exportReport}',strReportId,
+				function(objResult, objEvent){
+                    if (objEvent.status) {
+                        if(objResult.Code ===  0) {
+                            showMessage(TOAST_TYPE_SUCCESS, ['El reporte se esta generando']);
+                        } else {
+                            showMessage(TOAST_TYPE_ERROR, [objResult.Message]);
+                        }
+                    } else {
+                        handleError(objEvent);
+                    }
+                }, 
+					{buffer: true, escape: true, timeout: 120000}
+			);   
+        }
+                
+        function loadReports(arrFilteredReports) {
+            var strHTML = null;
+            var strURLExport = null;
+            
+            strURLExport = "{!URLFOR($Asset.SLDS, '/assets/icons/utility-sprite/svg/symbols.svg#download')}";
+            
+            strHTML = $('#results').html();
+            if(strHTML === undefined || strHTML === null || strHTML.length === 0) { 
+                strHTML = '';
+            }
+            if(arrFilteredReports !== undefined && arrFilteredReports !== null && arrFilteredReports.length > 0) {
+                $.each(arrFilteredReports, function(intIndex, objReport) {
+                    strHTML += '<tr class="slds-hint-parent">';
+                    strHTML += '    <td data-label="Reporte" scope="row">';
+                    strHTML += '		<div class="slds-truncate" title="' + objReport._props.Name + '">' + objReport._props.Name + '</div>';
+                    strHTML += '	</td>';       
+                    strHTML += '    <td data-label="Carpeta" scope="row">';
+                    strHTML += '		<div class="slds-truncate" title="' + objReport._props.Folder_Name__c + '">' + objReport._props.Folder_Name__c + '</div>';
+                    strHTML += '	</td>';            
+                    strHTML += '    <td data-label="Formato" scope="row">';
+                    strHTML += '		<div class="slds-truncate" title="' + objReport._props.Format__c + '">' + objReport._props.Format__c + '</div>';
+                    strHTML += '	</td>';       
+                    strHTML += '    <td data-label="Exportar" scope="row">';
+                    strHTML += '		<span class="slds-icon_container slds-icon-utility-announcement" title="Exportar">';
+                    strHTML += '			<svg aria-hidden="true" class="slds-icon slds-icon-text-default slds-icon_small exportitem" data-reportid="' + objReport._props.Report_Id__c + '" title=""  style="cursor:pointer;">';
+                    strHTML += '    			<use xlink:href="' + strURLExport + '"></use>';
+                    strHTML += '    		</svg>';
+                    strHTML += '		</span>';
+                    strHTML += '	</td>';       
+                    strHTML += '</tr>';    
+                });
+            } else {
+                if(strHTML.length === 0) {
+                    strHTML += '<tr class="slds-hint-parent">';
+                    strHTML += '    <td data-label="Reporte" scope="row" colspan="4">';
+                    strHTML += '		<div class="slds-truncate">No se han encontrado reportes.</div>';
+                    strHTML += '	</td>';       
+                    strHTML += '</tr>'; 
+                }
+            }
+            
+            $('#results').html(strHTML);
+        }
+                
+        function filterEntries() {
+            var strFilter = false;
+            var strHTML = null;
+            
+            $('#results').html(' ');
+            strFilter = $('#txtFieldFilter').val();
+            
+            arrFilteredReports = $.grep( arrReports, function(objItemAux) {
+                return ( objItemAux._props.Name.toLowerCase().match( strFilter.toLowerCase()) ); 
+            }); 
+            
+            loadReports(arrFilteredReports);    
+           
+            if($('#results').html() === ' ') {
+                strHTML = '<tr class="slds-hint-parent">';
+                strHTML += '    <td data-label="Reporte" scope="row" colspan="4">';
+                strHTML += '		<div class="slds-truncate">No se han encontrado reportes.</div>';
+                strHTML += '	</td>';       
+                strHTML += '</tr>'; 
+                
+                $('#results').html(strHTML);
+            }
+        }
+        
+        function checkUserQuota(strAction, objResponse) {
+            Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.ReportManager.retrieveCurrentUserQuota}',
+				function(objResult, objEvent){
+                    if (objEvent.status) {
+                        if(objResult.Code === 0) {
+                            retrieveDatasetWithVersion(strAction, objResponse, objResult);
+                        } else {
+                        	showMessage(TOAST_TYPE_ERROR, [objResult.Message]);
+                        }
+                    } else {
+                        handleError(objEvent);
+                    }
+                }, 
+                	{buffer: true, escape: true, timeout: 120000}
+			);   
+        }
+
+        function download(strFileName, strBody) {
+            var objElement = null;
+
+            objElement = document.createElement('a');
+            objElement.setAttribute('href', 'data:text/csv;charset=utf-8,' + encodeURIComponent(strBody));
+            objElement.setAttribute('download', strFileName);            
+            objElement.style.display = 'none';
+
+            document.body.appendChild(objElement);
+
+            objElement.click();            
+            document.body.removeChild(objElement);
+        }
+
+        $Lightning.use("c:cloneDataExtensionApp", function() {               
+            $Lightning.createComponent("c:cloneDataExtensionLWC", {}, "lightning", function(objComponent) {
+                 console.log(objComponent);
+            });              
+        });
+
+        </script>
+    </html>
+</apex:page>

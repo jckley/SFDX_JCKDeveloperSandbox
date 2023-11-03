@@ -1,0 +1,278 @@
+<template>
+    <div class={all_page_class} if:true={isAllDataReady}>
+
+        <a href="#" class="close_fullscreen">x</a>
+        
+        <div class={sticky_class}>
+            <aside>
+                <div class="box profile_resume"  data-aos="zoom-in" data-aos-once="true">
+                    <figure class="profile_image">
+                        <template if:true={photoAvailable}>
+                            <img src={photoValue} />
+                        </template>
+                        <template if:false={photoAvailable}>
+                            <div>{photoValue}</div>
+                        </template>
+                    </figure>
+                    <div class="citizen_name">
+                        <h1>{personalData.name}</h1>
+                    </div>
+        
+                    <div class="personal_data">
+                        <div class="item">
+                            <span class="value"> {personalData.edad}</span>
+                            <span class="label"> Edad </span>
+                        </div>
+                        
+                        <div class="item">
+                            <span class="value"> {personalData.fecha_nac} </span>
+                            <span class="label"> Fecha de nac. </span>
+                        </div>
+                        
+                        <div class="item">
+                            <span class="value"> {personalData.sexo} </span>
+                            <span class="label"> Sexo </span>
+                        </div>
+                        
+                        <div class="item">
+                            <span class="value"> {personalData.nacionalidad} </span>
+                            <span class="label"> Nacionalidad </span>
+                        </div>
+                        
+                        <div class="item">
+                            <span class="value"> {personalData.documento} </span>
+                            <span class="label"> Documento </span>
+                        </div>
+                        
+                        <div class="item">
+                            <span class="value"> {personalData.cuit} </span>
+                            <span class="label"> CUIL/CUIT </span>
+                        </div>
+
+                    </div>
+                </div>
+                <template if:true={personalData.guid}>
+                    <div class="citizen_guid" data-aos="zoom-in" data-aos-once="true">
+                        <h5><img src={favicon} /><strong>/ GUID: {personalData.guid}</strong></h5>
+                    </div>
+                </template>
+            </aside>
+            
+            <article>
+                <template if:true={permissions.Contact_View_Common_Data}>
+                    <div class="box line-top address-line" data-aos="zoom-in" data-aos-once="true">
+                        <section class="address">
+                            <div class="icon">
+                                <img src={iconsSet.pinURL} alt="icon address">
+                            </div>
+                            <address>
+                                <p>
+                                    <span class="title"> Nivel 1 </span>
+                                    <template if:true={locationLevelsData.Level1Name__c}>
+                                        <span class="value">{locationLevelsData.Level1Name__c}</span>
+                                    </template>
+                                    <template if:false={locationLevelsData.Level1Name__c}>
+                                        <span class="value">{noDataLong}</span>
+                                    </template>
+                                </p>
+                                <p>
+                                    <span class="title"> Nivel 2 </span>
+                                    <template if:true={locationLevelsData.Level2Name__c}>
+                                        <span class="value">{locationLevelsData.Level2Name__c}</span>
+                                    </template>
+                                    <template if:false={locationLevelsData.Level2Name__c}>
+                                        <span class="value">{noDataLong}</span>
+                                    </template>
+                                </p>
+                                <p>
+                                    <span class="title"> Nivel 3 </span>
+                                    <template if:true={locationLevelsData.Level3Name__c}>
+                                        <span class="value">{locationLevelsData.Level3Name__c}</span>
+                                    </template>
+                                    <template if:false={locationLevelsData.Level3Name__c}>
+                                        <span class="value">{noDataLong}</span>
+                                    </template>
+                                </p>
+                                <p>
+                                    <span class="title"> Nivel 4 </span>
+                                    <template if:true={locationLevelsData.Level4Name__c}>
+                                        <span class="value">{locationLevelsData.Level4Name__c}</span>
+                                    </template>
+                                    <template if:false={locationLevelsData.Level4Name__c}>
+                                        <span class="value">{noDataLong}</span>
+                                    </template>
+                                </p>
+                            </address>
+                        </section>
+                    </div>
+                </template>
+
+                <template if:true={permissions.Contact_View_Location}>
+                    <template if:true={showMaps}>
+                        <div class="box line-top map-line no-padding" data-aos="zoom-in" data-aos-once="true">
+                            <section class="map">
+
+                                <div class="header">
+                                    <div class="icon"><img src={iconsSet.iconAddress} alt="icon address"></div>
+                                    <div class="item">
+                                        <span class="title">Dirección</span>
+                                        <div class="value"><p>{personalData.domicilio}</p></div>
+                                    </div>
+                                    <div class="item">
+                                        <span class="title">Código Postal:</span>
+                                        <!-- <template if:true={personalData.codigo_postal}> -->
+                                            <div class="value"><p>{personalData.codigo_postal}</p></div>
+                                        <!-- </template>
+                                        <template if:false={personalData.codigo_postal}>
+                                            <img class="no-data-img" style="margin-left: 43px" src={iconNoData} alt="no party available" />
+                                        </template> -->
+                                    </div>
+                                    <div class="item">
+                                        <span class="title">
+                                            Teléfono fijo:
+                                        </span>
+                                        <template if:true={phoneAvailable}>
+                                            <div class="value">
+                                                <a href={phoneData.call_phone} target="_blank">{phoneData.phoneNumber}</a>
+                                                </div>
+                                        </template>
+                                        <template if:false={phoneAvailable}>
+                                            <img class="no-data-img" style="margin-left: 40px" src={iconNoData} alt="no data available" />
+                                        </template>
+                                    </div>
+                                </div>
+
+                                <div if:true={hasMapView} class="map_container" id="map">
+                                </div>
+                                <div if:true={hasStreetView} class="map_container streetview" id="streetview">
+                                    <iframe class="fullscreen" style="width:100%;height:100%" src={streetviewURL}></iframe>              
+                                </div>
+
+                            </section>
+                        </div>
+                    </template>
+                </template>
+
+                <template if:true={permissions.Contact_View_Contact_Info}>
+                    <div class="box_contact" data-aos="zoom-in" data-aos-once="true">
+                        <div class="box email">
+                            <div class="icon">
+                                <img src={iconsSet.iconEmail} alt="icon Email">
+                            </div>
+                            <div class="item">
+                                <span class="title">E-mail</span>
+                                <template if:false={emailAvailable}>
+                                    <div class="no-link">
+                                        <img class="no-data-img" src={iconNoData} alt="no email available" />
+                                    </div>
+                                </template>
+                                <template if:true={emailAvailable}>
+                                    <div class="value">
+                                        <a href={emailData.send_email} target="_blank">{emailData.email}</a>
+                                    </div>
+                                </template>
+                            </div>
+                        </div>
+                        
+                        <div class="box phone">
+                            <div class="icon">
+                                <img src={iconsSet.iconCel} alt="icon cellphone">
+                            </div>
+                            <div class="item">
+                                <span class="title">Teléfono Celular</span>
+                                <template if:false={mobileAvailable}>
+                                    <div class="no-link">
+                                        <img class="no-data-img" src={iconNoData} alt="no cellphone available" />
+                                    </div>
+                                </template>
+                                <template if:true={mobileAvailable}>
+                                    <div class="value">
+                                        <a href={mobileData.call_mobile} target="_blank">{mobileData.mobileNumber}</a>
+                                    </div>
+                                </template>
+                            </div>
+                            <div class="item">
+                                <div class="value">
+                                    <template if:true={whatsAppAvailable}>
+                                        <a href={mobileData.write_whatsapp} target="_blank" class="btn_whataspp">
+                                            <img src={iconsSet.iconWhatsapp} alt="WhatsApp" />
+                                            <span>WhatsApp</span>  
+                                        </a>
+                                    </template>
+                                    <template if:false={whatsAppAvailable}>
+                                        <div class="btn_whataspp-gray">
+                                            <img src={iconsSet.iconWhatsappGrey} alt="WhatsApp" />
+                                            <span>WhatsApp</span>  
+                                        </div>
+                                    </template>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+
+
+                <template if:true={permissions.Contact_View_Social_Info}>
+                    <template if:true={showSocialInfo}>
+                        <section class="social" data-aos="zoom-in" data-aos-once="true">
+                            <div class="box slds-grid slds-no-wrap">
+                                <template for:each={social_array} for:item="social">
+                                    <div key={social} class="item slds-size_1-of-1 slds-medium-size_1-of-4">
+                                        <div class="icon">
+                                            <img src={social.icon} alt="icon address">
+                                        </div>
+                                        <template if:true={social.social_no_link}>
+                                            <div class="no-link">
+                                                <img class="no-data-img" src={iconNoData} alt="no user available" />
+                                            </div>
+                                        </template>
+                                        <template if:false={social.social_no_link}>
+                                            <div class="value slds-truncate">
+                                                <a href={social.link} target="_blank" title={social.usuario}>{social.usuario}</a>
+                                            </div>
+                                        </template>
+                                    </div>
+                                </template>
+                            </div>
+                        </section>
+                    </template>
+                </template>
+
+
+                <template if:true={permissions.Contact_View_Relationship}>
+                    <template if:true={showRelacionamiento}>
+                        <section class="relaionshipt" data-aos="zoom-in" data-aos-once="true">
+                            <div class="box">
+                                <div class="header">
+                                    <span class="title">Relacionamiento</span>
+                                    <a href={relacionamientoURL} target="_blank" class="fullscreen"><img src={iconsSet.iconExpand} alt="fullscreen"/></a>
+                                </div>
+                                
+                                <div class="rel_container">
+                                    <iframe src={relacionamientoURL} style="width:100%;height:100%"></iframe>
+                                </div>
+                            </div>
+                        </section>
+                    </template>
+                </template>
+
+                <section class="section_empatia" data-aos="zoom-in" data-aos-once="true">
+                    <c-section_empatia empatia-record={record}></c-section_empatia>
+                </section>
+
+                <section class="section_empatia_actividades" data-aos="zoom-in" data-aos-once="true">
+                    <c-section_empatia_actividades empatia-record={record}></c-section_empatia_actividades>
+                </section>
+
+                <section class="section_notas" data-aos="zoom-in" data-aos-once="true">
+                    <c-section_notas 
+                        notas={notasArray}
+                        empatiaactivistaid={record.Empatia_Activista__c} 
+                        onguardarnota={handleGuardarNota}
+                    ></c-section_notas>
+                </section>
+            </article>
+        </div>
+    </div>
+
+</template>

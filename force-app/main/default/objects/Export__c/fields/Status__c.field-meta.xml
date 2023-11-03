@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Status__c</fullName>
+    <externalId>false</externalId>
+    <label>Status</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Pendiente de aprobación</fullName>
+                <default>false</default>
+                <label>Pendiente de aprobación</label>
+            </value>
+            <value>
+                <fullName>Aprobado</fullName>
+                <default>false</default>
+                <label>Aprobado</label>
+            </value>
+            <value>
+                <fullName>Rechazado</fullName>
+                <default>false</default>
+                <label>Rechazado</label>
+            </value>
+            <value>
+                <fullName>En espera de ejecución</fullName>
+                <default>false</default>
+                <label>En espera de ejecución</label>
+            </value>
+            <value>
+                <fullName>En ejecución</fullName>
+                <default>false</default>
+                <label>En ejecución</label>
+            </value>
+            <value>
+                <fullName>Finalizado OK</fullName>
+                <default>false</default>
+                <label>Finalizado OK</label>
+            </value>
+            <value>
+                <fullName>Finalizado con errores</fullName>
+                <default>false</default>
+                <label>Finalizado con errores</label>
+            </value>
+            <value>
+                <fullName>Pendiente de aprobación {Sin cantidad de registros)</fullName>
+                <color>#FFFF66</color>
+                <default>false</default>
+                <label>Pendiente de aprobación {Sin cantidad de registros)</label>
+            </value>
+            <value>
+                <fullName>Error en SAQL</fullName>
+                <default>false</default>
+                <label>Error en SAQL</label>
+            </value>
+            <value>
+                <fullName>Detener</fullName>
+                <default>false</default>
+                <label>Detener</label>
+            </value>
+            <value>
+                <fullName>Detenido</fullName>
+                <default>false</default>
+                <label>Detenido</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

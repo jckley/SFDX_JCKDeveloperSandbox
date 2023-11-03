@@ -1,0 +1,54 @@
+<aura:component >
+    <aura:attribute name="level" 				type="Integer" />
+    <aura:attribute name="currentSelectedLevel" type="Integer" />
+    <aura:attribute name="showingLevel" 		type="Boolean" />
+    <aura:attribute name="hasItemSeleted" 		type="Boolean" />
+    
+    <aura:attribute name="territories" 			type="RemotingMessageHelper.Territory[]" />
+    <aura:attribute name="filteredTerritories" 	type="RemotingMessageHelper.Territory[]" />
+    
+    <aura:handler event="c:TerritoryHierarchyRetrievedEvent" 			action="{! c.loadRetrievedTerritories}"  />    
+    <aura:handler event="c:TerritoryHierarchyUnselectTerritoryEvent" 	action="{! c.refreshCurrentSelectedLevel}"  />
+    <aura:handler event="c:TerritoryHierarchySelectEvent" 				action="{! c.updateSelectedTerritory }" />
+
+    <!--<aura:handler event="c:TerritoryHierarchySelectEvent" 			action="{! c.territorySelected}"  />-->
+    
+    <div id="{! 'divLevel' + v.level }" class="{! ( or( 
+                                            and($Browser.formFactor == 'DESKTOP',  v.level le (v.currentSelectedLevel +1)), 
+                                            and($Browser.formFactor != 'DESKTOP',  v.level le (v.currentSelectedLevel + 1)  )
+                                        ) 
+                                    )?'':'slds-hide' }">
+    	<div class="header">
+        	<span style="text-transform: uppercase;">{! $Label.c.Level + ' ' + v.level }</span>
+        </div>
+		<div class="card">
+            <div class="searchBox">           
+                <!-- OCULTO LA BUSQUEDA SI VISTA ES MOBILE Y HAY UN ELEMENTO SELECCIONADO -->
+                <div class="{! and(and(v.territories != null , v.territories.length > 0), or($Browser.formFactor == 'DESKTOP', v.territory == null))?'slds-form-element search':'slds-hide'}">
+                    <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
+                        <img style="margin-left: 5px; margin-bottom: 3px;" class="search-icon" src="{!$Resource.IconsPack1 + '/mentasearchwhite.png'}"/>
+                        
+                        <input style="padding-left: 10px;" type="text" id="{!'txtSearch' + v.level}" aura:id="txtSearch" class="slds-input" placeholder="{!$Label.c.SearchTerritory}" onkeyup="{! c.filterEntries }"  />
+                        <img id="{!'close-icon-territory' + v.level}" class="search-icon slds-hide slds-size_1-of-12" src="{!$Resource.IconsPack1 + '/mentaclearwhite.png'}" onclick="{!c.clearText}" style="float: right; margin-top: 12px;"/>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- SI HAY, MUESTRO LOS TERRITORIOS -->
+            <div class="{! and(v.territories != null , v.territories.length > 0)?'list-container':'slds-hide'}">
+                <ul class="slds-scrollable_y results territories">
+                    <aura:iteration items="{! v.filteredTerritories }" var="objTerritory">
+                        <li>
+                            <c:Menta_TerritoryHierarchyItem territory="{! objTerritory }" territoryselected="{! v.hasItemSeleted}"  />
+                        </li>    
+                    </aura:iteration>
+                    <li>
+                        <c:Menta_TerritoryHierarchyItem territory="NULL" territoryselected="{! v.hasItemSeleted}"  />
+                    </li>
+                </ul>
+            </div>
+            <div class="{!and($Browser.formFactor != 'DESKTOP',v.hasItemSeleted)?'slds-hide':'test'}">  </div>
+        </div>
+    </div>
+    
+</aura:component>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Activistas_sin_Documento</fullName>
+    <columns>Nombre_Completo_con_Link__c</columns>
+    <columns>DNI__c</columns>
+    <columns>Fecha_de_Nacimiento__c</columns>
+    <columns>Direccion_Completa__c</columns>
+    <columns>Administrative_Level_1__c</columns>
+    <columns>Administrative_Level_2__c</columns>
+    <columns>Administrative_Level_3__c</columns>
+    <columns>Fecha_de_Inscripcion__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Documento_Emparejado__c</field>
+        <operation>equals</operation>
+        <value>0</value>
+    </filters>
+    <label>Activista (borrador)</label>
+</ListView>

@@ -1,0 +1,36 @@
+.THIS {
+    min-height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #00a08e;
+    margin-top: 15px;
+    margin-right: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border: 1px solid #ffffff !important;
+}
+
+.THIS .label {
+    font-family : 'Poppins', sans-serif;
+    font-weight: 300;
+    color: #ffffff;
+    font-size: 11pt;
+    text-transform: uppercase;
+}
+
+.THIS .value-blue {
+    font-family : 'Open Sans';
+    color: #229fda;
+    font-weight: 300;
+    margin-left: 5px;
+    font-size: 11pt;
+}
+
+.THIS .value {
+    font-family : 'Open Sans';
+    color: #ffffff;
+    font-weight: bold;
+    margin-left: 5px;
+    font-size: 11pt;
+}

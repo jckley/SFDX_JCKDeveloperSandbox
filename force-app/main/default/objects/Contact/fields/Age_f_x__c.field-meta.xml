@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Age_f_x__c</fullName>
+    <description>Formula que calcula la edad en funcion de la fecha de nacimiento del ciudadano</description>
+    <externalId>false</externalId>
+    <formula>IF(ISNULL(Birthdate) , NULL, FLOOR((TODAY()-Birthdate +1)/365.2425))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Edad</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

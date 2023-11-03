@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Activista__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <label>Activista</label>
+    <lookupFilter>
+        <active>true</active>
+        <filterItems>
+            <field>$Source.Grupo_Activista__c</field>
+            <operation>equals</operation>
+            <valueField>Activista__c.Grupo_Activista__r.Id</valueField>
+        </filterItems>
+        <isOptional>true</isOptional>
+    </lookupFilter>
+    <referenceTo>Activista__c</referenceTo>
+    <relationshipLabel>Votantes</relationshipLabel>
+    <relationshipName>Votantes_Activista</relationshipName>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

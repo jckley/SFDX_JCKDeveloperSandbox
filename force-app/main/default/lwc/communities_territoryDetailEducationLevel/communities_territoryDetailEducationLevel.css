@@ -1,0 +1,28 @@
+:host article .icon,
+:host article .description {
+    height: 100px;
+}
+
+:host article .icon img {
+    height: 80px;
+}
+
+:host article .description .container {
+    height: 100%;
+}
+
+:host article .description .container .title {
+    color: #EF3E48; 
+    font-size: 12px; 
+    font-weight: 600;
+    text-transform: uppercase;
+    line-height: 1;
+}
+
+
+:host article .description .container .total {
+    color: #58595b; 
+    font-weight: bold;
+    font-size: 36px; 
+    line-height: 1;
+}

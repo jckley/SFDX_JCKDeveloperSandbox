@@ -1,0 +1,322 @@
+<apex:page standardStylesheets="false" showHeader="false" controller="TerritoryHierarchyController">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    
+    <style>
+        
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .floating-panel {
+            position: absolute;
+            z-index: 5;
+            font-family: 'Roboto','sans-serif';
+            top: 35px;
+        	min-width: 100%;
+        }
+        
+        .card {
+        	width: 100%;
+            will-change: transform;
+            border-radius: 0px;
+            border: 1px solid #f2f2f2;
+            overflow:  hidden;
+            transition: all 400ms cubic-bezier(0.165, 0.840, 0.440, 1.000); 
+            .z-1;
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.10), 0 2px 2px 0 rgba(0, 0, 0, 0.10);
+        }
+        .card-cont {margin: 25px 0px 20px 5px;}
+        
+        .label {color: #999999;} /*Todos los label del CSS*/
+        
+        .card-top-margin {margin: 25px 15px 0 15px;} /*Margen superior de cada nueva card*/
+        
+        .blank-space{width: 4%} /*Espacio en blanco entre cards*/
+        
+        .searchAddress:hover {
+        cursor:pointer;
+        }
+        
+        .uppercase {
+        text-transform: uppercase;
+        }
+        
+        .capitalize {
+        text-transform: capitalize;
+        }
+        
+        #loading{
+            text-align: center;
+            background: #e9e9e9;
+            position: absolute;   
+            top: 0;                  
+            right: 0;                
+            bottom: 0;
+            left: 0;
+            opacity: 0.5;
+        	z-index: 100;
+        }
+        
+        .loading-gif{
+        	position: relative;
+        	background: #e9e9e9;
+        	opacity: 0.5;
+        	left: 0;
+            top: 50%;
+        }
+        
+        #backgroud-div{background-color: #f7f7f7; margin: 200px 30px 0 30px;}
+        
+        /*Esto es la longitud del card*/
+        .tree-card {
+        	white-space: normal;
+        }
+        
+        .level-content {
+        	margin: 0 15px 25px 15px;
+        	overflow-y: auto;
+        	height: 100%;
+		}
+        
+        .level-search-bar{
+        	height: 35px;
+        	margin: 0 15px 15px 15px;
+        	border-radius: 5px;
+        	border: 1px solid #ebe9e9;
+        }
+        .level-search-bar > input {border: none; margin-left: 10px; height: 100%}
+        input {
+        	font-size: 10pt;
+        	font-family: 'Roboto','sans-serif';
+        	width: 75%;
+        }
+        input::placeholder {
+			font-size: 10pt;        	
+        }
+        
+        input:focus, textarea:focus, select:focus {
+            outline-offset: 0px !important;
+            outline: none !important;
+        }
+        
+        .level-item {height: 42px; display:flex; align-items:center; margin-right: 5px; margin-bottom: 1px;}
+        
+        .level-item-content {margin-left: 15px; width: 100%}
+        .level-item-text {
+        	display: inline-block;
+        	color: gray;
+        	font-size: 13pt;
+        	font-weight: bold;
+        	position:relative;
+        	vertical-align: top;
+        }
+        .level-item-text-hidden {display: none; float: right; margin: 5px 15px 0 0; font-weight: bold; font-size: 9pt;}
+        
+        .selected-item{background-color: #e6e7eb; border-radius: 10px;}
+        .selected-item .level-item-text{
+        	color: #333333;
+        	width: 185px;
+        	white-space: nowrap;
+        	overflow: hidden;
+        }
+        .selected-item .level-item-text:after{
+        	content:'';
+            position: absolute;
+            left: 185px;
+            margin-left: -40px;
+            width: 40px;
+            height:100%;
+            top:0;
+            background:linear-gradient(to right, rgba(240, 244, 245, 0), #e6e7eb);
+        }
+        .selected-item .level-item-text-hidden {display: inline; color: #58595b;}
+        .selected-item .right-arrow {display: inline;}
+        
+        
+        .search-icon{max-width: 15px; max-height: 15px; margin-left: 10px}
+        
+        .clear-icon{max-width: 15px; max-height: 15px; margin-left: 10px; display: none;}
+        .clear-icon:hover{cursor: pointer;}
+        
+        .level-content::-webkit-scrollbar {
+   			width: 5px;
+        	border-radius: 5px;
+		}
+        
+        /* Track */
+        .level-content::-webkit-scrollbar-track {
+        	border-radius: 10px;
+        }
+        
+        /* Handle */
+        .level-content::-webkit-scrollbar-thumb {
+            background: #888;
+        	border-radius: 10px;
+        }
+        
+        /* Handle on hover */
+        .level-content::-webkit-scrollbar-thumb:hover {
+            background: #555; 
+        }
+        
+        .overlap{
+        	position: relative;
+        	top: -30px;
+        }
+        
+    </style>
+    
+    <apex:stylesheet value="{!URLFOR($Resource.bootstrap2, 'css/bootstrap.min.css')}" />
+    <apex:stylesheet value="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <apex:stylesheet value="https://fonts.googleapis.com/css?family=Roboto:regular,bold,medium" />
+    <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" />
+    <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" />
+    
+    <div class="floating-panel">
+        <c:PageHeader mainlabel="{!mainTerritory.Name}" secundarylabel="{!$Label.Territory} / {!$Label.AdministrativeLevel} {!mainTerritory.Nivel_Administrativo__c}" viewhierarchyfunction="navigateToTerritory('{!mainTerritory.Id}', event, '{!mainTerritory.ParentId__c}', {!mainTerritory.Nivel_Administrativo__c});"/>
+        <div id="cards-container">
+            <div class="card-top-margin pr-0" id="1card" style="display: {!IF(level1territories != NULL && level1territories.size > 0,'','none')}">
+                <c:CardTreeLevel rendered="{!level1territories != NULL && level1territories.size > 0}" territorylist="{!level1territories}" selectedterritory="{!territory1selected}" levelnumber="{!mainTerritory.Nivel_Administrativo__c + 1}" hasnext="{!level2territories != NULL}" seeterritorytext="Ver"/>
+            </div>
+            <div class="overlap card-top-margin pl-0 pr-0" id="2card" style="display: {!IF(level2territories != NULL && level2territories.size > 0,'','none')}">
+            	<c:CardTreeLevel rendered="{!level2territories != NULL && level2territories.size > 0}" territorylist="{!level2territories}" selectedterritory="{!territory2selected}" levelnumber="{!mainTerritory.Nivel_Administrativo__c + 2}" hasnext="{!level3territories != NULL}" seeterritorytext="Ver"/>
+            </div>
+            <div class="overlap card-top-margin pl-0 pr-0" id="3card" style="top: -60px; display: {!IF(level3territories != NULL  && level3territories.size > 0,'','none')}">
+            	<c:CardTreeLevel rendered="{!level3territories != NULL && level3territories.size > 0}" territorylist="{!level3territories}" selectedterritory="{!territory3selected}" levelnumber="{!mainTerritory.Nivel_Administrativo__c + 3}" hasnext="{!level4territories != NULL}" seeterritorytext="Ver"/>
+            </div>
+            <div class="overlap card-top-margin pl-0 pr-0" id="4card" style="top: -90px; display: {!IF(level4territories != NULL && level4territories.size > 0,'','none')}">
+            	<c:CardTreeLevel rendered="{!level4territories != NULL && level4territories.size > 0}" territorylist="{!level4territories}" selectedterritory="{!territory4selected}" levelnumber="{!mainTerritory.Nivel_Administrativo__c + 4}" seeterritorytext="Ver"/>
+            </div>
+        </div>
+    </div>
+    <script src="/soap/ajax/15.0/connection.js" type="text/javascript"></script>
+    <script src="/soap/ajax/15.0/apex.js" type="text/javascript"></script>
+    <script>
+    
+    	$(document).ready(function() {
+            
+            var newheight = $(window).height() - $('#page-header-title').height() - $('#page-header-subtitle').height() - 100;
+            $('.tree-card').css({'max-height': newheight});
+            var selectedItems = $('.selected-item');
+            if(selectedItems.length > 0){
+                for(i = 1; i < selectedItems.length + 1; i++){
+                    $('#' + i + 'barlist > div').hide();
+                    $('#' + i + 'bar').parent().hide();
+                    $('.selected-item').show();
+                    $('#' + i + 'card-content').css({'height':'100%'});
+                }
+            }
+            sforce.connection.sessionId = '{!$Api.Session_ID}';
+        });
+    	
+        function navigateToTerritory(Id, event, parentId, territoryLevel){
+            if(typeof sforce != 'undefined' && document.referrer.indexOf(".lightning.force.com") > 0){
+                sforce.one.navigateToURL('/apex/TerritoryDetailComponents?terrId=' + Id);
+            }else{
+                window.location.href = '/apex/TerritoryDetailComponents?terrId=' + Id;
+            }
+            sforce.apex.execute("TerritoryHierarchyController","saveSelectedTerritory",{territoryId:Id, parentId:parentId, territoryLevel:territoryLevel});
+            event.stopPropagation();
+        }
+    
+    	function seeChilds(Id, levelnumber, parentId){
+            var selectedItems = $('.selected-item');
+            if(selectedItems.length > 0){
+            	selectedItems.each(function(item) {
+                    if($(this).parent().attr("id").substring(0,1)*1 >= (levelnumber)){
+                        $(this).removeClass('selected-item');
+                    }
+            	});
+            }
+            for (i = (levelnumber + 1); i < 5; i++){
+            	$('#' + i +'card').hide();
+            }
+            $('#' + (levelnumber + 1) +'card').hide();
+        	childTerritories = sforce.apex.execute("TerritoryHierarchyController","getChildTerritories",{territoryId:Id, parentId:parentId});
+        	childTerritories = JSON.parse(childTerritories);
+            $('#' + Id).addClass('selected-item');
+            if(childTerritories.length > 0){
+            	createTerritoryCardHTML(childTerritories, levelnumber);
+            }
+        }
+    
+        function createTerritoryCardHTML(childTerritories, territoryLevel){
+            var htmlGrandChilds = '';
+            htmlGrandChilds +='<div id="' + (territoryLevel + 1) + 'card" class="overlap card-top-margin pl-0 pr-0">';
+            htmlGrandChilds +=	'<div id="' + (territoryLevel + 1) + 'card-content" class="card tree-card" onclick="focusCard(' + (territoryLevel + 1) + ');"';
+            htmlGrandChilds +=  (territoryLevel + 1) == 4 ? 'style="margin-right: 60px;">' : '>';
+            htmlGrandChilds +=		'<div class="card-cont subattribute-header">';
+            htmlGrandChilds +=    		'<div class="subattribute-title">';
+            htmlGrandChilds +=        		'<span>{!$Label.AdministrativeLevel} ' + (territoryLevel + 1) + '</span>';
+            htmlGrandChilds +=    		'</div>';
+            htmlGrandChilds +=		'</div>';
+            htmlGrandChilds +=		'<div class="level-search-bar">';
+            htmlGrandChilds +=    		'<img class="search-icon" src="{!URLFOR($Resource.IconsPack1, 'searchps.svg')}"/>';
+            htmlGrandChilds +=    		'<input id="' + (territoryLevel + 1) + 'bar" type="text" onkeyup="filterTer(' + (territoryLevel + 1) + ');" placeholder="{!$Label.SearchTerritory}"/>';
+            htmlGrandChilds +=    		'<img id="' + (territoryLevel + 1) + 'clear" onclick="clearInput(' + (territoryLevel + 1) + ');" class="clear-icon" src="{!URLFOR($Resource.IconsPack1, 'closeemptyinputps.svg')}"/>';
+            htmlGrandChilds +=		'</div>';
+            htmlGrandChilds +=		'<div class="level-content">';
+            htmlGrandChilds +=			'<div id="' + (territoryLevel + 1) + 'barlist" class="scrollable">';
+            childTerritories.forEach(function(ter) {
+                htmlGrandChilds +=			'<div onclick="javascript:seeChilds(' + "'" + ter.Id + "'" + ',' + (territoryLevel + 1) + ',' + "'" + ter.ParentId__c + "'" + ')" id="' + ter.Id + '" class="level-item">';
+                htmlGrandChilds +=				'<div class="level-item-content">';
+                htmlGrandChilds +=					'<span class="right-arrow" onclick="backToLevel(' + (territoryLevel + 1) + ', event)"><img id="' + ter.Id + '-arrow" style="transform: scaleX(-1); margin-right: 10px; margin-top: 6px;" class="search-icon" src="{!URLFOR($Resource.IconsPack1, 'arrowrightps.svg')}"/></span>';
+                htmlGrandChilds +=    				'<span class="level-item-text">' + ter.Name + '</span>';
+                htmlGrandChilds +=    				'<div onclick="navigateToTerritory(' + "'" + ter.Id + "'" + ', event,' + "'" + ter.ParentId__c + "'" + ', ' + (territoryLevel + 1) + ');" class="level-item-text-hidden">Ver <span><img class="search-icon" src="{!URLFOR($Resource.IconsPack1, 'arrowrightps.svg')}"/></span></div>';
+                htmlGrandChilds +=				'</div>';
+                htmlGrandChilds +=        	'</div>';
+            });
+            htmlGrandChilds +=    		'</div>';
+            htmlGrandChilds +=		'</div>';
+            htmlGrandChilds +=	'</div>';
+     		htmlGrandChilds +='</div>';
+            $(htmlGrandChilds).insertAfter('#' + territoryLevel + 'card');
+            
+            var newheight = $(window).height() - $('#page-header-title').height() - $('#page-header-subtitle').height() - 100;
+            $('#' + (territoryLevel + 1) + 'card-content').css({'max-height': newheight});
+            $('#' + (territoryLevel + 1) + 'card').css({'top': '-' + 30*(territoryLevel) + 'px'});
+            $("#" + territoryLevel + "barlist > div").hide();
+            $("#" + territoryLevel + "bar").parent().hide();
+            $('.selected-item').show();
+            $('#' + territoryLevel + 'card-content').css({'height':'100%'});
+        }
+    	
+    	function filterTer(territoryLevel){
+            var value = $("#" + territoryLevel + "bar").val().toLowerCase();
+            if(value != ''){
+            	$('#' + territoryLevel + 'clear').show();
+            }else{
+                $('#' + territoryLevel + 'clear').hide();
+            }
+            $("#" + territoryLevel + "barlist > div").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        }
+    
+    	function clearInput(territoryLevel){
+        	var value = $('#' + territoryLevel + 'bar').val('');
+            filterTer(territoryLevel);
+        }
+    
+    	function focusCard(territoryLevel){
+        }
+    
+    	function backToLevel(territoryLevel, event){
+            var elements = $("#" + territoryLevel + "barlist > div");
+        	elements.show();
+            elements.removeClass('selected-item');
+            $("#" + territoryLevel + "bar").parent().show();
+            clearInput(territoryLevel);
+            for (i = (territoryLevel + 1); i < 5; i++){
+            	$('#' + i +'card').hide();
+            }
+            var newheight = $(window).height() - $('#page-header-title').height() - $('#page-header-subtitle').height() - 100;
+            $('#' + (territoryLevel) + 'card-content').css({'max-height': newheight});
+            event.stopPropagation();
+        }
+    
+
+    </script>
+</apex:page>

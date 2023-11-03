@@ -1,0 +1,23 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes,force:appHostable,flexipage:availableForAllPageTypes,lightning:isUrlAddressable" controller="TerritoryHierarchyController">	    
+    <aura:attribute name="rootTerritory" 			    type="RemotingMessageHelper.Territory" />
+    
+    <aura:handler 	name="init" 									action="{! c.initializeComponent }" value="{!this}" />    
+    <aura:handler 	event="c:TerritoryHierarchySelectEvent" 		action="{! c.retrieveTerritories }" />    
+    <aura:handler 	event="c:TerritoryHierarchySaveSelectedEvent" 	action="{! c.updateSelectedTerritory }" />
+
+    <aura:registerEvent name="TerritoryHierarchyRetrievedEvent" type="c:TerritoryHierarchyRetrievedEvent" />     
+ 
+    <div>        
+        <div class="slds-p-bottom_medium">
+            <c:AdFi_PageHeader mainlabel="{! v.rootTerritory.Name }" secundarylabel="{! $Label.c.Territory + ' , ' + $Label.c.Level + ' ' + v.rootTerritory.Level }" linkToRecordId="{! '/' + v.rootTerritory.Id }" />
+        </div>
+        <div class="slds-grid slds-wrap"> 
+            <aura:iteration items="1,2,3,4" var="level">
+                <div class="slds-size_1-of-1 slds-large-size_1-of-4 pl-15 s-pr-15 slds-p-bottom_medium">
+                    <c:AdFi_TerritoryHierarchyLevel level="{! level }" />
+                </div>                
+            </aura:iteration>
+        </div>
+        <div class="background">&nbsp;</div>
+    </div>
+</aura:component>

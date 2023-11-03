@@ -1,0 +1,47 @@
+.THIS {
+    font-family: 'Roboto Condensed';
+}
+
+.THIS .summary-title {
+    font-weight: bold;
+    font-size: 11pt;
+    color: #797b7e;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.THIS .summary-value {
+    font-family: 'Heebo';
+    font-weight: 300;
+    font-size: 30pt;
+    color: #3e4145;
+    text-align: center;
+}
+
+/* Special classes for small devices */
+@media only screen and (max-width: 768px) {
+    .THIS.top-border{border-top: solid 1px #ededed;}
+}
+
+/* Special classes for big devices */
+@media only screen and (min-width: 768px) {
+    .THIS.left-border{border-left: solid 1px #ededed;}
+}
+
+@media only screen and (min-device-width: 992px) {        
+    .THIS.m-left-lg-30 {
+        margin-left: 30px;
+    }
+    
+    .THIS .p-top-large {
+        padding-top: 30px;
+    }
+    
+    .THIS .m-top-large {
+        margin-top: 15px;
+    }
+    
+    .THIS.blank-space{
+        width: 4%;
+    }
+}

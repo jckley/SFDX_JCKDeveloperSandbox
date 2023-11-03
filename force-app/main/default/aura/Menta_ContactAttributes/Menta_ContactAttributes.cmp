@@ -1,0 +1,37 @@
+<aura:component >
+    <aura:attribute name="citizenWrapper" 	type="ContactWrapper" 	required="true" />
+    <aura:attribute name="rendered" 		type="Boolean" 			required="true" default="true" />
+    
+    <!--<div class="{! (v.rendered)?'card green-container slds-grid slds-wrap':'slds-hide'}">
+         <aura:iteration items="{! v.citizenWrapper.attributeTags }" var="objAttributeTags">
+             <c:Menta_TagComponent label="{! objAttributeTags.label + ':'}" value="{! objAttributeTags.value }" valueCSS="value" />
+         </aura:iteration>
+    </div>-->
+    
+    <div class="{! (v.rendered)?'card slds-grid slds-wrap':'slds-hide'}">
+        
+        <div class="slds-size_1-of-1 slds-large-size_4-of-12 slds-grid">
+            <c:Menta_DisplayField label="Profesion" value="{! v.citizenWrapper.contact.Profession__c}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13 link"/>                                                                                                    
+        </div>
+        
+        <div class="slds-size_1-of-1 slds-large-size_4-of-12 slds-grid ">
+            <c:Menta_DisplayField label="Condicion Laboral" value="{! v.citizenWrapper.contact.Condicion_Laboral__c}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13 link"/>                                                                                                    
+        </div>
+        
+        <div class="slds-size_1-of-1 slds-large-size_4-of-12 slds-grid">
+            <c:Menta_DisplayField label="Nivel Educativo" value="{! v.citizenWrapper.contact.Education_Level__c}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13 link"/>                                                                                                    
+        </div>
+        
+        <div class="slds-size_1-of-1 slds-large-size_4-of-12 slds-grid separator">
+            <c:Menta_DisplayField label="Ingreso" value="{! v.citizenWrapper.contact.Ingreso__c}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13 link"/>                                                                                                    
+        </div>
+        
+        <div class="slds-size_1-of-1 slds-large-size_4-of-12 slds-grid separator">
+            <c:Menta_DisplayField label="Movilidad" value="{! v.citizenWrapper.contact.Movilidad__c}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13 link"/>                                                                                        
+        </div>
+        
+        <div class="slds-size_1-of-1 slds-large-size_4-of-12 slds-grid separator">
+            <c:Menta_DisplayField label="Beneficios Sociales" value="{! v.citizenWrapper.contact.Beneficios_Sociales__c}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13 link"/>                                                                                                    
+        </div>
+    </div>
+</aura:component>

@@ -1,0 +1,46 @@
+.THIS {
+    font-family: 'Heebo', sans-serif;
+    font-weight: bold;
+}
+
+.THIS .title {font-size: 27pt;color: #666666}
+.THIS .main-label:hover{
+    cursor: pointer;
+    text-decoration : underline;
+}
+
+.THIS .subtitle,
+.THIS .subtitle a,
+.THIS .subtitle a:visited,
+.THIS .subtitle a:link {
+    font-size: 10pt;
+    line-height: 1.5;
+    color: #666666;
+}
+.THIS .subtitle a:hover {
+    color: #f99f24!important;
+}
+.THIS .subtitle {
+    font-weight: 400;    
+}
+.THIS .subtitle A {
+    font-weight: 	bold; 
+}
+.THIS .subtitle A:hover { 
+    text-decoration : underline;
+}
+
+/* Special classes for small devices */
+@media only screen and (max-width: 768px) {
+    .THIS .title {font-size: 20pt;color: #ffffff}
+    .THIS .subtitle, .THIS .subtitle a, .THIS .subtitle a:visited, .THIS .subtitle a:link, .THIS .subtitle a:hover {
+        font-size: 10pt;
+        line-height: 1.5;
+        color: #ffffff;
+    }
+}
+
+/* Special classes for big devices */
+@media only screen and (min-width: 768px) {
+    .THIS {}
+}

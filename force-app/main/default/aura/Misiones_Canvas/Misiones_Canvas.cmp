@@ -1,0 +1,34 @@
+<aura:component controller="ContactDetailController" implements="forceCommunity:availableForAllPageTypes,force:appHostable,flexipage:availableForAllPageTypes,force:hasRecordId,lightning:isUrlAddressable">	    
+    <aura:attribute name="recordId" 		type="Id"  />        
+    <aura:attribute name="citizenWrapper" 	type="CitizenWrapper" />
+    <aura:attribute name="width" 		    type="String"  />        
+    <aura:attribute name="height" 		    type="String"  />        
+    <aura:attribute name="canvasname" 		type="String"  />       
+    <aura:attribute name="canvasnamespace" 		type="String"  />       
+    <aura:attribute name="community"        type="String" default="Cuidarnos"/>
+    <aura:attribute name="rendered" 		type="Boolean" default="false"  />        
+    <aura:attribute name="status" 	        type="String"  required="false" default="" />
+    <aura:attribute name="status_date" 	    type="String"  required="false" default="" />
+
+    <aura:handler name="init" action="{!c.initializeComponent}" value="{!this}" />
+
+    <div class="slds-grid slds-wrap l-content">        
+        <div class="slds-size_1-of-1 slds-grid slds-wrap">
+            <div style="{!'display: ' + (v.citizenWrapper.citizen.PhotoUrl_legacy__c != NULL ?'block':'none')}"><img class="citizenPicture" src="{!v.citizenWrapper.citizen.PhotoUrl_legacy__c }" alt="{! v.citizenWrapper.citizen.FirstName + ' ' + v.citizenWrapper.citizen.MiddleName + ' ' + v.citizenWrapper.citizen.Lastname }" /></div>
+            <div class="{! v.citizenWrapper.citizen.PhotoUrl_legacy__c != NULL ?'slds-max-medium-size_8-of-12 slds-col header-padding':'slds-col header-padding' }">
+                <c:Misiones_PageHeader citizenWrapper="{! v.citizenWrapper }"  
+                    mainlabel="{! v.citizenWrapper.citizen.FirstName + ' ' + v.citizenWrapper.citizen.MiddleName + ' ' + v.citizenWrapper.citizen.LastName}" 
+                    secundarylabel="{!v.citizenWrapper.generalInfo.Title }" 
+                    secundarylabelunderlined="{!v.citizenWrapper.generalInfo.Address }" 
+                    mobile="{! v.citizenWrapper.misiones.MobilePhone }" 
+                    email="{! v.citizenWrapper.misiones.Email }" 
+                    fijo="" />
+            </div>
+        </div>
+        <div class="{! v.rendered?'slds-size_1-of-1 slds-grid slds-wrap':'slds-hide'}">        
+            <div class="slds-col slds-size_1-of-1 pad-top-30">
+                <force:canvasApp developerName="{! v.canvasname }" namespacePrefix="{! v.canvasnamespace }" width="{! v.width }" height="{! v.height}" />
+            </div>
+        </div>
+    </div>
+</aura:component>

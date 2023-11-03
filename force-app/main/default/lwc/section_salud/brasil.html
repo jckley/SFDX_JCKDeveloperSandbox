@@ -1,0 +1,58 @@
+<template>
+        <section class="vaccines">
+            <div class="box">
+                <div class="header">
+                    <span class="title">Saúde</span>
+                </div>
+                <div class="items">
+                    <div class="item">
+                            <span class="title">Comorbilidades:</span>
+                            <template if:true={datos.tiene_comorbilidades}>
+                                <span class="value">
+                                        {datos.comorbilidades}
+                                </span>
+                            </template>
+                            <template if:false={datos.tiene_comorbilidades}>
+                                <img class="no-data-img" src={iconsrc}/>
+                            </template>
+                    </div>
+                    <div class="item">
+                            <span class="title">Serviço social de saúde:</span>
+                            <template if:true={datos.tiene_obraSocial}>
+                                <span class="value">
+                                        {datos.obraSocial}
+                                </span>
+                            </template>
+                            <template if:false={datos.tiene_obraSocial}>
+                                <img class="no-data-img" src={iconsrc}/>
+                            </template>
+                    </div>
+                </div>
+
+                <div class="subTitle">
+                    COVID
+                </div>
+                <div class= "tags">
+                    <span class="tag">
+                    Teve COVID 19: <strong class={datos.tuvoCovid}>{datos.tuvoCovid}</strong>
+                    </span>
+                </div>
+                <template if:true={datos.mostrarVacunas}>
+                    <div class="items table">
+                        <p class="header-item">
+                            <span class="title slds-col slds-size_1-of-5">Dose</span>
+                            <span class="title slds-col slds-size_1-of-5">Data</span>
+                            <span class="title slds-col slds-size_3-of-5">Vacina aplicada</span>
+                        </p>
+                        <template for:each={datos.vacunas} for:item="thisVacuna">
+                            <p key={thisVacuna} class="item">
+                                <span class="value slds-col slds-size_1-of-1 slds-medium-size_1-of-5">{thisVacuna.dosis}</span>
+                                <span class="value slds-col slds-size_1-of-1 slds-medium-size_1-of-5">{thisVacuna.fecha}</span>
+                                <span class="value slds-col slds-size_1-of-1 slds-medium-size_3-of-5">{thisVacuna.nombre}</span>
+                            </p>
+                        </template>
+                    </div>
+                </template>
+            </div>
+        </section>
+</template>

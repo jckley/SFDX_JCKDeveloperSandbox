@@ -1,0 +1,29 @@
+.THIS {
+     font-family: 'Roboto', sans-serif;
+}
+
+.THIS .title {
+   
+    font-weight: bold;
+    font-size: 30pt;
+    color: #58595b
+}
+
+.THIS .subtitle,
+.THIS .subtitle A,
+.THIS .subtitle A:visited,
+.THIS .subtitle A:link,
+.THIS .subtitle A:hover {
+    font-size: 11pt;
+    line-height: 1.5;
+    color: 			#999999;
+}
+.THIS .subtitle {
+    font-weight: 400;    
+}
+.THIS .subtitle A {
+    font-weight: 	bold; 
+}
+.THIS .subtitle A:hover { 
+    text-decoration : underline;
+}

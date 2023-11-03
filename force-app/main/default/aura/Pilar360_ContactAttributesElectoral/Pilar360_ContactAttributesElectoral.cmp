@@ -1,0 +1,70 @@
+<aura:component>
+    <aura:attribute name="citizenWrapper" 	type="CitizenWrapper" 	required="true" />
+    <aura:attribute name="rendered" 		type="Boolean" 			required="true" default="true" />
+     
+    <div class="{! (v.rendered)?'card slds-grid slds-wrap slds-m-top_large':'slds-hide'}">
+    	<div class="slds-grid slds-wrap slds-col slds-size_1-of-1 header" >
+            <div class="slds-col slds-size_1-of-1">
+                <img src="{! $Resource.Pilar360 + '/img/check.svg'}" class="icon" />
+                <span class="title">{!$Label.c.Electoral}</span>
+            </div>           
+        </div>
+            
+        <div class="slds-col slds-size_1-of-1 slds-grid slds-wrap" style="padding: 30px 30px;">
+            <div class="subattribute-border slds-size_1-of-1 slds-grid slds-wrap">
+                <div class="slds-size_1-of-1 slds-large-size_1-of-5 slds-p-bottom_medium">
+                    <c:Pilar360_DisplayField label="Distrito :" value="{! v.citizenWrapper.citizen.Electoral_District__c}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13"/>            
+                </div>
+                
+                <div class="slds-size_1-of-3 slds-large-size_1-of-5 slds-p-bottom_medium">
+                    <c:Pilar360_DisplayField label="Sección :" value="{! v.citizenWrapper.citizen.Electoral_Section__c}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13"/>            
+                </div>
+                
+                <div class="slds-size_1-of-3 slds-large-size_1-of-5 slds-p-bottom_medium">
+                    <c:Pilar360_DisplayField label="Circuito :" value="{! v.citizenWrapper.citizen.Electoral_Circuit__c}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13"/>            
+                </div>
+                
+                <div class="slds-size_1-of-3 slds-p-bottom_medium slds-hide_medium">
+                    <c:Pilar360_DisplayField label="Mesa :" value="{! v.citizenWrapper.citizen.Electoral_Booth__c}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13"/>            
+                </div>
+                
+                <div class="slds-size_1-of-1 slds-large-size_1-of-5 slds-p-bottom_medium">
+                    <c:Pilar360_DisplayField label="Escuela :" value="{! v.citizenWrapper.citizen.Escuela_Electoral__c}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13"/>            
+                </div>
+                
+                <div class="slds-large-size_1-of-5 slds-p-bottom_medium slds-show_large">
+                    <c:Pilar360_DisplayField label="Mesa :" value="{! v.citizenWrapper.citizen.Electoral_Booth__c}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13"/>            
+                </div>
+            </div>
+            
+            <div class="subattribute-border slds-size_1-of-1 slds-grid slds-wrap">
+                <div class="slds-size_1-of-2 slds-large-size_1-of-5 slds-p-bottom_medium">
+                    <c:Pilar360_DisplayField label="Votó PASO ´15 :" value="{! (v.citizenWrapper.citizen.voting_P2015__c == 'EMITIDO')?$Label.c.Yes: $Label.c.No}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="{!  (v.citizenWrapper.citizen.voting_P2015__c == 'EMITIDO')?'value blue font13':'value font13'}"/>            
+                </div>
+                
+                <div class="slds-size_1-of-2 slds-large-size_1-of-5 slds-p-bottom_medium">
+                    <c:Pilar360_DisplayField label="Votó General ´15 :" value="{! (v.citizenWrapper.citizen.voting_G2015__c == 'EMITIDO')?$Label.c.Yes: $Label.c.No}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="{!  (v.citizenWrapper.citizen.voting_G2015__c == 'EMITIDO')?'value blue font13':'value font13'}"/>            
+                </div>
+                
+                <div class="slds-size_1-of-1 slds-large-size_1-of-5 slds-p-bottom_medium">
+                    <c:Pilar360_DisplayField label="Votó Ballotage ´15 :" value="{! (v.citizenWrapper.citizen.voting_B2015__c == 'EMITIDO')?$Label.c.Yes: $Label.c.No}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="{!  (v.citizenWrapper.citizen.voting_B2015__c == 'EMITIDO')?'value blue font13':'value font13'}"/>            
+                </div>
+                
+                <div class="slds-size_1-of-2 slds-large-size_1-of-5 slds-p-bottom_medium">
+                    <c:Pilar360_DisplayField label="Votó PASO ´17 :" value="{! (v.citizenWrapper.citizen.voting_P2017__c == 'EMITIDO')?$Label.c.Yes: $Label.c.No}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="{!  (v.citizenWrapper.citizen.voting_P2017__c == 'EMITIDO')?'value blue font13':'value font13'}"/>            
+                </div>
+                
+                <div class="slds-size_1-of-2 slds-large-size_1-of-5 slds-p-bottom_medium">
+                    <c:Pilar360_DisplayField label="Votó General ´17 :" value="{! (v.citizenWrapper.citizen.voting_G2017__c == 'EMITIDO')?$Label.c.Yes: $Label.c.No}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="{!  (v.citizenWrapper.citizen.voting_G2017__c == 'EMITIDO')?'value blue font13':'value font13'}"/>            
+                </div>
+            </div>
+			
+            <div class="slds-size_1-of-1 slds-grid slds-wrap">
+                <div class="slds-size_1-of-1 slds-large-size_1-of-1 slds-p-bottom_medium">
+                    <c:Pilar360_DisplayField label="Afiliación partidaria :" value="{!  v.citizenWrapper.citizen.party_affiliation__c}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13"/>            
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</aura:component>

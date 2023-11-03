@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>EditVotanteName</fullName>
+    <active>true</active>
+    <description>Solo JCK puede cambiarlo</description>
+    <errorConditionFormula>AND($User.Username!=&apos;juan.kleylein@prosumia.la&apos;, ISCHANGED( Name ))</errorConditionFormula>
+    <errorMessage>No se puede cambiar el Nombre del  Registro de Votante del Padron</errorMessage>
+</ValidationRule>

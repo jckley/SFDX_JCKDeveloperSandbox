@@ -1,0 +1,13 @@
+<aura:component>
+    <aura:attribute name="recordId" 	type="Id" />
+    <aura:attribute name="rendered" 	type="Boolean" 			required="true" default="true" />    
+    <aura:registerEvent name="ShowContactEditionEvent" type="c:ShowContactEditionEvent" />    
+
+	<div> 
+        <c:ContactEdition recordId="{! v.recordId }" />
+        
+        <footer class="slds-modal__footer">
+            <button class="slds-button slds-button_neutral" onclick="{! c.openEditionModal}">{!$Label.c.Edit}</button>
+        </footer>
+    </div>    
+</aura:component>

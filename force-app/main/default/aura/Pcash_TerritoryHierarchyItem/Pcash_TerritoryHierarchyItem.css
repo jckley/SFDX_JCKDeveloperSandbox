@@ -1,0 +1,115 @@
+.THIS {
+    font-family: 'Heebo';
+}
+
+.THIS .territory {line-height:35px; height: 42px; padding-left: 20px; margin-left: 20px; padding-top: 4px; margin-bottom: 1px;}
+.THIS .territory .back_arrow {display: inline-block; position: relative; left: -10px;}
+.THIS .territory .back_arrow IMG {-webkit-transform: scaleX(-1); transform: scaleX(-1); display :inline-block;
+    max-height: 15px; max-width: 15px;vertical-align: top;}
+.THIS .territory .back_arrow_ios {display: inline-block; position: relative; left: -10px;}
+.THIS .territory .back_arrow_ios IMG {-webkit-transform: scaleX(-1); transform: scaleX(-1); display :inline-block;
+    max-height: 15px; max-width: 15px;}
+.THIS .territory ul {list-style-type: none; margin: 0; padding: 0;}
+.THIS .territory ul li {display:flex; align-items:center;}
+
+.THIS .territory.selected {
+    background-color: #e6e7eb; 
+    border-radius: 10px; 
+    cursor: pointer;
+    line-height:35px;    
+    height: 42px; 
+}
+
+.THIS .territory .name {
+    font-family: 'Heebo';
+    font-weight: 300;
+    display: inline-block;    
+    position: relative;
+    white-space: nowrap;
+    width: 100%;
+    font-size: 13pt;
+    color: gray;
+  
+}
+
+.THIS .territory.selected .name { 
+    color: #333333;
+    width: calc(100% - 105px);
+    overflow:hidden;
+    white-space: nowrap;
+}
+
+.THIS .territory .detail {
+    font-family: 'Roboto Condensed';
+    font-weight: bold;
+    display:none;
+}
+
+
+.THIS .territory.selected .detail {
+    display: inline; 
+    color: #58595b;
+    float: right; 
+    font-weight: bold; 
+    font-size: 9pt;    
+}
+
+.THIS .territory .detail IMG {
+    max-width: 15px;
+    max-height: 15px;
+    margin-left: 10px;
+}
+
+/* Special classes for small devices */
+@media only screen and (max-width: 768px) {
+    .THIS.spacing{padding: 15px 0}
+    .THIS .territory.selected 	.name { 
+        width: calc(100% - 50px);
+        text-overflow: ellipsis;
+    }
+}
+
+/* Special classes for big devices */
+/* se pasan TODOS los comportamientos hover dentro 
+	de los media queries para evitar que ocurran en dispositivos iOS */
+@media only screen and (min-width: 768px) {
+    .THIS {}
+    .THIS .territory.selected,
+    .THIS .territory:hover {
+        background-color: #e6e7eb; 
+        border-radius: 10px; 
+        cursor: pointer;
+        line-height:35px;    
+        height: 42px; 
+    }
+    .THIS .territory:hover .name { 
+        color: #333333;
+        width: calc(100% - 105px);
+        overflow: hidden;
+        white-space: nowrap;
+    }
+    .THIS .territory:hover .detail {
+        display: inline; 
+        color: #58595b;
+        float: right; 
+        font-weight: bold; 
+        font-size: 9pt;    
+    }
+    .THIS .territory:hover .name:after,
+    .THIS .territory.selected .name:after{
+        content:'';
+        position: absolute;
+        left: 100%;
+        margin-left: -40px;
+        width: 40px;
+        height:100%;
+        top:0;
+        background:linear-gradient(to right, transparent, #e6e7eb);
+        background-image: linear-gradient(to right, rgba(255, 255, 255, 0), #e6e7eb 80%);
+    }
+    .THIS .territory.selected .detail:hover ,
+    .THIS .territory .detail:hover { 
+        text-decoration:underline;
+    }
+    
+}

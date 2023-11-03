@@ -1,0 +1,84 @@
+.box {
+
+    background: #FFF;
+    padding: 0;
+    border-radius: 4px;
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius:7px;
+}
+
+
+
+.box .header { 
+    height: 70px;
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    border: navajowhite; 
+    padding: 0 30px; 
+    font-size: calc(14px + 2px); 
+    color: #58595b;
+}
+
+.box .body {
+    padding-top: 0px;
+    padding-bottom: 30px; 
+    padding-left: 30px; 
+    padding-right: 30px; 
+}
+
+.box .body .itemList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+}
+
+.box .body .itemList .item {
+    flex: 0 1 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #e9121c;
+    border-radius: 4px;
+    color: #FFF;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    width: 90%;
+
+    border-radius: 40px;
+    height: 60px;
+    font-size: 19px;
+    padding: 13px;
+
+}
+
+.item:hover{
+    background: #b40000 !important;
+}
+
+.box .body .itemList .item.notSelected {
+    opacity: 50%;
+}
+
+.box .body .itemList .item:hover {
+    cursor: pointer;
+}
+
+.item span{
+    font-weight: 100;
+    margin-top: -6px;
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+.title{
+    font-size:18px;
+}

@@ -1,0 +1,93 @@
+<apex:component >
+    <style>
+        
+        .card-content {margin: 25px 0 25px 0;}
+        .card-content.header {border-left: 2px solid #f04b61;}
+        .card-content.info {border-left: 1px solid silver;}
+        
+        .auxiliar-margin {margin-top: 25px;}
+        
+        .icon {
+            margin-top: 6px;
+            margin-right: 6px;
+            width: 20px;
+            height: 20px;
+        }
+        
+        .rounded-container{
+            filter: opacity(15%);
+            width: 36px;
+            height: 36px;
+            display: inline-block;
+            position: relative;
+            top: -15px;
+        	left: 15%;
+            border: 1px solid #999999;
+            border-radius: 50%;
+        }
+        .rounded-container:hover {cursor: pointer;}
+        
+        .citizeninfo {
+        	margin: 0 15px 15px;
+        }
+        
+        .citizeninfo img {
+            width: 100%; 
+            height: 100%;
+        }
+        
+        .citizeninfo .cardcontent.info.infotop {
+        	margin-bottom: 20px;
+        }
+    </style>
+	<apex:attribute name="citizenwrapper" 	type="CitizenWrapper" 	required="true" 					description="Contact General Info" />  
+    <apex:attribute name="editionMode" 		type="Boolean" 			required="false" default="false" 	description="Flag for component edition"/>
+    
+    <div class="row contact-data">
+        <div class="card">
+            <div class="row citizeninfo">
+                <div class="{!IF( citizenwrapper.generalInfo.Picture != null,'col-12 col-lg-3 pl-0','')}">
+                    <apex:image url="{! citizenwrapper.generalInfo.Picture}" rendered="{! citizenwrapper.generalInfo.Picture != null}"/>
+                </div>
+                <div class="ml-md-3 pl-0 {!IF(citizenwrapper.generalInfo.Picture != null,'col-lg-9 ml-lg-0','col-12 ml-md-3')}">
+                    <div class="row card-content header">
+                        <div class="col-auto mb-2 col-md-6 mb-md-0 {!IF(citizenwrapper.generalInfo.Picture != null,'col-lg-4','col-lg-4')}">
+                            <c:ContactDisplayField label="{!$ObjectType.Contact.Fields.FirstName.Label}" value="{! citizenwrapper.citizen.FirstName + ' ' + citizenwrapper.citizen.MiddleName }" nullvalue="{!$Label.NoInformation}" classLabel="label uppercase" classValue="data-value f20"/>
+                        </div>
+                        <div class="col-auto col-md-6 {!IF(citizenwrapper.generalInfo.Picture != null,'col-lg-4','col-lg-4')}">
+                            <c:ContactDisplayField label="{!$Label.Lastname}" value="{! citizenwrapper.citizen.LastName}" nullvalue="{!$Label.NoInformation}" classLabel="label uppercase" classValue="data-value f20"/>
+                        </div>
+                    </div>
+					
+					<div class="{!IF(citizenwrapper.generalInfo.Picture != null,'card-content info','card-content info infotop')}">
+                        <div class="row card-content"> 
+                            <div class="col-6 mb-3 {!IF(citizenwrapper.generalInfo.Picture != null,'col-md-4','col-md-2 mb-lg-0')}">
+                                <c:ContactDisplayField rendered="{!(!editionMode) || (!$ObjectType.Contact.Fields.Gender__c.updateable)}" label="{!$ObjectType.Contact.Fields.Gender__c.Label}" value="{! citizenwrapper.generalInfo.Gender }" nullvalue="{!$Label.NoInformation}" classLabel="label uppercase" classValue="data-value f14"/>
+                                <c:ContactEditField rendered="{!editionMode && $ObjectType.Contact.Fields.Gender__c.updateable}" label="{!$ObjectType.Contact.Fields.Gender__c.Label}" value="{! citizenwrapper.citizen.Gender__c }" classLabel="label uppercase"/>
+                            </div>
+                            <div class="col-6 mb-3 {!IF(citizenwrapper.generalInfo.Picture != null,'col-md-4','col-md-2 mb-lg-0')}">
+                                <c:ContactDisplayField label="{!$ObjectType.Contact.Fields.Age_f_x__c.Label}" value="{! citizenwrapper.citizen.Age_f_x__c }" nullvalue="{!$Label.NoInformation}" classLabel="label uppercase" classValue="data-value f14"/>
+                            </div>
+                            <div class="col-6 mb-3 {!IF(citizenwrapper.generalInfo.Picture != null,'col-md-4','col-md-2 mb-lg-0')}">
+                                <c:ContactDisplayField rendered="{!(!editionMode) || (!$ObjectType.Contact.Fields.Birthdate.updateable)}" label="{!$ObjectType.Contact.Fields.Birthdate.Label}" value="{!citizenwrapper.generalInfo.BirthdateSPFormat}" nullvalue="{!$Label.NoInformation}" classLabel="label uppercase" classValue="data-value f14"/>                               
+                                <c:ContactEditField rendered="{!editionMode && $ObjectType.Contact.Fields.Birthdate.updateable}" label="{!$ObjectType.Contact.Fields.Birthdate.Label}" valueDate="{! citizenwrapper.citizen.Birthdate}" classLabel="label uppercase" inputType="date"/>
+                            </div>
+                            <div class="col-6 mb-3 mb-sm-0 {!IF(citizenwrapper.generalInfo.Picture != null,'col-md-4','col-md-2')}">
+                                <c:ContactDisplayField rendered="{!(!editionMode) || (!$ObjectType.Contact.Fields.Nacionalidad__c.updateable)}" label="{!$ObjectType.Contact.Fields.Nacionalidad__c.Label}" value="{! citizenwrapper.citizen.Nacionalidad__c }" nullvalue="{!$Label.NoInformation}" classLabel="label uppercase" classValue="data-value f14"/>                               
+                                <c:ContactEditField rendered="{!editionMode && $ObjectType.Contact.Fields.Nacionalidad__c.updateable}" label="{!$ObjectType.Contact.Fields.Nacionalidad__c.Label}" value="{! citizenwrapper.citizen.Nacionalidad__c}" classLabel="label uppercase"/>
+                            </div>
+                            <div class="col-6 {!IF(citizenwrapper.generalInfo.Picture != null,'col-md-4','col-md-2')}" style="display: {!IF($ObjectType.Contact.Fields.Document_Number__c.accessible,'','none')}">
+                                <c:ContactDisplayField rendered="{!(!editionMode) || (!$ObjectType.Contact.Fields.Document_Number__c.updateable)}" label="{!$ObjectType.Contact.Fields.Document_Number__c.Label}" value="{! citizenwrapper.generalInfo.DNI }" nullvalue="{!$Label.NoInformation}" classLabel="label uppercase" classValue="data-value f14"/>
+                                <c:ContactEditField inputType="number" rendered="{!editionMode && $ObjectType.Contact.Fields.Document_Number__c.updateable}" label="{!$ObjectType.Contact.Fields.Document_Number__c.Label}" valueNumber="{! citizenwrapper.citizen.Document_Number__c}" classLabel="label uppercase"/>
+                            </div>
+                            <div class="col-6 {!IF(citizenwrapper.generalInfo.Picture != null,'col-md-4','col-md-2')}" style="display: {!IF($ObjectType.Contact.Fields.Cuil_Number__c.accessible,'','none')}">
+                                <c:ContactDisplayField rendered="{!(!editionMode) || (!$ObjectType.Contact.Fields.Cuil_Number__c.updateable)}" label="{!$ObjectType.Contact.Fields.Cuil_Number__c.Label}" value="{! citizenwrapper.generalInfo.CUIT }" nullvalue="{!$Label.NoInformation}" classLabel="label uppercase" classValue="data-value f14"/>                                                              
+                                <c:ContactEditField rendered="{!editionMode && $ObjectType.Contact.Fields.Cuil_Number__c.updateable}" label="{!$ObjectType.Contact.Fields.Cuil_Number__c.Label}" value="{! citizenwrapper.citizen.Cuil_Number__c}" classLabel="label uppercase"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</apex:component>

@@ -1,0 +1,16 @@
+<apex:page showHeader="false">
+    
+    <html>
+        <body style="overflow: auto;">
+            <a id="twitter-timeline" class="twitter-timeline" href="https://twitter.com/{!$CurrentPage.parameters.user}?ref_src=twsrc%5Etfw">Tweets by {!$CurrentPage.parameters.user}</a>
+            <script src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            <!--<script>
+                var lexHost = '{!$CurrentPage.parameters.lexHost}';
+                var user = '{!$CurrentPage.parameters.user}';
+            	var aTag = document.getElementById('twitter-timeline');
+            	var baseUrl = aTag
+            </script>-->
+        </body>
+    </html>
+        
+</apex:page>

@@ -1,0 +1,11 @@
+<aura:component >
+    <aura:attribute name="label" 		type="String" />
+    <aura:attribute name="value" 		type="String" required="true" />
+    <aura:attribute name="valueCSS" 	type="String" required="true" />
+    <aura:attribute name="rendered" 	type="Boolean" default="true" />
+    
+    <div style="{!(v.rendered)?'':'display:none'}">
+        <span class="label">{! v.label}</span>
+        <span class="{! v.valueCSS }">{! v.value}</span>
+    </div>
+</aura:component>

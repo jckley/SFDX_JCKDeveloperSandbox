@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Batch_Size__c</fullName>
+    <description>Tamaño de los batches. Puede ser hasta una maximo de 50M.
+
+La cantidad maxima de registros iterados va a ser Batch_Size x Batch_Quantity.</description>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>Tamaño de los batches. Puede ser hasta una maximo de 50M.
+
+La cantidad maxima de registros iterados va a ser Batch_Size x Batch_Quantity.</inlineHelpText>
+    <label>Batch Size</label>
+    <precision>8</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

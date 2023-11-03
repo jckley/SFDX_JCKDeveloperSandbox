@@ -1,0 +1,65 @@
+<aura:component>
+    <aura:attribute name="citizenWrapper" 	type="ContactWrapper" 	required="true" />
+    <aura:attribute name="rendered" 		type="Boolean" 			required="true" default="true" />
+     
+    <div class="{! (v.rendered)?'card slds-grid slds-wrap slds-m-top_large slds-p-around_medium':'slds-hide'}" style="border-left: solid 5px #3db28b;">
+    	<div class="slds-grid slds-wrap slds-col slds-size_1-of-1 slds-p-around_medium header" >
+            <div class="slds-col slds-size_1-of-1">
+                <img src="{! $Resource.IconsPack1 + '/electoralps.svg'}" class="icon" />
+                <span class="slds-p-left_large title">{!$Label.c.Electoral}</span>
+            </div>           
+        </div>
+            
+        <div class="slds-col slds-size_1-of-1 slds-grid slds-wrap slds-p-around_large">
+            <div class="subattribute-border slds-size_1-of-1 slds-grid slds-wrap">
+                <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-5 slds-p-bottom_medium">
+                    <c:ContactDisplayField label="Distrito :" value="{! v.citizenWrapper.contact.Electoral_District__c}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label" valueCSS="value font13"/>            
+                </div>
+                
+                <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-5 slds-p-bottom_medium">
+                    <c:ContactDisplayField label="Sección :" value="{! v.citizenWrapper.contact.Electoral_Section__c}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label" valueCSS="value font13"/>            
+                </div>
+                
+                <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-5 slds-p-bottom_medium">
+                    <c:ContactDisplayField label="Circuito :" value="{! v.citizenWrapper.contact.Electoral_Circuit__c}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label" valueCSS="value font13"/>            
+                </div>
+                
+                <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-5 slds-p-bottom_medium">
+                    <c:ContactDisplayField label="Escuela :" value="{! v.citizenWrapper.contact.Escuela_Electoral__c}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label" valueCSS="value font13"/>            
+                </div>
+                
+                <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-5 slds-p-bottom_medium">
+                    <c:ContactDisplayField label="Mesa :" value="{! v.citizenWrapper.contact.Electoral_Booth__c}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label" valueCSS="value font13"/>            
+                </div>
+            </div>
+            
+            <div class="subattribute-border slds-size_1-of-1 slds-grid slds-wrap">
+                <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-5 slds-p-bottom_medium">
+                    <c:ContactDisplayField label="Votó PASO ´15 :" value="{! v.citizenWrapper.contact.voting_P2015__c}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label" valueCSS="{!  (v.citizenWrapper.contact.voting_P2015__c == 'EMITIDO')?'value green font13':'value font13'}"/>            
+                </div>
+                
+                <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-5 slds-p-bottom_medium">
+                    <c:ContactDisplayField label="Votó General ´15 :" value="{! v.citizenWrapper.contact.voting_G2015__c }" emptyValue="{!$Label.c.NoInformation}" labelCSS="label" valueCSS="{!  (v.citizenWrapper.contact.voting_G2015__c == 'EMITIDO')?'value green font13':'value font13'}"/>            
+                </div>
+                
+                <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-5 slds-p-bottom_medium">
+                    <c:ContactDisplayField label="Votó Ballotage ´15 :" value="{! v.citizenWrapper.contact.voting_B2015__c }" emptyValue="{!$Label.c.NoInformation}" labelCSS="label" valueCSS="{!  (v.citizenWrapper.contact.voting_B2015__c == 'EMITIDO')?'value green font13':'value font13'}"/>            
+                </div>
+                 
+                <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-5 slds-p-bottom_medium">
+                    <c:ContactDisplayField label="Votó PASO ´17 :" value="{! v.citizenWrapper.contact.voting_P2017__c }" emptyValue="{!$Label.c.NoInformation}" labelCSS="label" valueCSS="{!  (v.citizenWrapper.contact.voting_P2017__c == 'EMITIDO')?'value green font13':'value font13'}"/>            
+                </div>
+                
+                <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-5 slds-p-bottom_medium">
+                    <c:ContactDisplayField label="Votó General ´17 :" value="{! v.citizenWrapper.contact.voting_G2017__c }" emptyValue="{!$Label.c.NoInformation}" labelCSS="label" valueCSS="{!  (v.citizenWrapper.contact.voting_G2017__c == 'EMITIDO')?'value green font13':'value font13'}"/>            
+                </div>
+            </div>
+			
+            <div class="subattribute-border slds-size_1-of-1 slds-grid slds-wrap">
+                <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-1 slds-p-bottom_medium">
+                    <c:ContactDisplayField label="Afiliación partidaria :" value="{!  v.citizenWrapper.contact.party_affiliation__c}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label" valueCSS="value font13"/>            
+                </div>
+            </div>                        
+        </div>
+    </div>
+</aura:component>

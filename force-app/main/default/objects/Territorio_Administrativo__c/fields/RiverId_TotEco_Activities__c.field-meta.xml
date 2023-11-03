@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RiverId_TotEco_Activities__c</fullName>
+    <defaultValue>(&quot;{}&quot;)</defaultValue>
+    <description>Guarda un JSON de actividades agrupadas, pares string:decimal</description>
+    <externalId>false</externalId>
+    <label>RiverId_TotEco_Activities</label>
+    <length>131072</length>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

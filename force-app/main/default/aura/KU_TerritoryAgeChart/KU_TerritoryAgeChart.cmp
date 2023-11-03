@@ -1,0 +1,42 @@
+<aura:component controller="TerritoryDetailController">
+    
+    <aura:attribute name="terrw" type="TerritoryWrapper2" required="true" description="Territory Information" />
+    <aura:attribute name="recordId" type="String"/>
+    
+    <ltng:require scripts="{! $Resource.ChartJS + '/Chart.bundle.min.js' }"  afterScriptsLoaded="{!c.updateChart}"/>
+    
+    <div class="slds-size_1-of-1 slds-grid slds-wrap card">
+        <div class="slds-grid slds-wrap slds-col slds-size_1-of-1 header" >
+            <div class="slds-size_1-of-1">
+                <span class="title">Edades por sexo</span>
+            </div>           
+        </div>
+        
+        <div class="slds-size_1-of-1 slds-grid slds-wrap chart-container">
+            
+            <div class="slds-size_1-of-1 slds-large-size_5-of-12">
+                <div class="leyend-container women">
+                    <span class="leyend-label">Mujeres</span>
+                    <span class="leyend-value">{!v.terrw.totalWomenPerc}%</span>
+                </div>
+                <div class="chart">
+                	<canvas id="women"></canvas>
+                </div>
+            </div>
+            <div class="slds-large-size_2-of-12 slds-show_large chart-title">
+            	<span>Rangos Etarios</span>
+            </div>
+            <div class="slds-size_1-of-1 slds-large-size_5-of-12">
+                <div class="leyend-container men">
+                    <span class="leyend-label">Hombres</span>
+                    <span class="leyend-value">{!v.terrw.totalMenPerc}%</span>
+                </div>
+                <div class="chart">
+                    <canvas id="men"></canvas>
+                </div>
+            </div>
+            
+        </div>
+        
+    </div>
+</aura:component>

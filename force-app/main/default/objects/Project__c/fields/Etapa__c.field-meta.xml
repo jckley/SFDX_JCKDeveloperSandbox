@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Etapa__c</fullName>
+    <externalId>false</externalId>
+    <label>Etapa</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Solicitado</fullName>
+                <default>true</default>
+                <label>Solicitado</label>
+            </value>
+            <value>
+                <fullName>Validado</fullName>
+                <default>false</default>
+                <label>Validado</label>
+            </value>
+            <value>
+                <fullName>Priorizado</fullName>
+                <default>false</default>
+                <label>Priorizado</label>
+            </value>
+            <value>
+                <fullName>En Cola</fullName>
+                <default>false</default>
+                <label>En Cola</label>
+            </value>
+            <value>
+                <fullName>En Desarrollo</fullName>
+                <default>false</default>
+                <label>En Desarrollo</label>
+            </value>
+            <value>
+                <fullName>En Prueba</fullName>
+                <default>false</default>
+                <label>En Prueba</label>
+            </value>
+            <value>
+                <fullName>Aprobado</fullName>
+                <default>false</default>
+                <label>Aprobado</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

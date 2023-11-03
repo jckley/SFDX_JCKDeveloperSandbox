@@ -1,0 +1,203 @@
+<aura:component >	
+    <aura:attribute name="community"        type="String"           default="Prosumia"/>
+    <aura:attribute name="citizenWrapper" 	type="CitizenWrapper" 	required="true" />
+    <aura:attribute name="rendered" 		type="Boolean" 			required="true" default="true" />
+    
+    <div class="{! (v.rendered)? v.community + ' card slds-grid slds-wrap':'slds-hide'}">
+        <header class="slds-col--padded slds-size_1-of-1 slds-p-bottom_medium"  style="padding: 10px 30px;">
+            <div class="slds-grid slds-wrap slds-col slds-size_1-of-1 header" >
+                <div class="slds-col slds-size_1-of-4">
+                    <div class="label uppercase">Grupo</div>
+                    <div class="value highlight">
+                        {! v.citizenWrapper.cuidarnos.covid.proactiva_resultgroup__c }                        
+                    </div>
+                </div>
+                
+                <div class="slds-col slds-size_3-of-4">
+                    <div class="slds-float--right">
+                        <div class="label uppercase">
+                            Fecha : 
+                            <span class="value">{! v.citizenWrapper.cuidarnos.Triage }</span>
+                        </div>
+                    </div>
+                    <hr />
+                </div>           
+            </div>
+        </header>
+        
+        <article class="slds-col--padded slds-size_1-of-1"  style="padding: 10px 30px;">
+            <div class="slds-grid slds-wrap slds-col slds-size_1-of-1 slds-p-bottom_medium" >
+
+                <div class="slds-col slds-size_1-of-5">
+                    <c:PRM_DisplayField community="{! v.community }"  label="Viajes al exterior :" value="{! (v.citizenWrapper.cuidarnos.covid.proactiva_traveler__c)?'Sí':'No' }" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13"/>            
+                </div>
+                
+                <div class="slds-col slds-size_1-of-5">
+                    <c:PRM_DisplayField community="{! v.community }"  label="Contacto con casos COVID :" value="{! (v.citizenWrapper.cuidarnos.covid.proactiva_hasbeencontact__c)?'Sí':'No' }" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13"/>                                
+                </div>
+
+                                
+                <div class="slds-col slds-size_1-of-5">
+                    <c:PRM_DisplayField community="{! v.community }"  label="Dónde :" value="{! v.citizenWrapper.cuidarnos.covid.proactiva_contacttype__c }" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13"/>                                
+                </div>
+
+                <div class="slds-col slds-size_1-of-5">
+                    <c:PRM_DisplayField community="{! v.community }"  label="Frecuencia :" value="{! v.citizenWrapper.cuidarnos.proactiva_frecuency__c }" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13"/>                                
+                </div>
+
+                <div class="slds-col slds-size_1-of-5">
+                    <c:PRM_DisplayField community="{! v.community }"  label="Estuvo En Contacto? :" value="{! (v.citizenWrapper.cuidarnos.covid.proactiva_autoperception__c)?'Sí':'No' }" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13 capitalize"/>            
+                </div>
+
+   
+                
+                  
+
+            </div>
+
+            <div class="slds-grid slds-wrap slds-col slds-size_1-of-1 slds-p-bottom_medium" >
+                <div class="slds-col slds-size_1-of-5">
+                    <c:PRM_DisplayField community="{! v.community }"  label="Temperatura :" value="{! v.citizenWrapper.cuidarnos.Temperatura }" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13"/>                                
+                </div>
+                <div class="slds-col slds-size_4-of-5">
+                    <div class="{! 'slds-grid slds-wrap ' + v.community }">
+                        <div class="slds-col slds-size_1-of-1 label uppercase" style="margin-bottom: 5px;">
+                            Sintomas
+                        </div> 
+                        <div class="slds-col slds-size_1-of-1 value font13 slds-wrap" style="display: inline-flex;">
+                            <aura:iteration items="{!v.citizenWrapper.cuidarnos.proactiva_sintomas }" var="strTag">                                    
+                                <div class="tag">
+                                    <span class="value-gray">{!  strTag }</span>      
+                                </div>                                           
+                            </aura:iteration>                    
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slds-grid slds-wrap slds-col slds-size_1-of-1" >
+                <div class="slds-col slds-size_4-of-5">
+                    <c:PRM_DisplayField community="{! v.community }"  label="Antecedentes :" value="{! v.citizenWrapper.cuidarnos.proactiva_history }" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13"/>                                                    
+                </div>
+                <div class="slds-col slds-size_1-of-5">
+                    <c:PRM_DisplayField community="{! v.community }"  label="Principal necesidad :" value="{! v.citizenWrapper.cuidarnos.proactiva_needs }" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13"/>                                
+                </div>
+            </div>
+        </article>
+        <!--
+        <div class="slds-col - -padded slds-size_1-of-1" >
+            <div class="{! 'card slds-grid slds-wrap slds-m-top_large ' + v.community}">
+                <div class="slds-grid slds-wrap slds-col slds-size_1-of-1 header" >
+                    <div class="slds-col slds-size_1-of-1">
+                        <img src="{! $Resource.PRM   + '/' + v.community +  '/img/adfielectoral.svg'}" class="icon" />
+                        <span class="slds-p-left_large title">Proactiva</span>
+                    </div>           
+                </div>
+                    
+                <div class="slds-col slds-size_1-of-1 slds-grid slds-wrap" style="padding: 30px 30px;">
+                    <div class="subattribute-border slds-size_1-of-1 slds-grid slds-wrap">
+                        <div class="slds-size_1-of-1 slds-large-size_1-of-4 slds-p-bottom_medium">
+                            <c:PRM_DisplayField community="{! v.community }"  label="Origen :" value="{! v.citizenWrapper.cuidarnos.covid.proactiva_source__c }" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13"/>                                
+                        </div>
+
+                        <div class="slds-size_1-of-1 slds-large-size_1-of-4 slds-p-bottom_medium">
+                            <c:PRM_DisplayField community="{! v.community }" label="Autopercepción :" value="{! v.citizenWrapper.cuidarnos.covid.proactiva_autoperception__c }" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13"/>            
+                        </div>
+                        
+                        <div class="slds-size_1-of-1 slds-large-size_2-of-4 slds-p-bottom_medium">
+                            <c:PRM_DisplayField community="{! v.community }"  label="Salud :" value="{! v.citizenWrapper.cuidarnos.covid.proactiva_health__c }" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13"/>            
+                        </div>
+                        
+                        <div class="slds-size_1-of-1 slds-large-size_1-of-4 slds-p-bottom_medium">
+                            <c:PRM_DisplayField community="{! v.community }"  label="Contacto :" value="{! (v.citizenWrapper.cuidarnos.covid.proactiva_hasbeencontact__c)?'Sí':'No' }" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13"/>            
+                        </div>
+                        <div class="slds-size_1-of-1 slds-large-size_1-of-4 slds-p-bottom_medium">
+                            <c:PRM_DisplayField community="{! v.community }"  label="Historia :" value="{! (v.citizenWrapper.cuidarnos.covid.proactiva_hashistory__c)?'Sí':'No' }" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13"/>            
+                        </div>
+                        <div class="slds-size_1-of-1 slds-large-size_1-of-4 slds-p-bottom_medium">
+                            <c:PRM_DisplayField community="{! v.community }"  label="Sintomas :" value="{! (v.citizenWrapper.cuidarnos.covid.proactiva_hassymptoms__c)?'Sí':'No'  }" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13"/>            
+                        </div>
+                        <div class="slds-size_1-of-1 slds-large-size_1-of-4 slds-p-bottom_medium">
+                            <c:PRM_DisplayField community="{! v.community }"  label="Viajero :" value="{! (v.citizenWrapper.cuidarnos.covid.proactiva_traveler__c)?'Sí':'No'  }" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13"/>            
+                        </div>
+
+                        <div class="slds-size_1-of-1 slds-large-size_1-of-2 slds-p-bottom_medium">
+                            <div class="{! 'slds-grid slds-wrap ' + v.community }">
+                                <div class="slds-col slds-size_1-of-1 label uppercase" style="margin-bottom: 5px;">
+                                    Frecuencia
+                                </div> 
+                                <div class="slds-col slds-size_1-of-1 value font13 slds-wrap" style="display: inline-flex;">
+                                    <aura:iteration items="{!v.citizenWrapper.cuidarnos.proactiva_frecuency }" var="strTag">                                    
+                                        <div class="tag">
+                                            <span class="value-gray">{!  strTag }</span>      
+                                        </div>                                           
+                                    </aura:iteration>                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-size_1-of-1 slds-large-size_1-of-2 slds-p-bottom_medium">
+                            <div class="{! 'slds-grid slds-wrap ' + v.community }">
+                                <div class="slds-col slds-size_1-of-1 label uppercase" style="margin-bottom: 5px;">
+                                    Contacto
+                                </div> 
+                                <div class="slds-col slds-size_1-of-1 value font13 slds-wrap" style="display: inline-flex;">
+                                    <aura:iteration items="{!v.citizenWrapper.cuidarnos.proactiva_contacttype }" var="strTag">                                    
+                                        <div class="tag">
+                                            <span class="value-gray">{!  strTag }</span>      
+                                        </div>                                           
+                                    </aura:iteration>                    
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="slds-size_1-of-1 slds-large-size_1-of-2 slds-p-bottom_medium">
+                            <div class="{! 'slds-grid slds-wrap ' + v.community }">
+                                <div class="slds-col slds-size_1-of-1 label uppercase" style="margin-bottom: 5px;">
+                                    Antecedentes
+                                </div> 
+                                <div class="slds-col slds-size_1-of-1 value font13 slds-wrap" style="display: inline-flex;">
+                                    <aura:iteration items="{!v.citizenWrapper.cuidarnos.proactiva_history }" var="strTag">                                    
+                                        <div class="tag">
+                                            <span class="value-gray">{!  strTag }</span>      
+                                        </div>                                           
+                                    </aura:iteration>                    
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="slds-size_1-of-1 slds-large-size_1-of-2 slds-p-bottom_medium">
+                            <div class="{! 'slds-grid slds-wrap ' + v.community }">
+                                <div class="slds-col slds-size_1-of-1 label uppercase" style="margin-bottom: 5px;">
+                                    Sintomas
+                                </div> 
+                                <div class="slds-col slds-size_1-of-1 value font13 slds-wrap" style="display: inline-flex;">
+                                    <aura:iteration items="{!v.citizenWrapper.cuidarnos.proactiva_sintomas }" var="strTag">                                    
+                                        <div class="tag">
+                                            <span class="value-gray">{!  strTag }</span>      
+                                        </div>                                           
+                                    </aura:iteration>                    
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="slds-size_1-of-1 slds-large-size_1-of-1 slds-p-bottom_medium">
+                            <div class="{! 'slds-grid slds-wrap ' + v.community }">
+                                <div class="slds-col slds-size_1-of-1 label uppercase" style="margin-bottom: 5px;">
+                                    Necesidades
+                                </div> 
+                                <div class="slds-col slds-size_1-of-1 value font13 slds-wrap" style="display: inline-flex;">
+                                    <aura:iteration items="{!v.citizenWrapper.cuidarnos.proactiva_needs }" var="strTag">                                    
+                                        <div class="tag">
+                                            <span class="value-gray">{!  strTag }</span>      
+                                        </div>                                           
+                                    </aura:iteration>                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>            
+                </div>
+            </div>
+        </div>
+        -->
+    </div>
+</aura:component>

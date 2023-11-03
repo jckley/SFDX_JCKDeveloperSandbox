@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Ciudad_Tucuman__c</fullName>
+    <externalId>false</externalId>
+    <label>Ciudad Tucuman</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Aguilares</fullName>
+                <default>false</default>
+                <label>Aguilares</label>
+            </value>
+            <value>
+                <fullName>Alderetes</fullName>
+                <default>false</default>
+                <label>Alderetes</label>
+            </value>
+            <value>
+                <fullName>Banda del Río Salí</fullName>
+                <default>false</default>
+                <label>Banda del Río Salí</label>
+            </value>
+            <value>
+                <fullName>Bella Vista</fullName>
+                <default>false</default>
+                <label>Bella Vista</label>
+            </value>
+            <value>
+                <fullName>Burruyacú</fullName>
+                <default>false</default>
+                <label>Burruyacú</label>
+            </value>
+            <value>
+                <fullName>Concepción</fullName>
+                <default>false</default>
+                <label>Concepción</label>
+            </value>
+            <value>
+                <fullName>Famaillá</fullName>
+                <default>false</default>
+                <label>Famaillá</label>
+            </value>
+            <value>
+                <fullName>Graneros</fullName>
+                <default>false</default>
+                <label>Graneros</label>
+            </value>
+            <value>
+                <fullName>Juan B. Alberdi</fullName>
+                <default>false</default>
+                <label>Juan B. Alberdi</label>
+            </value>
+            <value>
+                <fullName>La Cocha</fullName>
+                <default>false</default>
+                <label>La Cocha</label>
+            </value>
+            <value>
+                <fullName>Las Talitas</fullName>
+                <default>false</default>
+                <label>Las Talitas</label>
+            </value>
+            <value>
+                <fullName>Lules</fullName>
+                <default>false</default>
+                <label>Lules</label>
+            </value>
+            <value>
+                <fullName>Monteros</fullName>
+                <default>false</default>
+                <label>Monteros</label>
+            </value>
+            <value>
+                <fullName>San Miguel de Tucumán</fullName>
+                <default>false</default>
+                <label>San Miguel de Tucumán</label>
+            </value>
+            <value>
+                <fullName>Simoca</fullName>
+                <default>false</default>
+                <label>Simoca</label>
+            </value>
+            <value>
+                <fullName>Tafí del Valle</fullName>
+                <default>false</default>
+                <label>Tafí del Valle</label>
+            </value>
+            <value>
+                <fullName>Tafí Viejo</fullName>
+                <default>false</default>
+                <label>Tafí Viejo</label>
+            </value>
+            <value>
+                <fullName>Trancas</fullName>
+                <default>false</default>
+                <label>Trancas</label>
+            </value>
+            <value>
+                <fullName>Yerba Buena</fullName>
+                <default>false</default>
+                <label>Yerba Buena</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

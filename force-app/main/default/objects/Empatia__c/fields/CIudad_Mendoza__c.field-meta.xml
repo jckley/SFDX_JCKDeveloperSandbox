@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CIudad_Mendoza__c</fullName>
+    <externalId>false</externalId>
+    <label>CIudad Mendoza</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>General Alvear</fullName>
+                <default>false</default>
+                <label>General Alvear</label>
+            </value>
+            <value>
+                <fullName>Godoy Cruz</fullName>
+                <default>false</default>
+                <label>Godoy Cruz</label>
+            </value>
+            <value>
+                <fullName>Junín</fullName>
+                <default>false</default>
+                <label>Junín</label>
+            </value>
+            <value>
+                <fullName>La Paz</fullName>
+                <default>false</default>
+                <label>La Paz</label>
+            </value>
+            <value>
+                <fullName>Las Heras</fullName>
+                <default>false</default>
+                <label>Las Heras</label>
+            </value>
+            <value>
+                <fullName>Luján de Cuyo</fullName>
+                <default>false</default>
+                <label>Luján de Cuyo</label>
+            </value>
+            <value>
+                <fullName>Maipú</fullName>
+                <default>false</default>
+                <label>Maipú</label>
+            </value>
+            <value>
+                <fullName>Malargüe</fullName>
+                <default>false</default>
+                <label>Malargüe</label>
+            </value>
+            <value>
+                <fullName>Mendoza</fullName>
+                <default>false</default>
+                <label>Mendoza</label>
+            </value>
+            <value>
+                <fullName>Rivadavia</fullName>
+                <default>false</default>
+                <label>Rivadavia</label>
+            </value>
+            <value>
+                <fullName>San Martín</fullName>
+                <default>false</default>
+                <label>San Martín</label>
+            </value>
+            <value>
+                <fullName>San Rafael</fullName>
+                <default>false</default>
+                <label>San Rafael</label>
+            </value>
+            <value>
+                <fullName>Santa Rosa</fullName>
+                <default>false</default>
+                <label>Santa Rosa</label>
+            </value>
+            <value>
+                <fullName>Tunuyán</fullName>
+                <default>false</default>
+                <label>Tunuyán</label>
+            </value>
+            <value>
+                <fullName>Tupungato</fullName>
+                <default>false</default>
+                <label>Tupungato</label>
+            </value>
+            <value>
+                <fullName>Villa Nueva</fullName>
+                <default>false</default>
+                <label>Villa Nueva</label>
+            </value>
+            <value>
+                <fullName>Villa San Carlos</fullName>
+                <default>false</default>
+                <label>Villa San Carlos</label>
+            </value>
+            <value>
+                <fullName>Villa Tulumaya</fullName>
+                <default>false</default>
+                <label>Villa Tulumaya</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

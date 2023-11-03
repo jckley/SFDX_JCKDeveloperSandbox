@@ -1,0 +1,61 @@
+.section_gender{
+    display: flex;
+    flex-direction: column;
+}
+
+.section_gender .stats {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.section_gender .stats .stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.section_gender .stats .stat.notSelected {
+    opacity: 50%;
+}
+
+.section_gender .stats .stat small {
+    color: #999999; 
+    font-size: 12px;
+}
+
+.section_gender .stats .stat strong {
+    font-size: 13px; 
+    color: #3e4145;
+}
+
+.section_gender .stats .stat span { 
+    font-size: 13px; 
+    font-weight: bold; 
+}
+
+.section_gender .stats .stat .woman { 
+    color: #885493; 
+}
+
+.section_gender .stats .stat .men { 
+    color: #0082be; 
+}
+
+
+.section_gender .chart-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 15px;
+    margin: 0px;
+}
+  
+.section_gender .chart-wrapper .populationChart { 
+    position: relative; 
+    z-index: 10;
+}

@@ -1,0 +1,43 @@
+<aura:component>
+    <aura:attribute name="community" 		type="String"/>
+    <aura:attribute name="logo" 			type="String"/>
+    <aura:attribute name="url" 				type="String"/>    
+    <aura:attribute name="search" 			type="Aura.Component[]"/>
+    <aura:attribute name="profileMenu" 		type="Aura.Component[]"/>
+    <aura:attribute name="navigationBar" 	type="Aura.Component[]"/>
+
+    <!-- <aura:handler event="c:PRMCommunityEvent" action="{!c.handlePRMCommunityEvent}"/> -->
+    
+    <div class="slds-size_1-of-1 header">
+        <a class="logo-container" onclick="{!c.home}">
+            <img class="logo" src="{! $Resource.RiverIdResourses + '/logo.svg' }" />
+            <!-- <span class="header-text">&nbsp;/ CRM</span> -->
+        </a>
+
+        <!-- <div class="tab slds-col slds-show_large"> -->
+        <div class="tab slds-col">
+            <c:RiverID_Tab />
+        </div>
+        <div class="exit exit-small slds-col_bump-left" onclick="{!c.logout}">
+            <img id="icon-white" class="img gray" src="{! $Resource.PRM + '/' + v.community + '/img/exit.svg'}" width="30" height="60"/>
+            <img id="icon-gray" class="img red" src="{! $Resource.PRM  + '/' + v.community + '/img/exit-hover.svg'}" width="30" height="60"/>
+        </div>
+        <div class="exit exit-big" onclick="{!c.logout}">
+            <img id="icon-white" class="img gray" src="{! $Resource.PRM + '/' + v.community + '/img/exit.svg'}" width="30" height="60"/>
+            <img id="icon-gray" class="img red" src="{! $Resource.PRM  + '/' + v.community + '/img/exit-hover.svg'}" width="30" height="60"/>
+        </div>
+    </div>
+    <!-- <div class="navigationBar slds-hide_large">
+        {! v.navigationBar}
+    </div> -->
+    <div class="slds-grid slds-wrap slds-col slds-size_1-of-1 header slds-hide" id="parent-div-search-super-m">
+        <div id="search-super-m" class="slds-col search slds-hide">
+            <c:RiverID_SearchBar rendered="false" />
+        </div>
+    </div>
+    <div id="search-super-d" class="slds-col slds-size_1-of-1 search slds-align_absolute-center slds-grid slds-wrap">
+        <c:RiverID_SearchBar rendered="true" />
+    </div>
+    <div id="header-extension" class="header-extension slds-hide">
+    </div>
+</aura:component>

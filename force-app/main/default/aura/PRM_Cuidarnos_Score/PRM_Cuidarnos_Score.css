@@ -1,0 +1,39 @@
+.THIS {
+    height: 210px;
+}
+
+.THIS .cuidarnostitle {
+    height: 60px;
+    width: 100%;
+    background-color: #f8f9fc;
+    font-family: 'Montserrat';
+}
+.THIS .valuecontainer {
+    height: 150px;
+}
+
+.THIS .centerme {
+    line-height: 60px;
+    text-align: center;
+    font-size: 16px;
+    text-transform: uppercase;
+    color: #999999;
+    vertical-align: middle;
+}
+
+.THIS .centervalue {
+    line-height: 150px;
+    text-align: center;
+    font-size: 48px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #333333;
+    font-family: 'Montserrat';
+    vertical-align: middle;
+    text-align: center;
+}
+
+
+.THIS .centervalue .percent { 
+    font-size: 32px;
+}

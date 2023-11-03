@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Chile</fullName>
+    <columns>NAME</columns>
+    <columns>Nivel_Administrativo__c</columns>
+    <columns>RECORDTYPE</columns>
+    <columns>Level0Name__c</columns>
+    <columns>Level1Name__c</columns>
+    <columns>Level2Name__c</columns>
+    <columns>Level3Name__c</columns>
+    <columns>Level4Name__c</columns>
+    <columns>Location_UUID__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Level0Name__c</field>
+        <operation>equals</operation>
+        <value>Chile</value>
+    </filters>
+    <label>Chile</label>
+</ListView>

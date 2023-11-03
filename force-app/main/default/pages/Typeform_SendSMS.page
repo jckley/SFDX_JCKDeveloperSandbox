@@ -1,0 +1,249 @@
+<apex:page standardController="Campaign" extensions="Typeform_SendSMS_Con" title="SMS BLASTS" id="mypage" standardStylesheets="false">
+<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" />
+
+<style >
+    .header{
+        padding-top:10px;
+        font-size:16px !important;
+        font-weight:bold;
+        font-family: 'Lato', sans-serif !important;
+    }
+    
+.styled-Button {
+   height: 29px;
+   overflow: hidden;
+   width: 180px;
+   font-family: 'Lato', sans-serif !important;
+   font-size:13px !important;
+   font-weight:bold !important;
+   padding-left: 10px !important;
+   padding-right: 10px !important;
+}
+
+
+.styled-select {
+   background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 96% 0;
+   height: 29px;
+   overflow: hidden;
+   width: 240px;
+   font-family: 'Lato', sans-serif !important;
+}
+
+.styled-select select {
+   background: transparent;
+   border: none;
+   height: 29px;
+   padding: 5px; /* If you add too much padding here, the options won't show in IE */
+   width: 268px;
+   font-family: 'Lato', sans-serif !important;
+}
+
+.semi-square {
+   -webkit-border-radius: 5px;
+   -moz-border-radius: 5px;
+   border-radius: 5px;
+}
+
+/* -------------------- Colors: Background */
+.bluebutton    { 
+    background : none !important; 
+    background-color: #3b8ec2 !important ;
+    color:#fff !important;
+    font-family: 'Lato', sans-serif !important;
+    font-size:13px;
+}
+
+.generalfont {
+    font-family: 'Lato', sans-serif !important;
+    font-size:13px !important;
+}
+
+/* -------------------- Colors: Background */
+.blue    { 
+    background-color: #1ABC9C;
+    font-family: 'Lato', sans-serif !important;
+}
+
+/* -------------------- Colors: Text */
+.blue select    { background:transparent; color: #000; }
+
+input[type=text]:focus {
+    box-shadow: 0 0 5px rgba(26, 188, 156, 1);
+    border: 1px solid rgba(26, 188, 156, 1);
+}
+
+</style>
+   <apex:form id="myfrm">
+        <apex:actionFunction action="{!updateCampaign}" name="updateCampaign_js" rerender="statuses" status="Status1" oncomplete="pushdata_js();"/>
+        <apex:actionFunction action="{!pushdata}" name="pushdata_js" rerender="statuses,outcome" status="Status2" />
+        <apex:actionFunction name="changeReportFolder" action="{!changeReportFolder}" rerender="selreport" status="myStatus0" />
+         
+         <apex:outputPanel id="statuses">
+            <apex:actionStatus id="Status1" startText="...Updating Campaign with SMS Content..." />
+            <apex:actionStatus id="Status2" startText="...Pushing SMS Template..." />
+        </apex:outputPanel>
+       <p/>
+       
+        <div style="width:100%; text-align:center">
+            <button type="button" class="styled-Button semi-square bluebutton" onclick="updateCampaign_js(); return false;">Push SMS</button>
+            <!-- <apex:commandButton value="Push SMS" action="{!pushdata}" styleClass="styled-Button semi-square bluebutton"/>  -->
+            <button type="button" class="styled-Button semi-square bluebutton" onclick="addsurvey()">Add Survey Link</button>
+        </div>
+        <p/>
+        <!-- SELECT REPORT TEMPLATE START -->        
+        <apex:outputPanel id="selreport">
+            <apex:outputLabel styleClass="header"> Select Report Template</apex:outputLabel>
+            <hr/>
+            <table style="width:90%; padding-top:10px" id="tbl1" >
+                <tr>
+                    <td style="width:200px; padding-bottom:20px; vertical-align:top">
+                        <apex:outputLabel styleClass="generalfont" >Campaign</apex:outputLabel>
+                    </td>
+                    <td>
+                        <apex:outputLink value="/{!thiscamp}" target="_blank" id="campaignlink" styleClass="generalfont">{!thiscamp.Name}</apex:outputLink>
+                    </td>                
+                </tr>
+                <tr>
+                    <td style="width:200px;padding-bottom:20px;">
+                        <apex:outputLabel for="templateFolder" styleClass="generalfont">Folder</apex:outputLabel>
+                    </td>
+                    <td>
+                        <div class="styled-select blue semi-square">
+                            <apex:selectList value="{!selReportFolder}" multiselect="false" size="1" onchange="changeReportFolder()">
+                                <apex:selectOptions value="{!reportFolders}"/>
+                            </apex:selectList>                        
+                        </div>
+                    </td>      
+
+                </tr>
+                <tr>
+                    <td style="width:200px;padding-bottom:20px;">
+                        <apex:outputLabel styleClass="generalfont">Report</apex:outputLabel>
+                    </td>
+                    <td>
+                        <div class="styled-select blue semi-square">
+                            <apex:actionStatus startText="loading..." id="myStatus0">
+                                <apex:facet name="stop">
+                                    <apex:selectList value="{!selReport}" multiselect="false" size="1">
+                                        <apex:selectOptions value="{!reportInFolder}"/>
+                                    </apex:selectList>                        
+                                </apex:facet>
+                            </apex:actionStatus>        
+                        </div>
+                    </td>                
+                </tr>
+                <tr>
+                    <td style="width:200px;padding-bottom:20px;">
+                        <apex:outputLabel styleClass="generalfont">Record Count </apex:outputLabel>
+                        <apex:actionStatus startText=" (running report...)" stopText="" id="rptStatus"/>
+                    </td>
+                    <td>
+                        <apex:outputPanel id="recCount" styleClass="generalfont">{!repRecCount}</apex:outputPanel>
+                    </td>                
+                </tr>
+                <tr>
+                    <td style="width:200px;padding-bottom:20px;">
+                    </td>
+                    <td>
+                        <apex:commandlink value="Get Report Record Count" action="{!getReportRecCount}" status="rptStatus" reRender="recCount" styleClass="generalfont"/><p/>
+                    </td>                
+                </tr>
+                <tr>
+                    <td style="width:200px;padding-bottom:20px;">
+                        <apex:outputLabel styleClass="generalfont">Additional Ids <br/>(all ids in separate line)</apex:outputLabel>
+                    </td>
+                    <td>
+                        <apex:inputTextarea value="{!addtlids}" cols="25" rows="10" styleClass="generalfont" />
+                    </td>                
+                </tr>
+
+            </table>     
+       </apex:outputPanel>
+       <p/>
+       <!-- SELECT REPORT TEMPLATE END -->
+       
+       <!-- SELECT SMS TEMPLATE START -->        
+        <apex:outputPanel id="seltemplate">
+            <apex:outputLabel styleClass="header"> SMS Template</apex:outputLabel>
+            <hr/>
+            <table style="width:90%; padding-top:10px" >
+                <tr>
+                    <td style="width:200px;padding-bottom:20px;">
+                        <apex:outputLabel for="templateFolder" styleClass="generalfont">SMS Text <br/>(160 characters including survey link)</apex:outputLabel>
+                    </td>
+                    <td>
+                        <apex:inputTextarea value="{!thiscamp.SMS_Content__c}" cols="75" rows="10" onkeyup="showSMScharsleft(this, 160)" id="smscontent" styleClass="generalfont"/>
+                        <div id="charsleft"></div>
+                    </td>      
+
+                </tr>
+            </table>     
+       </apex:outputPanel>
+       <p/>
+       <!-- SELECT SMS TEMPLATE END -->       
+       
+       <!-- SCHEDULING START -->
+       <apex:outputPanel id="scheduling">
+            <apex:outputLabel styleClass="header"> Scheduling</apex:outputLabel>
+            <hr/>       
+            <apex:selectRadio value="{!selScheduleOption}" layout="pageDirection" onchange="changeScheduling(this)" id="scheduleopt" styleClass="generalfont">
+                <apex:selectOptions value="{!schedulingOptions}"/>
+            </apex:selectRadio>
+            
+            <apex:outputPanel id="schDT_panel"  style="display:none">
+                <apex:inputField value="{!thiscamp.BatchUpdateDateTime__c}" id="schDT" styleClass="generalfont"/>
+            </apex:outputPanel>
+       </apex:outputPanel>
+       <p/>
+       <!-- SCHEDULING END -->       
+       
+       <!-- Authorize START -->
+       <apex:outputPanel id="authorize">
+            <apex:outputLabel styleClass="header"> Authorize</apex:outputLabel>
+            <hr/>       
+       
+           <apex:inputText value="{!authInitial}" styleClass="generalfont" /> <span class="generalfont">*I certify that the SMS push has been approved by me and cannot be undone!</span>
+       </apex:outputPanel>
+       <p/>
+       <!-- Authorize END -->
+       <apex:outputpanel id="outcome">
+      <div style="color:red" class="generalfont"> {!errormessages} </div>
+      <div class="generalfont"> {!requestString} </div>
+      
+       <!-- {!CSVContent}<br/> -->
+       </apex:outputpanel>
+   </apex:form>
+   <script type="text/javascript">
+    function changeScheduling(x){
+        if(x.id == 'mypage:myfrm:scheduleopt:0'){
+            document.getElementById('mypage:myfrm:schDT_panel').style.display='none';
+        }
+        if(x.id == 'mypage:myfrm:scheduleopt:1'){
+            document.getElementById('mypage:myfrm:schDT_panel').style.display='block';
+        }
+        
+    }
+
+
+    function showSMScharsleft(field, maxlimit){
+        if ( field.value.length > maxlimit ) {
+              field.value = field.value.substring( 0, maxlimit );
+              field.blur();
+              field.focus();
+              var x = maxlimit - field.value.length;
+              document.getElementById('charsleft').innerHTML='' + x + ' characters left!';
+              return false;
+         } else {
+          var x = maxlimit - field.value.length;
+          document.getElementById('charsleft').innerHTML='' + x + ' characters left!';
+         }        
+    
+    }
+    
+    function addsurvey(){
+        document.getElementById("mypage:myfrm:smscontent").value = document.getElementById("mypage:myfrm:smscontent").value + " http://arg.to/12345678";
+    }
+    
+    
+   </script>
+</apex:page>

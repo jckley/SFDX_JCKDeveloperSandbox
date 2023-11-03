@@ -1,0 +1,118 @@
+.box{
+    background: white;
+    border-radius: 5px;
+    min-height: 500px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+/*
+.helpWrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+*/
+
+/* Seccion Lista */
+
+.listSection {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.fileCard {
+    cursor: pointer;
+    height: 70px;
+    border-radius: 7px;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.fileName{
+    color: #5c595c;
+    font-weight: 600;
+}
+
+.fileExte{
+    color: #b2b2b2;
+    font-weight: 400;
+}
+
+.fileInfo{
+    display:flex;
+    flex-direction:column;
+    margin-left: 20px;
+}
+
+.fileIcon{
+    width: 25px;
+    margin-left:18px;
+}
+
+
+
+  .nube{
+    position: fixed;
+    width: 150px;
+    left: 42%;
+    /* top: 10%; */
+    top: 40%;
+  }
+
+.searchFile{
+  margin-bottom: 10px;
+}
+
+  .scroll{
+    max-height: 393px;
+    overflow: auto;
+  }
+
+  .fileCard button{
+    right: 15px;
+    background-color: #feeecc;
+    padding: 6px 17px;
+    border: none;
+    font-size: 14px;
+    font-weight: 500;
+    color: #faaa00;
+    position: absolute;
+    border-radius: 7px;
+    transition: 0.5s;
+  }
+
+  .fileCard button:hover{
+    background-color: #faab00;
+    color: rgb(34, 34, 34);
+  }
+
+  .fileCard .borrar:hover .seleccionar{
+    opacity: 0 !important;
+  }
+
+  .fileCard{
+    transition:3s;
+  }
+
+  .seleccionar{
+    opacity:0;
+    margin-left: 50px;
+    color: #dddddd;
+    font-style: italic;
+    right: 40%;
+    position: absolute;
+    transition: 1s;
+  }
+
+  .fileCard:hover .seleccionar{
+    opacity:1;
+  }

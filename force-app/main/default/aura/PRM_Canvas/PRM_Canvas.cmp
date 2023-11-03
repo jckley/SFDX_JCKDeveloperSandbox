@@ -1,0 +1,27 @@
+<aura:component controller="ContactDetailController" implements="forceCommunity:availableForAllPageTypes,force:appHostable,flexipage:availableForAllPageTypes,force:hasRecordId,lightning:isUrlAddressable">	    
+    <aura:attribute name="recordId" 		type="Id"  />        
+    <aura:attribute name="citizenWrapper" 	type="CitizenWrapper" />
+    <aura:attribute name="width" 		    type="String"  />        
+    <aura:attribute name="height" 		    type="String"  />        
+    <aura:attribute name="canvasname" 		type="String"  />       
+    <aura:attribute name="canvasnamespace" 		type="String"  />       
+    <aura:attribute name="community"        type="String" default="Cuidarnos"/>
+    <aura:attribute name="rendered" 		type="Boolean" default="false"  />        
+    <aura:attribute name="status" 	        type="String"  required="false" default="" />
+    <aura:attribute name="status_date" 	    type="String"  required="false" default="" />
+
+    <aura:handler name="init" action="{!c.initializeComponent}" value="{!this}" />
+
+    <div>
+        <div id="tracing_header" class="{! v.rendered?'slds-grid slds-wrap':'slds-hide'}">        
+            <div class="slds-col slds-size_1-of-1 pad-top-30 pad-left-30 pad-right-30">
+                <c:PRM_Cuidarnos_Contact_Header citizenWrapper="{! v.citizenWrapper }" status="{! v.citizenWrapper.cuidarnos.status}" status_date="{! v.citizenWrapper.cuidarnos.confirmdate }"  mobile="{! v.citizenWrapper.cuidarnos.mobile_phone }" email="{! v.citizenWrapper.cuidarnos.email }" /> 
+            </div>
+        </div>
+        <div class="{! v.rendered?'slds-grid slds-wrap':'slds-hide'}">        
+            <div class="slds-col slds-size_1-of-1 pad-top-30">
+                <force:canvasApp developerName="{! v.canvasname }" namespacePrefix="{! v.canvasnamespace }" width="{! v.width }" height="{! v.height}" />
+            </div>
+        </div>
+    </div>
+</aura:component>

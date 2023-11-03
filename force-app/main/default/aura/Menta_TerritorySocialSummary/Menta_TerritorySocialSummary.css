@@ -1,0 +1,35 @@
+.THIS {
+    padding: 25px 0 30px 20px;
+    color: #707276;
+}
+
+.THIS .social-container {
+    padding: 25px 0 0px 15px;
+}
+
+.THIS .icon-small {
+    max-width: 25px;
+    max-height: 25px;
+}
+
+.THIS .summary-title{
+    font-family: 'Poppins';
+    font-weight: 300;
+    font-size: 10pt;
+    color: #acacac;
+}
+
+.THIS .summary {
+    font-family: 'Open Sans';
+    font-weight: bold;
+    font-size: 22pt;
+    color: #676666;
+}
+
+.THIS .social-border-left {
+    border-left: solid 1px #ededed;
+}
+
+.THIS .icon-text {
+    padding-top: 10px;
+}

@@ -1,0 +1,53 @@
+.THIS .icon {
+    margin-top: 6px;
+    margin-right: 6px;
+    width: 20px;
+    height: 20px
+}
+
+.THIS .rounded-container{
+    filter: opacity(15%);
+    width: 36px;
+    height: 36px;
+    display: inline-block;
+    position: relative;
+    top: -30px;
+    left: 20px;
+    border: 1px solid #999999;
+    border-radius: 50%;
+}
+.THIS .rounded-container:hover {
+    filter: opacity(10%); cursor: pointer;
+}
+
+.THIS .value {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-right: 5px;
+}
+
+/* Special classes for small devices */
+@media only screen and (max-width:794px) {
+    .THIS {
+        background-color: #fff;
+        background-clip: border-box;
+        border: 1px solid rgba(0,0,0,.125);
+        border-radius: .25rem;
+        padding: 15px;
+    }
+    
+    .THIS .infocontainer {padding-top: 15px;}
+   	.THIS .separator {margin-bottom: 15px;}
+}
+
+/* Special classes for large devices */
+@media only screen and (min-width:794px) {
+    .THIS {padding-left: 30px; padding-bottom: 30px;}
+    .THIS .infocontainer {padding-top: 30px; padding-left: 30px;}
+    .THIS .cardIndicator {padding: 10px 30px;}
+    .THIS .infocontainer, .THIS .infocontainer .cardIndicator {padding-right: 15px;}    
+    .THIS .infocontainer .cardIndicator.red {border-left: 2px solid #0e9ad5;}    
+    .THIS .infocontainer .cardIndicator.gray {border-left: 2px solid #C0C0C0;}
+    .THIS .picture-container {height: 250px;}
+}

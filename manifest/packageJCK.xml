@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>*</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>ApexComponent</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>ApexPage</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>ApexTestSuite</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>ApexTrigger</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>AuraDefinitionBundle</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>LightningComponentBundle</name>
+    </types>
+    <!--<types>
+        <members>*</members>
+        <name>StaticResource</name>
+    </types> 
+    -->   
+    <types>
+        <members>Account</members>
+        <members>Contact</members>
+        <name>CustomObject</name>
+    </types>
+    <!--
+    <types>
+        <members>*</members>  //all profiles
+        <name>Profile</name>
+    </types>
+    <types>
+        <members>*</members> //all permission sets
+        <name>PermissionSet</name>
+    </types>
+   -->
+    <!-- Record Types -->
+    <types>
+        <members>*</members>
+        <name>RecordType</name>
+    </types>
+    
+    <!-- Validation Rules -->
+    <types>
+        <members>*</members>
+        <name>ValidationRule</name>
+    </types>
+
+    <!-- Compact Layouts -->
+    <types>
+        <members>*</members>
+        <name>CompactLayout</name>
+    </types>
+    <!-- Custom Applications -->
+    <types>
+        <members>*</members> <!-- Retrieve all custom applications -->
+        <name>CustomApplication</name>
+    </types>
+
+    <!-- Custom Settings -->
+    <types>
+        <members>*</members> <!-- Retrieve all custom settings -->
+        <name>CustomObject</name>
+    </types>
+    <!-- 
+    Custom Settings are ordinary CustomObject entries, just as if you were migrating fields from Account or MyCustomObject__c.
+
+        <?xml version="1.0" encoding="UTF-8"?>
+        <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+            <types>
+                <members>CustomSetting1__c</members>
+                <members>CustomSetting2__c</members>
+                <name>CustomObject</name>
+            </types>
+        <version>36.0</version>
+        </Package>
+    -->
+    <!-- Custom Metadata -->
+    <types>
+        <members>*</members> <!-- Retrieve all custom metadata types -->
+        <name>CustomMetadata</name>
+    </types>
+    <types>
+        <members>*</members>  <!-- Retrieve all Custom Permissions -->
+        <name>CustomPermission</name>
+    </types>
+  <version>58.0</version>
+</Package>

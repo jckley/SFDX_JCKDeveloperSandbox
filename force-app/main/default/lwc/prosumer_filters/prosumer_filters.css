@@ -1,0 +1,140 @@
+.box {
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+    background: #FFF;
+    padding: 0;
+    border-radius: 4px;
+    position: relative;
+    height: 100%;
+    border-radius:7px;
+}
+
+
+
+.box .body {
+    padding-top: 15px;
+    padding-bottom: 15px; 
+    padding-left: 30px; 
+    padding-right: 30px; 
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.box .body .button {
+    color: white;
+ 
+    border: none;
+    border-radius: 7px;
+    background-color: #e99000;
+    font-size: 17px;
+    padding: 11px 31px;
+    margin-right: 5px;
+}
+
+.box .body .filtersTitle{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.box .body .filtersTitle .value{
+    color: #3c3c3c;
+    font-size: 37px;
+    font-weight: 600;
+    padding-left: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 5px;
+}
+
+.box .body .filtersTitle .title{
+    color: #666666;
+    font-size: 18px;
+}
+
+
+.box .body .filtersList{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    padding: 10px 20px;
+    gap: 10px;
+    align-items: center;
+    margin-right: auto;
+}
+
+.box .body .filtersList .filterItem{
+    background-color: #e4e4e4;
+    border-radius: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 15px;
+    padding-right: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.box .body .filtersList .filterItem .value{
+    margin-right: 15px;
+    font-size: 14px;
+    color: #58595b;
+}
+
+.box .body .filtersList .filterItem .item-closeWrapper{
+    cursor: pointer;
+}
+
+.box .body .filtersList .filterItem .item-closeWrapper .close-icon {
+    height: 15px;
+    width: 15px;
+    fill: #999999;
+}
+
+.box .body .filtersList .closeWrapper{
+    background-color: #e4e4e4;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.box .body .filtersList .closeWrapper .close-all-icon {
+    height: 15px;
+    width: 15px;
+    fill: #999999;
+}
+
+/*
+.box .body .buttonColor {
+    --sds-c-button-brand-color-background: orange;
+    --sds-c-button-brand-color-border: orange;
+    --sds-c-button-brand-color-background-hover: rgb(209, 136, 0);
+    --sds-c-button-brand-color-border-hover: rgb(209, 136, 0);
+    
+}
+*/
+
+.box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.box .body{
+    height:70px;
+}
+
+
+.button{
+    transition:1s;
+}
+
+@media (max-width: 1000px){
+    .button{
+        display:none !important;
+    }
+}

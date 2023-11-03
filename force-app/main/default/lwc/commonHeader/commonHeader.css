@@ -1,0 +1,29 @@
+:host {
+    font-family: 'Roboto', 'sans-serif';
+}
+
+:host .headertitle {
+    font-weight: bold;
+    font-size: 30pt;
+    color: #58595b;
+}
+
+:host .headersubtitle {
+    font-size: 16px;
+    font-weight: 400; 
+    color: #999999;
+}
+
+:host .headersubtitle a,
+:host .headersubtitle a:link,
+:host .headersubtitle a:visited { 
+    color: #999999;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+:host .headersubtitle a:hover { 
+    text-decoration: underline; 
+    color: #999999;
+    cursor: pointer;
+}

@@ -1,0 +1,18 @@
+.THIS {
+}
+
+.THIS .card{
+    border-top: none !important;;
+    border-top-right-radius: 0px !important;
+    border-top-left-radius: 0px !important;
+}
+
+.THIS .map {
+    height:300px;
+}
+
+.THIS iframe {
+	border : 0px;
+    width : 100%;
+    overflow : hidden;
+}

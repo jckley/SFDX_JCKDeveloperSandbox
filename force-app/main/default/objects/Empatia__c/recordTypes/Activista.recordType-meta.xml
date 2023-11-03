@@ -1,0 +1,4109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Activista</fullName>
+    <active>true</active>
+    <label>Activista</label>
+    <picklistValues>
+        <picklist>CIudad_Mendoza__c</picklist>
+        <values>
+            <fullName>General Alvear</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Godoy Cruz</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Junín</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>La Paz</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Las Heras</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Luján de Cuyo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Maipú</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Malargüe</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mendoza</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rivadavia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San Martín</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San Rafael</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Santa Rosa</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tunuyán</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tupungato</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Villa Nueva</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Villa San Carlos</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Villa Tulumaya</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Ciudad_Catamarca__c</picklist>
+        <values>
+            <fullName>Aconquija</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ancasti</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Andagalá</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Antofagasta de la Sierra</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Belén</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Capayán</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Corral Quemado</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>EL Rodeo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>El Alto</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fiambalá</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fray Mamerto Esquiú</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hualfín</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Huillapima</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Icaño</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>La Puerta</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Las Juntas</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Londres</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Los Altos</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Los Varela</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mutquín</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Paclín</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pomán</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pozo de Piedra</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Puerta de Corral Quemado</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Puerta de San José</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Recreo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San Fernando</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San Fernando del Valle de Catamarca</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San José</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Santa María</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Santa Rosa</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Saujil</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tapso</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tinogasta</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Valle Viejo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Villa Vil</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Ciudad_Chaco__c</picklist>
+        <values>
+            <fullName>Aviá Teraí</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Barranqueras</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Basail</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Campo Largo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Capitán Solari</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Charadai</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Charata</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Chorotis</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ciervo Petiso</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Colonia Aborigen</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Colonia Benítez</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Colonia Elisa</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Colonia Popular</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Colonias Unidas</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Concepción del Bermejo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Coronel Du Graty</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Corzuela</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cote Lai</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>El Espinillo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>El Sauzalito</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Enrique Urién</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fontana</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fuerte Esperanza</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gancedo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>General Capdevila</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>General José de San Martín</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>General Pinedo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>General Vedia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hermoso Campo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Isla del Cerrito</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Juan José Castelli</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>La Clotilde</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>La Eduvigis</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>La Escondida</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>La Leonesa</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>La Tigra</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>La Verde</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Laguna Blanca</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Laguna Limpia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lapachito</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Las Breñas</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Las Garcitas</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Las Palmas</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Los Frentones</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Machagai</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Makallé</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Margarita Belén</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Miraflores</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Misión Nueva Pompeya</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Napenay</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pampa Almirón</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pampa del Indio</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pampa del Infierno</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Presidencia Roca</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Presidencia Roque Sáenz Peña</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Presidencia de la Plaza</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Puerto Bermejo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Puerto Eva Perón</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Puerto Tirol</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Puerto Vilelas</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Quitilipi</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Resistencia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Samuhú</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San Bernardo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Santa Sylvina</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Taco Pozo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tres Isletas</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Villa Berthet</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Villa Río Bermejito</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Villa Ángela</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Ciudad_Chubut__c</picklist>
+        <values>
+            <fullName>Alto Río Senguer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Camarones</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cholila</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Comodoro Rivadavia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Corvocado</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dolavon</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>El Hoyo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>El Maitén</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Epuyén</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Esquel</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gaiman</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gobernador Costa</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gualjaina</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>José de San Martín</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lago Puelo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Paso de los Indios</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Puerto Madryn</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Puerto Pirámides</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rada Tilly</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rawson</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Río Mayo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Río Pico</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sarmiento</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tecka</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Trelew</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Trevelin</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Veintiocho de Julio</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Ciudad_Cordoba__c</picklist>
+        <values>
+            <fullName>Calamuchita</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Capital</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Colón</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cruz del Eje</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>General Roca</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>General San Martín</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ischilín</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Juárez Celman</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Marcos Juárez</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Minas</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pocho</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Presidente Roque Sáenz Peña</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Punilla</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Río Cuarto</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Río Primero</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Río Seco</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Río Segundo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San Alberto</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San Javier</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San Justo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Santa María</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sobremonte</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tercero Arriba</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Totoral</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tulumba</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unión</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Ciudad_Corrientes__c</picklist>
+        <values>
+            <fullName>3 de Abril</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>9 de Julio</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bella Vista</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Berón de Astrada</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bonpland</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cazadores Correntinos</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Caá Catí</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cecilio Echevarría</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Chavarría</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Colonia Carlos Pellegrini</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Colonia Carolina</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Colonia Libertad</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Colonia Liebig</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Colonia Pando</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Concepción del Yaguareté Corá</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Corrientes</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Curuzú Cuatiá</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>El Sombrero</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Empedrado</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Esquina</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Estación Torrent</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Felipe Yofre</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Garruchos</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>General Alvear</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gobernador Ing%2E Valentín Virasoro</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gobernador Martínez</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Goya</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Guaviraví</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Herlitzka</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Itatí</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ituzaingó</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Itá Ibaté</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>José Rafael Gómez</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Juan Pujol</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>La Cruz</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lavalle</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Loma de Vallejos</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Loreto</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mariano I%2E Loza</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mburucuyá</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mercedes</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mocoretá</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Monte Caseros</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pago de los Deseos</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Palmar Grande</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Parada Pucheta</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Paso de la Patria</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Paso de los Libres</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pedro R%2E Fernández %2F Estación Mantilla</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Perugorría</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pueblo Libertador</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ramada Paso</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Riachuelo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Saladas</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San Antonio de Apipé</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San Carlos</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San Cosme</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San Isidro</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San Lorenzo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San Luis del Palmar</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San Miguel</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San Roque</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Santa Ana de los Guácaras</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Santa Lucía</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Santa Rosa</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Santo Tomé</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sauce</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tabay</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tapebicuá</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tatacuá</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Villa Olivari</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yapeyú</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yataytí Calle</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Ciudad_Entre_Rios__c</picklist>
+        <values>
+            <fullName>1 de Mayo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Aldea Brasilera</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Aldea María Luisa</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Aldea San Antonio</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Aranguren</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Basavilbaso</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bovril</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Caseros</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ceibas</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cerrito</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Chajarí</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Colonia Avellaneda</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Colonia Ayuí</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Colonia Elía</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Colón</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Concepción del Uruguay</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Concordia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Conscripto Bernardi</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Crespo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Diamante</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>El Pingo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Enrique Carbó</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Estancia Grande</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Federación</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Federal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>General Campos</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>General Galarza</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>General Ramírez</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gilbert</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gobernador Maciá</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gobernador Mansilla</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gualeguay</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gualeguaychú</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hasenkamp</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hernández</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Herrera</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ibicuy</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>La Criolla</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>La Paz</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Larroque</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Libertador San Martín</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Los Charrúas</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Los Conquistadores</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lucas González</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>María Grande</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Nogoyá</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Oro Verde</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Paraná</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Piedras Blancas</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pronunciamiento</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pueblo Brugo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pueblo General Belgrano</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pueblo Liebig</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Puerto Yeruá</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rosario del Tala</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San Benito</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San Gustavo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San Jaime de la Frontera</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San José</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San José de Feliciano</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San Justo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San Salvador</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Santa Ana</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Santa Anita</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Santa Elena</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sauce de Luna</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Seguí</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tabossi</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ubajay</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Urdinarrain</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Valle María</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Viale</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Victoria</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Villa Alcaraz</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Villa Clara</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Villa Domínguez</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Villa Elisa</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Villa Hernandarias</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Villa Mantero</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Villa Paranacito</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Villa Urquiza</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Villa del Rosario</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Villaguay</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Ciudad_Formosa__c</picklist>
+        <values>
+            <fullName>Clorinda</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Comandante Fontana</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>El Colorado</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>El Espinillo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Estanislao del Campo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Formosa</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>General Enrique Mosconi</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>General Lucio Victorio Mansilla</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>General Manuel Belgrano</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Herradura</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ibarreta</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ingeniero Guillermo Nicasio Juárez</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Laguna Blanca</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Laguna Neck</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Laguna Yema</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Las Lomitas</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mayor Vicente Villafañe</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Misión San Francisco de Laishí</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Misión Tacaaglé</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pablo Santo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pirané</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pozo del Tigre</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Riacho He-Hé</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San Martín Dos</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Villa Dos Trece</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Villa Escolar</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Villa General Güemes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Ciudad_Jujuy__c</picklist>
+        <values>
+            <fullName>Abra Pampa</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Aguas Calientes</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Caimancito</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Calilegua</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>EL Talar</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>El Aguilar</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>El Carmen</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fraile Pintado</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Humahuaca</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>La Esperanza</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>La Mendieta</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>La Quiaca</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Libertador General San Martín</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Maimará</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Monterrico</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Palma Sola</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Palpalá</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pampa Blanca</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Perico</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Puesto Viejo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San Antonio</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San Pedro de Jujuy</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San Salvador de Jujuy</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Santa Clara</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tilcara</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yala</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yuto</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Ciudad_La_Pampa__c</picklist>
+        <values>
+            <fullName>Abramo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Algarrobo del Águila</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Alpachiri</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Alta Italia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Anguil</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Arata</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ataliva Roca</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bernardo Larroudé</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bernasconi</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Caleufú</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Carro Quemado</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Catriló</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ceballos</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Colonia 25 de Mayo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Colonia Barón</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Colonia Santa Teresa</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Conhello</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Coronel Hilario Lagos</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Doblas</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dorila</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Eduardo Castex</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Embajador Martini</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>General Acha</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>General Manuel Campos</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>General Pico</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>General San Martín</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gobernador Duval</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Guatraché</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ingeniero Luiggi</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Intendente Alvear</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jacinto Arauz</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>La Adela</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>La Humada</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>La Maruja</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lonquimay</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Luan Toro</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Macachín</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mauricio Mayer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Metileo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Miguel Cané</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Miguel Riglos</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Monte Nievas</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Parera</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Puelches</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Puelén</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Quehué</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Quemú Quemú</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rancul</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Realicó</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rolón</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Santa Isabel</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Santa Rosa</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Telén</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Toay</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tomás Manuel Anchorena</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Trenel</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Uriburu</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Victorica</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Villa Mirasol</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Vértiz</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Winifreda</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Ciudad_La_Rioja__c</picklist>
+        <values>
+            <fullName>Aimogasta %2F Arauco</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Aminga %2F Castro Barros</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Chamical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Chepes %2F R%2E Vera Peñaloza</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Chilecito</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Famatina</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>La Rioja</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Los Sauces %2F San Blas</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Malanzán %2F Gral%2E J%2E F%2E Quiroga</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Olta %2F Gral%2E Belgrano</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Patquía %2F Independencia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tama %2F Gral%2E Peñaloza</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ulapes %2F San Martín</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Villa Castelli</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Villa San José de Vinchina</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Villa Sanagasta</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Villa Santa Rita de Catuna %2F Gral%2E Ocampo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Villa Unión %2F Cnel%2E F%2E Varela</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Ciudad_Misiones__c</picklist>
+        <values>
+            <fullName>2 Arroyos</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>2 de Mayo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>25 de Mayo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>9 de Julio</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Alba Posse</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Almafuerte</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Apóstoles</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Aristóbulo del Valle</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Arroyo del Medio</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Azara</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bernardo de Irigoyen</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bonpland</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Campo Grande</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Campo Ramón</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Campo Viera</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Candelaria</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Capioví</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Caraguatay</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Caá Yari</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cerro Azul</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cerro Corá</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Colonia Alberdi</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Colonia Aurora</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Colonia Delicia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Colonia Polana</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Colonia Victoria</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Colonia Wanda</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Comandante Andrés Guacurari %2F Comandante Andresito</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Concepción de la Sierra</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Corpus</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>El Alcazár</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>El Soberbio</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Eldorado</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fachinal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Florentino Ameghino</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Garuhapé</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Garupá</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>General Alvear</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>General Urquiza</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gobernador López</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gobernador Roca</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Guaraní</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hipólito Yrigoyen</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Itacaruaré</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jardín América</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Leandro N%2E Alem</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Loreto</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Los Helechos</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mojón Grande</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Montecarlo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mártires</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Oberá</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Olegario Víctor Andrade</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Panambí</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Posadas</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Profundidad</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Puerto Esperanza</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Puerto Iguazú</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Puerto Leoni</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Puerto Libertad</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Puerto Piray</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Puerto Rico</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ruiz de Montoya</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San Antonio</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San Ignacio</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San Javier</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San José</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San Martín</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San Pedro</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San Vicente</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Santa Ana</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Santa María</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Santiago de Liniers</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Santo Pipó</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tres Capones</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Ciudad_Neuquen__c</picklist>
+        <values>
+            <fullName>Aluminé</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Andacollo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Añelo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bajada del Agrio</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Barrancas</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Buta Ranquil</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Caviahue - Copahue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Centenario</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Chos Malal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cutral - Có</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>El Cholar</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>El Huecú</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Huigan Có</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Junín de los Andes</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Las Coloradas</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Las Lajas</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Las Ovejas</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Loncopué</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Los Miches</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mariano Moreno</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Neuquén</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Picún Leufú</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Piedra del Águila</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Plaza Huincul</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Plottier</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rincón de los Sauces</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San Martín de los Andes</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San Patricio del Chañar</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Senillosa</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Taquimilán</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tricao Malal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Villa El Chocón</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Villa La Angostura</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Villa Pehuenia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Vista Alegre</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Zapala</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Ciudad_Rio_Negro__c</picklist>
+        <values>
+            <fullName>Allen</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Campo Grande</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Catriel</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cervantes</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Chichinales</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Chimpay</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Choele Choel</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cinco Saltos</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cipolletti</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Comallo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Contralmirante Cordero</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Coronel Belisle</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Darwin</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dina Huapi</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>El Bolsón</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>General Conesa</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>General Enrique Godoy</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>General Fernández Oro</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>General Roca</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Guardia Mitre</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ingeniero Jacobacci</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ingeniero Luis A%2E Huergo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lamarque</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Los Menucos</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Luis Beltrán</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mainqué</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Maquinchao</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ministro Ramos Mexía</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pilcaniyeu</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pomona</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Río Colorado</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San Antonio Oeste</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San Carlos de Bariloche</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sierra Colorada</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sierra Grande</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Valcheta</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Viedma</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Villa Regina</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ñorquincó</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Ciudad_Salta__c</picklist>
+        <values>
+            <fullName>Aguaray</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Aguas Blancas</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Angastaco</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Animaná</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Apolinario Saravia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cachi</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cafayate</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Campo Quijano</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Campo Santo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cerrillos</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Chicoana</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Colonia Santa Rosa</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Coronel Moldes</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>El Bordo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>El Carril</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>El Galpón</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>El Jardín</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>El Potrero</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>El Quebrachal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>El Tala</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Embarcación</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>General Ballivián</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>General Güemes</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>General Mosconi</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>General Pizarro</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Guachipas</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hipólito Yrigoyen</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Iruya</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Isla de Cañas</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Joaquín Víctor González</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>La Caldera</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>La Candelaria</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>La Merced</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>La Poma</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>La Viña</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Las Lajitas</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Los Toldos</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Molinos</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Nazareno</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Payogasta</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pichanal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Profesor Salvador Mazza</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rivadavia Banda Norte</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rivadavia Banda Sur</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rosario de La Frontera</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rosario de Lerma</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Río Piedras</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Salta</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San Antonio de Los Cobres</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San Carlos</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San José de Metán</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San Ramón de la Nueva Orán</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Santa Victoria Este</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Santa Victoria Oeste</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Seclantás</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tartagal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tolar Grande</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Urundel</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Vaqueros</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Villa San Lorenzo</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Ciudad_San_Juan__c</picklist>
+        <values>
+            <fullName>25 de Mayo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>9 de Julio</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Albardón</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Angaco</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Calingasta</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Capital</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Caucete</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Chimbas</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Iglesia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jáchal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pocito</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rawson</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rivadavia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San Martín</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Santa Lucía</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sarmiento</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ullum</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Valle Fértil</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Zonda</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Ciudad_San_Luis__c</picklist>
+        <values>
+            <fullName>Anchorena</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Arizona</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Buena Esperanza</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Candelaria</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Concarán</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>El Volcán</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Juana Koslay</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Justo Daract</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>La Punta</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>La Toma</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Luján</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Naschel</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Nogolí</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Potrero de los Funes</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Quines</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San Francisco del Monte de Oro</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San Luis</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San Martín</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Santa Rosa del Conlara</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tilisarao</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unión</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Villa General Roca %2F Los Manantiales</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Villa Mercedes</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Villa de Merlo</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Ciudad_Santa_Cruz__c</picklist>
+        <values>
+            <fullName>28 de Noviembre</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Caleta Olivia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Comandante Luis Piedrabuena</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>El Calafate</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>El Chaltén</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gobernador Gregores</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Las Heras</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Los Antiguos</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Perito Moreno</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pico Truncado</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Puerto Deseado</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Puerto San Julián</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Puerto Santa Cruz</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Río Gallegos</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Río Turbio</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Ciudad_Santa_Fe__c</picklist>
+        <values>
+            <fullName>Armstrong</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Arroyo Seco</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Avellaneda</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Calchaquí</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Capitán Bermúdez</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Carcarañá</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Casilda</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cañada de Gómez</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ceres</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Coronda</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>El Trébol</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Esperanza</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Firmat</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Florencia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fray Luis Beltrán</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Frontera</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Funes</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Granadero Baigorria</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gálvez</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Laguna Paiva</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Las Parejas</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Las Rosas</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Las Toscas</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Malabrigo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pueblo Esther</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Puerto General San Martín</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pérez</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rafaela</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Reconquista</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Recreo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Roldán</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Romang</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rosario</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rufino</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San Carlos Centro</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San Cristóbal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San Genaro</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San Guillermo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San Javier</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San Jerónimo Norte</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San Jorge</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San José del Rincón</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San Justo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San Lorenzo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Santa Fe</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Santo Tomé</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sastre</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Suardi</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sunchales</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tostado</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Totoras</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Venado Tuerto</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Vera</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Villa Cañás</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Villa Constitución</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Villa Gobernador Gálvez</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Villa Ocampo</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Ciudad_Santiago_del_Estero__c</picklist>
+        <values>
+            <fullName>Añatuya</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bandera</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Beltrán</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Campo Gallo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Clodomira</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Colonia Dora</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fernández</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Frías</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ingeniero Forres</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>La Banda</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Loreto</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Los Juríes</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Los Telares</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Monte Quemado</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Nueva Esperanza</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pampa de los Guanacos</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pinto</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pozo Hondo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Quimilí</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San Pedro de Guasayán</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Santiago del Estero</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Selva</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sumampa</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Suncho Corral</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Termas de Río Hondo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tintina</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Villa Atamisqui</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Villa Ojo de Agua</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Ciudad_Tierra_del_Fuego__c</picklist>
+        <values>
+            <fullName>Río Grande</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tolhuin</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ushuaia</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Ciudad_Tucuman__c</picklist>
+        <values>
+            <fullName>Aguilares</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Alderetes</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Banda del Río Salí</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bella Vista</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Burruyacú</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Concepción</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Famaillá</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Graneros</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Juan B%2E Alberdi</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>La Cocha</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Las Talitas</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lules</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Monteros</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San Miguel de Tucumán</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Simoca</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tafí Viejo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tafí del Valle</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Trancas</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yerba Buena</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Municipio_Buenos_Aires__c</picklist>
+        <values>
+            <fullName>25 de Mayo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>9 de Julio</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Adolfo Alsina</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Adolfo Gonzales Chaves</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Alberti</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Almirante Brown</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Arrecifes</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Avellaneda</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ayacucho</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Azul</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bahía Blanca</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Balcarce</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Baradero</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Benito Juárez</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Berazategui</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Berisso</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bolivar</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bragado</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Brandsen</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Campana</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Capitán Sarmiento</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Carlos Casares</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Carlos Tejedor</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Carmen de Areco</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Castelli</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cañuelas</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Chacabuco</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Chascomús</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Chivilcoy</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Colón</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Coronel Dorrego</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Coronel Pringles</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Coronel Rosales</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Coronel Suarez</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Daireaux</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dolores</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ensenada</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Escobar</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Esteban Echeverría</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Exaltación de la Cruz</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ezeiza</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Florencio Varela</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Florentino Ameghino</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>General Alvarado</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>General Alvear</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>General Arenales</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>General Belgrano</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>General Guido</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>General Juan Madariaga</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>General La Madrid</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>General Las Heras</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>General Lavalle</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>General Paz</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>General Pinto</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>General Pueyrredón</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>General Rodríguez</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>General San Martín</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>General Viamonte</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>General Villegas</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Guaminí</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hipólito Yrigoyen</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hurlingham</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ituzaingó</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>José C%2E Paz</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Junín</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>La Costa</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>La Matanza</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>La Plata</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lanús</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Laprida</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Las Flores</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Leandro N%2E Alem</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lezama</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lincoln</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lobería</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lobos</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lomas de Zamora</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Luján</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Magdalena</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Maipú</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Malvinas Argentinas</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mar Chiquita</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Marcos Paz</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mercedes</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Merlo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Monte</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Monte Hermoso</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Moreno</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Morón</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Navarro</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Necochea</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Olavarría</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Patagones</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pehuajó</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pellegrini</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pergamino</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pila</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pilar</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pinamar</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Presidente Perón</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Puan</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Punta Indio</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Quilmes</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ramallo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rauch</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rivadavia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rojas</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Roque Pérez</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Saavedra</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Saladillo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Salliquelo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Salto</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San Andrés de Giles</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San Antonio de Areco</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San Cayetano</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San Fernando</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San Isidro</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San Miguel</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San Nicolás</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San Pedro</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San Vicente</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Suipacha</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tandil</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tapalqué</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tigre</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tordillo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tornquist</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Trenque Lauquen</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tres Arroyos</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tres Lomas</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tres de Febrero</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Vicente López</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Villa Gesell</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Villarino</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Zárate</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Participacion__c</picklist>
+        <values>
+            <fullName>Dedicar 10hs semanales a tareas de activismo en mi ciudad</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Difundir en Redes Sociales y WhatsApp</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Ir a la presentación de Facundo Manes en mi ciudad</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Poner un cartel de Empatía en mi casa</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Subirte a la caravana de la Empatía</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ver y%2Fo presentar un proyecto para mi ciudad</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ver y%2Fo realizar un micro aporte en causas sociales de mi ciudad</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Provincia__c</picklist>
+        <values>
+            <fullName>Buenos Aires</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CABA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Catamarca</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Chaco</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Chubut</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Corrientes</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Córdoba</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Entre Ríos</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Formosa</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jujuy</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>La Pampa</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>La Rioja</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mendoza</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Misiones</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Neuquén</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Río Negro</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Salta</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San Juan</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>San Luis</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Santa Cruz</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Santa Fe</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Santiago del Estero</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tierra del Fuego</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tucumán</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

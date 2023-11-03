@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Territorio</fullName>
+    <fields>Name</fields>
+    <fields>Level0Name__c</fields>
+    <fields>Level1Name__c</fields>
+    <fields>Level2Name__c</fields>
+    <fields>Level3Name__c</fields>
+    <fields>Level4Name__c</fields>
+    <label>Territorio</label>
+</CompactLayout>

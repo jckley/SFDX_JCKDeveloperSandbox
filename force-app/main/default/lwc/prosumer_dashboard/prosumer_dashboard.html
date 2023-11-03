@@ -1,0 +1,127 @@
+<template>
+  <div class="container px-auto">
+    <div>
+      <!-- MENSAJE EXITO -->
+      <div class="alert alert-custom mb-5" role="alert" id="estado_envio" style="display: none">
+        <span style="padding-left: 10px; font-size: 1rem">Mensaje cargado correctamente. Se <b>enviará para aprobación</b>.</span>
+        <div style="float: right !important; padding-right: 10px">
+          <i class="fas fa-check-circle" style="color: #3db28b"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CAMPANIAS  HEADER -->
+
+  <div class="header">
+    <div>
+      <h2>Campañas</h2>
+      <h3>{formatedValues.totalCampañas}</h3>
+
+      <h3>{formatedValues.smsCampaings}</h3>
+      <span>SMS</span>
+
+      <h3>{formatedValues.ivrCampaings}</h3>
+      <span>IVR</span>
+
+      <h3>{formatedValues.emailCampaings}</h3>
+      <span>E-MAIL</span>
+    </div>
+
+    <div>
+      <h2>IMPACTOS TOTALES:</h2>
+      <h3>{formatedValues.totalImpactos}</h3>
+    </div>
+  </div>
+
+  <!-- CAMPANIAS  -->
+
+  <template if:true={has_campaigns}>
+    <section class="slds-container cards-container">
+      <h2 class="slds-text-heading_large">Campañas <span style="font-size: 0.6em" id="contador">({number_of_campaings})</span></h2>
+      <div class= "centerWrapper">
+        <div class="campaingsWrapper">
+          <template for:each={campaigns_list} for:item="campaign">
+            <article key={campaign.Id} class="campaingItem slds-card slds-c-card-shadow">
+              <div class="articleBody">
+                <span class="type">SMS</span>
+
+                <div class="slds-card__header slds-grid slds-c-card-shadow">
+                  <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                    <!--<div class="slds-media__figure">
+                                <span class="slds-icon_container slds-icon-standard-account" title="account">
+                                    <svg class="slds-icon slds-icon_small" aria-hidden="true">
+                                    <use xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#account"></use>
+                                    </svg>
+                                    <span class="slds-assistive-text">{campaign.Name}</span>
+                                </span>
+                                </div>-->
+                    <div class="slds-media__body">
+                      <h2 class="slds-card__header-title bodyTitle">
+                        <a onclick={handleNavigate} class="slds-card__header-link" data-navigate-to-id={campaign.Id} href=""> {campaign.Name} </a>
+                      </h2>
+                    </div>
+                    <!--  <div class="slds-no-flex">
+                                <button class="slds-button slds-button_neutral">View</button>
+                                </div>-->
+                  </header>
+                </div>
+                <div class="slds-card__body slds-card__body_inner bodyText">
+                  <p>{campaign.Prosumer_Moviles_en_Audiencia__c} Mensaje/s enviados<!--<br>0 entregados<br>0 no entregados--></p>
+                </div>
+                <!--
+                        <footer class="slds-card__footer">
+                            <a class="slds-card__footer-action" href="#">View All
+                                <span class="slds-assistive-text">Accounts</span>
+                            </a>
+                        </footer>
+                        -->
+              </div>
+
+              <div class="articleFooter preparando" if:true={campaign.ExportEspera}>
+                <img src={preparando} />
+                <p>Preparando campaña <strong> 10%</strong></p>
+              </div>
+
+              <div class="articleFooter ejecutando" if:true={campaign.ExportEjecucion}>
+                <lightning-progress-ring value="30" class="progress" variant="active-step"> </lightning-progress-ring>
+                <p>Ejecutando <strong> 30%</strong></p>
+              </div>
+
+              <div class="articleFooter ejecutando" if:true={campaign.ExportFinalizado}>
+                <lightning-progress-ring value="50" class="progress" variant="active-step"> </lightning-progress-ring>
+                <p>Ejecutando <strong> 50%</strong></p>
+              </div>
+
+              <div class="articleFooter error" if:true={campaign.ExportError}>
+                <img src={error} />
+                <p>Fallo campaña</p>
+              </div>
+
+              <div class="articleFooter ejecutando" if:true={campaign.AutomationIniciado}>
+                <lightning-progress-ring value="70" class="progress" variant="active-step"> </lightning-progress-ring>
+                <p>Ejecutando <strong> 70%</strong></p>
+              </div>
+
+              <div class="articleFooter ejecutando" if:true={campaign.AutomationEjecucion}>
+                <lightning-progress-ring value="90" class="progress" variant="active-step"> </lightning-progress-ring>
+                <p>Ejecutando <strong> 90%</strong></p>
+              </div>
+
+              <div class="articleFooter exito" if:true={campaign.Cerrado}>
+                <img src={exito} />
+                <p>Finalizada</p>
+                <p>: {campaign.Desde}</p>
+              </div>
+
+              <div class="articleFooter preparando" if:true={campaign.Else}>
+                <img src={preparando} />
+                <p>Iniciando <strong> 0%</strong></p>
+              </div>
+            </article>
+          </template>
+        </div>
+      </div>
+    </section>
+  </template>
+</template>

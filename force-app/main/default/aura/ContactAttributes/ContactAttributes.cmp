@@ -1,0 +1,10 @@
+<aura:component >
+    <aura:attribute name="citizenWrapper" 	type="ContactWrapper" 	required="true" />
+    <aura:attribute name="rendered" 		type="Boolean" 			required="true" default="true" />
+    
+    <div class="{! (v.rendered)?'card slds-grid slds-wrap slds-p-around_medium slds-p-top_none':'slds-hide'}" style="border-left: solid 5px #3db28b;">
+         <aura:iteration items="{! v.citizenWrapper.attributeTags }" var="objAttributeTags">
+             <c:ContactTagComponent label="{! objAttributeTags.label + ':'}" value="{! objAttributeTags.value }" valueCSS="valueGreen" />
+         </aura:iteration>
+    </div>
+</aura:component>

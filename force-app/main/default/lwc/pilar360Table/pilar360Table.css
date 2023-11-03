@@ -1,0 +1,120 @@
+.l-content {
+    width: 90%;
+    /* width: 1140px; */
+    margin: auto;
+    position: relative; 
+}
+
+.invisible {
+    display:none;
+}
+
+.card {
+    background-color: #ffffff;
+    will-change: transform;
+    overflow:  hidden;
+    min-height: 100px;
+    vertical-align: middle;
+    border-radius: 6px;
+    border: solid 1px #EDEDED;
+}
+
+.options {
+    font-size:0.85em;
+    color:#868789;
+    padding-left: 30px;
+}
+
+.paginator {
+    height: 70px;
+}
+
+.pagination {
+    font-size:0.85em;
+    /* float: right; */
+    text-align: right;
+    padding-right: 30px;
+}
+
+.pagination a {
+    color: #B3B3B3;
+    padding: 5px 10px;
+    text-decoration: none;
+    transition: background-color .3s;
+}
+
+.pagination a.active {
+    background-color: #016AAC;
+    border-radius:50%;
+    color: white;
+    border: 3px solid #016AAC;
+}
+            
+.pagination a:hover:not(.active) {
+    background-color: #ddd;
+}
+
+.slds-table thead th, tr {
+    height: 70px !important;
+    padding-left: 30px;
+    padding-right: 30px;
+    font-family:'Roboto Condensed';
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.slds-table thead th {
+    background-color: #F6F6F7 !important;
+}
+
+.slds-table tbody tr,td {
+    height: 70px !important;
+    padding-left: 30px;
+    padding-right: 30px;
+    text-transform: none;
+    font-family:'Heebo';
+    font-weight: 500;
+}
+
+.slds-border_top {
+    border-top: solid 1px #EEEEEE;
+}
+
+.program-field {
+    color: #016AAC;
+}
+
+.slds-select_container select {
+    font-family:'Heebo';
+    font-weight: 500;
+}
+
+.order-dates-button {
+    background-color: #E9E9EA;
+    border: none;
+    font-family:'Roboto Condensed';
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.date-color {
+    color: #666666;
+}
+
+.arrow-color {
+    color: #7BA9CB;
+}
+
+/* Special classes for big devices */
+@media only screen and (min-width: 768px) {
+    .l-content {
+        /* top: -125px; */
+        max-width: 1140px;
+    }
+    .separator{margin-left:2rem;margin-top:0rem;}
+}
+
+/* Special classes for small devices */
+@media only screen and (max-width: 768px) {
+    .separator{margin-left:0rem;margin-top:2rem;}
+}

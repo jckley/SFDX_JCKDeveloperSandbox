@@ -1,0 +1,40 @@
+<aura:component >
+    <aura:attribute name="search" 			type="Aura.Component[]"/>
+    <aura:attribute name="profileMenu" 		type="Aura.Component[]"/>
+    <aura:attribute name="navigationBar" 	type="Aura.Component[]"/>
+
+    <aura:handler event="c:PRMCommunityEvent" action="{!c.handlePRMCommunityEvent}"/>
+    
+    <div class="slds-grid slds-wrap slds-col slds-size_1-of-1 header">
+        <a class="logo-container" onclick="{!c.home}">
+            <img src="{! $Resource.Pilar360 + '/img/logo-header.svg'}" width="120"/>
+        </a>
+        
+        <!-- <div class="navigation slds-show_large">
+            <c:Pilar360_Navigation/>
+        </div>
+        
+        <div class="navigationBar slds-hide_large">
+            {! v.navigationBar}
+        </div> -->
+        
+        <div id="search-super-d" class="slds-col search slds-show_large">
+            <c:Pilar360_SearchBar/>
+        </div>
+        
+        <div class="exit slds-show_large" onclick="{!c.logout}">
+            <img class="icon-reposo" src="{! $Resource.Pilar360 + '/img/exit-reposo.png'}" width="30" height="30"/>
+            <img class="icon-hover" src="{! $Resource.Pilar360 + '/img/exit-hover.png'}" width="30" height="30"/>
+        </div>
+    </div>
+    <div class="slds-grid slds-wrap slds-col slds-size_1-of-1 header slds-hide_large" id="parent-div-search-super-m">
+        <div id="search-super-m" class="slds-col search slds-hide_large">
+            <c:Pilar360_SearchBar/>
+        </div>
+    </div>
+    <div id ="header-extension" class="header-extension">
+    </div>
+    <!-- <div class="{! and( v.citizenWrapper.permissions.ContactViewIncome, v.citizenWrapper.incomeInfo.employers.length > 0 )?'header-extension':'slds-hide' }" > -->
+    <!-- <div class="{! IF(home,'header-extension', '') }"> -->
+	
+</aura:component>

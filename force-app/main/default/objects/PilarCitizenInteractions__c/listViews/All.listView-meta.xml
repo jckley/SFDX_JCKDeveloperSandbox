@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>NAME</columns>
+    <columns>DNI__c</columns>
+    <columns>Pilar360Citizen_SFID__c</columns>
+    <columns>PilarCiudadanoID__c</columns>
+    <columns>PilarExtDatabase_ID__c</columns>
+    <columns>Programs__c</columns>
+    <columns>Services__c</columns>
+    <columns>Birthdate__c</columns>
+    <columns>Interaction_Date__c</columns>
+    <columns>Fecha_Creacion_Registro__c</columns>
+    <columns>Fecha_Ultima_Modificacion_Registro__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+</ListView>

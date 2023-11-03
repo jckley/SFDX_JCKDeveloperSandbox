@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Traslado_Franja_Horaria__c</fullName>
+    <externalId>false</externalId>
+    <label>Traslado Franja Horaria</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>8-11hs</fullName>
+                <default>false</default>
+                <label>8-11hs</label>
+            </value>
+            <value>
+                <fullName>11-15hs</fullName>
+                <default>false</default>
+                <label>11-15hs</label>
+            </value>
+            <value>
+                <fullName>15-18hs</fullName>
+                <default>false</default>
+                <label>15-18hs</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

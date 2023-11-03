@@ -1,0 +1,288 @@
+<template>
+  <div>
+    <div if:true={areManagerParamsReady}>
+      <c-analytics-manager-territory
+        onquerydata={handleQueryData}
+        onqueryerror={handleQueryError}
+        param_child_level_name={analitycsManagerParams.child_level_name}
+        param_child_level_id={analitycsManagerParams.child_level_id}
+        param_dataset_name={analitycsManagerParams.dataset_name}
+        param_territory_id={analitycsManagerParams.territory_id}
+      ></c-analytics-manager-territory>
+    </div>
+    <div class="spinner-container" if:true={loadingScreenOn}>
+      <lightning-spinner
+        alternative-text="Loading"
+        size="large"
+      ></lightning-spinner>
+    </div>
+    <div class={all_page_class} if:true={isAnalitycsReady}>
+      <a href="#" class="close_fullscreen">x</a>
+
+      <div class={sticky_class}>
+        <aside>
+          <div
+            class="box territorios_resume"
+            data-aos="zoom-in"
+            data-aos-once="true"
+          >
+            <div class="item location">
+              <h2>
+                <template
+                  for:each={parentsArrayNavigation}
+                  for:item="admObj"
+                  for:index="intIndex"
+                >
+                  <a class="admin-link" href={admObj.link} key={admObj.id}
+                    >{admObj.name}</a
+                  ><template if:false={admObj.isLast}> / </template>
+                </template>
+                <strong>{territoryLt.Name}</strong>
+              </h2>
+            </div>
+            <div class="item habitantes">
+              <strong>{analitycsGenderData.totalSumaryFormated}</strong>
+              <small>Activistas</small>
+            </div>
+            <div class="item stats">
+              <div class="stat woman" onclick={handleClickOnWomanStats}>
+                <small>Mujeres</small>
+                <strong>{analitycsGenderData.womenSumaryFormated}</strong>
+                <span>{analitycsGenderData.womenPercent}%</span>
+              </div>
+              <div class="stat men" onclick={handleClickOnMenStats}>
+                <small>Hombres</small>
+                <strong>{analitycsGenderData.menSumaryFormated}</strong>
+                <span>{analitycsGenderData.menPercent}%</span>
+              </div>
+            </div>
+            <div class="chart-wrapper">
+              <canvas
+                id="populationChart"
+                class="populationChart"
+                lwc:dom="manual"
+                width="250"
+                height="250"
+                onclick={handelClick_PopulationChart}
+              ></canvas>
+              <div id="chartjsTooltip" class="chartjsTooltip">
+                <div><p></p></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="info">
+            <span>{parentLvlNavigation.thisTerritoryInfo}</span>
+            <br />
+            <span if:true={parentLvlNavigation.parentTerritoryInfo}
+              ><a href={parentLvlNavigation.parentTerritoryInfo.link}
+                >{parentLvlNavigation.parentTerritoryInfo.info}
+                <img class="iconTerritories" src={iconTerritories} /></a
+            ></span>
+          </div>
+        </aside>
+
+        <!-- AGE SECTION -->
+        <article>
+          <section
+            class="distribucion_eteria"
+            data-aos="zoom-in"
+            data-aos-once="true"
+          >
+            <div class="box line-top red">
+              <div class="header">
+                <span class="title">Distribución etaria</span>
+              </div>
+              <div class="container">
+                <canvas
+                  id="ageChart"
+                  class="ageChart"
+                  lwc:dom="manual"
+                  onclick={handelClick_AgesChart}
+                >
+                </canvas>
+              </div>
+            </div>
+          </section>
+
+          <section
+            class="map"
+            data-aos="zoom-in"
+            data-aos-once="true"
+            if:true={showMap}
+          >
+            <div class="box no-padding">
+              <div class="header">
+                <div class="title active">Referencia Geográfica</div>
+                <!-- <div class="title">Heatmap</div> -->
+              </div>
+              <div class="container">
+                <div class="map_container" id="map"></div>
+              </div>
+            </div>
+          </section>
+
+          <!-- GEOGRAPIC DISTRIBUTION -->
+          <section
+            class="map_locations"
+            data-aos="zoom-in"
+            data-aos-once="true"
+            if:true={showGeographicDistribution}
+          >
+            <div class="box line-top red">
+              <div class="container">
+                <div class="items">
+                  <template
+                    for:each={geographicDistribution}
+                    for:item="objGeographicDistribution"
+                    for:index="intIndex"
+                  >
+                    <a
+                      class="item"
+                      href={objGeographicDistribution.link}
+                      key={objGeographicDistribution.id}
+                    >
+                      <!-- <a href={objGeographicDistribution.link}> -->
+                      <img class="iconMarker" src={iconMarker} />
+                      <span>{objGeographicDistribution.name}</span>
+                      <strong>{objGeographicDistribution.value}</strong>
+                      <!-- </a> -->
+                    </a>
+                  </template>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- INCOME SECTION -->
+          <section class="ingresos" data-aos="zoom-in" data-aos-once="true">
+            <div class="box no-padding">
+              <div class="header">
+                <div class="title active">Nivel de ingresos</div>
+                <div class="info">*SMVM: ${label.lblsmvm} Bruto</div>
+              </div>
+              <div class="container">
+                <div class="items_ingresos">
+                  <template
+                    for:each={incomeRanges}
+                    for:item="objIncomeRange"
+                    for:index="intIndex"
+                  >
+                    <div class="item" key={objIncomeRange.name} onclick={handelClick_IngresosItem} data-ingresofilters={objIncomeRange.filterValues}>
+                      <img
+                        class="iconIncome"
+                        src={objIncomeRange.image}
+                      /><strong>{objIncomeRange.value}</strong>
+                      <span>
+                        <span class="title">{objIncomeRange.name}</span>
+                        <span class="detail">{objIncomeRange.description}</span>
+                      </span>
+                    </div>
+                  </template>
+                </div>
+              </div>
+            </div>
+            <div class="box no-padding">
+              <div class="header">
+                <div class="title active">Tipo de ocupación</div>
+              </div>
+              <div class="container">
+                <div class="items_ocupacion">
+                  <template
+                    for:each={occupationTypes}
+                    for:item="objOccupationType"
+                    for:index="intIndex"
+                  >
+                    <div class="item" key={objOccupationType.name} onclick={handelClick_Ocupation} data-ocupationfilter={objOccupationType.filter}>
+                      <div class="icon">
+                        <img
+                          class="iconOccupation"
+                          src={objOccupationType.image}
+                          alt={objOccupationType.name}
+                        />
+                      </div>
+                      <div class="title">
+                        <strong>{objOccupationType.value}</strong>
+                        <small>{objOccupationType.name}</small>
+                      </div>
+                    </div>
+                  </template>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- EDUCATION SECTION -->
+          <section
+            class="nivel_educativo"
+            data-aos="zoom-in"
+            data-aos-once="true"
+          >
+            <div class="box line-top red">
+              <div class="header">
+                <span class="title"> Nivel educativo </span>
+              </div>
+              <div class="container">
+                <div class="items_nivel_educativo">
+                  <template
+                    for:each={educationLevels}
+                    for:item="objEducationLevel"
+                    for:index="intIndex"
+                  >
+                    <div class="item" key={objEducationLevel.name}>
+                      <div class="content">
+                        <div class="icon">
+                          <img
+                            class="iconEducation"
+                            src={objEducationLevel.image}
+                            alt={objEducationLevel.name}
+                          />
+                        </div>
+                        <div class="title" data-educationfilter={objEducationLevel.educationfilter} onclick={handelClick_Education}>
+                          <strong>{objEducationLevel.value}</strong>
+                          <span>{objEducationLevel.name}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </template>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section
+            class="actividades_economicas"
+            data-aos="zoom-in"
+            data-aos-once="true"
+            if:true={showActividadesEconomicas}
+          >
+            <div class="box no-padding">
+              <div class="header">
+                <div class="title active">Actividades económicas</div>
+              </div>
+              <div class="container">
+                <div class="items_actividades_economicas">
+                  <template
+                    for:each={actividadesEconomicas}
+                    for:item="objEconomicActivity"
+                    for:index="intIndex"
+                  >
+                    <div class="item" key={objEconomicActivity} onclick={handelClick_Actividades} data-actividadfilter={objEconomicActivity.actividadfilter}>
+                      <img
+                        class="iconEconomicAct"
+                        src={objEconomicActivity.image}
+                        alt={objEconomicActivity.name}
+                      />
+                      <span>{objEconomicActivity.name}</span>
+                      <strong>{objEconomicActivity.value}</strong>
+                    </div>
+                  </template>
+                </div>
+              </div>
+            </div>
+          </section>
+        </article>
+      </div>
+    </div>
+  </div>
+</template>

@@ -1,0 +1,53 @@
+.confirmado{
+    z-index: 10;
+    background-color: #d3e9da;
+    border: 2px solid #0ea75d87;
+    display: flex;
+    border-radius: 7px;
+    align-items: center;
+    margin-top: 20px;
+    transition: 1s;
+    height: 0px;
+    width: 600px;
+    opacity: 0;
+    position: fixed;
+    top: 100px;
+    right: 15px;
+}
+
+.confirmado img{
+    width: 22px;
+    margin: 20px;
+}
+
+.confirmado p{
+    color: #0ea75d;
+    font-size: 17px;
+}
+
+.alerta{
+    z-index: 10;
+    background-color: #f3ebdc;
+    border: 1px solid #eba432;
+    display: flex;
+    border-radius: 7px;
+    align-items: center;
+    margin-top: 20px;
+    transition: 1s;
+    height: 0px;
+    width: 600px;
+    opacity: 0;
+    position: fixed;
+    top: 100px;
+    right: 15px;
+}
+
+.alerta img{
+    width: 22px;
+    margin: 20px;
+}
+
+.alerta p{
+    color: #eba432;;
+    font-size: 17px;
+}

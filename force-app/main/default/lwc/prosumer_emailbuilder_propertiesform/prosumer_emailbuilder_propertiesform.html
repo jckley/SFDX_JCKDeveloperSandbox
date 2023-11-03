@@ -1,0 +1,27 @@
+<template>
+  <div class="propertiesform">
+    <template lwc:if={selectedValues.textoSelected}>
+      <div class="textproperties">
+        <h1>Propiedades del texto:</h1>
+        <lightning-input type="text" label="Contenido del texto" onchange={handleTextContentChange} value={textInputInitialValue}></lightning-input>
+      </div>
+    </template>
+    <template lwc:elseif={selectedValues.botonSelected}>
+      <div class="buttonproperties">
+        <h1>Propiedades del boton:</h1>
+        <lightning-input type="text" label="Etiqueta del boton" onchange={handleButtonLabelChange} value={buttonLabelInputInitialValue}></lightning-input>
+        <lightning-input type="text" label="Url del boton" onchange={handleButtonUrlChange} value={buttonUrlInputInitialValue}></lightning-input>
+      </div>
+    </template>
+    <template lwc:elseif={selectedValues.imagenSelected}>
+      <div class="imgproperties">
+        <h1>Propiedades de la imagen:</h1>
+        <lightning-input type="text" label="Src de la imagen" onchange={handleImgSrcChange} value={imgSrcForInput}></lightning-input>
+        <lightning-button variant="brand" label="Gestor Archivos" title="Gestor Archivos" onclick={handleGestorArchivos}></lightning-button>
+      </div>
+    </template>
+    <template lwc:if={editableComponentSelected}>
+      <lightning-button variant="brand" label="Guardar" title="Guardar" onclick={handleGuardar}></lightning-button>
+    </template>
+  </div>
+</template>

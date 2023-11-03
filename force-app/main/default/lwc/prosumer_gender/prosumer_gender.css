@@ -1,0 +1,142 @@
+.box {
+    border-radius:7px;
+    background: #FFF;
+    padding: 0;
+    border-radius: 4px;
+    position: relative;
+    height: 100%;
+}
+
+
+
+.box .header { 
+    height: 70px;
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    border: navajowhite; 
+    padding: 0 30px; 
+    font-size: calc(14px + 2px); 
+    color: #58595b;
+}
+
+.section_gender{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.section_gender .stats {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.section_gender .stats .stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.section_gender .stats .stat.notSelected {
+    opacity: 50%;
+}
+
+.section_gender .stats .stat small {
+    color: #3c3c3c;
+    font-size: 11px;
+}
+
+.section_gender .stats .stat strong {
+    font-size: 13px; 
+    color: #3e4145;
+}
+
+.section_gender .stats .stat span { 
+    font-size: 13px; 
+    font-weight: bold; 
+}
+
+.section_gender .stats .stat .woman { 
+    position: absolute;
+   
+    background-color: black;
+    color: white;
+    font-weight: 100;
+    padding: 4px 7px;
+    border-radius: 17px;
+    font-size: 11px;
+    left: 44px;
+    bottom: 113px;
+}
+
+.section_gender .stats .stat .men { 
+    position: absolute;
+   
+    background-color: black;
+    color: white;
+    font-weight: 100;
+    padding: 4px 7px;
+    border-radius: 17px;
+    font-size: 11px;
+    right: 44px;
+    bottom: 113px;
+}
+
+
+.section_gender .chartContainer {
+    min-height: 250px;
+    height: 100%;
+    /*width: 400px;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: auto;
+    /*
+    segun la docu de chart, abria que darle position relative al container del canvas para que sea responsive
+    pero como rompe igual al pasarle la opcion responsive: true, esto no tiene mucho sentido.
+    position: relative; 
+    */
+}
+  
+.section_gender .chartContainer .populationChart { 
+    position: relative; 
+    z-index: 10;
+}
+
+.womantitle{
+    background-color: #fd787d;
+    border-radius: 30px;
+    padding: 11px 23px;
+    color: white !important;
+    font-size: 17px !important;
+    font-weight: 100;
+}
+
+.mentitle{
+    background-color: #b40000;
+    border-radius: 30px;
+    padding: 11px 23px;
+    color: white !important;
+    font-size: 17px !important;
+    font-weight: 100;
+}
+
+.linea{
+    width: 1px;
+    background-color: #e4e4e4;
+    height: 190px;
+    position: absolute;
+}
+
+.stats{
+    margin-top: 25px;
+}
+
+.chartContainer .chartjsTooltip p{
+    color:white !important;
+}

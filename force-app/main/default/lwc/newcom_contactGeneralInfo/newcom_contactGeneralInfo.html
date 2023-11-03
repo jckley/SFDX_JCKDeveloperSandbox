@@ -1,0 +1,43 @@
+<template>
+
+    <div class="card slds-m-top_x-large">
+
+        <div style="display:block;"><img class="citizenPicture slds-align_absolute-center slds-m-vertical_small" src={photoLegacyUrl} alt={contactNames} /></div>
+
+        <template if:true={error}>
+            <c-newcom_error-panel errors={error}></c-newcom_error-panel>
+        </template>
+        <div class="c-container slds-text-align_center slds-grid slds-wrap">
+
+            <div class="slds-col slds-size_1-of-2 slds-border_top slds-border_right">
+                <c-newcom_display-field-inverse label={label.Age} value={age} label-css="label uppercase" value-css="value font11"></c-newcom_display-field-inverse>
+            </div>
+            <div class="slds-col slds-size_1-of-2 slds-border_top">
+                <c-newcom_display-field-inverse label={label.Birthday} value={birthday} label-css="label uppercase" value-css="value font11"></c-newcom_display-field-inverse>
+            </div>
+
+            <div class="slds-col slds-size_1-of-2 slds-border_top slds-border_right">
+                <c-newcom_display-field-inverse label={label.Gender} value={gender} label-css="label uppercase" value-css="value font11"></c-newcom_display-field-inverse>
+            </div>
+            <div class="slds-col slds-size_1-of-2 slds-border_top">
+                <c-newcom_display-field-inverse label={label.Nationality} value={nationality} label-css="label uppercase" value-css="value font11"></c-newcom_display-field-inverse>
+            </div>
+
+            <div class="slds-col slds-size_1-of-2 slds-border_top slds-border_right">
+                <c-newcom_display-field-inverse label={label.ID} value={dni} label-css="label uppercase" value-css="value font11"></c-newcom_display-field-inverse>
+            </div>
+            <div class="slds-col slds-size_1-of-2 slds-border_top">
+                <c-newcom_display-field-inverse label={label.CUIT_CUIL} value={cuil} label-css="label uppercase" value-css="value font11"></c-newcom_display-field-inverse>
+            </div>
+
+            <template if:true={viewContactTags}>
+                <div class="slds-size_1-of-1 slds-border_top">
+                    <c-newcom_contact-tags record-id={recordId}></c-newcom_contact-tags>
+                </div>
+            </template>
+
+        </div>
+        
+    </div>
+
+</template>

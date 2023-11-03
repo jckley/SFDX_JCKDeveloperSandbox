@@ -1,0 +1,48 @@
+<apex:component >
+    <apex:attribute name="recordId" 	type="String" required="true" description="Id of the record" />
+    <apex:attribute name="objectBaseId" type="String" required="true" description="Base Id of the record" />
+    <apex:attribute name="objecttype" 	type="String" required="true" description="type of object" />
+    
+    <style>
+        .card-button{
+            margin-top: 5px;
+            margin-bottom: 5px;
+            display: inline-flex;
+            vertical-align: middle;
+            justify-content: center;
+        }
+    </style>
+    
+    <div class="row" style="margin: 25px 15px 0 15px;">
+        <div class="card btn btn-light" style="width: 48%;">
+            <div class="row card-button label" onclick="redirectToEdit()">
+                {! $Label.Edit }
+            </div>
+        </div>
+        <div class="blank-space">
+        </div>
+        <div class="card btn btn-light" style="width: 49%;">
+            <div class="row card-button label" onclick="redirectToNew()">
+                {! $Label.New }
+            </div>
+        </div>
+    </div>    
+    <script type="text/javascript">
+    function redirectToEdit(){
+        if(typeof sforce != 'undefined'){
+            sforce.one.editRecord('{!recordId}');
+        } else {
+            window.location.href = "{! $Site.BaseUrl }/{!recordId}/e";
+        }	
+    }
+    
+    function redirectToNew() {
+        if(typeof sforce != 'undefined'){
+            sforce.one.createRecord('{!objecttype}');
+        } else {
+            window.location.href = "/{!objectBaseId}/e";
+        }
+    }
+    </script>
+    
+</apex:component>

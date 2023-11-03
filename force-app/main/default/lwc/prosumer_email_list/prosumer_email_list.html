@@ -1,0 +1,26 @@
+<template>
+    <div class="bodyWrapper">
+        <lightning-tabset>
+            <lightning-tab label="Emails">
+                <div class="headerSection">
+                    <lightning-button 
+                    label="Nuevo Email"
+                    title="Nuevo Email"
+                    onclick={handleNuevoEmail}>
+                </lightning-button>
+                </div>
+                <div class="listSection">
+                    <span>Lista emails existentes:</span>
+                    <template for:each={emailList} for:item="thisEmail">
+                        <div key={thisEmail.Id}>
+                        <a href="#" onclick={handleNavigateToEmail} data-emailid={thisEmail.Id}>{thisEmail.Name}</a>
+                        </div>
+                    </template>
+                </div>
+            </lightning-tab>
+            <lightning-tab label="Dominios">
+                <c-prosumer_gestor_dominios></c-prosumer_gestor_dominios>
+            </lightning-tab>
+        </lightning-tabset>
+    </div>
+</template>

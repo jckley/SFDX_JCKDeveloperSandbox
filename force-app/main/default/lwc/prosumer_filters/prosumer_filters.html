@@ -1,0 +1,34 @@
+<template>
+  <div class="box">
+    <div class="body">
+      <div class="filtersTitle">
+        <span class="value">{totalPersonas}</span>
+        <span class="title">PERSONAS</span>
+      </div>
+      <div class="filtersList">
+        <template for:each={filters} for:item="thisFilter">
+          <div class="filterItem" key={thisFilter.filterString}>
+            <span class="value">{thisFilter.filterLabel}</span>
+            <div class="item-closeWrapper" data-itemkey={thisFilter.filterString} onclick={handleCloseItemClick}>
+              <svg xmlns="http://www.w3.org/2000/svg" class="close-icon">
+                ;
+                <use xlink:href={closeIcon}></use>
+              </svg>
+            </div>
+          </div>
+        </template>
+        <div>
+          <template lwc:if={showCloseAll}>
+            <div class="closeWrapper" onclick={handleCloseAllClick}>
+              <svg xmlns="http://www.w3.org/2000/svg" class="close-all-icon">
+                ;
+                <use xlink:href={closeIcon}></use>
+              </svg>
+            </div>
+          </template>
+        </div>
+      </div>
+      <button class="button" onclick={handleClick}>Ejecutar campaña</button>
+    </div>
+  </div>
+</template>

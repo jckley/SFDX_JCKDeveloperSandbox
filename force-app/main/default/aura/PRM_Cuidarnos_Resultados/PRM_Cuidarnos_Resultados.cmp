@@ -1,0 +1,80 @@
+<aura:component>
+  <aura:attribute name="community" type="String" default="Prosumia" />
+  <aura:attribute name="citizenWrapper" type="CitizenWrapper" required="true" />
+  <aura:attribute
+    name="rendered"
+    type="Boolean"
+    required="true"
+    default="true"
+  />
+
+  <div
+    class="{! (v.rendered)? v.community + ' card slds-grid slds-wrap':'slds-hide'}"
+  >
+    <header
+      class="slds-col--padded slds-size_1-of-1 slds-p-bottom_medium"
+      style="padding: 10px 30px"
+    >
+      <div class="slds-grid slds-wrap slds-col slds-size_1-of-1 header">
+        <div class="slds-col slds-size_1-of-4">
+          <div class="label uppercase">Tipo de Test</div>
+          <div class="value highlight">Serológico</div>
+        </div>
+
+        <div class="slds-col slds-size_3-of-4">
+          <div class="slds-float--right">
+            <div class="label uppercase">
+              Fecha :
+              <span class="value"
+                >{! v.citizenWrapper.cuidarnos.TestSerologico }</span
+              >
+            </div>
+          </div>
+          <hr />
+        </div>
+      </div>
+    </header>
+
+    <article
+      class="slds-col--padded slds-size_1-of-1"
+      style="padding: 10px 30px"
+    >
+      <div
+        class="slds-grid slds-wrap slds-col slds-size_1-of-1 slds-p-bottom_medium"
+      >
+        <div class="slds-col slds-size_1-of-3">
+          <c:PRM_DisplayField
+            community="{! v.community }"
+            label="Lugar :"
+            value="{! v.citizenWrapper.cuidarnos.covid.testserologico_lugar__c }"
+            emptyValue="{!$Label.c.NoInformation}"
+            labelCSS="label uppercase"
+            valueCSS="value font13"
+          />
+        </div>
+
+        <div class="slds-col slds-size_1-of-3">
+          <c:PRM_DisplayField
+            community="{! v.community }"
+            label="IGG: Resultado :"
+            value="{! v.citizenWrapper.cuidarnos.covid.testserologico_IGG_resultado__c }"
+            emptyValue="{!$Label.c.NoInformation}"
+            labelCSS="label uppercase"
+            valueCSS="value font13"
+          />
+        </div>
+
+        <div class="slds-col slds-size_1-of-3">
+          <c:PRM_DisplayField
+            community="{! v.community }"
+            label="IGM: Resultado :"
+            value="{! v.citizenWrapper.cuidarnos.covid.testserologico_IGM_resultado__c }"
+            emptyValue="{!$Label.c.NoInformation}"
+            labelCSS="label uppercase"
+            valueCSS="value font13"
+          />
+        </div>
+      </div>
+    </article>
+  </div>
+</aura:component>

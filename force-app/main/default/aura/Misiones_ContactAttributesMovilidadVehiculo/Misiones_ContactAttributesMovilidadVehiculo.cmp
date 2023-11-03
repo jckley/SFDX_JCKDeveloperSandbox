@@ -1,0 +1,20 @@
+<aura:component>
+    <aura:attribute name="clase" 	    type="String" 	description="Movilidad" />
+    <aura:attribute name="descripcion" 	type="String" 	description="Descripcion" />
+    <aura:attribute name="patente" 	    type="String" 	description="Patente" />
+    <aura:attribute name="rendered" 	type="Boolean" 	description="Rendered" required="true" default="true" />
+    
+    <div class="{! (v.rendered)?'slds-grid slds-wrap slds-col slds-size_1-of-1':'slds-hide'}">
+        <div class="slds-col slds-size_1-of-1  slds-large-size_1-of-5" style="margin-bottom: 35px;">
+            <c:Misiones_DisplayField label="Movilidad" value="{! v.clase}" showDetail="true" emptyValue="{! v.clase }" labelCSS="label uppercase" valueCSS="value blue font13"/>
+        </div>
+
+        <div class="slds-col slds-size_1-of-1 slds-large-size_3-of-5" style="margin-bottom: 35px;">
+            <c:Misiones_DisplayField label="Descripcion" value="{! v.descripcion}" showDetail="true" emptyvalue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value gray uppercase font11"/>
+        </div>
+
+        <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-5" style="margin-bottom: 35px;">
+            <c:Misiones_DisplayField label="Patente" value="{! v.patente}" showDetail="true" emptyvalue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value gray uppercase font11"/>
+        </div>
+    </div>
+</aura:component>

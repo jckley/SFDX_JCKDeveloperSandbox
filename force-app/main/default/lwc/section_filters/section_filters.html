@@ -1,0 +1,27 @@
+<template>
+  <div class="card" if:true={renderComponent} style="margin-bottom: 30px;">
+    <div class="filtersWrapper">
+      <div class="filtersTitle">
+        <svg xmlns="http://www.w3.org/2000/svg" class="filtro-icon">;
+          <use xlink:href={filtroIcon}></use>
+        </svg>
+        <span class="title">Filtrado por:</span>
+      </div>
+      <template for:each={filters} for:item="thisFilter">
+        <div class="filterItem" key={thisFilter.filterLabel}>
+          <span class="value">{thisFilter.filterLabel}</span>
+            <div class="item-closeWrapper" data-itemkey={thisFilter.filterLabel} onclick={handleCloseItemClick}>
+              <svg xmlns="http://www.w3.org/2000/svg" class="close-icon">;
+                <use xlink:href={closeIcon}></use>
+              </svg>
+            </div>
+        </div>
+      </template>
+      <div class="closeWrapper" onclick={handleCloseAllClick}>
+        <svg xmlns="http://www.w3.org/2000/svg" class="close-all-icon">;
+          <use xlink:href={closeIcon}></use>
+        </svg>
+      </div>
+    </div>
+  </div>
+</template>

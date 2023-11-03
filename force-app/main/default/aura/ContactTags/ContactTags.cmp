@@ -1,0 +1,15 @@
+<aura:component >
+	
+    <aura:attribute name="contw" 	type="ContactWrapper" required="true" />
+    <aura:attribute name="rendered" 	type="Boolean" default="true" />
+    
+    <div class="slds-size-1-of-1 contact-data" style="{!'margin-top: 25px; ' + (v.rendered ? '':'display: none')}">
+        <div class="card slds-p-around_medium" style="border-left: solid 5px #0082be; padding-top: 0;">
+            <div class="slds-grid slds-wrap card-cont">
+                <c:ContactTagComponent label="" value="Match JS" valueCSS="value-gray" rendered="{!v.contw.contact.match_js__c}"/>
+                <c:ContactTagComponent label="" value="{!v.contw.contact.Community__c}" valueCSS="value-gray" rendered="{! and(v.contw.contact.Community__c != '', v.contw.contact.Community__c != NULL)}"/>
+            </div>
+        </div>
+    </div>
+    
+</aura:component>

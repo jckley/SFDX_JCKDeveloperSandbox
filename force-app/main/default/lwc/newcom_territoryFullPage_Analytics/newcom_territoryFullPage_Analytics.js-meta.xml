@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata" fqn="TerritoryDetail">
+    <apiVersion>52.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightning__AppPage</target>
+        <target>lightning__HomePage</target>
+        <target>lightning__RecordPage</target>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__RecordPage">
+            <property name="community" type="String" label="Community" datasource="Prosumia,HxC,AdFi"/>
+            <property name="currentPage" type="String" label="Current Page" description="Current Page" datasource="CRM,Community" default="Community"/>
+            <property name="makeLogs" type="Boolean" label="Make Logs" description="Check it if this component should log viewers"/>
+            <supportedFormFactors>
+                <supportedFormFactor type="Small" />
+                <supportedFormFactor type="Large" />
+            </supportedFormFactors>            
+        </targetConfig>
+        <targetConfig targets="lightning__AppPage">
+            <property name="community" type="String" label="Community" datasource="Prosumia,HxC,AdFi"/>
+            <property name="currentPage" type="String" label="Current Page" description="Current Page" datasource="CRM,Community" default="Community"/>
+            <property name="makeLogs" type="Boolean" label="Make Logs" description="Check it if this component should log viewers"/>
+            <supportedFormFactors>
+                <supportedFormFactor type="Small" />
+                <supportedFormFactor type="Large" />
+            </supportedFormFactors>            
+        </targetConfig>
+        <targetConfig targets="lightningCommunity__Default">
+            <property name="recordId" type="String" label="Record Id" description="Automatically bind the page's record id to the component variable" default="{!recordId}"/>
+            <property name="community" type="String" label="Community" datasource="Prosumia,HxC,AdFi"/>
+            <property name="currentPage" type="String" label="Current Page" description="Current Page" datasource="CRM,Community" default="Community"/>
+            <property name="makeLogs" type="Boolean" label="Make Logs" description="Check it if this component should log viewers"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

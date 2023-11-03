@@ -1,0 +1,103 @@
+<apex:component >    
+    <style>        
+        @media only screen and (max-device-width: 576px) { 
+            .social-border-bottom {
+        		border-bottom: solid 1px #ededed;
+            }
+        }
+        
+        @media only screen and (min-device-width: 768px) {
+        	.social-border-left {
+                border-left: solid 1px #ededed;
+            }
+        }
+        
+        .social-header{
+            margin-left: 5px;
+            margin-top: 15px;
+            color: gray;
+        }
+        
+        .social-info{
+            margin-left: 5px;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .icn-text{
+            display: inline-flex;
+            vertical-align: middle;
+        }
+        
+        .social-link:hover{
+        	color: #f3bb49;
+        }
+       	
+        .social-icon-size{width: 30px; margin-bottom: 6px;}
+    </style>
+    
+    <apex:attribute name="citizenwrapper" 	type="CitizenWrapper" 	required="true" description="Contact General Info" />  
+    
+    <div class="row contact-data">
+        <div class="card card-left-border orange">
+            <div class="row card-cont">
+                <div class="pl-0 pr-0 mr-3 ml-3 col-md-3 pl-sm-3 ml-sm-0 pr-sm-3 mr-sm-0 social-border-bottom">
+                    <div class="row social-header">
+                        <apex:image styleClass="icon-test-small" value="{!URLFOR($Resource.IconsPack1, 'facebookps.svg')}"/>
+                        <span class="label" style="margin-left: 10px;">Facebook</span>
+                    </div>
+                    <div class="social-info">
+                        <div>
+                            <c:ContactEditField rendered="{!$ObjectType.Contact.Fields.Usuario_Facebook__c.updateable}" label="{!$ObjectType.Contact.Fields.Usuario_Facebook__c.Label}" value="{!citizenwrapper.citizen.Usuario_Facebook__c}" classLabel="label uppercase"/>
+                        </div>
+                        <div>
+                            <c:ContactEditField rendered="{!$ObjectType.Contact.Fields.Facebook_Link__c.updateable}" label="{!$ObjectType.Contact.Fields.Facebook_Link__c.Label}" value="{!citizenwrapper.citizen.Facebook_Link__c}" classLabel="label uppercase"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="pl-0 ml-3 pr-0 mr-3 col-md-3 pl-sm-3 ml-sm-0 pr-sm-3 mr-sm-0 social-border-left social-border-bottom">
+                    <div class="row social-header">
+                        <apex:image styleClass="icon-test-small" value="{!URLFOR($Resource.IconsPack1, 'twitterps.svg')}"/>
+                        <span class="label" style="margin-left: 10px;">Twitter</span>
+                    </div>
+                    <div class="social-info">
+                        <div>
+                            <c:ContactEditField rendered="{!$ObjectType.Contact.Fields.Usuario_Twitter__c.updateable}" label="{!$ObjectType.Contact.Fields.Usuario_Twitter__c.Label}" value="{!citizenwrapper.citizen.Usuario_Twitter__c}" classLabel="label uppercase"/>
+                        </div>
+                        <div>
+                            <c:ContactEditField rendered="{!$ObjectType.Contact.Fields.Twitter_Link__c.updateable}" label="{!$ObjectType.Contact.Fields.Twitter_Link__c.Label}" value="{!citizenwrapper.citizen.Twitter_Link__c}" classLabel="label uppercase"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="pl-0 ml-3 pr-0 mr-3 col-md-3 pl-sm-3 ml-sm-0 pr-sm-3 mr-sm-0 social-border-left social-border-bottom">
+                    <div class="row social-header">
+                        <apex:image styleClass="icon-test-small" value="{!URLFOR($Resource.IconsPack1, 'instagramps.svg')}"/>
+                        <span class="label" style="margin-left: 10px;">Instagram</span>
+                    </div>
+                    <div class="social-info">
+                        <div>
+                            <c:ContactEditField rendered="{!$ObjectType.Contact.Fields.Usuario_Instagram__c.updateable}" label="{!$ObjectType.Contact.Fields.Usuario_Instagram__c.Label}" value="{!citizenwrapper.citizen.Usuario_Instagram__c}" classLabel="label uppercase"/>
+                        </div>
+                        <div>
+                            <c:ContactEditField rendered="{!$ObjectType.Contact.Fields.Instagram_Link__c.updateable}" label="{!$ObjectType.Contact.Fields.Instagram_Link__c.Label}" value="{!citizenwrapper.citizen.Instagram_Link__c}" classLabel="label uppercase"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="pl-0 ml-3 pr-0 mr-3 col-md-3 pl-sm-3 ml-sm-0 pr-sm-3 mr-sm-0 social-border-left">
+                    <div class="row social-header">
+                        <apex:image styleClass="icon-test-small" value="{!URLFOR($Resource.IconsPack1, 'linkedinps.svg')}"/>
+                        <span class="label" style="margin-left: 10px;">Linkedin</span>
+                    </div>
+                    <div class="social-info">
+                        <div>
+                            <c:ContactEditField rendered="{!$ObjectType.Contact.Fields.Usuario_Linkedin__c.updateable}" label="{!$ObjectType.Contact.Fields.Usuario_Linkedin__c.Label}" value="{!citizenwrapper.citizen.Usuario_Linkedin__c}" classLabel="label uppercase"/>
+                        </div>
+                        <div>
+                            <c:ContactEditField rendered="{!$ObjectType.Contact.Fields.Linkedin_Link__c.updateable}" label="{!$ObjectType.Contact.Fields.Linkedin_Link__c.Label}" value="{!citizenwrapper.citizen.Linkedin_Link__c}" classLabel="label uppercase"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</apex:component>

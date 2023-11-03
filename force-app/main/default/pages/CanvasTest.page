@@ -1,0 +1,4 @@
+<apex:page standardController="Account">
+    <h1>Canvas Test</h1>
+    <apex:canvasApp applicationName="Prosumia_Contact_Tracing" namespacePrefix="" height="400px" width="750px"/>
+</apex:page>

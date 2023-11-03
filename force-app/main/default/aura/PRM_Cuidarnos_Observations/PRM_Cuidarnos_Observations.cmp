@@ -1,0 +1,50 @@
+<aura:component controller="PRM_Cuidarnos">
+    <aura:attribute name="community"        type="String"           default="Prosumia"/>
+    <aura:attribute name="citizenWrapper" 	type="CitizenWrapper"   required="true" />
+    <aura:attribute name="rendered" 		type="Boolean" 			required="true" default="true" />
+    <aura:attribute name="isreadonly" 		type="Boolean" 			required="true" default="true" />
+    <aura:attribute name="observations" 	type="String" 			 />
+    <aura:attribute name="arrObservation" 	type="Object[]" 	/>
+
+    <div class="{! (v.rendered)?'card slds-grid slds-wrap ' + v.community:'slds-hide'}">     
+        <div class="slds-col slds-size_1-of-1 slds-grid slds-wrap" style="padding: 10px 30px;">
+            <div class="subattribute-border slds-size_1-of-1 slds-grid slds-wrap">
+
+                <div class="slds-size_1-of-1 slds-large-size_1-of-1 slds-p-bottom_medium">
+                    <div class="{! 'slds-grid slds-wrap ' + v.community }">
+                        <div class="slds-col slds-size_1-of-1 label uppercase" style="margin-bottom: 5px;">
+                            Notas
+                        </div>                        
+                    </div>
+                </div>
+
+                <div class="{! v.isreadonly?'slds-hide':'slds-col slds-size_1-of-1 value font13 slds-wrap'}" style="display: inline-flex;">
+                    <div class="slds-form-element__control" style="width: 100%;">
+                        <lightning:textarea aura:id="txtObservations" name="txtObservations" label="" placeholder="Ingrese sus comentarios" value="{! v.observations}"  />
+                    </div>                  
+                </div>
+            </div>      
+
+            <div class="{! v.isreadonly?'slds-hide':'subattribute-border slds-size_1-of-1 slds-grid slds-wrap'}">
+                <div class="slds-size_1-of-1 slds-large-size_1-of-1 slds-p-bottom_medium">
+                    <div class="floatright saveobservation unmarked" onclick="{!c.saveObservations}">
+                        <div class="slds-align_absolute-center saveobservationcontainer">
+                            <span><b>Guardar</b></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="subattribute-border slds-size_1-of-1 slds-grid slds-wrap">
+                <aura:iteration items="{! v.arrObservation }" var="objObservacion">
+                    <div class="slds-grid slds-wrap slds-col slds-size_1-of-1" style="border-top: solid 1px #CCCCCC;padding-top:10px">
+                        Publicado por&nbsp;<strong>{! objObservacion.Usuario}</strong>&nbsp;el&nbsp;{! objObservacion.Fecha  }
+                    </div>
+
+                    <div class="slds-grid slds-wrap slds-col slds-size_1-of-1" style="padding-top:10px">
+                        {! objObservacion.Observacion }
+                    </div>
+                </aura:iteration>
+            </div>
+        </div>
+    </div>
+</aura:component>

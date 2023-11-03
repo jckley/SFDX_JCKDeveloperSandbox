@@ -1,0 +1,30 @@
+<apex:component >    
+    <style>    	 
+        .box {
+        	min-height: 55px;
+        	display: flex;
+            align-items: center;
+            justify-content: center;
+        	background-color: #f8f9fc;
+        	margin-top: 15px;
+        }
+        .box-label {color: #999999; font-size: 13pt}
+        .box-data-green {color: #3db28b; font-weight: bold; margin-left: 5px; font-size: 13pt;}
+        .box-data-gray {color: gray; font-weight: bold; margin-left: 5px; font-size: 13pt;}
+        .box-margin {margin: 15px;}
+        
+    </style>
+    
+    <apex:attribute name="label" type="String" description="Field Label" />
+    <apex:attribute name="value" type="String" description="Field Value" />
+    <apex:attribute name="valuecolor" type="String" description="Value color" />
+    
+    <div class="col-auto" style="display: {!IF(value == '', 'none', '')}">
+        <div class="border rounded box">
+            <div class="box-margin">
+                <span class="box-label">{!label} </span>
+                <span class="box-data-{!valuecolor}">{!value}</span>
+            </div>
+        </div>
+    </div>
+</apex:component>

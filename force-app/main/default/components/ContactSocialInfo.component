@@ -1,0 +1,108 @@
+<apex:component >    
+    <style>        
+        @media only screen and (max-device-width: 576px) { 
+            .social-border-bottom {
+        		border-bottom: solid 1px #ededed;
+            }
+        }
+        
+        @media only screen and (min-device-width: 768px) {
+        	.social-border-left {
+                border-left: solid 1px #ededed;
+            }
+        }
+        
+        .social-header{
+            margin-left: 5px;
+            margin-top: 15px;
+            color: gray;
+        }
+        
+        .social-info{
+            margin-left: 5px;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .icn-text{
+            display: inline-flex;
+            vertical-align: middle;
+        }
+        
+        .social-link:hover{
+        	color: #f3bb49;
+        }
+       	
+        .social-icon-size{width: 30px; margin-bottom: 6px;}
+    </style>
+    
+    <apex:attribute name="citizenwrapper" type="CitizenWrapper" required="true" description="Contact General Info" />  
+    
+    <div class="row contact-data">
+        <div class="card card-left-border orange">
+            <div class="row card-cont">
+                <div class="pl-0 pr-0 mr-3 ml-3 col-md-3 pl-sm-3 ml-sm-0 pr-sm-3 mr-sm-0 social-border-bottom">
+                    <div class="row social-header">
+                        <apex:image styleClass="icon-test-small" value="{!URLFOR($Resource.IconsPack1, 'facebookps.svg')}"/>
+                        <span class="label" style="margin-left: 10px;">Facebook</span>
+                    </div>
+                    <div class="social-info">
+                        <apex:outputLink styleClass="data-value-yellow f16 social-link" rendered="{! $Permission.Contact_View_Social_Info_Details && (citizenwrapper.citizen.Usuario_Facebook__c != '' || citizenwrapper.citizen.Facebook_Link__c  != '' )}" value="{! citizenwrapper.citizen.Facebook_Link__c }" target="_blank">
+                            {! IF( citizenwrapper.citizen.Usuario_Facebook__c == NULL, citizenwrapper.citizen.Facebook_Link__c ,citizenwrapper.citizen.Usuario_Facebook__c )}
+                        </apex:outputLink>
+                        <apex:outputLink styleClass="data-value-yellow f16" rendered="{! !$Permission.Contact_View_Social_Info_Details && (citizenwrapper.citizen.Usuario_Facebook__c != '' || citizenwrapper.citizen.Facebook_Link__c != '' ) }" value="">
+                            {! $Label.Yes}
+                        </apex:outputLink>
+                        <apex:outputText styleClass="no-info" rendered="{! citizenwrapper.citizen.Usuario_Facebook__c == '' && citizenwrapper.citizen.Facebook_Link__c == ''}" value="{!$Label.NoInformation}" />
+                    </div>
+                </div>
+                <div class="pl-0 ml-3 pr-0 mr-3 col-md-3 pl-sm-3 ml-sm-0 pr-sm-3 mr-sm-0 social-border-left social-border-bottom">
+                    <div class="row social-header">
+                        <apex:image styleClass="icon-test-small" value="{!URLFOR($Resource.IconsPack1, 'twitterps.svg')}"/>
+                        <span class="label" style="margin-left: 10px;">Twitter</span>
+                    </div>
+                    <div class="social-info">
+                        <apex:outputLink styleClass="data-value-yellow f16 social-link" rendered="{! $Permission.Contact_View_Social_Info_Details && (citizenwrapper.citizen.Usuario_Twitter__c != '' || citizenwrapper.citizen.Twitter_Link__c  != '')}" value="{! citizenwrapper.citizen.Twitter_Link__c }" target="_blank">
+                            {! IF( citizenwrapper.citizen.Usuario_Twitter__c == '', citizenwrapper.citizen.Twitter_Link__c  , citizenwrapper.citizen.Usuario_Twitter__c  )}
+                        </apex:outputLink>
+                        <apex:outputLink styleClass="data-value-yellow f16" rendered="{! !$Permission.Contact_View_Social_Info_Details && (citizenwrapper.citizen.Usuario_Twitter__c != '' || citizenwrapper.citizen.Twitter_Link__c  != '') }" value="">
+                            {! $Label.Yes}
+                        </apex:outputLink>
+                        <apex:outputText styleClass="no-info" rendered="{!citizenwrapper.citizen.Usuario_Twitter__c == '' && citizenwrapper.citizen.Twitter_Link__c  == ''}" value="{!$Label.NoInformation}" />
+                    </div>
+                </div>
+                <div class="pl-0 ml-3 pr-0 mr-3 col-md-3 pl-sm-3 ml-sm-0 pr-sm-3 mr-sm-0 social-border-left social-border-bottom">
+                    <div class="row social-header">
+                        <apex:image styleClass="icon-test-small" value="{!URLFOR($Resource.IconsPack1, 'instagramps.svg')}"/>
+                        <span class="label" style="margin-left: 10px;">Instagram</span>
+                    </div>
+                    <div class="social-info">
+                        <apex:outputLink styleClass="data-value-yellow f16 social-link" rendered="{! $Permission.Contact_View_Social_Info_Details && (citizenwrapper.citizen.Usuario_Instagram__c != '' || citizenwrapper.citizen.Instagram_Link__c != '' )}" value="{! citizenwrapper.citizen.Instagram_Link__c }" target="_blank">
+                            {! IF(citizenwrapper.citizen.Usuario_Instagram__c == '',citizenwrapper.citizen.Instagram_Link__c,citizenwrapper.citizen.Usuario_Instagram__c )}
+                        </apex:outputLink>
+                        <apex:outputLink styleClass="data-value-yellow f16" rendered="{! !$Permission.Contact_View_Social_Info_Details && ( citizenwrapper.citizen.Usuario_Instagram__c != '' || citizenwrapper.citizen.Instagram_Link__c != '')}" value="">
+                            {! $Label.Yes}
+                        </apex:outputLink>
+                        <apex:outputText styleClass="no-info" rendered="{!citizenwrapper.citizen.Usuario_Instagram__c == '' && citizenwrapper.citizen.Instagram_Link__c == '' }" value="{!$Label.NoInformation}" />
+                    </div>
+                </div>
+                <div class="pl-0 ml-3 pr-0 mr-3 col-md-3 pl-sm-3 ml-sm-0 pr-sm-3 mr-sm-0 social-border-left">
+                    <div class="row social-header">
+                        <apex:image styleClass="icon-test-small" value="{!URLFOR($Resource.IconsPack1, 'linkedinps.svg')}"/>
+                        <span class="label" style="margin-left: 10px;">Linkedin</span>
+                    </div>
+                    <div class="social-info">
+                        <apex:outputLink styleClass="data-value-yellow f16 social-link" rendered="{! $Permission.Contact_View_Social_Info_Details && (citizenwrapper.citizen.Usuario_Linkedin__c != '' || citizenwrapper.citizen.Linkedin_Link__c != ''  )}" value="{! citizenwrapper.citizen.Linkedin_Link__c }" target="_blank">
+                            {! IF( citizenwrapper.citizen.Usuario_Linkedin__c == '', citizenwrapper.citizen.Linkedin_Link__c,citizenwrapper.citizen.Usuario_Linkedin__c )}
+                        </apex:outputLink>
+                        <apex:outputLink styleClass="data-value-yellow f16" rendered="{! !$Permission.Contact_View_Social_Info_Details && (citizenwrapper.citizen.Usuario_Linkedin__c != '' || citizenwrapper.citizen.Linkedin_Link__c != ''  )}" value="">
+                            {! $Label.Yes}
+                        </apex:outputLink>
+                        
+                        <apex:outputText styleClass="no-info" rendered="{!citizenwrapper.citizen.Usuario_Linkedin__c == '' &&  citizenwrapper.citizen.Linkedin_Link__c == '' }" value="{!$Label.NoInformation}" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</apex:component>

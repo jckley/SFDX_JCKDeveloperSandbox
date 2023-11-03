@@ -1,0 +1,3 @@
+<aura:event type="APPLICATION" description="PRM Community Events" >
+    <aura:attribute name="message" type="String" />
+</aura:event>

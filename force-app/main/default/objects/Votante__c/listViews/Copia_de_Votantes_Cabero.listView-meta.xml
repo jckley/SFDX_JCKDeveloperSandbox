@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Copia_de_Votantes_Cabero</fullName>
+    <columns>Prioridad_llamado__c</columns>
+    <columns>Grupo_Activista__c</columns>
+    <columns>NAME</columns>
+    <columns>Edad_Ciudadano__c</columns>
+    <columns>Geo_Barrio__c</columns>
+    <columns>Celular_Ciudadano__c</columns>
+    <columns>Contactar_Whatsapp__c</columns>
+    <columns>Fijo_Ciudadano__c</columns>
+    <columns>Celular_agregado__c</columns>
+    <columns>Comentario__c</columns>
+    <columns>Etiqueta_llamado__c</columns>
+    <columns>Necesita_movilidad__c</columns>
+    <columns>Franja_Horaria__c</columns>
+    <columns>Domicilio_movilidad__c</columns>
+    <columns>Domicilio_Padron__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Prioridad_llamado__c</field>
+        <operation>equals</operation>
+        <value>1. ALTA</value>
+    </filters>
+    <filters>
+        <field>Geo_Grupo__c</field>
+        <operation>equals</operation>
+        <value>Belgrano</value>
+    </filters>
+    <label>Votantes Belgrano</label>
+</ListView>

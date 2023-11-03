@@ -1,0 +1,79 @@
+<template>
+
+    <div class="page-header">
+        <div class="title">
+            <template if:true={hasHierarchy}>
+                <div class="main-label" onclick={doHiearchy}>{mainLabel}</div>
+            </template>
+            <template if:false={hasHierarchy}>
+                <div>{mainLabel}</div>
+            </template>
+        </div>
+        
+        <div class="subtitle">
+            {secondaryLabel}
+            <a class="searchAddress"  onclick={doSearchAddress}>
+                {secondaryLabelUnderlined}
+            </a>
+            <template if:true={edit}>
+                <span>
+                    &nbsp;&nbsp;-&nbsp;&nbsp; 
+                    <a onclick={doEdit}>
+                        Editar
+                    </a>
+                </span>
+            </template>
+            
+        </div>
+    </div>
+    
+    <template if:true={showModal}>
+        <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open" aria-labelledby="mdlMarkCitizenTitle" aria-modal="true" aria-describedby="mdlMarkCitizenContent">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header" style="border-bottom: solid 0px transparent;">
+                    <lightning-icon class="slds-modal__close"  icon-name="utility:close" alternative-text="Cerrar" title="Cerrar"  onclick={doEditCancel} ></lightning-icon>                
+                </header>
+    
+                 <div class="slds-modal__content slds-p-around_medium">
+                    <div class="confirmtitle">
+                        <div class="slds-align_absolute-center">
+                            Editar
+                        </div>
+                    </div>
+                    <div class="editdialog">
+                        <div class="slds-p-around_medium">
+                            <div class="edit_inpuclt">
+                                <div class="label">E-Mail</div>
+                                <div class="value" >
+                                    <lightning-input type="text" onchange={handleEmailChange} value={email} label=" " variant="label-hidden"></lightning-input>
+                                </div>
+                            </div>
+     
+                            <div class="edit_input">
+                                <div class="label">Celular</div>
+                                <div class="value" >
+                                    <lightning-input type="text" onchange={handleMobileChange} value={mobile} label=" " variant="label-hidden"></lightning-input>
+                                </div>
+                            </div>
+    
+                            <div class="edit_input">
+                                <div class="label">Telefono fijo</div>
+                                <div class="value" >
+                                    <lightning-input type="text" onchange={handleHomePhoneChange} value={homePhone} label=" " variant="label-hidden"></lightning-input>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div>
+                        <div class="modal_buttons slds-var-p-around_medium slds-align_absolute-center" style="height:5rem">    
+                            <lightning-button variant="destructive" label="Cancelar" title="Cancelar" onclick={doEditCancel} class="slds-m-left_x-small"></lightning-button>
+                            <lightning-button variant="success" label="Aceptar" title="Aceptar" onclick={doEditSave} class="slds-m-left_x-small"></lightning-button>                    
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</template>

@@ -1,0 +1,43 @@
+.THIS {
+    margin-top : 25px;
+    padding : 0px;
+    font-family : 'Roboto';
+}
+
+.THIS .header {
+    background-color: #f8f9fc;
+    height: 60px;
+}
+
+.THIS .header .title {
+    font-family: 'Roboto';
+    color: #999999;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.THIS .separator {
+    border : solid 1px #CCCCCC;
+}
+
+.THIS .icon {
+    max-width: 25px;
+    max-height: 25px;
+    vertical-align: middle;
+    border-style: none;
+}
+
+.THIS .label {
+    font-size : 11pt;
+    color: #999999 !important;
+}
+
+.THIS .value.green {
+    font-size : 13pt;
+    color: #3db28b !important;
+}
+
+.THIS .subattribute-border {
+    border-bottom: solid 1px #ededed;
+    margin: 0 25px 20px 0;
+}

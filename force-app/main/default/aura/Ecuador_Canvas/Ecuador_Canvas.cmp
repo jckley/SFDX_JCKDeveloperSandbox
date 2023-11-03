@@ -1,0 +1,44 @@
+<!-- <aura:component controller="ContactDetailController" implements="forceCommunity:availableForAllPageTypes,force:appHostable,flexipage:availableForAllPageTypes,force:hasRecordId,lightning:isUrlAddressable"> -->
+<aura:component implements="forceCommunity:availableForAllPageTypes,force:appHostable,flexipage:availableForAllPageTypes,force:hasRecordId,lightning:isUrlAddressable">
+    <aura:attribute name="recordId" 		type="Id"/>
+    <aura:attribute name="citizenWrapper" 	type="CitizenWrapper" />
+    <aura:attribute name="width" 		    type="String"  default="1200px"/>
+    <aura:attribute name="height" 		    type="String"  default="800px"/>
+    <aura:attribute name="canvasname" 		type="String"  default="Prosumia_Contact_Tracing"/>
+    <aura:attribute name="canvasnamespace" 	type="String"  />
+    <aura:attribute name="community"        type="String" default="Cuidarnos"/>
+    <aura:attribute name="rendered" 		type="Boolean" default="false"  />        
+    <aura:attribute name="status" 	        type="String"  required="false" default="" />
+    <aura:attribute name="status_date" 	    type="String"  required="false" default="" />
+
+    <aura:handler name="init" action="{!c.initializeComponent}" value="{!this}" />
+
+    <!-- <div>
+        <div class="{! v.rendered?'slds-grid slds-wrap':'slds-hide'}">        
+            <div class="slds-col slds-size_1-of-1 pad-top-30">
+                <force:canvasApp developerName="{! v.canvasname }" namespacePrefix="{! v.canvasnamespace }" width="{! v.width }" height="{! v.height}" />
+            </div>
+        </div>
+    </div> -->
+
+    <div class="{! (v.rendered)?'card slds-grid slds-wrap slds-m-top_large':'slds-hide'}">
+
+        <div class="slds-grid slds-wrap slds-col slds-size_1-of-1 header" >
+            <div class="slds-col slds-size_1-of-1">
+                <img src="{! $Resource.Ecuador + '/img/check.svg'}" class="icon" />
+                <span class="title">Grafo</span>
+            </div>           
+        </div>
+
+        <div class="slds-col slds-size_1-of-1 slds-grid slds-wrap" style="padding: 30px 30px;">
+            <div class="slds-size_1-of-1 slds-grid slds-wrap">
+                <div class="slds-size_1-of-1 slds-large-size_1-of-1 slds-p-bottom_medium">
+                    <!-- <force:canvasApp developerName="{! v.canvasname }" namespacePrefix="{! v.canvasnamespace }" width="{! v.width }" height="{! v.height}" /> -->
+                    <force:canvasApp developerName="{! v.canvasname }" namespacePrefix="{! v.canvasnamespace }" width="{! v.width }" height="{! v.height}" />
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</aura:component>

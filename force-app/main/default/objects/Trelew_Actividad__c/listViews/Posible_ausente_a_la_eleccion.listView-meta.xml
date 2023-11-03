@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Posible_ausente_a_la_eleccion</fullName>
+    <columns>Nombre__c</columns>
+    <columns>Citizen_SFID__c</columns>
+    <columns>Fecha__c</columns>
+    <columns>Afinidad__c</columns>
+    <columns>Medio__c</columns>
+    <columns>Necesita_Logistica__c</columns>
+    <columns>Direccion_de_Recogida__c</columns>
+    <columns>Comentario__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Afinidad__c</field>
+        <operation>equals</operation>
+        <value>Posible ausente,Indeciso</value>
+    </filters>
+    <filters>
+        <field>Medio__c</field>
+        <operation>equals</operation>
+        <value>Ausentismo</value>
+    </filters>
+    <label>Posible ausente a la eleccion</label>
+    <sharedTo>
+        <group>TrelewJxC2023</group>
+    </sharedTo>
+</ListView>

@@ -1,0 +1,48 @@
+<aura:component >
+    <aura:attribute name="citizenWrapper" type="CitizenWrapper" required="true" />
+    <aura:attribute name="rendered" type="Boolean" required="true" default="true" />
+    <aura:attribute name="showDetails" type="Boolean" required="true" default="true" />
+    <aura:attribute name="vfHost" type="String" default="" />
+    <aura:attribute name="lexHost" type="String" default="" />
+    
+    <!--<div class="{!(and(v.rendered, v.citizenWrapper.twitterUserFormated == ''))?'slds-align_absolute-center slds-grid slds-wrap slds-p-right_large card no-timeline':'slds-hide'}">-->
+    <div class="{!(and(v.rendered, true))?'slds-align_absolute-center slds-grid slds-wrap slds-p-right_large card no-timeline':'slds-hide'}">
+        <div class="slds-grid slds-wrap slds-size_1-of-1 slds-large-size_1-of-4 social-border-bottom spacing">
+            <c:PYP_ContactSocialInfoDetail icon="facebook.svg" name="Facebook" sociallink="{! v.citizenWrapper.citizen.Facebook_Link__c}" socialuser="{!v.citizenWrapper.citizen.Usuario_Facebook__c}" showDetails="{! v.showDetails}" />
+        </div>
+        
+        <div class="slds-grid slds-wrap slds-size_1-of-1 slds-large-size_1-of-4 slds-p-left_large social-border-bottom social-border-left spacing">
+            <c:PYP_ContactSocialInfoDetail icon="tw.svg" name="Twitter" sociallink="{! v.citizenWrapper.citizen.Twitter_Link__c}" socialuser="{!v.citizenWrapper.citizen.Usuario_Twitter__c }" showDetails="{! v.showDetails}" />        	
+        </div>
+        
+        <div class="slds-grid slds-wrap slds-size_1-of-1 slds-large-size_1-of-4 slds-p-left_large social-border-bottom social-border-left spacing">
+            <c:PYP_ContactSocialInfoDetail icon="instagram.svg" name="Instagram" sociallink="{! v.citizenWrapper.citizen.Instagram_Link__c}" socialuser="{! v.citizenWrapper.citizen.Usuario_Instagram__c}" showDetails="{! v.showDetails}" />        
+        </div>
+        
+        <div class="slds-grid slds-wrap slds-size_1-of-1 slds-large-size_1-of-4 slds-p-left_large social-border-left spacing">
+            <c:PYP_ContactSocialInfoDetail icon="in.svg" name="Linkedin" sociallink="{! v.citizenWrapper.citizen.Linkedin_Link__c}" socialuser="{! v.citizenWrapper.citizen.Usuario_Linkedin__c}" showDetails="{! v.showDetails}" />        
+        </div>
+    </div>
+    
+    <!--<div class="{!(and(v.rendered, v.citizenWrapper.twitterUserFormated != ''))?'slds-grid slds-wrap wtimeline':'slds-hide'}">
+        
+        <div class="slds-size_1-of-1 slds-large-size_1-of-4">
+            <div class="slds-grid slds-wrap slds-size_1-of-1 spacing card">
+                <c:Menta_ContactSocialInfoDetail icon="mentafacebook.svg" name="Facebook" sociallink="{! v.citizenWrapper.contact.Facebook_Link__c}" socialuser="{!v.citizenWrapper.contact.Usuario_Facebook__c != null?'/'+v.citizenWrapper.contact.Usuario_Facebook__c: null}" showDetails="{! v.showDetails}" />
+            </div>
+            
+            <div class="slds-grid slds-wrap slds-size_1-of-1 spacing card">
+                <c:Menta_ContactSocialInfoDetail icon="mentainstagram.svg" name="Instagram" sociallink="{! v.citizenWrapper.contact.Instagram_Link__c}" socialuser="{! v.citizenWrapper.contact.Usuario_Instagram__c != null?'@'+v.citizenWrapper.contact.Usuario_Instagram__c: null}" showDetails="{! v.showDetails}" />        
+            </div>
+            
+            <div class="slds-grid slds-wrap slds-size_1-of-1 spacing card">
+                <c:Menta_ContactSocialInfoDetail icon="mentalinkedin.svg" name="Linkedin" sociallink="{! v.citizenWrapper.contact.Linkedin_Link__c}" socialuser="{! v.citizenWrapper.contact.Usuario_Linkedin__c}" showDetails="{! v.showDetails}" />        
+            </div>
+        </div>
+        <div class="slds-col card">
+            <div style="{!'display: ' + (v.citizenWrapper.twitterUserFormated != ''?'':'none')}">
+                <c:TwitterTimeline lexHost="{!v.lexHost}" vfHost="{!v.vfHost}" user="{!v.citizenWrapper.twitterUserFormated}"/>
+            </div>
+        </div>
+    </div>-->
+</aura:component>

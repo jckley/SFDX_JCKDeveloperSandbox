@@ -1,0 +1,18 @@
+<apex:component >
+    <style>
+    	.cardmargintop {
+        	margin-top: 10px;
+        }
+    </style>
+	<apex:attribute name="citizenwrapper" 	type="CitizenWrapper" 	required="true" description="Contact General Info" />  
+
+    <div class="row contact-data">
+        <div class="card card-left-border green">
+            <div class="row card-cont cardmargintop">
+                <apex:repeat value="{! citizenwrapper.attributes.items }" var="objAttribute">
+                    <c:ContactTagComponent label="{! objAttribute.label }:" value="{! objAttribute.value }" valuecolor="green" />
+                </apex:repeat>
+            </div>
+        </div>
+    </div>
+</apex:component>

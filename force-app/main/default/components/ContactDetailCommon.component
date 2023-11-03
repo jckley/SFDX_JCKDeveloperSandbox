@@ -1,0 +1,3 @@
+<apex:component >
+    Usted no tiene permisos para visualizar esta pagina
+</apex:component>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>election_rolls__c</fullName>
+    <externalId>false</externalId>
+    <label>Inscripto en padrones</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>CORDOBA</fullName>
+                <default>false</default>
+                <label>CORDOBA</label>
+            </value>
+            <value>
+                <fullName>SANTA FE</fullName>
+                <default>false</default>
+                <label>SANTA FE</label>
+            </value>
+            <value>
+                <fullName>ANAGRAFE ITALIA</fullName>
+                <default>false</default>
+                <label>ANAGRAFE ITALIA</label>
+            </value>
+            <value>
+                <fullName>NACIONAL 2023 PROVISORIO</fullName>
+                <default>false</default>
+                <label>NACIONAL 2023 PROVISORIO</label>
+            </value>
+            <value>
+                <fullName>EXTRANJEROS CABA 23</fullName>
+                <default>false</default>
+                <label>EXTRANJEROS CABA 23</label>
+            </value>
+            <value>
+                <fullName>EXTRANJEROS PBA 23</fullName>
+                <default>false</default>
+                <label>EXTRANJEROS PBA 23</label>
+            </value>
+            <value>
+                <fullName>EXTRANJEROS PBA 21</fullName>
+                <default>false</default>
+                <label>EXTRANJEROS PBA 21</label>
+            </value>
+            <value>
+                <fullName>NACIONAL 2023</fullName>
+                <default>false</default>
+                <label>NACIONAL 2023</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

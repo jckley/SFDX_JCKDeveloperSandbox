@@ -1,0 +1,51 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes,force:appHostable,flexipage:availableForAllPageTypes,force:hasRecordId" controller="ContactDetailController">	    
+    <aura:attribute name="recordId" 		type="Id"  />        
+    <aura:attribute name="citizenWrapper" 	type="ContactWrapper" />
+    <aura:attribute name="permissions" 		type="RemotingMessageHelper.UserPermissions" />
+    <aura:attribute name="lexHost" 			type="String" default="" />
+    <aura:attribute name="vfHost" 			type="String" default="" />  
+    
+    <aura:handler name="init" action="{!c.initializeComponent}" value="{!this}" />
+    <aura:handler 	event="c:ContactUpdatedEvent" 		action="{! c.refreshPage }" />
+    
+    <!--<div class="slds-grid slds-wrap l-map">
+        <c:Menta_ContactMap citizenWrapper="{! v.citizenWrapper }" rendered="{! v.permissions.ContactViewLocation }" 
+                            viewExactLocation="{! v.permissions.ContactViewMapInfo}" lexHost="{! v.lexHost}" vfHost="{! v.vfHost}"/>
+    </div>-->
+    
+    <div class="slds-grid slds-wrap l-content">
+        <div class="slds-size_1-of-1">
+            <c:Menta_ContactGeneralInfo citizenWrapper="{! v.citizenWrapper }" rendered="{! v.permissions.ContactViewCommonData}"  canEdit="{!v.permissions.ViewEdition}"/>
+        </div>
+        
+        <div class="slds-size_1-of-1" style="z-index: 10">
+            <c:Menta_ContactLocationInfo citizenWrapper="{! v.citizenWrapper }" rendered="{! v.permissions.ContactViewLocation}"  />
+            <c:Menta_ContactAddress citizenWrapper="{! v.citizenWrapper }" rendered="{! v.permissions.ContactViewMapInfo}"  />
+        </div>
+        
+        <!--<div class="slds-size_1-of-2"></div>
+        <div class="slds-size_1-of-2 slds-show_large" style="z-index: 10">
+        	<c:GoogleStreetView citizenWrapper="{! v.citizenWrapper }" viewExactLocation="{! v.viewExactLocation }" loaded="{! v.streetViewLoaded }"
+                                lexHost="{! v.lexHost}" vfHost="{! v.vfHost}" frameHeight="300" zoomControl="false"/>			        	        
+        </div>-->
+        
+        <div class="slds-size_1-of-1" style="margin-top: 30px;">
+            <c:Menta_ContactContactInfo citizenWrapper="{! v.citizenWrapper }" rendered="{! v.permissions.ContactViewContactInfo}"  />
+        </div>
+        
+        <div class="{!'slds-size_1-of-1 ' + (v.citizenWrapper.twitterUserFormated != ''?'timeline':'')}">
+            <c:Menta_ContactSocialInfo citizenWrapper="{!v.citizenWrapper}" rendered="{! v.permissions.ContactViewSocialInfo}" lexHost="{!v.lexHost}" vfHost="{!v.vfHost}"/>
+        </div>
+        
+        <div class="slds-col slds-size_1-of-1">
+            <c:Menta_ContactAttributes citizenWrapper="{! v.citizenWrapper }" rendered="{! v.permissions.ContactViewAttributes}"  />
+        </div>
+        
+        <!--<div class="slds-col slds-size_1-of-1">
+            <c:Menta_ContactAttributesIncome citizenWrapper="{! v.citizenWrapper }" rendered="{! and( v.permissions.ContactViewIncome, or(v.citizenWrapper.contact.CUIT_Empleador_1__c != NULL, v.citizenWrapper.contact.CUIT_Empleador_2__c != NULL , v.citizenWrapper.contact.CUIT_Empleador_3__c != NULL  ) )}"  />
+        </div>-->
+        
+        <!--Edition Modal-->
+        <c:ContactEdition recordId="{!v.recordId}"/>
+    </div>
+</aura:component>

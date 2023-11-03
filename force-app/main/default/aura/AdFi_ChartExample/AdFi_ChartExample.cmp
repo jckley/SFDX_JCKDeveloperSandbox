@@ -1,0 +1,6 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes,force:appHostable,flexipage:availableForAllPageTypes" controller="AdFi_ChartController">	    
+    <aura:attribute name="chartData" 		type="String"  />
+    <aura:attribute name="chartType" 		type="String"  />
+    
+    <aura:handler 	name="init" action="{!c.initializeComponent}" value="{!this}" />     
+</aura:component>

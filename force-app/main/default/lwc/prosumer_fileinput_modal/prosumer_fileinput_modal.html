@@ -1,0 +1,106 @@
+<template>
+    <div class="box">
+        <!--
+        <div class="helpWrapper">
+            <h1>SELECCIONE O CARGUE UN NUEVO ARCHIVO</h1>
+        </div>
+        -->
+
+
+
+        <lightning-tabset class="pestañasGestor">
+
+
+
+            <lightning-tab label="Seleccionar archivo" class="scroll">
+
+                <div class="searchFile">
+                    <lightning-input
+                    type="search"
+                    label="Buscar archivos"
+                    placeholder="Buscar..."
+                    value={searchKeyword}
+                    onchange={handleSearchInputChange}
+                    ></lightning-input>
+                </div>
+
+                <div class="listSection">
+                    <template for:each={_filteredFileList} for:item="thisFile">
+                        <div key={thisFile.Id} data-filekey={thisFile.Id} onclick={handleClickFile} class="fileCard">
+
+                            <template if:true={thisFile.ContentVersion.soundIcon}>
+                                <img src={soundIcon} class="fileIcon"/>
+                            </template>
+
+                            <template if:true={thisFile.ContentVersion.imageIcon}>
+                                <img src={imageIcon} class="fileIcon"/>
+                            </template>
+
+                            <div class="fileInfo">
+                                <span class="fileName">{thisFile.ContentVersion.Title}</span>
+                                <span class="fileExte">.{thisFile.ContentVersion.FileType}</span>
+                            </div>
+
+                            <div class="seleccionar">
+                                Click para seleccionar
+                            </div>
+
+                            <button onclick={handleEraseFile} data-filekey={thisFile.Id} class="borrar">
+                                <lightning-icon
+                                icon-name="utility:delete"
+                                alternative-text="Delete"
+                                size="x-small"
+                                >
+                                </lightning-icon>
+                            </button>
+                            
+                        </div>
+                    </template>
+                </div>
+            </lightning-tab>
+
+            <!--
+            <lightning-tab label="Cargar archivo">
+
+                <div class="dropzone">
+                    <img src={nube} class="nube"/>
+                    <div class="slds-form-element">
+                        <div class="slds-form-element__control">
+                        <lightning-input 
+                    type="file" 
+                    label="Selecionar Archivo" 
+                    accept={acceptedFormats}
+                    onchange={handleFilesChange}
+                    class="selecAr"
+                    >
+                        </lightning-input>
+                    </div>
+                    </div>
+
+                </div>
+
+            </lightning-tab>
+            -->
+
+            <lightning-tab label="Cargar archivo">
+
+                <div class="dropzone">
+                    <img src={nube} class="nube"/>
+                    <lightning-file-upload
+                    class="uploadFile"
+                    label=""
+                    name="fileUploader"
+                    multiple
+                    accept={acceptedFormats}
+                    language="es"
+                    file-field-name="Prosumer_Account_fileupload__c"
+                    file-field-value={prosumeraccountid}
+                    onuploadfinished={handleUploadFinished}>
+                    </lightning-file-upload>
+                </div>
+                    
+            </lightning-tab>
+
+        </lightning-tabset>
+    </div>
+</template>

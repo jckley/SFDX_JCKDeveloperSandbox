@@ -1,0 +1,27 @@
+@media only screen and (min-width:600px) {
+    .THIS {
+    }
+    
+    .THIS .infocontainer, 
+    .THIS .infocontainer .cardIndicator {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    
+    .THIS .infocontainer .cardIndicator.red {
+        border-left: 2px solid #f04B61;
+    }
+    
+    .THIS .infocontainer .cardIndicator.gray {
+        border-left: 2px solid #C0C0C0;
+    }
+}
+
+@media only screen and (max-device-width:600px) {
+    .THIS {
+        background-color: #fff;
+        background-clip: border-box;
+        border: 1px solid rgba(0,0,0,.125);
+        border-radius: .25rem;
+    }
+}

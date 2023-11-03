@@ -1,0 +1,24 @@
+<aura:component >
+    <aura:attribute name="community"             type="String" default="Prosumia"/>
+    <aura:attribute name="mainlabel" 				type="String"  description="Main Label" required="true" />
+    <aura:attribute name="secundarylabel" 			type="String"  description="Secundary Label" />
+    <aura:attribute name="secundarylabelunderlined" type="String"  description="Secundary Label content underlined" />
+    <aura:attribute name="linkToRecordId" 			type="String"  description="Link to record id" default="#" />
+    <aura:attribute name="hasHierarchy" 			type="Boolean" description="Has hierarchy view" default="false" />
+    
+    <aura:registerEvent name="mainHeaderClickEvent" type="c:mainHeaderClick"/>
+    
+    <div class="{! 'slds-grid slds-wrap slds-text-align_center ' + v.community }">
+       
+        <div class="slds-col slds-size_1-of-1 title">
+            <span class="{! v.hasHierarchy?'main-label':''}" onclick="{!v.hasHierarchy?'c.fireHierarchyEvent':''}">{! v.mainlabel}</span>
+        </div>   
+        
+        <div class="slds-col slds-size_1-of-1 subtitle">
+            {!v.secundarylabel}
+            <a class="searchAddress" onclick="{!c.navigateToRecord}">
+                {!v.secundarylabelunderlined}
+            </a>
+        </div>
+    </div>
+</aura:component>

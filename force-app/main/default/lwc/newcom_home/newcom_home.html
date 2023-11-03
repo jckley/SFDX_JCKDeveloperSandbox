@@ -1,0 +1,16 @@
+<template>
+
+    <div class="slds-grid slds-wrap">
+        
+        <header class="slds-col slds-size_1-of-1">
+            <span>{label.CommunityHomeHeader}</span>
+        </header>
+
+        <section class="slds-col slds-size_1-of-1 search" onkeypress={doSearchCitizens}>
+            <span class="prefix">{label.Search} :</span>
+            <lightning-input name="searchTerm" label=" " type="search" variant="label-hidden" value={searchTerm} class="searchInput"></lightning-input>
+        </section>          
+
+    </div>
+    
+</template>

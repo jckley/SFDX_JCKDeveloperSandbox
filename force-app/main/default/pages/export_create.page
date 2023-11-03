@@ -1,0 +1,633 @@
+<apex:page docType="html-5.0"  apiVersion="45" showChat="false" showHeader="false" sidebar="false" applyHtmlTag="false" applyBodyTag="false" expires="0" standardStylesheets="false" lightningStylesheets="false" controller="ExportController">
+  	<html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" lang="en">
+    	<head>
+            <title>Export - Nuevo</title>
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <apex:slds />
+            
+            <link rel="SHORTCUT ICON" href="{! URLFOR($Resource.prosumia_icon) }" type="image/png"/>
+            
+            <apex:stylesheet value="{! URLFOR($Resource.export_utils, '/css/export.css')}" />            
+            <apex:stylesheet value="https://use.fontawesome.com/releases/v5.8.1/css/all.css"/>          
+            <apex:stylesheet value="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css"/>
+            <apex:stylesheet value="https://cdnjs.cloudflare.com/ajax/libs/easy-autocomplete/1.3.5/easy-autocomplete.min.css"/>
+            <apex:stylesheet value="https://cdnjs.cloudflare.com/ajax/libs/easy-autocomplete/1.3.5/easy-autocomplete.themes.min.css"/>
+
+            <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" />
+            <apex:includeScript value="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" />
+            <apex:includeScript value="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" />
+            <apex:includeScript value="https://cdnjs.cloudflare.com/ajax/libs/easy-autocomplete/1.3.5/jquery.easy-autocomplete.min.js" />
+        </head>
+
+        <body style="background-color:#f7f7f7;">          
+            <div class="slds-scope">
+                <c:ToastNotification />
+                <header class="slds-global-header_container">
+                    <div class="slds-global-header" style="height:80px;">
+                        <div class="slds-grid">
+							<div class="slds-global-header__item">
+                                <a href="/apex/export_index">
+                                    <div class="slds-global-header__logo" style="background-image: url({! URLFOR($Resource.prosumia_logo) }); width: 120px !important; margin-top: 10px !important; margin-left: 10px !important;">
+                                    </div>
+                                </a>
+							</div>
+                           
+                            <div class="slds-col">                           
+                                <div class="slds-global-header__body">
+                                    <h1 class="slds-global-header__title slds-m-right_medium slds-truncate slds-align-middle" style="font-size:1.3em; margin-top: 18px !important; color:#8F8D8C;" title="CRM"> / CRM</h1>
+                                </div>
+                            </div>
+                            
+                            <div class="slds-col slds-no-flex slds-p-top_xx-small">
+                                <div class="slds-grid">
+                                    <form action="" method="post">
+                                        <button class="slds-button slds-button_x-large slds-align-middle" type="submit" 
+                                                style="height:45px !important;">
+                                            <span class="slds-item_label slds-p-horizontal_large slds-p-top_small" style="font-size:1rem; color:#A5A5A5;">
+                                                <img src="{! URLFOR($Resource.sms_utils, '/img/sms_logout.png') }" alt="mensajes enviados" height="18" width="18" />
+                                            </span>
+                                        </button>    
+                                    </form>
+                                </div>
+                            </div>
+                    	</div>
+                	</div>
+                </header>
+
+                <section class="slds-global-body_container slds-p-horizontal_xx-large" style="padding-top:80px;">
+                    <div class="slds-text-heading_large slds-p-top_small">
+                        <div class="slds-grid slds-text-heading_large slds-p-around_x-large">
+                            
+                            <div class="slds-col slds-size_1-of-12"></div>
+                            
+                            <!-- FORMULARIO -->                            
+                            <div class="slds-col slds-size_10-of-12">
+                                <div class="slds-card slds-p-around_small" style="box-shadow: 1 2px 3px 0 rgba(0,0,0,0.2) !important; border:none !important;">
+                                    <div class="card slds-card__body slds-card__body_inner slds-p-bottom_small">
+                                        <div style="border-bottom:1px solid #EEEEEE;">
+                                            <div class="slds-clearfix slds-p-bottom_small">
+                                                <div class="slds-float_left">
+                                                    <b style="font-size:0.8em; color:#58595B;">Exportar datos</b>
+                                                </div>
+                                            </div>
+                                        </div> 
+                                        <div class="slds-form">
+                                            <form action="" method="post">
+                                                <div class="slds-grid slds-wrap">
+                                                    <div class="slds-col slds-size_1-of-1 slds-large-size_4-of-12">
+                                                        <!-- TIPO DE EXPORT -->
+                                                        <div class="slds-form-element slds-p-horizontal_small slds-p-top_large">
+                                                            <label class="slds-form-element__label slds-float_left" style="font-size:0.4em; color:#B4B4B4;"><b>TIPO DE EXPORT</b></label>
+                                                            <div class="slds-form-element__control slds-p-vertical_small">
+                                                                <select class="slds-select" id="export_tipo" style="height:60px !important; font-size:0.6em; background:#FBFBFB; text-indent:10px;">
+                                                                    <option value="" disabled="disabled" selected="selected">Elija una opción</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                            
+                                                    <div class="slds-col slds-size_1-of-1 slds-large-size_8-of-12">
+                                                        <!-- NOMBRE DE EXPORT -->
+                                                        <div class="slds-form-element slds-p-horizontal_small slds-p-top_large">
+                                                            <label class="slds-form-element__label slds-float_left" style="font-size:0.4em; color:#B4B4B4;"><b>NOMBRE</b></label>
+                                                            <span class="slds-float_right" style="font-size:0.4em;" id="charNumName">40</span>
+                                                            <div class="slds-form-element__control slds-p-vertical_small">
+                                                                <input type="text" id="export_name" onkeyup="countChars(this);"
+                                                                       placeholder="Nombre del export" class="slds-input" maxlength="40" autocomplete="off" style="height:60px !important; font-size:0.8em;" required="required"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                        
+                                                <div class="slds-p-top_medium exportcontrol separator1"></div>
+                                                <div style="border-bottom-style:solid; border-bottom-width: 1px; color:#DEDEDE;" class="exportcontrol separator1"></div>
+                                                <div class="slds-p-top_large exportcontrol separator1"></div>
+                                                
+                                                <div class="slds-grid slds-wrap exportcontrol analyticsmccontrols">
+                                                    <div class="slds-p-left_small slds-p-right_large ">
+                                                        <div class="slds-form-element">
+                                                            <label class="switch" style="border:1px solid #E7E7E7; border-radius:50px;">
+                                                                <input id="chkAllData" type="checkbox"/>
+                                                                <span class="slider round"></span>
+                                                            </label>
+                                                            <span style="font-size:0.7em; color:#58595B;">Todos los registros</span>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="slds-p-horizontal_small">
+                                                        <div class="slds-form-element">
+                                                            <label class="switch" style="border:1px solid #E7E7E7; border-radius:50px;">
+                                                                <input id="chkSendable" type="checkbox" checked="checked" />
+                                                                <span class="slider round"></span>
+                                                            </label>
+                                                            <span style="font-size:0.7em; color:#58595B;">Sendable DE</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                        
+                                                <div class="slds-p-top_medium exportcontrol separator2"></div>
+                                                <div style="border-bottom-style:solid; border-bottom-width: 1px; color:#DEDEDE;" class="exportcontrol separator2"></div>
+                                                <div class="slds-p-top_large exportcontrol separator2"></div>
+                                                
+                                                <!-- SAQL -->
+                                                <div class="slds-grid slds-wrap exportcontrol analytics" id="EA">
+                                                    <div class="slds-p-horizontal_small" style="width:100%">
+                                                        <label class="slds-form-element__label slds-float_left" 
+                                                               style="font-size:0.4em; color:#B4B4B4;"><b>SAQL</b></label>
+                                                        <div class="slds-card__body slds-card__body_inner slds-p-top_medium">
+                                                        <article class="slds-card slds-card_boundary1">
+                                                            <textarea id="txtSAQL" style="width:100%;">
+
+                                                            </textarea>
+                                                            <footer class="slds-card__footer" style="display:none">
+                                                                <div class="slds-clearfix">
+                                                                    <div class="slds-float_right">
+                                                                        <a class="slds-button" href="javascript:void(0);">COPIAR</a>
+                                                                    </div>
+                                                                </div>
+                                                            </footer>
+                                                        </article>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="slds-grid slds-wrap exportcontrol marketing" id="MC">
+                                                    <div class="slds-p-horizontal_small" style="width:100%">
+                                                        <label class="slds-form-element__label slds-float_left" 
+                                                               style="font-size:0.4em; color:#B4B4B4;"><b>Data extension</b></label>
+                                                        <div class="slds-card__body slds-card__body_inner slds-p-top_medium">
+                                                        <article class="slds-card slds-card_boundary1">
+                                                            <input type="text" id="txtDataExtension" style="width:100%;border:"/>
+
+                                                            <footer class="slds-card__footer" style="display:none">
+                                                                <div class="slds-clearfix">
+                                                                    <div class="slds-float_right">
+                                                                        <a class="slds-button" href="javascript:void(0);">COPIAR</a>
+                                                                    </div>
+                                                                </div>
+                                                            </footer>
+                                                        </article>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+
+                                                <!-- NOMBRE DEL REPORTE  -->
+                                                <div class="slds-grid slds-wrap exportcontrol reports-crm" id="REPORTCRM">
+                                                    <div class="slds-p-horizontal_small" style="width:100%">
+                                                        <label class="slds-form-element__label slds-float_left" 
+                                                               style="font-size:0.4em; color:#B4B4B4;"><b>Reporte</b></label>
+                                                        <div class="slds-card__body slds-card__body_inner slds-p-top_medium">
+                                                        <article class="slds-card slds-card_boundary1">
+                                                            <input type="text" id="export_reporte" style="width:100%;border:"/>
+                                                        </article>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="slds-grid slds-wrap exportcontrol reports-crm">
+                                                    <!-- CLIENTE -->
+                                                    <div class="slds-col slds-size_1-of-1 slds-large-size_6-of-12">
+                                                        <div class="slds-form-element slds-p-horizontal_small slds-p-top_large">
+                                                            <label class="slds-form-element__label slds-float_left" style="font-size:0.4em; color:#B4B4B4;"><b>CLIENTE</b></label>
+                                                            <span class="slds-float_right" style="font-size:0.4em;" id="charNumName">40</span>
+                                                            <div class="slds-form-element__control slds-p-vertical_small">
+                                                                <input type="text" id="export_cliente" onkeyup="countChars(this);"
+                                                                       placeholder="Nombre del Cliente" class="slds-input" maxlength="255" autocomplete="off" style="height:60px !important; font-size:0.8em;" required="required"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                            
+                                                    <!-- PROYECTO -->
+                                                    <div class="slds-col slds-size_1-of-1 slds-large-size_6-of-12">
+                                                        <div class="slds-form-element slds-p-horizontal_small slds-p-top_large">
+                                                            <label class="slds-form-element__label slds-float_left" style="font-size:0.4em; color:#B4B4B4;"><b>PROYECTO</b></label>
+                                                            <span class="slds-float_right" style="font-size:0.4em;" id="charNumName">40</span>
+                                                            <div class="slds-form-element__control slds-p-vertical_small">
+                                                                <input type="text" id="export_proyecto" onkeyup="countChars(this);"
+                                                                       placeholder="Nombre del export" class="slds-input" maxlength="40" autocomplete="off" style="height:60px !important; font-size:0.8em;" required="required"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- COMENTARIOS  -->
+                                                <div class="slds-grid slds-wrap exportcontrol reports-crm">
+                                                    <div class="slds-col slds-size_1-of-1">
+                                                        <div class="slds-form-element slds-p-horizontal_small slds-p-top_large">
+                                                            <label class="slds-form-element__label slds-float_left" style="font-size:0.4em; color:#B4B4B4;"><b>COMENTARIOS</b></label>
+                                                            <span class="slds-float_right" style="font-size:0.4em;" id="charNumName">4096</span>
+                                                            <div class="slds-form-element__control slds-p-vertical_small">
+                                                                <input type="text" id="export_comentarios" onkeyup="countChars(this);"
+                                                                    placeholder="Comentarios" class="slds-input" maxlength="4096" autocomplete="off" style="height:60px !important; font-size:0.8em;" required="required"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="slds-grid slds-wrap exportcontrol pulso" id="Pulso">
+                                                    <div class="slds-p-horizontal_small" style="width:100%">
+                                                        <label class="slds-form-element__label slds-float_left" 
+                                                               style="font-size:0.4em; color:#B4B4B4;"><b>Encuesta</b></label>
+                                                        <div class="slds-card__body slds-card__body_inner slds-p-top_medium">
+                                                        <article class="slds-card slds-card_boundary1">
+                                                            <input type="text" id="txtSurvey" style="width:100%;"/>
+                                                            
+                                                            <footer class="slds-card__footer" style="display:none">
+                                                                <div class="slds-clearfix">
+                                                                    <div class="slds-float_right">
+                                                                        <a class="slds-button" href="javascript:void(0);">COPIAR</a>
+                                                                    </div>
+                                                                </div>
+                                                            </footer>
+                                                        </article>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>    
+                                    </div>
+                                </div>
+                                
+                                <div class="slds-grid slds-p-top_large" style="border-color:red;">
+                                    <div class="slds-col slds-size_1-of-2 slds-p-around_small">
+                                        <a href="/apex/export_index" class="slds-float_right slds-button slds-align_absolute-center" 
+                                           style="background-color:#999999; color:white; width:140px !important; height:45px !important;">
+                                            <b style="font-size:0.5em;">CANCELAR</b>
+                                        </a>
+                                    </div>
+                                    
+                                    <div class="slds-col slds-size_1-of-2 slds-p-around_small">
+                                        <button id="btnExport" class="slds-float_left slds-button slds-align_absolute-center btn-export">
+                                            <b style="font-size:0.5em;">EXPORTAR</b>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <div class="modal fade bd-example-modal-lg" data-backdrop="static" data-keyboard="false" tabindex="-1">
+                    <div class="modal-dialog modal-sm">
+                        <div class="modal-content" style="width: 48px">
+                            <span class="fa fa-spinner fa-spin fa-3x"></span>
+                        </div>
+                    </div>
+                </div>
+			</div>
+
+            
+            <script type="text/javascript">
+            var arrDataExtensions = [];
+            var arrReports = [];
+            var arrSurveys = [];
+            var strDataExtensionVal = null;
+            var strSurveyVal = null;   
+            var intLoadingTimeout = null;
+
+            $(document).ready(function() {
+                $('.exportcontrol').hide();   
+                loadDataExtensions();
+                retrieveSurveys();
+                loadReports();
+                loadReportOptions();
+            });
+
+            $(document).on('click', '#btnExport', function() { 
+                sendToApproval();
+            });
+            
+
+            $(document).on('change', '#export_tipo', function() {
+                $('.exportcontrol').hide();  
+
+                if($(this).val() === 'eamc') {
+                    $('.analytics').show();
+                    $('.separator1').show();                    
+                    $('.analyticsmccontrols').show();
+                    $('.separator2').show();
+                } else if($(this).val() === 'eacsv') {
+                    $('.analytics').show();
+                    //$('.separator1"]').show();
+                    $('.separator2').show();
+                } else if ($(this).val() === 'mccsv') {
+                    $('.marketing').show();
+                    //$('.separator1"]').show();
+                    $('.separator2').show();
+                } else if ($(this).val() === 'pulso') {
+                    $('.pulso').show();
+                    //$('.separator1"]').show();
+                    $('.separator2').show();
+                } else if ($(this).val() === 'crmcsv') {
+                    $('.reports-crm').show();
+                    $('.separator2').show();
+                }
+            });
+
+
+            var arrReportOptions = [];
+            function loadReportOptions() {
+                console.log("Load Report Options");
+                Visualforce.remoting.Manager.invokeAction(
+                    //Invoking controller action
+                    '{!$RemoteAction.ExportController.report_options}',
+                    function(result, event) {
+                        console.log("event.status = ", event.status);
+                        if (event.status) {
+                            result.forEach((opt) => arrReportOptions.push({'value': opt.Id, 'text': opt.Name}));
+                            console.log(arrReportOptions);
+
+                            let export_tipo_select = document.querySelector("#export_tipo");
+                            arrReportOptions.forEach((option) => {
+                                var opt = document.createElement('option');
+                                opt.value = option.value;
+                                opt.innerHTML = option.text;
+                                export_tipo_select.appendChild(opt);
+                            });
+                            
+                        }
+                    },
+                    {escape: true}
+                );
+            }
+
+
+            function loadReports() {
+                console.log("Load Reports");
+                Visualforce.remoting.Manager.invokeAction(
+                    //Invoking controller action
+                    '{!$RemoteAction.ExportController.reports}',null,
+                    function(result, event){
+                        if (event.status) {
+                            result.forEach((res) => arrReports.push({'value': res.Id, 'text': res.Name}));
+                        }
+                    },
+                    {escape: true}
+                );
+            }
+
+            var optionsReports = {
+                data: arrReports,
+                getValue: "text",
+                list: {
+                    // setea el valor de la variable 
+                    onSelectItemEvent: function() {
+                        strReportVal = $("#export_reporte").getSelectedItemData().value;
+                        console.log(strReportVal);
+                        $("#export_reporte").attr("data-report-id", strReportVal);
+                    },
+                    // permite que machée mientras uno escribe
+                    match: { enabled: true },
+                    // ordena los ítems del list
+                    sort: { enabled: true },
+                    maxNumberOfElements: 10000
+                }
+            };
+
+            $("#export_reporte").easyAutocomplete(optionsReports);
+
+
+        
+            function loadDataExtensions() {
+                $.ajax({
+                    url:"https://api-pulso.prosumia.la/aws-api/pulso_mc_data_extension/retrieve_data_extensions",
+                    type:"GET",
+                    success:function(objResponse) {
+                        const strDataExtensions = String(objResponse.message);
+                        var intIndex = 0;
+                        var intIndexFrom = 0;
+                        var intIndexTo = 0;
+                        var strDataExtensionName = null;
+                        var strDataExtensionCustomerKey = null;
+                        
+                        while (intIndex !== -1) {
+                            intIndex = strDataExtensions.indexOf("CustomerKey", intIndex);
+                            if (intIndex !== -1) {                            
+                                intIndexFrom = strDataExtensions.indexOf("\"", intIndex);
+                                intIndexTo = strDataExtensions.indexOf("\"", intIndexFrom + 1);
+                                strDataExtensionCustomerKey = strDataExtensions.substring(intIndexFrom + 1, intIndexTo);
+                                
+                                intIndex = intIndexTo + 1;                            
+                                intIndex = strDataExtensions.indexOf("Name", intIndex);                            
+                                intIndexFrom = strDataExtensions.indexOf("\"", intIndex);
+                                intIndexTo = strDataExtensions.indexOf("\"", intIndexFrom + 1);
+                                intIndex = intIndexTo + 1;
+                                strDataExtensionName = strDataExtensions.substring(intIndexFrom + 1, intIndexTo);
+                                
+                                arrDataExtensions.push( { 'value' : strDataExtensionCustomerKey , 'text' :  strDataExtensionName});
+                            }
+                        }
+                    },
+                    error:function(objError){
+                        showMessage(TOAST_TYPE_ERROR, ['No se han podido cargar las data extensions']);
+                    }
+                });            
+            }
+            
+            var optionsDE = {
+                data: arrDataExtensions,
+                getValue: "text",
+                list: {
+                    // setea el valor de la variable 
+                    onSelectItemEvent: function() {
+                        strDataExtensionVal = $("#txtDataExtension").getSelectedItemData().value;
+                    },
+                    // permite que machée mientras uno escribe
+                    match: { enabled: true },
+                    // ordena los ítems del list
+                    sort: { enabled: true },
+                    maxNumberOfElements: 10000
+                }
+            };
+            
+            $("#txtDataExtension").easyAutocomplete(optionsDE);
+    
+            function retrieveSurveys() {
+                $.ajax({
+                    method: "GET",
+                    url: 'https://api-pulso.prosumia.la/pulso/surveys/?page=1&size=5000'
+                }).done(function( arrResult ) {                
+                    arrSurveys = arrResult;
+                });  
+            }
+
+            var optionsSurvey = {
+                url : function(phrase) {
+                    return "https://api-pulso.prosumia.la/pulso/surveys/?page=1&size=5000";
+                },
+                getValue: function(element) {
+                    return element.name;
+                },
+                ajaxSettings: {
+                    dataType: "json",
+                    method: "GET",
+                    data: {
+                    dataType: "json"
+                    }
+                },
+                list: {
+                    onSelectItemEvent: function() {
+                        strSurveyVal = $("#txtSurvey").getSelectedItemData().surveyid;
+                    },
+                    match: { enabled: true },
+                    sort: { enabled: true },
+                    maxNumberOfElements: 10000
+                }
+            };
+            
+            $("#txtSurvey").easyAutocomplete(optionsSurvey);
+                
+
+            function sendToApproval() {
+                var strType = null;
+                var strName = null;
+                var boolAllData = null;
+                var boolSendable = null;
+                var strSAQL = null;
+                var strDataExtension = null; 
+                var strSurvey = null;
+
+                let strReportId = null;
+                let strReportName = null;
+                let strCliente = null;
+                let strProyecto = null;
+                let strComentarios = null;
+
+                strType = $('#export_tipo').val();
+                strName = $('#export_name').val();
+                boolAllData = $('#chkAllData').val();
+                boolSendable = $('#chkSendable').val();
+                strSAQL = $('#txtSAQL').val();
+                strDataExtension = $('#txtDataExtension').val();
+                strSurvey = strSurveyVal;//$('#txtSurvey').val();
+
+                if (strType == 'crmcsv') {
+                    strReportName = document.querySelector("#export_reporte").value;
+                    strReportId = document.querySelector("#export_reporte").getAttribute("data-report-id");
+                    strCliente = document.querySelector("#export_cliente").value;
+                    strProyecto = document.querySelector("#export_proyecto").value;
+                    strComentarios = document.querySelector("#export_comentarios").value;
+                    console.log(strReportName, strReportId);
+                }
+
+                if(validateRequest(strType, strName, strSAQL, strDataExtension, strSurvey , strReportId, strReportName, strCliente, strProyecto, strComentarios)) {
+                    showLoading();
+
+                    Visualforce.remoting.Manager.invokeAction( '{!$RemoteAction.ExportController.createExport}', 
+                        strType, strName, boolAllData, boolSendable, strSAQL, strDataExtension, strSurvey, strReportId, strReportName, strCliente, strProyecto, strComentarios,
+                        function(objResult, objEvent){
+                            if(objEvent.status){
+                                location.href = '/apex/export_index?success=1'
+                            } else {
+                                location.href = '/apex/export_index?success=0'
+                            }
+                        },
+                        {escape: true}
+                    );                
+                } 
+            }
+
+            function validateRequest(strType, strName, strSAQL, strDataExtension, strSurvey, strReportId, strReportName, strCliente, strProyecto, strComentarios) {
+                var boolIsValid = false;
+                if(strType !== undefined && strType !== null && strType.trim().length > 0 && ( strType === 'eacsv' || strType === 'eamc' || strType === 'mccsv'  || strType === 'crmcsv'|| strType === 'pulso' )  ) { 
+                    if(strName !== undefined && strName !== null && strName.trim().length > 0) {
+                        switch(strType) {
+                            case 'eacsv':
+                                if(strSAQL !== undefined && strSAQL !== null && strSAQL.trim().length > 0) {
+                                    boolIsValid = true;
+                                } else {
+                                    showMessage(TOAST_TYPE_ERROR, ['El SAQL del export no puede ser nulo']);
+                                }
+                                break;
+                            case 'eamc':
+                                if(strSAQL !== undefined && strSAQL !== null && strSAQL.trim().length > 0) {
+                                    boolIsValid = true;
+                                } else {
+                                    showMessage(TOAST_TYPE_ERROR, ['El SAQL del export no puede ser nulo']);
+                                }
+                                break;
+                            case 'mccsv':
+                                if(strDataExtension !== undefined && strDataExtension !== null && strDataExtension.trim().length > 0) {
+                                    if( ($.grep(arrDataExtensions,function(e,t,a) { return e.text == strDataExtension}).length > 0)) {
+                                        boolIsValid = true;
+                                    } else {
+                                        showMessage(TOAST_TYPE_ERROR, ['No se encontró la dataextension']);
+                                    }
+                                } else {
+                                    showMessage(TOAST_TYPE_ERROR, ['El nombre de la dataextension del export no puede ser nulo']);
+                                }
+                                break;
+                            case 'crmcsv':
+                                boolIsValid = true;
+                                if(!is_empty(strReportId) && !is_empty(strReportName)) {
+                                    if( !($.grep(arrReports,function(e,t,a) { return e.text == strReportName}).length > 0)) {
+                                        showMessage(TOAST_TYPE_ERROR, ['No se encontró el reporte']);
+                                        boolIsValid = false;
+                                        break;
+                                    }
+                                } else {
+                                    console.log(">>>>>", strReportId, strReportName);
+                                    showMessage(TOAST_TYPE_ERROR, ['El nombre del REPORTE no puede ser nulo']);
+                                    boolIsValid = false;
+                                    break;
+                                }
+                                if(is_empty(strCliente)) {
+                                    showMessage(TOAST_TYPE_ERROR, ['El nombre del CLIENTE no puede ser nulo']);
+                                    boolIsValid = false;
+                                    break;
+                                }
+                                if(is_empty(strProyecto)) {
+                                    showMessage(TOAST_TYPE_ERROR, ['El nombre del PROYECTO no puede ser nulo']);
+                                    boolIsValid = false;
+                                    break;
+                                }
+                                break;
+                            case 'pulso':
+                                if(strSurvey !== undefined && strSurvey !== null && strSurvey.trim().length > 0) {
+                                    boolIsValid = true;
+                                } else {
+                                    showMessage(TOAST_TYPE_ERROR, ['El nombre de la encuesta del export no puede ser nulo']);
+                                }
+                                break;
+                        }
+                    } else { 
+                        showMessage(TOAST_TYPE_ERROR, ['El nombre del export no puede ser nulo']);
+                    }
+                } else {
+                    showMessage(TOAST_TYPE_ERROR, ['El tipo de export ingresado no es válido']);
+                }
+
+                return boolIsValid;
+            }
+
+            function is_empty(objstr) {
+                return objstr === undefined || objstr === null || objstr.trim().length == 0;
+            }
+
+            function countChars(obj){
+                var maxLength = 40;;	// CANTIDAD MAXIMA DE CARACTERES PERMITIDOS EN EL TITULO
+                var strLength = obj.value.length;
+                var charRemain = (maxLength - strLength);
+                
+                if(charRemain < 0) {
+                    document.getElementById("charNumName").innerHTML = '<span style="color: red;"><b>Usted ha excedido el límite de '+maxLength+' caracteres</b></span>';
+                } else {
+                    document.getElementById("charNumName").innerHTML = charRemain;
+                }
+            }
+            
+            function showLoading(){
+                $('.modal').modal('show');
+            }
+
+            function hideLoading() {
+                $('.modal').modal('hide');
+            }
+            </script>
+        </body>
+	</html>
+</apex:page>

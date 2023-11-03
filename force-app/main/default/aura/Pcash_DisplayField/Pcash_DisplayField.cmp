@@ -1,0 +1,18 @@
+<aura:component>
+    <aura:attribute name="label"        type="String"                   description="Field Label" />
+    <aura:attribute name="value"        type="String"                   description="Field Value" />
+    <aura:attribute name="showDetail"   type="Boolean"  default="true"  description="Show valued" />
+    <aura:attribute name="emptyValue"   type="String"                   description="Field Value" />
+    <aura:attribute name="labelCSS"     type="String"   default=""      description="Label CSS class" />
+    <aura:attribute name="valueCSS"     type="String"   default=""      description="Value CSS class" />
+    <div class="slds-grid slds-wrap">
+        <div class="{! 'slds-col slds-size_1-of-1 ' + v.labelCSS }" style="margin-bottom: 5px;">
+            {! v.label }
+        </div> 
+        <div class="{! 'slds-col slds-size_1-of-1 ' + v.valueCSS }">
+            <span class="{! (and( v.value != '', v.showDetail == true))? '' : 'slds-hide'}">{! v.value }</span>
+            <span class="{! (and( v.value != '', v.showDetail == false))? '' : 'slds-hide'}">{! $Label.c.Yes}</span>
+            <span class="{! (v.value == null || v.value == '' )? '' : 'slds-hide'}">{! v.emptyValue }</span>
+        </div>
+    </div>
+</aura:component>

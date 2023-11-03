@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Ciudad_Jujuy__c</fullName>
+    <externalId>false</externalId>
+    <label>Ciudad Jujuy</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Abra Pampa</fullName>
+                <default>false</default>
+                <label>Abra Pampa</label>
+            </value>
+            <value>
+                <fullName>Aguas Calientes</fullName>
+                <default>false</default>
+                <label>Aguas Calientes</label>
+            </value>
+            <value>
+                <fullName>Caimancito</fullName>
+                <default>false</default>
+                <label>Caimancito</label>
+            </value>
+            <value>
+                <fullName>Calilegua</fullName>
+                <default>false</default>
+                <label>Calilegua</label>
+            </value>
+            <value>
+                <fullName>El Aguilar</fullName>
+                <default>false</default>
+                <label>El Aguilar</label>
+            </value>
+            <value>
+                <fullName>El Carmen</fullName>
+                <default>false</default>
+                <label>El Carmen</label>
+            </value>
+            <value>
+                <fullName>EL Talar</fullName>
+                <default>false</default>
+                <label>EL Talar</label>
+            </value>
+            <value>
+                <fullName>Fraile Pintado</fullName>
+                <default>false</default>
+                <label>Fraile Pintado</label>
+            </value>
+            <value>
+                <fullName>Humahuaca</fullName>
+                <default>false</default>
+                <label>Humahuaca</label>
+            </value>
+            <value>
+                <fullName>La Esperanza</fullName>
+                <default>false</default>
+                <label>La Esperanza</label>
+            </value>
+            <value>
+                <fullName>La Mendieta</fullName>
+                <default>false</default>
+                <label>La Mendieta</label>
+            </value>
+            <value>
+                <fullName>La Quiaca</fullName>
+                <default>false</default>
+                <label>La Quiaca</label>
+            </value>
+            <value>
+                <fullName>Libertador General San Martín</fullName>
+                <default>false</default>
+                <label>Libertador General San Martín</label>
+            </value>
+            <value>
+                <fullName>Maimará</fullName>
+                <default>false</default>
+                <label>Maimará</label>
+            </value>
+            <value>
+                <fullName>Monterrico</fullName>
+                <default>false</default>
+                <label>Monterrico</label>
+            </value>
+            <value>
+                <fullName>Palma Sola</fullName>
+                <default>false</default>
+                <label>Palma Sola</label>
+            </value>
+            <value>
+                <fullName>Palpalá</fullName>
+                <default>false</default>
+                <label>Palpalá</label>
+            </value>
+            <value>
+                <fullName>Pampa Blanca</fullName>
+                <default>false</default>
+                <label>Pampa Blanca</label>
+            </value>
+            <value>
+                <fullName>Perico</fullName>
+                <default>false</default>
+                <label>Perico</label>
+            </value>
+            <value>
+                <fullName>Puesto Viejo</fullName>
+                <default>false</default>
+                <label>Puesto Viejo</label>
+            </value>
+            <value>
+                <fullName>San Antonio</fullName>
+                <default>false</default>
+                <label>San Antonio</label>
+            </value>
+            <value>
+                <fullName>San Pedro de Jujuy</fullName>
+                <default>false</default>
+                <label>San Pedro de Jujuy</label>
+            </value>
+            <value>
+                <fullName>San Salvador de Jujuy</fullName>
+                <default>false</default>
+                <label>San Salvador de Jujuy</label>
+            </value>
+            <value>
+                <fullName>Santa Clara</fullName>
+                <default>false</default>
+                <label>Santa Clara</label>
+            </value>
+            <value>
+                <fullName>Tilcara</fullName>
+                <default>false</default>
+                <label>Tilcara</label>
+            </value>
+            <value>
+                <fullName>Yala</fullName>
+                <default>false</default>
+                <label>Yala</label>
+            </value>
+            <value>
+                <fullName>Yuto</fullName>
+                <default>false</default>
+                <label>Yuto</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

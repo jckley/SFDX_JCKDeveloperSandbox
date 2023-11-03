@@ -1,0 +1,42 @@
+.page-header {
+    font-family: 'Heebo', sans-serif;
+    font-weight: bold;
+}
+
+.title {font-size: 27pt;color: #666666}
+.main-label:hover{
+    cursor: pointer;
+    text-decoration : underline;
+}
+
+.subtitle,
+.subtitle a,
+.subtitle a:visited,
+.subtitle a:link,
+.subtitle a:hover {
+    font-size: 10pt;
+    line-height: 1.5;
+    color: #666666;
+}
+.subtitle {
+    font-weight: 400;    
+}
+.subtitle A {
+    font-weight: bold;
+}
+.subtitle A:hover { 
+    text-decoration : underline;
+}
+.searchAddress {
+    text-decoration: underline;
+}
+
+/* Special classes for small devices */
+@media only screen and (max-width: 768px) {
+    .title {font-size: 27pt;color: #666666}
+    .subtitle, .subtitle a, .subtitle a:visited, .subtitle a:link, .subtitle a:hover {
+        font-size: 10pt;
+        line-height: 1.5;
+        color: #666666;
+    }
+}

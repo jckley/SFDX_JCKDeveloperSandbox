@@ -1,0 +1,37 @@
+.THIS {
+}
+
+.THIS.tab-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.THIS .border-botom {
+    border-bottom: 1px #E1E1E1;
+}
+
+.THIS .tab {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: #E1E1E1;
+    border-bottom: none;
+}
+
+.THIS .slds-tabs_default__item,
+.THIS .slds-tabs--default__item {
+    --sds-c-tabs-item-text-color: #E1E1E1;
+    --sds-c-tabs-item-text-color-active: #999999;
+    --sds-c-tabs-item-color-border-active: #ff0000;
+    --sds-c-tabs-item-color-border-hover: #ff0000;
+}
+
+.THIS .slds-tabs_default__item.slds-active,
+.THIS .slds-tabs_default__item.slds-is-active,
+.THIS .slds-tabs--default__item.slds-active, 
+.THIS .slds-tabs--default__item.slds-is-active {
+    background-color: #020202;
+}

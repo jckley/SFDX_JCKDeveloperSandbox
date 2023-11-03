@@ -1,0 +1,134 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes,force:appHostable,flexipage:availableForAllPageTypes,force:hasRecordId" controller="ContactDetailController">	    
+    <aura:attribute name="recordId" 		type="Id"  />        
+    <aura:attribute name="citizenWrapper" 	type="CitizenWrapper" />
+    <aura:attribute name="permissions" 		type="RemotingMessageHelper.UserPermissions" />
+    <aura:attribute name="lexHost" 			type="String" default="" />
+    <aura:attribute name="vfHost" 			type="String" default="" />  
+    <aura:attribute name="community"        type="String" default="Cuidarnos"/>
+    <aura:attribute name="linkToRecordId" 	type="String" default="" />  
+    
+    <aura:attribute name="email" 	    type="String" 			required="false" default="" />
+    <aura:attribute name="mobile" 	    type="String" 			required="false" default="" />
+    <aura:attribute name="fijo" 	    type="String" 			required="false" default="" />
+
+    <aura:registerEvent name="PRMCommunityEvent" type="c:PRMCommunityEvent"/>
+
+    <aura:handler name="init" action="{!c.initializeComponent}" value="{!this}" />
+    <aura:handler event="c:ContactUpdatedEvent" action="{! c.refreshPage }" />
+    
+    <div class="slds-grid slds-wrap l-content">        
+        <div class="slds-size_1-of-1 slds-grid slds-wrap slds-m-bottom_small">
+            <div style="{!'display: ' + (v.citizenWrapper.citizen.PhotoUrl_legacy__c != NULL ?'block':'none')}"><img class="citizenPicture" src="{!v.citizenWrapper.citizen.PhotoUrl_legacy__c }" alt="{! v.citizenWrapper.citizen.FirstName + ' ' + v.citizenWrapper.citizen.MiddleName + ' ' + v.citizenWrapper.citizen.Lastname }" /></div>
+            <div class="{! v.citizenWrapper.citizen.PhotoUrl_legacy__c != NULL ?'slds-max-medium-size_8-of-12 slds-col header-padding':'slds-col header-padding' }">
+                <c:Ecuador_PageHeader citizenWrapper="{! v.citizenWrapper }"  mainlabel="{! v.citizenWrapper.citizen.FirstName + ' ' + v.citizenWrapper.citizen.MiddleName + ' ' + v.citizenWrapper.citizen.LastName}" secundarylabel="{!v.citizenWrapper.generalInfo.Title }" secundarylabelunderlined="{!v.citizenWrapper.generalInfo.Address }" />
+            </div>
+            <div class="{! v.citizenWrapper.citizen.ec_tribu__c != NULL ?'rounded-container tribu slds-text-align_center':'slds-hide' }">
+                <div class="{!  (v.citizenWrapper.citizen.ec_tribu__c=='CORREISTAS')?'correistas':
+                                (v.citizenWrapper.citizen.ec_tribu__c=='PRAGMATICOS')?'pragmaticos':
+                                (v.citizenWrapper.citizen.ec_tribu__c=='PROGRESISTAS')?'progesistas':
+                                (v.citizenWrapper.citizen.ec_tribu__c=='ANTAGONISTAS')?'antagonistas':
+                                (v.citizenWrapper.citizen.ec_tribu__c=='POPULISTAS')?'populistas':
+                                (v.citizenWrapper.citizen.ec_tribu__c=='INDIVIDUALISTAS')?'individualistas':
+                                (v.citizenWrapper.citizen.ec_tribu__c=='MATERIALISTAS')?'materialistas':
+                                (v.citizenWrapper.citizen.ec_tribu__c=='NEOLIBERALES')?'neoliberales':
+                                'slds-hide' }">
+                    {! v.citizenWrapper.citizen.ec_tribu__c }
+                </div>
+            </div>
+        </div>
+
+        <div class="slds-size_1-of-1">
+            <c:Ecuador_ContactGeneralInfo citizenWrapper="{! v.citizenWrapper }" rendered="{! v.permissions.ContactViewCommonData}" canEdit="{!v.permissions.ViewEdition}" />
+        </div>
+        
+        <div class="slds-size_1-of-1">
+            <c:Ecuador_ContactLocationInfo citizenWrapper="{! v.citizenWrapper }" rendered="{! v.permissions.ContactViewCommonData}" />
+        </div>
+        
+        <div class="slds-size_1-of-1">
+            <c:Ecuador_ContactAddress citizenWrapper="{! v.citizenWrapper }" rendered="{! v.permissions.ContactViewCommonData}" fijo="{! v.citizenWrapper.pilar360.fijo }" />
+        </div>
+        
+        <div class="{! v.citizenWrapper.permissions.ContactViewContactInfo ?'slds-col slds-size_1-of-1 citizenseparator':'slds-hide'}">            
+            <c:Ecuador_Cuidarnos_Map community="{! v.community }" citizenWrapper="{! v.citizenWrapper }"  rendered="{! v.permissions.ContactViewLocation }" />
+        </div>
+                
+        <div class="slds-size_1-of-1">
+            <c:Ecuador_ContactContactInfo citizenWrapper="{! v.citizenWrapper }" rendered="{! v.permissions.ContactViewCommonData}"   mobile="{! v.citizenWrapper.pilar360.mobile_phone }" email="{! v.citizenWrapper.pilar360.email }"  />
+        </div>
+        
+        <!--<div class="{!'slds-size_1-of-1 ' + (v.citizenWrapper.twitterUserFormated != ''?'timeline':'')}">-->
+        <div class="slds-size_1-of-1">
+            <c:Ecuador_ContactSocialInfo citizenWrapper="{!v.citizenWrapper}" rendered="{! v.permissions.ContactViewCommonData}" lexHost="{!v.lexHost}" vfHost="{!v.vfHost}"/>
+        </div>
+
+        <div class="slds-size_1-of-1">
+            <c:Ecuador_ContactAttributes citizenWrapper="{! v.citizenWrapper }" rendered="{! and( v.permissions.ContactViewAttributes, v.citizenWrapper.attributes.items.length > 0) }" />
+        </div>
+
+        <div class="slds-size_1-of-1">
+            <c:Ecuador_ContactAttributesIncome citizenWrapper="{!v.citizenWrapper}" rendered="{! and( v.permissions.ContactViewIncome, v.citizenWrapper.incomeInfo.employers.length > 0 )}" />
+        </div>
+
+        <div class="slds-size_1-of-1">
+            <c:Ecuador_ContactAttributesElectoral citizenWrapper="{!v.citizenWrapper}" rendered="{! v.permissions.ContactViewElectoral }" />
+        </div>
+
+        <div class="slds-size_1-of-1">
+            <c:Ecuador_Canvas citizenWrapper="{!v.citizenWrapper}" rendered="{! v.permissions.ContactViewElectoral }" width="100%" height="800px"/>
+        </div>
+
+        <div class="slds-size_1-of-1">
+            <c:Ecuador_ContactTags contw="{! v.citizenWrapper }" rendered="{!v.permissions.ContactViewTags}" />
+        </div>
+
+    </div>
+
+    <section aura:id="divModalEdit" role="dialog" tabindex="-1" class="slds-modal slds-modal_small" aria-labelledby="mdlMarkCitizenTitle" aria-modal="true" aria-describedby="mdlMarkCitizenContent">
+        <div class="slds-modal__container">
+            <header class="slds-modal__header" style="border-bottom: solid 0px transparent;">
+                <lightning:icon class="slds-modal__close " iconName="utility:close" alternativeText="Cerrar" title="Cerrar"  onclick="{!c.closeModal}" />                
+            </header>
+
+             <div class="slds-modal__content slds-p-around_medium">
+                <div class="confirmtitle">
+                    <div class="slds-align_absolute-center">
+                        Editar
+                    </div>
+                </div>
+                <div class="editdialog">
+                    <div class="slds-p-around_medium">
+                        <div class="edit_inpuclt">
+                            <div class="label">E-Mail</div>
+                            <div class="value" >
+                                <ui:inputText  value="{!v.email}" />
+                            </div>
+                        </div>
+ 
+                        <div class="edit_input">
+                            <div class="label">Celular</div>
+                            <div class="value" >
+                                <ui:inputText  value="{!v.mobile}" />
+                            </div>
+                        </div>
+
+                        <div class="edit_input">
+                            <div class="label">Telefono fijo</div>
+                            <div class="value" >
+                                <ui:inputText  value="{!v.fijo}" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="modal_buttons slds-var-p-around_medium slds-align_absolute-center" style="height:5rem">                        
+                        <button data-action="close_modal"   onclick="{!c.proccesAction}" class="">Cancelar</button>
+                        <button data-action="save_edit"     onclick="{!c.proccesAction}" class="ok">Aceptar</button>            
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div aura:id="divBackground" class="slds-backdrop"></div>   
+</aura:component>

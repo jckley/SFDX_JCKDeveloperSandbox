@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomPermission xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Permiso para que un usuario vea el Selector de Pais en la pagina Inicio</description>
+    <isLicensed>false</isLicensed>
+    <label>Country Selector ON</label>
+</CustomPermission>

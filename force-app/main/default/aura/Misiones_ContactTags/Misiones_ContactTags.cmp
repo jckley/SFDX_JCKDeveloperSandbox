@@ -1,0 +1,61 @@
+<aura:component >	
+    <aura:attribute name="contw" 	type="CitizenWrapper" required="true" />
+    <aura:attribute name="rendered" 	type="Boolean" default="true" />
+    
+    <div class="slds-size-1-of-1 contact-data" style="{!'margin-top: 20px; ' + ( v.rendered ? '':'display: none')}">
+        <div>
+            <div class="slds-grid slds-wrap card-cont">
+                <aura:iteration items="{!v.contw.tagsForCommunity }" var="strTag">
+                    <c:Misiones_TagComponent label="" value="{!'#' + strTag }" valueCSS="value-blue" rendered="true"/>                
+                </aura:iteration>
+                
+                <aura:iteration items="{!v.contw.hashTags.tagsAudienciaPolitica.tagsSelected }" var="strTag">
+                    <c:Misiones_TagComponent label="" value="{!'#' + strTag }" valueCSS="value-blue" rendered="true"/>
+                </aura:iteration>
+                <aura:iteration items="{!v.contw.hashTags.tagsAudienciaElectoral.tagsSelected }" var="strTag">
+                    <c:Misiones_TagComponent label="" value="{!'#' + strTag }" valueCSS="value-blue" rendered="true"/>
+                </aura:iteration>
+                <aura:iteration items="{!v.contw.hashTags.tagsAudienciaGeneraciones.tagsSelected }" var="strTag">
+                    <c:Misiones_TagComponent label="" value="{!'#' + strTag }" valueCSS="value-blue" rendered="true"/>
+                </aura:iteration>
+                <aura:iteration items="{!v.contw.hashTags.tagsCommunity.tagsSelected }" var="strTag">
+                    <c:Misiones_TagComponent label="" value="{!'#' + strTag }" valueCSS="value-blue" rendered="true"/>
+                </aura:iteration>
+                <aura:iteration items="{!v.contw.hashTags.tagsCDPAxis.tagsSelected }" var="strTag">
+                    <c:Misiones_TagComponent label="" value="{!'#' + strTag }" valueCSS="value-blue" rendered="true"/>
+                </aura:iteration>
+                <aura:iteration items="{!v.contw.hashTags.tagsCDPCampaign.tagsSelected }" var="strTag">
+                    <c:Misiones_TagComponent label="" value="{!'#' + strTag }" valueCSS="value-blue" rendered="true"/>
+                </aura:iteration>
+                <aura:iteration items="{!v.contw.hashTags.tagsCDPScore.tagsSelected }" var="strTag">
+                    <c:Misiones_TagComponent label="" value="{!'#' + strTag }" valueCSS="value-blue" rendered="true"/>
+                </aura:iteration>
+                <aura:iteration items="{!v.contw.hashTags.tagsCDPStatus.tagsSelected }" var="strTag">
+                    <c:Misiones_TagComponent label="" value="{!'#' + strTag }" valueCSS="value-blue" rendered="true"/>
+                </aura:iteration>
+                <aura:iteration items="{!v.contw.hashTags.tagsEPDLG.tagsSelected }" var="strTag">
+                    <c:Misiones_TagComponent label="" value="{!'#' + strTag }" valueCSS="value-blue" rendered="true"/>
+                </aura:iteration>
+                <aura:iteration items="{!v.contw.hashTags.tagsSituacionAsalariado.tagsSelected }" var="strTag">
+                    <c:Misiones_TagComponent label="" value="{!'#' + strTag }" valueCSS="value-blue" rendered="true"/>
+                </aura:iteration>
+                <aura:iteration items="{!v.contw.hashTags.tagsJerarquiaEmpleo.tagsSelected }" var="strTag">
+                    <c:Misiones_TagComponent label="" value="{!'#' + strTag }" valueCSS="value-blue" rendered="true"/>
+                </aura:iteration>
+                <aura:iteration items="{!v.contw.hashTags.tagsActividadesEconomicas.tagsSelected }" var="strTag">
+                    <c:Misiones_TagComponent label="" value="{!'#' + strTag }" valueCSS="value-blue" rendered="true"/>
+                </aura:iteration>
+
+                <aura:iteration items="{!v.contw.misiones.Interest_Misiones }" var="strTag">
+                    <c:Misiones_TagComponent label="" value="{!'#' + strTag }" valueCSS="value-blue" rendered="true"/>
+                </aura:iteration>
+                <aura:iteration items="{!v.contw.misiones.Social_Benefit_Misiones }" var="strTag">
+                    <c:Misiones_TagComponent label="" value="{!'#' + strTag }" valueCSS="value-blue" rendered="true"/>
+                </aura:iteration>
+                
+                <c:Misiones_TagComponent label="" value="{!'#' + v.contw.misiones.Estado_COVID_Misiones }" valueCSS="value-blue" rendered="{!v.contw.misiones.Estado_COVID_Misiones?true:false}"/>
+            </div>
+        </div>
+    </div>
+    
+</aura:component>

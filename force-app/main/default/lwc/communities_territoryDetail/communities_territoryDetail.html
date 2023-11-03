@@ -1,0 +1,174 @@
+<template>
+    <main class={community}>
+        <article class="slds-container--center slds-container--x-large">
+            <header>
+                <button class="slds-button slds-button_destructive" onclick={goBack}>Volver</button>
+                <c-common-header title={title} subtitle={subtitle} subtitlelinktext={subtitlelinktext} subtitlelinkurl={subtitlelinkurl}></c-common-header>
+            </header>
+            
+            <div class="slds-p-top_large slds-grid slds-grid--pull-padded slds-wrap">
+                <div class="slds-col--padded slds-size_1-of-1 slds-medium-size_3-of-12">
+                    <div class="cardsector">                
+                        <div class="icon slds-m-around_medium slds-align_absolute-center" >
+                            <img src={iconPeople} alt={label.lblInhabitants} />
+                        </div>
+                    </div>                
+                </div>
+
+                <div class="slds-col--padded slds-size_1-of-1 slds-medium-size_9-of-12">
+                    <div class="cardsector">
+                        <div class="inhabitants slds-m-around_medium slds-align_absolute-center slds-wrap" >                        
+                            <span class="nro slds-p-right_medium">{territoryInfo.total}</span>
+                            {label.lblInhabitants}
+                        </div>                
+                    </div>
+                </div>
+
+                <!-- <div class="slds-col--padded slds-size_1-of-1 slds-m-top_medium">
+                    <c-communities_territory-heatmap recordid={recordId} community={community}></c-communities_territory-heatmap>
+                </div> -->
+
+                <div class="slds-col--padded slds-size_1-of-1 slds-m-top_medium">
+                    <div class="cardsector">
+                        <div class="generations slds-grid slds-wrap">
+                            <div class="slds-col slds-size_1-of-1 slds-medium-size_3-of-12">
+                                <div class="slds-grid slds-wrap gender">
+                                    <div class="slds-col slds-size_1-of-1 women">
+                                        <div class="slds-grid slds-wrap slds-grid--vertical-align-center container">
+                                            <div class="slds-col slds-size_1-of-1 slds-text-align_center">                                        
+                                                <div class="title">{label.lblWomen}</div>
+                                                <div class="total">{territoryInfo.totalwomen}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                
+                                    <div class="slds-col slds-size_1-of-1 men">
+                                        <div class="slds-grid slds-wrap slds-grid--vertical-align-center container">
+                                            <div class="slds-col slds-size_1-of-1 slds-text-align_center">                                        
+                                                <div class="title">{label.lblMen}</div>
+                                                <div class="total">{territoryInfo.totalmen}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>    
+                            </div>
+
+                            <div class="slds-col slds-size_1-of-1 slds-medium-size_9-of-12">
+                                <div class="slds-grid slds-p-around_medium slds-grid--pull-padded slds-wrap">
+                                    <template for:each={territoryInfo.generationInfo} for:item="objGeneration" for:index="intIndex">                                    
+                                        <div key={objGeneration} class="slds-col--padded slds-size_1-of-2 slds-medium-size_1-of-6">
+                                            <c-communities_territory-detail-generation community={community} icon={objGeneration.info.image} value={objGeneration.info.value} name={objGeneration.info.name} description={objGeneration.info.description} ></c-communities_territory-detail-generation>
+                                        </div>
+                                    </template>
+                                </div>
+                            </div>
+                        </div>
+                    </div>      
+                </div> 
+
+                <template if:true={renderEducation}>
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-p-around_medium">
+                        <div class="cardsector" >
+                            <div class="educationlevel">
+                                <header class="slds-p-around_large slds-p-bottom_none">
+                                    <h1>{label.lblEducationLevel}</h1>
+                                </header>
+                                <article class="slds-p-around_medium">
+                                    <template for:each={territoryInfo.educationLevels} for:item="objEducationLevel" for:index="intIndex">                                    
+                                        <div key={objEducationLevel} class="slds-col--padded slds-size_1-of-1">
+                                            <c-communities_territory-detail-card-type1 community={community} icon={objEducationLevel.info.image} value={objEducationLevel.info.value} name={objEducationLevel.info.name} description={objEducationLevel.info.description} ></c-communities_territory-detail-card-type1>
+                                        </div>
+                                    </template>
+                                </article>
+                            </div>
+                        </div>   
+                    </div>
+                </template>
+
+                <template if:true={renderIncomeRange}>
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-p-around_medium">
+                        <div class="cardsector" >
+                            <div class="incomerange">
+                                <header class="slds-p-around_large slds-p-bottom_none">
+                                    <h1>{label.lblIncomeRange}</h1>
+                                </header>
+                                <article class="slds-p-around_medium">
+                                    <div class="slds-p-top_medium">                            
+                                        <template iterator:it={territoryInfo.incomeranges}>
+                                            <div key={it.value} class="slds-col--padded slds-size_1-of-1" style="height: 80px;">                                            
+                                                <c-communities_territory-detail-card-type2 community={community} icon={it.value.info.image} value={it.value.info.value} name={it.value.info.name} description={it.value.info.description} ></c-communities_territory-detail-card-type2>
+                                                <!-- <div style="height: 2px;" class="slds-p-top_medium"  key={it.value} if:false={it.last}><hr></div> -->
+                                            </div>
+                                        </template>
+                                    </div>
+                                </article>
+                            </div>
+                        </div>             
+                    </div>
+                </template>
+
+                <template if:true={renderOccupationType}>
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-p-around_medium">
+                        <div class="cardsector" >
+                            <div class="occupationtype">
+                                <header class="slds-p-around_large slds-p-bottom_none">
+                                    <h1>{label.lblOccupationType}</h1>
+                                </header>
+                                <article class="slds-p-around_medium">
+                                    <template for:each={territoryInfo.occupationTypes} for:item="objOccupationType" for:index="intIndex">                                    
+                                        <div key={objOccupationType} class="slds-col--padded slds-size_1-of-1">
+                                            <c-communities_territory-detail-card-type1 community={community} icon={objOccupationType.info.image} value={objOccupationType.info.value} name={objOccupationType.info.name} description={objOccupationType.info.description} ></c-communities_territory-detail-card-type1>
+                                        </div>
+                                    </template>
+                                </article>
+                            </div>
+                        </div>                    
+                    </div>
+                </template>
+
+                <template if:true={renderEconomicActivities}>
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_2-of-3 slds-p-around_medium">
+                        <div class="cardsector" >
+                            <div class="economicactivities">
+                                <header class="slds-p-around_large slds-p-bottom_none">
+                                    <h1>{label.lblEconomicActivities}</h1>
+                                </header>
+                                <article class="slds-p-around_medium">
+                                    <div class="slds-grid slds-grid--pull-padded slds-wrap">
+                                        <template for:each={lstEconomicActivities} for:item="objEconomicActivity" for:index="intIndex">                                    
+                                            <div class="slds-col--padded slds-size_1-of-1 slds-medium-size_1-of-2" key={objEconomicActivity}>
+                                                <c-communities_territory-detail-card-type3 community={community} icon={objEconomicActivity.image} value={objEconomicActivity.value} name={objEconomicActivity.name} description={objEconomicActivity.description} ></c-communities_territory-detail-card-type3>
+                                            </div>
+                                        </template>
+                                    </div>
+                                </article>
+                            </div>
+                        </div>                
+                    </div>
+                </template>
+
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-p-around_medium">
+                    <div class="cardsector" >
+                        <div class="geographic_distribution">
+                            <header class="slds-p-around_large slds-p-bottom_none">
+                                <h1>{label.lblGeographicDistribution}</h1>
+                            </header>
+                            <article class="slds-p-around_medium">
+                                <template for:each={geographicdistributions} for:item="objGeographicDistribution" for:index="intIndex">                                    
+                                    <div key={objGeographicDistribution} class="slds-col--padded slds-size_1-of-1">
+                                        <c-communities_territory-detail-card-type3 community={community} icon={objGeographicDistribution.info.image} value={objGeographicDistribution.info.value} name={objGeographicDistribution.info.name} description={objGeographicDistribution.info.description} haslink="true" link={objGeographicDistribution.info.link} ></c-communities_territory-detail-card-type3>
+                                    </div>
+                                </template>
+                                <template if:true={isgeographicdistributionsbuttonvisible}>
+                                    <div class="slds-col--padded slds-size_1-of-1">
+                                        <button style="background-color: lightgray;width:100%;border:0 lightgray solid;height:40px;" onclick={showMoreGeographicDistribution}>VER MÁS</button>
+                                    </div>
+                                </template>
+                            </article>
+                        </div>
+                    </div>                              
+                </div>
+            </div>            
+        </article>
+    </main>
+</template>

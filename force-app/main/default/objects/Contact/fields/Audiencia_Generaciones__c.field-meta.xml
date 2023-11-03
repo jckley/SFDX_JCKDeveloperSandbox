@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Audiencia_Generaciones__c</fullName>
+    <externalId>false</externalId>
+    <label>Audiencia Generaciones</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>GENERACION SILENCIOSA</fullName>
+                <default>false</default>
+                <label>GENERACION SILENCIOSA</label>
+            </value>
+            <value>
+                <fullName>BABY BOOMERS</fullName>
+                <default>false</default>
+                <label>BABY BOOMERS</label>
+            </value>
+            <value>
+                <fullName>GENERACION X</fullName>
+                <default>false</default>
+                <label>GENERACION X</label>
+            </value>
+            <value>
+                <fullName>MILENNIALS</fullName>
+                <default>false</default>
+                <label>MILENNIALS</label>
+            </value>
+            <value>
+                <fullName>CENTENNIALS</fullName>
+                <default>false</default>
+                <label>CENTENNIALS</label>
+            </value>
+            <value>
+                <fullName>SUB 16</fullName>
+                <default>false</default>
+                <label>SUB 16</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

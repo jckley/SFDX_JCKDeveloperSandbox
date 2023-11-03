@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Relacionados_Por_fecha</fullName>
+    <columns>NAME</columns>
+    <columns>Total_Sends__c</columns>
+    <columns>Ciudadano__c</columns>
+    <columns>Stack_Trace__c</columns>
+    <columns>Status__c</columns>
+    <columns>Type__c</columns>
+    <columns>Usuario__c</columns>
+    <columns>LAST_UPDATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Type__c</field>
+        <operation>equals</operation>
+        <value>Relacionados</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>Fallo</value>
+    </filters>
+    <label>Relacionados Por fecha</label>
+</ListView>

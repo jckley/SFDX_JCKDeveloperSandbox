@@ -1,0 +1,454 @@
+<apex:page controller="Pulso_Admin_Typeform_Controller">
+    <apex:slds />
+    <c:ToastNotification />
+    <div class="slds-grid" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <div class="slds-size--1-of-1">
+            <!-- MASTHEAD -->
+
+            <h1 class="slds-text-heading--label slds-m-bottom--small">
+                <div class="slds-page-header slds-page-header--object-home" role="banner">
+                    <div class="slds-grid">
+                        <div class="slds-col slds-has-flexi-truncate">
+                            <div class="slds-media slds-no-space slds-grow">
+                                <div class="slds-media__figure">
+                                    <span class="slds-icon_container">
+                                        <svg aria-hidden="true" class="slds-icon slds-icon-standard-lead">
+                                            <use xlink:href="{!URLFOR($Asset.SLDS, '/assets/icons/standard-sprite/svg/symbols.svg#lead')}"></use>
+                                        </svg>
+                                    </span>
+                                </div>
+
+                                <div class="slds-media__body">
+                                    <p class="slds-text-title--caps slds-line-height--reset">PulsoCRM</p>
+                                    <button class="slds-button slds-type-focus slds-m-right--small slds-grid slds-truncate" aria-haspopup="true">
+                                        <div class="slds-grid slds-grid--vertical-align-center slds-truncate">
+                                            <h1 class="slds-page-header__title slds-truncate" title="Admin">Admin</h1>
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </h1>
+        </div>
+    </div>
+
+    <div class="slds-section slds-is-open" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <h3 class="slds-section__title slds-theme_shade">
+            <span class="slds-truncate slds-p-horizontal_small" title="Typeform">Typeform</span>
+        </h3>
+
+        <div aria-hidden="false" class="required_authorization slds-section__content slds-hide">
+            <a id="linkToAuthorization" class="slds-button slds-button_brand" href="">
+                Autorizar Typeform
+            </a>
+        </div>
+
+        <div aria-hidden="false" class="authorized slds-section__content slds-hide">
+            <div class="slds-grid slds-wrap">
+                <div class="slds-size_1-of-1">
+                    <div class="slds-form slds-form_compound">
+                        <fieldset class="slds-form-element">
+                            <legend class="slds-form-element__label slds-form-element__legend">Seleccione un rango de fechas</legend>
+                            <div class="slds-form-element__control">
+                                <div class="slds-form-element__group">
+                                    <div class="slds-form-element__row">
+                                        <div class="slds-form-element slds-dropdown-trigger slds-dropdown-trigger_click calendarfrom">
+                                            <label class="slds-form-element__label" for="txtDate">Fecha</label>
+                                            <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right">
+                                                <input type="text" id="txtDate" placeholder=" " class="slds-input" />
+                                                <button class="slds-button slds-button_icon slds-input__icon slds-input__icon_right opencalendarfrom" title="Seleccione una fecha">
+                                                    <svg class="slds-button__icon" aria-hidden="true">
+                                                        <use xlink:href="{!URLFOR($Asset.SLDS, '/assets/icons/utility-sprite/svg/symbols.svg#event')}"></use>
+                                                    </svg>
+                                                    <span class="slds-assistive-text">Seleccione una fecha</span>
+                                                </button>
+                                            </div>
+                                            <div aria-hidden="false" aria-label="Date picker: June" class="slds-datepicker slds-dropdown slds-dropdown_left" role="dialog">
+                                                <div class="slds-datepicker__filter slds-grid">
+                                                    <div class="slds-datepicker__filter_month slds-grid slds-grid_align-spread slds-grow">
+                                                        <div class="slds-align-middle">
+                                                            <button class="slds-button slds-button_icon slds-button_icon-container changemonth" data-month="-1" title="Anterior">
+                                                                <svg class="slds-button__icon" aria-hidden="true">
+                                                                    <use xlink:href="{!URLFOR($Asset.SLDS, '/assets/icons/utility-sprite/svg/symbols.svg#left')}"></use>
+                                                                </svg>
+                                                                <span class="slds-assistive-text">Anterior</span>
+                                                            </button>
+                                                        </div>
+                                                        <h2 aria-atomic="true" aria-live="assertive" class="slds-align-middle" id="divMonth"></h2>
+                                                        <div class="slds-align-middle">
+                                                            <button class="slds-button slds-button_icon slds-button_icon-container changemonth" data-month="1" title="Siguiente">
+                                                                <svg class="slds-button__icon" aria-hidden="true">
+                                                                    <use xlink:href="{!URLFOR($Asset.SLDS, '/assets/icons/utility-sprite/svg/symbols.svg#right')}"></use>
+                                                                </svg>
+                                                                <span class="slds-assistive-text">Siguiente</span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="slds-shrink-none">
+                                                        <label class="slds-assistive-text" for="cboYear">Año</label>
+                                                        <div class="slds-select_container">
+                                                            <select class="slds-select changeyear" id="cboYear">
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <table aria-labelledby="month" aria-multiselectable="true" class="slds-datepicker__month" role="grid">
+                                                    <thead>
+                                                        <tr id="weekdays">
+                                                            <th scope="col">
+                                                                <abbr title="Domingo">Do</abbr>
+                                                            </th>
+                                                            <th scope="col">
+                                                                <abbr title="Lunes">Lu</abbr>
+                                                            </th>
+                                                            <th scope="col">
+                                                                <abbr title="Mártes">Ma</abbr>
+                                                            </th>
+                                                            <th scope="col">
+                                                                <abbr title="Miércoles">Mi</abbr>
+                                                            </th>
+                                                            <th scope="col">
+                                                                <abbr title="Jueves">Ju</abbr>
+                                                            </th>
+                                                            <th scope="col">
+                                                                <abbr title="Viernes">Vi</abbr>
+                                                            </th>
+                                                            <th scope="col">
+                                                                <abbr title="Sábado">Sá</abbr>
+                                                            </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody class="calendardays">
+ 
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="slds-form-element">
+                                            <label class="slds-form-element__label" for="cboSurvey">Encuesta</label>
+                                            <div class="slds-form-element__control">
+                                                <div class="slds-select_container">
+                                                    <select class="slds-select" id="cboSurvey">
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+
+                <div class="slds-size_1-of-1">
+                    <div class="slds-button slds-button_success updatesurvey">
+                        Actualizar encuestas
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div aria-hidden="false" class="invalid_configuration slds-section__content slds-hide">
+            <div class="slds-button slds-button_error">
+                Configuración Inválida
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        var arrMonths = null;
+        var datFirstDay = null;
+        var datToday = null;
+
+        $(document).ready(function () {
+            initializePage();
+        });
+
+        $('.changemonth').on('click', function(){ 
+            var intMonthStep = null;
+
+            intMonthStep = parseInt($(this).data('month'));
+
+            datFirstDay = new Date(datFirstDay.getFullYear(), (datFirstDay.getMonth() + (intMonthStep)), 1);
+
+            fillCalendar(datFirstDay.getMonth(), datFirstDay.getFullYear(), datToday);
+        })
+        
+        $('.opencalendarfrom').on('click', function(){ 
+            if($('.calendarfrom').hasClass('slds-is-open')) {
+                $('.calendarfrom').removeClass('slds-is-open')
+            } else {
+                $('.calendarfrom').addClass('slds-is-open')
+            }
+        })
+
+
+        $('.changeyear').on('click', function(){ 
+            var intNewYear = null;
+
+            intNewYear = parseInt($(this).val());
+
+            datFirstDay = new Date(intNewYear, datFirstDay.getMonth(), 1);
+
+            fillCalendar(datFirstDay.getMonth(), datFirstDay.getFullYear(), datToday);
+        })
+
+        $('.updatesurvey').on('click', function(){ 
+            var strSurveyId = null;
+            var strDate = null;
+
+            strSurveyId =  $("#cboSurvey option:selected" ).val();
+            strDate =  $("#txtDate" ).prop('date');
+
+            refreshTypeformSurveys(strSurveyId, strDate);
+        })
+        
+
+        $(document).on('click','.selectday', function(){ 
+            var strDay = null;
+            var strMonth = null;
+            var strYear = null;
+
+            strYear = ($(this).data('fullyear')).toString();
+            strMonth = ($(this).data('month') + 1).toString();
+            strDay = ($(this).data('day')).toString();
+
+            $('#txtDate').val(strDay.padStart(2,'0') + '-' + strMonth.padStart(2,'0') + '-' + strYear);
+            $('#txtDate').prop('date', strYear + '-' + strMonth.padStart(2,'0') + '-' + strDay.padStart(2,'0'));
+
+            if($('.calendarfrom').hasClass('slds-is-open')) {
+                $('.calendarfrom').removeClass('slds-is-open')
+            } else {
+                $('.calendarfrom').addClass('slds-is-open')
+            }
+        })
+
+        function initializePage() {
+            var strCode = null;
+
+            strCode = $.urlParam('code');
+            if (strCode === undefined || strCode === null || strCode.length == 0) {
+                loadConfigValues();
+            } else {
+                saveAuthorizationCode(strCode);
+            }
+
+            loadCalendar();
+            retrieveTypeformSurveys();
+        }
+
+        function loadConfigValues() {
+            Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.Pulso_Admin_Typeform_Controller.retrieveTypeformStatus}',
+                function (objResult, objEvent) {
+                    if (objEvent.status) {
+                        if (objResult == true) {
+                            $('.authorized').removeClass('slds-hide');
+                        } else {
+                            loadAuthorizationUrl();
+                        }
+                    } else {
+                        handleError(objEvent);
+                    }
+                },
+                { escape: true }
+            );
+        }
+
+        function loadConfigValues() {
+            Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.Pulso_Admin_Typeform_Controller.retrieveTypeformStatus}',
+                function (objResult, objEvent) {
+                    if (objEvent.status) {
+                        if (objResult == true) {
+                            $('.authorized').removeClass('slds-hide');
+                        } else {
+                            loadAuthorizationUrl();
+                        }
+                    } else {
+                        handleError(objEvent);
+                    }
+                },
+                { escape: true }
+            );
+        }
+
+        function loadAuthorizationUrl() {
+            Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.Pulso_Admin_Typeform_Controller.retrieveAuthorizationUrl}',
+                function (objResult, objEvent) {
+                    if (objEvent.status) {
+                        if (objResult !== undefined && objResult !== null && objResult.length > 0) {
+                            $('#linkToAuthorization').attr('href', encodeCustomUrl(objResult));
+                            $('.required_authorization').removeClass('slds-hide');
+                        } else {
+                            $('.invalid_configuration').removeClass('slds-hide');
+                            showMessage(TOAST_TYPE_ERROR, ['La configuración no es válida']);
+                        }
+                    } else {
+                        handleError(objEvent);
+                    }
+                },
+                { escape: true }
+            );
+        }
+
+        function saveAuthorizationCode(strCode) {
+            if (strCode !== undefined && strCode !== null && strCode.length > 0) {
+                Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.Pulso_Admin_Typeform_Controller.saveAuthorizationCode}', strCode,
+                    function (objResult, objEvent) {
+                        if (objEvent.status) {
+                            if (objResult.Code === 0) {
+                                $('.authorized').removeClass('slds-hide');
+                            } else {
+                                showMessage(TOAST_TYPE_ERROR, ['La configuración no es válida']);
+                            }
+                        } else {
+                            handleError(objEvent);
+                        }
+                    },
+                    { escape: true }
+                );
+            }
+        }
+
+        function retrieveTypeformSurveys() {
+            Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.Pulso_Admin_Typeform_Controller.retrieveTypeformSurveys}',
+                function (objResult, objEvent) {
+                    if (objEvent.status) {
+                        for(var intIndex = 0; intIndex < objResult.length; intIndex++) {
+                            $('#cboSurvey').append( $('<option />').val(objResult[intIndex].Id).text(objResult[intIndex].TituloEncuesta__c) );
+                        }
+                    } else {
+                        handleError(objEvent);
+                    }
+                },
+                { escape: true }
+            );
+        }
+
+        function refreshTypeformSurveys(strSurveyId, strDate) {
+            Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.Pulso_Admin_Typeform_Controller.retrieveTypeformInfo}', strSurveyId, strDate,
+                function (objResult, objEvent) {
+                    if (objEvent.status) {
+                        showMessage(TOAST_TYPE_SUCCESS, ['La operación se esta ejecutando.']);
+                    } else {
+                        handleError(objEvent);
+                    }
+                },
+                { escape: true }
+            );
+        }
+
+        $.urlParam = function (strName) {
+            var arrResults = null;
+            var objResult = null;
+
+            if (strName !== undefined && strName !== null && strName.length > 0) {
+                arrResults = new RegExp('[\?&]' + strName + '=([^&#]*)').exec(window.location.href);
+
+                if (arrResults === undefined || arrResults == null || arrResults.length < 1) {
+                    objResult = null;
+                } else {
+                    objResult = arrResults[1] || 0;
+                }
+            }
+
+            return objResult;
+        }
+
+        Date.prototype.addDays = function(days) {
+            var date = new Date(this.valueOf());
+            date.setDate(date.getDate() + days);
+            return date;
+        }
+
+
+        function encodeCustomUrl(strUrl) {
+            var arrMap = null;
+
+            arrMap = { amp: '&', lt: '<', gt: '>', quot: '"', '#039': "'" };
+            strUrl = strUrl.replace(/&([^;]+);/g, (objObject, chrChar) => arrMap[chrChar]);
+
+            return strUrl;
+        }
+
+
+        function loadCalendar() {
+            datToday = new Date();
+            arrMonths = loadMonths();
+            datFirstDay = datToday;
+           
+            loadYears(datToday.getFullYear());
+            fillCalendar(datToday.getMonth(), datToday.getFullYear(), datToday);
+        }
+
+        function loadMonths() {
+            var arrMonths = null;
+
+            arrMonths = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+
+            return arrMonths;
+        }
+
+        function loadYears(intYear) {
+            var arrYears = null;
+
+            for(var intIndex = (intYear - 1); intIndex < (intYear + 2); intIndex++)  {
+                if(intIndex == intYear) {
+                    $('#cboYear').append( $('<option selected="selected" />').val(intIndex).text(intIndex) );
+                } else {
+                    $('#cboYear').append( $('<option />').val(intIndex).text(intIndex) );
+                }
+            }
+        }
+
+
+        function fillCalendar(intMonth, intYear, datToday) {
+            var datLastDay = null;
+            var strHTML = null;
+
+            datFirstDay = new Date(intYear, intMonth, 1);
+            datLastDay = new Date(intYear, intMonth + 1, 0);
+
+            //getDay() is an integer corresponding to the day of the week: 
+            //0 for Sunday, 1 for Monday, 2 for Tuesday, and so on.
+
+            $('#divMonth').html(arrMonths[intMonth]);
+
+            strHTML = '';
+            for(var intIndex = 0; intIndex < datFirstDay.getDay(); intIndex++) {
+                if(intIndex === 0) {
+                    strHTML += '<tr>';
+                }
+
+                strHTML += '    <td aria-disabled="true" aria-selected="false" class="slds-disabled-text" role="gridcell">';
+                strHTML += '        <span class="slds-day">' + datFirstDay.addDays(intIndex - datFirstDay.getDay()).getDate() + '</span>';
+                strHTML += '    </td>';   
+            }
+
+            for(var intIndex = 0; intIndex < datLastDay.getDate(); intIndex++) {
+                if(datFirstDay.addDays(intIndex).getDay() === 0) {
+                    strHTML += '<tr class="">';
+                }
+                if(datToday.getFullYear() === datLastDay.getFullYear() && datToday.getMonth() === datLastDay.getMonth() && (intIndex + 1) === datToday.getDate()) {
+                    strHTML += '<td aria-selected="false" aria-current="date" class="slds-is-today" role="gridcell">';
+                } else {
+                    strHTML += '<td aria-selected="false" role="gridcell">';
+                }
+
+                strHTML += '    <span class="slds-day selectday" data-fullyear="' + intYear + '" data-month="' + intMonth + '" data-day="' + (intIndex + 1) + '">' + (intIndex + 1) + '</span>';
+                strHTML += '</td>';
+                
+                if(datFirstDay.addDays(intIndex).getDay() === 6) {
+                    strHTML += '</tr>';
+                }
+            }
+
+            if(datFirstDay.addDays(intIndex -1).getDay() !== 6) {
+                strHTML += '</tr>';
+            }
+
+            $('.calendardays').html(strHTML);
+        }
+    </script>
+</apex:page>

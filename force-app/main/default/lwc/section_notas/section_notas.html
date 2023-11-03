@@ -1,0 +1,22 @@
+<template>
+    <div class="section">
+        <div class="titleHolder">
+            <span class="title">Notas</span>
+        </div>
+        <div class="bodyHolder">
+            <div class="inputHolder">
+                <span class="label">Ingrese sus comentarios:</span>
+                <textarea class="textArea"></textarea>
+                <lightning-button class="posicionDerecha" variant="brand" label="Guardar" title="Guardar" onclick={handleGuardar}></lightning-button>
+            </div>
+            <div class="notasHolder">
+                <template for:each={formatedNotas} for:item="nota">
+                    <div key={nota.Id} class="nota">
+                        <span class='notaHeader'>Publicado por <b>{nota.CreatedBy.FirstName} {nota.CreatedBy.LastName}</b> el {nota.CreatedDate}</span>
+                        <span>{nota.Nota__c}</span>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </div>
+</template>

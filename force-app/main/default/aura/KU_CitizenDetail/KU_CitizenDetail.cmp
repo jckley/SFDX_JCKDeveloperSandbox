@@ -1,0 +1,65 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes,force:appHostable,flexipage:availableForAllPageTypes,force:hasRecordId" controller="ContactDetailController">	    
+    <aura:attribute name="recordId" 		type="Id"  />        
+    <aura:attribute name="citizenWrapper" 	type="ContactWrapper" />
+    <aura:attribute name="permissions" 		type="RemotingMessageHelper.UserPermissions" />
+    <aura:attribute name="lexHost" 			type="String" default="" />
+    <aura:attribute name="vfHost" 			type="String" default="" />  
+    
+    <aura:handler name="init" action="{!c.initializeComponent}" value="{!this}" />
+    <aura:handler 	event="c:ContactUpdatedEvent" 		action="{! c.refreshPage }" />
+    
+    
+    <div class="slds-grid slds-wrap l-content">
+        
+        <div class="slds-size_1-of-1 slds-grid slds-wrap">
+            <div style="{!'display: ' + (and($Browser.formFactor == 'DESKTOP',v.citizenWrapper.contact.PhotoUrl_legacy__c != NULL)?'':'none')}"><img class="citizenPicture" src="{!v.citizenWrapper.contact.PhotoUrl_legacy__c }" alt="{! v.citizenWrapper.contact.FirstName + ' ' + v.citizenWrapper.contact.Lastname }" /></div>
+            <div class="slds-col header-padding"><c:KU_PageHeader mainlabel="{! v.citizenWrapper.contact.FirstName + ' ' + v.citizenWrapper.contact.LastName}" secundarylabel="{!v.citizenWrapper.personTitle}" secundarylabelunderlined="{!v.citizenWrapper.personAddress}" /></div>
+            <div class="rounded-container" onclick="{!c.redirectToEditPage}" style="{!'display: ' + (v.permissions.ViewEdition?'':'none')}">
+                <img src="{! $Resource.IconsPack1 + '/mentaedithover.png'}" class="edit-icon reposo"/>
+                <img src="{! $Resource.IconsPack1 + '/mentaeditreposo.png'}" class="edit-icon hover"/>
+            </div>
+        </div>
+        
+        <div class="slds-size_1-of-1">
+            <c:KU_ContactGeneralInfo citizenWrapper="{! v.citizenWrapper }" rendered="{! v.permissions.ContactViewCommonData}" canEdit="{!v.permissions.ViewEdition}" />
+        </div>
+        
+        <div class="slds-size_1-of-1">
+            <c:KU_ContactLocationInfo citizenWrapper="{! v.citizenWrapper }" rendered="{! v.permissions.ContactViewCommonData}"  />
+        </div>
+        
+        <div class="slds-size_1-of-1">
+            <c:KU_ContactAddress citizenWrapper="{! v.citizenWrapper }" rendered="{! v.permissions.ContactViewCommonData}"  />
+        </div>
+        
+
+        
+        <div class="slds-size_1-of-1">
+            <c:KU_ContactContactInfo citizenWrapper="{! v.citizenWrapper }" rendered="{! v.permissions.ContactViewCommonData}"  />
+        </div>
+        
+        <!--<div class="{!'slds-size_1-of-1 ' + (v.citizenWrapper.twitterUserFormated != ''?'timeline':'')}">-->
+        <div class="slds-size_1-of-1">
+            <c:KU_ContactSocialInfo citizenWrapper="{!v.citizenWrapper}" rendered="{! v.permissions.ContactViewCommonData}" lexHost="{!v.lexHost}" vfHost="{!v.vfHost}"/>
+        </div>
+        
+        <div class="slds-size_1-of-1">
+            <c:KU_ContactAttributes citizenWrapper="{! v.citizenWrapper }" rendered="{! and( v.permissions.ContactViewAttributes, v.citizenWrapper.attributeTags.length > 0)}"  />
+        </div>
+        
+        <div class="slds-size_1-of-1">
+            <c:KU_ContactAttributesIncome citizenWrapper="{! v.citizenWrapper }" rendered="{! and( v.permissions.ContactViewIncome, or(v.citizenWrapper.contact.CUIT_Empleador_1__c != NULL, v.citizenWrapper.contact.CUIT_Empleador_2__c != NULL , v.citizenWrapper.contact.CUIT_Empleador_3__c != NULL  ) )}"  />
+        </div>
+        
+        <div class="slds-size_1-of-1">
+            <c:KU_ContactAttributesElectoral citizenWrapper="{! v.citizenWrapper }"/>
+        </div>
+        
+        <div class="slds-size_1-of-1">
+            <c:KU_ContactTags contw="{! v.citizenWrapper }" rendered="{!v.permissions.ContactViewTags}"  />
+        </div>
+        
+        <!--Edition Modal-->
+        <c:ContactEdition recordId="{!v.recordId}"/>
+    </div>
+</aura:component>

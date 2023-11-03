@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>test query</label>
+    <protected>false</protected>
+    <values>
+        <field>Batch_Quantity__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Batch_Size__c</field>
+        <value xsi:type="xsd:double">1.0</value>
+    </values>
+    <values>
+        <field>ConfigToUse__c</field>
+        <value xsi:type="xsd:string">TEST</value>
+    </values>
+    <values>
+        <field>FROM_statement__c</field>
+        <value xsi:type="xsd:string">Contact</value>
+    </values>
+    <values>
+        <field>FlagField__c</field>
+        <value xsi:type="xsd:string">Flow_by_batch_Flag__c</value>
+    </values>
+    <values>
+        <field>WHERE_statement__c</field>
+        <value xsi:type="xsd:string">LastName != &apos;excluido&apos;</value>
+    </values>
+</CustomMetadata>

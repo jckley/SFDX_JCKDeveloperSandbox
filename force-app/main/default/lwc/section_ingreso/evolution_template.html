@@ -1,0 +1,20 @@
+<template>
+    <div class="box">
+        <div class="header">
+          <div class="title">Nivel de ingresos</div>
+          <div class="info">*SMVM: ${lblsmvm} Bruto</div>
+        </div>
+            <div class="items_ingresos">
+                <template for:each={incomeRanges} for:item="objIncomeRange">
+                <div class={objIncomeRange.cssClasses} key={objIncomeRange.name} onclick={handelClick_IngresosItem} data-itemkey={objIncomeRange.name} >
+                    <img class="iconIncome" src={objIncomeRange.image}/>
+                    <strong>{objIncomeRange.value}</strong>
+                    <span>
+                        <span class="title">{objIncomeRange.name}</span>
+                        <span class="detail">{objIncomeRange.description}</span>
+                    </span>
+                </div>
+                </template>
+            </div>
+      </div>
+</template>

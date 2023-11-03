@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SMSMessageId__c</fullName>
+    <description>SMS Message Id in Marketing Cloud (Looks like MTIzOjc4OjA )</description>
+    <externalId>false</externalId>
+    <inlineHelpText>SMS Message Id in Marketing Cloud (Looks like MTIzOjc4OjA )</inlineHelpText>
+    <label>SMSMessageId</label>
+    <length>255</length>
+    <required>true</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

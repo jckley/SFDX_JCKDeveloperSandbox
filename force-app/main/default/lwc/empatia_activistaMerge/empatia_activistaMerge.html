@@ -1,0 +1,47 @@
+<template>
+  <lightning-card>
+    <h3 slot="title">
+      <lightning-icon icon-name="utility:connected_apps" size="small"></lightning-icon>
+      Modificar campos de cuitificación
+    </h3>
+    <template if:false={confirmationScreen}>
+      <div slot="footer">
+        <lightning-button label="Guardar" onclick={handleGoToConfirmation}></lightning-button>
+        <lightning-button label="Cancelar" onclick={handleCancelar}></lightning-button>
+      </div>
+      <div class="slds-p-horizontal_small cardBody">
+        <div class="inputsHolder">
+          <lightning-input type="text" label="Ingrese el DNI:" value={dniInicial} class="textInput"></lightning-input>
+          <lightning-input type="date" label="Ingrese la Fecha de nacimiento:" value={fechaInicial} class="fechaInput"></lightning-input>
+          <lightning-button label="Buscar" onclick={handleBuscar} class="buttonInput"></lightning-button>
+        </div>
+        <div class="searchResults">
+          <template if:true={infoScreen}>
+            <span>Antes de guardar los cambios, puede verificar si existe ese DNI y esa fecha de nacimiento para un ciudadano de la base de datos</span>
+          </template>
+          <template if:false={infoScreen}>
+            <template if:true={citizenRecord}>
+              <div class="citizenCard">
+                <c-empatia_citizen_card param_citizen_record = {citizenRecord} ></c-empatia_citizen_card>
+              </div>
+            </template>
+            <template if:false={citizenRecord}>
+              <span>No se encontraron ciudadanos para el DNI {lastDniSearch}, con la fecha de nacimiento {lastFechaSearch}</span>
+            </template>
+          </template>
+        </div>
+      </div>
+    </template>
+    <template if:true={confirmationScreen}>
+      <div slot="footer">
+        <lightning-button label="Si" onclick={handleGuardar}></lightning-button>
+        <lightning-button label="No" onclick={handleGoBackToInput}></lightning-button>
+      </div>
+      <div class="slds-p-horizontal_small cardBody">
+        <p class="confirmationMessage text">Esta seguro de los valores ingresados?</p>
+        <p class="confirmationMessage field"> DNI: {valoresParaEditar.dni}</p>
+        <p class="confirmationMessage field"> Fecha de nacimiento: {valoresParaEditar.fecha}</p>
+      </div>
+    </template>
+  </lightning-card>
+</template>

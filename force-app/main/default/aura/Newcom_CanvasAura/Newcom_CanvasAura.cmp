@@ -1,0 +1,40 @@
+<!-- <aura:component controller="ContactDetailController" implements="forceCommunity:availableForAllPageTypes,force:appHostable,flexipage:availableForAllPageTypes,force:hasRecordId,lightning:isUrlAddressable"> -->
+<aura:component controller="CommunitiesController" implements="forceCommunity:availableForAllPageTypes,force:appHostable,flexipage:availableForAllPageTypes,force:hasRecordId,lightning:isUrlAddressable">
+    <aura:attribute name="recordId" 		type="Id"/>
+    <aura:attribute name="citizenWrapper" 	type="CitizenWrapper" />
+    <aura:attribute name="width" 		    type="String"  default=""/>
+    <aura:attribute name="height" 		    type="String"  default="800px"/>
+    <aura:attribute name="canvasname" 		type="String"  default="Prosumia_Contact_Tracing"/>
+    <aura:attribute name="canvasnamespace" 	type="String"  />
+    <aura:attribute name="community"        type="String" default="Cuidarnos"/>
+    <aura:attribute name="rendered" 		type="Boolean" default="false"  />        
+    <aura:attribute name="status" 	        type="String"  required="false" default="" />
+    <aura:attribute name="status_date" 	    type="String"  required="false" default="" />
+
+    <aura:handler name="init" action="{!c.initializeComponent}" value="{!this}" />
+
+    <!-- <div>
+        <div class="{! v.rendered?'slds-grid slds-wrap':'slds-hide'}">        
+            <div class="slds-col slds-size_1-of-1 pad-top-30">
+                <force:canvasApp developerName="{! v.canvasname }" namespacePrefix="{! v.canvasnamespace }" width="{! v.width }" height="{! v.height}" />
+            </div>
+        </div>
+    </div> -->
+
+    <div class="slds-grid slds-wrap slds-grid_reverse slds-m-top_large l-content x-padding-left">
+
+        <div class="card slds-grid slds-wrap slds-col slds-size_1-of-1 slds-large-size_3-of-4" >
+            <div class="slds-col slds-size_1-of-1 header">
+                <span class="title">Relacionamiento</span>
+                <span class="icon-container">
+                    <img src="{! $Resource.Communities + '/SALESFORCE/img/dark-expand.svg'}" class="icon" />
+                </span>
+            </div>
+            <div class="slds-col slds-size_1-of-1">
+                <force:canvasApp developerName="{! v.canvasname }" namespacePrefix="{! v.canvasnamespace }" width="100%" height="{! v.height}" />
+            </div>
+        </div>
+
+    </div>
+
+</aura:component>

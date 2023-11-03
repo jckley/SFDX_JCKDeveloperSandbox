@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Search_Birthdate__c</fullName>
+    <externalId>false</externalId>
+    <formula>LPAD(TEXT(Day( Birthdate )),2,&apos;0&apos;) + &quot;/&quot; + LPAD(TEXT(Month( Birthdate )),2,&apos;0&apos;) + &quot;/&quot; + TEXT(Year( Birthdate ))</formula>
+    <label>Fecha de nacimiento</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

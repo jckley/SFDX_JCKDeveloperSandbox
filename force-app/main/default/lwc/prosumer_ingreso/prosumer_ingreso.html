@@ -1,0 +1,18 @@
+<template>
+  <div class="box">
+    <div class="header">
+      <img src={nivingreso}/><span class="title">Niveles de ingresos</span>
+    </div>
+    <div class="body">
+      <div class="itemList">
+        <template for:each={incomeRanges} for:item="incomeRangesObj">
+          <div class={incomeRangesObj.cssClasses} key={incomeRangesObj.id} onclick={handelClick_IngresosItem} data-itemkey={incomeRangesObj.id}>
+            <span class="value">{incomeRangesObj.value}</span>
+            <span class="name">{incomeRangesObj.name}</span>
+            <span class="description">{incomeRangesObj.description}</span>
+          </div>
+        </template>
+      </div>
+    </div>
+  </div>
+</template>

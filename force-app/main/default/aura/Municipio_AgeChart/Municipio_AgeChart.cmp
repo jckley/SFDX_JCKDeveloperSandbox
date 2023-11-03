@@ -1,0 +1,52 @@
+<aura:component controller="TerritoryDetailController">
+    <aura:attribute name="recordId" 		type="String"  />
+    <aura:attribute name="chartType" 		type="String"  />
+    <aura:attribute name="chartLabels" 		type="String[]"  />
+    <aura:attribute name="menCount" 		type="Decimal[]"  />
+    <aura:attribute name="womenCount" 		type="Decimal[]"  />
+    <aura:attribute name="bar1color" 		type="String"  />
+    <aura:attribute name="bar2color" 		type="String"  />
+    <aura:attribute name="menPerc" 			type="Decimal"  />
+    <aura:attribute name="womenPerc" 		type="Decimal"  />
+    <aura:attribute name="totalMen" 		type="String"  />
+    <aura:attribute name="totalWomen" 		type="String"  />
+    
+    <aura:handler name="change" value="{!v.recordId}" action="{!c.updateChart}" />
+    
+    <ltng:require scripts="{! $Resource.ChartJS + '/Chart.bundle.min.js' }"  afterScriptsLoaded="{!c.updateChart}"/>
+    <div class="slds-grid slds-wrap">
+        <div class="slds-size_1-of-1 slds-large-size_6-of-12 slds-grid slds-wrap donnuts">
+            <div class="slds-size_1-of-2">
+                <canvas id="donnut"></canvas>
+                <div class="donnut-legend">
+                    <div class="donnut-legend-title">
+                        {!v.totalWomen}
+                    </div>
+                    <div class="donnut-legend-value">
+                        {!$Label.c.Women}
+                    </div>
+                    <div class="donnut-legend-title positioned">
+                        {!v.womenPerc} <span style="font-size: 14pt">%</span>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-size_1-of-2 l-ml-min15">
+                <canvas id="donnut2"></canvas>
+                <div class="donnut-legend">
+                    <div class="donnut-legend-title">
+                        {!v.totalMen}
+                    </div>
+                    <div class="donnut-legend-value">
+                        {!$Label.c.Men}
+                    </div>
+                    <div class="donnut-legend-title positioned">
+                        {!v.menPerc} <span style="font-size: 14pt">%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slds-size_1-of-1 slds-large-size_6-of-12">
+            <canvas id="canvas"></canvas>
+        </div>
+    </div>    
+</aura:component>

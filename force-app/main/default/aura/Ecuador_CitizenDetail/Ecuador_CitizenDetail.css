@@ -1,0 +1,470 @@
+.THIS {
+    margin-bottom : 15px;
+}
+
+.THIS .card{
+    background-color: #ffffff;
+    will-change: transform;
+    overflow:  hidden;
+    min-height: 100px;
+    vertical-align: middle;
+    border-radius: 6px;
+    border: solid 1px #EDEDED;
+}
+
+.THIS.l-content {
+    width: 90%;
+    /*max-width: 1140px;*/
+    margin: auto;
+    position: relative; 
+}
+
+.THIS .timeline {margin-top: 30px;}
+.THIS .citizenPicture {
+    width: 65px;
+    height: 75px;
+    border-radius: 6px;
+}
+
+.THIS .edit-icon {margin-top: 6px; margin-right: 6px;}
+.THIS .rounded-container{
+    width: 200px;
+    display: table;
+}
+
+.THIS .tribu {
+    display: inline-block;
+}
+
+.THIS .correistas {
+    height: 40px;
+    max-height: 40px;
+    color : #F4BD27;
+    font-size: 18px;
+    display: table-cell;
+    line-height: 40px;
+    width: 70%;
+    border: solid 1px #F4BD27;
+    border-radius: 6px;
+}
+.THIS .pragmaticos {
+    height: 40px;
+    max-height: 40px;
+    color : #2E465B;
+    font-size: 18px;
+    display: table-cell;
+    line-height: 40px;
+    width: 70%;
+    border: solid 1px #2E465B;
+    border-radius: 6px;
+}
+.THIS .progesistas {
+    height: 40px;
+    max-height: 40px;
+    color : #6F4B8D;
+    font-size: 18px;
+    display: table-cell;
+    line-height: 40px;
+    width: 70%;
+    border: solid 1px #6F4B8D;
+    border-radius: 6px;
+}
+.THIS .antagonistas {
+    height: 40px;
+    max-height: 40px;
+    color : #4F545B;
+    font-size: 18px;
+    display: table-cell;
+    line-height: 40px;
+    width: 70%;
+    border: solid 1px #4F545B;
+    border-radius: 6px;
+}
+.THIS .populistas {
+    height: 40px;
+    max-height: 40px;
+    color : #E37829;
+    font-size: 18px;
+    display: table-cell;
+    line-height: 40px;
+    width: 70%;
+    border: solid 1px #E37829;
+    border-radius: 6px;
+}
+.THIS .individualistas {
+    height: 40px;
+    max-height: 40px;
+    color : #58AC7B;
+    font-size: 18px;
+    display: table-cell;
+    line-height: 40px;
+    width: 70%;
+    border: solid 1px #58AC7B;
+    border-radius: 6px;
+}
+.THIS .materialistas {
+    height: 40px;
+    max-height: 40px;
+    color : #0676BC;
+    font-size: 18px;
+    display: table-cell;
+    line-height: 40px;
+    width: 70%;
+    border: solid 1px #0676BC;
+    border-radius: 6px;
+}
+.THIS .neoliberales {
+    height: 40px;
+    max-height: 40px;
+    color : #DE232F;
+    font-size: 18px;
+    display: table-cell;
+    line-height: 40px;
+    width: 70%;
+    border: solid 1px #DE232F;
+    border-radius: 6px;
+}
+
+.THIS .rounded-container:hover {cursor: pointer;}
+
+/* Special classes for small devices */
+@media only screen and (max-width: 768px) {
+    .THIS {padding: 15px;}
+    /*.THIS.l-content {top: -735px;}*/
+    /* .THIS.l-content {top: -145px;} */
+    /* .THIS > div:nth-child(5) {margin-top: 287px;} */
+    .THIS.l-map {
+        margin: auto;
+        position: relative;
+        top: 335px;
+        z-index: 5;
+        box-shadow: 0px 13px 36px 0px rgba(0, 0, 0, 0.1);
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .THIS .rounded-container{filter: brightness(0.1); display: none;}
+    .THIS .header-padding{padding-left: 10px;}
+    .THIS .title {    
+        font-size: 20pt;
+        color: #666666;
+    }
+    .THIS .subtitle,
+    .THIS .subtitle a,
+    .THIS .subtitle a:visited,
+    .THIS .subtitle a:link,
+    .THIS .subtitle a:hover {
+        color: #666666;
+    }
+}
+
+.THIS .header-extension {display:block;}
+
+/* Special classes for big devices */
+@media only screen and (min-width: 768px) {
+     .THIS.l-map {
+        margin: auto;
+        position: relative;
+        top: 192px;
+        z-index: 5;
+        box-shadow: 0px 13px 36px 0px rgba(0, 0, 0, 0.1);
+    }
+    .THIS .header-padding{padding-left: 25px;}
+    /*.THIS.l-content {top: -495px;}*/
+    .THIS.l-content {top: -125px;}
+    .THIS .title {    
+        font-size: 24pt;
+        color: #666666;
+    }
+    .THIS .subtitle,
+    .THIS .subtitle a,
+    .THIS .subtitle a:visited,
+    .THIS .subtitle a:link,
+    .THIS .subtitle a:hover {
+        color: #666666;
+    }
+}
+
+.THIS {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+}
+
+.THIS .title {
+    font-weight: bold;
+}
+
+.THIS .subtitle,
+.THIS .subtitle a,
+.THIS .subtitle a:visited,
+.THIS .subtitle a:link,
+.THIS .subtitle a:hover {
+    font-size: 10pt;
+    line-height: 1.5;
+    cursor: pointer;
+}
+.THIS .subtitle {
+    font-weight: 400;    
+}
+.THIS .subtitle A {
+    font-weight: 	bold; 
+    text-decoration : underline;
+}
+.THIS .subtitle A:hover { 
+    text-decoration : underline;
+    color : #1cdcbb;
+}
+
+.THIS .action_bar {
+    background-color: #f1f1f2;
+    position: relative;
+}
+
+.THIS .action_bar .status  {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.THIS .action_bar .status span.description {
+    font-size: 24pt;
+    color: #3e4954;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding-left: 15px;    
+    padding-right: 15px;
+}
+
+.THIS .action_bar .status span.date {
+    font-size: 12pt;
+    font-weight: bold;
+    color: #3e4954;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    vertical-align: super;
+}
+
+.THIS .modal_buttons button,
+.THIS .action_bar button {
+    border-radius: 6px;
+    border: none;
+    background-color: #dbdbdb;
+    font-size: 12pt;
+    color: #3e4954;
+    font-weight: bold;
+    width: 160px;
+
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.THIS .action_bar button:hover { 
+    background-color: #2196F3;
+}
+
+.THIS .modal_buttons button.ok {
+    background-color: #2196F3;
+    margin-left: 15px;
+}
+
+.THIS .align_right {
+    float: right;
+    margin-right: 10px;
+}
+
+.THIS .action_bar .notificado  {
+    height: 35px;      /* equals max image height */
+    width: 160px;
+    white-space: nowrap;
+    
+    text-align: center; 
+    margin: 1em 0;
+}
+
+.THIS .action_bar .notificado .helper {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.THIS .action_bar .notificado img {
+    vertical-align: middle;
+    max-height: 25px;
+    max-width: 160px;    
+}
+
+.THIS .citizenseparator {
+    /* border-bottom: solid 1px #d8dbdd; */
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.THIS .subtitle.actions span {
+    font-weight: bold;
+}
+
+.THIS .subtitle.actions a {
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.THIS .confirmtitle {
+    font-size: 24pt;
+    color: #3e4954;
+    font-weight: 800;
+}
+
+.THIS .confirmwarning {
+    font-size: 16pt;
+    color: #3e4954;
+    border: solid 3px #999999;
+    padding: 4px 4px  4px 4px;
+    border-radius: 10px;
+}
+.THIS .confirmwarning span { 
+    padding-left: 10px;
+}
+
+.THIS .historycontainer {
+    font-size: 10pt;
+    color: #3e4954;
+    border: solid 3px #999999;
+    padding: 4px 4px  4px 4px;
+    border-radius: 10px;
+}
+.THIS .historycontainer span { 
+    padding-left: 10px;
+}
+
+.THIS .confirmwarningwithoutborder {
+    font-size: 16pt;
+    color: #3e4954;
+    padding: 4px 4px  4px 4px;
+}
+.THIS .confirmwarningwithoutborder span { 
+    padding-left: 10px;
+}
+
+.THIS .confirmwarningwithoutborder select { 
+    padding: 5px 5px 5px 5px;
+
+    border: solid 2px #999999;
+    padding: 4px 4px  4px 40px;
+    border-radius: 10px;
+    height: 70px;
+}
+
+
+.THIS .uiInput--select.select:not([multiple]), 
+.THIS .uiInput--select .select:not([multiple]), 
+.THIS .uiInput--select .uiPopupTrigger a {
+    padding: 5px 5px 5px 5px;
+
+    border: solid 3px #999999;
+    padding: 4px 4px  4px 40px;
+    border-radius: 10px;
+    height: 70px;
+}
+
+.THIS .confirmwarningwithoutborder .slds-select_container:before, 
+.THIS .confirmwarningwithoutborder .slds-select_container:after {
+    display: none;
+}
+
+.THIS .uiInput--select select, 
+.THIS .uiInput--select .required .uiPopupTrigger a {
+    border: solid 3px red !important;
+}
+
+.THIS .required_field {
+    font-size: 32px;
+    color: red;
+    font-weight: bold;
+}
+
+.THIS .editdialog .label {
+    font-size: 12pt;
+    color: #3e4954;
+    padding: 4px 4px  4px 4px;
+    text-transform: uppercase;
+}
+
+.THIS .editdialog .value input {
+    border-radius: 6px;
+    border : solid 2px #CCCCCC;
+    height: 60px;
+    font-size: 20px;
+}
+
+/* Customize the label (the container) */
+.THIS .action_confirm  * .checkbox {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer; 
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+  
+  /* Hide the browser's default checkbox */
+.THIS .action_confirm * .checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+  
+  /* Create a custom checkbox */
+.THIS .action_confirm * .checkbox .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+}
+  
+  /* On mouse-over, add a grey background color */
+.THIS .action_confirm * .checkbox:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+  
+  /* When the checkbox is checked, add a blue background */
+.THIS .action_confirm * .checkbox input:checked ~ .checkmark {
+    background-color: #2196F3;
+}
+  
+  /* Create the checkmark/indicator (hidden when not checked) */
+.THIS .action_confirm * .checkbox .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+  
+  /* Show the checkmark when checked */
+.THIS .action_confirm  * .checkbox input:checked ~ .checkmark:after {
+    display: block;
+}
+  
+  /* Style the checkmark/indicator */
+.THIS .action_confirm * .checkbox .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.THIS .action_confirm {
+    font-size: 24px;
+}

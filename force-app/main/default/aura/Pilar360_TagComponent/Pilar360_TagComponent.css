@@ -1,0 +1,37 @@
+.THIS {
+    min-height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    margin-top: 15px;
+    margin-right: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border: 1px solid #c5d9e8 !important;
+    border-radius: 6px;
+}
+
+.THIS .label {
+    font-family : 'Roboto Condensed', sans-serif;
+    font-weight: bold;
+    color: #999999;
+    font-size: 11pt;
+    text-transform: uppercase;
+}
+
+.THIS .value-blue {
+    font-family : 'Heebo';
+    color: #2f75bb;
+    font-weight: bold;
+    margin-left: 5px;
+    font-size: 11pt;
+}
+
+.THIS .value {
+    font-family : 'Heebo';
+    color: #2f75bb;
+    font-weight: 300;
+    margin-left: 5px;
+    font-size: 11pt;
+}

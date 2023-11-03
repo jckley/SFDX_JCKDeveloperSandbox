@@ -1,0 +1,9 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes,force:appHostable,flexipage:availableForAllPageTypes">
+    <div>
+        <div class="logo-image">
+            <a href="https://mimuni.municipiopilar.app/s/login/" target="_blank">
+                <img src="https://argentina--dev--c.visualforce.com/resource/1611256460000/Pilar360/img/logo-login.svg" alt="Municipalidad de Pilar" href="#" />
+            </a>
+        </div>
+    </div>
+</aura:component>

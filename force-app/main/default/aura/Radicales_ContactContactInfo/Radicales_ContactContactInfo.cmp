@@ -1,0 +1,66 @@
+<aura:component >
+    <aura:attribute name="citizenWrapper" 	type="CitizenWrapper" 	required="true" />
+    <aura:attribute name="rendered" 		type="Boolean" 			required="true" default="true" />
+    <aura:attribute name="showDetails" 		type="Boolean" 			required="true" default="true" />
+    <aura:attribute name="mobile" 		type="String" />
+    <aura:attribute name="email" 		type="String" />
+
+    <aura:handler event="c:PRM_Cuidarnos_Edit_Completed" action="{! c.updateEditInfo }" />
+
+    <div class="{! (v.rendered)?'slds-grid slds-wrap':'slds-hide' }">
+
+        <!--div class="slds-size_1-of-1 slds-medium-size_7-of-12">
+            <div class="card">
+                <div class="slds-grid" style="padding: 30px 20px;">
+                    <div class="slds-size_3-of-12 slds-small-size_2-of-12 slds-medium-size_2-of-12 slds-large-size_1-of-12">
+                        <img src="{! $Resource.IconsPack1 + '/KUmail_lb.png'}" class="icon" />
+                    </div>
+                    <div class="slds-size_9-of-12 slds-small-size_10-of-12 slds-medium-size_10-of-12 slds-large-size_11-of-12">
+                        <c:Radicales_DisplayField label="Email" value="{! (v.showDetails)?v.email:(v.email == NULL?$Label.c.No:$Label.c.Yes)}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value blue font13"/>                                                                                        
+                    </div>
+                </div>
+            </div>
+        </div-->
+
+        <div class="slds-size_1-of-1 slds-medium-size_7-of-12">
+            <div class="card">
+                <ul class="slds-list_horizontal" style="padding: 30px 20px;">
+                    <li style="margin-right:1rem;">
+                        <img src="{! $Resource.Radicales + '/img/mail.svg'}" class="icon" />
+                    </li>
+                    <li>
+                        <c:Radicales_DisplayField label="Email" value="{! (v.showDetails)?v.email:(v.email == NULL?$Label.c.No:$Label.c.Yes)}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13"/>                                                                                        
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="slds-size_1-of-1 slds-medium-size_5-of-12 mobile-info-column">
+            <div class="card">
+                <ul class="slds-list_horizontal" style="padding: 30px 20px;">
+                    <li style="margin-right:1rem;">
+                        <img src="{! $Resource.Radicales + '/img/cel.svg'}" class="icon" />
+                    </li>
+                    <li>
+                        <c:Radicales_DisplayField label="Celular" value="{! (v.showDetails)?v.mobile:(v.mobile == NULL?$Label.c.No:$Label.c.Yes)}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value font13"/>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!--div class="slds-size_1-of-1 slds-medium-size_5-of-12 mobile-info-column">
+            <div class="card">
+                <div class="slds-grid" style="padding: 30px 20px;">
+                    <div class="slds-size_3-of-12 slds-small-size_2-of-12 slds-medium-size_2-of-12 slds-large-size_1-of-12">
+                        <img src="{! $Resource.IconsPack1 + '/KUmobile_lb.png'}" class="icon" />
+                    </div>
+                    <div class="slds-size_9-of-12 slds-small-size_10-of-12 slds-medium-size_10-of-12 slds-large-size_11-of-12">
+                        <c:Radicales_DisplayField label="Celular" value="{! (v.showDetails)?v.mobile:(v.mobile == NULL?$Label.c.No:$Label.c.Yes)}" emptyValue="{!$Label.c.NoInformation}" labelCSS="label uppercase" valueCSS="value blue font13"/>
+                    </div>
+                </div>
+            </div>
+        </div-->
+
+    </div>
+
+</aura:component>

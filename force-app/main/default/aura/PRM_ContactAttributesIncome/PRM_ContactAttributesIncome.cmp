@@ -1,0 +1,27 @@
+<aura:component>
+    <aura:attribute name="community"        type="String"           default="Prosumia"/>
+    <aura:attribute name="citizenWrapper" 	type="CitizenWrapper"   required="true" />
+    <aura:attribute name="rendered" 		type="Boolean" 			required="true" default="true" />
+
+    <div class="{! (v.rendered)?'card slds-grid slds-wrap slds-m-top_large ' + v.community:'slds-hide'}">
+    	<div class="slds-grid slds-wrap slds-col slds-size_1-of-1 header" >
+            <div class="slds-col slds-size_1-of-1">
+                <img src="{! $Resource.PRM + '/' + v.community +  '/img/adfiincome.svg'}" class="icon" />
+                
+                <span class="slds-p-left_large title">{!$Label.c.Ingresos}</span>
+            </div>           
+        </div>
+            
+        <div class="slds-col slds-size_1-of-1 slds-grid slds-wrap" style="padding: 10px 30px;">
+            <aura:iteration items="{! v.citizenWrapper.incomeInfo.employers }" var="objEmployer">
+                <c:PRM_ContactEmployer community="{!v.community}" employer="{! objEmployer.name}" cuit="{! objEmployer.cuit }"  income="{! objEmployer.income }" rendered="{! objEmployer.cuit != NULL}" />
+            </aura:iteration>
+       </div>
+        <!--                
+        <div class="{! (v.showdetails)?'slds-col slds-size_1-of-1 slds-text-align_right':'slds-hide'}" style="padding: 15px 30px 30px 0;">
+            <span class="label">Ingresos totales: </span>
+            <span class="value blue">{! v.citizenWrapper.incomeInfo.totalIncome} {!$Label.c.Currency}</span>
+        </div>
+        -->
+    </div>
+</aura:component>

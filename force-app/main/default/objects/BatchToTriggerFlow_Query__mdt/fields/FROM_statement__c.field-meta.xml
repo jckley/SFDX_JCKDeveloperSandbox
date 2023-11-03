@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>FROM_statement__c</fullName>
+    <description>FROM statement para la query que define los registros a recorrer. Define el objeto sobre el que se realizara la query. Se deben utilizar el api name de los objetos.</description>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>FROM statement para la query que define los registros a recorrer. Define el objeto sobre el que se realizara la query. Se deben utilizar el api name de los objetos.</inlineHelpText>
+    <label>FROM statement</label>
+    <length>255</length>
+    <required>false</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

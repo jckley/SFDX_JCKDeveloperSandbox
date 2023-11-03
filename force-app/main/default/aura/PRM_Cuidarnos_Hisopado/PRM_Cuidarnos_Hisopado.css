@@ -1,0 +1,17 @@
+.THIS {
+    margin-top : 25px;
+    padding : 0px;
+}
+
+.THIS .header {
+    background-color: #f8f9fc;
+    height: 60px;
+    padding: 20px 30px 30px 30px;
+}
+
+.THIS .header .title {
+    font-family: 'Montserrat';
+    color: #999999;
+    font-weight: 300;
+    font-size: 1rem;
+}

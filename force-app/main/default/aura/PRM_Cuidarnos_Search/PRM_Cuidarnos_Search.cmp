@@ -1,0 +1,18 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes,force:appHostable,flexipage:availableForAllPageTypes,force:hasRecordId" controller="PRM_Cuidarnos_Search_Controller">	    
+    <aura:attribute name="citizencount" type="integer" default="0" description="Cantidad de ciudadanos" />
+    <aura:attribute name="searchTerm"   type="String" default="" description="Termino de busqueda" />
+    <aura:attribute name="querylimit"   type="String" default="10" required="true" description="Cantidad de resultados" />
+    <aura:attribute name="results" 		type="RemotingMessageHelper.SearchResults" />
+
+    <article class="slds-grid slds-wrap">
+        <header class="slds-col slds-size_1-of-1">
+            <span>Buscar entre todas las personas</span>
+        </header>
+
+        <section class="slds-col slds-size_1-of-1 search" onkeypress="{! c.perfomrSearch }" >
+            <span class="prefix">Buscar :</span>
+            
+            <lightning:input name="txtSearch" label=" " type="search" variant="label-hidden" value="{! v.searchTerm }" />
+        </section>          
+    </article>
+</aura:component>

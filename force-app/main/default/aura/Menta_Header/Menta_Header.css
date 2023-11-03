@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Poppins:300');
+.THIS {
+    color: white;
+}
+
+.THIS.header {
+    background-color: #333333;
+    height: 60px;
+    border-bottom: solid 1px #484848;
+}
+
+.THIS .logo-container {
+    border-right: solid 1px #484848;
+    height: 100%;
+    padding: 20px 15px 12px 20px;
+}
+
+.THIS .navigation {
+    border-right: solid 1px #484848;
+    height: 100%;
+    padding: 20px 20px 20px 40px;
+}
+
+.THIS .search {}
+
+.THIS .exit{padding: 15px 20px 15px 30px; height: 100%;}
+.THIS .icon-hover {display: none;}
+.THIS .exit:hover {cursor: pointer;}
+.THIS .exit:hover .icon-reposo {display: none;}
+.THIS .exit:hover .icon-hover {display: inline-block;}
+
+.THIS.header-extension {height: 125px;}
+.THIS .search-focus {background-color: #424242;}
+
+.THIS .navigationBar {
+    background-color: #333333;
+    display: flex;
+    justify-content: right;
+    position: absolute;
+    left: 81%;
+    margin-top: 15px;
+}
+
+/* Special classes for small devices */
+@media only screen and (max-width: 768px) {
+    .THIS .logo-container {border-right: none}
+    .THIS .comm-navigation.forceCommunityGlobalNavigation {background-color: #333333}
+    .THIS .forceCommunityGlobalNavigation .slds-list_vertical {
+        background-color: #333333 !important;
+    }
+    .THIS.header-extension {background-color: #f1f2f3;}
+    .THIS #search-super-m {margin: 10px 15px; border-radius: 6px;}
+}
+
+/* Special classes for big devices */
+@media only screen and (min-width: 768px) {
+    .THIS.header-extension {background-color: #333333;}
+    .THIS .search {border-right: solid 1px #484848; height: 100%;}
+}

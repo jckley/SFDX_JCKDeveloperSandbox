@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>proactiva_symptoms__c</fullName>
+    <externalId>false</externalId>
+    <label>Triage Sintomas</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Tos</fullName>
+                <default>false</default>
+                <label>Tos</label>
+            </value>
+            <value>
+                <fullName>Dificultad respiratoria</fullName>
+                <default>false</default>
+                <label>Dificultad respiratoria</label>
+            </value>
+            <value>
+                <fullName>Nariz que moquea</fullName>
+                <default>false</default>
+                <label>Nariz que moquea</label>
+            </value>
+            <value>
+                <fullName>Empeoramiento de tos</fullName>
+                <default>false</default>
+                <label>Empeoramiento de tos</label>
+            </value>
+            <value>
+                <fullName>Dificultad respiratoria o Falta de aire</fullName>
+                <default>false</default>
+                <label>Dificultad respiratoria o Falta de aire</label>
+            </value>
+            <value>
+                <fullName>Dolor de estómago</fullName>
+                <default>false</default>
+                <label>Dolor de estómago</label>
+            </value>
+            <value>
+                <fullName>Pérdida del olfato/ gusto</fullName>
+                <default>false</default>
+                <label>Pérdida del olfato/ gusto</label>
+            </value>
+            <value>
+                <fullName>Diarrea y/o vómitos</fullName>
+                <default>false</default>
+                <label>Diarrea y/o vómitos</label>
+            </value>
+            <value>
+                <fullName>Temblores</fullName>
+                <default>false</default>
+                <label>Temblores</label>
+            </value>
+            <value>
+                <fullName>Resfriado</fullName>
+                <default>false</default>
+                <label>Resfriado</label>
+            </value>
+            <value>
+                <fullName>Dolor de garganta</fullName>
+                <default>false</default>
+                <label>Dolor de garganta</label>
+            </value>
+            <value>
+                <fullName>Dolor intenso de cabeza (cefalea)</fullName>
+                <default>false</default>
+                <label>Dolor intenso de cabeza (cefalea)</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>
